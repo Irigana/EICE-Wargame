@@ -19,7 +19,14 @@ namespace GitHub___TestSolution
 
         private void buttonChangerCouleur_Click(object sender, EventArgs e)
         {
-            BackColor = Color.Blue;
+			if (BackColor == SystemColors.Control)
+			{
+				BackColor = Color.Blue;
+			}
+			else
+			{
+				BackColor = SystemColors.Control;
+			}
         }
     }
 }
