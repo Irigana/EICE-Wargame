@@ -16,5 +16,10 @@ namespace GitHub___TestSolution
         {
             InitializeComponent();
         }
+
+        private void buttonChangerCouleur_Click(object sender, EventArgs e)
+        {
+            BackColor = Color.Blue;
+        }
     }
 }
