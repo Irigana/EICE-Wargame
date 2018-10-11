@@ -28,26 +28,24 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.buttonChangerCouleur = new System.Windows.Forms.Button();
+            this.pageConnexion1 = new GitHub___TestSolution.PageConnexion();
             this.SuspendLayout();
             // 
-            // buttonChangerCouleur
+            // pageConnexion1
             // 
-            this.buttonChangerCouleur.Location = new System.Drawing.Point(85, 40);
-            this.buttonChangerCouleur.Name = "buttonChangerCouleur";
-            this.buttonChangerCouleur.Size = new System.Drawing.Size(139, 44);
-            this.buttonChangerCouleur.TabIndex = 0;
-            this.buttonChangerCouleur.Text = "Changer la couleur";
-            this.buttonChangerCouleur.UseVisualStyleBackColor = true;
-            this.buttonChangerCouleur.Click += new System.EventHandler(this.buttonChangerCouleur_Click);
+            this.pageConnexion1.BackColor = System.Drawing.SystemColors.Control;
+            this.pageConnexion1.Location = new System.Drawing.Point(131, 12);
+            this.pageConnexion1.Name = "pageConnexion1";
+            this.pageConnexion1.Size = new System.Drawing.Size(553, 489);
+            this.pageConnexion1.TabIndex = 1;
             // 
             // Form_Test_Github
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(379, 321);
-            this.Controls.Add(this.buttonChangerCouleur);
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.ClientSize = new System.Drawing.Size(834, 513);
+            this.Controls.Add(this.pageConnexion1);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "Form_Test_Github";
             this.Text = "Form1";
             this.ResumeLayout(false);
@@ -55,8 +53,7 @@
         }
 
         #endregion
-
-        private System.Windows.Forms.Button buttonChangerCouleur;
+        private PageConnexion pageConnexion1;
     }
 }
 
