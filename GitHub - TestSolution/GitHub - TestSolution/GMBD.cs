@@ -30,8 +30,8 @@ namespace GitHub___TestSolution
         /// Constructeur par défaut
         /// </summary>
         public GMBD()
-        {
-            m_BD = new MyDB("u_admin_balademoto", "rctODuw74ZZuGtkY", "examen_michel_maxime_pdsgbd");
+        {   // TODO : Ajouter les données de l'utilisateur permettant la connexion à la base de données 
+            m_BD = new MyDB("NomUtilisateur", "Mdp", "NomDeLaBaseDeDonnees");
             m_BD.SurErreur += (ConnexionEmettrice, MethodeEmettrice, RequeteSql, Valeurs, MessageErreur) =>
             {
                 System.Diagnostics.Debug.WriteLine(string.Format("\nERREUR SQL :\nMéthode : {0}\nRequête initiale : {1}\nValeurs des {2} parties variables : {3}\nRequête exécutée : {4}\nMessage d'erreur : {5}\n",
@@ -55,7 +55,7 @@ namespace GitHub___TestSolution
 
 
 
-
+        /* TODO Classe de l'utilisateur pour comparer le pseudo avec le mdp
         public Utilisateur ConnexionApplication(string Pseudo, string MotDePasse)
         {
             return EnumererUtilisateur(null,
@@ -63,6 +63,6 @@ namespace GitHub___TestSolution
                                        new MyDB.CodeSql("WHERE pseudo = {0} AND mot_de_passe = SHA1({1})", Pseudo, MotDePasse),
                                        null).FirstOrDefault();
         }
-
+        */
     }
 }

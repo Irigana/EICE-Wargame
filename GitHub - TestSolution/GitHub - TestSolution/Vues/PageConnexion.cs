@@ -15,7 +15,12 @@ namespace GitHub___TestSolution
         public PageConnexion()
         {
             InitializeComponent();
+            textBoxAvecTextInvisibleLogin.TexteValeur = "Login";
+            textBoxAvecTextInvisibleMdp.TexteValeur = "Mot de passe";           
         }
         
+        
+
+
     }
 }

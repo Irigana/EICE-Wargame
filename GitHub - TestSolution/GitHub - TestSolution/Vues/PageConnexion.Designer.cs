@@ -55,7 +55,6 @@
             this.linkLabelCreerCompte.Name = "linkLabelCreerCompte";
             this.linkLabelCreerCompte.Size = new System.Drawing.Size(134, 20);
             this.linkLabelCreerCompte.TabIndex = 4;
-            this.linkLabelCreerCompte.TabStop = true;
             this.linkLabelCreerCompte.Text = "Créer un compte";
             // 
             // pictureBoxCadenaFerme
@@ -80,6 +79,7 @@
             this.buttonConnexion.Name = "buttonConnexion";
             this.buttonConnexion.Size = new System.Drawing.Size(232, 46);
             this.buttonConnexion.TabIndex = 3;
+            this.buttonConnexion.TabStop = false;
             this.buttonConnexion.Text = "Se connecter";
             this.buttonConnexion.UseVisualStyleBackColor = false;
             // 
@@ -92,7 +92,9 @@
             this.textBoxAvecTextInvisibleMdp.Name = "textBoxAvecTextInvisibleMdp";
             this.textBoxAvecTextInvisibleMdp.Size = new System.Drawing.Size(232, 28);
             this.textBoxAvecTextInvisibleMdp.TabIndex = 2;
+            this.textBoxAvecTextInvisibleMdp.TabStop = false;
             this.textBoxAvecTextInvisibleMdp.Text = "Mot de passe";
+            this.textBoxAvecTextInvisibleMdp.TexteValeur = null;
             // 
             // textBoxAvecTextInvisibleLogin
             // 
@@ -103,7 +105,10 @@
             this.textBoxAvecTextInvisibleLogin.Name = "textBoxAvecTextInvisibleLogin";
             this.textBoxAvecTextInvisibleLogin.Size = new System.Drawing.Size(232, 28);
             this.textBoxAvecTextInvisibleLogin.TabIndex = 1;
+            this.textBoxAvecTextInvisibleLogin.TabStop = false;
+            this.textBoxAvecTextInvisibleLogin.Tag = "";
             this.textBoxAvecTextInvisibleLogin.Text = "Login";
+            this.textBoxAvecTextInvisibleLogin.TexteValeur = null;
             // 
             // PageConnexion
             // 
