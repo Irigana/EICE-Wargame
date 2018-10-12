@@ -52,6 +52,7 @@
     <Compile Include="Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
+    <Compile Include="GMBD.cs" />
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -106,6 +107,12 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\CadenaFerme25px.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\PDSGBD\PDSGBD.csproj">
+      <Project>{9b3289f9-8d92-41e3-abe9-bfcfcab37266}</Project>
+      <Name>PDSGBD</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
