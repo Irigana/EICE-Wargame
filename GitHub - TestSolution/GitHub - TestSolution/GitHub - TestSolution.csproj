@@ -102,7 +102,10 @@
     <None Include="Resources\CadenaFerme1.png" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\CadenaOuvert.png" />
+    <None Include="Resources\CadenaOuvert25px.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\CadenaFerme25px.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

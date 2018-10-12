@@ -73,9 +73,9 @@ namespace GitHub___TestSolution.Properties {
         /// <summary>
         ///   Recherche une ressource localisée de type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap CadenaOuvert {
+        internal static System.Drawing.Bitmap CadenaOuvert25px {
             get {
-                object obj = ResourceManager.GetObject("CadenaOuvert", resourceCulture);
+                object obj = ResourceManager.GetObject("CadenaOuvert25px", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

@@ -74,7 +74,7 @@
             this.buttonConnexion.FlatAppearance.BorderSize = 2;
             this.buttonConnexion.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonConnexion.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.buttonConnexion.Image = global::GitHub___TestSolution.Properties.Resources.CadenaOuvert;
+            this.buttonConnexion.Image = global::GitHub___TestSolution.Properties.Resources.CadenaOuvert25px;
             this.buttonConnexion.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.buttonConnexion.Location = new System.Drawing.Point(166, 303);
             this.buttonConnexion.Name = "buttonConnexion";
