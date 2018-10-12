@@ -27,6 +27,11 @@ namespace GitHub___TestSolution
         // Variable permettant la sauvegarde du pseudo après la perte du focus
         string SauvegardeLogin;
 
+        /// <summary>
+        /// Action qui se produit au moment où l'on rentre dans la textbox
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void textBoxText_Enter(object sender, EventArgs e)
         {
             if(textBoxText.Text == TexteValeur)
@@ -42,7 +47,11 @@ namespace GitHub___TestSolution
             }
         }
 
-
+        /// <summary>
+        /// Action qui se produit au moment où l'on quitte la textbox
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void textBoxText_Leave(object sender, EventArgs e)
         {
             if (textBoxText.Text == "")
@@ -58,7 +67,9 @@ namespace GitHub___TestSolution
             }
         }
 
-
+        /// <summary>
+        /// Permet d'accéder à la propriété text du control user (n'est pas accessible sans cette fonction)
+        /// </summary>
         [EditorBrowsable(EditorBrowsableState.Always)]
         [Browsable(true)]
         [DesignerSerializationVisibility(DesignerSerializationVisibility.Visible)]
