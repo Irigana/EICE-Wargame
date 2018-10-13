@@ -17,7 +17,7 @@
             {
                 components.Dispose();
             }
-            base.Dispose(disposing);
+            base.Dispose(disposing); //Coucou
         }
 
         #region Code généré par le Concepteur de composants
