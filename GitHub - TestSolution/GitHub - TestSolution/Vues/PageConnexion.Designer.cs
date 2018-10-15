@@ -1,6 +1,6 @@
 ﻿namespace GitHub___TestSolution
 {
-    partial class PageConnexion
+    partial class PageConnexion //coucou c'est guillaumz j"	imz 
     {
         /// <summary> 
         /// Variable nécessaire au concepteur.
