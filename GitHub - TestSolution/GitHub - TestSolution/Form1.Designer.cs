@@ -1,6 +1,6 @@
-﻿namespace GitHub___TestSolution
+﻿namespace EICE_Wargame
 {
-    partial class Form_Principal
+    partial class Form_Test_Github
     {
         /// <summary>
         /// Variable nécessaire au concepteur.
@@ -28,37 +28,25 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.pageConnexion1 = new GitHub___TestSolution.PageConnexion();
-            this.PageInscription = new GitHub___TestSolution.Inscription();
+            this.pageConnexion1 = new EICE_Wargame.PageConnexion();
             this.SuspendLayout();
             // 
             // pageConnexion1
             // 
             this.pageConnexion1.BackColor = System.Drawing.SystemColors.Control;
-            this.pageConnexion1.Location = new System.Drawing.Point(228, 66);
+            this.pageConnexion1.Location = new System.Drawing.Point(131, 12);
             this.pageConnexion1.Name = "pageConnexion1";
             this.pageConnexion1.Size = new System.Drawing.Size(553, 489);
             this.pageConnexion1.TabIndex = 1;
-            this.pageConnexion1.VisibleChanged += new System.EventHandler(this.pageConnexion1_VisibleChanged);
-            this.pageConnexion1.Leave += new System.EventHandler(this.pageConnexion1_Leave);
             // 
-            // PageInscription
-            // 
-            this.PageInscription.Location = new System.Drawing.Point(171, 30);
-            this.PageInscription.Name = "PageInscription";
-            this.PageInscription.Size = new System.Drawing.Size(650, 550);
-            this.PageInscription.TabIndex = 2;
-            this.PageInscription.Visible = false;
-            // 
-            // Form_Principal
+            // Form_Test_Github
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1013, 668);
+            this.ClientSize = new System.Drawing.Size(834, 513);
             this.Controls.Add(this.pageConnexion1);
-            this.Controls.Add(this.PageInscription);
             this.Margin = new System.Windows.Forms.Padding(4);
-            this.Name = "Form_Principal";
+            this.Name = "Form_Test_Github";
             this.Text = "Form1";
             this.ResumeLayout(false);
 
@@ -66,7 +54,6 @@
 
         #endregion
         private PageConnexion pageConnexion1;
-        private Inscription PageInscription;
     }
 }
 

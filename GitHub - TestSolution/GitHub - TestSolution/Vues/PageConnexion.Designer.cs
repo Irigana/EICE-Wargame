@@ -1,4 +1,4 @@
-﻿namespace GitHub___TestSolution
+﻿namespace EICE_Wargame
 {
     partial class PageConnexion
     {
@@ -17,7 +17,7 @@
             {
                 components.Dispose();
             }
-            base.Dispose(disposing);
+            base.Dispose(disposing); //Coucou
         }
 
         #region Code généré par le Concepteur de composants
@@ -32,8 +32,8 @@
             this.linkLabelCreerCompte = new System.Windows.Forms.LinkLabel();
             this.pictureBoxCadenaFerme = new System.Windows.Forms.PictureBox();
             this.buttonConnexion = new System.Windows.Forms.Button();
-            this.textBoxAvecTextInvisibleMdp = new GitHub___TestSolution.TextBoxAvecTextInvisible();
-            this.textBoxAvecTextInvisibleLogin = new GitHub___TestSolution.TextBoxAvecTextInvisible();
+            this.textBoxAvecTextInvisibleMdp = new EICE_Wargame.TextBoxAvecTextInvisible();
+            this.textBoxAvecTextInvisibleLogin = new EICE_Wargame.TextBoxAvecTextInvisible();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxCadenaFerme)).BeginInit();
             this.SuspendLayout();
             // 
@@ -61,7 +61,7 @@
             // 
             // pictureBoxCadenaFerme
             // 
-            this.pictureBoxCadenaFerme.Image = global::GitHub___TestSolution.Properties.Resources.CadenaFerme1;
+            this.pictureBoxCadenaFerme.Image = global::EICE_Wargame.Properties.Resources.CadenaFerme1;
             this.pictureBoxCadenaFerme.Location = new System.Drawing.Point(233, 14);
             this.pictureBoxCadenaFerme.Name = "pictureBoxCadenaFerme";
             this.pictureBoxCadenaFerme.Size = new System.Drawing.Size(96, 95);
@@ -75,7 +75,7 @@
             this.buttonConnexion.FlatAppearance.BorderSize = 2;
             this.buttonConnexion.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonConnexion.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.buttonConnexion.Image = global::GitHub___TestSolution.Properties.Resources.CadenaOuvert25px;
+            this.buttonConnexion.Image = global::EICE_Wargame.Properties.Resources.CadenaOuvert25px;
             this.buttonConnexion.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.buttonConnexion.Location = new System.Drawing.Point(166, 303);
             this.buttonConnexion.Name = "buttonConnexion";

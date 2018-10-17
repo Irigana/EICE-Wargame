@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace GitHub___TestSolution.Properties
+namespace EICE_Wargame.Properties
 {
 
 

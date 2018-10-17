@@ -8,7 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace GitHub___TestSolution
+namespace EICE_Wargame
 {
     public partial class TextBoxAvecTextInvisible : UserControl
     {
