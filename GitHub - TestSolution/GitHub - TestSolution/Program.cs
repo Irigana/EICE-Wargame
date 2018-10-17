@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using PDSGBD;
 
-namespace EICE__WARGAME
+namespace EICE_WARGAME
 {
     static class Program
     {
@@ -29,15 +29,18 @@ namespace EICE__WARGAME
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             Application.Run(new Form_Principal());
+        }
             /*
             s_GMBD = new GMBD();
             s_GMBD.BD.SurChangementEtatConnexion += BD_SurChangementEtatConnexion;
+       
+            
             if (!s_GMBD.Initialiser())
             {
                 MessageBox.Show("Erreur d'accès à la base de données !", "Balade moto", MessageBoxButtons.OK, MessageBoxIcon.Error, MessageBoxDefaultButton.Button1);
                 return;
             }
-            using (Connexion Connexion = new Connexion())
+            using ( Connexion = new Connexion())
             {
                 Application.Run(Connexion);
                 if (Connexion.EstIdentifie)
@@ -59,7 +62,7 @@ namespace EICE__WARGAME
         private static void BD_SurChangementEtatConnexion(MyDB ConnexionEmetrice, MyDB.EtatConnexion EtatPrecedent, MyDB.EtatConnexion NouvelEtat)
         {
             System.Diagnostics.Debug.WriteLine(string.Format("\nCONNEXION BD :\nChangement d'état : {0} ==>> {1}\n", EtatPrecedent, NouvelEtat));
-        }*/
         }
+        */
     }
 }

@@ -8,7 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace EICE__WARGAME
+namespace EICE_WARGAME
 {
     public partial class PageConnexion : UserControl
     {

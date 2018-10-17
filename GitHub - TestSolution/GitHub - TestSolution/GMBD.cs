@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using PDSGBD;
 
-namespace EICE__WARGAME
+namespace EICE_WARGAME
 {
     class GMBD
     {

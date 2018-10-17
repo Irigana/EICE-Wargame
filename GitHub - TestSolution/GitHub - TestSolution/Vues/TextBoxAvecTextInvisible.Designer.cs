@@ -1,4 +1,4 @@
-﻿namespace EICE__WARGAME
+﻿namespace EICE_WARGAME
 {
     partial class TextBoxAvecTextInvisible
     {

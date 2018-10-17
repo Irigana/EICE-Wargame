@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 14
 VisualStudioVersion = 14.0.25420.1
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EICE-WARGAME", "GitHub - TestSolution\EICE-WARGAME.csproj", "{2CD074E0-7033-4A12-92EA-396A48144ADE}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EICE_WARGAME", "GitHub - TestSolution\EICE_WARGAME.csproj", "{2CD074E0-7033-4A12-92EA-396A48144ADE}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PDSGBD", "..\PDSGBD\PDSGBD.csproj", "{9B3289F9-8D92-41E3-ABE9-BFCFCAB37266}"
 EndProject

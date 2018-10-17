@@ -1,4 +1,4 @@
-﻿namespace EICE__WARGAME
+﻿namespace EICE_WARGAME
 {
     partial class Form_Principal
     {
@@ -28,8 +28,8 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.pageConnexion1 = new EICE__WARGAME.PageConnexion();
-            this.inscription1 = new EICE__WARGAME.Inscription();
+            this.pageConnexion1 = new EICE_WARGAME.PageConnexion();
+            this.inscription1 = new EICE_WARGAME.Inscription();
             this.SuspendLayout();
             // 
             // pageConnexion1
