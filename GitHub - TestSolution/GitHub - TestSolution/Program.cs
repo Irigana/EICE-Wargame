@@ -4,7 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace EICE_Wargame
+namespace EICE__WARGAME
 {
     static class Program
     {

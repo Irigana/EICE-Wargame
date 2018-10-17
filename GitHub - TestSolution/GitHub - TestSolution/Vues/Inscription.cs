@@ -8,7 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace GitHub___TestSolution
+namespace EICE__WARGAME
 {
     public partial class Inscription : UserControl
     {
@@ -19,7 +19,7 @@ namespace GitHub___TestSolution
 
         private void linkLabelDejaInscrit_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
-            this.Visible = false;
+            this.SendToBack();
         }
     }
 }

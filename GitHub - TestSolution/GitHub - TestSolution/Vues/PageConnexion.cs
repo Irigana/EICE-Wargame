@@ -8,7 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace EICE_Wargame
+namespace EICE__WARGAME
 {
     public partial class PageConnexion : UserControl
     {
@@ -23,7 +23,8 @@ namespace EICE_Wargame
 
         private void linkLabelCreerCompte_Click(object sender, EventArgs e)
         {
-            this.Visible = false;
+            this.SendToBack();
         }
+
     }
 }

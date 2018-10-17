@@ -8,7 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace EICE_Wargame
+namespace EICE__WARGAME
 {
     public partial class Form_Principal : Form
     {
@@ -23,8 +23,8 @@ namespace EICE_Wargame
 
         private void pageConnexion1_Leave(object sender, EventArgs e)
         {
-            PageInscription.Visible = true;
-            PageInscription.BringToFront();
+            pageInscription.Visible = true;
+            pageInscription.BringToFront();
         }
 
         private void PageInscription_Leave(object sender, EventArgs e)
@@ -34,7 +34,8 @@ namespace EICE_Wargame
 
         private void pageConnexion1_VisibleChanged(object sender, EventArgs e)
         {
-            PageInscription.Hide();
+            pageInscription.Hide();
         }
+
     }
 }
