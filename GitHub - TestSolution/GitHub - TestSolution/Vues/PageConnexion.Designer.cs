@@ -18,7 +18,7 @@ namespace EICE_WARGAME
             {
                 components.Dispose();
             }
-            base.Dispose(disposing); //Coucou
+            base.Dispose(disposing);
         }
 
         #region Code généré par le Concepteur de composants
