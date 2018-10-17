@@ -31,7 +31,7 @@ namespace GitHub___TestSolution
         /// </summary>
         public GMBD()
         {   // TODO : Ajouter les données de l'utilisateur permettant la connexion à la base de données 
-            m_BD = new MyDB("NomUtilisateur", "Mdp", "NomDeLaBaseDeDonnees");
+            m_BD = new MyDB("iziel_connector", "wJ9VFDrH", "iziel_warhammer");
             m_BD.SurErreur += (ConnexionEmettrice, MethodeEmettrice, RequeteSql, Valeurs, MessageErreur) =>
             {
                 System.Diagnostics.Debug.WriteLine(string.Format("\nERREUR SQL :\nMéthode : {0}\nRequête initiale : {1}\nValeurs des {2} parties variables : {3}\nRequête exécutée : {4}\nMessage d'erreur : {5}\n",
