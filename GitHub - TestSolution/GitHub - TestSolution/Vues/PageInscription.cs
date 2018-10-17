@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace EICE_WARGAME
 {
-    public partial class Inscription : UserControl
+    public partial class PageInscription : UserControl
     {
-        public Inscription()
+        public PageInscription()
         {
             InitializeComponent();                    
         }

@@ -29,33 +29,33 @@
         private void InitializeComponent()
         {
             this.pageConnexion1 = new EICE_WARGAME.PageConnexion();
-            this.inscription1 = new EICE_WARGAME.Inscription();
+            this.pageInscription1 = new EICE_WARGAME.PageInscription();
             this.SuspendLayout();
             // 
             // pageConnexion1
             // 
             this.pageConnexion1.BackColor = System.Drawing.SystemColors.Control;
-            this.pageConnexion1.Location = new System.Drawing.Point(98, 10);
-            this.pageConnexion1.Margin = new System.Windows.Forms.Padding(2);
+            this.pageConnexion1.Location = new System.Drawing.Point(193, 44);
+            this.pageConnexion1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.pageConnexion1.Name = "pageConnexion1";
-            this.pageConnexion1.Size = new System.Drawing.Size(415, 397);
-            this.pageConnexion1.TabIndex = 1;
+            this.pageConnexion1.Size = new System.Drawing.Size(553, 489);
+            this.pageConnexion1.TabIndex = 0;
             // 
-            // inscription1
+            // pageInscription1
             // 
-            this.inscription1.Location = new System.Drawing.Point(60, 10);
-            this.inscription1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
-            this.inscription1.Name = "inscription1";
-            this.inscription1.Size = new System.Drawing.Size(526, 396);
-            this.inscription1.TabIndex = 2;
+            this.pageInscription1.Location = new System.Drawing.Point(153, 25);
+            this.pageInscription1.Name = "pageInscription1";
+            this.pageInscription1.Size = new System.Drawing.Size(651, 549);
+            this.pageInscription1.TabIndex = 1;
             // 
             // Form_Principal
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(626, 417);
+            this.ClientSize = new System.Drawing.Size(921, 624);
             this.Controls.Add(this.pageConnexion1);
-            this.Controls.Add(this.inscription1);
+            this.Controls.Add(this.pageInscription1);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "Form_Principal";
             this.Text = "Form1";
             this.ResumeLayout(false);
@@ -63,9 +63,9 @@
         }
 
         #endregion
+
         private PageConnexion pageConnexion1;
-        private Inscription pageInscription;
-        private Inscription inscription1;
+        private PageInscription pageInscription1;
     }
 }
 

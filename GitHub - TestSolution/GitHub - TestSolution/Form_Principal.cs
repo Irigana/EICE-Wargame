@@ -18,13 +18,11 @@ namespace EICE_WARGAME
             InitializeComponent();
             
         }
-        
-        
-
+                       
         private void pageConnexion1_Leave(object sender, EventArgs e)
         {
-            pageInscription.Visible = true;
-            pageInscription.BringToFront();
+            pageInscription1.Visible = true;
+            pageInscription1.BringToFront();
         }
 
         private void PageInscription_Leave(object sender, EventArgs e)
@@ -34,7 +32,7 @@ namespace EICE_WARGAME
 
         private void pageConnexion1_VisibleChanged(object sender, EventArgs e)
         {
-            pageInscription.Hide();
+            pageInscription1.Hide();
         }
         
     }

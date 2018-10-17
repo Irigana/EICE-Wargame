@@ -1,7 +1,7 @@
 ﻿
 namespace EICE_WARGAME
 {
-    partial class Inscription
+    partial class PageInscription
     {
         /// <summary> 
         /// Variable nécessaire au concepteur.
@@ -104,7 +104,7 @@ namespace EICE_WARGAME
             this.textBoxAvecTextInvisibleLogin.Size = new System.Drawing.Size(239, 22);
             this.textBoxAvecTextInvisibleLogin.TabIndex = 1;
             // 
-            // Inscription
+            // PageInscription
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -114,7 +114,7 @@ namespace EICE_WARGAME
             this.Controls.Add(this.textBoxAvecTextInvisibleMdpConf);
             this.Controls.Add(this.textBoxAvecTextInvisibleMdp);
             this.Controls.Add(this.textBoxAvecTextInvisibleLogin);
-            this.Name = "Inscription";
+            this.Name = "PageInscription";
             this.Size = new System.Drawing.Size(650, 550);
             this.ResumeLayout(false);
             this.PerformLayout();
