@@ -42,9 +42,9 @@ namespace EICE_WARGAME
                 else
                 {
                     value = value.Trim();
-                    if ((value.Length >= 100) || (value.Length <= 1))
-                    {// TODO verifier les longueurs mis dans la db pour correction
-                        Declencher_SurErreur(this, Champs.NomRole, "Le role doit être compris entre 1 et 100 caractères");
+                    if ((value.Length >= 45) || (value.Length <= 1))
+                    {
+                        Declencher_SurErreur(this, Champs.NomRole, "Le role doit être compris entre 1 et 45 caractères");
                     }
                     else if (!string.Equals(value, m_Role))
                     {
@@ -81,9 +81,9 @@ namespace EICE_WARGAME
         /// <param name="Enregistrement">Enregistrement d'où extraire les valeurs de champs</param>
         public Role(PDSGBD.MyDB Connexion, PDSGBD.MyDB.IEnregistrement Enregistrement)
             :this()
-        {// TODO : Vérifier si le nom des champs sont correct
-            DefinirId(Enregistrement.ValeurChampComplet<int>(NomDeLaTablePrincipale, "id_role"));
-            this.NomRole = Enregistrement.ValeurChampComplet<string>(NomDeLaTablePrincipale, "role");
+        {
+            DefinirId(Enregistrement.ValeurChampComplet<int>(NomDeLaTablePrincipale, "role.id"));
+            this.NomRole = Enregistrement.ValeurChampComplet<string>(NomDeLaTablePrincipale, "role.name");
         }
 
 
@@ -96,7 +96,7 @@ namespace EICE_WARGAME
         public override string NomDeLaTablePrincipale
         {
             get
-            {// TODO : Vérifier si le nom de la table est la bonne
+            {
                 return "role";
             }
         }
@@ -107,8 +107,8 @@ namespace EICE_WARGAME
         public override PDSGBD.MyDB.CodeSql ClauseAssignation
         {
             get
-            {// TODO : Vérifier si le nom de champ est correct
-                return new PDSGBD.MyDB.CodeSql("role = {0}", m_Role);
+            {
+                return new PDSGBD.MyDB.CodeSql("role.name = {0}", m_Role);
             }
         }
        

@@ -33,7 +33,7 @@ namespace EICE_WARGAME
         /// Constructeur par défaut
         /// </summary>
         public GMBD()
-        {   // TODO : Ajouter les données de l'utilisateur permettant la connexion à la base de données 
+        {    
             m_BD = new MyDB("iziel_connector", "wJ9VFDrH", "iziel_warhammer", "mysql-iziel.alwaysdata.net");
             m_BD.SurErreur += (ConnexionEmettrice, MethodeEmettrice, RequeteSql, Valeurs, MessageErreur) =>
             {
@@ -58,12 +58,12 @@ namespace EICE_WARGAME
 
 
 
-        // TODO Vérifier si les champs corresponde bien   
+        
         public Utilisateur ConnexionApplication(string Pseudo, string MotDePasse)
         {
             return EnumererUtilisateur(null,
-                                       new MyDB.CodeSql(@"JOIN role ON utilisateur.ref_role = id_role"),
-                                       new MyDB.CodeSql("WHERE pseudo = {0} AND mot_de_passe = SHA1({1})", Pseudo, MotDePasse),
+                                       new MyDB.CodeSql(@"JOIN role ON user.id_role = role.id"),
+                                       new MyDB.CodeSql("WHERE user.name = {0} AND user.password = {1}", Pseudo, MotDePasse),
                                        null).FirstOrDefault();
         }
 

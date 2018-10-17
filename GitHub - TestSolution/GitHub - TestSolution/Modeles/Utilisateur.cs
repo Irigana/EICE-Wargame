@@ -162,10 +162,10 @@ namespace EICE_WARGAME
             : this()
         {
             if (Enregistrement != null)
-            {// TODO : Vérifier si le nom des champs est correct par rapport aux champ de la base de donnée
-                DefinirId(Enregistrement.ValeurChampComplet<int>(NomDeLaTablePrincipale, "id_utilisateur"));
-                this.Pseudo = Enregistrement.ValeurChampComplet<string>(NomDeLaTablePrincipale, "pseudo");
-                this.MotDePasse = Enregistrement.ValeurChampComplet<string>(NomDeLaTablePrincipale, "mot_de_passe");                
+            {
+                DefinirId(Enregistrement.ValeurChampComplet<int>(NomDeLaTablePrincipale, "user.id"));
+                this.Pseudo = Enregistrement.ValeurChampComplet<string>(NomDeLaTablePrincipale, "user.name");
+                this.MotDePasse = Enregistrement.ValeurChampComplet<string>(NomDeLaTablePrincipale, "user.password");                
                 this.Role = new Role(Connexion, Enregistrement);                
             }
         }
@@ -180,8 +180,8 @@ namespace EICE_WARGAME
         public override string NomDeLaTablePrincipale
         {
             get
-            {// TODO : Vérifier si le nom de la table est la bonne
-                return "utilisateur";
+            {// 
+                return "user";
             }
         }
 
@@ -191,8 +191,8 @@ namespace EICE_WARGAME
         public override PDSGBD.MyDB.CodeSql ClauseAssignation
         {
             get
-            {// TODO : Vérifier si les champs sont les mêmes que dans la base de donnée
-                return new PDSGBD.MyDB.CodeSql("pseudo = {0}, mot_de_passe = TODO,  ref_role = {1}", m_Pseudo, m_MotDePasse, m_Role.Id);
+            {
+                return new PDSGBD.MyDB.CodeSql("user.name = {0}, user.password = {1},  user.id_role = {2}", m_Pseudo, m_MotDePasse, m_Role.Id);
             }
         }
 
