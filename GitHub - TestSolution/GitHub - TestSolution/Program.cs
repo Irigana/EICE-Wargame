@@ -26,9 +26,7 @@ namespace EICE_WARGAME
         [STAThread]
         static void Main()
         {
-            Application.EnableVisualStyles();
-            Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new Form_Principal());
+            
 
 
             s_GMBD = new GMBD();
@@ -40,15 +38,13 @@ namespace EICE_WARGAME
                 MessageBox.Show("Erreur d'accès à la base de données !", "EICE_WARGAME", MessageBoxButtons.OK, MessageBoxIcon.Error, MessageBoxDefaultButton.Button1);
                 return;
             }
-        
-            
-            using (PageConnexion Connexion = new PageConnexion())
+            else
             {
-                if (Connexion.EstIdentifie)
-                {
-                    // TODO : L'envoyer sur la suite du programme
-                }
+                Application.EnableVisualStyles();
+                Application.SetCompatibleTextRenderingDefault(false);
+                Application.Run(new Form_Principal());
             }
+        
             
 
         }
