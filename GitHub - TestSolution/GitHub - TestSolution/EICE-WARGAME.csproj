@@ -53,6 +53,13 @@
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
     <Compile Include="GMBD.cs" />
+    <Compile Include="Modeles\Entite.cs" />
+    <Compile Include="Modeles\Utilisateur.cs" />
+    <Compile Include="Outils\AccumulateurErreur.cs" />
+    <Compile Include="Outils\ElementEnQuantite.cs" />
+    <Compile Include="Outils\IU.Listes.cs" />
+    <Compile Include="Outils\Outils.Chaine.cs" />
+    <Compile Include="Outils\Outils.Validation.cs" />
     <Compile Include="Vues\Inscription.cs">
       <SubType>UserControl</SubType>
     </Compile>
