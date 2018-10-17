@@ -15,7 +15,7 @@ namespace PDSGBD
         /// <summary>
         /// Adresse d'accès par "défaut" au serveur MySql
         /// </summary>
-        public const string AdresseServeurParDefaut = "localhost";
+        public const string AdresseServeurParDefaut = "mysql-iziel.alwaysdata.net";
 
         /// <summary>
         /// Port par défaut des serveurs MySql
