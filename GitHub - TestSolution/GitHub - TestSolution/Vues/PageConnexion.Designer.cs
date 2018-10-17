@@ -65,7 +65,7 @@ namespace EICE_WARGAME
             // 
             // pictureBoxCadenaFerme
             // 
-            this.pictureBoxCadenaFerme.Image = global::EICE_WARGAME.Properties.Resources.CadenaFerme1;
+            this.pictureBoxCadenaFerme.Image = global::EICE__WARGAME.Properties.Resources.CadenaFerme75px;
             this.pictureBoxCadenaFerme.Location = new System.Drawing.Point(233, 14);
             this.pictureBoxCadenaFerme.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.pictureBoxCadenaFerme.Name = "pictureBoxCadenaFerme";
@@ -80,7 +80,8 @@ namespace EICE_WARGAME
             this.buttonConnexion.FlatAppearance.BorderSize = 2;
             this.buttonConnexion.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonConnexion.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.buttonConnexion.Image = global::EICE_WARGAME.Properties.Resources.CadenaOuvert25px;
+            this.buttonConnexion.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.buttonConnexion.Image = global::EICE__WARGAME.Properties.Resources.CadenaFerme25px;
             this.buttonConnexion.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.buttonConnexion.Location = new System.Drawing.Point(165, 303);
             this.buttonConnexion.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);

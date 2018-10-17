@@ -37,23 +37,22 @@ namespace EICE_WARGAME
 
             if (!s_GMBD.Initialiser())
             {
-                MessageBox.Show("Erreur d'accès à la base de données !", "Balade moto", MessageBoxButtons.OK, MessageBoxIcon.Error, MessageBoxDefaultButton.Button1);
+                MessageBox.Show("Erreur d'accès à la base de données !", "EICE_WARGAME", MessageBoxButtons.OK, MessageBoxIcon.Error, MessageBoxDefaultButton.Button1);
                 return;
             }
-        }
-            /*
-            using (Connexion = new Connexion())
+        
+            
+            using (PageConnexion Connexion = new PageConnexion())
             {
-                Application.Run(Connexion);
                 if (Connexion.EstIdentifie)
                 {
-                    Application.Run(new FormGestion(Connexion.Utilisateur));
+                    // TODO : L'envoyer sur la suite du programme
                 }
             }
             
 
         }
-        */
+        
     
         /// <summary>
         /// Méthode appelée lorsqu'un changement d'état de la connexion au serveur MySQL se produit

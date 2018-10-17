@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace EICE_WARGAME.Properties {
+namespace EICE__WARGAME.Properties {
     using System;
     
     
@@ -63,9 +63,9 @@ namespace EICE_WARGAME.Properties {
         /// <summary>
         ///   Recherche une ressource localisée de type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap CadenaFerme1 {
+        internal static System.Drawing.Bitmap CadenaFerme25px {
             get {
-                object obj = ResourceManager.GetObject("CadenaFerme1", resourceCulture);
+                object obj = ResourceManager.GetObject("CadenaFerme25px", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -73,9 +73,9 @@ namespace EICE_WARGAME.Properties {
         /// <summary>
         ///   Recherche une ressource localisée de type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap CadenaOuvert25px {
+        internal static System.Drawing.Bitmap CadenaFerme75px {
             get {
-                object obj = ResourceManager.GetObject("CadenaOuvert25px", resourceCulture);
+                object obj = ResourceManager.GetObject("CadenaFerme75px", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

@@ -32,15 +32,15 @@ namespace EICE_WARGAME
             this.buttonSInscrire = new System.Windows.Forms.Button();
             this.linkLabelDejaInscrit = new System.Windows.Forms.LinkLabel();
             this.label1 = new System.Windows.Forms.Label();
-            this.textBoxAvecTextInvisibleMdpConf = new TextBoxAvecTextInvisible();
-            this.textBoxAvecTextInvisibleMdp = new TextBoxAvecTextInvisible();
-            this.textBoxAvecTextInvisibleLogin = new TextBoxAvecTextInvisible();
+            this.textBoxAvecTextInvisibleMdpConf = new EICE_WARGAME.TextBoxAvecTextInvisible();
+            this.textBoxAvecTextInvisibleMdp = new EICE_WARGAME.TextBoxAvecTextInvisible();
+            this.textBoxAvecTextInvisibleLogin = new EICE_WARGAME.TextBoxAvecTextInvisible();
             this.SuspendLayout();
             // 
             // buttonSInscrire
             // 
             this.buttonSInscrire.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.buttonSInscrire.Image = Properties.Resources.Validation;
+            this.buttonSInscrire.Image = global::EICE__WARGAME.Properties.Resources.Validation;
             this.buttonSInscrire.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.buttonSInscrire.Location = new System.Drawing.Point(229, 376);
             this.buttonSInscrire.Name = "buttonSInscrire";

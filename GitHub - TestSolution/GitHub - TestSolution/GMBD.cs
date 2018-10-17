@@ -9,6 +9,9 @@ namespace EICE_WARGAME
 {
     class GMBD
     {
+        // Permet un accès plus simple par variable
+        private static readonly MyDB.CodeSql c_NomTable_Utilisateur = new MyDB.CodeSql(new Utilisateur().NomDeLaTablePrincipale);
+
 
         /// <summary>
         /// Référence l'objet de connexion au serveur de base de données MySql
@@ -55,7 +58,7 @@ namespace EICE_WARGAME
 
 
 
-        /* TODO Classe de l'utilisateur pour comparer le pseudo avec le mdp
+        // TODO Vérifier si les champs corresponde bien   
         public Utilisateur ConnexionApplication(string Pseudo, string MotDePasse)
         {
             return EnumererUtilisateur(null,
@@ -63,6 +66,23 @@ namespace EICE_WARGAME
                                        new MyDB.CodeSql("WHERE pseudo = {0} AND mot_de_passe = SHA1({1})", Pseudo, MotDePasse),
                                        null).FirstOrDefault();
         }
-        */
+
+
+
+        //+==================+
+        //| Les énumerations |
+        //+==================+
+
+
+        public IEnumerable<Utilisateur> EnumererUtilisateur(MyDB.CodeSql ValeurSouhaitee, MyDB.CodeSql ClauseJoin, MyDB.CodeSql ClauseWhere, MyDB.CodeSql ClauseOrderBy)
+        {
+            if (ClauseWhere == null) ClauseWhere = MyDB.CodeSql.Vide;
+            if (ClauseOrderBy == null) ClauseOrderBy = MyDB.CodeSql.Vide;
+            if (ClauseJoin == null) ClauseJoin = MyDB.CodeSql.Vide;
+            if (ValeurSouhaitee == null) ValeurSouhaitee = new MyDB.CodeSql("*");
+            return Utilisateur.Enumerer(m_BD, m_BD.Enumerer("SELECT {0} FROM  {1} {2} {3} {4}", ValeurSouhaitee, c_NomTable_Utilisateur, ClauseJoin, ClauseWhere, ClauseOrderBy));
+        }
+
+
     }
 }

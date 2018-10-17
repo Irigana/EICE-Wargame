@@ -3,11 +3,12 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using PDSGBD;
 
 
 namespace EICE_WARGAME
 {
-    class Utilisateur : Entite<Utilisateur,Utilisateur.Champs>
+    public class Utilisateur : Entite<Utilisateur,Utilisateur.Champs>
     {
         public enum Champs
         {
@@ -174,6 +175,7 @@ namespace EICE_WARGAME
             return Enumerer(Enregistrements, Enregistrement => new Utilisateur(Connexion, Enregistrement));
         }
 
+        
 
         public override string NomDeLaTablePrincipale
         {
@@ -194,6 +196,8 @@ namespace EICE_WARGAME
             }
         }
 
+
+        
 
     }
 }
