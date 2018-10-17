@@ -90,6 +90,7 @@ namespace EICE_WARGAME
             this.buttonConnexion.TabIndex = 2;
             this.buttonConnexion.Text = "Se connecter";
             this.buttonConnexion.UseVisualStyleBackColor = false;
+            this.buttonConnexion.Click += new System.EventHandler(this.buttonConnecter_Click);
             // 
             // textBoxAvecTextInvisibleMdp
             // 

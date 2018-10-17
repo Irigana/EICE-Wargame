@@ -56,16 +56,10 @@ namespace EICE_WARGAME
                 {
                     errorProviderConnexion.SetError(textBoxAvecTextInvisibleLogin, "Le pseudo ou le mot de passe est incorrect");
                     errorProviderConnexion.SetIconPadding(textBoxAvecTextInvisibleLogin, 4);
-                }
-                else if (!Outils.TesterEgaliteNoms(Utilisateur.Role.NomRole, "Administrateur"))
-                {
-                    errorProviderConnexion.SetError(textBoxAvecTextInvisibleLogin, "Vous n'avez pas accès à cet application, seul les administrateurs y sont autoriser");
-                    errorProviderConnexion.SetIconPadding(textBoxAvecTextInvisibleLogin, 4);
-                }
+                }                
                 else if (Outils.TesterEgaliteNoms(Utilisateur.Role.NomRole, "Administrateur"))
                 {
-                    m_Utilisateur = Utilisateur;
-                    this.Dispose();
+                    // TODO : si c'est un admin traitement particulier ? 
                 }
 
             }
