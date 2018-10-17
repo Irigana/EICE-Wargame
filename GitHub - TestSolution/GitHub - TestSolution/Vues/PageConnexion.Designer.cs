@@ -40,10 +40,10 @@
             // labelSeConnecter
             // 
             this.labelSeConnecter.AutoSize = true;
-            this.labelSeConnecter.Font = new System.Drawing.Font("Microsoft Sans Serif", 22F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelSeConnecter.Font = new System.Drawing.Font("Comic Sans MS", 22.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labelSeConnecter.Location = new System.Drawing.Point(159, 123);
             this.labelSeConnecter.Name = "labelSeConnecter";
-            this.labelSeConnecter.Size = new System.Drawing.Size(239, 42);
+            this.labelSeConnecter.Size = new System.Drawing.Size(258, 53);
             this.labelSeConnecter.TabIndex = 0;
             this.labelSeConnecter.Text = "Se connecter";
             // 
@@ -54,8 +54,10 @@
             this.linkLabelCreerCompte.Location = new System.Drawing.Point(215, 396);
             this.linkLabelCreerCompte.Name = "linkLabelCreerCompte";
             this.linkLabelCreerCompte.Size = new System.Drawing.Size(134, 20);
-            this.linkLabelCreerCompte.TabIndex = 4;
+            this.linkLabelCreerCompte.TabIndex = 3;
+            this.linkLabelCreerCompte.TabStop = true;
             this.linkLabelCreerCompte.Text = "Créer un compte";
+            this.linkLabelCreerCompte.Click += new System.EventHandler(this.linkLabelCreerCompte_Click);
             // 
             // pictureBoxCadenaFerme
             // 
@@ -78,37 +80,34 @@
             this.buttonConnexion.Location = new System.Drawing.Point(166, 303);
             this.buttonConnexion.Name = "buttonConnexion";
             this.buttonConnexion.Size = new System.Drawing.Size(232, 46);
-            this.buttonConnexion.TabIndex = 3;
-            this.buttonConnexion.TabStop = false;
+            this.buttonConnexion.TabIndex = 2;
             this.buttonConnexion.Text = "Se connecter";
             this.buttonConnexion.UseVisualStyleBackColor = false;
             // 
             // textBoxAvecTextInvisibleMdp
-            // 
+            //             
             this.textBoxAvecTextInvisibleMdp.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.textBoxAvecTextInvisibleMdp.ForeColor = System.Drawing.SystemColors.ButtonShadow;
             this.textBoxAvecTextInvisibleMdp.Location = new System.Drawing.Point(166, 241);
             this.textBoxAvecTextInvisibleMdp.Margin = new System.Windows.Forms.Padding(0);
+            this.textBoxAvecTextInvisibleMdp.MotDePasseCache = true;
             this.textBoxAvecTextInvisibleMdp.Name = "textBoxAvecTextInvisibleMdp";
+            this.textBoxAvecTextInvisibleMdp.PlaceHolder = "Mot de passe";
             this.textBoxAvecTextInvisibleMdp.Size = new System.Drawing.Size(232, 28);
-            this.textBoxAvecTextInvisibleMdp.TabIndex = 2;
-            this.textBoxAvecTextInvisibleMdp.TabStop = false;
-            this.textBoxAvecTextInvisibleMdp.Text = "Mot de passe";
-            this.textBoxAvecTextInvisibleMdp.TexteValeur = null;
+            this.textBoxAvecTextInvisibleMdp.TabIndex = 1;
             // 
             // textBoxAvecTextInvisibleLogin
-            // 
+            //            
             this.textBoxAvecTextInvisibleLogin.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.textBoxAvecTextInvisibleLogin.ForeColor = System.Drawing.SystemColors.ButtonShadow;
             this.textBoxAvecTextInvisibleLogin.Location = new System.Drawing.Point(166, 195);
             this.textBoxAvecTextInvisibleLogin.Margin = new System.Windows.Forms.Padding(0);
+            this.textBoxAvecTextInvisibleLogin.MotDePasseCache = false;
             this.textBoxAvecTextInvisibleLogin.Name = "textBoxAvecTextInvisibleLogin";
+            this.textBoxAvecTextInvisibleLogin.PlaceHolder = "Login";
             this.textBoxAvecTextInvisibleLogin.Size = new System.Drawing.Size(232, 28);
-            this.textBoxAvecTextInvisibleLogin.TabIndex = 1;
-            this.textBoxAvecTextInvisibleLogin.TabStop = false;
+            this.textBoxAvecTextInvisibleLogin.TabIndex = 0;
             this.textBoxAvecTextInvisibleLogin.Tag = "";
-            this.textBoxAvecTextInvisibleLogin.Text = "Login";
-            this.textBoxAvecTextInvisibleLogin.TexteValeur = null;
             // 
             // PageConnexion
             // 

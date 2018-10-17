@@ -12,20 +12,49 @@ namespace GitHub___TestSolution
 {
     public partial class TextBoxAvecTextInvisible : UserControl
     {
-   
+        private bool m_AfficherPlaceHolder;
+        
+        // Variable permettant la sauvegarde du pseudo après la perte du focus
+        private string m_TexteActuel;        
+
+        // Texte du PlaceHolder
+        private string m_TextePlaceHolder;
+
+        // Propriété mise en public pour pouvoir mettre à true quand il s'agit d'un texte devant être masqué
+        public bool MotDePasseCache { get; set; }
+
         public TextBoxAvecTextInvisible()
         {
             InitializeComponent();
-
+            m_AfficherPlaceHolder = true;
+            m_TexteActuel = string.Empty;
+            m_TextePlaceHolder = string.Empty;
+            AfficherPlaceHolder();
             
+
         }
-
-        // Permet de récupérer la valeur du texte de la textbox en question pour l'afficher
-        public string TexteValeur { get; set; }
+        private void AfficherPlaceHolder()
+        {
+            if (m_AfficherPlaceHolder)
+            {
+                textBoxText.Font = new Font(textBoxText.Font, FontStyle.Italic);
+                textBoxText.ForeColor = SystemColors.GrayText;
+                if (textBoxText.Focused) textBoxText.TextChanged -= TextBoxText_TextChanged;
+                
+                textBoxText.Text = PlaceHolder;//flag1
+                if (textBoxText.Focused) textBoxText.TextChanged += TextBoxText_TextChanged;
+            }
+            else
+            {
+                NePasAfficherPlaceHolder();
+            }
+        }
         
-
-        // Variable permettant la sauvegarde du pseudo après la perte du focus
-        string SauvegardeLogin;
+        private void NePasAfficherPlaceHolder()
+        {
+            textBoxText.Font = new Font(textBoxText.Font, FontStyle.Regular);
+            textBoxText.ForeColor = SystemColors.WindowText;
+        }
 
         /// <summary>
         /// Action qui se produit au moment où l'on rentre dans la textbox
@@ -34,18 +63,12 @@ namespace GitHub___TestSolution
         /// <param name="e"></param>
         private void textBoxText_Enter(object sender, EventArgs e)
         {
-            if(textBoxText.Text == TexteValeur)
-            {
-
-                textBoxText.Font = new Font(textBoxText.Font, FontStyle.Regular);
-                textBoxText.ForeColor = SystemColors.WindowText;                
-                textBoxText.Text = "";
-            }
-            else if(textBoxText.Text != "")
-            {
-                textBoxText.Text = SauvegardeLogin;
-            }
+            textBoxText.Text = m_TexteActuel;
+            m_AfficherPlaceHolder = string.IsNullOrEmpty(m_TexteActuel);
+            NePasAfficherPlaceHolder();
+            textBoxText.TextChanged += TextBoxText_TextChanged;
         }
+
 
         /// <summary>
         /// Action qui se produit au moment où l'on quitte la textbox
@@ -54,17 +77,30 @@ namespace GitHub___TestSolution
         /// <param name="e"></param>
         private void textBoxText_Leave(object sender, EventArgs e)
         {
-            if (textBoxText.Text == "")
-            {
-                textBoxText.Font = new Font(textBoxText.Font, FontStyle.Italic);
-                textBoxText.Text = TexteValeur;
-                textBoxText.ForeColor = SystemColors.GrayText;
+            // Annule le texte caché si un texte n'est pas encoder par l'utilisateur
+            if(string.IsNullOrEmpty(m_TexteActuel)) textBoxText.PasswordChar = '\0';
 
-            }
-            else if(textBoxText.Text != "")
+            textBoxText.TextChanged -= TextBoxText_TextChanged;
+            AfficherPlaceHolder();
+            
+        }
+
+        /// <summary>
+        /// Action qui se produit au moment où un changement dans le texte se produit dans la textBox
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void TextBoxText_TextChanged(object sender, EventArgs e)
+        {
+            // Permet de cacher le texte
+            if(MotDePasseCache == true)
             {
-                SauvegardeLogin = textBoxText.Text;
+                textBoxText.PasswordChar = '●';
             }
+            // Permet de récupérer le texte encoder par l'utilisateur 
+            m_TexteActuel = textBoxText.Text; //TODO : Problème de comportement avec tabulation
+            // Permet de voir s'il faut activer le PlaceHolder
+            m_AfficherPlaceHolder = string.IsNullOrEmpty(m_TexteActuel);
         }
 
         /// <summary>
@@ -78,14 +114,43 @@ namespace GitHub___TestSolution
         {
             get
             {
-                return textBoxText.Text;
+                return m_TexteActuel;
             }
-
             set
             {
-                textBoxText.Text = value;
+                if (value == null) value = string.Empty;
+                if (value != m_TexteActuel)
+                {
+                    m_TexteActuel = value;
+                    textBoxText.Text = m_TexteActuel;
+                    m_AfficherPlaceHolder = string.IsNullOrEmpty(m_TexteActuel);
+                    AfficherPlaceHolder();
+                   
+                }
             }
         }
+        
 
+        /// <summary>
+        /// Permet d'accéder à la propriété PlaceHolder du control user
+        /// </summary>
+        public string PlaceHolder
+        {
+            get
+            {
+                return m_TextePlaceHolder;
+            }
+            set
+            {
+                if (value == null) value = string.Empty;
+                if (value != m_TextePlaceHolder)
+                {
+                    m_TextePlaceHolder = value;
+                    AfficherPlaceHolder();
+                    
+                }
+            }
+        }
+        
     }
 }

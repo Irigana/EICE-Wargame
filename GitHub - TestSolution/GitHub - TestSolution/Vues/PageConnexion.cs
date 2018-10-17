@@ -15,12 +15,15 @@ namespace GitHub___TestSolution
         public PageConnexion()
         {
             InitializeComponent();
-            textBoxAvecTextInvisibleLogin.TexteValeur = "Login";
-            textBoxAvecTextInvisibleMdp.TexteValeur = "Mot de passe";           
+            textBoxAvecTextInvisibleLogin.PlaceHolder = "Login";
+            textBoxAvecTextInvisibleMdp.PlaceHolder = "Mot de passe";
+               
         }
         
-        
 
-
+        private void linkLabelCreerCompte_Click(object sender, EventArgs e)
+        {
+            this.Visible = false;
+        }
     }
 }

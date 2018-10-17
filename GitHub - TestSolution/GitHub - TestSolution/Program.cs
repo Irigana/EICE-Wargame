@@ -16,7 +16,7 @@ namespace GitHub___TestSolution
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new Form_Test_Github());
+            Application.Run(new Form_Principal());
         }
     }
 }
