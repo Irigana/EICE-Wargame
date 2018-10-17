@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using PDSGBD;
 
-namespace GitHub___TestSolution
+namespace EICE_Wargame
 {
     class GMBD
     {

@@ -1,4 +1,4 @@
-﻿namespace GitHub___TestSolution
+﻿namespace EICE_Wargame
 {
     partial class Form_Test_Github
     {
@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.pageConnexion1 = new GitHub___TestSolution.PageConnexion();
+            this.pageConnexion1 = new EICE_Wargame.PageConnexion();
             this.SuspendLayout();
             // 
             // pageConnexion1

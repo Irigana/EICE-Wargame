@@ -1,4 +1,4 @@
-﻿namespace GitHub___TestSolution
+﻿namespace EICE_Wargame
 {
     partial class TextBoxAvecTextInvisible
     {
@@ -39,20 +39,20 @@
             this.textBoxText.Location = new System.Drawing.Point(0, 0);
             this.textBoxText.Margin = new System.Windows.Forms.Padding(0);
             this.textBoxText.Name = "textBoxText";
-            this.textBoxText.Size = new System.Drawing.Size(215, 26);
+            this.textBoxText.Size = new System.Drawing.Size(161, 23);
             this.textBoxText.TabIndex = 0;
             this.textBoxText.Enter += new System.EventHandler(this.textBoxText_Enter);
             this.textBoxText.Leave += new System.EventHandler(this.textBoxText_Leave);
             // 
             // TextBoxAvecTextInvisible
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.Controls.Add(this.textBoxText);
             this.ForeColor = System.Drawing.SystemColors.ButtonShadow;
             this.Margin = new System.Windows.Forms.Padding(0);
             this.Name = "TextBoxAvecTextInvisible";
-            this.Size = new System.Drawing.Size(215, 22);
+            this.Size = new System.Drawing.Size(161, 18);
             this.ResumeLayout(false);
             this.PerformLayout();
 
