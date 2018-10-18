@@ -37,8 +37,7 @@ namespace EICE_WARGAME
         {
             InitializeComponent();
             textBoxAvecTextInvisibleLogin.PlaceHolder = "Login";
-            textBoxAvecTextInvisibleMdp.PlaceHolder = "Mot de passe";
-               
+            textBoxAvecTextInvisibleMdp.PlaceHolder = "Mot de passe";   
         }
 
         private void linkLabelCreerCompte_Click(object sender, EventArgs e)
@@ -60,6 +59,10 @@ namespace EICE_WARGAME
                 else if (Outils.TesterEgaliteNoms(Utilisateur.Role.NomRole, "Administrateur"))
                 {
                     // TODO : si c'est un admin traitement particulier ? 
+                }
+                else
+                {
+                    m_Utilisateur = Utilisateur;
                 }
 
             }

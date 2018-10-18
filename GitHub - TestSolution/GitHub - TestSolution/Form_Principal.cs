@@ -12,7 +12,7 @@ namespace EICE_WARGAME
 {
     public partial class Form_Principal : Form
     {
-        
+
         public Form_Principal()
         {
             InitializeComponent();

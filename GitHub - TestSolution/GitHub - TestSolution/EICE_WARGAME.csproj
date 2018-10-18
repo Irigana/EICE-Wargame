@@ -46,6 +46,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Vues\ButtonOptionsUser.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Vues\ButtonOptionsUser.Designer.cs">
+      <DependentUpon>ButtonOptionsUser.cs</DependentUpon>
+    </Compile>
     <Compile Include="Form_Principal.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -93,6 +99,9 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <SubType>Designer</SubType>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Vues\ButtonOptionsUser.resx">
+      <DependentUpon>ButtonOptionsUser.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Vues\PageInscription.resx">
       <DependentUpon>PageInscription.cs</DependentUpon>
@@ -142,6 +151,15 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\Validation1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\UserIcon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\UserIcon2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\UserIcon25px.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
