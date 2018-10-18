@@ -46,7 +46,7 @@ namespace EICE_WARGAME
             // 
             this.labelSeConnecter.AutoSize = true;
             this.labelSeConnecter.Font = new System.Drawing.Font("Comic Sans MS", 22.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelSeConnecter.Location = new System.Drawing.Point(159, 123);
+            this.labelSeConnecter.Location = new System.Drawing.Point(650, 200);
             this.labelSeConnecter.Name = "labelSeConnecter";
             this.labelSeConnecter.Size = new System.Drawing.Size(258, 53);
             this.labelSeConnecter.TabIndex = 0;
@@ -56,7 +56,7 @@ namespace EICE_WARGAME
             // 
             this.linkLabelCreerCompte.AutoSize = true;
             this.linkLabelCreerCompte.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.linkLabelCreerCompte.Location = new System.Drawing.Point(215, 396);
+            this.linkLabelCreerCompte.Location = new System.Drawing.Point(710, 454);
             this.linkLabelCreerCompte.Name = "linkLabelCreerCompte";
             this.linkLabelCreerCompte.Size = new System.Drawing.Size(134, 20);
             this.linkLabelCreerCompte.TabIndex = 3;
@@ -72,7 +72,7 @@ namespace EICE_WARGAME
             // 
             this.textBoxAvecTextInvisibleMdp.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.textBoxAvecTextInvisibleMdp.ForeColor = System.Drawing.SystemColors.ButtonShadow;
-            this.textBoxAvecTextInvisibleMdp.Location = new System.Drawing.Point(165, 241);
+            this.textBoxAvecTextInvisibleMdp.Location = new System.Drawing.Point(660, 335);
             this.textBoxAvecTextInvisibleMdp.Margin = new System.Windows.Forms.Padding(0);
             this.textBoxAvecTextInvisibleMdp.MotDePasseCache = true;
             this.textBoxAvecTextInvisibleMdp.Name = "textBoxAvecTextInvisibleMdp";
@@ -84,7 +84,7 @@ namespace EICE_WARGAME
             // 
             this.textBoxAvecTextInvisibleLogin.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.textBoxAvecTextInvisibleLogin.ForeColor = System.Drawing.SystemColors.ButtonShadow;
-            this.textBoxAvecTextInvisibleLogin.Location = new System.Drawing.Point(165, 194);
+            this.textBoxAvecTextInvisibleLogin.Location = new System.Drawing.Point(660, 280);
             this.textBoxAvecTextInvisibleLogin.Margin = new System.Windows.Forms.Padding(0);
             this.textBoxAvecTextInvisibleLogin.MotDePasseCache = false;
             this.textBoxAvecTextInvisibleLogin.Name = "textBoxAvecTextInvisibleLogin";
@@ -96,7 +96,7 @@ namespace EICE_WARGAME
             // pictureBoxCadenaFerme
             // 
             this.pictureBoxCadenaFerme.Image = global::EICE__WARGAME.Properties.Resources.CadenaFerme75px;
-            this.pictureBoxCadenaFerme.Location = new System.Drawing.Point(233, 14);
+            this.pictureBoxCadenaFerme.Location = new System.Drawing.Point(725, 85);
             this.pictureBoxCadenaFerme.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.pictureBoxCadenaFerme.Name = "pictureBoxCadenaFerme";
             this.pictureBoxCadenaFerme.Size = new System.Drawing.Size(96, 95);
@@ -113,7 +113,7 @@ namespace EICE_WARGAME
             this.buttonConnexion.ForeColor = System.Drawing.SystemColors.ControlText;
             this.buttonConnexion.Image = global::EICE__WARGAME.Properties.Resources.CadenaFerme25px;
             this.buttonConnexion.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.buttonConnexion.Location = new System.Drawing.Point(165, 303);
+            this.buttonConnexion.Location = new System.Drawing.Point(660, 385);
             this.buttonConnexion.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.buttonConnexion.Name = "buttonConnexion";
             this.buttonConnexion.Size = new System.Drawing.Size(232, 46);
@@ -124,7 +124,8 @@ namespace EICE_WARGAME
             // 
             // buttonOptionsUser1
             // 
-            this.buttonOptionsUser1.Location = new System.Drawing.Point(370, 3);
+            this.buttonOptionsUser1.BackColor = System.Drawing.Color.Transparent;
+            this.buttonOptionsUser1.Location = new System.Drawing.Point(1317, 3);
             this.buttonOptionsUser1.Name = "buttonOptionsUser1";
             this.buttonOptionsUser1.Size = new System.Drawing.Size(180, 45);
             this.buttonOptionsUser1.TabIndex = 6;
@@ -143,7 +144,7 @@ namespace EICE_WARGAME
             this.Controls.Add(this.labelSeConnecter);
             this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Name = "PageConnexion";
-            this.Size = new System.Drawing.Size(553, 489);
+            this.Size = new System.Drawing.Size(1500, 750);
             ((System.ComponentModel.ISupportInitialize)(this.errorProviderConnexion)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxCadenaFerme)).EndInit();
             this.ResumeLayout(false);

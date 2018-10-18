@@ -54,5 +54,7 @@ namespace EICE_WARGAME
                 textBoxAvecTextInvisibleMdpConf.Text = "";
             }
         }
+
+        
     }
 }
