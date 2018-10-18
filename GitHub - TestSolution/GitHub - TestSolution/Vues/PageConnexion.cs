@@ -54,7 +54,7 @@ namespace EICE_WARGAME
                 Utilisateur Utilisateur = s_GMBD.ConnexionApplication(textBoxAvecTextInvisibleLogin.Text, textBoxAvecTextInvisibleMdp.Text);
                 if (Utilisateur == null)
                 {
-                    errorProviderConnexion.SetError(textBoxAvecTextInvisibleLogin, "Le pseudo ou le mot de passe est incorrect");
+                    errorProviderConnexion.SetError(textBoxAvecTextInvisibleLogin, "Le login ou le mot de passe est incorrect");
                     errorProviderConnexion.SetIconPadding(textBoxAvecTextInvisibleLogin, 4);
                 }                
                 else if (Outils.TesterEgaliteNoms(Utilisateur.Role.NomRole, "Administrateur"))

@@ -17,9 +17,9 @@ namespace EICE_WARGAME
             /// </summary>
             Id,
             /// <summary>
-            /// Pseudo de l'utilisateur
+            /// Login de l'utilisateur
             /// </summary>
-            Pseudo,
+            Login,
             /// <summary>
             /// Mot de passe de l'utilisateur
             /// </summary>
@@ -32,44 +32,44 @@ namespace EICE_WARGAME
         }
 
         //Membres privé correspondant à l'utilisateur
-        private string m_Pseudo;
+        private string m_Login;
 
         private string m_MotDePasse;
 
         private Role m_Role;
 
         /// <summary>
-        /// Pseudo de l'utilisateur
+        /// Login de l'utilisateur
         /// </summary>
-        public string Pseudo
+        public string Login
         {
             get
             {
-                return m_Pseudo;
+                return m_Login;
             }
             set
             {
                 if (string.IsNullOrWhiteSpace(value))
                 {
-                    Declencher_SurErreur(this, Champs.Pseudo, "Le pseudo ne peut pas être null, vide ou avec seulement des espaces");
+                    Declencher_SurErreur(this, Champs.Login, "Le login ne peut pas être null, vide ou avec seulement des espaces");
                 }
                 else
                 {
                     value = value.Trim();
                     if ((value.Length >= 100) || (value.Length <= 1))
                     {
-                        Declencher_SurErreur(this, Champs.Pseudo, "Le pseudo doit être compris entre 1 et 100 caractères");
+                        Declencher_SurErreur(this, Champs.Login, "Le login doit être compris entre 1 et 100 caractères");
                     }
-                    else if (!string.Equals(value, m_Pseudo))
+                    else if (!string.Equals(value, m_Login))
                     {
-                        ModifierChamp(Champs.Pseudo, ref m_Pseudo, value);
+                        ModifierChamp(Champs.Login, ref m_Login, value);
                     }
                 }
             }
         }
 
         /// <summary>
-        /// Pseudo de l'utilisateur
+        /// Mot de passe de l'utilisateur
         /// </summary>
         public string MotDePasse
         {
@@ -128,7 +128,7 @@ namespace EICE_WARGAME
         public Utilisateur()
             : base()
         {
-            m_Pseudo = string.Empty;            
+            m_Login = string.Empty;            
             m_MotDePasse = string.Empty;
             m_Role = null;
         }
@@ -137,15 +137,15 @@ namespace EICE_WARGAME
         /// Constructeur spécifique
         /// </summary>
         /// <param name="Id">Id de l'utilisateur</param>
-        /// <param name="Pseudo">Pseudo de l'utilisateur</param>
+        /// <param name="Login">Login de l'utilisateur</param>
         /// <param name="Age">Age de l'utilisateur</param>
         /// <param name="Region">Region de l'utilisateur</param>
         /// <param name="Email">Email de l'utilisateur</param>
         /// <param name="Role">Role de l'utilisateur</param>
-        public Utilisateur(int Id, string Pseudo, string MotDePasse, Role Role)
+        public Utilisateur(int Id, string Login, string MotDePasse, Role Role)
         {
             DefinirId(Id);
-            this.Pseudo = Pseudo;
+            this.Login = Login;
             this.MotDePasse = MotDePasse;
             this.Role = Role;
         }
@@ -164,7 +164,7 @@ namespace EICE_WARGAME
             if (Enregistrement != null)
             {
                 DefinirId(Enregistrement.ValeurChampComplet<int>(NomDeLaTablePrincipale, "user.id"));
-                this.Pseudo = Enregistrement.ValeurChampComplet<string>(NomDeLaTablePrincipale, "user.name");
+                this.Login = Enregistrement.ValeurChampComplet<string>(NomDeLaTablePrincipale, "user.name");
                 this.MotDePasse = Enregistrement.ValeurChampComplet<string>(NomDeLaTablePrincipale, "user.password");                
                 this.Role = new Role(Connexion, Enregistrement);                
             }
@@ -180,7 +180,7 @@ namespace EICE_WARGAME
         public override string NomDeLaTablePrincipale
         {
             get
-            {// 
+            {
                 return "user";
             }
         }
@@ -192,7 +192,7 @@ namespace EICE_WARGAME
         {
             get
             {
-                return new PDSGBD.MyDB.CodeSql("user.name = {0}, user.password = {1},  user.id_role = {2}", m_Pseudo, m_MotDePasse, m_Role.Id);
+                return new PDSGBD.MyDB.CodeSql("user.name = {0}, user.password = {1},  user.id_role = {2}", m_Login, m_MotDePasse, m_Role.Id);
             }
         }
 

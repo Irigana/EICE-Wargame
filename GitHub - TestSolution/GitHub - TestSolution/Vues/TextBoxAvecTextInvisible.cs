@@ -14,7 +14,7 @@ namespace EICE_WARGAME
     {
         private bool m_AfficherPlaceHolder;
         
-        // Variable permettant la sauvegarde du pseudo après la perte du focus
+        // Variable permettant la sauvegarde du login après la perte du focus
         private string m_TexteActuel;        
 
         // Texte du PlaceHolder

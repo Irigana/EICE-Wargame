@@ -29,12 +29,15 @@ namespace EICE_WARGAME
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.buttonSInscrire = new System.Windows.Forms.Button();
             this.linkLabelDejaInscrit = new System.Windows.Forms.LinkLabel();
             this.label1 = new System.Windows.Forms.Label();
             this.textBoxAvecTextInvisibleMdpConf = new EICE_WARGAME.TextBoxAvecTextInvisible();
             this.textBoxAvecTextInvisibleMdp = new EICE_WARGAME.TextBoxAvecTextInvisible();
             this.textBoxAvecTextInvisibleLogin = new EICE_WARGAME.TextBoxAvecTextInvisible();
+            this.errorProviderInscription = new System.Windows.Forms.ErrorProvider(this.components);
+            ((System.ComponentModel.ISupportInitialize)(this.errorProviderInscription)).BeginInit();
             this.SuspendLayout();
             // 
             // buttonSInscrire
@@ -48,6 +51,7 @@ namespace EICE_WARGAME
             this.buttonSInscrire.TabIndex = 4;
             this.buttonSInscrire.Text = "S\'inscrire";
             this.buttonSInscrire.UseVisualStyleBackColor = true;
+            this.buttonSInscrire.Click += new System.EventHandler(this.buttonSInscrire_Click);
             // 
             // linkLabelDejaInscrit
             // 
@@ -104,6 +108,10 @@ namespace EICE_WARGAME
             this.textBoxAvecTextInvisibleLogin.Size = new System.Drawing.Size(239, 22);
             this.textBoxAvecTextInvisibleLogin.TabIndex = 1;
             // 
+            // errorProviderInscription
+            // 
+            this.errorProviderInscription.ContainerControl = this;
+            // 
             // PageInscription
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -116,6 +124,7 @@ namespace EICE_WARGAME
             this.Controls.Add(this.textBoxAvecTextInvisibleLogin);
             this.Name = "PageInscription";
             this.Size = new System.Drawing.Size(650, 550);
+            ((System.ComponentModel.ISupportInitialize)(this.errorProviderInscription)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -128,5 +137,6 @@ namespace EICE_WARGAME
         private System.Windows.Forms.Button buttonSInscrire;
         private System.Windows.Forms.LinkLabel linkLabelDejaInscrit;
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.ErrorProvider errorProviderInscription;
     }
 }
