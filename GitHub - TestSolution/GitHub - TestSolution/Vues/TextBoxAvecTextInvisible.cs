@@ -98,7 +98,7 @@ namespace EICE_WARGAME
                 textBoxText.PasswordChar = '●';
             }
             // Permet de récupérer le texte encoder par l'utilisateur 
-            m_TexteActuel = textBoxText.Text; //TODO : Problème de comportement avec tabulation
+            m_TexteActuel = textBoxText.Text;
             // Permet de voir s'il faut activer le PlaceHolder
             m_AfficherPlaceHolder = string.IsNullOrEmpty(m_TexteActuel);
         }
