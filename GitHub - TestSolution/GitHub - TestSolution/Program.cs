@@ -9,7 +9,7 @@ namespace EICE_WARGAME
 {
     static class Program
     {
-        //bonjour
+        //bonjour à tous
         private static GMBD s_GMBD;
 
         public static GMBD GMBD
