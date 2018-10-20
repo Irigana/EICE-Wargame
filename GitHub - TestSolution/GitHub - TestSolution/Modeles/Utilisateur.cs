@@ -56,9 +56,9 @@ namespace EICE_WARGAME
                 else
                 {
                     value = value.Trim();
-                    if ((value.Length >= 100) || (value.Length <= 1))
+                    if ((value.Length >= 20) || (value.Length <= 1))
                     {
-                        Declencher_SurErreur(this, Champs.Login, "Le login doit être compris entre 1 et 100 caractères");
+                        Declencher_SurErreur(this, Champs.Login, "Le login doit être compris entre 1 et 20 caractères");
                     }
                     else if (!string.Equals(value, m_Login))
                     {
@@ -85,7 +85,7 @@ namespace EICE_WARGAME
                 }
                 else
                 {// TODO : Vérifier la longueur de mot de passe pour voir la cohérence
-                    if ((value.Length >= 100) || (value.Length <= 1))
+                    if ((value.Length >= 30) || (value.Length <= 1))
                     {
                         Declencher_SurErreur(this, Champs.MotDePasse, "Le mot de passe doit être compris entre 1 et 100 caractères");
                     }
@@ -163,9 +163,9 @@ namespace EICE_WARGAME
         {
             if (Enregistrement != null)
             {
-                DefinirId(Enregistrement.ValeurChampComplet<int>(NomDeLaTablePrincipale, "id"));
-                this.Login = Enregistrement.ValeurChampComplet<string>(NomDeLaTablePrincipale, "name");
-                this.MotDePasse = Enregistrement.ValeurChampComplet<string>(NomDeLaTablePrincipale, "password");                
+                DefinirId(Enregistrement.ValeurChampComplet<int>(NomDeLaTablePrincipale, "u_id"));
+                this.Login = Enregistrement.ValeurChampComplet<string>(NomDeLaTablePrincipale, "u_name");
+                this.MotDePasse = Enregistrement.ValeurChampComplet<string>(NomDeLaTablePrincipale, "u_password");                
                 this.Role = new Role(Connexion, Enregistrement);                
             }
         }
@@ -192,7 +192,7 @@ namespace EICE_WARGAME
         {
             get
             {
-                return new PDSGBD.MyDB.CodeSql("user.name = {0}, user.password = {1},  user.id_role = {2}", m_Login, m_MotDePasse, m_Role.Id);
+                return new PDSGBD.MyDB.CodeSql("u_name = {0}, u_password = {1},  u_id_role = {2}", m_Login, m_MotDePasse, m_Role.Id);
             }
         }
 

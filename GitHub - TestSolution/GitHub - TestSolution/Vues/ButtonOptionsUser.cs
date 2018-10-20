@@ -12,10 +12,12 @@ namespace EICE_WARGAME
 {
     public partial class ButtonOptionsUser : UserControl
     {
-        
+        public string UtilisateurConnecte { get; set; }
+
         public ButtonOptionsUser()
         {
             InitializeComponent();
+            buttonUser.Text = UtilisateurConnecte;
         }
 
         private void buttonUser_Click(object sender, EventArgs e)
@@ -31,19 +33,7 @@ namespace EICE_WARGAME
             }
         }
 
-        [Bindable(true)]
-        public override string Text
-        {
-            get
-            {
-                return this.Text;
-            }
-            set
-            {
-                if (value == null) value = string.Empty;
-                
-            }
-        }
+        
 
     }
 }

@@ -67,8 +67,8 @@ namespace EICE_WARGAME
         public Utilisateur ConnexionApplication(string Login, string MotDePasse)
         {
             return EnumererUtilisateur(null,
-                                       new MyDB.CodeSql(@"JOIN role ON user.id_role = role.id"),
-                                       new MyDB.CodeSql("WHERE user.name = {0} AND user.password = {1}", Login, MotDePasse),
+                                       new MyDB.CodeSql(@"JOIN role ON user.u_fk_role_id = role.r_id"),
+                                       new MyDB.CodeSql("WHERE u_name = {0} AND u_password = {1}", Login, MotDePasse),
                                        null).FirstOrDefault();
         }
 

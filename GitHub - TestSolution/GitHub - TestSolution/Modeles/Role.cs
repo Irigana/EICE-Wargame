@@ -42,9 +42,9 @@ namespace EICE_WARGAME
                 else
                 {
                     value = value.Trim();
-                    if ((value.Length >= 45) || (value.Length <= 1))
+                    if ((value.Length >= 10) || (value.Length <= 1))
                     {
-                        Declencher_SurErreur(this, Champs.NomRole, "Le role doit être compris entre 1 et 45 caractères");
+                        Declencher_SurErreur(this, Champs.NomRole, "Le role doit être compris entre 1 et 10 caractères");
                     }
                     else if (!string.Equals(value, m_Role))
                     {
@@ -82,7 +82,7 @@ namespace EICE_WARGAME
         public Role(PDSGBD.MyDB Connexion, PDSGBD.MyDB.IEnregistrement Enregistrement)
             :this()
         {
-            DefinirId(Enregistrement.ValeurChampComplet<int>(NomDeLaTablePrincipale, "id"));
+            DefinirId(Enregistrement.ValeurChampComplet<int>(NomDeLaTablePrincipale, "r_id"));
             this.NomRole = Enregistrement.ValeurChampComplet<string>(NomDeLaTablePrincipale,  "r_name");
         }
 
@@ -108,7 +108,7 @@ namespace EICE_WARGAME
         {
             get
             {
-                return new PDSGBD.MyDB.CodeSql("role.name = {0}", m_Role);
+                return new PDSGBD.MyDB.CodeSql("r_name = {0}", m_Role);
             }
         }
        
