@@ -46,8 +46,6 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Modeles\Brol.cs" />
-    <Compile Include="Modeles\test.cs" />
     <Compile Include="Vues\ButtonOptionsUser.cs">
       <SubType>UserControl</SubType>
     </Compile>
