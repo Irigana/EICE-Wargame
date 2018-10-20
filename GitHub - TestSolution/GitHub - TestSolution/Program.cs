@@ -9,7 +9,7 @@ namespace EICE_WARGAME
 {
     static class Program
     {
-        //bonjour J'aime manger des frites avec de la mayonnaise
+        //bonjour J'aime manger des frites avec de la mayonnaise et parfois de la sauce andalouse parce que ça pique
         private static GMBD s_GMBD;
 
         public static GMBD GMBD
