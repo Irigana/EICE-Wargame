@@ -82,8 +82,8 @@ namespace EICE_WARGAME
         public Role(PDSGBD.MyDB Connexion, PDSGBD.MyDB.IEnregistrement Enregistrement)
             :this()
         {
-            DefinirId(Enregistrement.ValeurChampComplet<int>(NomDeLaTablePrincipale, "role.id"));
-            this.NomRole = Enregistrement.ValeurChampComplet<string>(NomDeLaTablePrincipale, "role.name");
+            DefinirId(Enregistrement.ValeurChampComplet<int>(NomDeLaTablePrincipale, "id"));
+            this.NomRole = Enregistrement.ValeurChampComplet<string>(NomDeLaTablePrincipale,  "r_name");
         }
 
 

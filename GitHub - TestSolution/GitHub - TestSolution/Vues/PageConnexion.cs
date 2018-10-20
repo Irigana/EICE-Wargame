@@ -63,6 +63,8 @@ namespace EICE_WARGAME
                 else
                 {
                     m_Utilisateur = Utilisateur;
+                    buttonOptionsUser1.Text = Utilisateur.Login;
+                                        
                 }
 
             }

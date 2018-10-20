@@ -16,7 +16,6 @@ namespace EICE_WARGAME
         public ButtonOptionsUser()
         {
             InitializeComponent();
-            buttonUser.Text = Utilisateur.Champs.Login.ToString();
         }
 
         private void buttonUser_Click(object sender, EventArgs e)
@@ -31,6 +30,20 @@ namespace EICE_WARGAME
                 contextMenuStripUser.Show(buttonUser, new Point(0, buttonUser.Height));
             }
         }
-        
+
+        [Bindable(true)]
+        public override string Text
+        {
+            get
+            {
+                return this.Text;
+            }
+            set
+            {
+                if (value == null) value = string.Empty;
+                
+            }
+        }
+
     }
 }
