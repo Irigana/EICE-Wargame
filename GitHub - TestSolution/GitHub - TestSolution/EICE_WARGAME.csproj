@@ -47,6 +47,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Modeles\Brol.cs" />
+    <Compile Include="Modeles\John.cs" />
     <Compile Include="Vues\ButtonOptionsUser.cs">
       <SubType>UserControl</SubType>
     </Compile>
