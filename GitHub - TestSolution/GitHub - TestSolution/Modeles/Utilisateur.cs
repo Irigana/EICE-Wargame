@@ -163,9 +163,9 @@ namespace EICE_WARGAME
         {
             if (Enregistrement != null)
             {
-                DefinirId(Enregistrement.ValeurChampComplet<int>(NomDeLaTablePrincipale, "user.id"));
-                this.Login = Enregistrement.ValeurChampComplet<string>(NomDeLaTablePrincipale, "user.name");
-                this.MotDePasse = Enregistrement.ValeurChampComplet<string>(NomDeLaTablePrincipale, "user.password");                
+                DefinirId(Enregistrement.ValeurChampComplet<int>(NomDeLaTablePrincipale, "id"));
+                this.Login = Enregistrement.ValeurChampComplet<string>(NomDeLaTablePrincipale, "name");
+                this.MotDePasse = Enregistrement.ValeurChampComplet<string>(NomDeLaTablePrincipale, "password");                
                 this.Role = new Role(Connexion, Enregistrement);                
             }
         }

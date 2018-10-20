@@ -371,6 +371,7 @@ namespace PDSGBD
                 m_ValeursChamps = new object[m_NomsChamps.Length];
                 for (int Indice = 0; Indice < Lecteur.FieldCount; Indice++)
                 {
+                    
                     m_NomsChamps[Indice] = Lecteur.GetName(Indice);
                     m_ValeursChamps[Indice] = null;
                 }

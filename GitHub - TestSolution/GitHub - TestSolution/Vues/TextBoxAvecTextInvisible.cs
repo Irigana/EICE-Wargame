@@ -41,7 +41,7 @@ namespace EICE_WARGAME
                 textBoxText.ForeColor = SystemColors.GrayText;
                 if (textBoxText.Focused) textBoxText.TextChanged -= TextBoxText_TextChanged;
                 
-                textBoxText.Text = PlaceHolder;//flag1
+                textBoxText.Text = PlaceHolder;
                 if (textBoxText.Focused) textBoxText.TextChanged += TextBoxText_TextChanged;
             }
             else
