@@ -67,6 +67,12 @@
     <Compile Include="Outils\IU.Listes.cs" />
     <Compile Include="Outils\Outils.Chaine.cs" />
     <Compile Include="Outils\Outils.Validation.cs" />
+    <Compile Include="Vues\PageMenuPrincipal.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Vues\PageMenuPrincipal.Designer.cs">
+      <DependentUpon>PageMenuPrincipal.cs</DependentUpon>
+    </Compile>
     <Compile Include="Vues\PageInscription.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -102,6 +108,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Vues\ButtonOptionsUser.resx">
       <DependentUpon>ButtonOptionsUser.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Vues\PageMenuPrincipal.resx">
+      <DependentUpon>PageMenuPrincipal.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Vues\PageInscription.resx">
       <DependentUpon>PageInscription.cs</DependentUpon>
@@ -151,9 +160,6 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\Validation1.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\UserIcon.png" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\UserIcon2.png" />

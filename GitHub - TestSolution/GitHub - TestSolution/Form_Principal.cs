@@ -27,7 +27,7 @@ namespace EICE_WARGAME
 
         private void PageInscription_Leave(object sender, EventArgs e)
         {
-            pageConnexion1.BringToFront();
+            //pageConnexion1.BringToFront();
         }
 
         private void pageConnexion1_VisibleChanged(object sender, EventArgs e)
