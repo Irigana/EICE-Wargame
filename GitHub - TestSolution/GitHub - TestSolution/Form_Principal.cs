@@ -16,24 +16,37 @@ namespace EICE_WARGAME
         public Form_Principal()
         {
             InitializeComponent();
-            
+            Utilisateur UtilisateurConnecte = pageConnexion1.Utilisateur;            
         }
                        
         private void pageConnexion1_Leave(object sender, EventArgs e)
         {
-            pageInscription1.Visible = true;
-            pageInscription1.BringToFront();
+            if (pageConnexion1.Utilisateur != null)
+            {                
+                pageMenuPrincipal1.BringToFront();
+                pageConnexion1.SendToBack();
+            }
+            else
+            {
+                pageInscription1.Visible = true;
+                pageInscription1.BringToFront();
+            }
         }
 
         private void PageInscription_Leave(object sender, EventArgs e)
         {
-            //pageConnexion1.BringToFront();
+            if (pageConnexion1.Utilisateur != null)
+            {
+                pageMenuPrincipal1.BringToFront();
+                pageConnexion1.SendToBack();
+            }
+            else
+            {
+                pageConnexion1.Visible = true;
+                pageConnexion1.BringToFront();
+            }
         }
-
-        private void pageConnexion1_VisibleChanged(object sender, EventArgs e)
-        {
-            pageInscription1.Hide();
-        }
+        
         
     }
 }

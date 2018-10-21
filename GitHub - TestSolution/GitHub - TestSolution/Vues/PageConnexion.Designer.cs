@@ -37,7 +37,6 @@ namespace EICE_WARGAME
             this.textBoxAvecTextInvisibleLogin = new EICE_WARGAME.TextBoxAvecTextInvisible();
             this.pictureBoxCadenaFerme = new System.Windows.Forms.PictureBox();
             this.buttonConnexion = new System.Windows.Forms.Button();
-            this.buttonOptionsUser1 = new EICE_WARGAME.ButtonOptionsUser();
             ((System.ComponentModel.ISupportInitialize)(this.errorProviderConnexion)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxCadenaFerme)).BeginInit();
             this.SuspendLayout();
@@ -122,20 +121,11 @@ namespace EICE_WARGAME
             this.buttonConnexion.UseVisualStyleBackColor = false;
             this.buttonConnexion.Click += new System.EventHandler(this.buttonConnecter_Click);
             // 
-            // buttonOptionsUser1
-            // 
-            this.buttonOptionsUser1.BackColor = System.Drawing.Color.Transparent;
-            this.buttonOptionsUser1.Location = new System.Drawing.Point(1317, 3);
-            this.buttonOptionsUser1.Name = "buttonOptionsUser1";
-            this.buttonOptionsUser1.Size = new System.Drawing.Size(180, 45);
-            this.buttonOptionsUser1.TabIndex = 6;
-            // 
             // PageConnexion
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.Control;
-            this.Controls.Add(this.buttonOptionsUser1);
             this.Controls.Add(this.pictureBoxCadenaFerme);
             this.Controls.Add(this.linkLabelCreerCompte);
             this.Controls.Add(this.buttonConnexion);
@@ -161,6 +151,5 @@ namespace EICE_WARGAME
         private System.Windows.Forms.LinkLabel linkLabelCreerCompte;
         private System.Windows.Forms.PictureBox pictureBoxCadenaFerme;
         private System.Windows.Forms.ErrorProvider errorProviderConnexion;
-        private EICE_WARGAME.ButtonOptionsUser buttonOptionsUser1;
     }
 }

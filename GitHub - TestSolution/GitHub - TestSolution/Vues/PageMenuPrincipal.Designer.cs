@@ -1,4 +1,4 @@
-﻿namespace EICE__WARGAME.Vues
+﻿namespace EICE_WARGAME
 {
     partial class PageMenuPrincipal
     {

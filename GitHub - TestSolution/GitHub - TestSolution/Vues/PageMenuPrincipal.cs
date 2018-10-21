@@ -7,14 +7,16 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using EICE__WARGAME
 
-namespace EICE__WARGAME.Vues
+namespace EICE_WARGAME
 {
     public partial class PageMenuPrincipal : UserControl
     {
         public PageMenuPrincipal()
         {
-            InitializeComponent();
+            InitializeComponent();    
+                    
         }
     }
 }

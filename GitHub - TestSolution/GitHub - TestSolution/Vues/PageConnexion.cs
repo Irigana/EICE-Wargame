@@ -42,7 +42,7 @@ namespace EICE_WARGAME
 
         private void linkLabelCreerCompte_Click(object sender, EventArgs e)
         {
-            this.SendToBack();
+            this.Hide();
         }
 
         private void buttonConnecter_Click(object sender, EventArgs e)
@@ -63,11 +63,13 @@ namespace EICE_WARGAME
                 else
                 {
                     m_Utilisateur = Utilisateur;
-                    this.SendToBack();
+                    this.Hide();                                        
                     
                 }
 
             }
         }
+
+       
     }
 }
