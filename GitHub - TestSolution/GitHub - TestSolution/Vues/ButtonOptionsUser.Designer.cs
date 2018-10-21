@@ -63,7 +63,7 @@
             this.buttonUser.FlatAppearance.BorderColor = System.Drawing.Color.Silver;
             this.buttonUser.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonUser.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.buttonUser.Image = global::EICE__WARGAME.Properties.Resources.UserIcon25px;
+            this.buttonUser.Image = global::EICE_WARGAME.Properties.Resources.UserIcon25px;
             this.buttonUser.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.buttonUser.Location = new System.Drawing.Point(0, 0);
             this.buttonUser.Name = "buttonUser";

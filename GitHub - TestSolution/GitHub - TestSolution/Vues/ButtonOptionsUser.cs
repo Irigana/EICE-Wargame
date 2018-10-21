@@ -17,8 +17,7 @@ namespace EICE_WARGAME
         public ButtonOptionsUser()
         {
             InitializeComponent();
-            buttonUser.Text = UtilisateurConnecte;
-            buttonUser.Text =              
+            buttonUser.Text = UtilisateurConnecte;         
         }
 
         private void buttonUser_Click(object sender, EventArgs e)
