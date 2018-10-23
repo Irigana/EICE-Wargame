@@ -12,18 +12,18 @@ namespace EICE_WARGAME
 {
     public partial class Form_Principal : Form
     {
-        public Utilisateur UtilisateurConnecte { get; set; }
-
         public Form_Principal()
         {
             InitializeComponent();
+            pageMenuPrincipal1.Visible = false;
                        
         }
                        
         private void pageConnexion1_Leave(object sender, EventArgs e)
         {
-            if (pageConnexion1.Utilisateur != null)
-            {                
+            if (PageConnexion.Utilisateur != null)
+            {
+                pageMenuPrincipal1.Visible = true;
                 pageMenuPrincipal1.BringToFront();
                 pageConnexion1.SendToBack();
             }
@@ -32,15 +32,12 @@ namespace EICE_WARGAME
                 pageInscription1.Visible = true;
                 pageInscription1.BringToFront();
             }
-            if(pageConnexion1.EstIdentifie)
-            {
-                UtilisateurConnecte = pageConnexion1.Utilisateur;
-            }
+            
         }
 
         private void PageInscription_Leave(object sender, EventArgs e)
         {
-            if (pageConnexion1.Utilisateur != null)
+            if (PageConnexion.Utilisateur != null)
             {
                 pageMenuPrincipal1.BringToFront();
                 pageConnexion1.SendToBack();

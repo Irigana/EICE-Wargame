@@ -12,14 +12,16 @@ namespace EICE_WARGAME
 {
     public partial class ButtonOptionsUser : UserControl
     {
-        public string UtilisateurConnecte { get; set; }
-
         public ButtonOptionsUser()
         {
             InitializeComponent();
-            buttonUser.Text = UtilisateurConnecte;         
         }
 
+        public void ButtonOptionsUserUpdate()
+        {
+            buttonUser.Text = PageConnexion.Utilisateur.Login.ToString();
+        }
+        
         private void buttonUser_Click(object sender, EventArgs e)
         {
             Point screenPoint = buttonUser.PointToScreen(new Point(buttonUser.Left, buttonUser.Bottom));
@@ -31,8 +33,7 @@ namespace EICE_WARGAME
             {
                 contextMenuStripUser.Show(buttonUser, new Point(0, buttonUser.Height));
             }
-        }
-
+        }        
         
 
     }

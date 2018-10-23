@@ -14,7 +14,12 @@ namespace EICE_WARGAME
     {
         public PageMenuPrincipal()
         {
-            InitializeComponent();                       
+            InitializeComponent();      
+        }
+
+        private void PageMenuPrincipal_VisibleChanged(object sender, EventArgs e)
+        {
+            if(PageConnexion.Utilisateur != null) buttonOptionsUser1.ButtonOptionsUserUpdate();
         }
     }
 }

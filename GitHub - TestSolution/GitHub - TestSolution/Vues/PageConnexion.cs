@@ -12,12 +12,13 @@ namespace EICE_WARGAME
 {
     public partial class PageConnexion : UserControl
     {
+        //public static readonly Utilisateur UtilisateurConnecte = m_Utilisateur;
 
         GMBD s_GMBD = new GMBD();
 
-        Utilisateur m_Utilisateur = null;
+        public static Utilisateur m_Utilisateur = null;
 
-        public Utilisateur Utilisateur
+        public static Utilisateur Utilisateur
         {
             get
             {
@@ -62,8 +63,8 @@ namespace EICE_WARGAME
                 }
                 else
                 {
-                    m_Utilisateur = Utilisateur;
-                    this.Hide();                                        
+                    m_Utilisateur = Utilisateur;                
+                    this.Hide();
                     
                 }
 

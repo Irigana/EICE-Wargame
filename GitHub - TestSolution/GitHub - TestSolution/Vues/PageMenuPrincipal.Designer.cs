@@ -38,7 +38,7 @@
             this.labelMenuPrincipal.Font = new System.Drawing.Font("Microsoft Sans Serif", 25.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labelMenuPrincipal.Location = new System.Drawing.Point(690, 200);
             this.labelMenuPrincipal.Name = "labelMenuPrincipal";
-            this.labelMenuPrincipal.Size = new System.Drawing.Size(307, 52);
+            this.labelMenuPrincipal.Size = new System.Drawing.Size(303, 51);
             this.labelMenuPrincipal.TabIndex = 0;
             this.labelMenuPrincipal.Text = "Menu principal";
             // 
@@ -49,16 +49,16 @@
             this.buttonOptionsUser1.Name = "buttonOptionsUser1";
             this.buttonOptionsUser1.Size = new System.Drawing.Size(180, 45);
             this.buttonOptionsUser1.TabIndex = 1;
-            this.buttonOptionsUser1.UtilisateurConnecte = null;
             // 
-            // MenuPrincipal
+            // PageMenuPrincipal
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.Controls.Add(this.buttonOptionsUser1);
             this.Controls.Add(this.labelMenuPrincipal);
-            this.Name = "MenuPrincipal";
+            this.Name = "PageMenuPrincipal";
             this.Size = new System.Drawing.Size(1500, 750);
+            this.VisibleChanged += new System.EventHandler(this.PageMenuPrincipal_VisibleChanged);
             this.ResumeLayout(false);
             this.PerformLayout();
 
