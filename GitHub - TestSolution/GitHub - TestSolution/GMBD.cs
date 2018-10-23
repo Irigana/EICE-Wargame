@@ -12,6 +12,8 @@ namespace EICE_WARGAME
         // Permet un accès plus simple par variable
         private static readonly MyDB.CodeSql c_NomTable_Utilisateur = new MyDB.CodeSql(new Utilisateur().NomDeLaTablePrincipale);
         private static readonly MyDB.CodeSql c_NomTable_Role = new MyDB.CodeSql(new Role().NomDeLaTablePrincipale);
+        private static readonly MyDB.CodeSql c_NomTable_Faction = new MyDB.CodeSql(new Faction().NomDeLaTablePrincipale);
+        private static readonly MyDB.CodeSql c_NomTable_SousFaction = new MyDB.CodeSql(new SousFaction().NomDeLaTablePrincipale);
 
         /// <summary>
         /// Référence l'objet de connexion au serveur de base de données MySql
@@ -56,7 +58,10 @@ namespace EICE_WARGAME
             return m_BD.SeConnecter();
         }
 
-
+        #region Requetes de connexion
+        //+=======================+
+        //| Requetes de connexion |
+        //+=======================+
 
         /// <summary>
         /// Permet la connexion d'un utilisateur à l'application
@@ -72,9 +77,9 @@ namespace EICE_WARGAME
                                        null).FirstOrDefault();
         }
 
+        #endregion
 
-
-
+        #region Requetes utilisateurs
         //+=======================+
         //| Requetes utilisateurs |
         //+=======================+
@@ -88,19 +93,21 @@ namespace EICE_WARGAME
             return Utilisateur.Enregistrer(m_BD, Utilisateur, false);
         }
 
+        #endregion
 
+        #region Toutes les énumérations
         //+==================+
-        //| Les énumerations |
+        //| Les énumérations |
         //+==================+
 
-            /// <summary>
-            /// Permet l'enumeration d'un utilisateur en rajoutant les parties de la requête par paramètre
-            /// </summary>
-            /// <param name="ValeurSouhaitee">Les valeurs que l'ont souhaite avoir accès</param>
-            /// <param name="ClauseJoin">Jointure</param>
-            /// <param name="ClauseWhere">Where</param>
-            /// <param name="ClauseOrderBy">Tri</param>
-            /// <returns></returns>
+        /// <summary>
+        /// Permet l'enumeration d'un utilisateur en rajoutant les parties de la requête par paramètre
+        /// </summary>
+        /// <param name="ValeurSouhaitee">Les valeurs que l'ont souhaite avoir accès</param>
+        /// <param name="ClauseJoin">Jointure</param>
+        /// <param name="ClauseWhere">Where</param>
+        /// <param name="ClauseOrderBy">Tri</param>
+        /// <returns></returns>
         public IEnumerable<Utilisateur> EnumererUtilisateur(MyDB.CodeSql ValeurSouhaitee, MyDB.CodeSql ClauseJoin, MyDB.CodeSql ClauseWhere, MyDB.CodeSql ClauseOrderBy)
         {
             if (ClauseWhere == null) ClauseWhere = MyDB.CodeSql.Vide;
@@ -119,6 +126,25 @@ namespace EICE_WARGAME
             return Role.Enumerer(m_BD, m_BD.Enumerer("SELECT {0} FROM {1} {2} {3} {4}", ValeurSouhaitee, c_NomTable_Role, ClauseJoin, ClauseWhere, ClauseOrderBy));
         }
 
+        public IEnumerable<Faction> EnumererFaction(MyDB.CodeSql ValeurSouhaitee, MyDB.CodeSql ClauseJoin, MyDB.CodeSql ClauseWhere, MyDB.CodeSql ClauseOrderBy)
+        {
+            if (ClauseWhere == null) ClauseWhere = MyDB.CodeSql.Vide;
+            if (ClauseOrderBy == null) ClauseOrderBy = MyDB.CodeSql.Vide;
+            if (ClauseJoin == null) ClauseJoin = MyDB.CodeSql.Vide;
+            if (ValeurSouhaitee == null) ValeurSouhaitee = new MyDB.CodeSql("*");
+            return Faction.Enumerer(m_BD, m_BD.Enumerer("SELECT {0} FROM {1} {2} {3} {4}", ValeurSouhaitee, c_NomTable_Faction, ClauseJoin, ClauseWhere, ClauseOrderBy));
+        }
+
+        public IEnumerable<SousFaction> EnumererSousFaction(MyDB.CodeSql ValeurSouhaitee, MyDB.CodeSql ClauseJoin, MyDB.CodeSql ClauseWhere, MyDB.CodeSql ClauseOrderBy)
+        {
+            if (ClauseWhere == null) ClauseWhere = MyDB.CodeSql.Vide;
+            if (ClauseOrderBy == null) ClauseOrderBy = MyDB.CodeSql.Vide;
+            if (ClauseJoin == null) ClauseJoin = MyDB.CodeSql.Vide;
+            if (ValeurSouhaitee == null) ValeurSouhaitee = new MyDB.CodeSql("*");
+            return SousFaction.Enumerer(m_BD, m_BD.Enumerer("SELECT {0} FROM {1} {2} {3} {4}", ValeurSouhaitee, c_NomTable_SousFaction, ClauseJoin, ClauseWhere, ClauseOrderBy));
+        }
+
+        #endregion
 
     }
 }

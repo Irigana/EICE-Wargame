@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ApplicationGererDB
+namespace EICE_WARGAME
 {
 	public class Faction : Entite<Faction, Faction.Champ>
 	{
@@ -147,17 +147,7 @@ namespace ApplicationGererDB
 			{
 				return new PDSGBD.MyDB.CodeSql("fa_name = {0}", m_Name);
 			}
-		}
-
-        private IEnumerable<SousFaction> EnumererSousFactions()
-        {
-            if (base.Connexion == null) return new SousFaction[0];
-            return SousFaction.Enumerer(Connexion, Connexion.Enumerer(
-                @"SELECT sf_id, sf_name,
-                    FROM subfaction
-                    WHERE (fa_id = {0}",
-                Id));
-        }
+		}        
 
         #endregion
 

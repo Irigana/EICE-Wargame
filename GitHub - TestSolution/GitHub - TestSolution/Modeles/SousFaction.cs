@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ApplicationGererDB
+namespace EICE_WARGAME
 {
 	public class SousFaction : Entite<SousFaction, SousFaction.Champ>
 	{
