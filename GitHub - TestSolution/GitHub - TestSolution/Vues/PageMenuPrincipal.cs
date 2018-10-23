@@ -14,8 +14,7 @@ namespace EICE_WARGAME
     {
         public PageMenuPrincipal()
         {
-            InitializeComponent();    
-                    
+            InitializeComponent();                       
         }
     }
 }

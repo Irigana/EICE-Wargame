@@ -12,11 +12,12 @@ namespace EICE_WARGAME
 {
     public partial class Form_Principal : Form
     {
+        public Utilisateur UtilisateurConnecte { get; set; }
 
         public Form_Principal()
         {
             InitializeComponent();
-            Utilisateur UtilisateurConnecte = pageConnexion1.Utilisateur;            
+                       
         }
                        
         private void pageConnexion1_Leave(object sender, EventArgs e)
@@ -30,6 +31,10 @@ namespace EICE_WARGAME
             {
                 pageInscription1.Visible = true;
                 pageInscription1.BringToFront();
+            }
+            if(pageConnexion1.EstIdentifie)
+            {
+                UtilisateurConnecte = pageConnexion1.Utilisateur;
             }
         }
 

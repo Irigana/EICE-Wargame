@@ -84,7 +84,7 @@ namespace EICE_WARGAME
                     Declencher_SurErreur(this, Champs.MotDePasse, "Le mot de passe ne peut pas être null, vide ou avec seulement des espaces");
                 }
                 else
-                {// TODO : Vérifier la longueur de mot de passe pour voir la cohérence
+                {
                     if ((value.Length >= 30) || (value.Length <= 1))
                     {
                         Declencher_SurErreur(this, Champs.MotDePasse, "Le mot de passe doit être compris entre 1 et 100 caractères");
