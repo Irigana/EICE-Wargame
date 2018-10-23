@@ -62,9 +62,7 @@ namespace EICE_WARGAME
 					}
 				}
 			}
-		}
-
-
+		}     
 		
 		#endregion
 
