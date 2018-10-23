@@ -104,6 +104,19 @@ namespace EICE_WARGAME
         }
 
         /// <summary>
+        /// Permet un refresh des textbox avec caractère mot de passe après un clique sur un bouton ( pour faire un refresh )
+        /// </summary>
+        public void RefreshMdpApresAcceptation()
+        {
+            this.MotDePasseCache = false;
+            textBoxText.PasswordChar = '\0';
+            // Permet de récupérer le texte encoder par l'utilisateur 
+            m_TexteActuel = textBoxText.Text;
+            // Permet de voir s'il faut activer le PlaceHolder
+            m_AfficherPlaceHolder = string.IsNullOrEmpty(m_TexteActuel);
+        }
+
+        /// <summary>
         /// Permet d'accéder à la propriété text du control user (n'est pas accessible sans cette fonction)
         /// </summary>
         [EditorBrowsable(EditorBrowsableState.Always)]

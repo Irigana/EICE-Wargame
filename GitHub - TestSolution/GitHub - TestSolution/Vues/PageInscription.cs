@@ -20,7 +20,8 @@ namespace EICE_WARGAME
 
         private void linkLabelDejaInscrit_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
-            this.Hide();
+            this.Hide();          
+            
         }
 
         private void buttonSInscrire_Click(object sender, EventArgs e)
@@ -32,8 +33,8 @@ namespace EICE_WARGAME
                 return;
             }
 
-            Utilisateur UtilisateurExistant = Program.GMBD.EnumererUtilisateur(null, new MyDB.CodeSql("JOIN role ON user.id_role = role.id"),
-                                                                               new MyDB.CodeSql("WHERE user.name = {0}", textBoxAvecTextInvisibleLogin.Text), null).FirstOrDefault();
+            Utilisateur UtilisateurExistant = Program.GMBD.EnumererUtilisateur(null, new MyDB.CodeSql("JOIN role ON user.u_fk_role_id = role.r_id"),
+                                                                               new MyDB.CodeSql("WHERE user.u_name = {0}", textBoxAvecTextInvisibleLogin.Text), null).FirstOrDefault();
 
             if(UtilisateurExistant != null)
             {
@@ -43,15 +44,20 @@ namespace EICE_WARGAME
             Utilisateur NouvelUtilisateur = new Utilisateur();
             NouvelUtilisateur.Login = textBoxAvecTextInvisibleLogin.Text;
             NouvelUtilisateur.MotDePasse = textBoxAvecTextInvisibleMdp.Text;
-            NouvelUtilisateur.Role = Program.GMBD.EnumererRole(null, null, new MyDB.CodeSql("WHERE role.id = {0}", 1), null).FirstOrDefault();
+            NouvelUtilisateur.Role = Program.GMBD.EnumererRole(null, null, new MyDB.CodeSql("WHERE role.r_id = {0}", 1), null).FirstOrDefault();
 
             if((UtilisateurExistant == null) && (NouvelUtilisateur.EstValide))
             {
                 Program.GMBD.AjouterUtilisateur(NouvelUtilisateur);
                 errorProviderInscription.Clear();
+                
                 textBoxAvecTextInvisibleLogin.Text = "";
+                textBoxAvecTextInvisibleMdp.RefreshMdpApresAcceptation();
                 textBoxAvecTextInvisibleMdp.Text = "";
+                textBoxAvecTextInvisibleMdpConf.RefreshMdpApresAcceptation();
                 textBoxAvecTextInvisibleMdpConf.Text = "";
+                this.Hide();
+                
             }
         }
 

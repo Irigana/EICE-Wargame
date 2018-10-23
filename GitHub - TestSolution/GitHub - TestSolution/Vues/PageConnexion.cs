@@ -23,7 +23,7 @@ namespace EICE_WARGAME
             get
             {
                 return m_Utilisateur;
-            }
+            }            
         }
 
         public bool EstIdentifie
@@ -43,6 +43,9 @@ namespace EICE_WARGAME
 
         private void linkLabelCreerCompte_Click(object sender, EventArgs e)
         {
+            textBoxAvecTextInvisibleLogin.Text = "";
+            textBoxAvecTextInvisibleMdp.RefreshMdpApresAcceptation();
+            textBoxAvecTextInvisibleMdp.Text = "";            
             this.Hide();
         }
 

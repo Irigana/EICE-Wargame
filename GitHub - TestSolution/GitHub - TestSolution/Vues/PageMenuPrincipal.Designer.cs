@@ -45,9 +45,9 @@
             // buttonOptionsUser1
             // 
             this.buttonOptionsUser1.BackColor = System.Drawing.Color.Transparent;
-            this.buttonOptionsUser1.Location = new System.Drawing.Point(1317, 3);
+            this.buttonOptionsUser1.Location = new System.Drawing.Point(1276, 3);
             this.buttonOptionsUser1.Name = "buttonOptionsUser1";
-            this.buttonOptionsUser1.Size = new System.Drawing.Size(180, 45);
+            this.buttonOptionsUser1.Size = new System.Drawing.Size(221, 45);
             this.buttonOptionsUser1.TabIndex = 1;
             // 
             // PageMenuPrincipal

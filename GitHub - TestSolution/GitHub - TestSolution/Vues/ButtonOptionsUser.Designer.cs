@@ -62,12 +62,13 @@
             this.buttonUser.BackColor = System.Drawing.SystemColors.Control;
             this.buttonUser.FlatAppearance.BorderColor = System.Drawing.Color.Silver;
             this.buttonUser.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonUser.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.buttonUser.ForeColor = System.Drawing.SystemColors.ControlText;
             this.buttonUser.Image = global::EICE_WARGAME.Properties.Resources.UserIcon25px;
             this.buttonUser.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.buttonUser.Location = new System.Drawing.Point(0, 0);
             this.buttonUser.Name = "buttonUser";
-            this.buttonUser.Size = new System.Drawing.Size(180, 45);
+            this.buttonUser.Size = new System.Drawing.Size(219, 45);
             this.buttonUser.TabIndex = 1;
             this.buttonUser.UseVisualStyleBackColor = false;
             this.buttonUser.Click += new System.EventHandler(this.buttonUser_Click);
@@ -79,7 +80,7 @@
             this.BackColor = System.Drawing.Color.Transparent;
             this.Controls.Add(this.buttonUser);
             this.Name = "ButtonOptionsUser";
-            this.Size = new System.Drawing.Size(180, 45);
+            this.Size = new System.Drawing.Size(225, 45);
             this.contextMenuStripUser.ResumeLayout(false);
             this.ResumeLayout(false);
 

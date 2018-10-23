@@ -15,6 +15,7 @@ namespace EICE_WARGAME
         public Form_Principal()
         {
             InitializeComponent();
+            // permet de réagir sur l'action de visible une fois connecté
             pageMenuPrincipal1.Visible = false;
                        
         }
@@ -25,7 +26,7 @@ namespace EICE_WARGAME
             {
                 pageMenuPrincipal1.Visible = true;
                 pageMenuPrincipal1.BringToFront();
-                pageConnexion1.SendToBack();
+                //pageConnexion1.SendToBack();
             }
             else
             {

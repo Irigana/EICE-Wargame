@@ -192,7 +192,7 @@ namespace EICE_WARGAME
         {
             get
             {
-                return new PDSGBD.MyDB.CodeSql("u_name = {0}, u_password = {1},  u_id_role = {2}", m_Login, m_MotDePasse, m_Role.Id);
+                return new PDSGBD.MyDB.CodeSql("u_name = {0}, u_password = {1},  u_fk_role_id = {2}", m_Login, m_MotDePasse, m_Role.Id);
             }
         }
 
