@@ -63,14 +63,7 @@ namespace EICE_WARGAME
 				}
 			}
 		}
-
-		public IEnumerable<SousFaction> SousFactions
-        {
-            get
-            {
-                return EnumererSousFactions();
-            }
-        }
+		
 		#endregion
 
 		#region Constructeur
