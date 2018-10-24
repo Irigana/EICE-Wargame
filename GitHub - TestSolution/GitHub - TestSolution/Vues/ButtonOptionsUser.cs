@@ -20,6 +20,8 @@ namespace EICE_WARGAME
         public void ButtonOptionsUserUpdate()
         {
             buttonUser.Text = PageConnexion.Utilisateur.Login.ToString();
+            if (PageConnexion.Utilisateur.Login.ToString().Length > 15) buttonUser.TextAlign = ContentAlignment.MiddleRight;
+            else buttonUser.TextAlign = ContentAlignment.MiddleCenter;
         }
         
         private void buttonUser_Click(object sender, EventArgs e)

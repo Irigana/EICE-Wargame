@@ -56,7 +56,7 @@ namespace EICE_WARGAME
                 else
                 {
                     value = value.Trim();
-                    if ((value.Length >= 20) || (value.Length <= 1))
+                    if ((value.Length > 20) || (value.Length <= 1))
                     {
                         Declencher_SurErreur(this, Champs.Login, "Le login doit être compris entre 1 et 20 caractères");
                     }
