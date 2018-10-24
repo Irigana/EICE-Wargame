@@ -12,8 +12,8 @@ namespace EICE_WARGAME
         // Permet un accès plus simple par variable
         private static readonly MyDB.CodeSql c_NomTable_Utilisateur = new MyDB.CodeSql(new Utilisateur().NomDeLaTablePrincipale);
         private static readonly MyDB.CodeSql c_NomTable_Role = new MyDB.CodeSql(new Role().NomDeLaTablePrincipale);
-        private static readonly MyDB.CodeSql c_NomTable_Faction = new MyDB.CodeSql(new Faction().NomDeLaTablePrincipale);
-        private static readonly MyDB.CodeSql c_NomTable_SousFaction = new MyDB.CodeSql(new SousFaction().NomDeLaTablePrincipale);
+        //private static readonly MyDB.CodeSql c_NomTable_Faction = new MyDB.CodeSql(new Faction().NomDeLaTablePrincipale);
+        //private static readonly MyDB.CodeSql c_NomTable_SousFaction = new MyDB.CodeSql(new SousFaction().NomDeLaTablePrincipale);
 
         /// <summary>
         /// Référence l'objet de connexion au serveur de base de données MySql
@@ -125,7 +125,7 @@ namespace EICE_WARGAME
             if (ValeurSouhaitee == null) ValeurSouhaitee = new MyDB.CodeSql("*");
             return Role.Enumerer(m_BD, m_BD.Enumerer("SELECT {0} FROM {1} {2} {3} {4}", ValeurSouhaitee, c_NomTable_Role, ClauseJoin, ClauseWhere, ClauseOrderBy));
         }
-
+        /*
         public IEnumerable<Faction> EnumererFaction(MyDB.CodeSql ValeurSouhaitee, MyDB.CodeSql ClauseJoin, MyDB.CodeSql ClauseWhere, MyDB.CodeSql ClauseOrderBy)
         {
             if (ClauseWhere == null) ClauseWhere = MyDB.CodeSql.Vide;
@@ -143,7 +143,7 @@ namespace EICE_WARGAME
             if (ValeurSouhaitee == null) ValeurSouhaitee = new MyDB.CodeSql("*");
             return SousFaction.Enumerer(m_BD, m_BD.Enumerer("SELECT {0} FROM {1} {2} {3} {4}", ValeurSouhaitee, c_NomTable_SousFaction, ClauseJoin, ClauseWhere, ClauseOrderBy));
         }
-
+        */
         #endregion
 
     }
