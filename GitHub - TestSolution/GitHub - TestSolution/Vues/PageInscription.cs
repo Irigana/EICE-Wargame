@@ -20,7 +20,7 @@ namespace EICE_WARGAME
 
         private void linkLabelDejaInscrit_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
-            this.Hide();          
+            this.Hide();            
             
         }
 

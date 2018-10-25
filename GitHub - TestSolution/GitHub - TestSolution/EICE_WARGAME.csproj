@@ -46,6 +46,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Vues\PageEditionUser.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Vues\PageEditionUser.Designer.cs">
+      <DependentUpon>PageEditionUser.cs</DependentUpon>
+    </Compile>
     <Compile Include="Vues\ButtonOptionsUser.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -100,6 +106,9 @@
     </Compile>
     <EmbeddedResource Include="Form_Principal.resx">
       <DependentUpon>Form_Principal.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Vues\PageEditionUser.resx">
+      <DependentUpon>PageEditionUser.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
