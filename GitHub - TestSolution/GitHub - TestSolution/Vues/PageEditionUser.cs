@@ -15,6 +15,16 @@ namespace EICE_WARGAME
         public PageEditionUser()
         {
             InitializeComponent();
+            if (PageConnexion.Utilisateur != null)
+            {
+                textBoxAvecTextInvisibleLogin.Text = PageConnexion.Utilisateur.Login;
+                buttonOptionsUser1.ButtonOptionsUserUpdate();
+            }
+        }
+
+        private void PageEditionUser_VisibleChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }

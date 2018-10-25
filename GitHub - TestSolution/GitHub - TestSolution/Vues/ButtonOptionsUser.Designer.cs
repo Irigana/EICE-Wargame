@@ -50,6 +50,7 @@
             this.editionDuProfilToolStripMenuItem.Name = "editionDuProfilToolStripMenuItem";
             this.editionDuProfilToolStripMenuItem.Size = new System.Drawing.Size(186, 24);
             this.editionDuProfilToolStripMenuItem.Text = "Edition du profil";
+            this.editionDuProfilToolStripMenuItem.Click += new System.EventHandler(this.editionDuProfilToolStripMenuItem_Click);
             // 
             // seDéconnecterToolStripMenuItem
             // 

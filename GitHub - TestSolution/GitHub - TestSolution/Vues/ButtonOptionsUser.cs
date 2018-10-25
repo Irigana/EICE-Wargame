@@ -12,9 +12,10 @@ namespace EICE_WARGAME
 {
     public partial class ButtonOptionsUser : UserControl
     {
+
         public ButtonOptionsUser()
         {
-            InitializeComponent();
+            InitializeComponent();            
         }
 
         public void ButtonOptionsUserUpdate()
@@ -35,8 +36,13 @@ namespace EICE_WARGAME
             {
                 contextMenuStripUser.Show(buttonUser, new Point(0, buttonUser.Height));
             }
-        }        
-        
+        }
 
+        private void editionDuProfilToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            //this.Parent.Hide();
+                 
+        }
+        
     }
 }

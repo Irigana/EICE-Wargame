@@ -49,7 +49,19 @@ namespace EICE_WARGAME
                 pageConnexion1.BringToFront();
             }
         }
-        
-        
+
+        private void pageMenuPrincipal1_Leave(object sender, EventArgs e)
+        {
+            if (PageConnexion.Utilisateur != null)
+            {
+                pageEditionUser1.BringToFront();
+                pageMenuPrincipal1.SendToBack();
+            }
+            else
+            {
+                pageConnexion1.Visible = true;
+                pageConnexion1.BringToFront();
+            }
+        }
     }
 }
