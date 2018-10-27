@@ -369,7 +369,7 @@ namespace EICE_WARGAME
             if (Entite.Id > 0)
             {
                 if (Connexion.Executer("UPDATE {0} SET {1} WHERE {2} = {3}", NomTable, Entite.ClauseAssignation, IdDeLaTable, Entite.Id).Reussite) return true;
-                if (Connexion.ValeurDe<long>("SELECT COUNT(*) FROM {0} WHERE {0} = {1}", NomTable, Entite.Id) == 1) return false;
+                if (Connexion.ValeurDe<long>("SELECT COUNT(*) FROM {0} WHERE {1} = {2}", NomTable,IdDeLaTablePrincipale, Entite.Id) == 1) return false;
                 if (!RecreationAutorisee) return false;
             }
             return Entite.DefinirId(Connexion.Executer("INSERT INTO {0} SET {1}", NomTable, Entite.ClauseAssignation));
@@ -379,7 +379,7 @@ namespace EICE_WARGAME
         {
             if (SuppressionEnCascade) Entite.SupprimerEnCascade(Connexion);
             PDSGBD.MyDB.CodeSql NomTable = new PDSGBD.MyDB.CodeSql(NomDeLaTablePrincipale);
-            return Connexion.Executer("DELETE FROM {0} WHERE {0} = {1}", NomTable, Entite.Id).Reussite;
+            return Connexion.Executer("DELETE FROM {0} WHERE {1} = {2}", NomTable,IdDeLaTablePrincipale, Entite.Id).Reussite;
         }
 
         #region Fonctionnalités de l'interface IEntiteMySQL
