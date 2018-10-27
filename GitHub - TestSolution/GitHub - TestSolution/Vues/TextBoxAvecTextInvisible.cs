@@ -111,7 +111,7 @@ namespace EICE_WARGAME
             this.MotDePasseCache = false;
             textBoxText.PasswordChar = '\0';
             // Permet de récupérer le texte encoder par l'utilisateur 
-            m_TexteActuel = textBoxText.Text;
+            //m_TexteActuel = textBoxText.Text;
             // Permet de voir s'il faut activer le PlaceHolder
             m_AfficherPlaceHolder = string.IsNullOrEmpty(m_TexteActuel);
         }
@@ -141,8 +141,7 @@ namespace EICE_WARGAME
                    
                 }
             }
-        }
-        
+        }        
 
         /// <summary>
         /// Permet d'accéder à la propriété PlaceHolder du control user

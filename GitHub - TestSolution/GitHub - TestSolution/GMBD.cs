@@ -90,9 +90,18 @@ namespace EICE_WARGAME
         /// <returns></returns>
         public bool AjouterUtilisateur(Utilisateur Utilisateur)
         {
-            return Utilisateur.Enregistrer(m_BD, Utilisateur, false);
+            return Utilisateur.Enregistrer(m_BD, Utilisateur,null, false);
         }
 
+        /// <summary>
+        /// Permet la modification d'un utilisateur
+        /// </summary>
+        /// <param name="Utilisateur">Objet du modèle utilisateur construit au préalable</param>
+        /// <returns></returns>
+        public bool ModifierUtilisateur(Utilisateur Utilisateur)
+        {
+            return Utilisateur.Enregistrer(m_BD, Utilisateur, Utilisateur.IdDeLaTablePrincipale, true);
+        }
         #endregion
 
         #region Toutes les énumérations

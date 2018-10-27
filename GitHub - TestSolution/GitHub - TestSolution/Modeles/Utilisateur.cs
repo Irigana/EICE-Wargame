@@ -185,6 +185,14 @@ namespace EICE_WARGAME
             }
         }
 
+        public override string IdDeLaTablePrincipale
+        {
+            get
+            {
+                return "u_id";
+            }
+        }
+
         /// <summary>
         /// Clause d'assignation utilisable dans une requête INSERT/UPDATE
         /// </summary>

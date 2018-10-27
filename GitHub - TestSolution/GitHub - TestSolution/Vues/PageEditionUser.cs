@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using PDSGBD;
 
 namespace EICE_WARGAME
 {
@@ -35,6 +36,66 @@ namespace EICE_WARGAME
             InitializeComponent();
             m_Utilisateur = null;
         }
-        
+
+        private void PageEditionUser_Load(object sender, EventArgs e)
+        {
+            buttonOptionsUser1.ButtonOptionsUserUpdate();
+            textBoxAvecTextInvisibleLogin.Text = Utilisateur.Login.ToString();
+        }
+
+        private void buttonValiderModif_Click(object sender, EventArgs e)
+        {
+            errorProviderEdition.Clear();
+            bool ModificationEffectuee = false;
+
+            Utilisateur UtilisateurExiste = Program.GMBD.EnumererUtilisateur(null, new MyDB.CodeSql("JOIN role ON user.u_fk_role_id = role.r_id"),
+                                                                             new MyDB.CodeSql("WHERE user.u_id <> {0} AND user.u_name = {1}", Utilisateur.Id, textBoxAvecTextInvisibleLogin.Text), null).FirstOrDefault();
+            if (UtilisateurExiste != null)
+            {
+                errorProviderEdition.SetError(textBoxAvecTextInvisibleLogin, "Le pseudo que vous encodez existe déjà, veuillez en mettre un autre");
+
+            }
+
+            if (UtilisateurExiste == null)
+            {
+                Utilisateur UtilisateurEnEdition = Utilisateur;
+                // Si l'utilisateur a mis le bon mot de passe de confirmation et que son login a changé
+                if ((string.Compare(UtilisateurEnEdition.MotDePasse.ToString(), textBoxAvecTextInvisibleMdpInitial.Text.ToString()) == 0) 
+                    && (string.Compare(Utilisateur.Login.ToString(),textBoxAvecTextInvisibleLogin.Text.ToString()) != 0))
+                {
+                    UtilisateurEnEdition.Login = textBoxAvecTextInvisibleLogin.Text;
+                    ModificationEffectuee = true;
+                }
+                // Si le mot de passe de l'utilisateur est différent et que les textbox du nouveau mot de passe sont pas vide et égale
+                if((string.Compare(UtilisateurEnEdition.MotDePasse.ToString(),textBoxAvecTextInvisibleNouveauMdp.Text.ToString()) != 0)
+                    && ((textBoxAvecTextInvisibleConfNewMdp.Text != "") && (textBoxAvecTextInvisibleNouveauMdp.Text != ""))
+                    && (string.Compare(textBoxAvecTextInvisibleNouveauMdp.Text.ToString(),textBoxAvecTextInvisibleConfNewMdp.Text.ToString()) == 0))
+                {
+                    UtilisateurEnEdition.MotDePasse = textBoxAvecTextInvisibleNouveauMdp.Text;
+                    ModificationEffectuee = true;
+                }
+                if((UtilisateurEnEdition.EstValide) && (ModificationEffectuee == true))
+                {
+                    Program.GMBD.ModifierUtilisateur(UtilisateurEnEdition);
+                    textBoxAvecTextInvisibleNouveauMdp.Text = "";
+                    textBoxAvecTextInvisibleNouveauMdp.RefreshMdpApresAcceptation();
+                    textBoxAvecTextInvisibleConfNewMdp.Text = "";
+                    textBoxAvecTextInvisibleConfNewMdp.RefreshMdpApresAcceptation();
+                    textBoxAvecTextInvisibleMdpInitial.Text = "";
+                    textBoxAvecTextInvisibleMdpInitial.RefreshMdpApresAcceptation();
+                    errorProviderEdition.Clear();
+                }
+            }
+        }
+
+        private void buttonRetourMenu_Click(object sender, EventArgs e)
+        {
+            Form_Principal.Instance.CreerPageCourante<PageMenuPrincipal>(
+                        (Page) =>
+                        {
+                            Page.Utilisateur = Utilisateur;
+                            return true;
+                        });
+        }
     }
 }

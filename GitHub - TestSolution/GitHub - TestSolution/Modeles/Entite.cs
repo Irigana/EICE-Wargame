@@ -17,6 +17,11 @@ namespace EICE_WARGAME
         string NomDeLaTablePrincipale { get; }
 
         /// <summary>
+        /// Id de la table principale de ce type d'entités
+        /// </summary>
+        string IdDeLaTablePrincipale { get; }
+
+        /// <summary>
         /// Permet de (re)définir l'identifiant de cette entité suite à l'exécution réussie d'une requête INSERT INTO
         /// </summary>
         /// <param name="ResultatExecution">Résultat de l'exécution d'une requête INSERT INTO appropriée</param>
@@ -356,14 +361,15 @@ namespace EICE_WARGAME
             return true;
         }
 
-        public virtual bool Enregistrer(PDSGBD.MyDB Connexion, TEntite Entite, bool RecreationAutorisee = false)
+        public virtual bool Enregistrer(PDSGBD.MyDB Connexion, TEntite Entite, string IdTable = null, bool RecreationAutorisee = false)
         {
             if (!Entite.EstValide) return false;
             PDSGBD.MyDB.CodeSql NomTable = new PDSGBD.MyDB.CodeSql(NomDeLaTablePrincipale);
+            PDSGBD.MyDB.CodeSql IdDeLaTable = new PDSGBD.MyDB.CodeSql(IdDeLaTablePrincipale);
             if (Entite.Id > 0)
             {
-                if (Connexion.Executer("UPDATE {0} SET {1} WHERE id_{0} = {2}", NomTable, Entite.ClauseAssignation, Entite.Id).Reussite) return true;
-                if (Connexion.ValeurDe<long>("SELECT COUNT(*) FROM {0} WHERE id_{0} = {1}", NomTable, Entite.Id) == 1) return false;
+                if (Connexion.Executer("UPDATE {0} SET {1} WHERE {2} = {3}", NomTable, Entite.ClauseAssignation, IdDeLaTable, Entite.Id).Reussite) return true;
+                if (Connexion.ValeurDe<long>("SELECT COUNT(*) FROM {0} WHERE {0} = {1}", NomTable, Entite.Id) == 1) return false;
                 if (!RecreationAutorisee) return false;
             }
             return Entite.DefinirId(Connexion.Executer("INSERT INTO {0} SET {1}", NomTable, Entite.ClauseAssignation));
@@ -373,7 +379,7 @@ namespace EICE_WARGAME
         {
             if (SuppressionEnCascade) Entite.SupprimerEnCascade(Connexion);
             PDSGBD.MyDB.CodeSql NomTable = new PDSGBD.MyDB.CodeSql(NomDeLaTablePrincipale);
-            return Connexion.Executer("DELETE FROM {0} WHERE id_{0} = {1}", NomTable, Entite.Id).Reussite;
+            return Connexion.Executer("DELETE FROM {0} WHERE {0} = {1}", NomTable, Entite.Id).Reussite;
         }
 
         #region Fonctionnalités de l'interface IEntiteMySQL
@@ -381,6 +387,14 @@ namespace EICE_WARGAME
         /// Nom de la table principale de ce type d'entités
         /// </summary>
         public abstract string NomDeLaTablePrincipale
+        {
+            get;
+        }
+
+        /// <summary>
+        /// Nom de la table principale de ce type d'entités
+        /// </summary>
+        public abstract string IdDeLaTablePrincipale
         {
             get;
         }

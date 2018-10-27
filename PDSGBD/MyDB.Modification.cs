@@ -197,13 +197,13 @@ namespace PDSGBD
                 }
                 catch (Exception Erreur)
                 {
-                    /*
+                    
                     System.Diagnostics.Debug.WriteLine(string.Format(
                         "\nMyDB.Executer({0}, {1}) a échoué :\n{2}\n",
                         Requete,
                         string.Join("", Valeurs.Select(Valeur => string.Format(", {0}", Valeur))),
                         Erreur.Message));
-                    */
+                    
                     if ((ConnexionUtilisee != null) && (ConnexionUtilisee != this)) ConnexionUtilisee.Dispose();
                     // Sauvegarde du message d'erreur au cas où il faudrait le retourner
                     MessageErreur = Erreur.Message;
