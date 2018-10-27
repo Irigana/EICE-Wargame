@@ -62,6 +62,10 @@ namespace EICE_WARGAME
                 pageConnexion1.Visible = true;
                 pageConnexion1.BringToFront();
             }
+
+            PageEditionUser Nouvellepage = new PageEditionUser();
+            this.Parent.Controls.Add(Nouvellepage);
+
         }
     }
 }

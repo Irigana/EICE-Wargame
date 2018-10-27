@@ -40,7 +40,7 @@ namespace EICE_WARGAME
 
         private void editionDuProfilToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            //this.Parent.Hide();
+            this.Parent.Hide();
                  
         }
         

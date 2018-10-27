@@ -15,7 +15,7 @@ namespace EICE_WARGAME
     {
         public PageInscription()
         {
-            InitializeComponent();                    
+            InitializeComponent();                              
         }
 
         private void linkLabelDejaInscrit_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
