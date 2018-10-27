@@ -12,19 +12,29 @@ namespace EICE_WARGAME
 {
     public partial class PageEditionUser : UserControl
     {
-        public PageEditionUser()
+        private Utilisateur m_Utilisateur = null;
+
+        public Utilisateur Utilisateur
         {
-            InitializeComponent();
-            if (PageConnexion.Utilisateur != null)
+            get
             {
-                textBoxAvecTextInvisibleLogin.Text = PageConnexion.Utilisateur.Login;
-                buttonOptionsUser1.ButtonOptionsUserUpdate();
+                return m_Utilisateur;
+            }
+            set
+            {
+                if ((m_Utilisateur == null) && (value != null))
+                {
+                    m_Utilisateur = value;
+                    buttonOptionsUser1.Utilisateur = m_Utilisateur;
+                }
             }
         }
 
-        private void PageEditionUser_VisibleChanged(object sender, EventArgs e)
+        public PageEditionUser()
         {
-
+            InitializeComponent();
+            m_Utilisateur = null;
         }
+        
     }
 }

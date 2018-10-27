@@ -49,6 +49,7 @@
             this.buttonOptionsUser1.Name = "buttonOptionsUser1";
             this.buttonOptionsUser1.Size = new System.Drawing.Size(221, 45);
             this.buttonOptionsUser1.TabIndex = 1;
+            this.buttonOptionsUser1.Utilisateur = null;
             // 
             // PageMenuPrincipal
             // 
@@ -58,7 +59,7 @@
             this.Controls.Add(this.labelMenuPrincipal);
             this.Name = "PageMenuPrincipal";
             this.Size = new System.Drawing.Size(1500, 750);
-            this.VisibleChanged += new System.EventHandler(this.PageMenuPrincipal_VisibleChanged);
+            this.Load += new System.EventHandler(this.PageMenuPrincipal_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 

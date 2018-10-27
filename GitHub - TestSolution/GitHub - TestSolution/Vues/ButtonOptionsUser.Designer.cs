@@ -43,7 +43,7 @@
             this.editionDuProfilToolStripMenuItem,
             this.seDéconnecterToolStripMenuItem});
             this.contextMenuStripUser.Name = "contextMenuStripUser";
-            this.contextMenuStripUser.Size = new System.Drawing.Size(187, 52);
+            this.contextMenuStripUser.Size = new System.Drawing.Size(187, 80);
             // 
             // editionDuProfilToolStripMenuItem
             // 
@@ -57,6 +57,7 @@
             this.seDéconnecterToolStripMenuItem.Name = "seDéconnecterToolStripMenuItem";
             this.seDéconnecterToolStripMenuItem.Size = new System.Drawing.Size(186, 24);
             this.seDéconnecterToolStripMenuItem.Text = "Se déconnecter";
+            this.seDéconnecterToolStripMenuItem.Click += new System.EventHandler(this.seDéconnecterToolStripMenuItem_Click);
             // 
             // buttonUser
             // 

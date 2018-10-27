@@ -20,8 +20,7 @@ namespace EICE_WARGAME
 
         private void linkLabelDejaInscrit_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
-            this.Hide();            
-            
+            Form_Principal.Instance.CreerPageCourante<PageConnexion>();
         }
 
         private void buttonSInscrire_Click(object sender, EventArgs e)
@@ -56,8 +55,8 @@ namespace EICE_WARGAME
                 textBoxAvecTextInvisibleMdp.Text = "";
                 textBoxAvecTextInvisibleMdpConf.RefreshMdpApresAcceptation();
                 textBoxAvecTextInvisibleMdpConf.Text = "";
-                this.Hide();
-                
+                Form_Principal.Instance.CreerPageCourante<PageConnexion>();
+
             }
         }
 

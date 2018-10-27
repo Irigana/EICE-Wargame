@@ -149,7 +149,6 @@
             this.Controls.Add(this.labelEditionUser);
             this.Name = "PageEditionUser";
             this.Size = new System.Drawing.Size(1500, 750);
-            this.VisibleChanged += new System.EventHandler(this.PageEditionUser_VisibleChanged);
             ((System.ComponentModel.ISupportInitialize)(this.errorProviderEdition)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();

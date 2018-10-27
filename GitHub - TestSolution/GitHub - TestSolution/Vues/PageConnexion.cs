@@ -12,28 +12,12 @@ namespace EICE_WARGAME
 {
     public partial class PageConnexion : UserControl
     {
-        //public static readonly Utilisateur UtilisateurConnecte = m_Utilisateur;
 
         GMBD s_GMBD = new GMBD();
 
-        public static Utilisateur m_Utilisateur = null;
-
-        public static Utilisateur Utilisateur
-        {
-            get
-            {
-                return m_Utilisateur;
-            }            
-        }
-
-        public bool EstIdentifie
-        {
-            get
-            {
-                return m_Utilisateur != null;
-            }
-        }
-
+        /// <summary>
+        /// Constructeur par défaut
+        /// </summary>
         public PageConnexion()
         {
             InitializeComponent();
@@ -41,14 +25,24 @@ namespace EICE_WARGAME
             textBoxAvecTextInvisibleMdp.PlaceHolder = "Mot de passe";   
         }
 
+        /// <summary>
+        /// Lien pour aller vers la création de compte
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void linkLabelCreerCompte_Click(object sender, EventArgs e)
         {
             textBoxAvecTextInvisibleLogin.Text = "";
             textBoxAvecTextInvisibleMdp.RefreshMdpApresAcceptation();
-            textBoxAvecTextInvisibleMdp.Text = "";            
-            this.Hide();
+            textBoxAvecTextInvisibleMdp.Text = "";
+            Form_Principal.Instance.CreerPageCourante<PageInscription>();                        
         }
 
+        /// <summary>
+        /// Bouton de connexion à l'application par l'utilisateur 
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void buttonConnecter_Click(object sender, EventArgs e)
         {
             if ((textBoxAvecTextInvisibleLogin != null) && (textBoxAvecTextInvisibleMdp != null))
@@ -66,9 +60,12 @@ namespace EICE_WARGAME
                 }
                 else
                 {
-                    m_Utilisateur = Utilisateur;                
-                    this.Hide();
-                    
+                    Form_Principal.Instance.CreerPageCourante<PageMenuPrincipal>(
+                        (Page) =>
+                        {
+                            Page.Utilisateur = Utilisateur;
+                            return true;
+                        });
                 }
 
             }
