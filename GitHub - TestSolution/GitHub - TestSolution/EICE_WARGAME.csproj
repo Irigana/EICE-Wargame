@@ -50,6 +50,7 @@
     <Compile Include="Modeles\Feature.cs" />
     <Compile Include="Modeles\SousFaction.cs" />
     <Compile Include="Modeles\Stuff.cs" />
+    <Compile Include="Modeles\StuffFeature.cs" />
     <Compile Include="Modeles\Type.cs" />
     <Compile Include="Vues\PageEditionUser.cs">
       <SubType>UserControl</SubType>
@@ -180,6 +181,9 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\UserIcon25px.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Informations\SchemaDB.PNG" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
