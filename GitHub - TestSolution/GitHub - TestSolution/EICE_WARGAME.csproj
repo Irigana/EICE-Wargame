@@ -46,6 +46,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Modeles\Faction.cs" />
+    <Compile Include="Modeles\Feature.cs" />
+    <Compile Include="Modeles\SousFaction.cs" />
+    <Compile Include="Modeles\Stuff.cs" />
+    <Compile Include="Modeles\Type.cs" />
     <Compile Include="Vues\PageEditionUser.cs">
       <SubType>UserControl</SubType>
     </Compile>
