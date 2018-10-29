@@ -46,6 +46,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="PageAjouterArme.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="PageAjouterArme.Designer.cs">
+      <DependentUpon>PageAjouterArme.cs</DependentUpon>
+    </Compile>
     <Compile Include="Vues\MenuAdmin.cs">
       <SubType>UserControl</SubType>
     </Compile>
