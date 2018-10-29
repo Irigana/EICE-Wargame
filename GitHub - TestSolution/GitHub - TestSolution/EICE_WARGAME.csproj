@@ -46,6 +46,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="MenuAdmin.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="MenuAdmin.Designer.cs">
+      <DependentUpon>MenuAdmin.cs</DependentUpon>
+    </Compile>
     <Compile Include="Modeles\Faction.cs" />
     <Compile Include="Modeles\Feature.cs" />
     <Compile Include="Modeles\SousFaction.cs" />
