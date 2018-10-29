@@ -28,13 +28,10 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.menuAdmin1 = new EICE_WARGAME.MenuAdmin();
             this.labelAjoutArme = new System.Windows.Forms.Label();
             this.panelLigneSeparatriceAjout = new System.Windows.Forms.Panel();
             this.labelNomArme = new System.Windows.Forms.Label();
-            this.textBoxAvecTextInvisible1 = new EICE_WARGAME.TextBoxAvecTextInvisible();
             this.labelTypeArme = new System.Windows.Forms.Label();
-            this.comboBoxType = new System.Windows.Forms.ComboBox();
             this.panel1 = new System.Windows.Forms.Panel();
             this.labelPortee = new System.Windows.Forms.Label();
             this.labelF = new System.Windows.Forms.Label();
@@ -44,19 +41,14 @@
             this.numericUpDown2 = new System.Windows.Forms.NumericUpDown();
             this.labelEquipablePar = new System.Windows.Forms.Label();
             this.checkedListBoxEquipable = new System.Windows.Forms.CheckedListBox();
+            this.listeDeroulanteType = new EICE_WARGAME.ListeDeroulanteType();
             this.buttonOptionsUser1 = new EICE_WARGAME.ButtonOptionsUser();
+            this.textBoxAvecTextInvisible1 = new EICE_WARGAME.TextBoxAvecTextInvisible();
+            this.menuAdmin1 = new EICE_WARGAME.MenuAdmin();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownPortee)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown2)).BeginInit();
             this.SuspendLayout();
-            // 
-            // menuAdmin1
-            // 
-            this.menuAdmin1.BackColor = System.Drawing.SystemColors.ControlDark;
-            this.menuAdmin1.Location = new System.Drawing.Point(0, 0);
-            this.menuAdmin1.Name = "menuAdmin1";
-            this.menuAdmin1.Size = new System.Drawing.Size(190, 750);
-            this.menuAdmin1.TabIndex = 0;
             // 
             // labelAjoutArme
             // 
@@ -86,17 +78,6 @@
             this.labelNomArme.TabIndex = 3;
             this.labelNomArme.Text = "Nom de l\'arme";
             // 
-            // textBoxAvecTextInvisible1
-            // 
-            this.textBoxAvecTextInvisible1.ForeColor = System.Drawing.SystemColors.ButtonShadow;
-            this.textBoxAvecTextInvisible1.Location = new System.Drawing.Point(385, 157);
-            this.textBoxAvecTextInvisible1.Margin = new System.Windows.Forms.Padding(0);
-            this.textBoxAvecTextInvisible1.MotDePasseCache = false;
-            this.textBoxAvecTextInvisible1.Name = "textBoxAvecTextInvisible1";
-            this.textBoxAvecTextInvisible1.PlaceHolder = "Arme";
-            this.textBoxAvecTextInvisible1.Size = new System.Drawing.Size(153, 22);
-            this.textBoxAvecTextInvisible1.TabIndex = 4;
-            // 
             // labelTypeArme
             // 
             this.labelTypeArme.AutoSize = true;
@@ -106,16 +87,6 @@
             this.labelTypeArme.Size = new System.Drawing.Size(119, 20);
             this.labelTypeArme.TabIndex = 5;
             this.labelTypeArme.Text = "Type de l\'arme";
-            // 
-            // comboBoxType
-            // 
-            this.comboBoxType.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.comboBoxType.FormattingEnabled = true;
-            this.comboBoxType.Location = new System.Drawing.Point(385, 202);
-            this.comboBoxType.Name = "comboBoxType";
-            this.comboBoxType.Size = new System.Drawing.Size(153, 24);
-            this.comboBoxType.Sorted = true;
-            this.comboBoxType.TabIndex = 6;
             // 
             // panel1
             // 
@@ -189,10 +160,19 @@
             // checkedListBoxEquipable
             // 
             this.checkedListBoxEquipable.FormattingEnabled = true;
-            this.checkedListBoxEquipable.Location = new System.Drawing.Point(418, 398);
+            this.checkedListBoxEquipable.Location = new System.Drawing.Point(456, 342);
             this.checkedListBoxEquipable.Name = "checkedListBoxEquipable";
-            this.checkedListBoxEquipable.Size = new System.Drawing.Size(265, 344);
+            this.checkedListBoxEquipable.Size = new System.Drawing.Size(265, 361);
             this.checkedListBoxEquipable.TabIndex = 15;
+            // 
+            // listeDeroulanteType
+            // 
+            this.listeDeroulanteType.Location = new System.Drawing.Point(402, 202);
+            this.listeDeroulanteType.Name = "listeDeroulanteType";
+            this.listeDeroulanteType.Size = new System.Drawing.Size(197, 25);
+            this.listeDeroulanteType.TabIndex = 17;
+            this.listeDeroulanteType.TypeSelectionne = null;
+            this.listeDeroulanteType.Load += new System.EventHandler(this.listeDeroulanteType_Load);
             // 
             // buttonOptionsUser1
             // 
@@ -203,10 +183,30 @@
             this.buttonOptionsUser1.TabIndex = 16;
             this.buttonOptionsUser1.Utilisateur = null;
             // 
+            // textBoxAvecTextInvisible1
+            // 
+            this.textBoxAvecTextInvisible1.ForeColor = System.Drawing.SystemColors.ButtonShadow;
+            this.textBoxAvecTextInvisible1.Location = new System.Drawing.Point(402, 159);
+            this.textBoxAvecTextInvisible1.Margin = new System.Windows.Forms.Padding(0);
+            this.textBoxAvecTextInvisible1.MotDePasseCache = false;
+            this.textBoxAvecTextInvisible1.Name = "textBoxAvecTextInvisible1";
+            this.textBoxAvecTextInvisible1.PlaceHolder = "Arme";
+            this.textBoxAvecTextInvisible1.Size = new System.Drawing.Size(197, 22);
+            this.textBoxAvecTextInvisible1.TabIndex = 4;
+            // 
+            // menuAdmin1
+            // 
+            this.menuAdmin1.BackColor = System.Drawing.SystemColors.ControlDark;
+            this.menuAdmin1.Location = new System.Drawing.Point(0, 0);
+            this.menuAdmin1.Name = "menuAdmin1";
+            this.menuAdmin1.Size = new System.Drawing.Size(190, 750);
+            this.menuAdmin1.TabIndex = 0;
+            // 
             // PageAjouterArme
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.listeDeroulanteType);
             this.Controls.Add(this.buttonOptionsUser1);
             this.Controls.Add(this.checkedListBoxEquipable);
             this.Controls.Add(this.labelEquipablePar);
@@ -217,7 +217,6 @@
             this.Controls.Add(this.labelF);
             this.Controls.Add(this.labelPortee);
             this.Controls.Add(this.panel1);
-            this.Controls.Add(this.comboBoxType);
             this.Controls.Add(this.labelTypeArme);
             this.Controls.Add(this.textBoxAvecTextInvisible1);
             this.Controls.Add(this.labelNomArme);
@@ -242,7 +241,6 @@
         private System.Windows.Forms.Label labelNomArme;
         private TextBoxAvecTextInvisible textBoxAvecTextInvisible1;
         private System.Windows.Forms.Label labelTypeArme;
-        private System.Windows.Forms.ComboBox comboBoxType;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Label labelPortee;
         private System.Windows.Forms.Label labelF;
@@ -253,5 +251,6 @@
         private System.Windows.Forms.Label labelEquipablePar;
         private System.Windows.Forms.CheckedListBox checkedListBoxEquipable;
         private ButtonOptionsUser buttonOptionsUser1;
+        private ListeDeroulanteType listeDeroulanteType;
     }
 }

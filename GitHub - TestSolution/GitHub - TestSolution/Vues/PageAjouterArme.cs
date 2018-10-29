@@ -33,6 +33,20 @@ namespace EICE_WARGAME
         public PageAjouterArme()
         {
             InitializeComponent();
+            m_Utilisateur = null;
+            listeDeroulanteType.Type = Program.GMBD.EnumererType(null, null, null, PDSGBD.MyDB.CreerCodeSql("ty_name"));
+        }
+
+        private void listeDeroulanteType_Load(object sender, EventArgs e)
+        {
+            if (Utilisateur != null)
+            {
+                buttonOptionsUser1.ButtonOptionsUserUpdate();
+            }
+            else
+            {
+                Form_Principal.Instance.CreerPageCourante<PageConnexion>();
+            }
         }
     }
 }

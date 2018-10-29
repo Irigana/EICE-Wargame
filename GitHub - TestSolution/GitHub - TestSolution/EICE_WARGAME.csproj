@@ -46,6 +46,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Vues\ListeDeroulanteType.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Vues\ListeDeroulanteType.Designer.cs">
+      <DependentUpon>ListeDeroulanteType.cs</DependentUpon>
+    </Compile>
     <Compile Include="Vues\PageAjouterArme.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -130,6 +136,9 @@
     </Compile>
     <EmbeddedResource Include="Form_Principal.resx">
       <DependentUpon>Form_Principal.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Vues\ListeDeroulanteType.resx">
+      <DependentUpon>ListeDeroulanteType.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Vues\MenuAdmin.resx">
       <DependentUpon>MenuAdmin.cs</DependentUpon>
