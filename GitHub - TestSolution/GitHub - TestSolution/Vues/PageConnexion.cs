@@ -71,6 +71,12 @@ namespace EICE_WARGAME
             }
         }
 
-       
+        private void textBoxAvecTextInvisibleMdp_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                buttonConnecter_Click(null, null);
+            }
+        }
     }
 }

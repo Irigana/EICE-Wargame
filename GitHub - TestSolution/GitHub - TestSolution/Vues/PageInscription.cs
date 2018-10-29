@@ -25,7 +25,7 @@ namespace EICE_WARGAME
 
         private void buttonSInscrire_Click(object sender, EventArgs e)
         {
-            if(string.Compare(textBoxAvecTextInvisibleMdp.Text,textBoxAvecTextInvisibleMdpConf.Text) != 0)
+            if (string.Compare(textBoxAvecTextInvisibleMdp.Text, textBoxAvecTextInvisibleMdpConf.Text) != 0)
             {
                 errorProviderInscription.SetError(textBoxAvecTextInvisibleMdp, "Le mot de passe ne correspond pas");
                 errorProviderInscription.SetError(textBoxAvecTextInvisibleMdpConf, "Le mot de passe ne correspond pas");
@@ -35,7 +35,7 @@ namespace EICE_WARGAME
             Utilisateur UtilisateurExistant = Program.GMBD.EnumererUtilisateur(null, new MyDB.CodeSql("JOIN role ON user.u_fk_role_id = role.r_id"),
                                                                                new MyDB.CodeSql("WHERE user.u_name = {0}", textBoxAvecTextInvisibleLogin.Text), null).FirstOrDefault();
 
-            if(UtilisateurExistant != null)
+            if (UtilisateurExistant != null)
             {
                 errorProviderInscription.SetError(textBoxAvecTextInvisibleLogin, "Ce login est déjà utilisé, veuillez en choisir un autre !");
             }
@@ -45,21 +45,28 @@ namespace EICE_WARGAME
             NouvelUtilisateur.MotDePasse = Outils.hash(textBoxAvecTextInvisibleMdp.Text);
             NouvelUtilisateur.Role = Program.GMBD.EnumererRole(null, null, new MyDB.CodeSql("WHERE role.r_id = {0}", 1), null).FirstOrDefault();
 
-            if((UtilisateurExistant == null) && (NouvelUtilisateur.EstValide))
+            if ((UtilisateurExistant == null) && (NouvelUtilisateur.EstValide))
             {
                 Program.GMBD.AjouterUtilisateur(NouvelUtilisateur);
                 errorProviderInscription.Clear();
-                
+
                 textBoxAvecTextInvisibleLogin.Text = "";
                 textBoxAvecTextInvisibleMdp.RefreshMdpApresAcceptation();
                 textBoxAvecTextInvisibleMdp.Text = "";
                 textBoxAvecTextInvisibleMdpConf.RefreshMdpApresAcceptation();
                 textBoxAvecTextInvisibleMdpConf.Text = "";
-                Form_Principal.Instance.CreerPageCourante<PageConnexion>();
-
+                Form_Principal.Instance.CreerPageCourante<PageConnexion>();         
             }
         }
 
-        
+
+        private void textBoxAvecTextInvisibleMdpConf_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                buttonSInscrire_Click(null, null);
+            }
+
+        }
     }
 }

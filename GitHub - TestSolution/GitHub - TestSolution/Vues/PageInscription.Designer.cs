@@ -74,7 +74,7 @@ namespace EICE_WARGAME
             this.buttonSInscrire.Image = global::EICE_WARGAME.Properties.Resources.Validation25px;
             this.buttonSInscrire.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.buttonSInscrire.Location = new System.Drawing.Point(496, 375);
-            this.buttonSInscrire.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.buttonSInscrire.Margin = new System.Windows.Forms.Padding(2);
             this.buttonSInscrire.Name = "buttonSInscrire";
             this.buttonSInscrire.Size = new System.Drawing.Size(178, 26);
             this.buttonSInscrire.TabIndex = 6;
@@ -92,6 +92,7 @@ namespace EICE_WARGAME
             this.textBoxAvecTextInvisibleMdpConf.PlaceHolder = "Confirmation mot de passe";
             this.textBoxAvecTextInvisibleMdpConf.Size = new System.Drawing.Size(179, 18);
             this.textBoxAvecTextInvisibleMdpConf.TabIndex = 3;
+            this.textBoxAvecTextInvisibleMdpConf.KeyDown += new System.Windows.Forms.KeyEventHandler(this.textBoxAvecTextInvisibleMdpConf_KeyDown);
             // 
             // textBoxAvecTextInvisibleMdp
             // 
@@ -125,7 +126,7 @@ namespace EICE_WARGAME
             this.Controls.Add(this.textBoxAvecTextInvisibleMdpConf);
             this.Controls.Add(this.textBoxAvecTextInvisibleMdp);
             this.Controls.Add(this.textBoxAvecTextInvisibleLogin);
-            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "PageInscription";
             this.Size = new System.Drawing.Size(1125, 609);
             ((System.ComponentModel.ISupportInitialize)(this.errorProviderInscription)).EndInit();
