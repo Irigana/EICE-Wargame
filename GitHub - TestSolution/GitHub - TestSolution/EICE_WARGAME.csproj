@@ -52,6 +52,12 @@
     <Compile Include="Modeles\Stuff.cs" />
     <Compile Include="Modeles\StuffFeature.cs" />
     <Compile Include="Modeles\Type.cs" />
+    <Compile Include="Vues\PageAjoutFigurine.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Vues\PageAjoutFigurine.Designer.cs">
+      <DependentUpon>PageAjoutFigurine.cs</DependentUpon>
+    </Compile>
     <Compile Include="Vues\PageEditionUser.cs">
       <SubType>UserControl</SubType>
     </Compile>
