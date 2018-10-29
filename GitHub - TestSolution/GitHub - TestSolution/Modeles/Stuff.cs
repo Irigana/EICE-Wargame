@@ -251,7 +251,7 @@ namespace EICE_WARGAME
         public override void SupprimerEnCascade(PDSGBD.MyDB Connexion)
         {
             Connexion.Executer("DELETE FROM stuff WHERE st_id = {0}", Id);
-            Connexion.Executer("DELETE FROM stuff_feature WHERE stf_fk_id = {0}", Id);
+            Connexion.Executer("DELETE FROM stuff_feature WHERE stf_fk_stuff_id = {0}", Id);
         }
         #endregion
 
