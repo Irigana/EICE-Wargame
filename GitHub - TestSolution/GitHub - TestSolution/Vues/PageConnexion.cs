@@ -48,7 +48,7 @@ namespace EICE_WARGAME
             if ((textBoxAvecTextInvisibleLogin != null) && (textBoxAvecTextInvisibleMdp != null))
             {
                 s_GMBD.Initialiser();
-                Utilisateur Utilisateur = s_GMBD.ConnexionApplication(textBoxAvecTextInvisibleLogin.Text, textBoxAvecTextInvisibleMdp.Text);
+                Utilisateur Utilisateur = s_GMBD.ConnexionApplication(textBoxAvecTextInvisibleLogin.Text, Outils.hash(textBoxAvecTextInvisibleMdp.Text));
                 if (Utilisateur == null)
                 {
                     errorProviderConnexion.SetError(textBoxAvecTextInvisibleLogin, "Le login ou le mot de passe est incorrect");

@@ -42,7 +42,7 @@ namespace EICE_WARGAME
 
             Utilisateur NouvelUtilisateur = new Utilisateur();
             NouvelUtilisateur.Login = textBoxAvecTextInvisibleLogin.Text;
-            NouvelUtilisateur.MotDePasse = textBoxAvecTextInvisibleMdp.Text;
+            NouvelUtilisateur.MotDePasse = Outils.hash(textBoxAvecTextInvisibleMdp.Text);
             NouvelUtilisateur.Role = Program.GMBD.EnumererRole(null, null, new MyDB.CodeSql("WHERE role.r_id = {0}", 1), null).FirstOrDefault();
 
             if((UtilisateurExistant == null) && (NouvelUtilisateur.EstValide))

@@ -5,6 +5,8 @@ using System.Text;
 using System.Globalization;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
+using System.IO;
+using System.Security.Cryptography;
 
 namespace EICE_WARGAME
 {
@@ -38,6 +40,22 @@ namespace EICE_WARGAME
         /// <para>Utilisée pour la gestion du séparateur décimal par le caractère .</para>
         /// </summary>
         private static readonly CultureInfo c_CultureAnglaise = CultureInfo.GetCultureInfo("EN-US");
+
+        public static string hash(string password)
+        {
+            using (MD5 md5 = MD5.Create())
+            {
+                byte[] PasswordByte = Encoding.ASCII.GetBytes(password);
+                byte[] hashBytes = md5.ComputeHash(PasswordByte);
+
+                StringBuilder sb = new StringBuilder();
+                for (int i = 0; i < hashBytes.Length; i++)
+                {
+                    sb.Append(hashBytes[i].ToString("X2"));
+                }
+                return sb.ToString();
+            }
+        }
 
         /// <summary>
         /// Teste si le caractère spécifié est une lettre (en minuscule ou en majuscule, accentuée ou non)
