@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace EICE_WARGAME.Modeles
+namespace EICE_WARGAME
 {
-    class StuffFeature : Entite<StuffFeature, StuffFeature.Champ>
+    public class StuffFeature : Entite<StuffFeature, StuffFeature.Champ>
     {
         /// <summary>
         /// Champs décrivant cette stuff_feature

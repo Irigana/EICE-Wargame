@@ -30,28 +30,15 @@ namespace EICE_WARGAME
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            this.buttonSInscrire = new System.Windows.Forms.Button();
             this.linkLabelDejaInscrit = new System.Windows.Forms.LinkLabel();
             this.labelInscription = new System.Windows.Forms.Label();
             this.errorProviderInscription = new System.Windows.Forms.ErrorProvider(this.components);
+            this.buttonSInscrire = new System.Windows.Forms.Button();
             this.textBoxAvecTextInvisibleMdpConf = new EICE_WARGAME.TextBoxAvecTextInvisible();
             this.textBoxAvecTextInvisibleMdp = new EICE_WARGAME.TextBoxAvecTextInvisible();
             this.textBoxAvecTextInvisibleLogin = new EICE_WARGAME.TextBoxAvecTextInvisible();
             ((System.ComponentModel.ISupportInitialize)(this.errorProviderInscription)).BeginInit();
             this.SuspendLayout();
-            // 
-            // buttonSInscrire
-            // 
-            this.buttonSInscrire.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.buttonSInscrire.Image = global::EICE_WARGAME.Properties.Resources.Validation;
-            this.buttonSInscrire.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.buttonSInscrire.Location = new System.Drawing.Point(662, 473);
-            this.buttonSInscrire.Name = "buttonSInscrire";
-            this.buttonSInscrire.Size = new System.Drawing.Size(237, 36);
-            this.buttonSInscrire.TabIndex = 4;
-            this.buttonSInscrire.Text = "S\'inscrire";
-            this.buttonSInscrire.UseVisualStyleBackColor = true;
-            this.buttonSInscrire.Click += new System.EventHandler(this.buttonSInscrire_Click);
             // 
             // linkLabelDejaInscrit
             // 
@@ -78,6 +65,18 @@ namespace EICE_WARGAME
             // errorProviderInscription
             // 
             this.errorProviderInscription.ContainerControl = this;
+            // 
+            // buttonSInscrire
+            // 
+            this.buttonSInscrire.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
+            this.buttonSInscrire.Image = global::EICE_WARGAME.Properties.Resources.Validation25px;
+            this.buttonSInscrire.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.buttonSInscrire.Location = new System.Drawing.Point(662, 462);
+            this.buttonSInscrire.Name = "buttonSInscrire";
+            this.buttonSInscrire.Size = new System.Drawing.Size(237, 32);
+            this.buttonSInscrire.TabIndex = 6;
+            this.buttonSInscrire.Text = "S\'inscrire";
+            this.buttonSInscrire.UseVisualStyleBackColor = true;
             // 
             // textBoxAvecTextInvisibleMdpConf
             // 
@@ -116,9 +115,9 @@ namespace EICE_WARGAME
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.buttonSInscrire);
             this.Controls.Add(this.labelInscription);
             this.Controls.Add(this.linkLabelDejaInscrit);
-            this.Controls.Add(this.buttonSInscrire);
             this.Controls.Add(this.textBoxAvecTextInvisibleMdpConf);
             this.Controls.Add(this.textBoxAvecTextInvisibleMdp);
             this.Controls.Add(this.textBoxAvecTextInvisibleLogin);
@@ -134,9 +133,9 @@ namespace EICE_WARGAME
         private TextBoxAvecTextInvisible textBoxAvecTextInvisibleLogin;
         private TextBoxAvecTextInvisible textBoxAvecTextInvisibleMdp;
         private TextBoxAvecTextInvisible textBoxAvecTextInvisibleMdpConf;
-        private System.Windows.Forms.Button buttonSInscrire;
         private System.Windows.Forms.LinkLabel linkLabelDejaInscrit;
         private System.Windows.Forms.Label labelInscription;
         private System.Windows.Forms.ErrorProvider errorProviderInscription;
+        private System.Windows.Forms.Button buttonSInscrire;
     }
 }

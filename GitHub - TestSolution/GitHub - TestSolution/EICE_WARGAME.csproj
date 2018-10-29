@@ -46,10 +46,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="MenuAdmin.cs">
+    <Compile Include="Vues\MenuAdmin.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="MenuAdmin.Designer.cs">
+    <Compile Include="Vues\MenuAdmin.Designer.cs">
       <DependentUpon>MenuAdmin.cs</DependentUpon>
     </Compile>
     <Compile Include="Modeles\Faction.cs" />
@@ -162,41 +162,18 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\CadenaFerme1.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\CadenaOuvert25px.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\CadenaFerme25px.png" />
-  </ItemGroup>
-  <ItemGroup>
     <ProjectReference Include="..\..\PDSGBD\PDSGBD.csproj">
       <Project>{9b3289f9-8d92-41e3-abe9-bfcfcab37266}</Project>
       <Name>PDSGBD</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\Validation.png" />
-  </ItemGroup>
-  <ItemGroup>
+    <Content Include="Informations\SchemaDB.PNG" />
+    <None Include="Resources\Validation25px.png" />
+    <None Include="Resources\CadenaOuvert25px.png" />
     <None Include="Resources\CadenaFerme75px.png" />
   </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\CadenaFerme25px1.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\Validation1.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\UserIcon2.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\UserIcon25px.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="Informations\SchemaDB.PNG" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

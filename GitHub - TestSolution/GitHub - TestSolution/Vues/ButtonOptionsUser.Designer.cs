@@ -66,7 +66,6 @@
             this.buttonUser.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonUser.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F);
             this.buttonUser.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.buttonUser.Image = global::EICE_WARGAME.Properties.Resources.UserIcon25px;
             this.buttonUser.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.buttonUser.Location = new System.Drawing.Point(0, 0);
             this.buttonUser.Name = "buttonUser";

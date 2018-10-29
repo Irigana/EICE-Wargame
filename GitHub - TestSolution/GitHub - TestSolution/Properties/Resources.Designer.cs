@@ -63,16 +63,6 @@ namespace EICE_WARGAME.Properties {
         /// <summary>
         ///   Recherche une ressource localisée de type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap CadenaFerme25px {
-            get {
-                object obj = ResourceManager.GetObject("CadenaFerme25px", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Recherche une ressource localisée de type System.Drawing.Bitmap.
-        /// </summary>
         internal static System.Drawing.Bitmap CadenaFerme75px {
             get {
                 object obj = ResourceManager.GetObject("CadenaFerme75px", resourceCulture);
@@ -83,9 +73,9 @@ namespace EICE_WARGAME.Properties {
         /// <summary>
         ///   Recherche une ressource localisée de type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap UserIcon25px {
+        internal static System.Drawing.Bitmap CadenaOuvert25px {
             get {
-                object obj = ResourceManager.GetObject("UserIcon25px", resourceCulture);
+                object obj = ResourceManager.GetObject("CadenaOuvert25px", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -93,9 +83,9 @@ namespace EICE_WARGAME.Properties {
         /// <summary>
         ///   Recherche une ressource localisée de type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap Validation {
+        internal static System.Drawing.Bitmap Validation25px {
             get {
-                object obj = ResourceManager.GetObject("Validation", resourceCulture);
+                object obj = ResourceManager.GetObject("Validation25px", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

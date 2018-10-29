@@ -33,10 +33,10 @@ namespace EICE_WARGAME
             this.labelSeConnecter = new System.Windows.Forms.Label();
             this.linkLabelCreerCompte = new System.Windows.Forms.LinkLabel();
             this.errorProviderConnexion = new System.Windows.Forms.ErrorProvider(this.components);
-            this.textBoxAvecTextInvisibleMdp = new EICE_WARGAME.TextBoxAvecTextInvisible();
-            this.textBoxAvecTextInvisibleLogin = new EICE_WARGAME.TextBoxAvecTextInvisible();
             this.pictureBoxCadenaFerme = new System.Windows.Forms.PictureBox();
             this.buttonConnexion = new System.Windows.Forms.Button();
+            this.textBoxAvecTextInvisibleMdp = new EICE_WARGAME.TextBoxAvecTextInvisible();
+            this.textBoxAvecTextInvisibleLogin = new EICE_WARGAME.TextBoxAvecTextInvisible();
             ((System.ComponentModel.ISupportInitialize)(this.errorProviderConnexion)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxCadenaFerme)).BeginInit();
             this.SuspendLayout();
@@ -67,6 +67,35 @@ namespace EICE_WARGAME
             // 
             this.errorProviderConnexion.ContainerControl = this;
             // 
+            // pictureBoxCadenaFerme
+            // 
+            this.pictureBoxCadenaFerme.Image = global::EICE_WARGAME.Properties.Resources.CadenaFerme75px;
+            this.pictureBoxCadenaFerme.Location = new System.Drawing.Point(725, 85);
+            this.pictureBoxCadenaFerme.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.pictureBoxCadenaFerme.Name = "pictureBoxCadenaFerme";
+            this.pictureBoxCadenaFerme.Size = new System.Drawing.Size(96, 95);
+            this.pictureBoxCadenaFerme.TabIndex = 5;
+            this.pictureBoxCadenaFerme.TabStop = false;
+            // 
+            // buttonConnexion
+            // 
+            this.buttonConnexion.BackColor = System.Drawing.SystemColors.Window;
+            this.buttonConnexion.FlatAppearance.BorderColor = System.Drawing.SystemColors.ControlDarkDark;
+            this.buttonConnexion.FlatAppearance.BorderSize = 2;
+            this.buttonConnexion.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonConnexion.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.buttonConnexion.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.buttonConnexion.Image = global::EICE_WARGAME.Properties.Resources.CadenaOuvert25px;
+            this.buttonConnexion.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.buttonConnexion.Location = new System.Drawing.Point(660, 385);
+            this.buttonConnexion.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.buttonConnexion.Name = "buttonConnexion";
+            this.buttonConnexion.Size = new System.Drawing.Size(232, 46);
+            this.buttonConnexion.TabIndex = 2;
+            this.buttonConnexion.Text = "Se connecter";
+            this.buttonConnexion.UseVisualStyleBackColor = false;
+            this.buttonConnexion.Click += new System.EventHandler(this.buttonConnecter_Click);
+            // 
             // textBoxAvecTextInvisibleMdp
             // 
             this.textBoxAvecTextInvisibleMdp.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
@@ -91,35 +120,6 @@ namespace EICE_WARGAME
             this.textBoxAvecTextInvisibleLogin.Size = new System.Drawing.Size(231, 28);
             this.textBoxAvecTextInvisibleLogin.TabIndex = 0;
             this.textBoxAvecTextInvisibleLogin.Tag = "";
-            // 
-            // pictureBoxCadenaFerme
-            // 
-            this.pictureBoxCadenaFerme.Image = global::EICE_WARGAME.Properties.Resources.CadenaFerme75px;
-            this.pictureBoxCadenaFerme.Location = new System.Drawing.Point(725, 85);
-            this.pictureBoxCadenaFerme.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.pictureBoxCadenaFerme.Name = "pictureBoxCadenaFerme";
-            this.pictureBoxCadenaFerme.Size = new System.Drawing.Size(96, 95);
-            this.pictureBoxCadenaFerme.TabIndex = 5;
-            this.pictureBoxCadenaFerme.TabStop = false;
-            // 
-            // buttonConnexion
-            // 
-            this.buttonConnexion.BackColor = System.Drawing.SystemColors.Window;
-            this.buttonConnexion.FlatAppearance.BorderColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.buttonConnexion.FlatAppearance.BorderSize = 2;
-            this.buttonConnexion.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.buttonConnexion.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.buttonConnexion.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.buttonConnexion.Image = global::EICE_WARGAME.Properties.Resources.CadenaFerme25px;
-            this.buttonConnexion.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.buttonConnexion.Location = new System.Drawing.Point(660, 385);
-            this.buttonConnexion.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.buttonConnexion.Name = "buttonConnexion";
-            this.buttonConnexion.Size = new System.Drawing.Size(232, 46);
-            this.buttonConnexion.TabIndex = 2;
-            this.buttonConnexion.Text = "Se connecter";
-            this.buttonConnexion.UseVisualStyleBackColor = false;
-            this.buttonConnexion.Click += new System.EventHandler(this.buttonConnecter_Click);
             // 
             // PageConnexion
             // 

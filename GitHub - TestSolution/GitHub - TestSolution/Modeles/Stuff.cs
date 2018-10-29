@@ -46,7 +46,12 @@ namespace EICE_WARGAME
         /// Stocke le type de cette Stuff
         /// </summary>
         private Type m_Type;
-		
+
+        /// <summary>
+        /// Stocke les caractéristiques de cette Stuff
+        /// </summary>
+        private List<StuffFeature> m_Features;
+        
 		#endregion
 
 		#region Membres publics
@@ -115,6 +120,17 @@ namespace EICE_WARGAME
                 }
             }
         }
+
+        /// <summary>
+        /// Liste des Types de Stuff
+        /// </summary>
+        public IEnumerable<StuffFeature> Features
+        {
+            get
+            {
+                return EnumererStuffFeature();
+            }
+        }
         #endregion
 
         #region Constructeurs
@@ -126,7 +142,8 @@ namespace EICE_WARGAME
         {
             m_Name = string.Empty;
             m_Visibility = false;
-		}
+            m_Features = new List<StuffFeature>();
+        }
 
         /// <summary>
         /// Constructeur spécifique
@@ -207,14 +224,34 @@ namespace EICE_WARGAME
 				return new PDSGBD.MyDB.CodeSql("st_name = {0}, st_fk_type_id = {1}, st_visibility = {2}", m_Name, m_Type.Id, m_Visibility);
             }
         }
-        
-		/// <summary>
+
+        /// <summary>
+        /// Permet d'énumrer les stuff_features liés à cette stuff
+        /// </summary>
+        /// <returns></returns>
+        private IEnumerable<StuffFeature> EnumererStuffFeature()
+        {
+            if (base.Connexion == null) return new StuffFeature[0];
+            return StuffFeature.Enumerer(Connexion, Connexion.Enumerer(
+                @"SELECT st_id, st_name,
+                            stf_id, stf_value,
+                            fe_id, fe_name,
+                    FROM stuff
+                    INNER JOIN stuff_feature on st_id = stf_fk_stuff_id
+                    INNER JOIN feature on fe_id = stf_fk_feature_id
+                    WHERE (st_id = {0}",
+                Id));
+        }
+
+           
+        /// <summary>
         /// Permet de supprimer tous les changements de Stuffus liés à ce projet
         /// </summary>
         /// <param name="Connexion">Connexion au serveur MySQL</param>
         public override void SupprimerEnCascade(PDSGBD.MyDB Connexion)
         {
             Connexion.Executer("DELETE FROM stuff WHERE st_id = {0}", Id);
+            Connexion.Executer("DELETE FROM stuff_feature WHERE stf_fk_id = {0}", Id);
         }
         #endregion
 
