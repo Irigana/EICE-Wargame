@@ -125,6 +125,9 @@
     <EmbeddedResource Include="Form_Principal.resx">
       <DependentUpon>Form_Principal.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Vues\MenuAdmin.resx">
+      <DependentUpon>MenuAdmin.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Vues\PageEditionUser.resx">
       <DependentUpon>PageEditionUser.cs</DependentUpon>
     </EmbeddedResource>
@@ -169,6 +172,10 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Informations\SchemaDB.PNG" />
+    <None Include="Resources\MenuAdminUserIcon150px.png" />
+    <None Include="Resources\Scenario75px.png" />
+    <None Include="Resources\Equipement.png" />
+    <None Include="Resources\FigurineWarhammer.png" />
     <None Include="Resources\Validation25px.png" />
     <None Include="Resources\CadenaOuvert25px.png" />
     <None Include="Resources\CadenaFerme75px.png" />

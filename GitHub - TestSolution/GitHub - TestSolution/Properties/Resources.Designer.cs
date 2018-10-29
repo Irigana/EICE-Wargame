@@ -83,6 +83,46 @@ namespace EICE_WARGAME.Properties {
         /// <summary>
         ///   Recherche une ressource localisée de type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap Equipement {
+            get {
+                object obj = ResourceManager.GetObject("Equipement", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une ressource localisée de type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap FigurineWarhammer {
+            get {
+                object obj = ResourceManager.GetObject("FigurineWarhammer", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une ressource localisée de type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap MenuAdminUserIcon150px {
+            get {
+                object obj = ResourceManager.GetObject("MenuAdminUserIcon150px", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une ressource localisée de type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Scenario75px {
+            get {
+                object obj = ResourceManager.GetObject("Scenario75px", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une ressource localisée de type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap Validation25px {
             get {
                 object obj = ResourceManager.GetObject("Validation25px", resourceCulture);
