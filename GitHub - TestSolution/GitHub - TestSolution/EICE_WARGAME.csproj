@@ -46,10 +46,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="PageAjouterArme.cs">
+    <Compile Include="Vues\PageAjouterArme.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="PageAjouterArme.Designer.cs">
+    <Compile Include="Vues\PageAjouterArme.Designer.cs">
       <DependentUpon>PageAjouterArme.cs</DependentUpon>
     </Compile>
     <Compile Include="Vues\MenuAdmin.cs">
@@ -134,6 +134,9 @@
     <EmbeddedResource Include="Vues\MenuAdmin.resx">
       <DependentUpon>MenuAdmin.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Vues\PageAjouterArme.resx">
+      <DependentUpon>PageAjouterArme.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Vues\PageEditionUser.resx">
       <DependentUpon>PageEditionUser.cs</DependentUpon>
     </EmbeddedResource>
@@ -178,6 +181,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Informations\SchemaDB.PNG" />
+    <None Include="Resources\UserIcon25px.png" />
     <None Include="Resources\MenuAdminUserIcon150px.png" />
     <None Include="Resources\Scenario75px.png" />
     <None Include="Resources\Equipement.png" />

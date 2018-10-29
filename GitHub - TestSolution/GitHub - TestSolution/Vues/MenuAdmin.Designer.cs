@@ -40,9 +40,9 @@
             this.buttonEquipement.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonEquipement.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
             this.buttonEquipement.Image = global::EICE_WARGAME.Properties.Resources.Equipement;
-            this.buttonEquipement.Location = new System.Drawing.Point(-1, 272);
+            this.buttonEquipement.Location = new System.Drawing.Point(-1, 362);
             this.buttonEquipement.Name = "buttonEquipement";
-            this.buttonEquipement.Size = new System.Drawing.Size(190, 130);
+            this.buttonEquipement.Size = new System.Drawing.Size(190, 175);
             this.buttonEquipement.TabIndex = 2;
             this.buttonEquipement.Text = "Equipements";
             this.buttonEquipement.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
@@ -55,9 +55,9 @@
             this.buttonFigurine.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
             this.buttonFigurine.Image = global::EICE_WARGAME.Properties.Resources.FigurineWarhammer;
             this.buttonFigurine.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.buttonFigurine.Location = new System.Drawing.Point(0, 136);
+            this.buttonFigurine.Location = new System.Drawing.Point(0, 181);
             this.buttonFigurine.Name = "buttonFigurine";
-            this.buttonFigurine.Size = new System.Drawing.Size(190, 130);
+            this.buttonFigurine.Size = new System.Drawing.Size(190, 175);
             this.buttonFigurine.TabIndex = 1;
             this.buttonFigurine.Text = "Figurine";
             this.buttonFigurine.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
@@ -71,7 +71,7 @@
             this.buttonScenario.Image = global::EICE_WARGAME.Properties.Resources.Scenario75px;
             this.buttonScenario.Location = new System.Drawing.Point(0, 0);
             this.buttonScenario.Name = "buttonScenario";
-            this.buttonScenario.Size = new System.Drawing.Size(190, 130);
+            this.buttonScenario.Size = new System.Drawing.Size(190, 175);
             this.buttonScenario.TabIndex = 0;
             this.buttonScenario.Text = "Scenario";
             this.buttonScenario.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
@@ -83,9 +83,9 @@
             this.buttonMenuUser.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonMenuUser.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
             this.buttonMenuUser.Image = global::EICE_WARGAME.Properties.Resources.MenuAdminUserIcon150px;
-            this.buttonMenuUser.Location = new System.Drawing.Point(0, 408);
+            this.buttonMenuUser.Location = new System.Drawing.Point(0, 543);
             this.buttonMenuUser.Name = "buttonMenuUser";
-            this.buttonMenuUser.Size = new System.Drawing.Size(190, 134);
+            this.buttonMenuUser.Size = new System.Drawing.Size(190, 175);
             this.buttonMenuUser.TabIndex = 3;
             this.buttonMenuUser.Text = "Utilisateurs";
             this.buttonMenuUser.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
@@ -101,7 +101,7 @@
             this.Controls.Add(this.buttonFigurine);
             this.Controls.Add(this.buttonScenario);
             this.Name = "MenuAdmin";
-            this.Size = new System.Drawing.Size(190, 542);
+            this.Size = new System.Drawing.Size(190, 750);
             this.ResumeLayout(false);
 
         }

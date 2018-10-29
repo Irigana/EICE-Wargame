@@ -30,6 +30,7 @@
         {
             this.labelMenuPrincipal = new System.Windows.Forms.Label();
             this.buttonOptionsUser1 = new EICE_WARGAME.ButtonOptionsUser();
+            this.buttonTemporaireAjoutArme = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // labelMenuPrincipal
@@ -51,10 +52,21 @@
             this.buttonOptionsUser1.TabIndex = 1;
             this.buttonOptionsUser1.Utilisateur = null;
             // 
+            // buttonTemporaireAjoutArme
+            // 
+            this.buttonTemporaireAjoutArme.Location = new System.Drawing.Point(557, 227);
+            this.buttonTemporaireAjoutArme.Name = "buttonTemporaireAjoutArme";
+            this.buttonTemporaireAjoutArme.Size = new System.Drawing.Size(431, 48);
+            this.buttonTemporaireAjoutArme.TabIndex = 2;
+            this.buttonTemporaireAjoutArme.Text = "bouton temporaire ajout d\'arme";
+            this.buttonTemporaireAjoutArme.UseVisualStyleBackColor = true;
+            this.buttonTemporaireAjoutArme.Click += new System.EventHandler(this.buttonTemporaireAjoutArme_Click);
+            // 
             // PageMenuPrincipal
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.buttonTemporaireAjoutArme);
             this.Controls.Add(this.buttonOptionsUser1);
             this.Controls.Add(this.labelMenuPrincipal);
             this.Name = "PageMenuPrincipal";
@@ -69,5 +81,6 @@
 
         private System.Windows.Forms.Label labelMenuPrincipal;
         private EICE_WARGAME.ButtonOptionsUser buttonOptionsUser1;
+        private System.Windows.Forms.Button buttonTemporaireAjoutArme;
     }
 }

@@ -50,5 +50,15 @@ namespace EICE_WARGAME
                 Form_Principal.Instance.CreerPageCourante<PageConnexion>();
             }
         }
+
+        private void buttonTemporaireAjoutArme_Click(object sender, EventArgs e)
+        {
+            Form_Principal.Instance.CreerPageCourante<PageAjouterArme>(
+                        (Page) =>
+                        {
+                            Page.Utilisateur = Utilisateur;
+                            return true;
+                        });
+        }
     }
 }
