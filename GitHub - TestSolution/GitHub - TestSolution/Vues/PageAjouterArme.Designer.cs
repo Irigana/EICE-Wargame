@@ -45,6 +45,7 @@
             this.buttonOptionsUser1 = new EICE_WARGAME.ButtonOptionsUser();
             this.textBoxAvecTextInvisible1 = new EICE_WARGAME.TextBoxAvecTextInvisible();
             this.menuAdmin1 = new EICE_WARGAME.MenuAdmin();
+            this.buttonAjouter = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownPortee)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown2)).BeginInit();
@@ -202,10 +203,24 @@
             this.menuAdmin1.Size = new System.Drawing.Size(190, 750);
             this.menuAdmin1.TabIndex = 0;
             // 
+            // buttonAjouter
+            // 
+            this.buttonAjouter.BackColor = System.Drawing.SystemColors.Window;
+            this.buttonAjouter.FlatAppearance.BorderColor = System.Drawing.SystemColors.WindowFrame;
+            this.buttonAjouter.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonAjouter.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
+            this.buttonAjouter.Location = new System.Drawing.Point(1329, 656);
+            this.buttonAjouter.Name = "buttonAjouter";
+            this.buttonAjouter.Size = new System.Drawing.Size(140, 47);
+            this.buttonAjouter.TabIndex = 18;
+            this.buttonAjouter.Text = "Ajouter";
+            this.buttonAjouter.UseVisualStyleBackColor = false;
+            // 
             // PageAjouterArme
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.buttonAjouter);
             this.Controls.Add(this.listeDeroulanteType);
             this.Controls.Add(this.buttonOptionsUser1);
             this.Controls.Add(this.checkedListBoxEquipable);
@@ -252,5 +267,6 @@
         private System.Windows.Forms.CheckedListBox checkedListBoxEquipable;
         private ButtonOptionsUser buttonOptionsUser1;
         private ListeDeroulanteType listeDeroulanteType;
+        private System.Windows.Forms.Button buttonAjouter;
     }
 }
