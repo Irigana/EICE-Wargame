@@ -48,5 +48,10 @@ namespace EICE_WARGAME
                 Form_Principal.Instance.CreerPageCourante<PageConnexion>();
             }
         }
+
+        private void buttonAjouter_Click(object sender, EventArgs e)
+        {
+           
+        }
     }
 }

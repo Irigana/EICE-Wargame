@@ -63,6 +63,7 @@ namespace EICE_WARGAME
 					{
 						ModifierChamp(Champ.Name, ref m_Name, value);
 					}
+                    
 				}
 			}
 		}

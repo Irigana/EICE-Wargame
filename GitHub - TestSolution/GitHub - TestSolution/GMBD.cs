@@ -17,7 +17,7 @@ namespace EICE_WARGAME
         private static readonly MyDB.CodeSql c_NomTable_Type = new MyDB.CodeSql(new Type().NomDeLaTablePrincipale);
         private static readonly MyDB.CodeSql c_NomTable_Feature = new MyDB.CodeSql(new Feature().NomDeLaTablePrincipale);
         private static readonly MyDB.CodeSql c_NomTable_Stuff = new MyDB.CodeSql(new Stuff().NomDeLaTablePrincipale);
-
+        private static readonly MyDB.CodeSql c_NomTable_StuffFeature = new MyDB.CodeSql(new StuffFeature().NomDeLaTablePrincipale);
         /// <summary>
         /// Référence l'objet de connexion au serveur de base de données MySql
         /// </summary>
@@ -154,6 +154,15 @@ namespace EICE_WARGAME
             if (ClauseJoin == null) ClauseJoin = MyDB.CodeSql.Vide;
             if (ValeurSouhaitee == null) ValeurSouhaitee = new MyDB.CodeSql("*");
             return Stuff.Enumerer(m_BD, m_BD.Enumerer("SELECT {0} FROM {1} {2} {3} {4}", ValeurSouhaitee, c_NomTable_Stuff, ClauseJoin, ClauseWhere, ClauseOrderBy));
+        }
+
+        public IEnumerable<StuffFeature> EnumererStuffFeature(MyDB.CodeSql ValeurSouhaitee, MyDB.CodeSql ClauseJoin, MyDB.CodeSql ClauseWhere, MyDB.CodeSql ClauseOrderBy)
+        {
+            if (ClauseWhere == null) ClauseWhere = MyDB.CodeSql.Vide;
+            if (ClauseOrderBy == null) ClauseOrderBy = MyDB.CodeSql.Vide;
+            if (ClauseJoin == null) ClauseJoin = MyDB.CodeSql.Vide;
+            if (ValeurSouhaitee == null) ValeurSouhaitee = new MyDB.CodeSql("*");
+            return StuffFeature.Enumerer(m_BD, m_BD.Enumerer("SELECT {0} FROM {1} {2} {3} {4}", ValeurSouhaitee, c_NomTable_StuffFeature, ClauseJoin, ClauseWhere, ClauseOrderBy));
         }
         /*
         public IEnumerable<Faction> EnumererFaction(MyDB.CodeSql ValeurSouhaitee, MyDB.CodeSql ClauseJoin, MyDB.CodeSql ClauseWhere, MyDB.CodeSql ClauseOrderBy)

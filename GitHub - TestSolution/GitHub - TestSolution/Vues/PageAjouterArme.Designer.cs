@@ -215,6 +215,7 @@
             this.buttonAjouter.TabIndex = 18;
             this.buttonAjouter.Text = "Ajouter";
             this.buttonAjouter.UseVisualStyleBackColor = false;
+            this.buttonAjouter.Click += new System.EventHandler(this.buttonAjouter_Click);
             // 
             // PageAjouterArme
             // 

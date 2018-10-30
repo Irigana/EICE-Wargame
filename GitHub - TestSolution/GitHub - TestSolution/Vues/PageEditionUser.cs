@@ -60,8 +60,8 @@ namespace EICE_WARGAME
             {
                 Utilisateur UtilisateurEnEdition = Utilisateur;
                 // Si l'utilisateur a mis le bon mot de passe de confirmation et que son login a changé
-                if ((string.Compare(UtilisateurEnEdition.MotDePasse.ToString(), textBoxAvecTextInvisibleMdpInitial.Text.ToString()) == 0) 
-                    && (string.Compare(Utilisateur.Login.ToString(),textBoxAvecTextInvisibleLogin.Text.ToString()) != 0))
+                if ((string.Compare(UtilisateurEnEdition.MotDePasse.ToString(), Outils.hash(textBoxAvecTextInvisibleMdpInitial.Text.ToString())) == 0) 
+                    && (string.Compare(Utilisateur.Login.ToString(),Outils.hash(textBoxAvecTextInvisibleLogin.Text.ToString())) != 0))
                 {
                     UtilisateurEnEdition.Login = textBoxAvecTextInvisibleLogin.Text;
                     ModificationEffectuee = true;
@@ -71,19 +71,18 @@ namespace EICE_WARGAME
                     && ((textBoxAvecTextInvisibleConfNewMdp.Text != "") && (textBoxAvecTextInvisibleNouveauMdp.Text != ""))
                     && (string.Compare(textBoxAvecTextInvisibleNouveauMdp.Text.ToString(),textBoxAvecTextInvisibleConfNewMdp.Text.ToString()) == 0))
                 {
-                    UtilisateurEnEdition.MotDePasse = textBoxAvecTextInvisibleNouveauMdp.Text;
+                    UtilisateurEnEdition.MotDePasse = Outils.hash(textBoxAvecTextInvisibleNouveauMdp.Text);
                     ModificationEffectuee = true;
                 }
                 if((UtilisateurEnEdition.EstValide) && (ModificationEffectuee == true))
                 {
-                    Program.GMBD.ModifierUtilisateur(UtilisateurEnEdition);
-                    textBoxAvecTextInvisibleNouveauMdp.Text = "";
-                    textBoxAvecTextInvisibleNouveauMdp.RefreshMdpApresAcceptation();
-                    textBoxAvecTextInvisibleConfNewMdp.Text = "";
-                    textBoxAvecTextInvisibleConfNewMdp.RefreshMdpApresAcceptation();
-                    textBoxAvecTextInvisibleMdpInitial.Text = "";
-                    textBoxAvecTextInvisibleMdpInitial.RefreshMdpApresAcceptation();
-                    errorProviderEdition.Clear();
+                    Program.GMBD.ModifierUtilisateur(UtilisateurEnEdition);                    
+                    Form_Principal.Instance.CreerPageCourante<PageEditionUser>(
+                        (Page) =>
+                        {
+                            Page.Utilisateur = Utilisateur;
+                            return true;
+                        });
                 }
             }
         }
