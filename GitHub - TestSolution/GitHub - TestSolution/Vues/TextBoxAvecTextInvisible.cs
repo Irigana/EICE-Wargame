@@ -163,6 +163,16 @@ namespace EICE_WARGAME
                 }
             }
         }
-        
+
+
+        public event KeyEventHandler EnterPress;
+
+        private void Enter_Press(object sender, KeyEventArgs e)
+        {
+            
+            if (this.EnterPress != null)
+                this.EnterPress(this, e);
+        }
+
     }
 }

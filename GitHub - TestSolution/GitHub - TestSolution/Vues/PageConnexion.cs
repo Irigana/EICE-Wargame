@@ -22,7 +22,9 @@ namespace EICE_WARGAME
         {
             InitializeComponent();
             textBoxAvecTextInvisibleLogin.PlaceHolder = "Login";
-            textBoxAvecTextInvisibleMdp.PlaceHolder = "Mot de passe";   
+            textBoxAvecTextInvisibleMdp.PlaceHolder = "Mot de passe";
+            textBoxAvecTextInvisibleLogin.EnterPress += new KeyEventHandler(textBoxAvecTextInvisibleMdp_KeyDown);
+            textBoxAvecTextInvisibleMdp.EnterPress += new KeyEventHandler(textBoxAvecTextInvisibleMdp_KeyDown);
         }
 
         /// <summary>
@@ -72,7 +74,7 @@ namespace EICE_WARGAME
         }
 
         private void textBoxAvecTextInvisibleMdp_KeyDown(object sender, KeyEventArgs e)
-        {
+        {            
             if (e.KeyCode == Keys.Enter)
             {
                 buttonConnecter_Click(null, null);

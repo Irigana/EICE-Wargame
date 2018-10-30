@@ -35,6 +35,10 @@ namespace EICE_WARGAME
         {
             InitializeComponent();
             m_Utilisateur = null;
+            textBoxAvecTextInvisibleLogin.EnterPress += new KeyEventHandler(textBoxAvecTextInvisible_KeyDown);
+            textBoxAvecTextInvisibleMdpInitial.EnterPress += new KeyEventHandler(textBoxAvecTextInvisible_KeyDown);
+            textBoxAvecTextInvisibleNouveauMdp.EnterPress += new KeyEventHandler(textBoxAvecTextInvisible_KeyDown);
+            textBoxAvecTextInvisibleConfNewMdp.EnterPress += new KeyEventHandler(textBoxAvecTextInvisible_KeyDown);
         }
 
         private void PageEditionUser_Load(object sender, EventArgs e)
@@ -61,20 +65,32 @@ namespace EICE_WARGAME
                 Utilisateur UtilisateurEnEdition = Utilisateur;
                 // Si l'utilisateur a mis le bon mot de passe de confirmation et que son login a changé
                 if ((string.Compare(UtilisateurEnEdition.MotDePasse.ToString(), Outils.hash(textBoxAvecTextInvisibleMdpInitial.Text.ToString())) == 0) 
-                    && (string.Compare(Utilisateur.Login.ToString(),Outils.hash(textBoxAvecTextInvisibleLogin.Text.ToString())) != 0))
+                    && (string.Compare(Utilisateur.Login.ToString(),textBoxAvecTextInvisibleLogin.Text.ToString()) != 0))
                 {
                     UtilisateurEnEdition.Login = textBoxAvecTextInvisibleLogin.Text;
                     ModificationEffectuee = true;
                 }
+                else if(textBoxAvecTextInvisibleMdpInitial.Text == "")
+                {
+                    // Ne rien faire
+                }
+                else if (string.Compare(UtilisateurEnEdition.MotDePasse.ToString(), Outils.hash(textBoxAvecTextInvisibleMdpInitial.Text.ToString())) != 0)
+                {
+                    errorProviderEdition.SetError(textBoxAvecTextInvisibleMdpInitial, "Le mot de pas n'est pas valide veuillez mettre le mot de passe de ce compte");
+                }
                 // Si le mot de passe de l'utilisateur est différent et que les textbox du nouveau mot de passe sont pas vide et égale
-                if((string.Compare(UtilisateurEnEdition.MotDePasse.ToString(),textBoxAvecTextInvisibleNouveauMdp.Text.ToString()) != 0)
+                if ((string.Compare(UtilisateurEnEdition.MotDePasse.ToString(),textBoxAvecTextInvisibleNouveauMdp.Text.ToString()) != 0)
                     && ((textBoxAvecTextInvisibleConfNewMdp.Text != "") && (textBoxAvecTextInvisibleNouveauMdp.Text != ""))
                     && (string.Compare(textBoxAvecTextInvisibleNouveauMdp.Text.ToString(),textBoxAvecTextInvisibleConfNewMdp.Text.ToString()) == 0))
                 {
                     UtilisateurEnEdition.MotDePasse = Outils.hash(textBoxAvecTextInvisibleNouveauMdp.Text);
                     ModificationEffectuee = true;
                 }
-                if((UtilisateurEnEdition.EstValide) && (ModificationEffectuee == true))
+                else if((string.Compare(textBoxAvecTextInvisibleNouveauMdp.Text.ToString(), textBoxAvecTextInvisibleConfNewMdp.Text.ToString()) != 0))
+                {
+                    errorProviderEdition.SetError(textBoxAvecTextInvisibleConfNewMdp, "Le mot de pas ne correspond pas au nouveau mot de passe que vous souhaitez mettre");
+                }
+                if ((UtilisateurEnEdition.EstValide) && (ModificationEffectuee == true))
                 {
                     Program.GMBD.ModifierUtilisateur(UtilisateurEnEdition);                    
                     Form_Principal.Instance.CreerPageCourante<PageEditionUser>(
@@ -95,6 +111,14 @@ namespace EICE_WARGAME
                             Page.Utilisateur = Utilisateur;
                             return true;
                         });
+        }
+
+        private void textBoxAvecTextInvisible_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                buttonValiderModif_Click(null, null);
+            }
         }
     }
 }
