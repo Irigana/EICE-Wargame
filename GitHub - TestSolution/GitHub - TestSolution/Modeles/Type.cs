@@ -189,7 +189,7 @@ namespace EICE_WARGAME
             return Stuff.Enumerer(Connexion, Connexion.Enumerer(
                 @"SELECT st_id, st_name,
                     FROM stuff
-                    WHERE (ty_id = {0}",
+                    WHERE ty_id = {0}",
                 Id));
         }
 

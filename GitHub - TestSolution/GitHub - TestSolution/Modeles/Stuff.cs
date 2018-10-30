@@ -234,12 +234,12 @@ namespace EICE_WARGAME
             if (base.Connexion == null) return new StuffFeature[0];
             return StuffFeature.Enumerer(Connexion, Connexion.Enumerer(
                 @"SELECT st_id, st_name,
-                            stf_id, stf_value,
-                            fe_id, fe_name,
-                    FROM stuff
-                    INNER JOIN stuff_feature on st_id = stf_fk_stuff_id
-                    INNER JOIN feature on fe_id = stf_fk_feature_id
-                    WHERE (st_id = {0}",
+                         stf_id, stf_value,
+                         fe_id, fe_name
+                FROM stuff
+                INNER JOIN stuff_feature on st_id = stf_fk_stuff_id
+                INNER JOIN feature on fe_id = stf_fk_feature_id
+                WHERE st_id = {0}",
                 Id));
         }
 

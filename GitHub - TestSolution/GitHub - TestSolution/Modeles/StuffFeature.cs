@@ -34,7 +34,7 @@ namespace EICE_WARGAME
         /// <summary>
         /// Membre stockant la value 
         /// </summary>
-        private int m_Value;
+        private string m_Value;
 
         #endregion
 
@@ -94,7 +94,7 @@ namespace EICE_WARGAME
         /// <summary>
         /// Membre public permettant d'accéder à la value
         /// </summary>
-        public int Value
+        public string Value
         {
             get
             {
@@ -103,13 +103,18 @@ namespace EICE_WARGAME
 
             set
             {
-                if (value <= 0)
+                if (string.IsNullOrWhiteSpace(value))
                 {
-                    Declencher_SurErreur(this, Champ.Value, "Valeur négative ou nulle !");
+                    Declencher_SurErreur(this, Champ.Value, "Valeur vide ou ne contient que des espaces");
+                }
+                else if (value.Trim().Length > 20)
+                {
+                    Declencher_SurErreur(this, Champ.Value, "Ce champ peut contenir au maximum 20 caractères");
                 }
                 else
                 {
-                    if (!int.Equals(value, m_Value))
+                    value = value.Trim();
+                    if (!string.Equals(value, m_Value))
                     {
                         ModifierChamp(Champ.Value, ref m_Value, value);
                     }
@@ -129,7 +134,7 @@ namespace EICE_WARGAME
         {
             m_Stuff = null;
             m_Feature = null;
-            m_Value = 0;
+            m_Value = null;
         }
 
         /// <summary>
@@ -139,7 +144,7 @@ namespace EICE_WARGAME
         /// <param name="Stuff">Stuff de ce stuff_feature</param>
         /// <param name="Feature">Feature de ce stuff_feature</param>
         /// <param name="Value">Value de ce stuff_feature</param>
-        public StuffFeature(int Id, Stuff Stuff, Feature Feature, int Value)
+        public StuffFeature(int Id, Stuff Stuff, Feature Feature, string Value)
         : this()
         {
             DefinirId(Id);
@@ -162,7 +167,7 @@ namespace EICE_WARGAME
                 DefinirId(Enregistrement.ValeurChampComplet<int>(NomDeLaTablePrincipale, "stf_id"));
                 this.Stuff = new Stuff(Connexion, Enregistrement);
                 this.Feature = new Feature(Connexion, Enregistrement);
-                this.Value = Enregistrement.ValeurChampComplet<int>(NomDeLaTablePrincipale, "stf_value");
+                this.Value = Enregistrement.ValeurChampComplet<string>(NomDeLaTablePrincipale, "stf_value");
             }
         }
 
