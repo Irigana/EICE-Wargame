@@ -85,7 +85,7 @@ namespace EICE_WARGAME
                 }
                 else
                 {
-                    if ((value.Length >= 30) || (value.Length <= 1))
+                    if ((value.Length >= 32) || (value.Length <= 1))
                     {
                         Declencher_SurErreur(this, Champs.MotDePasse, "Le mot de passe doit être compris entre 1 et 100 caractères");
                     }
