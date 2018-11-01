@@ -37,6 +37,7 @@ namespace EICE_WARGAME
         {
             InitializeComponent();
             m_Utilisateur = null;
+            buttonDashboard.Hide();
         }               
 
         private void PageMenuPrincipal_Load(object sender, EventArgs e)
@@ -44,6 +45,16 @@ namespace EICE_WARGAME
             if (Utilisateur != null)
             {
                 buttonOptionsUser1.ButtonOptionsUserUpdate();
+                if(Utilisateur.Role.Id == 2)
+                {
+                    buttonDashboard.Show();
+                }
+                else
+                {
+                    this.buttonDeconnexion.Location = new Point(475, 325);
+
+
+                }
             }
             else
             {

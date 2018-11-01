@@ -33,7 +33,7 @@ namespace EICE_WARGAME
         public PageMenuDashboard()
         {
             InitializeComponent();
-            m_Utilisateur = null;
+            m_Utilisateur = null;            
         }
 
         private void PageMenuDashBoard_Load(object sender, EventArgs e)
