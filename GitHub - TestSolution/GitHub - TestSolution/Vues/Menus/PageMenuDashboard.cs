@@ -48,6 +48,24 @@ namespace EICE_WARGAME
             }
         }
 
-        
+        private void buttonFigurines_Click(object sender, EventArgs e)
+        {
+            Form_Principal.Instance.CreerPageCourante<PageAjouterArme>(
+                (page) =>
+            {
+                page.Utilisateur = Utilisateur;
+                return true;
+            });
+        }
+
+        private void buttonRetourMenuPrincipal_Click(object sender, EventArgs e)
+        {
+            Form_Principal.Instance.CreerPageCourante<PageMenuPrincipal>(
+                (page) =>
+                {
+                    page.Utilisateur = Utilisateur;
+                    return true;
+                });                          
+        }
     }
 }

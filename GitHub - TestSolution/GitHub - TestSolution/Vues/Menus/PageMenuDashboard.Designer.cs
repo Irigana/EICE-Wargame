@@ -78,6 +78,7 @@
             this.buttonFigurines.TabIndex = 3;
             this.buttonFigurines.Text = "Figurines";
             this.buttonFigurines.UseVisualStyleBackColor = false;
+            this.buttonFigurines.Click += new System.EventHandler(this.buttonFigurines_Click);
             // 
             // buttonRetourMenuPrincipal
             // 
@@ -93,6 +94,7 @@
             this.buttonRetourMenuPrincipal.TabIndex = 4;
             this.buttonRetourMenuPrincipal.Text = "Menu principal";
             this.buttonRetourMenuPrincipal.UseVisualStyleBackColor = false;
+            this.buttonRetourMenuPrincipal.Click += new System.EventHandler(this.buttonRetourMenuPrincipal_Click);
             // 
             // PageMenuDashboard
             // 

@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.labelAjoutArme = new System.Windows.Forms.Label();
+            this.labelCRUDArmes = new System.Windows.Forms.Label();
             this.panelLigneSeparatriceAjout = new System.Windows.Forms.Panel();
             this.labelNomArme = new System.Windows.Forms.Label();
             this.labelTypeArme = new System.Windows.Forms.Label();
@@ -49,20 +49,22 @@
             this.linkLabelDashboard = new System.Windows.Forms.LinkLabel();
             this.labelSepLink = new System.Windows.Forms.Label();
             this.labelFigurine = new System.Windows.Forms.Label();
+            this.buttonModifier = new System.Windows.Forms.Button();
+            this.buttonSupprimer = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownPortee)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown2)).BeginInit();
             this.SuspendLayout();
             // 
-            // labelAjoutArme
+            // labelCRUDArmes
             // 
-            this.labelAjoutArme.AutoSize = true;
-            this.labelAjoutArme.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F);
-            this.labelAjoutArme.Location = new System.Drawing.Point(223, 25);
-            this.labelAjoutArme.Name = "labelAjoutArme";
-            this.labelAjoutArme.Size = new System.Drawing.Size(242, 36);
-            this.labelAjoutArme.TabIndex = 1;
-            this.labelAjoutArme.Text = "Ajouter une arme";
+            this.labelCRUDArmes.AutoSize = true;
+            this.labelCRUDArmes.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F);
+            this.labelCRUDArmes.Location = new System.Drawing.Point(223, 25);
+            this.labelCRUDArmes.Name = "labelCRUDArmes";
+            this.labelCRUDArmes.Size = new System.Drawing.Size(188, 36);
+            this.labelCRUDArmes.TabIndex = 1;
+            this.labelCRUDArmes.Text = "Equipements";
             // 
             // panelLigneSeparatriceAjout
             // 
@@ -212,7 +214,7 @@
             this.buttonAjouter.FlatAppearance.BorderColor = System.Drawing.SystemColors.WindowFrame;
             this.buttonAjouter.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonAjouter.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
-            this.buttonAjouter.Location = new System.Drawing.Point(1329, 656);
+            this.buttonAjouter.Location = new System.Drawing.Point(1037, 678);
             this.buttonAjouter.Name = "buttonAjouter";
             this.buttonAjouter.Size = new System.Drawing.Size(140, 47);
             this.buttonAjouter.TabIndex = 18;
@@ -246,14 +248,42 @@
             this.labelFigurine.AutoSize = true;
             this.labelFigurine.Location = new System.Drawing.Point(322, 86);
             this.labelFigurine.Name = "labelFigurine";
-            this.labelFigurine.Size = new System.Drawing.Size(66, 17);
+            this.labelFigurine.Size = new System.Drawing.Size(90, 17);
             this.labelFigurine.TabIndex = 21;
-            this.labelFigurine.Text = "Figurines";
+            this.labelFigurine.Text = "Equipements";
+            // 
+            // buttonModifier
+            // 
+            this.buttonModifier.BackColor = System.Drawing.SystemColors.Window;
+            this.buttonModifier.FlatAppearance.BorderColor = System.Drawing.SystemColors.WindowFrame;
+            this.buttonModifier.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonModifier.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
+            this.buttonModifier.Location = new System.Drawing.Point(1183, 678);
+            this.buttonModifier.Name = "buttonModifier";
+            this.buttonModifier.Size = new System.Drawing.Size(140, 47);
+            this.buttonModifier.TabIndex = 22;
+            this.buttonModifier.Text = "Modifier";
+            this.buttonModifier.UseVisualStyleBackColor = false;
+            // 
+            // buttonSupprimer
+            // 
+            this.buttonSupprimer.BackColor = System.Drawing.SystemColors.Window;
+            this.buttonSupprimer.FlatAppearance.BorderColor = System.Drawing.SystemColors.WindowFrame;
+            this.buttonSupprimer.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonSupprimer.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
+            this.buttonSupprimer.Location = new System.Drawing.Point(1329, 678);
+            this.buttonSupprimer.Name = "buttonSupprimer";
+            this.buttonSupprimer.Size = new System.Drawing.Size(140, 47);
+            this.buttonSupprimer.TabIndex = 23;
+            this.buttonSupprimer.Text = "Supprimer";
+            this.buttonSupprimer.UseVisualStyleBackColor = false;
             // 
             // PageAjouterArme
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.buttonSupprimer);
+            this.Controls.Add(this.buttonModifier);
             this.Controls.Add(this.labelFigurine);
             this.Controls.Add(this.labelSepLink);
             this.Controls.Add(this.linkLabelDashboard);
@@ -273,7 +303,7 @@
             this.Controls.Add(this.textBoxAvecTextInvisible1);
             this.Controls.Add(this.labelNomArme);
             this.Controls.Add(this.panelLigneSeparatriceAjout);
-            this.Controls.Add(this.labelAjoutArme);
+            this.Controls.Add(this.labelCRUDArmes);
             this.Controls.Add(this.menuAdmin1);
             this.Name = "PageAjouterArme";
             this.Size = new System.Drawing.Size(1500, 750);
@@ -288,7 +318,7 @@
         #endregion
 
         private MenuAdmin menuAdmin1;
-        private System.Windows.Forms.Label labelAjoutArme;
+        private System.Windows.Forms.Label labelCRUDArmes;
         private System.Windows.Forms.Panel panelLigneSeparatriceAjout;
         private System.Windows.Forms.Label labelNomArme;
         private TextBoxAvecTextInvisible textBoxAvecTextInvisible1;
@@ -308,5 +338,7 @@
         private System.Windows.Forms.LinkLabel linkLabelDashboard;
         private System.Windows.Forms.Label labelSepLink;
         private System.Windows.Forms.Label labelFigurine;
+        private System.Windows.Forms.Button buttonModifier;
+        private System.Windows.Forms.Button buttonSupprimer;
     }
 }
