@@ -52,8 +52,6 @@ namespace EICE_WARGAME
                 else
                 {
                     this.buttonDeconnexion.Location = new Point(475, 325);
-
-
                 }
             }
             else

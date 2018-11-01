@@ -86,6 +86,8 @@
             this.buttonRetourMenuPrincipal.FlatAppearance.BorderColor = System.Drawing.SystemColors.ControlDarkDark;
             this.buttonRetourMenuPrincipal.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonRetourMenuPrincipal.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F);
+            this.buttonRetourMenuPrincipal.Image = global::EICE_WARGAME.Properties.Resources.ReturnLogo35px;
+            this.buttonRetourMenuPrincipal.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.buttonRetourMenuPrincipal.Location = new System.Drawing.Point(631, 394);
             this.buttonRetourMenuPrincipal.Name = "buttonRetourMenuPrincipal";
             this.buttonRetourMenuPrincipal.Size = new System.Drawing.Size(300, 55);

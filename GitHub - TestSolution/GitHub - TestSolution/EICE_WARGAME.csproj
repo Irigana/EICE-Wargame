@@ -199,6 +199,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Informations\SchemaDB.PNG" />
+    <None Include="Resources\ReturnLogo35px.png" />
     <None Include="Resources\Dashboard150px.png" />
     <None Include="Resources\LogOffLogo30px.png" />
     <None Include="Resources\FigurineWarhammer30px.png" />
