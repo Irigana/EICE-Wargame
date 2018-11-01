@@ -83,6 +83,16 @@ namespace EICE_WARGAME.Properties {
         /// <summary>
         ///   Recherche une ressource localisée de type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap Dashboard40px {
+            get {
+                object obj = ResourceManager.GetObject("Dashboard40px", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une ressource localisée de type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap Equipement {
             get {
                 object obj = ResourceManager.GetObject("Equipement", resourceCulture);
@@ -96,6 +106,26 @@ namespace EICE_WARGAME.Properties {
         internal static System.Drawing.Bitmap FigurineWarhammer {
             get {
                 object obj = ResourceManager.GetObject("FigurineWarhammer", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une ressource localisée de type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap FigurineWarhammer30px {
+            get {
+                object obj = ResourceManager.GetObject("FigurineWarhammer30px", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une ressource localisée de type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap LogOffLogo30px {
+            get {
+                object obj = ResourceManager.GetObject("LogOffLogo30px", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
