@@ -53,5 +53,20 @@ namespace EICE_WARGAME
         {
            
         }
+
+        private void linkLabelDashboard_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            Form_Principal.Instance.CreerPageCourante<PageMenuDashboard>(
+                        (Page) =>
+                        {
+                            Page.Utilisateur = Utilisateur;
+                            return true;
+                        });
+        }
+
+        private void linkLabelFigurines_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            
+        }
     }
 }

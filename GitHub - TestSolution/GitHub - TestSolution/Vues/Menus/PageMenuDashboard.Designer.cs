@@ -78,7 +78,6 @@
             this.buttonFigurines.TabIndex = 3;
             this.buttonFigurines.Text = "Figurines";
             this.buttonFigurines.UseVisualStyleBackColor = false;
-            this.buttonFigurines.Click += new System.EventHandler(this.buttonFigurines_Click);
             // 
             // buttonRetourMenuPrincipal
             // 

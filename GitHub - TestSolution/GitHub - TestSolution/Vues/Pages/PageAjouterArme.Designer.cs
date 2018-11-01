@@ -46,6 +46,9 @@
             this.textBoxAvecTextInvisible1 = new EICE_WARGAME.TextBoxAvecTextInvisible();
             this.menuAdmin1 = new EICE_WARGAME.MenuAdmin();
             this.buttonAjouter = new System.Windows.Forms.Button();
+            this.linkLabelDashboard = new System.Windows.Forms.LinkLabel();
+            this.labelSepLink = new System.Windows.Forms.Label();
+            this.labelFigurine = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownPortee)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown2)).BeginInit();
@@ -217,10 +220,43 @@
             this.buttonAjouter.UseVisualStyleBackColor = false;
             this.buttonAjouter.Click += new System.EventHandler(this.buttonAjouter_Click);
             // 
+            // linkLabelDashboard
+            // 
+            this.linkLabelDashboard.AutoSize = true;
+            this.linkLabelDashboard.Location = new System.Drawing.Point(229, 85);
+            this.linkLabelDashboard.Name = "linkLabelDashboard";
+            this.linkLabelDashboard.Size = new System.Drawing.Size(78, 17);
+            this.linkLabelDashboard.TabIndex = 19;
+            this.linkLabelDashboard.TabStop = true;
+            this.linkLabelDashboard.Text = "Dashboard";
+            this.linkLabelDashboard.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkLabelDashboard_LinkClicked);
+            // 
+            // labelSepLink
+            // 
+            this.labelSepLink.AutoSize = true;
+            this.labelSepLink.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.labelSepLink.Location = new System.Drawing.Point(305, 87);
+            this.labelSepLink.Name = "labelSepLink";
+            this.labelSepLink.Size = new System.Drawing.Size(16, 17);
+            this.labelSepLink.TabIndex = 20;
+            this.labelSepLink.Text = ">";
+            // 
+            // labelFigurine
+            // 
+            this.labelFigurine.AutoSize = true;
+            this.labelFigurine.Location = new System.Drawing.Point(322, 86);
+            this.labelFigurine.Name = "labelFigurine";
+            this.labelFigurine.Size = new System.Drawing.Size(66, 17);
+            this.labelFigurine.TabIndex = 21;
+            this.labelFigurine.Text = "Figurines";
+            // 
             // PageAjouterArme
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.labelFigurine);
+            this.Controls.Add(this.labelSepLink);
+            this.Controls.Add(this.linkLabelDashboard);
             this.Controls.Add(this.buttonAjouter);
             this.Controls.Add(this.listeDeroulanteType);
             this.Controls.Add(this.buttonOptionsUser1);
@@ -269,5 +305,8 @@
         private ButtonOptionsUser buttonOptionsUser1;
         private ListeDeroulanteType listeDeroulanteType;
         private System.Windows.Forms.Button buttonAjouter;
+        private System.Windows.Forms.LinkLabel linkLabelDashboard;
+        private System.Windows.Forms.Label labelSepLink;
+        private System.Windows.Forms.Label labelFigurine;
     }
 }
