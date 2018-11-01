@@ -83,7 +83,7 @@
             this.buttonMaCollection.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F);
             this.buttonMaCollection.Image = global::EICE_WARGAME.Properties.Resources.FigurineWarhammer30px;
             this.buttonMaCollection.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.buttonMaCollection.Location = new System.Drawing.Point(635, 378);
+            this.buttonMaCollection.Location = new System.Drawing.Point(635, 200);
             this.buttonMaCollection.Name = "buttonMaCollection";
             this.buttonMaCollection.Size = new System.Drawing.Size(300, 55);
             this.buttonMaCollection.TabIndex = 5;
@@ -98,7 +98,7 @@
             this.buttonDashboard.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F);
             this.buttonDashboard.Image = global::EICE_WARGAME.Properties.Resources.Dashboard40px;
             this.buttonDashboard.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.buttonDashboard.Location = new System.Drawing.Point(635, 200);
+            this.buttonDashboard.Location = new System.Drawing.Point(635, 380);
             this.buttonDashboard.Name = "buttonDashboard";
             this.buttonDashboard.Size = new System.Drawing.Size(300, 55);
             this.buttonDashboard.TabIndex = 3;
