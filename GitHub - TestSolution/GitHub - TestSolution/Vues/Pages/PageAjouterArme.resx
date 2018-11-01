@@ -117,41 +117,4 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
-  <data name="LogOffLogo30px" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\LogOffLogo30px.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="Validation25px" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Validation25px.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="Equipement" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Equipement.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="Dashboard40px" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Dashboard40px.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="FigurineWarhammer" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\FigurineWarhammer.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="MenuAdminUserIcon150px" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\MenuAdminUserIcon150px.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="UserIcon25px" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\UserIcon25px.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="FigurineWarhammer30px" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\FigurineWarhammer30px.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="CadenaOuvert25px" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\CadenaOuvert25px.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="CadenaFerme75px" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\CadenaFerme75px.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="Scenario75px" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Scenario75px.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="Dashboard150px" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Dashboard150px.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
 </root>

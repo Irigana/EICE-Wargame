@@ -29,12 +29,11 @@
         private void InitializeComponent()
         {
             this.labelMenuPrincipal = new System.Windows.Forms.Label();
-            this.buttonOptionsUser1 = new EICE_WARGAME.ButtonOptionsUser();
-            this.buttonTemporaireAjoutArme = new System.Windows.Forms.Button();
             this.buttonMesArmees = new System.Windows.Forms.Button();
             this.buttonDeconnexion = new System.Windows.Forms.Button();
             this.buttonMaCollection = new System.Windows.Forms.Button();
             this.buttonDashboard = new System.Windows.Forms.Button();
+            this.buttonOptionsUser1 = new EICE_WARGAME.ButtonOptionsUser();
             this.SuspendLayout();
             // 
             // labelMenuPrincipal
@@ -47,34 +46,15 @@
             this.labelMenuPrincipal.TabIndex = 0;
             this.labelMenuPrincipal.Text = "Menu principal";
             // 
-            // buttonOptionsUser1
-            // 
-            this.buttonOptionsUser1.BackColor = System.Drawing.Color.Transparent;
-            this.buttonOptionsUser1.Location = new System.Drawing.Point(1276, 3);
-            this.buttonOptionsUser1.Name = "buttonOptionsUser1";
-            this.buttonOptionsUser1.Size = new System.Drawing.Size(221, 45);
-            this.buttonOptionsUser1.TabIndex = 1;
-            this.buttonOptionsUser1.Utilisateur = null;
-            // 
-            // buttonTemporaireAjoutArme
-            // 
-            this.buttonTemporaireAjoutArme.Location = new System.Drawing.Point(125, 81);
-            this.buttonTemporaireAjoutArme.Name = "buttonTemporaireAjoutArme";
-            this.buttonTemporaireAjoutArme.Size = new System.Drawing.Size(431, 48);
-            this.buttonTemporaireAjoutArme.TabIndex = 2;
-            this.buttonTemporaireAjoutArme.Text = "bouton temporaire ajout d\'arme";
-            this.buttonTemporaireAjoutArme.UseVisualStyleBackColor = true;
-            this.buttonTemporaireAjoutArme.Click += new System.EventHandler(this.buttonTemporaireAjoutArme_Click);
-            // 
             // buttonMesArmees
             // 
             this.buttonMesArmees.BackColor = System.Drawing.SystemColors.Window;
             this.buttonMesArmees.FlatAppearance.BorderColor = System.Drawing.SystemColors.ControlDarkDark;
             this.buttonMesArmees.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonMesArmees.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F);
-            this.buttonMesArmees.Location = new System.Drawing.Point(635, 295);
+            this.buttonMesArmees.Location = new System.Drawing.Point(635, 290);
             this.buttonMesArmees.Name = "buttonMesArmees";
-            this.buttonMesArmees.Size = new System.Drawing.Size(294, 52);
+            this.buttonMesArmees.Size = new System.Drawing.Size(300, 55);
             this.buttonMesArmees.TabIndex = 4;
             this.buttonMesArmees.Text = "Mes armées";
             this.buttonMesArmees.UseVisualStyleBackColor = false;
@@ -87,12 +67,13 @@
             this.buttonDeconnexion.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F);
             this.buttonDeconnexion.Image = global::EICE_WARGAME.Properties.Resources.LogOffLogo30px;
             this.buttonDeconnexion.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.buttonDeconnexion.Location = new System.Drawing.Point(635, 474);
+            this.buttonDeconnexion.Location = new System.Drawing.Point(635, 479);
             this.buttonDeconnexion.Name = "buttonDeconnexion";
-            this.buttonDeconnexion.Size = new System.Drawing.Size(294, 52);
+            this.buttonDeconnexion.Size = new System.Drawing.Size(300, 55);
             this.buttonDeconnexion.TabIndex = 6;
             this.buttonDeconnexion.Text = "Se déconnecter";
             this.buttonDeconnexion.UseVisualStyleBackColor = false;
+            this.buttonDeconnexion.Click += new System.EventHandler(this.buttonDeconnexion_Click);
             // 
             // buttonMaCollection
             // 
@@ -102,9 +83,9 @@
             this.buttonMaCollection.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F);
             this.buttonMaCollection.Image = global::EICE_WARGAME.Properties.Resources.FigurineWarhammer30px;
             this.buttonMaCollection.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.buttonMaCollection.Location = new System.Drawing.Point(635, 388);
+            this.buttonMaCollection.Location = new System.Drawing.Point(635, 378);
             this.buttonMaCollection.Name = "buttonMaCollection";
-            this.buttonMaCollection.Size = new System.Drawing.Size(294, 52);
+            this.buttonMaCollection.Size = new System.Drawing.Size(300, 55);
             this.buttonMaCollection.TabIndex = 5;
             this.buttonMaCollection.Text = "Ma collection";
             this.buttonMaCollection.UseVisualStyleBackColor = false;
@@ -119,10 +100,20 @@
             this.buttonDashboard.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.buttonDashboard.Location = new System.Drawing.Point(635, 200);
             this.buttonDashboard.Name = "buttonDashboard";
-            this.buttonDashboard.Size = new System.Drawing.Size(294, 52);
+            this.buttonDashboard.Size = new System.Drawing.Size(300, 55);
             this.buttonDashboard.TabIndex = 3;
             this.buttonDashboard.Text = "Dashboard";
             this.buttonDashboard.UseVisualStyleBackColor = false;
+            this.buttonDashboard.Click += new System.EventHandler(this.buttonDashboard_Click);
+            // 
+            // buttonOptionsUser1
+            // 
+            this.buttonOptionsUser1.BackColor = System.Drawing.Color.Transparent;
+            this.buttonOptionsUser1.Location = new System.Drawing.Point(1276, 3);
+            this.buttonOptionsUser1.Name = "buttonOptionsUser1";
+            this.buttonOptionsUser1.Size = new System.Drawing.Size(221, 45);
+            this.buttonOptionsUser1.TabIndex = 1;
+            this.buttonOptionsUser1.Utilisateur = null;
             // 
             // PageMenuPrincipal
             // 
@@ -132,7 +123,6 @@
             this.Controls.Add(this.buttonMaCollection);
             this.Controls.Add(this.buttonMesArmees);
             this.Controls.Add(this.buttonDashboard);
-            this.Controls.Add(this.buttonTemporaireAjoutArme);
             this.Controls.Add(this.buttonOptionsUser1);
             this.Controls.Add(this.labelMenuPrincipal);
             this.Name = "PageMenuPrincipal";
@@ -147,7 +137,6 @@
 
         private System.Windows.Forms.Label labelMenuPrincipal;
         private EICE_WARGAME.ButtonOptionsUser buttonOptionsUser1;
-        private System.Windows.Forms.Button buttonTemporaireAjoutArme;
         private System.Windows.Forms.Button buttonDashboard;
         private System.Windows.Forms.Button buttonMesArmees;
         private System.Windows.Forms.Button buttonMaCollection;

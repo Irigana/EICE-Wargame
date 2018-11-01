@@ -43,7 +43,7 @@ namespace EICE_WARGAME
                 Application.EnableVisualStyles();
                 Application.SetCompatibleTextRenderingDefault(false);
 
-
+                /*
                 foreach (Stuff Stuff in s_GMBD.EnumererStuff(null, null, null, PDSGBD.MyDB.CreerCodeSql("ORDER BY st_name ASC")))
                 {
                     System.Diagnostics.Debug.WriteLine(string.Format("Stuff {0}", Stuff.Name));
@@ -52,7 +52,7 @@ namespace EICE_WARGAME
                     {
                         System.Diagnostics.Debug.WriteLine(string.Format("* Caractéristique: {0}, Valeur: {1} ", StuffFeature.Feature.Name, StuffFeature.Value));
                     }
-                }
+                }*/
                 Application.Run(new Form_Principal());
             }
         

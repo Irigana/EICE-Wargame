@@ -10,7 +10,7 @@ using System.Windows.Forms;
 
 namespace EICE_WARGAME
 {
-    public partial class PageMenuPrincipal : UserControl
+    public partial class PageMenuDashboard : UserControl
     {
         private Utilisateur m_Utilisateur = null;
 
@@ -30,16 +30,13 @@ namespace EICE_WARGAME
             }
         }
 
-        /// <summary>
-        /// Constructeur par défaut
-        /// </summary>
-        public PageMenuPrincipal()
+        public PageMenuDashboard()
         {
             InitializeComponent();
             m_Utilisateur = null;
-        }               
+        }
 
-        private void PageMenuPrincipal_Load(object sender, EventArgs e)
+        private void PageMenuDashBoard_Load(object sender, EventArgs e)
         {
             if (Utilisateur != null)
             {
@@ -51,7 +48,7 @@ namespace EICE_WARGAME
             }
         }
 
-        private void buttonTemporaireAjoutArme_Click(object sender, EventArgs e)
+        private void buttonFigurines_Click(object sender, EventArgs e)
         {
             Form_Principal.Instance.CreerPageCourante<PageAjouterArme>(
                         (Page) =>

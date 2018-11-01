@@ -46,16 +46,22 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Vues\Menus\PageMenuDashboard.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Vues\Menus\PageMenuDashboard.Designer.cs">
+      <DependentUpon>PageMenuDashboard.cs</DependentUpon>
+    </Compile>
     <Compile Include="Vues\ListeDeroulanteType.cs">
       <SubType>UserControl</SubType>
     </Compile>
     <Compile Include="Vues\ListeDeroulanteType.Designer.cs">
       <DependentUpon>ListeDeroulanteType.cs</DependentUpon>
     </Compile>
-    <Compile Include="Vues\PageAjouterArme.cs">
+    <Compile Include="Vues\Pages\PageAjouterArme.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="Vues\PageAjouterArme.Designer.cs">
+    <Compile Include="Vues\Pages\PageAjouterArme.Designer.cs">
       <DependentUpon>PageAjouterArme.cs</DependentUpon>
     </Compile>
     <Compile Include="Vues\MenuAdmin.cs">
@@ -70,16 +76,16 @@
     <Compile Include="Modeles\Stuff.cs" />
     <Compile Include="Modeles\StuffFeature.cs" />
     <Compile Include="Modeles\Type.cs" />
-    <Compile Include="Vues\PageAjoutFigurine.cs">
+    <Compile Include="Vues\Pages\PageAjoutFigurine.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="Vues\PageAjoutFigurine.Designer.cs">
+    <Compile Include="Vues\Pages\PageAjoutFigurine.Designer.cs">
       <DependentUpon>PageAjoutFigurine.cs</DependentUpon>
     </Compile>
-    <Compile Include="Vues\PageEditionUser.cs">
+    <Compile Include="Vues\Pages\PageEditionUser.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="Vues\PageEditionUser.Designer.cs">
+    <Compile Include="Vues\Pages\PageEditionUser.Designer.cs">
       <DependentUpon>PageEditionUser.cs</DependentUpon>
     </Compile>
     <Compile Include="Vues\ButtonOptionsUser.cs">
@@ -103,16 +109,16 @@
     <Compile Include="Outils\IU.Listes.cs" />
     <Compile Include="Outils\Outils.Chaine.cs" />
     <Compile Include="Outils\Outils.Validation.cs" />
-    <Compile Include="Vues\PageMenuPrincipal.cs">
+    <Compile Include="Vues\Menus\PageMenuPrincipal.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="Vues\PageMenuPrincipal.Designer.cs">
+    <Compile Include="Vues\Menus\PageMenuPrincipal.Designer.cs">
       <DependentUpon>PageMenuPrincipal.cs</DependentUpon>
     </Compile>
-    <Compile Include="Vues\PageInscription.cs">
+    <Compile Include="Vues\Pages\PageInscription.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="Vues\PageInscription.Designer.cs">
+    <Compile Include="Vues\Pages\PageInscription.Designer.cs">
       <DependentUpon>PageInscription.cs</DependentUpon>
     </Compile>
     <Compile Include="Properties\Resources.Designer.cs">
@@ -120,10 +126,10 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
-    <Compile Include="Vues\PageConnexion.cs">
+    <Compile Include="Vues\Pages\PageConnexion.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="Vues\PageConnexion.Designer.cs">
+    <Compile Include="Vues\Pages\PageConnexion.Designer.cs">
       <DependentUpon>PageConnexion.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
@@ -137,16 +143,19 @@
     <EmbeddedResource Include="Form_Principal.resx">
       <DependentUpon>Form_Principal.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Vues\Menus\PageMenuDashboard.resx">
+      <DependentUpon>PageMenuDashboard.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Vues\ListeDeroulanteType.resx">
       <DependentUpon>ListeDeroulanteType.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Vues\MenuAdmin.resx">
       <DependentUpon>MenuAdmin.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Vues\PageAjouterArme.resx">
+    <EmbeddedResource Include="Vues\Pages\PageAjouterArme.resx">
       <DependentUpon>PageAjouterArme.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Vues\PageEditionUser.resx">
+    <EmbeddedResource Include="Vues\Pages\PageEditionUser.resx">
       <DependentUpon>PageEditionUser.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
@@ -157,13 +166,13 @@
     <EmbeddedResource Include="Vues\ButtonOptionsUser.resx">
       <DependentUpon>ButtonOptionsUser.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Vues\PageMenuPrincipal.resx">
+    <EmbeddedResource Include="Vues\Menus\PageMenuPrincipal.resx">
       <DependentUpon>PageMenuPrincipal.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Vues\PageInscription.resx">
+    <EmbeddedResource Include="Vues\Pages\PageInscription.resx">
       <DependentUpon>PageInscription.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Vues\PageConnexion.resx">
+    <EmbeddedResource Include="Vues\Pages\PageConnexion.resx">
       <DependentUpon>PageConnexion.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Vues\TextBoxAvecTextInvisible.resx">
@@ -190,6 +199,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Informations\SchemaDB.PNG" />
+    <None Include="Resources\Dashboard150px.png" />
     <None Include="Resources\LogOffLogo30px.png" />
     <None Include="Resources\FigurineWarhammer30px.png" />
     <None Include="Resources\Dashboard40px.png" />
