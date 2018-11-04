@@ -46,6 +46,18 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ListeDeroulanteFeature.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="ListeDeroulanteFeature.Designer.cs">
+      <DependentUpon>ListeDeroulanteFeature.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ListeDeroulanteStuff.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="ListeDeroulanteStuff.Designer.cs">
+      <DependentUpon>ListeDeroulanteStuff.cs</DependentUpon>
+    </Compile>
     <Compile Include="Vues\Menus\PageMenuDashboard.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -142,6 +154,12 @@
     </Compile>
     <EmbeddedResource Include="Form_Principal.resx">
       <DependentUpon>Form_Principal.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ListeDeroulanteFeature.resx">
+      <DependentUpon>ListeDeroulanteFeature.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ListeDeroulanteStuff.resx">
+      <DependentUpon>ListeDeroulanteStuff.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Vues\Menus\PageMenuDashboard.resx">
       <DependentUpon>PageMenuDashboard.cs</DependentUpon>

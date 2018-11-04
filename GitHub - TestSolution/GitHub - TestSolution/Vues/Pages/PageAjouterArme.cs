@@ -12,6 +12,9 @@ namespace EICE_WARGAME
 {
     public partial class PageAjouterArme : UserControl
     {
+        public event EventHandler SurAnnulation = null;
+        public event EventHandler SurValidation = null;
+
         #region Utilisateur
         private Utilisateur m_Utilisateur = null;
 
@@ -44,9 +47,6 @@ namespace EICE_WARGAME
                 return m_Stuff;
             }
         }
-
-        public event EventHandler SurAnnulation = null;
-        public event EventHandler SurValidation = null;
         #endregion
 
         public PageAjouterArme()
@@ -69,8 +69,18 @@ namespace EICE_WARGAME
             textBoxNomEquipement.Enabled = false;
             // Visibilité est cochée par défaut
             checkBoxVisibility.Checked = true;
+
+            // Pour l'instant je choisis un équipement et je lui ajoute des caractéristiques
+            // TODO : Remplacer ceci en récupérant le stuff de l'équipement que je viens d'ajouter pour lui attribuer des caractéristiques
+            listeDeroulanteStuff1.Stuff = Program.GMBD.EnumererStuff(null, null, null, PDSGBD.MyDB.CreerCodeSql("st_name"));
+            listeDeroulanteStuff1.SurChangementSelection += ListeStuffChangementSelection;
+
+            listeDeroulanteFeature1.Feature = Program.GMBD.EnumererFeature(null, null, null, PDSGBD.MyDB.CreerCodeSql("fe_name"));
+            listeDeroulanteFeature1.SurChangementSelection += ListeFeatureChangementSelection;
         }
-        
+
+
+        #region Méthodes relatives à l'ajout d'équipement
         private void ListeTypeChangementSelection(object sender, EventArgs e)
         {
             // le type de l'équipement en édition devient le type sélectionné
@@ -84,6 +94,11 @@ namespace EICE_WARGAME
             }
         }
 
+        /// <summary>
+        /// Méthode permettant d'ajouter un nouvel équipement
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void buttonAjouter_Click(object sender, EventArgs e)
         {
             errorProvider1.Clear();
@@ -141,8 +156,7 @@ namespace EICE_WARGAME
         {
             m_StuffEnEdition.Name = textBoxNomEquipement.Text;
         }
-
-        #region Gestion de l'équipement en édition
+        
         private void StuffEnEdition_SurErreur(Stuff Entite, Stuff.Champ Champ, string MessageErreur)
         {
             switch (Champ)
@@ -184,6 +198,38 @@ namespace EICE_WARGAME
         }
         #endregion
 
+        #region Méthodes relatives à l'ajout des caractéristiques d'un équipement
+
+        private void ListeStuffChangementSelection(object sender, EventArgs e)
+        {
+            // Ajouter qqch
+        }
+
+        private void ListeFeatureChangementSelection(object sender, EventArgs e)
+        {
+            // Ajouter qqch
+        }
+
+        private void textBox1_TextChanged(object sender, EventArgs e)
+        {
+            // Ajouter qqch
+        }
+
+        /// <summary>
+        /// Méthode permettant d'ajouter un StuffFeature
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void buttonAjouterCaract_Click(object sender, EventArgs e)
+        {
+            StuffFeature Essai = new StuffFeature();
+            Essai.Stuff = listeDeroulanteStuff1.StuffSelectionnee;
+            Essai.Feature = listeDeroulanteFeature1.FeatureSelectionnee;
+            Essai.Value = textBox1.Text;
+            Essai.Enregistrer(Program.GMBD.BD, Essai);
+        }
+        #endregion
+
         #region Gestion du panneau
         private void listeDeroulanteType_Load(object sender, EventArgs e)
         {
@@ -211,6 +257,8 @@ namespace EICE_WARGAME
         {
 
         }
+
         #endregion
+
     }
 }

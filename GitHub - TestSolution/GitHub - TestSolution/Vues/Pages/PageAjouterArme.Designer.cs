@@ -36,9 +36,6 @@
             this.panel1 = new System.Windows.Forms.Panel();
             this.labelEquipablePar = new System.Windows.Forms.Label();
             this.checkedListBoxEquipable = new System.Windows.Forms.CheckedListBox();
-            this.listeDeroulanteType = new EICE_WARGAME.ListeDeroulanteType();
-            this.buttonOptionsUser1 = new EICE_WARGAME.ButtonOptionsUser();
-            this.menuAdmin1 = new EICE_WARGAME.MenuAdmin();
             this.buttonAjouter = new System.Windows.Forms.Button();
             this.linkLabelDashboard = new System.Windows.Forms.LinkLabel();
             this.labelSepLink = new System.Windows.Forms.Label();
@@ -49,6 +46,16 @@
             this.buttonAnnuler = new System.Windows.Forms.Button();
             this.textBoxNomEquipement = new System.Windows.Forms.TextBox();
             this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
+            this.label1 = new System.Windows.Forms.Label();
+            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.label2 = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
+            this.buttonAjouterCaract = new System.Windows.Forms.Button();
+            this.listeDeroulanteStuff1 = new EICE_WARGAME.ListeDeroulanteStuff();
+            this.listeDeroulanteFeature1 = new EICE_WARGAME.ListeDeroulanteFeature();
+            this.listeDeroulanteType = new EICE_WARGAME.ListeDeroulanteType();
+            this.buttonOptionsUser1 = new EICE_WARGAME.ButtonOptionsUser();
+            this.menuAdmin1 = new EICE_WARGAME.MenuAdmin();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -115,32 +122,6 @@
             this.checkedListBoxEquipable.Name = "checkedListBoxEquipable";
             this.checkedListBoxEquipable.Size = new System.Drawing.Size(265, 361);
             this.checkedListBoxEquipable.TabIndex = 15;
-            // 
-            // listeDeroulanteType
-            // 
-            this.listeDeroulanteType.Location = new System.Drawing.Point(417, 147);
-            this.listeDeroulanteType.Name = "listeDeroulanteType";
-            this.listeDeroulanteType.Size = new System.Drawing.Size(197, 25);
-            this.listeDeroulanteType.TabIndex = 17;
-            this.listeDeroulanteType.TypeSelectionne = null;
-            this.listeDeroulanteType.Load += new System.EventHandler(this.listeDeroulanteType_Load);
-            // 
-            // buttonOptionsUser1
-            // 
-            this.buttonOptionsUser1.BackColor = System.Drawing.Color.Transparent;
-            this.buttonOptionsUser1.Location = new System.Drawing.Point(1278, 3);
-            this.buttonOptionsUser1.Name = "buttonOptionsUser1";
-            this.buttonOptionsUser1.Size = new System.Drawing.Size(219, 45);
-            this.buttonOptionsUser1.TabIndex = 16;
-            this.buttonOptionsUser1.Utilisateur = null;
-            // 
-            // menuAdmin1
-            // 
-            this.menuAdmin1.BackColor = System.Drawing.SystemColors.ControlDark;
-            this.menuAdmin1.Location = new System.Drawing.Point(0, 0);
-            this.menuAdmin1.Name = "menuAdmin1";
-            this.menuAdmin1.Size = new System.Drawing.Size(190, 750);
-            this.menuAdmin1.TabIndex = 0;
             // 
             // buttonAjouter
             // 
@@ -249,10 +230,108 @@
             // 
             this.errorProvider1.ContainerControl = this;
             // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(766, 200);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(103, 17);
+            this.label1.TabIndex = 27;
+            this.label1.Text = "Caractéristique";
+            // 
+            // textBox1
+            // 
+            this.textBox1.Location = new System.Drawing.Point(875, 246);
+            this.textBox1.Name = "textBox1";
+            this.textBox1.Size = new System.Drawing.Size(206, 22);
+            this.textBox1.TabIndex = 29;
+            this.textBox1.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(766, 246);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(49, 17);
+            this.label2.TabIndex = 30;
+            this.label2.Text = "Valeur";
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(766, 155);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(83, 17);
+            this.label3.TabIndex = 31;
+            this.label3.Text = "Equipement";
+            // 
+            // buttonAjouterCaract
+            // 
+            this.buttonAjouterCaract.BackColor = System.Drawing.SystemColors.Window;
+            this.buttonAjouterCaract.FlatAppearance.BorderColor = System.Drawing.SystemColors.WindowFrame;
+            this.buttonAjouterCaract.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonAjouterCaract.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F);
+            this.buttonAjouterCaract.Location = new System.Drawing.Point(1120, 245);
+            this.buttonAjouterCaract.Name = "buttonAjouterCaract";
+            this.buttonAjouterCaract.Size = new System.Drawing.Size(148, 49);
+            this.buttonAjouterCaract.TabIndex = 33;
+            this.buttonAjouterCaract.Text = "Ajouter Caracteristique";
+            this.buttonAjouterCaract.UseVisualStyleBackColor = false;
+            this.buttonAjouterCaract.Click += new System.EventHandler(this.buttonAjouterCaract_Click);
+            // 
+            // listeDeroulanteStuff1
+            // 
+            this.listeDeroulanteStuff1.Location = new System.Drawing.Point(875, 155);
+            this.listeDeroulanteStuff1.Name = "listeDeroulanteStuff1";
+            this.listeDeroulanteStuff1.Size = new System.Drawing.Size(206, 26);
+            this.listeDeroulanteStuff1.StuffSelectionnee = null;
+            this.listeDeroulanteStuff1.TabIndex = 32;
+            // 
+            // listeDeroulanteFeature1
+            // 
+            this.listeDeroulanteFeature1.FeatureSelectionnee = null;
+            this.listeDeroulanteFeature1.Location = new System.Drawing.Point(875, 200);
+            this.listeDeroulanteFeature1.Name = "listeDeroulanteFeature1";
+            this.listeDeroulanteFeature1.Size = new System.Drawing.Size(206, 25);
+            this.listeDeroulanteFeature1.TabIndex = 28;
+            // 
+            // listeDeroulanteType
+            // 
+            this.listeDeroulanteType.Location = new System.Drawing.Point(417, 147);
+            this.listeDeroulanteType.Name = "listeDeroulanteType";
+            this.listeDeroulanteType.Size = new System.Drawing.Size(197, 25);
+            this.listeDeroulanteType.TabIndex = 17;
+            this.listeDeroulanteType.TypeSelectionne = null;
+            this.listeDeroulanteType.Load += new System.EventHandler(this.listeDeroulanteType_Load);
+            // 
+            // buttonOptionsUser1
+            // 
+            this.buttonOptionsUser1.BackColor = System.Drawing.Color.Transparent;
+            this.buttonOptionsUser1.Location = new System.Drawing.Point(1278, 3);
+            this.buttonOptionsUser1.Name = "buttonOptionsUser1";
+            this.buttonOptionsUser1.Size = new System.Drawing.Size(219, 45);
+            this.buttonOptionsUser1.TabIndex = 16;
+            this.buttonOptionsUser1.Utilisateur = null;
+            // 
+            // menuAdmin1
+            // 
+            this.menuAdmin1.BackColor = System.Drawing.SystemColors.ControlDark;
+            this.menuAdmin1.Location = new System.Drawing.Point(0, 0);
+            this.menuAdmin1.Name = "menuAdmin1";
+            this.menuAdmin1.Size = new System.Drawing.Size(190, 750);
+            this.menuAdmin1.TabIndex = 0;
+            // 
             // PageAjouterArme
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.buttonAjouterCaract);
+            this.Controls.Add(this.listeDeroulanteStuff1);
+            this.Controls.Add(this.label3);
+            this.Controls.Add(this.label2);
+            this.Controls.Add(this.textBox1);
+            this.Controls.Add(this.listeDeroulanteFeature1);
+            this.Controls.Add(this.label1);
             this.Controls.Add(this.textBoxNomEquipement);
             this.Controls.Add(this.buttonAnnuler);
             this.Controls.Add(this.checkBoxVisibility);
@@ -302,5 +381,12 @@
         private System.Windows.Forms.Button buttonAnnuler;
         private System.Windows.Forms.TextBox textBoxNomEquipement;
         private System.Windows.Forms.ErrorProvider errorProvider1;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.TextBox textBox1;
+        private ListeDeroulanteFeature listeDeroulanteFeature1;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label label3;
+        private ListeDeroulanteStuff listeDeroulanteStuff1;
+        private System.Windows.Forms.Button buttonAjouterCaract;
     }
 }
