@@ -28,22 +28,16 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.labelCRUDArmes = new System.Windows.Forms.Label();
             this.panelLigneSeparatriceAjout = new System.Windows.Forms.Panel();
             this.labelNomArme = new System.Windows.Forms.Label();
             this.labelTypeArme = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.labelPortee = new System.Windows.Forms.Label();
-            this.labelF = new System.Windows.Forms.Label();
-            this.labelPA = new System.Windows.Forms.Label();
-            this.numericUpDownPortee = new System.Windows.Forms.NumericUpDown();
-            this.numericUpDown1 = new System.Windows.Forms.NumericUpDown();
-            this.numericUpDown2 = new System.Windows.Forms.NumericUpDown();
             this.labelEquipablePar = new System.Windows.Forms.Label();
             this.checkedListBoxEquipable = new System.Windows.Forms.CheckedListBox();
             this.listeDeroulanteType = new EICE_WARGAME.ListeDeroulanteType();
             this.buttonOptionsUser1 = new EICE_WARGAME.ButtonOptionsUser();
-            this.textBoxAvecTextInvisible1 = new EICE_WARGAME.TextBoxAvecTextInvisible();
             this.menuAdmin1 = new EICE_WARGAME.MenuAdmin();
             this.buttonAjouter = new System.Windows.Forms.Button();
             this.linkLabelDashboard = new System.Windows.Forms.LinkLabel();
@@ -51,9 +45,11 @@
             this.labelFigurine = new System.Windows.Forms.Label();
             this.buttonModifier = new System.Windows.Forms.Button();
             this.buttonSupprimer = new System.Windows.Forms.Button();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownPortee)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown2)).BeginInit();
+            this.checkBoxVisibility = new System.Windows.Forms.CheckBox();
+            this.buttonAnnuler = new System.Windows.Forms.Button();
+            this.textBoxNomEquipement = new System.Windows.Forms.TextBox();
+            this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
+            ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
             this.SuspendLayout();
             // 
             // labelCRUDArmes
@@ -78,21 +74,21 @@
             // 
             this.labelNomArme.AutoSize = true;
             this.labelNomArme.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
-            this.labelNomArme.Location = new System.Drawing.Point(264, 159);
+            this.labelNomArme.Location = new System.Drawing.Point(225, 205);
             this.labelNomArme.Name = "labelNomArme";
-            this.labelNomArme.Size = new System.Drawing.Size(118, 20);
+            this.labelNomArme.Size = new System.Drawing.Size(166, 20);
             this.labelNomArme.TabIndex = 3;
-            this.labelNomArme.Text = "Nom de l\'arme";
+            this.labelNomArme.Text = "Nom de l\'équipement";
             // 
             // labelTypeArme
             // 
             this.labelTypeArme.AutoSize = true;
             this.labelTypeArme.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
-            this.labelTypeArme.Location = new System.Drawing.Point(263, 202);
+            this.labelTypeArme.Location = new System.Drawing.Point(228, 147);
             this.labelTypeArme.Name = "labelTypeArme";
-            this.labelTypeArme.Size = new System.Drawing.Size(119, 20);
+            this.labelTypeArme.Size = new System.Drawing.Size(167, 20);
             this.labelTypeArme.TabIndex = 5;
-            this.labelTypeArme.Text = "Type de l\'arme";
+            this.labelTypeArme.Text = "Type de l\'équipement";
             // 
             // panel1
             // 
@@ -101,57 +97,6 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(1250, 3);
             this.panel1.TabIndex = 7;
-            // 
-            // labelPortee
-            // 
-            this.labelPortee.AutoSize = true;
-            this.labelPortee.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
-            this.labelPortee.Location = new System.Drawing.Point(801, 129);
-            this.labelPortee.Name = "labelPortee";
-            this.labelPortee.Size = new System.Drawing.Size(58, 20);
-            this.labelPortee.TabIndex = 8;
-            this.labelPortee.Text = "Portée";
-            // 
-            // labelF
-            // 
-            this.labelF.AutoSize = true;
-            this.labelF.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
-            this.labelF.Location = new System.Drawing.Point(1001, 129);
-            this.labelF.Name = "labelF";
-            this.labelF.Size = new System.Drawing.Size(19, 20);
-            this.labelF.TabIndex = 9;
-            this.labelF.Text = "F";
-            // 
-            // labelPA
-            // 
-            this.labelPA.AutoSize = true;
-            this.labelPA.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
-            this.labelPA.Location = new System.Drawing.Point(1207, 129);
-            this.labelPA.Name = "labelPA";
-            this.labelPA.Size = new System.Drawing.Size(31, 20);
-            this.labelPA.TabIndex = 10;
-            this.labelPA.Text = "PA";
-            // 
-            // numericUpDownPortee
-            // 
-            this.numericUpDownPortee.Location = new System.Drawing.Point(805, 174);
-            this.numericUpDownPortee.Name = "numericUpDownPortee";
-            this.numericUpDownPortee.Size = new System.Drawing.Size(54, 22);
-            this.numericUpDownPortee.TabIndex = 11;
-            // 
-            // numericUpDown1
-            // 
-            this.numericUpDown1.Location = new System.Drawing.Point(989, 174);
-            this.numericUpDown1.Name = "numericUpDown1";
-            this.numericUpDown1.Size = new System.Drawing.Size(54, 22);
-            this.numericUpDown1.TabIndex = 12;
-            // 
-            // numericUpDown2
-            // 
-            this.numericUpDown2.Location = new System.Drawing.Point(1200, 174);
-            this.numericUpDown2.Name = "numericUpDown2";
-            this.numericUpDown2.Size = new System.Drawing.Size(54, 22);
-            this.numericUpDown2.TabIndex = 13;
             // 
             // labelEquipablePar
             // 
@@ -173,7 +118,7 @@
             // 
             // listeDeroulanteType
             // 
-            this.listeDeroulanteType.Location = new System.Drawing.Point(402, 202);
+            this.listeDeroulanteType.Location = new System.Drawing.Point(417, 147);
             this.listeDeroulanteType.Name = "listeDeroulanteType";
             this.listeDeroulanteType.Size = new System.Drawing.Size(197, 25);
             this.listeDeroulanteType.TabIndex = 17;
@@ -188,17 +133,6 @@
             this.buttonOptionsUser1.Size = new System.Drawing.Size(219, 45);
             this.buttonOptionsUser1.TabIndex = 16;
             this.buttonOptionsUser1.Utilisateur = null;
-            // 
-            // textBoxAvecTextInvisible1
-            // 
-            this.textBoxAvecTextInvisible1.ForeColor = System.Drawing.SystemColors.ButtonShadow;
-            this.textBoxAvecTextInvisible1.Location = new System.Drawing.Point(402, 159);
-            this.textBoxAvecTextInvisible1.Margin = new System.Windows.Forms.Padding(0);
-            this.textBoxAvecTextInvisible1.MotDePasseCache = false;
-            this.textBoxAvecTextInvisible1.Name = "textBoxAvecTextInvisible1";
-            this.textBoxAvecTextInvisible1.PlaceHolder = "Arme";
-            this.textBoxAvecTextInvisible1.Size = new System.Drawing.Size(197, 22);
-            this.textBoxAvecTextInvisible1.TabIndex = 4;
             // 
             // menuAdmin1
             // 
@@ -278,10 +212,50 @@
             this.buttonSupprimer.Text = "Supprimer";
             this.buttonSupprimer.UseVisualStyleBackColor = false;
             // 
+            // checkBoxVisibility
+            // 
+            this.checkBoxVisibility.AutoSize = true;
+            this.checkBoxVisibility.Location = new System.Drawing.Point(417, 246);
+            this.checkBoxVisibility.Name = "checkBoxVisibility";
+            this.checkBoxVisibility.Size = new System.Drawing.Size(71, 21);
+            this.checkBoxVisibility.TabIndex = 24;
+            this.checkBoxVisibility.Text = "Visible";
+            this.checkBoxVisibility.UseVisualStyleBackColor = true;
+            this.checkBoxVisibility.CheckedChanged += new System.EventHandler(this.checkBoxVisibility_CheckedChanged);
+            // 
+            // buttonAnnuler
+            // 
+            this.buttonAnnuler.BackColor = System.Drawing.SystemColors.Window;
+            this.buttonAnnuler.FlatAppearance.BorderColor = System.Drawing.SystemColors.WindowFrame;
+            this.buttonAnnuler.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonAnnuler.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
+            this.buttonAnnuler.Location = new System.Drawing.Point(891, 678);
+            this.buttonAnnuler.Name = "buttonAnnuler";
+            this.buttonAnnuler.Size = new System.Drawing.Size(140, 47);
+            this.buttonAnnuler.TabIndex = 25;
+            this.buttonAnnuler.Text = "Annuler";
+            this.buttonAnnuler.UseVisualStyleBackColor = false;
+            this.buttonAnnuler.Click += new System.EventHandler(this.buttonAnnuler_Click);
+            // 
+            // textBoxNomEquipement
+            // 
+            this.textBoxNomEquipement.Location = new System.Drawing.Point(417, 205);
+            this.textBoxNomEquipement.Name = "textBoxNomEquipement";
+            this.textBoxNomEquipement.Size = new System.Drawing.Size(197, 22);
+            this.textBoxNomEquipement.TabIndex = 26;
+            this.textBoxNomEquipement.TextChanged += new System.EventHandler(this.textBoxNomEquipement_TextChanged);
+            // 
+            // errorProvider1
+            // 
+            this.errorProvider1.ContainerControl = this;
+            // 
             // PageAjouterArme
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.textBoxNomEquipement);
+            this.Controls.Add(this.buttonAnnuler);
+            this.Controls.Add(this.checkBoxVisibility);
             this.Controls.Add(this.buttonSupprimer);
             this.Controls.Add(this.buttonModifier);
             this.Controls.Add(this.labelFigurine);
@@ -292,24 +266,15 @@
             this.Controls.Add(this.buttonOptionsUser1);
             this.Controls.Add(this.checkedListBoxEquipable);
             this.Controls.Add(this.labelEquipablePar);
-            this.Controls.Add(this.numericUpDown2);
-            this.Controls.Add(this.numericUpDown1);
-            this.Controls.Add(this.numericUpDownPortee);
-            this.Controls.Add(this.labelPA);
-            this.Controls.Add(this.labelF);
-            this.Controls.Add(this.labelPortee);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.labelTypeArme);
-            this.Controls.Add(this.textBoxAvecTextInvisible1);
             this.Controls.Add(this.labelNomArme);
             this.Controls.Add(this.panelLigneSeparatriceAjout);
             this.Controls.Add(this.labelCRUDArmes);
             this.Controls.Add(this.menuAdmin1);
             this.Name = "PageAjouterArme";
             this.Size = new System.Drawing.Size(1500, 750);
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownPortee)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -321,15 +286,8 @@
         private System.Windows.Forms.Label labelCRUDArmes;
         private System.Windows.Forms.Panel panelLigneSeparatriceAjout;
         private System.Windows.Forms.Label labelNomArme;
-        private TextBoxAvecTextInvisible textBoxAvecTextInvisible1;
         private System.Windows.Forms.Label labelTypeArme;
         private System.Windows.Forms.Panel panel1;
-        private System.Windows.Forms.Label labelPortee;
-        private System.Windows.Forms.Label labelF;
-        private System.Windows.Forms.Label labelPA;
-        private System.Windows.Forms.NumericUpDown numericUpDownPortee;
-        private System.Windows.Forms.NumericUpDown numericUpDown1;
-        private System.Windows.Forms.NumericUpDown numericUpDown2;
         private System.Windows.Forms.Label labelEquipablePar;
         private System.Windows.Forms.CheckedListBox checkedListBoxEquipable;
         private ButtonOptionsUser buttonOptionsUser1;
@@ -340,5 +298,9 @@
         private System.Windows.Forms.Label labelFigurine;
         private System.Windows.Forms.Button buttonModifier;
         private System.Windows.Forms.Button buttonSupprimer;
+        private System.Windows.Forms.CheckBox checkBoxVisibility;
+        private System.Windows.Forms.Button buttonAnnuler;
+        private System.Windows.Forms.TextBox textBoxNomEquipement;
+        private System.Windows.Forms.ErrorProvider errorProvider1;
     }
 }

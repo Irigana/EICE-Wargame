@@ -23,13 +23,13 @@ namespace EICE_WARGAME
             /// </summary>
             Name,
             /// <summary>
-            /// Visibilité de cette Stuff
-            /// </summary>
-            Visibility,
-            /// <summary>
             /// Type de cette Stuff
             /// </summary>
             Type,
+            /// <summary>
+            /// Visibilité de cette Stuff
+            /// </summary>
+            Visibility,
 
         }
 
@@ -41,7 +41,7 @@ namespace EICE_WARGAME
         /// <summary>
         /// Stocke la visibilité du champ Cost
         /// </summary>
-        private bool m_Visibility;
+        private byte m_Visibility;
         /// <summary>
         /// Stocke le type de cette Stuff
         /// </summary>
@@ -89,7 +89,7 @@ namespace EICE_WARGAME
         /// <summary>
         /// Visibilité de cette Stuff
         /// </summary>
-        public bool Visibility
+        public byte Visibility
         {
             get
             {
@@ -141,7 +141,6 @@ namespace EICE_WARGAME
             : base()
         {
             m_Name = string.Empty;
-            m_Visibility = false;
             m_Features = new List<StuffFeature>();
         }
 
@@ -151,7 +150,7 @@ namespace EICE_WARGAME
         /// <param name="Id">Identifiant de cette Stuff</param>
         /// <param name="Name">Nom de cette Stuff</param>
         /// <param name="Cost">Visibilité de cette Stuff</param>
-        public Stuff(int Id, string Name, bool Visibility)
+        public Stuff(int Id, string Name, byte Visibility)
             : this()
         {
             DefinirId(Id);
@@ -172,7 +171,7 @@ namespace EICE_WARGAME
             {
                 DefinirId(Enregistrement.ValeurChampComplet<int>(NomDeLaTablePrincipale, "st_id"));
                 this.Name = Enregistrement.ValeurChampComplet<string>(NomDeLaTablePrincipale, "st_name");
-                this.Visibility = Enregistrement.ValeurChampComplet<bool>(NomDeLaTablePrincipale, "st_visibility");
+                this.Visibility = Enregistrement.ValeurChampComplet<byte>(NomDeLaTablePrincipale, "st_visibility");
 			}
         }
 
