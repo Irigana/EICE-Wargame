@@ -1,6 +1,6 @@
 ﻿namespace EICE_WARGAME
 {
-    partial class ListeDeroulanteStuff
+    partial class PageMaCollection
     {
         /// <summary> 
         /// Variable nécessaire au concepteur.
@@ -28,32 +28,18 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.comboBoxStuff = new System.Windows.Forms.ComboBox();
             this.SuspendLayout();
             // 
-            // comboBoxStuff
-            // 
-            this.comboBoxStuff.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.comboBoxStuff.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.comboBoxStuff.FormattingEnabled = true;
-            this.comboBoxStuff.Location = new System.Drawing.Point(0, 0);
-            this.comboBoxStuff.Name = "comboBoxStuff";
-            this.comboBoxStuff.Size = new System.Drawing.Size(206, 24);
-            this.comboBoxStuff.TabIndex = 0;
-            // 
-            // ListeDeroulanteStuff
+            // PageMaCollection
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.Controls.Add(this.comboBoxStuff);
-            this.Name = "ListeDeroulanteStuff";
-            this.Size = new System.Drawing.Size(206, 26);
+            this.Name = "PageMaCollection";
+            this.Size = new System.Drawing.Size(1500, 750);
             this.ResumeLayout(false);
 
         }
 
         #endregion
-
-        private System.Windows.Forms.ComboBox comboBoxStuff;
     }
 }

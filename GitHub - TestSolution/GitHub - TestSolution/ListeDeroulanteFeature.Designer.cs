@@ -34,6 +34,7 @@
             // comboBoxFeature
             // 
             this.comboBoxFeature.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.comboBoxFeature.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboBoxFeature.FormattingEnabled = true;
             this.comboBoxFeature.Location = new System.Drawing.Point(0, 0);
             this.comboBoxFeature.Name = "comboBoxFeature";

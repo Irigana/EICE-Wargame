@@ -58,6 +58,12 @@
     <Compile Include="ListeDeroulanteStuff.Designer.cs">
       <DependentUpon>ListeDeroulanteStuff.cs</DependentUpon>
     </Compile>
+    <Compile Include="PageMaCollection.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="PageMaCollection.Designer.cs">
+      <DependentUpon>PageMaCollection.cs</DependentUpon>
+    </Compile>
     <Compile Include="Vues\Menus\PageMenuDashboard.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -160,6 +166,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="ListeDeroulanteStuff.resx">
       <DependentUpon>ListeDeroulanteStuff.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PageMaCollection.resx">
+      <DependentUpon>PageMaCollection.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Vues\Menus\PageMenuDashboard.resx">
       <DependentUpon>PageMenuDashboard.cs</DependentUpon>
