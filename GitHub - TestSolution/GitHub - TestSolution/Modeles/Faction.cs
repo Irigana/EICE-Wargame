@@ -170,7 +170,7 @@ namespace EICE_WARGAME
             return SousFaction.Enumerer(Connexion, Connexion.Enumerer(
                 @"SELECT sf_id, sf_name,
                     FROM subfaction
-                    WHERE (fa_id = {0}",
+                    WHERE (fa_id = {0})",
                 Id));
         }
 

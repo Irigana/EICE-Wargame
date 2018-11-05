@@ -170,6 +170,7 @@ namespace EICE_WARGAME
 
         private void StuffEnEdition_AvantChangement(Stuff Entite, Stuff.Champ Champ, object ValeurActuelle, object NouvelleValeur, AccumulateurErreur AccumulateurErreur)
         {
+            //Réagir sur évenement leave (perte de focus)
             switch (Champ)
             {
                 case Stuff.Champ.Name:
