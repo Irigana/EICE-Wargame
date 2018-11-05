@@ -46,22 +46,22 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="ListeDeroulanteFeature.cs">
+    <Compile Include="Vues\ListesDeroulantes\ListeDeroulanteFeature.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="ListeDeroulanteFeature.Designer.cs">
+    <Compile Include="Vues\ListesDeroulantes\ListeDeroulanteFeature.Designer.cs">
       <DependentUpon>ListeDeroulanteFeature.cs</DependentUpon>
     </Compile>
-    <Compile Include="ListeDeroulanteStuff.cs">
+    <Compile Include="Vues\ListesDeroulantes\ListeDeroulanteStuff.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="ListeDeroulanteStuff.Designer.cs">
+    <Compile Include="Vues\ListesDeroulantes\ListeDeroulanteStuff.Designer.cs">
       <DependentUpon>ListeDeroulanteStuff.cs</DependentUpon>
     </Compile>
-    <Compile Include="PageMaCollection.cs">
+    <Compile Include="Vues\Pages\PageMaCollection.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="PageMaCollection.Designer.cs">
+    <Compile Include="Vues\Pages\PageMaCollection.Designer.cs">
       <DependentUpon>PageMaCollection.cs</DependentUpon>
     </Compile>
     <Compile Include="Vues\Menus\PageMenuDashboard.cs">
@@ -70,10 +70,10 @@
     <Compile Include="Vues\Menus\PageMenuDashboard.Designer.cs">
       <DependentUpon>PageMenuDashboard.cs</DependentUpon>
     </Compile>
-    <Compile Include="Vues\ListeDeroulanteType.cs">
+    <Compile Include="Vues\ListesDeroulantes\ListeDeroulanteType.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="Vues\ListeDeroulanteType.Designer.cs">
+    <Compile Include="Vues\ListesDeroulantes\ListeDeroulanteType.Designer.cs">
       <DependentUpon>ListeDeroulanteType.cs</DependentUpon>
     </Compile>
     <Compile Include="Vues\Pages\PageAjouterArme.cs">
@@ -161,19 +161,19 @@
     <EmbeddedResource Include="Form_Principal.resx">
       <DependentUpon>Form_Principal.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="ListeDeroulanteFeature.resx">
+    <EmbeddedResource Include="Vues\ListesDeroulantes\ListeDeroulanteFeature.resx">
       <DependentUpon>ListeDeroulanteFeature.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="ListeDeroulanteStuff.resx">
+    <EmbeddedResource Include="Vues\ListesDeroulantes\ListeDeroulanteStuff.resx">
       <DependentUpon>ListeDeroulanteStuff.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="PageMaCollection.resx">
+    <EmbeddedResource Include="Vues\Pages\PageMaCollection.resx">
       <DependentUpon>PageMaCollection.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Vues\Menus\PageMenuDashboard.resx">
       <DependentUpon>PageMenuDashboard.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Vues\ListeDeroulanteType.resx">
+    <EmbeddedResource Include="Vues\ListesDeroulantes\ListeDeroulanteType.resx">
       <DependentUpon>ListeDeroulanteType.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Vues\MenuAdmin.resx">
