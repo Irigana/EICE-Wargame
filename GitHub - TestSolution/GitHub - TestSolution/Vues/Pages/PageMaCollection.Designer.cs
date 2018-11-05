@@ -39,6 +39,7 @@
             this.labelEquipement = new System.Windows.Forms.Label();
             this.labelQuantite = new System.Windows.Forms.Label();
             this.labelMesFigurines = new System.Windows.Forms.Label();
+            this.buttonOptionsUser1 = new EICE_WARGAME.ButtonOptionsUser();
             this.SuspendLayout();
             // 
             // labelMaCollection
@@ -151,10 +152,20 @@
             this.labelMesFigurines.TabIndex = 10;
             this.labelMesFigurines.Text = "Mes figurines";
             // 
+            // buttonOptionsUser1
+            // 
+            this.buttonOptionsUser1.BackColor = System.Drawing.Color.Transparent;
+            this.buttonOptionsUser1.Location = new System.Drawing.Point(1278, 3);
+            this.buttonOptionsUser1.Name = "buttonOptionsUser1";
+            this.buttonOptionsUser1.Size = new System.Drawing.Size(219, 45);
+            this.buttonOptionsUser1.TabIndex = 11;
+            this.buttonOptionsUser1.Utilisateur = null;
+            // 
             // PageMaCollection
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.buttonOptionsUser1);
             this.Controls.Add(this.labelMesFigurines);
             this.Controls.Add(this.labelQuantite);
             this.Controls.Add(this.labelEquipement);
@@ -186,5 +197,6 @@
         private System.Windows.Forms.Label labelEquipement;
         private System.Windows.Forms.Label labelQuantite;
         private System.Windows.Forms.Label labelMesFigurines;
+        private ButtonOptionsUser buttonOptionsUser1;
     }
 }

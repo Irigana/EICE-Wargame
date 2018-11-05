@@ -1,6 +1,6 @@
 ﻿namespace EICE_WARGAME
 {
-    partial class PageAjouterArme
+    partial class PageAjouterEquipements
     {
         /// <summary> 
         /// Variable nécessaire au concepteur.
@@ -321,7 +321,7 @@
             this.menuAdmin1.Size = new System.Drawing.Size(190, 750);
             this.menuAdmin1.TabIndex = 0;
             // 
-            // PageAjouterArme
+            // PageAjouterEquipements
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -351,7 +351,7 @@
             this.Controls.Add(this.panelLigneSeparatriceAjout);
             this.Controls.Add(this.labelCRUDArmes);
             this.Controls.Add(this.menuAdmin1);
-            this.Name = "PageAjouterArme";
+            this.Name = "PageAjouterEquipements";
             this.Size = new System.Drawing.Size(1500, 750);
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).EndInit();
             this.ResumeLayout(false);

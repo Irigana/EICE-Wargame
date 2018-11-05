@@ -47,6 +47,7 @@
             this.buttonEquipement.Text = "Equipements";
             this.buttonEquipement.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.buttonEquipement.UseVisualStyleBackColor = true;
+            this.buttonEquipement.Click += new System.EventHandler(this.buttonEquipement_Click);
             // 
             // buttonFigurine
             // 

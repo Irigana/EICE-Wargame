@@ -50,7 +50,7 @@ namespace EICE_WARGAME
 
         private void buttonFigurines_Click(object sender, EventArgs e)
         {
-            Form_Principal.Instance.CreerPageCourante<PageAjouterArme>(
+            Form_Principal.Instance.CreerPageCourante<PageAjouterEquipements>(
                 (page) =>
             {
                 page.Utilisateur = Utilisateur;

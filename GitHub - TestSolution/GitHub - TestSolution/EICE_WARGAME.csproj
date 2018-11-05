@@ -76,11 +76,11 @@
     <Compile Include="Vues\ListesDeroulantes\ListeDeroulanteType.Designer.cs">
       <DependentUpon>ListeDeroulanteType.cs</DependentUpon>
     </Compile>
-    <Compile Include="Vues\Pages\PageAjouterArme.cs">
+    <Compile Include="Vues\Pages\PageAjouterEquipements.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="Vues\Pages\PageAjouterArme.Designer.cs">
-      <DependentUpon>PageAjouterArme.cs</DependentUpon>
+    <Compile Include="Vues\Pages\PageAjouterEquipements.Designer.cs">
+      <DependentUpon>PageAjouterEquipements.cs</DependentUpon>
     </Compile>
     <Compile Include="Vues\MenuAdmin.cs">
       <SubType>UserControl</SubType>
@@ -179,8 +179,8 @@
     <EmbeddedResource Include="Vues\MenuAdmin.resx">
       <DependentUpon>MenuAdmin.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Vues\Pages\PageAjouterArme.resx">
-      <DependentUpon>PageAjouterArme.cs</DependentUpon>
+    <EmbeddedResource Include="Vues\Pages\PageAjouterEquipements.resx">
+      <DependentUpon>PageAjouterEquipements.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Vues\Pages\PageEditionUser.resx">
       <DependentUpon>PageEditionUser.cs</DependentUpon>
