@@ -29,10 +29,10 @@
         private void InitializeComponent()
         {
             this.labelDashboard = new System.Windows.Forms.Label();
-            this.pictureBoxLogoDashboard = new System.Windows.Forms.PictureBox();
             this.buttonOptionsUser1 = new EICE_WARGAME.ButtonOptionsUser();
-            this.buttonFigurines = new System.Windows.Forms.Button();
             this.buttonRetourMenuPrincipal = new System.Windows.Forms.Button();
+            this.buttonEquipement = new System.Windows.Forms.Button();
+            this.pictureBoxLogoDashboard = new System.Windows.Forms.PictureBox();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxLogoDashboard)).BeginInit();
             this.SuspendLayout();
             // 
@@ -46,15 +46,6 @@
             this.labelDashboard.TabIndex = 0;
             this.labelDashboard.Text = "Dashboard";
             // 
-            // pictureBoxLogoDashboard
-            // 
-            this.pictureBoxLogoDashboard.Image = global::EICE_WARGAME.Properties.Resources.Dashboard150px;
-            this.pictureBoxLogoDashboard.Location = new System.Drawing.Point(681, 6);
-            this.pictureBoxLogoDashboard.Name = "pictureBoxLogoDashboard";
-            this.pictureBoxLogoDashboard.Size = new System.Drawing.Size(184, 146);
-            this.pictureBoxLogoDashboard.TabIndex = 1;
-            this.pictureBoxLogoDashboard.TabStop = false;
-            // 
             // buttonOptionsUser1
             // 
             this.buttonOptionsUser1.BackColor = System.Drawing.Color.Transparent;
@@ -63,22 +54,6 @@
             this.buttonOptionsUser1.Size = new System.Drawing.Size(219, 45);
             this.buttonOptionsUser1.TabIndex = 2;
             this.buttonOptionsUser1.Utilisateur = null;
-            // 
-            // buttonFigurines
-            // 
-            this.buttonFigurines.BackColor = System.Drawing.SystemColors.Window;
-            this.buttonFigurines.FlatAppearance.BorderColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.buttonFigurines.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.buttonFigurines.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F);
-            this.buttonFigurines.Image = global::EICE_WARGAME.Properties.Resources.FigurineWarhammer30px;
-            this.buttonFigurines.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.buttonFigurines.Location = new System.Drawing.Point(631, 245);
-            this.buttonFigurines.Name = "buttonFigurines";
-            this.buttonFigurines.Size = new System.Drawing.Size(300, 55);
-            this.buttonFigurines.TabIndex = 3;
-            this.buttonFigurines.Text = "Figurines";
-            this.buttonFigurines.UseVisualStyleBackColor = false;
-            this.buttonFigurines.Click += new System.EventHandler(this.buttonFigurines_Click);
             // 
             // buttonRetourMenuPrincipal
             // 
@@ -96,12 +71,37 @@
             this.buttonRetourMenuPrincipal.UseVisualStyleBackColor = false;
             this.buttonRetourMenuPrincipal.Click += new System.EventHandler(this.buttonRetourMenuPrincipal_Click);
             // 
+            // buttonEquipement
+            // 
+            this.buttonEquipement.BackColor = System.Drawing.SystemColors.Window;
+            this.buttonEquipement.FlatAppearance.BorderColor = System.Drawing.SystemColors.ControlDarkDark;
+            this.buttonEquipement.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonEquipement.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F);
+            this.buttonEquipement.Image = global::EICE_WARGAME.Properties.Resources.Equipement40px;
+            this.buttonEquipement.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.buttonEquipement.Location = new System.Drawing.Point(631, 245);
+            this.buttonEquipement.Name = "buttonEquipement";
+            this.buttonEquipement.Size = new System.Drawing.Size(300, 55);
+            this.buttonEquipement.TabIndex = 3;
+            this.buttonEquipement.Text = "Equipements";
+            this.buttonEquipement.UseVisualStyleBackColor = false;
+            this.buttonEquipement.Click += new System.EventHandler(this.buttonFigurines_Click);
+            // 
+            // pictureBoxLogoDashboard
+            // 
+            this.pictureBoxLogoDashboard.Image = global::EICE_WARGAME.Properties.Resources.Dashboard150px;
+            this.pictureBoxLogoDashboard.Location = new System.Drawing.Point(681, 6);
+            this.pictureBoxLogoDashboard.Name = "pictureBoxLogoDashboard";
+            this.pictureBoxLogoDashboard.Size = new System.Drawing.Size(184, 146);
+            this.pictureBoxLogoDashboard.TabIndex = 1;
+            this.pictureBoxLogoDashboard.TabStop = false;
+            // 
             // PageMenuDashboard
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.Controls.Add(this.buttonRetourMenuPrincipal);
-            this.Controls.Add(this.buttonFigurines);
+            this.Controls.Add(this.buttonEquipement);
             this.Controls.Add(this.buttonOptionsUser1);
             this.Controls.Add(this.pictureBoxLogoDashboard);
             this.Controls.Add(this.labelDashboard);
@@ -119,7 +119,7 @@
         private System.Windows.Forms.Label labelDashboard;
         private System.Windows.Forms.PictureBox pictureBoxLogoDashboard;
         private ButtonOptionsUser buttonOptionsUser1;
-        private System.Windows.Forms.Button buttonFigurines;
+        private System.Windows.Forms.Button buttonEquipement;
         private System.Windows.Forms.Button buttonRetourMenuPrincipal;
     }
 }

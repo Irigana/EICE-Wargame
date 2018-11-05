@@ -113,6 +113,16 @@ namespace EICE_WARGAME.Properties {
         /// <summary>
         ///   Recherche une ressource localisée de type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap Equipement40px {
+            get {
+                object obj = ResourceManager.GetObject("Equipement40px", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une ressource localisée de type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap FigurineWarhammer {
             get {
                 object obj = ResourceManager.GetObject("FigurineWarhammer", resourceCulture);
