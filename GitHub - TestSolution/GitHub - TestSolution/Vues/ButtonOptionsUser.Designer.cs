@@ -62,6 +62,7 @@
             // buttonUser
             // 
             this.buttonUser.BackColor = System.Drawing.SystemColors.Control;
+            this.buttonUser.Dock = System.Windows.Forms.DockStyle.Fill;
             this.buttonUser.FlatAppearance.BorderColor = System.Drawing.Color.Silver;
             this.buttonUser.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonUser.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F);

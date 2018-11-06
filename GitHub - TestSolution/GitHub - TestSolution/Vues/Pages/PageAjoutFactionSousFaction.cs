@@ -36,6 +36,7 @@ namespace EICE_WARGAME
         public PageAjoutFactionSousFaction()
         {
             InitializeComponent();
+            m_Utilisateur = null;
         }
     }
 }

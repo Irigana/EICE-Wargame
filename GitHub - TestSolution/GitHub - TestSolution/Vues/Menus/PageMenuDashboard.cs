@@ -48,7 +48,7 @@ namespace EICE_WARGAME
             }
         }
 
-        private void buttonFigurines_Click(object sender, EventArgs e)
+        private void buttonEquipements_Click(object sender, EventArgs e)
         {
             Form_Principal.Instance.CreerPageCourante<PageAjouterEquipements>(
                 (page) =>
@@ -66,6 +66,16 @@ namespace EICE_WARGAME
                     page.Utilisateur = Utilisateur;
                     return true;
                 });                          
+        }
+
+        private void buttonFactionSF_Click(object sender, EventArgs e)
+        {
+            Form_Principal.Instance.CreerPageCourante<PageAjoutFactionSousFaction>(
+                (page) =>
+                {
+                    page.Utilisateur = Utilisateur;
+                    return true;
+                });
         }
     }
 }

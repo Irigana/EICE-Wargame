@@ -257,11 +257,7 @@ namespace EICE_WARGAME
                             return true;
                         });
         }
-
-        private void linkLabelFigurines_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
-        {
-
-        }
+        
 
         #endregion
 
