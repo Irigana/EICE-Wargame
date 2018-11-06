@@ -46,10 +46,22 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="PageAjoutFactionSousFaction.cs">
+    <Compile Include="Vues\ListesDeroulantes\ListeDeroulanteSousFaction.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="PageAjoutFactionSousFaction.Designer.cs">
+    <Compile Include="Vues\ListesDeroulantes\ListeDeroulanteSousFaction.Designer.cs">
+      <DependentUpon>ListeDeroulanteSousFaction.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Vues\ListesDeroulantes\ListeDeroulanteFaction.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Vues\ListesDeroulantes\ListeDeroulanteFaction.Designer.cs">
+      <DependentUpon>ListeDeroulanteFaction.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Vues\Pages\PageAjoutFactionSousFaction.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Vues\Pages\PageAjoutFactionSousFaction.Designer.cs">
       <DependentUpon>PageAjoutFactionSousFaction.cs</DependentUpon>
     </Compile>
     <Compile Include="Vues\ListesDeroulantes\ListeDeroulanteFeature.cs">
@@ -167,7 +179,13 @@
     <EmbeddedResource Include="Form_Principal.resx">
       <DependentUpon>Form_Principal.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="PageAjoutFactionSousFaction.resx">
+    <EmbeddedResource Include="Vues\ListesDeroulantes\ListeDeroulanteSousFaction.resx">
+      <DependentUpon>ListeDeroulanteSousFaction.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Vues\ListesDeroulantes\ListeDeroulanteFaction.resx">
+      <DependentUpon>ListeDeroulanteFaction.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Vues\Pages\PageAjoutFactionSousFaction.resx">
       <DependentUpon>PageAjoutFactionSousFaction.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Vues\ListesDeroulantes\ListeDeroulanteFeature.resx">
