@@ -310,6 +310,7 @@
             this.Controls.Add(this.labelFaction);
             this.Name = "PageAjoutFactionSousFaction";
             this.Size = new System.Drawing.Size(1500, 750);
+            this.Load += new System.EventHandler(this.PageAjoutFactionSousFaction_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 

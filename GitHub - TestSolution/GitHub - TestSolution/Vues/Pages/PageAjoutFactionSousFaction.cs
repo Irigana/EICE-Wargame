@@ -38,5 +38,11 @@ namespace EICE_WARGAME
             InitializeComponent();
             m_Utilisateur = null;
         }
+
+        private void PageAjoutFactionSousFaction_Load(object sender, EventArgs e)
+        {
+            // Permet de passer l'utilisateur par le controler MenuAdmin
+            menuAdmin1.Utilisateur = Utilisateur;
+        }
     }
 }

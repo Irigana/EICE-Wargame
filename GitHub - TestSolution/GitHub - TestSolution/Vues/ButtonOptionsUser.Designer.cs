@@ -62,7 +62,6 @@
             // buttonUser
             // 
             this.buttonUser.BackColor = System.Drawing.SystemColors.Control;
-            this.buttonUser.Dock = System.Windows.Forms.DockStyle.Fill;
             this.buttonUser.FlatAppearance.BorderColor = System.Drawing.Color.Silver;
             this.buttonUser.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonUser.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F);
@@ -85,6 +84,7 @@
             this.Controls.Add(this.buttonUser);
             this.Name = "ButtonOptionsUser";
             this.Size = new System.Drawing.Size(219, 45);
+            this.Load += new System.EventHandler(this.ButtonOptionsUser_Load);
             this.contextMenuStripUser.ResumeLayout(false);
             this.ResumeLayout(false);
 

@@ -12,6 +12,7 @@ namespace EICE_WARGAME
 {
     public partial class MenuAdmin : UserControl
     {
+        
         #region Utilisateur
         private Utilisateur m_Utilisateur = null;
 
@@ -30,24 +31,25 @@ namespace EICE_WARGAME
             }
         }
         #endregion
-
+        
         public MenuAdmin()
         {
             InitializeComponent();
+
         }
 
         private void buttonEquipement_Click(object sender, EventArgs e)
         {          
             // Permet de tester si la page actuelle n'est pas déjà la page d'ajout de l'équipement
-            if(!(object.Equals(Form_Principal.Instance.PageCourante.Name,this.Parent.Name)))
+            if(Form_Principal.Instance.PageCourante.Name.ToString() != new PageAjouterEquipements().Name.ToString())
             {
                 // Sinon on crée la page d'ajout d'équipements
-                Form_Principal.Instance.CreerPageCourante<PageAjouterEquipements>(
-                        (Page) =>
-                        {
-                            Page.Utilisateur = Utilisateur;
-                            return true;
-                        });
+                Form_Principal.Instance.CreerPageCourante<PageAjouterEquipements>((Page) =>
+                {
+                    Page.Utilisateur = Utilisateur;                    
+                    return true;
+                });
+                        
             }            
         }
     }

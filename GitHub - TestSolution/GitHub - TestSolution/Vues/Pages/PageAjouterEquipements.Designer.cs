@@ -320,6 +320,7 @@
             this.menuAdmin1.Name = "menuAdmin1";
             this.menuAdmin1.Size = new System.Drawing.Size(190, 750);
             this.menuAdmin1.TabIndex = 0;
+            this.menuAdmin1.Utilisateur = null;
             // 
             // PageAjouterEquipements
             // 
@@ -353,6 +354,7 @@
             this.Controls.Add(this.menuAdmin1);
             this.Name = "PageAjouterEquipements";
             this.Size = new System.Drawing.Size(1500, 750);
+            this.Load += new System.EventHandler(this.PageAjouterEquipements_Load);
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();

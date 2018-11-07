@@ -238,14 +238,14 @@ namespace EICE_WARGAME
         #region Gestion du panneau
         private void listeDeroulanteType_Load(object sender, EventArgs e)
         {
-            if (Utilisateur != null)
-            {
-                buttonOptionsUser1.ButtonOptionsUserUpdate();
-            }
-            else
-            {
-                Form_Principal.Instance.CreerPageCourante<PageConnexion>();
-            }
+            //if (Utilisateur != null)
+            //{
+                //buttonOptionsUser1.ButtonOptionsUserUpdate();
+            //}
+            //else
+            //{
+              //  Form_Principal.Instance.CreerPageCourante<PageConnexion>();
+            //}
         }
 
         private void linkLabelDashboard_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
@@ -257,9 +257,15 @@ namespace EICE_WARGAME
                             return true;
                         });
         }
-        
+
+
 
         #endregion
 
+        private void PageAjouterEquipements_Load(object sender, EventArgs e)
+        {
+            // Permet de passer l'utilisateur par le controler MenuAdmin
+            menuAdmin1.Utilisateur = Utilisateur;
+        }
     }
 }

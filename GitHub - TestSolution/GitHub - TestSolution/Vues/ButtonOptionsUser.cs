@@ -34,7 +34,7 @@ namespace EICE_WARGAME
         /// </summary>
         public ButtonOptionsUser()
         {
-            InitializeComponent();
+            InitializeComponent();            
             m_Utilisateur = null;     
         }
 
@@ -90,6 +90,10 @@ namespace EICE_WARGAME
         {
             Form_Principal.Instance.CreerPageCourante<PageConnexion>();
         }
-        
+
+        private void ButtonOptionsUser_Load(object sender, EventArgs e)
+        {
+            if(m_Utilisateur != null) ButtonOptionsUserUpdate();
+        }
     }
 }
