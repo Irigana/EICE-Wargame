@@ -138,6 +138,24 @@ namespace EICE_WARGAME
             return Role.Enumerer(m_BD, m_BD.Enumerer("SELECT {0} FROM {1} {2} {3} {4}", ValeurSouhaitee, c_NomTable_Role, ClauseJoin, ClauseWhere, ClauseOrderBy));
         }
 
+        public IEnumerable<Faction> EnumererFaction(MyDB.CodeSql ValeurSouhaitee, MyDB.CodeSql ClauseJoin, MyDB.CodeSql ClauseWhere, MyDB.CodeSql ClauseOrderBy)
+        {
+            if (ClauseWhere == null) ClauseWhere = MyDB.CodeSql.Vide;
+            if (ClauseOrderBy == null) ClauseOrderBy = MyDB.CodeSql.Vide;
+            if (ClauseJoin == null) ClauseJoin = MyDB.CodeSql.Vide;
+            if (ValeurSouhaitee == null) ValeurSouhaitee = new MyDB.CodeSql("*");
+            return Faction.Enumerer(m_BD, m_BD.Enumerer("SELECT {0} FROM {1} {2} {3} {4}", ValeurSouhaitee, c_NomTable_Faction, ClauseJoin, ClauseWhere, ClauseOrderBy));
+        }
+
+        public IEnumerable<SousFaction> EnumererSousFaction(MyDB.CodeSql ValeurSouhaitee, MyDB.CodeSql ClauseJoin, MyDB.CodeSql ClauseWhere, MyDB.CodeSql ClauseOrderBy)
+        {
+            if (ClauseWhere == null) ClauseWhere = MyDB.CodeSql.Vide;
+            if (ClauseOrderBy == null) ClauseOrderBy = MyDB.CodeSql.Vide;
+            if (ClauseJoin == null) ClauseJoin = MyDB.CodeSql.Vide;
+            if (ValeurSouhaitee == null) ValeurSouhaitee = new MyDB.CodeSql("*");
+            return SousFaction.Enumerer(m_BD, m_BD.Enumerer("SELECT {0} FROM {1} {2} {3} {4}", ValeurSouhaitee, c_NomTable_SousFaction, ClauseJoin, ClauseWhere, ClauseOrderBy));
+        }
+
         public IEnumerable<Type> EnumererType(MyDB.CodeSql ValeurSouhaitee, MyDB.CodeSql ClauseJoin, MyDB.CodeSql ClauseWhere, MyDB.CodeSql ClauseOrderBy)
         {
             if (ClauseWhere == null) ClauseWhere = MyDB.CodeSql.Vide;

@@ -33,9 +33,11 @@ namespace EICE_WARGAME
         public ListeDeroulanteFaction()
         {
             InitializeComponent();
+            this.SizeChanged += ListeDeroulanteFaction_SizeChanged;
+            comboBoxListeFaction.SelectedIndexChanged += ComboFaction_SelectedIndexChanged;
         }
 
-        public IEnumerable<Faction> Feature
+        public IEnumerable<Faction> Faction
         {
             get
             {
@@ -73,7 +75,7 @@ namespace EICE_WARGAME
 
         public EventHandler SurChangementSelection = null;
 
-        private void ComboFeature_SelectedIndexChanged(object sender, EventArgs e)
+        private void ComboFaction_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (SurChangementSelection != null)
             {
@@ -81,7 +83,7 @@ namespace EICE_WARGAME
             }
         }
 
-        private void ListeDeroulanteType_SizeChanged(object sender, EventArgs e)
+        private void ListeDeroulanteFaction_SizeChanged(object sender, EventArgs e)
         {
             this.Size = new Size(this.Size.Width, comboBoxListeFaction.Height);
         }

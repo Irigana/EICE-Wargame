@@ -302,7 +302,6 @@
             this.listeDeroulanteType.Size = new System.Drawing.Size(197, 25);
             this.listeDeroulanteType.TabIndex = 17;
             this.listeDeroulanteType.TypeSelectionne = null;
-            this.listeDeroulanteType.Load += new System.EventHandler(this.listeDeroulanteType_Load);
             // 
             // buttonOptionsUser1
             // 

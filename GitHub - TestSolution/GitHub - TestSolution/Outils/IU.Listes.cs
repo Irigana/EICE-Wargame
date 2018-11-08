@@ -58,12 +58,12 @@ namespace EICE_WARGAME
             {
                 foreach (T Element in Elements)
                 {
-                    Liste.Items.Add(new ListViewItem(ExtracteurChamps(Element))).Tag = Element;
+                    Liste.Items.Add(new ListViewItem(ExtracteurChamps(Element))).Tag = Element;                    
                 }
                 foreach (ColumnHeader Colonne in Liste.Columns)
                 {
                     Colonne.AutoResize(ColumnHeaderAutoResizeStyle.HeaderSize);
-                }
+                }                
             }
         }
     }

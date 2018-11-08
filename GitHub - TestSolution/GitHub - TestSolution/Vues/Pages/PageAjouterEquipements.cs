@@ -236,17 +236,6 @@ namespace EICE_WARGAME
         #endregion
 
         #region Gestion du panneau
-        private void listeDeroulanteType_Load(object sender, EventArgs e)
-        {
-            //if (Utilisateur != null)
-            //{
-                //buttonOptionsUser1.ButtonOptionsUserUpdate();
-            //}
-            //else
-            //{
-              //  Form_Principal.Instance.CreerPageCourante<PageConnexion>();
-            //}
-        }
 
         private void linkLabelDashboard_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
