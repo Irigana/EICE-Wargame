@@ -34,6 +34,9 @@ namespace EICE_WARGAME
         }
         #endregion
 
+
+        private const string c_CritereQuiContient = "%{0}%";
+
         private Faction m_FactionEnEdition;
 
         public PageAjoutFactionSousFaction()
@@ -71,16 +74,65 @@ namespace EICE_WARGAME
             {
                 textBoxFaction.Text = listeDeroulanteFaction1.FactionSelectionnee.Name;
             }
-            
-            IU.Initialiser(listViewSousFactions, "Sous faction");
-            IU.Remplir(listViewSousFactions, Program.GMBD.EnumererSousFaction(null,
-                                                                                new MyDB.CodeSql("WHERE sf_fk_faction_id = {0}", listeDeroulanteFaction1.FactionSelectionnee.Id),
-                                                                                new MyDB.CodeSql("ORDER BY sf_name"),null),
-                   SousFaction => new string[]
-                   {
-                            SousFaction.Name
-                   });            
 
+            //Charge mes sous factions en fonction du choix de faction de l'utilisateur
+            ChargerSousFaction();
+
+            //Partie sur les sous factions et son filtre
+            ficheSousFaction1.ReactionEnDirectSurChangementFiltre = true;
+            ficheSousFaction1.SurChangementFiltre += (s, ev) =>
+            {
+                if (ficheSousFaction1.TexteDuFiltre != "")
+                {
+                    ficheSousFaction1.SousFaction = Program.GMBD.EnumererSousFaction(
+                        null,
+                        null,
+                        new MyDB.CodeSql("WHERE subfaction.sf_name LIKE {0} AND subfaction.sf_fk_faction_id = {1}",
+                                         string.Format(c_CritereQuiContient, ficheSousFaction1.TexteDuFiltre), listeDeroulanteFaction1.FactionSelectionnee.Id),
+                        new MyDB.CodeSql("ORDER BY subfaction.sf_name"));
+                }
+                else
+                {
+                    ficheSousFaction1.SousFaction = Program.GMBD.EnumererSousFaction(
+                        null,null, 
+                        new MyDB.CodeSql("WHERE subfaction.sf_fk_faction_id = {0}", listeDeroulanteFaction1.FactionSelectionnee.Id),
+                        new MyDB.CodeSql("ORDER BY subfaction.sf_name"));
+                }
+            };
+            ficheSousFaction1.SurChangementSelection += ficheSousFaction_SurChangementSelection;
+            ficheSousFaction_SurChangementSelection(ficheSousFaction1, EventArgs.Empty);
+
+            if(ficheSousFaction1.NombreDeSousFactionFiltre == 0)
+            {
+                
+                buttonAjouterSF.Enabled = true;
+            }
+        }
+
+        private void ChargerSousFaction()
+        {
+            ficheSousFaction1.SousFaction = Program.GMBD.EnumererSousFaction(
+                null,
+                null,
+                new MyDB.CodeSql("WHERE subfaction.sf_fk_faction_id = {0}",listeDeroulanteFaction1.FactionSelectionnee.Id),
+                null);
+        }
+
+        /// <summary>
+        /// Permet de modifier l'affichage du formulaire en fonction du choix de l'utilisateur
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void ficheSousFaction_SurChangementSelection(object sender, EventArgs e)
+        {
+            if (ficheSousFaction1.SousFactionSelectionne != null)
+            {                                
+                buttonAjouterSF.Enabled = false;
+                buttonAnnulerSF.Enabled = true;
+                buttonModifierSF.Enabled = true;
+                buttonSupprimerSF.Enabled = true;
+                ficheSousFaction1.TexteDuFiltre = ficheSousFaction1.SousFactionSelectionne.Name;             
+            }
         }
 
         private void PageAjoutFactionSousFaction_Load(object sender, EventArgs e)

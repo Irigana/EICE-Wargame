@@ -37,13 +37,12 @@
             this.buttonSupprimerFaction = new System.Windows.Forms.Button();
             this.buttonAnnulerFaction = new System.Windows.Forms.Button();
             this.buttonModifierFaction = new System.Windows.Forms.Button();
-            this.listViewSousFactions = new System.Windows.Forms.ListView();
-            this.textBoxSousFaction = new System.Windows.Forms.TextBox();
             this.buttonAjouterSF = new System.Windows.Forms.Button();
             this.buttonModifierSF = new System.Windows.Forms.Button();
             this.buttonSupprimerSF = new System.Windows.Forms.Button();
             this.buttonAnnulerSF = new System.Windows.Forms.Button();
             this.panelLigne = new System.Windows.Forms.Panel();
+            this.ficheSousFaction1 = new EICE_WARGAME.FicheSousFaction();
             this.buttonOptionsUser1 = new EICE_WARGAME.ButtonOptionsUser();
             this.listeDeroulanteFaction1 = new EICE_WARGAME.ListeDeroulanteFaction();
             this.menuAdmin1 = new EICE_WARGAME.MenuAdmin();
@@ -63,7 +62,7 @@
             // 
             this.labelSousFaction.AutoSize = true;
             this.labelSousFaction.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F);
-            this.labelSousFaction.Location = new System.Drawing.Point(666, 269);
+            this.labelSousFaction.Location = new System.Drawing.Point(599, 262);
             this.labelSousFaction.Name = "labelSousFaction";
             this.labelSousFaction.Size = new System.Drawing.Size(91, 18);
             this.labelSousFaction.TabIndex = 2;
@@ -73,7 +72,7 @@
             // 
             this.labelChoisirFaction.AutoSize = true;
             this.labelChoisirFaction.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F);
-            this.labelChoisirFaction.Location = new System.Drawing.Point(626, 125);
+            this.labelChoisirFaction.Location = new System.Drawing.Point(599, 131);
             this.labelChoisirFaction.Name = "labelChoisirFaction";
             this.labelChoisirFaction.Size = new System.Drawing.Size(131, 18);
             this.labelChoisirFaction.TabIndex = 6;
@@ -83,7 +82,7 @@
             // 
             this.labelTextBoxFaction.AutoSize = true;
             this.labelTextBoxFaction.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F);
-            this.labelTextBoxFaction.Location = new System.Drawing.Point(700, 185);
+            this.labelTextBoxFaction.Location = new System.Drawing.Point(599, 186);
             this.labelTextBoxFaction.Name = "labelTextBoxFaction";
             this.labelTextBoxFaction.Size = new System.Drawing.Size(57, 18);
             this.labelTextBoxFaction.TabIndex = 8;
@@ -91,9 +90,9 @@
             // 
             // textBoxFaction
             // 
-            this.textBoxFaction.Location = new System.Drawing.Point(789, 182);
+            this.textBoxFaction.Location = new System.Drawing.Point(753, 182);
             this.textBoxFaction.Name = "textBoxFaction";
-            this.textBoxFaction.Size = new System.Drawing.Size(249, 22);
+            this.textBoxFaction.Size = new System.Drawing.Size(282, 22);
             this.textBoxFaction.TabIndex = 9;
             // 
             // buttonAjoutFaction
@@ -101,9 +100,9 @@
             this.buttonAjoutFaction.BackColor = System.Drawing.SystemColors.Window;
             this.buttonAjoutFaction.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonAjoutFaction.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F);
-            this.buttonAjoutFaction.Location = new System.Drawing.Point(624, 568);
+            this.buttonAjoutFaction.Location = new System.Drawing.Point(602, 568);
             this.buttonAjoutFaction.Name = "buttonAjoutFaction";
-            this.buttonAjoutFaction.Size = new System.Drawing.Size(125, 49);
+            this.buttonAjoutFaction.Size = new System.Drawing.Size(135, 49);
             this.buttonAjoutFaction.TabIndex = 10;
             this.buttonAjoutFaction.Text = "Ajouter";
             this.buttonAjoutFaction.UseVisualStyleBackColor = false;
@@ -113,9 +112,9 @@
             this.buttonSupprimerFaction.BackColor = System.Drawing.SystemColors.Window;
             this.buttonSupprimerFaction.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonSupprimerFaction.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F);
-            this.buttonSupprimerFaction.Location = new System.Drawing.Point(1017, 568);
+            this.buttonSupprimerFaction.Location = new System.Drawing.Point(1025, 568);
             this.buttonSupprimerFaction.Name = "buttonSupprimerFaction";
-            this.buttonSupprimerFaction.Size = new System.Drawing.Size(125, 49);
+            this.buttonSupprimerFaction.Size = new System.Drawing.Size(135, 49);
             this.buttonSupprimerFaction.TabIndex = 11;
             this.buttonSupprimerFaction.Text = "Supprimer";
             this.buttonSupprimerFaction.UseVisualStyleBackColor = false;
@@ -125,9 +124,9 @@
             this.buttonAnnulerFaction.BackColor = System.Drawing.SystemColors.Window;
             this.buttonAnnulerFaction.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonAnnulerFaction.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F);
-            this.buttonAnnulerFaction.Location = new System.Drawing.Point(886, 568);
+            this.buttonAnnulerFaction.Location = new System.Drawing.Point(884, 568);
             this.buttonAnnulerFaction.Name = "buttonAnnulerFaction";
-            this.buttonAnnulerFaction.Size = new System.Drawing.Size(125, 49);
+            this.buttonAnnulerFaction.Size = new System.Drawing.Size(135, 49);
             this.buttonAnnulerFaction.TabIndex = 12;
             this.buttonAnnulerFaction.Text = "Annuler";
             this.buttonAnnulerFaction.UseVisualStyleBackColor = false;
@@ -137,35 +136,18 @@
             this.buttonModifierFaction.BackColor = System.Drawing.SystemColors.Window;
             this.buttonModifierFaction.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonModifierFaction.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F);
-            this.buttonModifierFaction.Location = new System.Drawing.Point(755, 568);
+            this.buttonModifierFaction.Location = new System.Drawing.Point(743, 568);
             this.buttonModifierFaction.Name = "buttonModifierFaction";
-            this.buttonModifierFaction.Size = new System.Drawing.Size(125, 49);
+            this.buttonModifierFaction.Size = new System.Drawing.Size(135, 49);
             this.buttonModifierFaction.TabIndex = 13;
             this.buttonModifierFaction.Text = "Modifier";
             this.buttonModifierFaction.UseVisualStyleBackColor = false;
-            // 
-            // listViewSousFactions
-            // 
-            this.listViewSousFactions.Location = new System.Drawing.Point(789, 293);
-            this.listViewSousFactions.Name = "listViewSousFactions";
-            this.listViewSousFactions.Size = new System.Drawing.Size(249, 188);
-            this.listViewSousFactions.TabIndex = 24;
-            this.listViewSousFactions.UseCompatibleStateImageBehavior = false;
-            this.listViewSousFactions.ItemCheck += new System.Windows.Forms.ItemCheckEventHandler(this.listViewSousFactions_ItemCheck);
-            this.listViewSousFactions.ItemSelectionChanged += new System.Windows.Forms.ListViewItemSelectionChangedEventHandler(this.listViewSousFactions_ItemSelectionChanged);
-            // 
-            // textBoxSousFaction
-            // 
-            this.textBoxSousFaction.Location = new System.Drawing.Point(789, 269);
-            this.textBoxSousFaction.Name = "textBoxSousFaction";
-            this.textBoxSousFaction.Size = new System.Drawing.Size(249, 22);
-            this.textBoxSousFaction.TabIndex = 25;
             // 
             // buttonAjouterSF
             // 
             this.buttonAjouterSF.BackColor = System.Drawing.SystemColors.Window;
             this.buttonAjouterSF.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.buttonAjouterSF.Location = new System.Drawing.Point(1050, 269);
+            this.buttonAjouterSF.Location = new System.Drawing.Point(1068, 262);
             this.buttonAjouterSF.Name = "buttonAjouterSF";
             this.buttonAjouterSF.Size = new System.Drawing.Size(92, 29);
             this.buttonAjouterSF.TabIndex = 26;
@@ -176,7 +158,7 @@
             // 
             this.buttonModifierSF.BackColor = System.Drawing.SystemColors.Window;
             this.buttonModifierSF.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.buttonModifierSF.Location = new System.Drawing.Point(1050, 304);
+            this.buttonModifierSF.Location = new System.Drawing.Point(1068, 297);
             this.buttonModifierSF.Name = "buttonModifierSF";
             this.buttonModifierSF.Size = new System.Drawing.Size(92, 29);
             this.buttonModifierSF.TabIndex = 27;
@@ -187,7 +169,7 @@
             // 
             this.buttonSupprimerSF.BackColor = System.Drawing.SystemColors.Window;
             this.buttonSupprimerSF.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.buttonSupprimerSF.Location = new System.Drawing.Point(1050, 374);
+            this.buttonSupprimerSF.Location = new System.Drawing.Point(1068, 367);
             this.buttonSupprimerSF.Name = "buttonSupprimerSF";
             this.buttonSupprimerSF.Size = new System.Drawing.Size(92, 29);
             this.buttonSupprimerSF.TabIndex = 28;
@@ -198,7 +180,7 @@
             // 
             this.buttonAnnulerSF.BackColor = System.Drawing.SystemColors.Window;
             this.buttonAnnulerSF.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.buttonAnnulerSF.Location = new System.Drawing.Point(1050, 339);
+            this.buttonAnnulerSF.Location = new System.Drawing.Point(1068, 332);
             this.buttonAnnulerSF.Name = "buttonAnnulerSF";
             this.buttonAnnulerSF.Size = new System.Drawing.Size(92, 29);
             this.buttonAnnulerSF.TabIndex = 29;
@@ -213,6 +195,16 @@
             this.panelLigne.Size = new System.Drawing.Size(1200, 3);
             this.panelLigne.TabIndex = 30;
             // 
+            // ficheSousFaction1
+            // 
+            this.ficheSousFaction1.Location = new System.Drawing.Point(751, 262);
+            this.ficheSousFaction1.Name = "ficheSousFaction1";
+            this.ficheSousFaction1.ReactionEnDirectSurChangementFiltre = false;
+            this.ficheSousFaction1.Size = new System.Drawing.Size(291, 284);
+            this.ficheSousFaction1.SousFactionSelectionne = null;
+            this.ficheSousFaction1.TabIndex = 31;
+            this.ficheSousFaction1.TexteDuFiltre = "";
+            // 
             // buttonOptionsUser1
             // 
             this.buttonOptionsUser1.BackColor = System.Drawing.Color.Transparent;
@@ -225,9 +217,9 @@
             // listeDeroulanteFaction1
             // 
             this.listeDeroulanteFaction1.FactionSelectionnee = null;
-            this.listeDeroulanteFaction1.Location = new System.Drawing.Point(789, 124);
+            this.listeDeroulanteFaction1.Location = new System.Drawing.Point(751, 131);
             this.listeDeroulanteFaction1.Name = "listeDeroulanteFaction1";
-            this.listeDeroulanteFaction1.Size = new System.Drawing.Size(249, 25);
+            this.listeDeroulanteFaction1.Size = new System.Drawing.Size(282, 24);
             this.listeDeroulanteFaction1.TabIndex = 5;
             // 
             // menuAdmin1
@@ -243,13 +235,12 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.ficheSousFaction1);
             this.Controls.Add(this.panelLigne);
             this.Controls.Add(this.buttonAnnulerSF);
             this.Controls.Add(this.buttonSupprimerSF);
             this.Controls.Add(this.buttonModifierSF);
             this.Controls.Add(this.buttonAjouterSF);
-            this.Controls.Add(this.textBoxSousFaction);
-            this.Controls.Add(this.listViewSousFactions);
             this.Controls.Add(this.buttonOptionsUser1);
             this.Controls.Add(this.buttonModifierFaction);
             this.Controls.Add(this.buttonAnnulerFaction);
@@ -283,12 +274,11 @@
         private System.Windows.Forms.Button buttonAnnulerFaction;
         private System.Windows.Forms.Button buttonModifierFaction;
         private ButtonOptionsUser buttonOptionsUser1;
-        private System.Windows.Forms.ListView listViewSousFactions;
-        private System.Windows.Forms.TextBox textBoxSousFaction;
         private System.Windows.Forms.Button buttonAjouterSF;
         private System.Windows.Forms.Button buttonModifierSF;
         private System.Windows.Forms.Button buttonSupprimerSF;
         private System.Windows.Forms.Button buttonAnnulerSF;
         private System.Windows.Forms.Panel panelLigne;
+        private FicheSousFaction ficheSousFaction1;
     }
 }

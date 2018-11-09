@@ -46,6 +46,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Vues\FicheSousFaction.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Vues\FicheSousFaction.Designer.cs">
+      <DependentUpon>FicheSousFaction.cs</DependentUpon>
+    </Compile>
     <Compile Include="Vues\ListesDeroulantes\ListeDeroulanteSousFaction.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -176,6 +182,9 @@
     <Compile Include="Vues\TextBoxAvecTextInvisible.Designer.cs">
       <DependentUpon>TextBoxAvecTextInvisible.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="Vues\FicheSousFaction.resx">
+      <DependentUpon>FicheSousFaction.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Form_Principal.resx">
       <DependentUpon>Form_Principal.cs</DependentUpon>
     </EmbeddedResource>
