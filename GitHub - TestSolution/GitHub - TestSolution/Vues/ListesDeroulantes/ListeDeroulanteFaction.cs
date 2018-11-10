@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using PDSGBD;
 
 namespace EICE_WARGAME
 {
@@ -35,7 +36,7 @@ namespace EICE_WARGAME
             InitializeComponent();
             this.SizeChanged += ListeDeroulanteFaction_SizeChanged;
             comboBoxListeFaction.SelectedIndexChanged += ComboFaction_SelectedIndexChanged;
-        }
+        }        
 
         public IEnumerable<Faction> Faction
         {

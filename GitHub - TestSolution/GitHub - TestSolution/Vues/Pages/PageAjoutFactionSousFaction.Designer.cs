@@ -106,6 +106,7 @@
             this.buttonAjoutFaction.TabIndex = 10;
             this.buttonAjoutFaction.Text = "Ajouter";
             this.buttonAjoutFaction.UseVisualStyleBackColor = false;
+            this.buttonAjoutFaction.Click += new System.EventHandler(this.buttonAjoutFaction_Click);
             // 
             // buttonSupprimerFaction
             // 
@@ -153,6 +154,7 @@
             this.buttonAjouterSF.TabIndex = 26;
             this.buttonAjouterSF.Text = "Ajouter";
             this.buttonAjouterSF.UseVisualStyleBackColor = false;
+            this.buttonAjouterSF.Click += new System.EventHandler(this.buttonAjouterSF_Click);
             // 
             // buttonModifierSF
             // 
@@ -199,6 +201,7 @@
             // 
             this.ficheSousFaction1.Location = new System.Drawing.Point(751, 262);
             this.ficheSousFaction1.Name = "ficheSousFaction1";
+            this.ficheSousFaction1.NombreDeSousFactionFiltre = -1;
             this.ficheSousFaction1.ReactionEnDirectSurChangementFiltre = false;
             this.ficheSousFaction1.Size = new System.Drawing.Size(291, 284);
             this.ficheSousFaction1.SousFactionSelectionne = null;
@@ -219,7 +222,7 @@
             this.listeDeroulanteFaction1.FactionSelectionnee = null;
             this.listeDeroulanteFaction1.Location = new System.Drawing.Point(751, 131);
             this.listeDeroulanteFaction1.Name = "listeDeroulanteFaction1";
-            this.listeDeroulanteFaction1.Size = new System.Drawing.Size(282, 24);
+            this.listeDeroulanteFaction1.Size = new System.Drawing.Size(282, 25);
             this.listeDeroulanteFaction1.TabIndex = 5;
             // 
             // menuAdmin1

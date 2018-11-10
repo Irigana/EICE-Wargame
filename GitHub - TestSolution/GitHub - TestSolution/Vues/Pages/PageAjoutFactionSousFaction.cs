@@ -35,9 +35,9 @@ namespace EICE_WARGAME
         #endregion
 
 
-        private const string c_CritereQuiContient = "%{0}%";
+        private const string c_CritereQuiContient = "%{0}%";        
 
-        private Faction m_FactionEnEdition;
+        private Faction m_FactionEnEdition;        
 
         public PageAjoutFactionSousFaction()
         {
@@ -54,10 +54,7 @@ namespace EICE_WARGAME
             buttonSupprimerSF.Enabled = false;
             //-------------------------
 
-            listeDeroulanteFaction1.Faction = Program.GMBD.EnumererFaction(null,
-                                                                           null,
-                                                                           null,
-                                                                           new MyDB.CodeSql(" ORDER BY fa_name"));
+            Program.GMBD.MettreAJourListeFaction(listeDeroulanteFaction1);
             listeDeroulanteFaction1.SurChangementSelection += ListeFactionSurSelectionFaction;      
 
             
@@ -84,12 +81,16 @@ namespace EICE_WARGAME
             {
                 if (ficheSousFaction1.TexteDuFiltre != "")
                 {
+
+
                     ficheSousFaction1.SousFaction = Program.GMBD.EnumererSousFaction(
                         null,
                         null,
                         new MyDB.CodeSql("WHERE subfaction.sf_name LIKE {0} AND subfaction.sf_fk_faction_id = {1}",
                                          string.Format(c_CritereQuiContient, ficheSousFaction1.TexteDuFiltre), listeDeroulanteFaction1.FactionSelectionnee.Id),
                         new MyDB.CodeSql("ORDER BY subfaction.sf_name"));
+                    // Permet de récuperer le nombre d'enregistrement après le filtre
+                    ficheSousFaction1.NombreDeSousFactionFiltre = ficheSousFaction1.SousFaction.Count();
                 }
                 else
                 {
@@ -98,15 +99,24 @@ namespace EICE_WARGAME
                         new MyDB.CodeSql("WHERE subfaction.sf_fk_faction_id = {0}", listeDeroulanteFaction1.FactionSelectionnee.Id),
                         new MyDB.CodeSql("ORDER BY subfaction.sf_name"));
                 }
+
+                if (ficheSousFaction1.NombreDeSousFactionFiltre == 0)
+                {
+
+                    buttonAjouterSF.Enabled = true;
+                    buttonAnnulerSF.Enabled = true;
+                    buttonModifierSF.Enabled = false;
+                    buttonSupprimerSF.Enabled = false;
+                }
             };
             ficheSousFaction1.SurChangementSelection += ficheSousFaction_SurChangementSelection;
             ficheSousFaction_SurChangementSelection(ficheSousFaction1, EventArgs.Empty);
 
-            if(ficheSousFaction1.NombreDeSousFactionFiltre == 0)
-            {
-                
-                buttonAjouterSF.Enabled = true;
-            }
+        }
+
+        private void ChargerFaction()
+        {
+
         }
 
         private void ChargerSousFaction()
@@ -141,14 +151,51 @@ namespace EICE_WARGAME
             menuAdmin1.Utilisateur = Utilisateur;
         }
 
-        private void listViewSousFactions_ItemCheck(object sender, ItemCheckEventArgs e)
+        private void buttonAjouterSF_Click(object sender, EventArgs e)
         {
-            
+            if ((listeDeroulanteFaction1.FactionSelectionnee != null) && (ficheSousFaction1.NombreDeSousFactionFiltre == 0))
+            {
+
+            }
+            else if ((listeDeroulanteFaction1.FactionSelectionnee == null) && (textBoxFaction.Text.Length > 1))
+            {
+                Faction FactionExiste = Program.GMBD.EnumererFaction(null,
+                                                                           null,
+                                                                           new MyDB.CodeSql("WHERE faction.fa_name = {0}", textBoxFaction.Text),
+                                                                           null/*new MyDB.CodeSql(" ORDER BY fa_name") ASK*/).FirstOrDefault();
+                // Si la faction n'existe pas, crée on une nouvelle faction
+                if (FactionExiste == null)
+                {
+
+                    Faction NouvelleFaction = new Faction();
+                    NouvelleFaction.Name = textBoxFaction.Text;
+                    if (NouvelleFaction.EstValide)
+                    {
+                        // Si l'ajout a fonctionné et que l'id est plus grand que 0                                                                    
+                        if ((Program.GMBD.AjouterFaction(NouvelleFaction)) && (NouvelleFaction.Id > 0))
+                        {
+                            Program.GMBD.MettreAJourListeFaction(listeDeroulanteFaction1);
+                            listeDeroulanteFaction1.SelectedIndex(NouvelleFaction.Id);
+                            // Maintenant que la faction est ajouté on récupere son id pour construire la nouvelle sous faction attaché à cette faction
+                            SousFaction NouvelleSousFaction = new SousFaction();
+                            NouvelleSousFaction.Faction = NouvelleFaction;
+                            NouvelleSousFaction.Name = ficheSousFaction1.TexteDuFiltre;
+                            if (NouvelleSousFaction.EstValide)
+                            {
+                                if(Program.GMBD.AjouterSousFaction(NouvelleSousFaction))
+                                {
+                                    Program.GMBD.MettreAJourFicheSousFaction(ficheSousFaction1, listeDeroulanteFaction1.FactionSelectionnee.Id);
+                                }
+                            }
+                        }
+                    }
+                }
+            }
         }
 
-        private void listViewSousFactions_ItemSelectionChanged(object sender, ListViewItemSelectionChangedEventArgs e)
+        private void buttonAjoutFaction_Click(object sender, EventArgs e)
         {
-            
+
         }
     }
 }

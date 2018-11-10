@@ -107,6 +107,34 @@ namespace EICE_WARGAME
         }
         #endregion
 
+        #region Requetes Faction
+
+        public bool AjouterFaction(Faction NouvelleFaction)
+        {
+            return NouvelleFaction.Enregistrer(m_BD, NouvelleFaction, null, false);
+        }
+
+        public void MettreAJourListeFaction(ListeDeroulanteFaction Liste)
+        {
+            Liste.Faction = Program.GMBD.EnumererFaction(null, null, null, null/*new MyDB.CodeSql("ORDER BY faction.fa_name") ASK*/);
+        }
+
+        #endregion
+
+        #region Requetes Sous Faction
+        public bool AjouterSousFaction(SousFaction NouvelleSousFaction)
+        {
+            return NouvelleSousFaction.Enregistrer(m_BD, NouvelleSousFaction, null, false);
+        }
+
+        public void MettreAJourFicheSousFaction(FicheSousFaction Fiche,int IdFactionSelectionne)
+        {
+            Fiche.SousFaction = Fiche.SousFaction = Program.GMBD.EnumererSousFaction(
+                        null, null,
+                        new MyDB.CodeSql("WHERE subfaction.sf_fk_faction_id = {0}", IdFactionSelectionne),
+                        new MyDB.CodeSql("ORDER BY subfaction.sf_name"));
+        }
+        #endregion
         #region Toutes les énumérations
         //+==================+
         //| Les énumérations |
@@ -191,25 +219,7 @@ namespace EICE_WARGAME
             if (ValeurSouhaitee == null) ValeurSouhaitee = new MyDB.CodeSql("*");
             return Feature.Enumerer(m_BD, m_BD.Enumerer("SELECT {0} FROM {1} {2} {3} {4}", ValeurSouhaitee, c_NomTable_Feature, ClauseJoin, ClauseWhere, ClauseOrderBy));
         }
-        /*
-        public IEnumerable<Faction> EnumererFaction(MyDB.CodeSql ValeurSouhaitee, MyDB.CodeSql ClauseJoin, MyDB.CodeSql ClauseWhere, MyDB.CodeSql ClauseOrderBy)
-        {
-            if (ClauseWhere == null) ClauseWhere = MyDB.CodeSql.Vide;
-            if (ClauseOrderBy == null) ClauseOrderBy = MyDB.CodeSql.Vide;
-            if (ClauseJoin == null) ClauseJoin = MyDB.CodeSql.Vide;
-            if (ValeurSouhaitee == null) ValeurSouhaitee = new MyDB.CodeSql("*");
-            return Faction.Enumerer(m_BD, m_BD.Enumerer("SELECT {0} FROM {1} {2} {3} {4}", ValeurSouhaitee, c_NomTable_Faction, ClauseJoin, ClauseWhere, ClauseOrderBy));
-        }
-
-        public IEnumerable<SousFaction> EnumererSousFaction(MyDB.CodeSql ValeurSouhaitee, MyDB.CodeSql ClauseJoin, MyDB.CodeSql ClauseWhere, MyDB.CodeSql ClauseOrderBy)
-        {
-            if (ClauseWhere == null) ClauseWhere = MyDB.CodeSql.Vide;
-            if (ClauseOrderBy == null) ClauseOrderBy = MyDB.CodeSql.Vide;
-            if (ClauseJoin == null) ClauseJoin = MyDB.CodeSql.Vide;
-            if (ValeurSouhaitee == null) ValeurSouhaitee = new MyDB.CodeSql("*");
-            return SousFaction.Enumerer(m_BD, m_BD.Enumerer("SELECT {0} FROM {1} {2} {3} {4}", ValeurSouhaitee, c_NomTable_SousFaction, ClauseJoin, ClauseWhere, ClauseOrderBy));
-        }
-        */
+        
 
 
         #endregion

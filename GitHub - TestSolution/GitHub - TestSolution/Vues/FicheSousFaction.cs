@@ -18,12 +18,18 @@ namespace EICE_WARGAME
         /// </summary>
         private bool m_ReactionEnDirectSurChangementFiltre;
 
+        private int m_NombreDEnregistrementFiltre = -1;
+
 
         public int NombreDeSousFactionFiltre
         {
             get
             {
-                return 0;
+                return m_NombreDEnregistrementFiltre;
+            }
+            set
+            {
+                m_NombreDEnregistrementFiltre = value;
             }
             
         }
