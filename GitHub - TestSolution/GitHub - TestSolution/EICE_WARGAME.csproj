@@ -46,6 +46,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Modeles\Charact.cs" />
+    <Compile Include="Modeles\Figurine.cs" />
+    <Compile Include="Modeles\FigurineStuff.cs" />
     <Compile Include="Vues\FicheSousFaction.cs">
       <SubType>UserControl</SubType>
     </Compile>

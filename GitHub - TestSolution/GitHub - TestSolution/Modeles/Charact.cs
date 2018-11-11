@@ -6,25 +6,25 @@ using System.Threading.Tasks;
 
 namespace EICE_WARGAME
 {
-    public class SousFaction : Entite<SousFaction, SousFaction.Champ>
+    public class Charact : Entite<Charact, Charact.Champ>
     {
         /// <summary>
-        /// Champ décrivant cette SousFaction
+        /// Champ décrivant cette Charact
         /// </summary>
         public enum Champ
         {
             /// <summary>
-            /// Identifiant de cette SousFaction
+            /// Identifiant de ce charact
             /// </summary>
             Id,
             /// <summary>
-            /// name de ce SousFaction
+            /// name de ce charact
             /// </summary>
             Name,
             /// <summary>
-            /// Faction de cette SousFaction
+            /// Sous-faction de ce dharact
             /// </summary>
-            Faction,
+            SousFaction,
         }
 
         #region Membres privés
@@ -34,19 +34,14 @@ namespace EICE_WARGAME
         private string m_Name;
 
         /// <summary>
-        /// Stocke la faction de cette Sous-Faction
+        /// Stocke la Sous-Faction de ce charact
         /// </summary>
-        private Faction m_Faction;
-
-        /// <summary>
-        /// Stocke les characts liés à cette Sous-Faction
-        /// </summary>
-        private List<Charact> m_Characts;
+        private SousFaction m_SousFaction;
         #endregion
 
         #region Membres publics
         /// <summary>
-        /// Name de ce SousFaction
+        /// Name de ce charact
         /// </summary>
         public string Name
         {
@@ -76,28 +71,20 @@ namespace EICE_WARGAME
             }
         }
 
-        public IEnumerable<Charact> Characts
-        {
-            get
-            {
-                return EnumererCharacts();
-            }
-        }
-
         /// <summary>
-        /// Id de cette faction
+        /// Id de cette Sous-Faction
         /// </summary>
-        public Faction Faction
+        public SousFaction SousFaction
         {
             get
             {
-                return m_Faction;
+                return m_SousFaction;
             }
             set
             {
-                if ((value != null) && ((m_Faction == null) || !int.Equals(value.Id, Faction.Id)))
+                if ((value != null) && ((m_SousFaction == null) || !int.Equals(value.Id, SousFaction.Id)))
                 {
-                    ModifierChamp(Champ.Faction, ref m_Faction, value);
+                    ModifierChamp(Champ.SousFaction, ref m_SousFaction, value);
                 }
             }
         }
@@ -108,19 +95,18 @@ namespace EICE_WARGAME
         /// <summary>
         /// Constructeur par défaut
         /// </summary>
-        public SousFaction()
+        public Charact()
             : base()
         {
             m_Name = string.Empty;
-            m_Characts = new List<Charact>();
         }
 
         /// <summary>
         /// Constructeur spécifique
         /// </summary>
-        /// <param name="Id">Identifiant de ce SousFaction</param>
-        /// <param name="Name">Nom de ce SousFaction</param>
-        public SousFaction(int Id, string Name)
+        /// <param name="Id">Identifiant de ce Charact</param>
+        /// <param name="Name">Nom de ce Charact</param>
+        public Charact(int Id, string Name)
             : this()
         {
             DefinirId(Id);
@@ -132,7 +118,7 @@ namespace EICE_WARGAME
         /// </summary>
         /// <param name="Connexion">Connexion au serveur MySQL</param>
         /// <param name="Enregistrement">Enregistrement d'où extraire les valeurs de champs</param>
-        public SousFaction(PDSGBD.MyDB Connexion, PDSGBD.MyDB.IEnregistrement Enregistrement)
+        public Charact(PDSGBD.MyDB Connexion, PDSGBD.MyDB.IEnregistrement Enregistrement)
             : this()
         {
             base.Connexion = Connexion;
@@ -151,9 +137,9 @@ namespace EICE_WARGAME
         /// <param name="Connexion">Connexion au serveur MySQL</param>
         /// <param name="Enregistrements">Enregistrements énumérés, sources des entités à créer</param>
         /// <returns>Enumération des entités issues des enregistrements énumérés</returns>
-        public static IEnumerable<SousFaction> Enumerer(PDSGBD.MyDB Connexion, IEnumerable<PDSGBD.MyDB.IEnregistrement> Enregistrements)
+        public static IEnumerable<Charact> Enumerer(PDSGBD.MyDB Connexion, IEnumerable<PDSGBD.MyDB.IEnregistrement> Enregistrements)
         {
-            return Enumerer(Enregistrements, Enregistrement => new SousFaction(Connexion, Enregistrement));
+            return Enumerer(Enregistrements, Enregistrement => new Charact(Connexion, Enregistrement));
         }
 
 
@@ -166,18 +152,18 @@ namespace EICE_WARGAME
         {
             get
             {
-                return "subfaction";
+                return "charact";
             }
         }
 
         /// <summary>
-        /// Méthode retournant le nom du champs id de la table sousfaction
+        /// Méthode retournant le nom du champs id de la table charact
         /// </summary>
         public override string IdDeLaTablePrincipale
         {
             get
             {
-                return "sf_id";
+                return "ch_id";
             }
         }
 
@@ -188,22 +174,8 @@ namespace EICE_WARGAME
         {
             get
             {
-                return new PDSGBD.MyDB.CodeSql("sf_name = {0}, sf_fk_faction_id = {1}", m_Name, m_Faction.Id);
+                return new PDSGBD.MyDB.CodeSql("ch_name = {0}, sf_fk_faction_id = {1}", m_Name, m_SousFaction.Id);
             }
-        }
-
-        /// <summary>
-        /// Permet de récupérer les characters liés à une sous-faction
-        /// </summary>
-        /// <returns></returns>
-        private IEnumerable<Charact> EnumererCharacts()
-        {
-            if (base.Connexion == null) return new Charact[0];
-            return Charact.Enumerer(Connexion, Connexion.Enumerer(
-                @"SELECT ch_id, ch_name
-                    FROM subfaction
-                    WHERE (ch_fk_subfaction_id = {0})",
-                Id));
         }
 
         #endregion
