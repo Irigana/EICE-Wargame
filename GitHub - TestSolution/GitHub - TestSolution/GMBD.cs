@@ -127,7 +127,12 @@ namespace EICE_WARGAME
         #region Requetes Sous Faction
         public bool AjouterSousFaction(SousFaction NouvelleSousFaction)
         {
-            return NouvelleSousFaction.Enregistrer(m_BD, NouvelleSousFaction, null, false);
+            return NouvelleSousFaction.Enregistrer(m_BD, NouvelleSousFaction, NouvelleSousFaction.IdDeLaTablePrincipale, false);
+        }
+
+        public bool ModifierSousFaction(SousFaction SousFaction)
+        {
+            return SousFaction.Enregistrer(m_BD, SousFaction,null, true);
         }
 
         public void MettreAJourFicheSousFaction(FicheSousFaction Fiche,int IdFactionSelectionne)
