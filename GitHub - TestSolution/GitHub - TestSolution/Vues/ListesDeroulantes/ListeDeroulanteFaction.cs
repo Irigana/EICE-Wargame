@@ -53,13 +53,16 @@ namespace EICE_WARGAME
                     {
                         comboBoxListeFaction.Items.Add(new Element(Faction));
                     }
+                    comboBoxListeFaction.Sorted = true;
                 }
             }
         }
 
-        public int SelectedIndex(int Index)
+        public int SelectedIndexBystring(string FactionRechercher)
         {
-            return comboBoxListeFaction.SelectedIndex = Index - 1;
+            int FactionTrouve = 0;
+            FactionTrouve = comboBoxListeFaction.FindStringExact(FactionRechercher);
+            return comboBoxListeFaction.SelectedIndex = FactionTrouve;
         }
 
         public Faction FactionSelectionnee

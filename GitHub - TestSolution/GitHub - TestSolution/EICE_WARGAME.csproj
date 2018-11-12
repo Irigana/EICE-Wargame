@@ -265,6 +265,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Informations\SchemaDB.PNG" />
+    <None Include="Resources\Title_warhammer_2.png" />
     <None Include="Resources\Equipement40px.png" />
     <None Include="Resources\ReturnLogo35px.png" />
     <None Include="Resources\Dashboard150px.png" />

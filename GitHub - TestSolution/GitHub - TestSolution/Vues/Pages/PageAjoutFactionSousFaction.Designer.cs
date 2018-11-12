@@ -94,6 +94,7 @@
             this.textBoxFaction.Name = "textBoxFaction";
             this.textBoxFaction.Size = new System.Drawing.Size(282, 22);
             this.textBoxFaction.TabIndex = 9;
+            this.textBoxFaction.TextChanged += new System.EventHandler(this.textBoxFaction_TextChanged);
             // 
             // buttonAjoutFaction
             // 
@@ -188,6 +189,7 @@
             this.buttonAnnulerSF.TabIndex = 29;
             this.buttonAnnulerSF.Text = "Annuler";
             this.buttonAnnulerSF.UseVisualStyleBackColor = false;
+            this.buttonAnnulerSF.Click += new System.EventHandler(this.buttonAnnulerSF_Click);
             // 
             // panelLigne
             // 

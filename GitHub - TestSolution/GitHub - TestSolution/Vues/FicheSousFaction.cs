@@ -19,8 +19,7 @@ namespace EICE_WARGAME
         private bool m_ReactionEnDirectSurChangementFiltre;
 
         private int m_NombreDEnregistrementFiltre = -1;
-
-
+        
         public int NombreDeSousFactionFiltre
         {
             get
@@ -33,6 +32,7 @@ namespace EICE_WARGAME
             }
             
         }
+        
 
         public FicheSousFaction()
         {
@@ -180,6 +180,7 @@ namespace EICE_WARGAME
             {
                 Colonne.AutoResize(ColumnHeaderAutoResizeStyle.HeaderSize);
             }
+            
             listViewSousFaction.Visible = true;
             listViewSousFaction_SelectedIndexChanged(listViewSousFaction, EventArgs.Empty);
             return true;

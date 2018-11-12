@@ -119,7 +119,7 @@ namespace EICE_WARGAME
 
         public void MettreAJourListeFaction(ListeDeroulanteFaction Liste)
         {
-            Liste.Faction = Program.GMBD.EnumererFaction(null, null, null, null/*new MyDB.CodeSql("ORDER BY faction.fa_name") ASK*/);
+            Liste.Faction = Program.GMBD.EnumererFaction(null, null, null, new MyDB.CodeSql("ORDER BY fa_name"));
         }
 
         #endregion
@@ -135,7 +135,7 @@ namespace EICE_WARGAME
             Fiche.SousFaction = Fiche.SousFaction = Program.GMBD.EnumererSousFaction(
                         null, null,
                         new MyDB.CodeSql("WHERE subfaction.sf_fk_faction_id = {0}", IdFactionSelectionne),
-                        new MyDB.CodeSql("ORDER BY subfaction.sf_name"));
+                        new MyDB.CodeSql("ORDER BY subfaction.sf_name"));           
         }
         #endregion
 

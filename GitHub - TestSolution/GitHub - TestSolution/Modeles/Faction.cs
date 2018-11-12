@@ -173,6 +173,7 @@ namespace EICE_WARGAME
                     WHERE (sf_fk_faction_id = {0})",
                 Id));
         }
+        
 
         #endregion
 
