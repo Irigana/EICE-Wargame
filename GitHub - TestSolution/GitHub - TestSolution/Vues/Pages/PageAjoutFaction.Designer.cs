@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.labelFaction = new System.Windows.Forms.Label();
             this.labelSousFaction = new System.Windows.Forms.Label();
             this.labelChoisirFaction = new System.Windows.Forms.Label();
@@ -40,6 +41,8 @@
             this.buttonOptionsUser1 = new EICE_WARGAME.ButtonOptionsUser();
             this.listeDeroulanteFaction1 = new EICE_WARGAME.ListeDeroulanteFaction();
             this.menuAdmin1 = new EICE_WARGAME.MenuAdmin();
+            this.errorProviderSousFaction = new System.Windows.Forms.ErrorProvider(this.components);
+            ((System.ComponentModel.ISupportInitialize)(this.errorProviderSousFaction)).BeginInit();
             this.SuspendLayout();
             // 
             // labelFaction
@@ -164,6 +167,10 @@
             this.menuAdmin1.TabIndex = 3;
             this.menuAdmin1.Utilisateur = null;
             // 
+            // errorProviderSousFaction
+            // 
+            this.errorProviderSousFaction.ContainerControl = this;
+            // 
             // PageAjoutFaction
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -183,6 +190,7 @@
             this.Name = "PageAjoutFaction";
             this.Size = new System.Drawing.Size(1500, 750);
             this.Load += new System.EventHandler(this.PageAjoutFactionSousFaction_Load);
+            ((System.ComponentModel.ISupportInitialize)(this.errorProviderSousFaction)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -201,5 +209,6 @@
         private System.Windows.Forms.Button buttonAnnulerSF;
         private System.Windows.Forms.Panel panelLigne;
         private FicheSousFaction ficheSousFaction1;
+        private System.Windows.Forms.ErrorProvider errorProviderSousFaction;
     }
 }

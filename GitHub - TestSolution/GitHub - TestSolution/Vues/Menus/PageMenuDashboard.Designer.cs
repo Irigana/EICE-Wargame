@@ -33,7 +33,7 @@
             this.buttonRetourMenuPrincipal = new System.Windows.Forms.Button();
             this.buttonEquipement = new System.Windows.Forms.Button();
             this.pictureBoxLogoDashboard = new System.Windows.Forms.PictureBox();
-            this.buttonFactionSF = new System.Windows.Forms.Button();
+            this.buttonSousFaction = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxLogoDashboard)).BeginInit();
             this.SuspendLayout();
             // 
@@ -80,7 +80,7 @@
             this.buttonEquipement.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
             this.buttonEquipement.Image = global::EICE_WARGAME.Properties.Resources.Equipement40px;
             this.buttonEquipement.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.buttonEquipement.Location = new System.Drawing.Point(631, 245);
+            this.buttonEquipement.Location = new System.Drawing.Point(631, 299);
             this.buttonEquipement.Name = "buttonEquipement";
             this.buttonEquipement.Size = new System.Drawing.Size(300, 55);
             this.buttonEquipement.TabIndex = 3;
@@ -97,24 +97,24 @@
             this.pictureBoxLogoDashboard.TabIndex = 1;
             this.pictureBoxLogoDashboard.TabStop = false;
             // 
-            // buttonFactionSF
+            // buttonSousFaction
             // 
-            this.buttonFactionSF.BackColor = System.Drawing.SystemColors.Window;
-            this.buttonFactionSF.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.buttonFactionSF.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
-            this.buttonFactionSF.Location = new System.Drawing.Point(631, 306);
-            this.buttonFactionSF.Name = "buttonFactionSF";
-            this.buttonFactionSF.Size = new System.Drawing.Size(300, 55);
-            this.buttonFactionSF.TabIndex = 5;
-            this.buttonFactionSF.Text = "Faction / Sous-Faction";
-            this.buttonFactionSF.UseVisualStyleBackColor = false;
-            this.buttonFactionSF.Click += new System.EventHandler(this.buttonFactionSF_Click);
+            this.buttonSousFaction.BackColor = System.Drawing.SystemColors.Window;
+            this.buttonSousFaction.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonSousFaction.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
+            this.buttonSousFaction.Location = new System.Drawing.Point(631, 238);
+            this.buttonSousFaction.Name = "buttonSousFaction";
+            this.buttonSousFaction.Size = new System.Drawing.Size(300, 55);
+            this.buttonSousFaction.TabIndex = 5;
+            this.buttonSousFaction.Text = "Sous-Faction";
+            this.buttonSousFaction.UseVisualStyleBackColor = false;
+            this.buttonSousFaction.Click += new System.EventHandler(this.buttonFactionSF_Click);
             // 
             // PageMenuDashboard
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.Controls.Add(this.buttonFactionSF);
+            this.Controls.Add(this.buttonSousFaction);
             this.Controls.Add(this.buttonRetourMenuPrincipal);
             this.Controls.Add(this.buttonEquipement);
             this.Controls.Add(this.buttonOptionsUser1);
@@ -136,6 +136,6 @@
         private ButtonOptionsUser buttonOptionsUser1;
         private System.Windows.Forms.Button buttonEquipement;
         private System.Windows.Forms.Button buttonRetourMenuPrincipal;
-        private System.Windows.Forms.Button buttonFactionSF;
+        private System.Windows.Forms.Button buttonSousFaction;
     }
 }

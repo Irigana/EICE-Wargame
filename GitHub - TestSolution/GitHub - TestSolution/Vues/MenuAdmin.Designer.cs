@@ -98,6 +98,7 @@
             this.buttonSousFaction.TabIndex = 4;
             this.buttonSousFaction.Text = "Sous faction";
             this.buttonSousFaction.UseVisualStyleBackColor = true;
+            this.buttonSousFaction.Click += new System.EventHandler(this.buttonSousFaction_Click);
             // 
             // buttonFaction
             // 

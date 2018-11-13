@@ -28,8 +28,11 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.listViewSousFaction = new System.Windows.Forms.ListView();
             this.textBoxSousFaction = new System.Windows.Forms.TextBox();
+            this.errorProviderSousFaction = new System.Windows.Forms.ErrorProvider(this.components);
+            ((System.ComponentModel.ISupportInitialize)(this.errorProviderSousFaction)).BeginInit();
             this.SuspendLayout();
             // 
             // listViewSousFaction
@@ -49,6 +52,10 @@
             this.textBoxSousFaction.TextChanged += new System.EventHandler(this.textFiltre_TextChanged);
             this.textBoxSousFaction.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textFiltre_KeyPress);
             // 
+            // errorProviderSousFaction
+            // 
+            this.errorProviderSousFaction.ContainerControl = this;
+            // 
             // FicheSousFaction
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -56,7 +63,8 @@
             this.Controls.Add(this.textBoxSousFaction);
             this.Controls.Add(this.listViewSousFaction);
             this.Name = "FicheSousFaction";
-            this.Size = new System.Drawing.Size(285, 284);
+            this.Size = new System.Drawing.Size(324, 284);
+            ((System.ComponentModel.ISupportInitialize)(this.errorProviderSousFaction)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -65,5 +73,6 @@
         #endregion
         private System.Windows.Forms.ListView listViewSousFaction;
         private System.Windows.Forms.TextBox textBoxSousFaction;
+        private System.Windows.Forms.ErrorProvider errorProviderSousFaction;
     }
 }

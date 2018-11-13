@@ -142,6 +142,7 @@ namespace EICE_WARGAME
             }
         }
 
+        
         /// <summary>
         /// Evénement déclenché quand il y a un changement de sélection de sous faction
         /// </summary>
@@ -207,6 +208,7 @@ namespace EICE_WARGAME
             if (SurChangementSelection != null)
             {
                 SurChangementSelection(this, EventArgs.Empty);
+                m_ReactionEnDirectSurChangementFiltre = false;
             }
         }
 
@@ -244,5 +246,10 @@ namespace EICE_WARGAME
             listViewSousFaction.Clear();
         }
 
+
+        public void SetTextBoxErrorModification(string MessageErreur)
+        {
+            errorProviderSousFaction.SetError(textBoxSousFaction, MessageErreur);
+        }
     }
 }

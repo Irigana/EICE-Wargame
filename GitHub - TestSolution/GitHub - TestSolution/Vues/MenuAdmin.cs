@@ -52,5 +52,14 @@ namespace EICE_WARGAME
                         
             }            
         }
+
+        private void buttonSousFaction_Click(object sender, EventArgs e)
+        {
+            Form_Principal.Instance.CreerPageCourante<PageAjoutFaction>((Page) =>
+            {
+                Page.Utilisateur = Utilisateur;
+                return true;
+            });
+        }
     }
 }
