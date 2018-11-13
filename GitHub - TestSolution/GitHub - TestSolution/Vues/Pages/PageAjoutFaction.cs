@@ -198,11 +198,6 @@ namespace EICE_WARGAME
      
         
 
-        private void textBoxFaction_TextChanged(object sender, EventArgs e)
-        {
-            
-        }
-
         private void buttonAnnulerSF_Click(object sender, EventArgs e)
         {            
             ficheSousFaction1.TexteDuFiltre = "";
@@ -212,6 +207,13 @@ namespace EICE_WARGAME
             buttonSupprimerSF.Enabled = false;     
         }
 
-        
+        private void buttonModifierSF_Click(object sender, EventArgs e)
+        {
+            if(listeDeroulanteFaction1.FactionSelectionnee != null)
+            {
+                m_FactionEnEdition = listeDeroulanteFaction1.FactionSelectionnee;
+
+            }
+        }
     }
 }

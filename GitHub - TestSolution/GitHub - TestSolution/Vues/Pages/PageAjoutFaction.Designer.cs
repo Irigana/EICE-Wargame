@@ -94,6 +94,7 @@
             this.buttonModifierSF.TabIndex = 27;
             this.buttonModifierSF.Text = "Modifier";
             this.buttonModifierSF.UseVisualStyleBackColor = false;
+            this.buttonModifierSF.Click += new System.EventHandler(this.buttonModifierSF_Click);
             // 
             // buttonSupprimerSF
             // 
@@ -153,7 +154,7 @@
             this.listeDeroulanteFaction1.Name = "listeDeroulanteFaction1";
             this.listeDeroulanteFaction1.Size = new System.Drawing.Size(282, 25);
             this.listeDeroulanteFaction1.TabIndex = 5;
-            //
+            // 
             // menuAdmin1
             // 
             this.menuAdmin1.BackColor = System.Drawing.SystemColors.ControlDark;
