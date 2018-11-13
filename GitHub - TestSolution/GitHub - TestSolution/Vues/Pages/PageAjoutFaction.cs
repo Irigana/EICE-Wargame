@@ -11,7 +11,7 @@ using PDSGBD;
 
 namespace EICE_WARGAME
 {
-    public partial class PageAjoutFactionSousFaction : UserControl
+    public partial class PageAjoutFaction : UserControl
     {
 
         #region Utilisateur
@@ -39,19 +39,16 @@ namespace EICE_WARGAME
 
         private Faction m_FactionEnEdition;        
 
-        public PageAjoutFactionSousFaction()
+        public PageAjoutFaction()
         {
             InitializeComponent();
-            m_Utilisateur = null;
-
-            //-------------------------
-            buttonAnnulerFaction.Enabled = false;
-            buttonModifierFaction.Enabled = false;
-            buttonSupprimerFaction.Enabled = false;
+            m_Utilisateur = null;            
             //-------------------------
             buttonAnnulerSF.Enabled = false;
             buttonModifierSF.Enabled = false;
             buttonSupprimerSF.Enabled = false;
+            buttonAjouterSF.Enabled = false;
+            ficheSousFaction1.m_ActiverTextBox = false;
             //-------------------------
 
             Program.GMBD.MettreAJourListeFaction(listeDeroulanteFaction1);
@@ -63,13 +60,20 @@ namespace EICE_WARGAME
 
         private void ListeFactionSurSelectionFaction(object sender, EventArgs e)
         {
-            buttonAnnulerFaction.Enabled = true;
-            buttonModifierFaction.Enabled = true;
-            buttonSupprimerFaction.Enabled = true;
             if (listeDeroulanteFaction1.FactionSelectionnee != null)
             {
                 m_FactionEnEdition = listeDeroulanteFaction1.FactionSelectionnee;
-                textBoxFaction.Text = m_FactionEnEdition.Name;
+                ficheSousFaction1.m_ActiverTextBox = true;
+                buttonAjouterSF.Enabled = true;
+            }
+            else if(listeDeroulanteFaction1.m_PerteFaction)
+            {
+                ficheSousFaction1.NettoyerListView();
+                ficheSousFaction1.m_ActiverTextBox = false;
+                buttonAjouterSF.Enabled = false;
+                buttonAnnulerSF.Enabled = false;
+                buttonModifierSF.Enabled = false;
+                buttonSupprimerSF.Enabled = false;
             }
 
             //Charge mes sous factions en fonction du choix de faction de l'utilisateur
@@ -81,10 +85,8 @@ namespace EICE_WARGAME
             ficheSousFaction1.ReactionEnDirectSurChangementFiltre = true;
             ficheSousFaction1.SurChangementFiltre += (s, ev) =>
             {
-                if (ficheSousFaction1.TexteDuFiltre != "")
+                if ((ficheSousFaction1.TexteDuFiltre != "")&&(listeDeroulanteFaction1.FactionSelectionnee != null))
                 {
-
-
                     ficheSousFaction1.SousFaction = Program.GMBD.EnumererSousFaction(
                         null,
                         null,
@@ -94,17 +96,17 @@ namespace EICE_WARGAME
                     // Permet de récuperer le nombre d'enregistrement après le filtre
                     ficheSousFaction1.NombreDeSousFactionFiltre = ficheSousFaction1.SousFaction.Count();
                 }
-                else
+                else if (listeDeroulanteFaction1.FactionSelectionnee != null)
                 {
                     ficheSousFaction1.SousFaction = Program.GMBD.EnumererSousFaction(
                         null,null, 
                         new MyDB.CodeSql("WHERE subfaction.sf_fk_faction_id = {0}", listeDeroulanteFaction1.FactionSelectionnee.Id),
                         new MyDB.CodeSql("ORDER BY sf_name"));
                 }
+                
 
                 if (ficheSousFaction1.NombreDeSousFactionFiltre == 0)
-                {
-
+                {                    
                     buttonAjouterSF.Enabled = true;
                     buttonAnnulerSF.Enabled = true;
                     buttonModifierSF.Enabled = false;
@@ -119,8 +121,7 @@ namespace EICE_WARGAME
        
 
         private void ChargerSousFaction()
-        {
-            
+        {            
                 ficheSousFaction1.SousFaction = Program.GMBD.EnumererSousFaction(
                  null,
                  null,
@@ -137,13 +138,14 @@ namespace EICE_WARGAME
         private void ficheSousFaction_SurChangementSelection(object sender, EventArgs e)
         {
             if (ficheSousFaction1.SousFactionSelectionne != null)
-            {                                
+            {
                 buttonAjouterSF.Enabled = false;
                 buttonAnnulerSF.Enabled = true;
                 buttonModifierSF.Enabled = true;
                 buttonSupprimerSF.Enabled = true;
-                ficheSousFaction1.TexteDuFiltre = ficheSousFaction1.SousFactionSelectionne.Name;             
+                ficheSousFaction1.TexteDuFiltre = ficheSousFaction1.SousFactionSelectionne.Name;                             
             }
+            
         }
 
         private void PageAjoutFactionSousFaction_Load(object sender, EventArgs e)
@@ -154,11 +156,12 @@ namespace EICE_WARGAME
 
         private void buttonAjouterSF_Click(object sender, EventArgs e)
         {
-            Faction NouvelleFaction = null;
+            
             Faction FactionExiste = null;
             SousFaction NouvelleSousFaction = null;
             // Si l'utilisateur a selectionné une faction dans la liste
-            if ((listeDeroulanteFaction1.FactionSelectionnee != null) && (ficheSousFaction1.NombreDeSousFactionFiltre == 0))
+            /* TODO : mettre cette partie dans l'ajout d'une faction
+            if (listeDeroulanteFaction1.FactionSelectionnee != null)
             {                
                 NouvelleSousFaction = new SousFaction();
                 NouvelleSousFaction.Faction = listeDeroulanteFaction1.FactionSelectionnee;
@@ -167,45 +170,33 @@ namespace EICE_WARGAME
                 {
                     Program.GMBD.MettreAJourFicheSousFaction(ficheSousFaction1, listeDeroulanteFaction1.FactionSelectionnee.Id);
                 }                
-            }
+            }*/
             // Si l'utilisateur n'a rien selectionné et que la textbox a une valeur + grand que 1
-            else if ((listeDeroulanteFaction1.FactionSelectionnee == null) && (textBoxFaction.Text.Length > 1))
+            if (listeDeroulanteFaction1.FactionSelectionnee != null)
             {
                 FactionExiste = Program.GMBD.EnumererFaction(null,
                                                              null,
-                                                             new MyDB.CodeSql("WHERE faction.fa_name = {0}", textBoxFaction.Text),
+                                                             new MyDB.CodeSql("WHERE faction.fa_id = {0}", listeDeroulanteFaction1.FactionSelectionnee.Id),
                                                              null).FirstOrDefault();
                 // Si la faction n'existe pas, crée on une nouvelle faction
-                if (FactionExiste == null)
+                if (FactionExiste != null)
                 {
-                    NouvelleFaction = new Faction();
-                    NouvelleFaction.Name = textBoxFaction.Text;
-                    if ((NouvelleFaction.EstValide) && (Program.GMBD.AjouterFaction(NouvelleFaction)))
-                    {
-                        
-                        Program.GMBD.MettreAJourListeFaction(listeDeroulanteFaction1);
-                        listeDeroulanteFaction1.SelectedIndexBystring(NouvelleFaction.Name.ToString());
-                        // Maintenant que la faction est ajouté on récupere son id pour construire la nouvelle sous faction attaché à cette faction
-                        NouvelleSousFaction = new SousFaction();
-                        NouvelleSousFaction.Faction = NouvelleFaction;
-                        NouvelleSousFaction.Name = ficheSousFaction1.TexteDuFiltre;
+                    NouvelleSousFaction = new SousFaction();
+                    NouvelleSousFaction.Faction = listeDeroulanteFaction1.FactionSelectionnee;
+                    NouvelleSousFaction.Name = ficheSousFaction1.TexteDuFiltre;
 
-                        if ((NouvelleSousFaction.EstValide) && (Program.GMBD.AjouterSousFaction(NouvelleSousFaction)))
-                        {                                
-                            Program.GMBD.MettreAJourFicheSousFaction(ficheSousFaction1, listeDeroulanteFaction1.FactionSelectionnee.Id);                                
-                        }
-                        
+                    if ((NouvelleSousFaction.EstValide) && (Program.GMBD.AjouterSousFaction(NouvelleSousFaction)))
+                    {                                
+                        Program.GMBD.MettreAJourFicheSousFaction(ficheSousFaction1, listeDeroulanteFaction1.FactionSelectionnee.Id);                                
                     }
+                        
                 }
             }
             ficheSousFaction1.TexteDuFiltre = "";
             buttonAnnulerSF.Enabled = false;
         }
-
-        private void buttonAjoutFaction_Click(object sender, EventArgs e)
-        {
-
-        }
+     
+        
 
         private void textBoxFaction_TextChanged(object sender, EventArgs e)
         {
@@ -213,11 +204,14 @@ namespace EICE_WARGAME
         }
 
         private void buttonAnnulerSF_Click(object sender, EventArgs e)
-        {
+        {            
             ficheSousFaction1.TexteDuFiltre = "";
+            buttonAjouterSF.Enabled = true;
             buttonAnnulerSF.Enabled = false;
             buttonModifierSF.Enabled = false;
             buttonSupprimerSF.Enabled = false;     
         }
+
+        
     }
 }

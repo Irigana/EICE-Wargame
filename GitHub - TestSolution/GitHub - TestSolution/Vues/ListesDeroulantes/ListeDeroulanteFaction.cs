@@ -36,6 +36,9 @@ namespace EICE_WARGAME
             InitializeComponent();
             this.SizeChanged += ListeDeroulanteFaction_SizeChanged;
             comboBoxListeFaction.SelectedIndexChanged += ComboFaction_SelectedIndexChanged;
+
+            comboBoxListeFaction.AutoCompleteMode = AutoCompleteMode.Suggest;
+            comboBoxListeFaction.AutoCompleteSource = AutoCompleteSource.ListItems;
         }        
 
         public IEnumerable<Faction> Faction
@@ -58,6 +61,8 @@ namespace EICE_WARGAME
             }
         }
 
+        public bool m_PerteFaction{ get; private set; }
+
         public int SelectedIndexBystring(string FactionRechercher)
         {
             int FactionTrouve = 0;
@@ -76,7 +81,7 @@ namespace EICE_WARGAME
                 comboBoxListeFaction.SelectedItem = (value != null) ? new Element(value) : null;
             }
         }
-
+        
         public EventHandler SurChangementSelection = null;
 
         private void ComboFaction_SelectedIndexChanged(object sender, EventArgs e)
@@ -91,6 +96,12 @@ namespace EICE_WARGAME
         {
             this.Size = new Size(this.Size.Width, comboBoxListeFaction.Height);
         }
+
+        private void comboBoxListeFaction_TextChanged(object sender, EventArgs e)
+        {
+
+        }        
+        
     }
 
 }

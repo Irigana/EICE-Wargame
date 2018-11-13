@@ -12,6 +12,7 @@ namespace EICE_WARGAME
 {
     public partial class TextBoxAvecTextInvisible : UserControl
     {
+
         private bool m_AfficherPlaceHolder;
         
         // Variable permettant la sauvegarde du login après la perte du focus
@@ -31,8 +32,8 @@ namespace EICE_WARGAME
             m_TextePlaceHolder = string.Empty;
             AfficherPlaceHolder();
             
-
         }
+
         private void AfficherPlaceHolder()
         {
             if (m_AfficherPlaceHolder)

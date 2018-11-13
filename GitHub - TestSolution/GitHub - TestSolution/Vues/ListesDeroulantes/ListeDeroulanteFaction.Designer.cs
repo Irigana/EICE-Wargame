@@ -34,12 +34,12 @@
             // comboBoxListeFaction
             // 
             this.comboBoxListeFaction.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.comboBoxListeFaction.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboBoxListeFaction.FormattingEnabled = true;
             this.comboBoxListeFaction.Location = new System.Drawing.Point(0, 0);
             this.comboBoxListeFaction.Name = "comboBoxListeFaction";
             this.comboBoxListeFaction.Size = new System.Drawing.Size(198, 24);
             this.comboBoxListeFaction.TabIndex = 0;
+            this.comboBoxListeFaction.TextChanged += new System.EventHandler(this.comboBoxListeFaction_TextChanged);
             // 
             // ListeDeroulanteFaction
             // 

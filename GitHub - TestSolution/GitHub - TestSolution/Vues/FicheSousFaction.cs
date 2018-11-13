@@ -18,6 +18,14 @@ namespace EICE_WARGAME
         /// </summary>
         private bool m_ReactionEnDirectSurChangementFiltre;
 
+        public bool m_ActiverTextBox
+        {
+            set
+            {
+                textBoxSousFaction.Enabled = value;
+            }
+        }        
+
         private int m_NombreDEnregistrementFiltre = -1;
         
         public int NombreDeSousFactionFiltre
@@ -48,6 +56,7 @@ namespace EICE_WARGAME
             listViewSousFaction.Items.Clear();
             listViewSousFaction.Columns.Clear();
             listViewSousFaction.SelectedIndexChanged += listViewSousFaction_SelectedIndexChanged;
+            textBoxSousFaction.Enabled = false;
         }        
 
         /// <summary>
@@ -228,6 +237,12 @@ namespace EICE_WARGAME
                     SurChangementFiltre(this, EventArgs.Empty);
                 }
             }
-        }       
+        }
+        
+        public void NettoyerListView()
+        {
+            listViewSousFaction.Clear();
+        }
+
     }
 }
