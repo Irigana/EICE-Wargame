@@ -188,6 +188,7 @@ namespace EICE_WARGAME
 
         private void buttonAnnulerSF_Click(object sender, EventArgs e)
         {            
+            //Pourquoi? - J'expliquerais Samedi , ça me semble inutile 
             ficheSousFaction1.TexteDuFiltre = "";
             buttonAjouterSF.Enabled = true;
             buttonAnnulerSF.Enabled = false;
