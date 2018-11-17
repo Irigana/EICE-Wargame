@@ -1,6 +1,6 @@
 ﻿namespace EICE_WARGAME
 {
-    partial class PageAjoutFaction
+    partial class PageSousFaction
     {
         /// <summary> 
         /// Variable nécessaire au concepteur.
@@ -171,7 +171,7 @@
             this.menuAdmin1.TabIndex = 3;
             this.menuAdmin1.Utilisateur = null;
             // 
-            // PageAjoutFaction
+            // PageSousFaction
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -187,7 +187,7 @@
             this.Controls.Add(this.menuAdmin1);
             this.Controls.Add(this.labelSousFaction);
             this.Controls.Add(this.labelSousFactionTitre);
-            this.Name = "PageAjoutFaction";
+            this.Name = "PageSousFaction";
             this.Size = new System.Drawing.Size(1500, 750);
             this.Load += new System.EventHandler(this.PageAjoutFactionSousFaction_Load);
             ((System.ComponentModel.ISupportInitialize)(this.errorProviderSousFaction)).EndInit();

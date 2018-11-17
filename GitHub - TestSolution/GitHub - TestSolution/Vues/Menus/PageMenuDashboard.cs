@@ -70,7 +70,7 @@ namespace EICE_WARGAME
 
         private void buttonFactionSF_Click(object sender, EventArgs e)
         {
-            Form_Principal.Instance.CreerPageCourante<PageAjoutFaction>(
+            Form_Principal.Instance.CreerPageCourante<PageSousFaction>(
                 (page) =>
                 {
                     page.Utilisateur = Utilisateur;

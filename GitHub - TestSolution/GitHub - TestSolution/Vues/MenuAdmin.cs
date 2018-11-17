@@ -55,7 +55,7 @@ namespace EICE_WARGAME
 
         private void buttonSousFaction_Click(object sender, EventArgs e)
         {
-            Form_Principal.Instance.CreerPageCourante<PageAjoutFaction>((Page) =>
+            Form_Principal.Instance.CreerPageCourante<PageSousFaction>((Page) =>
             {
                 Page.Utilisateur = Utilisateur;
                 return true;

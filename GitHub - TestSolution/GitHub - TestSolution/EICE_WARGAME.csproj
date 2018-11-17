@@ -67,11 +67,11 @@
     <Compile Include="Vues\ListesDeroulantes\ListeDeroulanteFaction.Designer.cs">
       <DependentUpon>ListeDeroulanteFaction.cs</DependentUpon>
     </Compile>
-    <Compile Include="Vues\Pages\PageAjoutFaction.cs">
+    <Compile Include="Vues\Pages\PageSousFaction.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="Vues\Pages\PageAjoutFaction.Designer.cs">
-      <DependentUpon>PageAjoutFaction.cs</DependentUpon>
+    <Compile Include="Vues\Pages\PageSousFaction.Designer.cs">
+      <DependentUpon>PageSousFaction.cs</DependentUpon>
     </Compile>
     <Compile Include="Vues\ListesDeroulantes\ListeDeroulanteFeature.cs">
       <SubType>UserControl</SubType>
@@ -197,8 +197,8 @@
     <EmbeddedResource Include="Vues\ListesDeroulantes\ListeDeroulanteFaction.resx">
       <DependentUpon>ListeDeroulanteFaction.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Vues\Pages\PageAjoutFaction.resx">
-      <DependentUpon>PageAjoutFaction.cs</DependentUpon>
+    <EmbeddedResource Include="Vues\Pages\PageSousFaction.resx">
+      <DependentUpon>PageSousFaction.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Vues\ListesDeroulantes\ListeDeroulanteFeature.resx">
       <DependentUpon>ListeDeroulanteFeature.cs</DependentUpon>

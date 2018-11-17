@@ -11,7 +11,7 @@ using PDSGBD;
 
 namespace EICE_WARGAME
 {
-    public partial class PageAjoutFaction : UserControl
+    public partial class PageSousFaction : UserControl
     {
 
         #region Utilisateur
@@ -39,7 +39,7 @@ namespace EICE_WARGAME
 
         private Faction m_FactionEnEdition;        
 
-        public PageAjoutFaction()
+        public PageSousFaction()
         {
             InitializeComponent();
             m_Utilisateur = null;            
