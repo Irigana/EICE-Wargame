@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            this.labelFaction = new System.Windows.Forms.Label();
+            this.labelSousFactionTitre = new System.Windows.Forms.Label();
             this.labelSousFaction = new System.Windows.Forms.Label();
             this.labelChoisirFaction = new System.Windows.Forms.Label();
             this.buttonAjouterSF = new System.Windows.Forms.Button();
@@ -37,23 +37,23 @@
             this.buttonSupprimerSF = new System.Windows.Forms.Button();
             this.buttonAnnulerSF = new System.Windows.Forms.Button();
             this.panelLigne = new System.Windows.Forms.Panel();
+            this.errorProviderSousFaction = new System.Windows.Forms.ErrorProvider(this.components);
             this.ficheSousFaction1 = new EICE_WARGAME.FicheSousFaction();
             this.buttonOptionsUser1 = new EICE_WARGAME.ButtonOptionsUser();
             this.listeDeroulanteFaction1 = new EICE_WARGAME.ListeDeroulanteFaction();
             this.menuAdmin1 = new EICE_WARGAME.MenuAdmin();
-            this.errorProviderSousFaction = new System.Windows.Forms.ErrorProvider(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.errorProviderSousFaction)).BeginInit();
             this.SuspendLayout();
             // 
-            // labelFaction
+            // labelSousFactionTitre
             // 
-            this.labelFaction.AutoSize = true;
-            this.labelFaction.Font = new System.Drawing.Font("Microsoft Sans Serif", 24F);
-            this.labelFaction.Location = new System.Drawing.Point(233, 20);
-            this.labelFaction.Name = "labelFaction";
-            this.labelFaction.Size = new System.Drawing.Size(152, 46);
-            this.labelFaction.TabIndex = 1;
-            this.labelFaction.Text = "Faction";
+            this.labelSousFactionTitre.AutoSize = true;
+            this.labelSousFactionTitre.Font = new System.Drawing.Font("Microsoft Sans Serif", 24F);
+            this.labelSousFactionTitre.Location = new System.Drawing.Point(233, 20);
+            this.labelSousFactionTitre.Name = "labelSousFactionTitre";
+            this.labelSousFactionTitre.Size = new System.Drawing.Size(242, 46);
+            this.labelSousFactionTitre.TabIndex = 1;
+            this.labelSousFactionTitre.Text = "Sous faction";
             // 
             // labelSousFaction
             // 
@@ -130,6 +130,10 @@
             this.panelLigne.Size = new System.Drawing.Size(1200, 3);
             this.panelLigne.TabIndex = 30;
             // 
+            // errorProviderSousFaction
+            // 
+            this.errorProviderSousFaction.ContainerControl = this;
+            // 
             // ficheSousFaction1
             // 
             this.ficheSousFaction1.Location = new System.Drawing.Point(739, 240);
@@ -167,10 +171,6 @@
             this.menuAdmin1.TabIndex = 3;
             this.menuAdmin1.Utilisateur = null;
             // 
-            // errorProviderSousFaction
-            // 
-            this.errorProviderSousFaction.ContainerControl = this;
-            // 
             // PageAjoutFaction
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -186,7 +186,7 @@
             this.Controls.Add(this.listeDeroulanteFaction1);
             this.Controls.Add(this.menuAdmin1);
             this.Controls.Add(this.labelSousFaction);
-            this.Controls.Add(this.labelFaction);
+            this.Controls.Add(this.labelSousFactionTitre);
             this.Name = "PageAjoutFaction";
             this.Size = new System.Drawing.Size(1500, 750);
             this.Load += new System.EventHandler(this.PageAjoutFactionSousFaction_Load);
@@ -197,7 +197,7 @@
         }
 
         #endregion
-        private System.Windows.Forms.Label labelFaction;
+        private System.Windows.Forms.Label labelSousFactionTitre;
         private System.Windows.Forms.Label labelSousFaction;
         private MenuAdmin menuAdmin1;
         private ListeDeroulanteFaction listeDeroulanteFaction1;

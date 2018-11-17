@@ -57,6 +57,11 @@ namespace EICE_WARGAME
             listViewSousFaction.Columns.Clear();
             listViewSousFaction.SelectedIndexChanged += listViewSousFaction_SelectedIndexChanged;
             textBoxSousFaction.Enabled = false;
+
+            Bitmap ImageRessource = new Bitmap(Properties.Resources.Validation25px);
+
+            ActionValidee.Icon = Icon.FromHandle(ImageRessource.GetHicon());
+
         }        
 
         /// <summary>
@@ -133,7 +138,7 @@ namespace EICE_WARGAME
                     {
                         if ((Element.Tag is SousFaction) && (Element.Tag as SousFaction).Id.Equals(value.Id))
                         {
-                            Element.Selected = true;
+                            Element.Selected = true;                            
                             return;
                         }
                     }
@@ -240,6 +245,14 @@ namespace EICE_WARGAME
                 }
             }
         }
+
+
+
+
+
+
+
+
         
         public void NettoyerListView()
         {
@@ -250,6 +263,16 @@ namespace EICE_WARGAME
         public void SetTextBoxErrorModification(string MessageErreur)
         {
             errorProviderSousFaction.SetError(textBoxSousFaction, MessageErreur);
+        }
+
+        public void SetTextBoxActionValide(string MessageValidation)
+        {
+            ActionValidee.SetError(textBoxSousFaction, MessageValidation);
+        }
+
+        private void textBoxSousFaction_Enter(object sender, EventArgs e)
+        {
+            ActionValidee.Clear();
         }
     }
 }

@@ -90,12 +90,15 @@
             // 
             // pictureBoxLogoDashboard
             // 
+            this.pictureBoxLogoDashboard.AccessibleDescription = "";
+            this.pictureBoxLogoDashboard.AccessibleName = "";
             this.pictureBoxLogoDashboard.Image = global::EICE_WARGAME.Properties.Resources.Dashboard150px;
             this.pictureBoxLogoDashboard.Location = new System.Drawing.Point(681, 6);
             this.pictureBoxLogoDashboard.Name = "pictureBoxLogoDashboard";
             this.pictureBoxLogoDashboard.Size = new System.Drawing.Size(184, 146);
             this.pictureBoxLogoDashboard.TabIndex = 1;
             this.pictureBoxLogoDashboard.TabStop = false;
+            this.pictureBoxLogoDashboard.Tag = "";
             // 
             // buttonSousFaction
             // 

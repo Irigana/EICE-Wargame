@@ -143,7 +143,9 @@ namespace EICE_WARGAME
                 buttonAnnulerSF.Enabled = true;
                 buttonModifierSF.Enabled = true;
                 buttonSupprimerSF.Enabled = true;
-                ficheSousFaction1.TexteDuFiltre = ficheSousFaction1.SousFactionSelectionne.Name;                             
+                ficheSousFaction1.TexteDuFiltre = ficheSousFaction1.SousFactionSelectionne.Name;  
+                
+                                                         
             }
             
         }
@@ -174,8 +176,13 @@ namespace EICE_WARGAME
                     NouvelleSousFaction.Name = ficheSousFaction1.TexteDuFiltre;
 
                     if ((NouvelleSousFaction.EstValide) && (Program.GMBD.AjouterSousFaction(NouvelleSousFaction)))
-                    {                                
+                    {
+                        ficheSousFaction1.SetTextBoxActionValide("Ajout validé");
                         Program.GMBD.MettreAJourFicheSousFaction(ficheSousFaction1, listeDeroulanteFaction1.FactionSelectionnee.Id);                                
+                    }
+                    else
+                    {
+                        ficheSousFaction1.SetTextBoxErrorModification("L'ajout ne s'est pas effectué correctement");
                     }
                         
                 }
@@ -198,14 +205,14 @@ namespace EICE_WARGAME
 
         private void buttonModifierSF_Click(object sender, EventArgs e)
         {
-            if(listeDeroulanteFaction1.FactionSelectionnee != null)
+            if ((listeDeroulanteFaction1.FactionSelectionnee != null) && (ficheSousFaction1.SousFactionSelectionne != null))
             {
 
                 SousFaction SousFactionExistant = Program.GMBD.EnumererSousFaction(null, null, new PDSGBD.MyDB.CodeSql("WHERE sf_name = {0}", ficheSousFaction1.SousFactionSelectionne.Name), null).FirstOrDefault();
                 if (SousFactionExistant == null)
                 {
                     ficheSousFaction1.SetTextBoxErrorModification("Cette sous faction n'existe pas");
-                }                
+                }
                 else
                 {
                     SousFaction m_SousFactionEnEdition = SousFactionExistant;
@@ -213,17 +220,60 @@ namespace EICE_WARGAME
                     if (string.Compare(ficheSousFaction1.TexteDuFiltre.ToString(), SousFactionExistant.Name.ToString()) != 0)
                     {
                         m_SousFactionEnEdition.Name = ficheSousFaction1.TexteDuFiltre;
-                        if (!(Program.GMBD.ModifierSousFaction(m_SousFactionEnEdition)))
+                        if (!((m_SousFactionEnEdition.EstValide) && (Program.GMBD.ModifierSousFaction(m_SousFactionEnEdition))))
                         {
                             ficheSousFaction1.SetTextBoxErrorModification("Une erreur est survenue veuillez recommencer votre modification");
                         }
                         else
                         {
                             Program.GMBD.MettreAJourFicheSousFaction(ficheSousFaction1, listeDeroulanteFaction1.FactionSelectionnee.Id);
+                            ficheSousFaction1.SetTextBoxActionValide("Votre sous faction a bien été modifiée");
                         }
                     }
                 }
             }
-        }        
-    }
+        }
+
+        //private void StuffEnEdition_SurErreur(Stuff Entite, Stuff.Champ Champ, string MessageErreur)
+        //{
+        //    switch (Champ)
+        //    {
+        //        case Stuff.Champ.Name:
+        //            errorProvider1.SetError(textBoxNomEquipement, MessageErreur);
+        //            break;
+        //    }
+        //    buttonAjouter.Enabled = false;
+        //}
+
+        //private void StuffEnEdition_AvantChangement(Stuff Entite, Stuff.Champ Champ, object ValeurActuelle, object NouvelleValeur, AccumulateurErreur AccumulateurErreur)
+        //{
+        //    //Réagir sur évenement leave (perte de focus)
+        //    switch (Champ)
+        //    {
+        //        case Stuff.Champ.Name:
+        //            Stuff StuffExistant = Program.GMBD.EnumererStuff(null, null, new PDSGBD.MyDB.CodeSql("WHERE st_name = {0}", textBoxNomEquipement.Text), null).FirstOrDefault();
+
+        //            if (StuffExistant != null)
+        //            {
+        //                AccumulateurErreur.NotifierErreur("Cet équipement existe déjà, veuillez en choisir un autre !");
+
+        //            }
+        //            break;
+        //    }
+        //}
+
+        //private void StuffEnEdition_ApresChangement(Stuff Entite, Stuff.Champ Champ, object ValeurPrecedente, object ValeurActuelle)
+        //{
+        //    switch (Champ)
+        //    {
+        //        case Stuff.Champ.Name:
+        //            errorProvider1.SetError(textBoxNomEquipement, null);
+        //            textBoxNomEquipement.Text = m_StuffEnEdition.Name;
+        //            break;
+
+        //    }
+        //    buttonAjouter.Enabled = m_StuffEnEdition.EstValide;
+        //}
+    }        
 }
+
