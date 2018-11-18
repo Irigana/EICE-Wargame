@@ -182,7 +182,7 @@ namespace EICE_WARGAME
             {
                 FactionExiste = Program.GMBD.EnumererFaction(null,
                                                              null,
-                                                             new MyDB.CodeSql("WHERE faction.fa_id = {0}", listeDeroulanteFaction1.FactionSelectionnee.Id),
+                                                             new MyDB.CodeSql("WHERE faction.fa_id = {0} ", listeDeroulanteFaction1.FactionSelectionnee.Id),
                                                              null).FirstOrDefault();
                 // Si la faction n'existe pas, crée on une nouvelle faction
                 if (FactionExiste != null)
@@ -191,7 +191,7 @@ namespace EICE_WARGAME
                     NouvelleSousFaction.Faction = listeDeroulanteFaction1.FactionSelectionnee;
                     NouvelleSousFaction.Name = ficheSousFaction1.TexteDuFiltre;
 
-                    SousFaction SousFactionExistant = Program.GMBD.EnumererSousFaction(null, null, new PDSGBD.MyDB.CodeSql("WHERE sf_name = {0} AND fa_id = {1}", ficheSousFaction1.TexteDuFiltre, listeDeroulanteFaction1.FactionSelectionnee.Id), null).FirstOrDefault();
+                    SousFaction SousFactionExistant = Program.GMBD.EnumererSousFaction(null, null, new PDSGBD.MyDB.CodeSql("WHERE subfaction.sf_name = {0} AND subfaction.sf_fk_faction_id = {1}", ficheSousFaction1.TexteDuFiltre, listeDeroulanteFaction1.FactionSelectionnee.Id), null).FirstOrDefault();
 
                     if ((SousFactionExistant == null) && (NouvelleSousFaction.EstValide) && (Program.GMBD.AjouterSousFaction(NouvelleSousFaction)))
                     {
@@ -234,13 +234,13 @@ namespace EICE_WARGAME
         /// <param name="sender"></param>
         /// <param name="e"></param>
         private void buttonModifierSF_Click(object sender, EventArgs e)
-        {
+        {            
             if ((listeDeroulanteFaction1.FactionSelectionnee != null) && (ficheSousFaction1.SousFactionSelectionne != null))
             {
 
-                SousFaction SousFactionExistant = Program.GMBD.EnumererSousFaction(null, null, new PDSGBD.MyDB.CodeSql("WHERE sf_name = {0}", ficheSousFaction1.SousFactionSelectionne.Name), null).FirstOrDefault();
+                SousFaction SousFactionExiste = Program.GMBD.EnumererSousFaction(null, null, new PDSGBD.MyDB.CodeSql("WHERE sf_name = {0}", ficheSousFaction1.SousFactionSelectionne.Name), null).FirstOrDefault();
 
-                if (SousFactionExistant == null)
+                if (SousFactionExiste == null)
                 {
                     ficheSousFaction1.MessageErreur = "Cette sous faction n'existe pas";
                 }
