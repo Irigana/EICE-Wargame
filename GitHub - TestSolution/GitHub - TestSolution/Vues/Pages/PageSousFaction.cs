@@ -37,7 +37,9 @@ namespace EICE_WARGAME
 
         private const string c_CritereQuiContient = "%{0}%";        
 
-        private Faction m_FactionEnEdition;        
+        private Faction m_FactionEnEdition;
+
+        private SousFaction m_SousFactionEnEdition;
 
         public PageSousFaction()
         {
@@ -52,12 +54,24 @@ namespace EICE_WARGAME
             //-------------------------
 
             Program.GMBD.MettreAJourListeFaction(listeDeroulanteFaction1);
-            listeDeroulanteFaction1.SurChangementSelection += ListeFactionSurSelectionFaction;      
+            listeDeroulanteFaction1.SurChangementSelection += ListeFactionSurSelectionFaction;
 
-            
-            
+            // Permet la création de cette sous faction afin de lui affecter les 3 méthodes, sur erreur, avant changement, après changement
+            m_SousFactionEnEdition = new SousFaction();
+            m_SousFactionEnEdition.SurErreur += SousFactionEnEdition_SurErreur;
+            m_SousFactionEnEdition.AvantChangement += SousFactionEnEdition_AvantChangement;
+            m_SousFactionEnEdition.ApresChangement += SousFactionEnEdition_ApresChangement;
+
+
+
+
         }
 
+        /// <summary>
+        /// Méthode aggisant sur la sélection de ma liste déroulante de factions
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void ListeFactionSurSelectionFaction(object sender, EventArgs e)
         {
             if (listeDeroulanteFaction1.FactionSelectionnee != null)
@@ -85,6 +99,7 @@ namespace EICE_WARGAME
             ficheSousFaction1.ReactionEnDirectSurChangementFiltre = true;
             ficheSousFaction1.SurChangementFiltre += (s, ev) =>
             {
+                
                 if ((ficheSousFaction1.TexteDuFiltre != "")&&(listeDeroulanteFaction1.FactionSelectionnee != null))
                 {
                     ficheSousFaction1.SousFaction = Program.GMBD.EnumererSousFaction(
@@ -103,23 +118,18 @@ namespace EICE_WARGAME
                         new MyDB.CodeSql("WHERE subfaction.sf_fk_faction_id = {0}", listeDeroulanteFaction1.FactionSelectionnee.Id),
                         new MyDB.CodeSql("ORDER BY sf_name"));
                 }
-                
-                /*
-                if (ficheSousFaction1.NombreDeSousFactionFiltre == 0)
-                {                    
-                    buttonAjouterSF.Enabled = true;
-                    buttonAnnulerSF.Enabled = true;
-                    buttonModifierSF.Enabled = false;
-                    buttonSupprimerSF.Enabled = false;
-                }*/
+
+
             };
+
             ficheSousFaction1.SurChangementSelection += ficheSousFaction_SurChangementSelection;
-            ficheSousFaction_SurChangementSelection(ficheSousFaction1, EventArgs.Empty);
 
         }
 
        
-
+        /// <summary>
+        /// Chargement des sous factions dans la fiche
+        /// </summary>
         private void ChargerSousFaction()
         {            
                 ficheSousFaction1.SousFaction = Program.GMBD.EnumererSousFaction(
@@ -143,24 +153,30 @@ namespace EICE_WARGAME
                 buttonAnnulerSF.Enabled = true;
                 buttonModifierSF.Enabled = true;
                 buttonSupprimerSF.Enabled = true;
-                ficheSousFaction1.TexteDuFiltre = ficheSousFaction1.SousFactionSelectionne.Name;  
-                
-                                                         
+                //ficheSousFaction1.TexteDuFiltre = ficheSousFaction1.SousFactionSelectionne.Name;
             }
-            
+
         }
 
+        /// <summary>
+        /// Se produit sur le chargement de ma page
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void PageAjoutFactionSousFaction_Load(object sender, EventArgs e)
         {
             // Permet de passer l'utilisateur par le controler MenuAdmin
             menuAdmin1.Utilisateur = Utilisateur;
         }
 
+        /// <summary>
+        /// Se produit lors du click sur l'ajout d'une sous faction
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void buttonAjouterSF_Click(object sender, EventArgs e)
-        {
-            
+        {            
             Faction FactionExiste = null;
-            SousFaction NouvelleSousFaction = null;
 
             if (listeDeroulanteFaction1.FactionSelectionnee != null)
             {
@@ -171,18 +187,24 @@ namespace EICE_WARGAME
                 // Si la faction n'existe pas, crée on une nouvelle faction
                 if (FactionExiste != null)
                 {
-                    NouvelleSousFaction = new SousFaction();
+                    SousFaction NouvelleSousFaction = new SousFaction();
                     NouvelleSousFaction.Faction = listeDeroulanteFaction1.FactionSelectionnee;
                     NouvelleSousFaction.Name = ficheSousFaction1.TexteDuFiltre;
 
-                    if ((NouvelleSousFaction.EstValide) && (Program.GMBD.AjouterSousFaction(NouvelleSousFaction)))
+                    SousFaction SousFactionExistant = Program.GMBD.EnumererSousFaction(null, null, new PDSGBD.MyDB.CodeSql("WHERE sf_name = {0} AND fa_id = {1}", ficheSousFaction1.TexteDuFiltre, listeDeroulanteFaction1.FactionSelectionnee.Id), null).FirstOrDefault();
+
+                    if ((SousFactionExistant == null) && (NouvelleSousFaction.EstValide) && (Program.GMBD.AjouterSousFaction(NouvelleSousFaction)))
                     {
-                        ficheSousFaction1.SetTextBoxActionValide("Ajout validé");
+                        ficheSousFaction1.MessageValidation = "Ajout validé";
                         Program.GMBD.MettreAJourFicheSousFaction(ficheSousFaction1, listeDeroulanteFaction1.FactionSelectionnee.Id);                                
+                    }
+                    else if (SousFactionExistant != null)
+                    {
+                        ficheSousFaction1.MessageErreur = "Cette sous faction existe déjà pour cette faction";
                     }
                     else
                     {
-                        ficheSousFaction1.SetTextBoxErrorModification("L'ajout ne s'est pas effectué correctement");
+                        ficheSousFaction1.MessageErreur = "L'ajout ne s'est pas effectué correctement";
                     }
                         
                 }
@@ -192,10 +214,13 @@ namespace EICE_WARGAME
         }
      
         
-
+        /// <summary>
+        /// Se produit lors de l'annulation par l'utilisateur après avoir fait des modifications, de sélection ou d'écriture dans la textbox
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void buttonAnnulerSF_Click(object sender, EventArgs e)
         {            
-            //Pourquoi? - J'expliquerais Samedi , ça me semble inutile 
             ficheSousFaction1.TexteDuFiltre = "";
             buttonAjouterSF.Enabled = true;
             buttonAnnulerSF.Enabled = false;
@@ -203,77 +228,99 @@ namespace EICE_WARGAME
             buttonSupprimerSF.Enabled = false;     
         }
 
+        /// <summary>
+        /// Se produit lors du click sur le bouton de modification par l'utilisateur
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void buttonModifierSF_Click(object sender, EventArgs e)
         {
             if ((listeDeroulanteFaction1.FactionSelectionnee != null) && (ficheSousFaction1.SousFactionSelectionne != null))
             {
 
                 SousFaction SousFactionExistant = Program.GMBD.EnumererSousFaction(null, null, new PDSGBD.MyDB.CodeSql("WHERE sf_name = {0}", ficheSousFaction1.SousFactionSelectionne.Name), null).FirstOrDefault();
+
                 if (SousFactionExistant == null)
                 {
-                    ficheSousFaction1.SetTextBoxErrorModification("Cette sous faction n'existe pas");
+                    ficheSousFaction1.MessageErreur = "Cette sous faction n'existe pas";
                 }
                 else
-                {
-                    SousFaction m_SousFactionEnEdition = SousFactionExistant;
-                    m_SousFactionEnEdition.Faction = m_FactionEnEdition;
-                    if (string.Compare(ficheSousFaction1.TexteDuFiltre.ToString(), SousFactionExistant.Name.ToString()) != 0)
+                {                   
+                    m_SousFactionEnEdition.Faction = m_FactionEnEdition;                    
+                    m_SousFactionEnEdition.Name = ficheSousFaction1.TexteDuFiltre;
+
+                    if ((m_SousFactionEnEdition.EstValide) && (Program.GMBD.ModifierSousFaction(m_SousFactionEnEdition)))
                     {
-                        m_SousFactionEnEdition.Name = ficheSousFaction1.TexteDuFiltre;
-                        if (!((m_SousFactionEnEdition.EstValide) && (Program.GMBD.ModifierSousFaction(m_SousFactionEnEdition))))
-                        {
-                            ficheSousFaction1.SetTextBoxErrorModification("Une erreur est survenue veuillez recommencer votre modification");
-                        }
-                        else
-                        {
-                            Program.GMBD.MettreAJourFicheSousFaction(ficheSousFaction1, listeDeroulanteFaction1.FactionSelectionnee.Id);
-                            ficheSousFaction1.SetTextBoxActionValide("Votre sous faction a bien été modifiée");
-                        }
+                        Program.GMBD.MettreAJourFicheSousFaction(ficheSousFaction1, listeDeroulanteFaction1.FactionSelectionnee.Id);
                     }
+                    
                 }
             }
         }
 
-        //private void StuffEnEdition_SurErreur(Stuff Entite, Stuff.Champ Champ, string MessageErreur)
-        //{
-        //    switch (Champ)
-        //    {
-        //        case Stuff.Champ.Name:
-        //            errorProvider1.SetError(textBoxNomEquipement, MessageErreur);
-        //            break;
-        //    }
-        //    buttonAjouter.Enabled = false;
-        //}
+        /// <summary>
+        /// Methode permettant de réagir sur l'erreur d'une edition de sous faction
+        /// </summary>
+        /// <param name="Entite"></param>
+        /// <param name="Champ"></param>
+        /// <param name="MessageErreur"></param>
+        private void SousFactionEnEdition_SurErreur(SousFaction Entite, SousFaction.Champ Champ, string MessageErreur)
+        {
+            switch (Champ)
+            {
+                case SousFaction.Champ.Name:
+                    ficheSousFaction1.MessageErreur = MessageErreur;
+                    break;
+            }
+            buttonAjouterSF.Enabled = false;
+        }
+        
+        /// <summary>
+        /// Methode permettant de vérifier si la faction existe avant le changement de celle ci dans la base de données
+        /// </summary>
+        /// <param name="Entite"></param>
+        /// <param name="Champ"></param>
+        /// <param name="ValeurActuelle"></param>
+        /// <param name="NouvelleValeur"></param>
+        /// <param name="AccumulateurErreur"></param>
+        private void SousFactionEnEdition_AvantChangement(SousFaction Entite, SousFaction.Champ Champ, object ValeurActuelle, object NouvelleValeur, AccumulateurErreur AccumulateurErreur)
+        {
+            switch (Champ)
+            {
+                case SousFaction.Champ.Name:
+                    SousFaction SousFactionExistant = Program.GMBD.EnumererSousFaction(null, null, new PDSGBD.MyDB.CodeSql("WHERE sf_name = {0} AND sf_id <> {1}", ficheSousFaction1.TexteDuFiltre, ficheSousFaction1.SousFactionSelectionne.Id), null).FirstOrDefault();
 
-        //private void StuffEnEdition_AvantChangement(Stuff Entite, Stuff.Champ Champ, object ValeurActuelle, object NouvelleValeur, AccumulateurErreur AccumulateurErreur)
-        //{
-        //    //Réagir sur évenement leave (perte de focus)
-        //    switch (Champ)
-        //    {
-        //        case Stuff.Champ.Name:
-        //            Stuff StuffExistant = Program.GMBD.EnumererStuff(null, null, new PDSGBD.MyDB.CodeSql("WHERE st_name = {0}", textBoxNomEquipement.Text), null).FirstOrDefault();
+                    if (SousFactionExistant != null)
+                    {
+                        AccumulateurErreur.NotifierErreur("Cette sous faction existe déjà, veuillez en choisir une autre !");
 
-        //            if (StuffExistant != null)
-        //            {
-        //                AccumulateurErreur.NotifierErreur("Cet équipement existe déjà, veuillez en choisir un autre !");
+                    }
+                    break;
+            }
+        }
 
-        //            }
-        //            break;
-        //    }
-        //}
 
-        //private void StuffEnEdition_ApresChangement(Stuff Entite, Stuff.Champ Champ, object ValeurPrecedente, object ValeurActuelle)
-        //{
-        //    switch (Champ)
-        //    {
-        //        case Stuff.Champ.Name:
-        //            errorProvider1.SetError(textBoxNomEquipement, null);
-        //            textBoxNomEquipement.Text = m_StuffEnEdition.Name;
-        //            break;
+        
 
-        //    }
-        //    buttonAjouter.Enabled = m_StuffEnEdition.EstValide;
-        //}
+        /// <summary>
+        /// Methode permettant d'agir après le changement de cette faction
+        /// </summary>
+        /// <param name="Entite"></param>
+        /// <param name="Champ"></param>
+        /// <param name="ValeurPrecedente"></param>
+        /// <param name="ValeurActuelle"></param>
+        private void SousFactionEnEdition_ApresChangement(SousFaction Entite, SousFaction.Champ Champ, object ValeurPrecedente, object ValeurActuelle)
+        {
+            switch (Champ)
+            {
+                case SousFaction.Champ.Name:
+                    ficheSousFaction1.TexteDuFiltre = "";
+                    ficheSousFaction1.MessageValidation = "Votre sous faction a bien été modifiée";
+                    break;
+
+            }
+            buttonAjouterSF.Enabled = m_FactionEnEdition.EstValide;
+        }
     }        
 }
 

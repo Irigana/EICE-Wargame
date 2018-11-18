@@ -54,6 +54,7 @@
             this.textBoxSousFaction.TextChanged += new System.EventHandler(this.textFiltre_TextChanged);
             this.textBoxSousFaction.Enter += new System.EventHandler(this.textBoxSousFaction_Enter);
             this.textBoxSousFaction.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textFiltre_KeyPress);
+            this.textBoxSousFaction.Leave += new System.EventHandler(this.textBoxSousFaction_Leave);
             // 
             // errorProviderSousFaction
             // 

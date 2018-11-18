@@ -28,7 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
             this.labelSousFactionTitre = new System.Windows.Forms.Label();
             this.labelSousFaction = new System.Windows.Forms.Label();
             this.labelChoisirFaction = new System.Windows.Forms.Label();
@@ -37,12 +36,10 @@
             this.buttonSupprimerSF = new System.Windows.Forms.Button();
             this.buttonAnnulerSF = new System.Windows.Forms.Button();
             this.panelLigne = new System.Windows.Forms.Panel();
-            this.errorProviderSousFaction = new System.Windows.Forms.ErrorProvider(this.components);
             this.ficheSousFaction1 = new EICE_WARGAME.FicheSousFaction();
             this.buttonOptionsUser1 = new EICE_WARGAME.ButtonOptionsUser();
             this.listeDeroulanteFaction1 = new EICE_WARGAME.ListeDeroulanteFaction();
             this.menuAdmin1 = new EICE_WARGAME.MenuAdmin();
-            ((System.ComponentModel.ISupportInitialize)(this.errorProviderSousFaction)).BeginInit();
             this.SuspendLayout();
             // 
             // labelSousFactionTitre
@@ -130,10 +127,6 @@
             this.panelLigne.Size = new System.Drawing.Size(1200, 3);
             this.panelLigne.TabIndex = 30;
             // 
-            // errorProviderSousFaction
-            // 
-            this.errorProviderSousFaction.ContainerControl = this;
-            // 
             // ficheSousFaction1
             // 
             this.ficheSousFaction1.Location = new System.Drawing.Point(739, 240);
@@ -190,7 +183,6 @@
             this.Name = "PageSousFaction";
             this.Size = new System.Drawing.Size(1500, 750);
             this.Load += new System.EventHandler(this.PageAjoutFactionSousFaction_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.errorProviderSousFaction)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -209,6 +201,5 @@
         private System.Windows.Forms.Button buttonAnnulerSF;
         private System.Windows.Forms.Panel panelLigne;
         private FicheSousFaction ficheSousFaction1;
-        private System.Windows.Forms.ErrorProvider errorProviderSousFaction;
     }
 }

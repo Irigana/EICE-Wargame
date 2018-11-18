@@ -12,12 +12,56 @@ namespace EICE_WARGAME
 {
     public partial class FicheSousFaction : UserControl
     {
+        //Membres privés
+        private string m_MessageValidation = null;
+        private string m_MessageErreur = null;
+        private int m_NombreDEnregistrementFiltre = -1;
 
         /// <summary>
         /// Indique si il faut suivre instantanément tout changement réalisé dans la zône de texte du filtre, ou seulement lors de l'activation du filtre (ENTER/RETURN ou clic sur bouton)
         /// </summary>
         private bool m_ReactionEnDirectSurChangementFiltre;
 
+        /// <summary>
+        /// Permet de mettre un message de validation sur la textbox à l'extérieur de la fiche
+        /// </summary>
+        public string MessageValidation
+        {
+            get
+            {
+                return m_MessageValidation;
+            }
+            set
+            {
+                if(value != null)
+                {
+                    m_MessageValidation = value;
+                    ActionValidee.SetError(textBoxSousFaction, value);
+                }
+            }
+        }
+
+        /// <summary>
+        /// Permet de mettre un message d'erreur sur la textbox à l'extérieur de la fiche
+        /// </summary>
+        public string MessageErreur
+        {
+            get
+            {
+                return m_MessageErreur;
+            }
+            set
+            {
+                if (value != null)
+                {
+                    m_MessageErreur = value;
+                    errorProviderSousFaction.SetError(textBoxSousFaction, value);
+                }
+            }
+        }
+        /// <summary>
+        /// Mettre à true pour activer la textBox, sinon false
+        /// </summary>
         public bool m_ActiverTextBox
         {
             set
@@ -26,8 +70,9 @@ namespace EICE_WARGAME
             }
         }        
 
-        private int m_NombreDEnregistrementFiltre = -1;
-        
+        /// <summary>
+        /// Nombre de sous faction filtré au moment de l'appel de cette propriété
+        /// </summary>
         public int NombreDeSousFactionFiltre
         {
             get
@@ -41,7 +86,6 @@ namespace EICE_WARGAME
             
         }
         
-
         public FicheSousFaction()
         {
             InitializeComponent();
@@ -153,6 +197,12 @@ namespace EICE_WARGAME
         /// </summary>
         public event EventHandler SurChangementSelection = null;
 
+        /// <summary>
+        /// Met à jour la listview des sous factions et y insére les elements
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="Entites"></param>
+        /// <returns></returns>
         private bool MettreAJourListe<T>(IEnumerable<T> Entites)
             where T : class, IEntiteMySQL
         {
@@ -213,7 +263,7 @@ namespace EICE_WARGAME
             if (SurChangementSelection != null)
             {
                 SurChangementSelection(this, EventArgs.Empty);
-                m_ReactionEnDirectSurChangementFiltre = false;
+
             }
         }
 
@@ -245,34 +295,36 @@ namespace EICE_WARGAME
                 }
             }
         }
-
-
-
-
-
-
-
-
         
+        /// <summary>
+        /// Nettoie la listview des elements s'y trouvant
+        /// </summary>
         public void NettoyerListView()
         {
             listViewSousFaction.Clear();
         }
 
 
-        public void SetTextBoxErrorModification(string MessageErreur)
-        {
-            errorProviderSousFaction.SetError(textBoxSousFaction, MessageErreur);
-        }
-
-        public void SetTextBoxActionValide(string MessageValidation)
-        {
-            ActionValidee.SetError(textBoxSousFaction, MessageValidation);
-        }
-
+        /// <summary>
+        /// Permet de réagir sur l'entré dans la textBox : Utilisé pour virer le filtre et nettoyer les prodivers
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void textBoxSousFaction_Enter(object sender, EventArgs e)
         {
+            if (listViewSousFaction.SelectedItems != null) ReactionEnDirectSurChangementFiltre = false;
+            errorProviderSousFaction.Clear();
             ActionValidee.Clear();
+        }
+
+        /// <summary>
+        /// Permet la reprise du filtre après que l'utilisateur clique sur un bouton
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void textBoxSousFaction_Leave(object sender, EventArgs e)
+        {
+            ReactionEnDirectSurChangementFiltre = true;
         }
     }
 }
