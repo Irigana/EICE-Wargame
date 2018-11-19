@@ -1,6 +1,6 @@
 ﻿namespace EICE_WARGAME
 {
-    partial class PageAjoutFigurine
+    partial class PageFigurine
     {
         /// <summary> 
         /// Variable nécessaire au concepteur.

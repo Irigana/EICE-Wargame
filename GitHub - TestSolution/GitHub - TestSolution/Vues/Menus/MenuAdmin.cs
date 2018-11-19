@@ -41,10 +41,10 @@ namespace EICE_WARGAME
         private void buttonEquipement_Click(object sender, EventArgs e)
         {          
             // Permet de tester si la page actuelle n'est pas déjà la page d'ajout de l'équipement
-            if(Form_Principal.Instance.PageCourante.Name.ToString() != new PageAjouterEquipements().Name.ToString())
+            if(Form_Principal.Instance.PageCourante.Name.ToString() != new PageEquipements().Name.ToString())
             {
                 // Sinon on crée la page d'ajout d'équipements
-                Form_Principal.Instance.CreerPageCourante<PageAjouterEquipements>((Page) =>
+                Form_Principal.Instance.CreerPageCourante<PageEquipements>((Page) =>
                 {
                     Page.Utilisateur = Utilisateur;                    
                     return true;

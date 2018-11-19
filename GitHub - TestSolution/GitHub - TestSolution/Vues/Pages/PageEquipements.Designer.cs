@@ -1,6 +1,6 @@
 ﻿namespace EICE_WARGAME
 {
-    partial class PageAjouterEquipements
+    partial class PageEquipements
     {
         /// <summary> 
         /// Variable nécessaire au concepteur.
@@ -321,7 +321,7 @@
             this.menuAdmin1.TabIndex = 0;
             this.menuAdmin1.Utilisateur = null;
             // 
-            // PageAjouterEquipements
+            // PageEquipements
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;

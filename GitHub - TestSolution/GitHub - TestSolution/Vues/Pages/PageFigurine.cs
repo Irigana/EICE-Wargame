@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace EICE_WARGAME
 {
-    public partial class PageAjoutFigurine : UserControl
+    public partial class PageFigurine : UserControl
     {
-        public PageAjoutFigurine()
+        public PageFigurine()
         {
             InitializeComponent();
         }

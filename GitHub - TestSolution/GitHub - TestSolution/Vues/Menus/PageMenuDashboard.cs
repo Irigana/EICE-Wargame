@@ -50,7 +50,7 @@ namespace EICE_WARGAME
 
         private void buttonEquipements_Click(object sender, EventArgs e)
         {
-            Form_Principal.Instance.CreerPageCourante<PageAjouterEquipements>(
+            Form_Principal.Instance.CreerPageCourante<PageEquipements>(
                 (page) =>
             {
                 page.Utilisateur = Utilisateur;

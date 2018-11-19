@@ -10,7 +10,7 @@ using System.Windows.Forms;
 
 namespace EICE_WARGAME
 {
-    public partial class PageAjouterEquipements : UserControl
+    public partial class PageEquipements : UserControl
     {
         public event EventHandler SurAnnulation = null;
         public event EventHandler SurValidation = null;
@@ -49,7 +49,7 @@ namespace EICE_WARGAME
         }
         #endregion
 
-        public PageAjouterEquipements()
+        public PageEquipements()
         {
             InitializeComponent();
             m_Utilisateur = null;
