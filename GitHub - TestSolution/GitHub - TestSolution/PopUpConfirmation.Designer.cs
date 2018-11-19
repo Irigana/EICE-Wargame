@@ -73,6 +73,7 @@
             this.Controls.Add(this.buttonAnnuler);
             this.Controls.Add(this.buttonConfirmer);
             this.Controls.Add(this.labelTexteAfficher);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.Name = "PopUpConfirmation";
             this.SizeGripStyle = System.Windows.Forms.SizeGripStyle.Hide;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
