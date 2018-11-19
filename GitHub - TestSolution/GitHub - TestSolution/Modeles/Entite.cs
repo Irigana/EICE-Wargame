@@ -425,6 +425,7 @@ namespace EICE_WARGAME
         /// <param name="Connexion">Connexion au serveur MySQL</param>
         public virtual void SupprimerEnCascade(PDSGBD.MyDB Connexion)
         {
+
         }
         #endregion
     }

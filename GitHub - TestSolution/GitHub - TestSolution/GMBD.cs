@@ -135,6 +135,13 @@ namespace EICE_WARGAME
             return SousFaction.Enregistrer(m_BD, SousFaction,null, true);
         }
 
+        public bool SupprimerSousFaction(SousFaction SousFaction)
+        {
+            if (!m_BD.EstConnecte) Initialiser();
+            SousFaction.SupprimerEnCascade(m_BD);
+            return true;
+        }
+
         public void MettreAJourFicheSousFaction(FicheSousFaction Fiche,int IdFactionSelectionne)
         {
             Fiche.SousFaction = Fiche.SousFaction = Program.GMBD.EnumererSousFaction(

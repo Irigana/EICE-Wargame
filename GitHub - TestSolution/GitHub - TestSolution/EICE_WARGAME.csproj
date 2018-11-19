@@ -49,6 +49,12 @@
     <Compile Include="Modeles\Charact.cs" />
     <Compile Include="Modeles\Figurine.cs" />
     <Compile Include="Modeles\FigurineStuff.cs" />
+    <Compile Include="PopUpConfirmation.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PopUpConfirmation.Designer.cs">
+      <DependentUpon>PopUpConfirmation.cs</DependentUpon>
+    </Compile>
     <Compile Include="Vues\FicheSousFaction.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -185,6 +191,9 @@
     <Compile Include="Vues\TextBoxAvecTextInvisible.Designer.cs">
       <DependentUpon>TextBoxAvecTextInvisible.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="PopUpConfirmation.resx">
+      <DependentUpon>PopUpConfirmation.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Vues\FicheSousFaction.resx">
       <DependentUpon>FicheSousFaction.cs</DependentUpon>
     </EmbeddedResource>

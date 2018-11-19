@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using PDSGBD;
 
 namespace EICE_WARGAME
 {
@@ -190,6 +191,11 @@ namespace EICE_WARGAME
             {
                 return new PDSGBD.MyDB.CodeSql("sf_name = {0}, sf_fk_faction_id = {1}", m_Name, m_Faction.Id);
             }
+        }
+
+        public override void SupprimerEnCascade(PDSGBD.MyDB connexion)
+        {
+            Connexion.Executer("DELETE FROM subfaction WHERE sf_id = {0}", Id);            
         }
 
         /// <summary>

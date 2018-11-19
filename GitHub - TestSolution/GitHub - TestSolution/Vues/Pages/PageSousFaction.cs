@@ -330,6 +330,30 @@ namespace EICE_WARGAME
         private void buttonSupprimerSF_Click(object sender, EventArgs e)
         {
 
+            
+
+            PopUpConfirmation FormConfirmation = new PopUpConfirmation();
+            //DialogResult DialogResult = FormConfirmation.ShowDialog();
+
+            // TODO : Vérifier si il a des enregistrement pour modifier le texte en dessous et dire à l'utilisateur le nombre de charact qu'a cet sous faction
+
+            FormConfirmation.LabelDuTexte = "Êtes vous certain de vouloir supprimer cet enregistrement ?";
+            FormConfirmation.ShowDialog();
+            if(FormConfirmation.Confirmation)
+            {
+                if((ficheSousFaction1.SousFactionSelectionne != null ) && (Program.GMBD.SupprimerSousFaction(ficheSousFaction1.SousFactionSelectionne)))
+                {
+                    Program.GMBD.MettreAJourFicheSousFaction(ficheSousFaction1, listeDeroulanteFaction1.FactionSelectionnee.Id);
+                    buttonAjouterSF.Enabled = true;
+                    buttonAnnulerSF.Enabled = false;
+                    buttonModifierSF.Enabled = false;
+                    buttonSupprimerSF.Enabled = false;
+                }
+            }
+            else if(FormConfirmation.Annulation)
+            {
+                // ne rien faire
+            }
         }
     }        
 }
