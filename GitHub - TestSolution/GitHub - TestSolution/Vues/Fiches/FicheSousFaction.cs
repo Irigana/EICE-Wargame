@@ -33,7 +33,7 @@ namespace EICE_WARGAME
             }
             set
             {
-                if(value != null)
+                if (value != null)
                 {
                     m_MessageValidation = value;
                     ActionValidee.SetError(textBoxSousFaction, value);
@@ -68,7 +68,7 @@ namespace EICE_WARGAME
             {
                 textBoxSousFaction.Enabled = value;
             }
-        }        
+        }
 
         /// <summary>
         /// Nombre de sous faction filtré au moment de l'appel de cette propriété
@@ -82,10 +82,10 @@ namespace EICE_WARGAME
             set
             {
                 m_NombreDEnregistrementFiltre = value;
-                
-            }            
-        }                
-        
+
+            }
+        }
+
         public FicheSousFaction()
         {
             InitializeComponent();
@@ -104,8 +104,8 @@ namespace EICE_WARGAME
 
             Bitmap ImageRessource = new Bitmap(Properties.Resources.Validation25px);
 
-            ActionValidee.Icon = Icon.FromHandle(ImageRessource.GetHicon());            
-        }        
+            ActionValidee.Icon = Icon.FromHandle(ImageRessource.GetHicon());
+        }
 
         /// <summary>
         /// Indique si il faut suivre instantanément tout changement réalisé dans la zône de texte du filtre, ou seulement lors de l'activation du filtre (ENTER/RETURN ou clic sur bouton)
@@ -177,20 +177,27 @@ namespace EICE_WARGAME
             {
                 if (value != null)
                 {
-                    foreach (ListViewItem Element in listViewSousFaction.Items)
+                    var ElementASelectionner = listViewSousFaction.Items.Cast<ListViewItem>()
+                        .FirstOrDefault(Element => (Element.Tag is SousFaction) && (Element.Tag as SousFaction).Id.Equals(value.Id));
+                    if ((ElementASelectionner != null)
+                        && ((listViewSousFaction.SelectedItems.Count == 0) || !(listViewSousFaction.SelectedItems[0].Tag as SousFaction).Id.Equals(value.Id)))
                     {
-                        if ((Element.Tag is SousFaction) && (Element.Tag as SousFaction).Id.Equals(value.Id))
-                        {
-                            Element.Selected = true;                            
-                            return;
-                        }
+                        listViewSousFaction.SelectedIndices.Clear();
+                        listViewSousFaction.SelectedIndices.Add(ElementASelectionner.Index);
+                    }
+                    else
+                    {
+                        listViewSousFaction.SelectedIndices.Clear();
                     }
                 }
-                listViewSousFaction.SelectedItems.Clear();
+                else
+                {
+                    listViewSousFaction.SelectedIndices.Clear();
+                }
             }
         }
 
-        
+
         /// <summary>
         /// Evénement déclenché quand il y a un changement de sélection de sous faction
         /// </summary>
@@ -207,6 +214,8 @@ namespace EICE_WARGAME
         {
             bool EstSousFaction = typeof(T).Equals(typeof(SousFaction));
             if (!EstSousFaction) return false;
+            int IdSelectionne = (listViewSousFaction.SelectedItems.Count == 1) ? (listViewSousFaction.SelectedItems[0].Tag as SousFaction).Id : 0;
+
             listViewSousFaction.Items.Clear();
             if (Entites == null) return false;
             if (EstSousFaction && (listViewSousFaction.Columns.Count != 2))
@@ -221,22 +230,25 @@ namespace EICE_WARGAME
                 });
 
             }
-
+            int Index = 0;
+            int IndexASelectionner = -1;
             foreach (T Entite in Entites)
             {
+                int IdEntite = (Entite as SousFaction).Id;
                 ListViewItem NouvelElement = new ListViewItem()
                 {
                     Tag = Entite
                 };
+                if (IdEntite == IdSelectionne) IndexASelectionner = Index;
                 NouvelElement.SubItems.Clear();
                 if (EstSousFaction)
                 {
                     SousFaction SousFaction = Entite as SousFaction;
                     NouvelElement.Text = SousFaction.Name;
-                    NouvelElement.SubItems.Add(SousFaction.Name);
+                    //NouvelElement.SubItems.Add(SousFaction.Name);
                 }
                 listViewSousFaction.Items.Add(NouvelElement);
-
+                Index++;
             }
 
             listViewSousFaction.Visible = false;
@@ -244,9 +256,12 @@ namespace EICE_WARGAME
             {
                 Colonne.AutoResize(ColumnHeaderAutoResizeStyle.HeaderSize);
             }
-            
+
             listViewSousFaction.Visible = true;
-            listViewSousFaction_SelectedIndexChanged(listViewSousFaction, EventArgs.Empty);
+            if (IndexASelectionner == -1)
+                listViewSousFaction_SelectedIndexChanged(listViewSousFaction, EventArgs.Empty);
+            else
+                listViewSousFaction.SelectedIndices.Add(IndexASelectionner);
             return true;
         }
 
@@ -294,7 +309,7 @@ namespace EICE_WARGAME
                 }
             }
         }
-        
+
         /// <summary>
         /// Nettoie la listview des elements s'y trouvant
         /// </summary>
@@ -303,7 +318,7 @@ namespace EICE_WARGAME
             listViewSousFaction.Clear();
         }
 
-       
+
         /// <summary>
         /// Permet de réagir sur l'entré dans la textBox : Utilisé pour virer le filtre et nettoyer les prodivers
         /// </summary>

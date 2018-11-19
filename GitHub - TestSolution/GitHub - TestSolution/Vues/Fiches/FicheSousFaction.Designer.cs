@@ -39,6 +39,8 @@
             // 
             // listViewSousFaction
             // 
+            this.listViewSousFaction.FullRowSelect = true;
+            this.listViewSousFaction.HideSelection = false;
             this.listViewSousFaction.Location = new System.Drawing.Point(0, 28);
             this.listViewSousFaction.Name = "listViewSousFaction";
             this.listViewSousFaction.Size = new System.Drawing.Size(282, 257);

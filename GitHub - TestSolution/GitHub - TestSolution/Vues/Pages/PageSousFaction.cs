@@ -99,7 +99,7 @@ namespace EICE_WARGAME
             ficheSousFaction1.ReactionEnDirectSurChangementFiltre = true;
             ficheSousFaction1.SurChangementFiltre += (s, ev) =>
             {
-                
+                if (!m_FiltrageActif) return;
                 if ((ficheSousFaction1.TexteDuFiltre != "")&&(listeDeroulanteFaction1.FactionSelectionnee != null))
                 {
                     ficheSousFaction1.SousFaction = Program.GMBD.EnumererSousFaction(
@@ -153,11 +153,20 @@ namespace EICE_WARGAME
                 buttonAnnulerSF.Enabled = true;
                 buttonModifierSF.Enabled = true;
                 buttonSupprimerSF.Enabled = true;
+                m_FiltrageActif = false;
                 ficheSousFaction1.TexteDuFiltre = ficheSousFaction1.SousFactionSelectionne.Name;
-                if (ficheSousFaction1.NombreDeSousFactionFiltre == 1) ;//Mettre le dernier index en selection          
+                m_FiltrageActif = true;
             }
-
+            else
+            {
+                buttonAjouterSF.Enabled = true;
+                buttonAnnulerSF.Enabled = false;
+                buttonModifierSF.Enabled = false;
+                buttonSupprimerSF.Enabled = false;
+            }
         }
+
+        private bool m_FiltrageActif = true;
 
         /// <summary>
         /// Se produit sur le chargement de ma page
