@@ -112,6 +112,7 @@
             this.buttonFaction.TabIndex = 5;
             this.buttonFaction.Text = "Faction";
             this.buttonFaction.UseVisualStyleBackColor = true;
+            this.buttonFaction.Click += new System.EventHandler(this.buttonFaction_Click);
             // 
             // MenuAdmin
             // 
