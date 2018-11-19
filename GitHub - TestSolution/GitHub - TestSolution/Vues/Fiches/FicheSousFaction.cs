@@ -82,9 +82,9 @@ namespace EICE_WARGAME
             set
             {
                 m_NombreDEnregistrementFiltre = value;
-            }
-            
-        }
+                
+            }            
+        }                
         
         public FicheSousFaction()
         {
@@ -104,8 +104,7 @@ namespace EICE_WARGAME
 
             Bitmap ImageRessource = new Bitmap(Properties.Resources.Validation25px);
 
-            ActionValidee.Icon = Icon.FromHandle(ImageRessource.GetHicon());
-
+            ActionValidee.Icon = Icon.FromHandle(ImageRessource.GetHicon());            
         }        
 
         /// <summary>
@@ -304,7 +303,7 @@ namespace EICE_WARGAME
             listViewSousFaction.Clear();
         }
 
-
+       
         /// <summary>
         /// Permet de réagir sur l'entré dans la textBox : Utilisé pour virer le filtre et nettoyer les prodivers
         /// </summary>

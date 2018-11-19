@@ -153,7 +153,8 @@ namespace EICE_WARGAME
                 buttonAnnulerSF.Enabled = true;
                 buttonModifierSF.Enabled = true;
                 buttonSupprimerSF.Enabled = true;
-                //ficheSousFaction1.TexteDuFiltre = ficheSousFaction1.SousFactionSelectionne.Name;
+                ficheSousFaction1.TexteDuFiltre = ficheSousFaction1.SousFactionSelectionne.Name;
+                if (ficheSousFaction1.NombreDeSousFactionFiltre == 1) ;//Mettre le dernier index en selection          
             }
 
         }
@@ -246,7 +247,7 @@ namespace EICE_WARGAME
                 }
                 else
                 {
-                    // TODO : ask
+
                     m_SousFactionEnEdition = SousFactionExiste;
                     m_SousFactionEnEdition.SurErreur += SousFactionEnEdition_SurErreur;
                     m_SousFactionEnEdition.AvantChangement += SousFactionEnEdition_AvantChangement;
@@ -348,11 +349,16 @@ namespace EICE_WARGAME
                     buttonAnnulerSF.Enabled = false;
                     buttonModifierSF.Enabled = false;
                     buttonSupprimerSF.Enabled = false;
+                    ficheSousFaction1.MessageValidation = "Suppresion correctement effectuée";
                 }
             }
             else if(FormConfirmation.Annulation)
-            {
+            {                
                 // ne rien faire
+            }
+            else
+            {
+                ficheSousFaction1.MessageErreur = "Erreur interne, veuillez recommencer";
             }
         }
     }        
