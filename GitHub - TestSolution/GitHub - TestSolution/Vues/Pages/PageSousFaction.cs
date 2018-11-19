@@ -112,6 +112,7 @@ namespace EICE_WARGAME
                     // Permet de récuperer le nombre d'enregistrement après le filtre
                     ficheSousFaction1.NombreDeSousFactionFiltre = ficheSousFaction1.SousFaction.Count();
                 }
+                
                 else if (listeDeroulanteFaction1.FactionSelectionnee != null)
                 {
                     ficheSousFaction1.SousFaction = Program.GMBD.EnumererSousFaction(
@@ -343,9 +344,7 @@ namespace EICE_WARGAME
 
             
 
-            PopUpConfirmation FormConfirmation = new PopUpConfirmation();
-            //DialogResult DialogResult = FormConfirmation.ShowDialog();
-
+            PopUpConfirmation FormConfirmation = new PopUpConfirmation();            
             // TODO : Vérifier si il a des enregistrement pour modifier le texte en dessous et dire à l'utilisateur le nombre de charact qu'a cet sous faction
 
             FormConfirmation.LabelDuTexte = "Êtes vous certain de vouloir supprimer cet enregistrement ?";

@@ -326,7 +326,15 @@ namespace EICE_WARGAME
         /// <param name="e"></param>
         private void textBoxSousFaction_Enter(object sender, EventArgs e)
         {
-            //if (listViewSousFaction.SelectedItems != null) ReactionEnDirectSurChangementFiltre = true;
+            if (listViewSousFaction.SelectedItems != null)
+            {
+                ReactionEnDirectSurChangementFiltre = false;
+            }
+            else
+            {
+                ReactionEnDirectSurChangementFiltre = true;
+            }
+
             errorProviderSousFaction.Clear();
             ActionValidee.Clear();
         }
