@@ -190,7 +190,7 @@ namespace PDSGBD
                         return new ResultatExecution(NombreEnregistrementsAffectes, Commande.LastInsertedId);
                     }
                     else
-                    {
+                    {             
                         if (ConnexionUtilisee != this) ConnexionUtilisee.Dispose();
                         return new ResultatExecution(NombreEnregistrementsAffectes);
                     }

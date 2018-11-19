@@ -106,6 +106,7 @@
             this.buttonSupprimerSF.TabIndex = 28;
             this.buttonSupprimerSF.Text = "Supprimer";
             this.buttonSupprimerSF.UseVisualStyleBackColor = false;
+            this.buttonSupprimerSF.Click += new System.EventHandler(this.buttonSupprimerSF_Click);
             // 
             // buttonAnnulerSF
             // 
@@ -130,6 +131,8 @@
             // ficheSousFaction1
             // 
             this.ficheSousFaction1.Location = new System.Drawing.Point(739, 240);
+            this.ficheSousFaction1.MessageErreur = null;
+            this.ficheSousFaction1.MessageValidation = null;
             this.ficheSousFaction1.Name = "ficheSousFaction1";
             this.ficheSousFaction1.NombreDeSousFactionFiltre = -1;
             this.ficheSousFaction1.ReactionEnDirectSurChangementFiltre = false;

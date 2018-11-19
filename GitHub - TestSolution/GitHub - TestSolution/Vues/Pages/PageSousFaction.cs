@@ -245,13 +245,18 @@ namespace EICE_WARGAME
                     ficheSousFaction1.MessageErreur = "Cette sous faction n'existe pas";
                 }
                 else
-                {                   
+                {
+                    // TODO : ask
+                    m_SousFactionEnEdition = SousFactionExiste;
+                    m_SousFactionEnEdition.SurErreur += SousFactionEnEdition_SurErreur;
+                    m_SousFactionEnEdition.AvantChangement += SousFactionEnEdition_AvantChangement;
+                    m_SousFactionEnEdition.ApresChangement += SousFactionEnEdition_ApresChangement;
                     m_SousFactionEnEdition.Faction = m_FactionEnEdition;                    
                     m_SousFactionEnEdition.Name = ficheSousFaction1.TexteDuFiltre;
 
                     if ((m_SousFactionEnEdition.EstValide) && (Program.GMBD.ModifierSousFaction(m_SousFactionEnEdition)))
                     {
-                        Program.GMBD.MettreAJourFicheSousFaction(ficheSousFaction1, listeDeroulanteFaction1.FactionSelectionnee.Id);
+                        Program.GMBD.MettreAJourFicheSousFaction(ficheSousFaction1, listeDeroulanteFaction1.FactionSelectionnee.Id);                        
                     }
                     
                 }
@@ -288,7 +293,7 @@ namespace EICE_WARGAME
             switch (Champ)
             {
                 case SousFaction.Champ.Name:
-                    SousFaction SousFactionExistant = Program.GMBD.EnumererSousFaction(null, null, new PDSGBD.MyDB.CodeSql("WHERE sf_name = {0} AND sf_id <> {1}", ficheSousFaction1.TexteDuFiltre, ficheSousFaction1.SousFactionSelectionne.Id), null).FirstOrDefault();
+                    SousFaction SousFactionExistant = Program.GMBD.EnumererSousFaction(null, null, new PDSGBD.MyDB.CodeSql("WHERE subfaction.sf_name = {0} AND subfaction.sf_id <> {1} AND subfaction.sf_fk_faction_id = {2}", ficheSousFaction1.TexteDuFiltre, ficheSousFaction1.SousFactionSelectionne.Id,listeDeroulanteFaction1.FactionSelectionnee.Id), null).FirstOrDefault();
 
                     if (SousFactionExistant != null)
                     {
@@ -320,6 +325,11 @@ namespace EICE_WARGAME
 
             }
             buttonAjouterSF.Enabled = m_FactionEnEdition.EstValide;
+        }
+
+        private void buttonSupprimerSF_Click(object sender, EventArgs e)
+        {
+
         }
     }        
 }
