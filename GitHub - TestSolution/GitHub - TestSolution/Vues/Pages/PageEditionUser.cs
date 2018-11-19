@@ -35,8 +35,6 @@ namespace EICE_WARGAME
         {
             InitializeComponent();
             m_Utilisateur = null;
-            textBoxAvecTextInvisibleLogin.EnterPress += new KeyEventHandler(textBoxAvecTextInvisible_KeyDown);
-            textBoxAvecTextInvisibleMdpInitial.EnterPress += new KeyEventHandler(textBoxAvecTextInvisible_KeyDown);
             textBoxAvecTextInvisibleNouveauMdp.EnterPress += new KeyEventHandler(textBoxAvecTextInvisible_KeyDown);
             textBoxAvecTextInvisibleConfNewMdp.EnterPress += new KeyEventHandler(textBoxAvecTextInvisible_KeyDown);
         }
@@ -44,63 +42,46 @@ namespace EICE_WARGAME
         private void PageEditionUser_Load(object sender, EventArgs e)
         {
             buttonOptionsUser1.ButtonOptionsUserUpdate();
-            textBoxAvecTextInvisibleLogin.Text = Utilisateur.Login.ToString();
         }
 
         private void buttonValiderModif_Click(object sender, EventArgs e)
         {
             errorProviderEdition.Clear();
             bool ModificationEffectuee = false;
+            
+            Utilisateur UtilisateurEnEdition = Utilisateur;
 
-            Utilisateur UtilisateurExiste = Program.GMBD.EnumererUtilisateur(null, new MyDB.CodeSql("JOIN role ON user.u_fk_role_id = role.r_id"),
-                                                                             new MyDB.CodeSql("WHERE user.u_id <> {0} AND user.u_name = {1}", Utilisateur.Id, textBoxAvecTextInvisibleLogin.Text), null).FirstOrDefault();
-            if (UtilisateurExiste != null)
+            // Si le mot de passe de l'utilisateur est différent et que les textbox du nouveau mot de passe sont pas vide et égale
+            if ((string.Compare(UtilisateurEnEdition.MotDePasse.ToString(),textBoxAvecTextInvisibleNouveauMdp.Text.ToString()) != 0)
+                && ((textBoxAvecTextInvisibleConfNewMdp.Text != "") && (textBoxAvecTextInvisibleNouveauMdp.Text != ""))
+                && (string.Compare(textBoxAvecTextInvisibleNouveauMdp.Text.ToString(),textBoxAvecTextInvisibleConfNewMdp.Text.ToString()) == 0))
             {
-                errorProviderEdition.SetError(textBoxAvecTextInvisibleLogin, "Le pseudo que vous encodez existe déjà, veuillez en mettre un autre");
 
-            }
-
-            if (UtilisateurExiste == null)
-            {
-                Utilisateur UtilisateurEnEdition = Utilisateur;
-                // Si l'utilisateur a mis le bon mot de passe de confirmation et que son login a changé
-                if ((string.Compare(UtilisateurEnEdition.MotDePasse.ToString(), Outils.hash(textBoxAvecTextInvisibleMdpInitial.Text.ToString())) == 0) 
-                    && (string.Compare(Utilisateur.Login.ToString(),textBoxAvecTextInvisibleLogin.Text.ToString()) != 0))
-                {
-                    UtilisateurEnEdition.Login = textBoxAvecTextInvisibleLogin.Text;
-                    ModificationEffectuee = true;
-                }
-                else if(textBoxAvecTextInvisibleMdpInitial.Text == "")
-                {
-                    // Ne rien faire
-                }
-                else if (string.Compare(UtilisateurEnEdition.MotDePasse.ToString(), Outils.hash(textBoxAvecTextInvisibleMdpInitial.Text.ToString())) != 0)
-                {
-                    errorProviderEdition.SetError(textBoxAvecTextInvisibleMdpInitial, "Le mot de pas n'est pas valide veuillez mettre le mot de passe de ce compte");
-                }
-                // Si le mot de passe de l'utilisateur est différent et que les textbox du nouveau mot de passe sont pas vide et égale
-                if ((string.Compare(UtilisateurEnEdition.MotDePasse.ToString(),textBoxAvecTextInvisibleNouveauMdp.Text.ToString()) != 0)
-                    && ((textBoxAvecTextInvisibleConfNewMdp.Text != "") && (textBoxAvecTextInvisibleNouveauMdp.Text != ""))
-                    && (string.Compare(textBoxAvecTextInvisibleNouveauMdp.Text.ToString(),textBoxAvecTextInvisibleConfNewMdp.Text.ToString()) == 0))
+                if (string.Compare(Outils.hash(textBoxAvecTextInvisibleAncienMdp.Text.ToString()), UtilisateurEnEdition.MotDePasse) == 0)
                 {
                     UtilisateurEnEdition.MotDePasse = Outils.hash(textBoxAvecTextInvisibleNouveauMdp.Text);
                     ModificationEffectuee = true;
                 }
-                else if((string.Compare(textBoxAvecTextInvisibleNouveauMdp.Text.ToString(), textBoxAvecTextInvisibleConfNewMdp.Text.ToString()) != 0))
+                else
                 {
-                    errorProviderEdition.SetError(textBoxAvecTextInvisibleConfNewMdp, "Le mot de pas ne correspond pas au nouveau mot de passe que vous souhaitez mettre");
-                }
-                if ((UtilisateurEnEdition.EstValide) && (ModificationEffectuee == true))
-                {
-                    Program.GMBD.ModifierUtilisateur(UtilisateurEnEdition);                    
-                    Form_Principal.Instance.CreerPageCourante<PageEditionUser>(
-                        (Page) =>
-                        {
-                            Page.Utilisateur = Utilisateur;
-                            return true;
-                        });
+                    errorProviderEdition.SetError(textBoxAvecTextInvisibleAncienMdp, "Mot de passe incorrect");
                 }
             }
+            else if((string.Compare(textBoxAvecTextInvisibleNouveauMdp.Text.ToString(), textBoxAvecTextInvisibleConfNewMdp.Text.ToString()) != 0))
+            {
+                errorProviderEdition.SetError(textBoxAvecTextInvisibleConfNewMdp, "Le mot de pas ne correspond pas au nouveau mot de passe que vous souhaitez mettre");
+            }
+            if ((UtilisateurEnEdition.EstValide) && (ModificationEffectuee == true))
+            {
+                Program.GMBD.ModifierUtilisateur(UtilisateurEnEdition);                    
+                Form_Principal.Instance.CreerPageCourante<PageEditionUser>(
+                    (Page) =>
+                    {
+                        Page.Utilisateur = Utilisateur;
+                        return true;
+                    });
+            }
+            
         }
 
         private void buttonRetourMenu_Click(object sender, EventArgs e)

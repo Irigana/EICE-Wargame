@@ -79,6 +79,7 @@ namespace EICE_WARGAME
                 m_FactionEnEdition = listeDeroulanteFaction1.FactionSelectionnee;
                 ficheSousFaction1.m_ActiverTextBox = true;
                 buttonAjouterSF.Enabled = true;
+                m_FiltrageActif = true;
             }
             else if(listeDeroulanteFaction1.m_PerteFaction)
             {
@@ -194,7 +195,7 @@ namespace EICE_WARGAME
                                                              null,
                                                              new MyDB.CodeSql("WHERE faction.fa_id = {0} ", listeDeroulanteFaction1.FactionSelectionnee.Id),
                                                              null).FirstOrDefault();
-                // Si la faction n'existe pas, crée on une nouvelle faction
+                // Si la faction n'existe pas, on crée une nouvelle faction
                 if (FactionExiste != null)
                 {
                     SousFaction NouvelleSousFaction = new SousFaction();
@@ -248,7 +249,7 @@ namespace EICE_WARGAME
             if ((listeDeroulanteFaction1.FactionSelectionnee != null) && (ficheSousFaction1.SousFactionSelectionne != null))
             {
 
-                SousFaction SousFactionExiste = Program.GMBD.EnumererSousFaction(null, null, new PDSGBD.MyDB.CodeSql("WHERE sf_name = {0}", ficheSousFaction1.SousFactionSelectionne.Name), null).FirstOrDefault();
+                SousFaction SousFactionExiste = Program.GMBD.EnumererSousFaction(null, null, new PDSGBD.MyDB.CodeSql("WHERE subfaction.sf_name = {0} AND subfaction.sf_fk_faction_id = {1}", ficheSousFaction1.TexteDuFiltre, listeDeroulanteFaction1.FactionSelectionnee.Id), null).FirstOrDefault();
 
                 if (SousFactionExiste == null)
                 {

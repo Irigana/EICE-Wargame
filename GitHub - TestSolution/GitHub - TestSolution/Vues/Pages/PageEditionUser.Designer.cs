@@ -36,11 +36,8 @@
             this.buttonOptionsUser1 = new EICE_WARGAME.ButtonOptionsUser();
             this.textBoxAvecTextInvisibleConfNewMdp = new EICE_WARGAME.TextBoxAvecTextInvisible();
             this.textBoxAvecTextInvisibleNouveauMdp = new EICE_WARGAME.TextBoxAvecTextInvisible();
-            this.textBoxAvecTextInvisibleMdpInitial = new EICE_WARGAME.TextBoxAvecTextInvisible();
-            this.textBoxAvecTextInvisibleLogin = new EICE_WARGAME.TextBoxAvecTextInvisible();
-            this.labelNouveauLogin = new System.Windows.Forms.Label();
             this.labelNouveauMdp = new System.Windows.Forms.Label();
-            this.panelLigneSeparatrice = new System.Windows.Forms.Panel();
+            this.textBoxAvecTextInvisibleAncienMdp = new EICE_WARGAME.TextBoxAvecTextInvisible();
             ((System.ComponentModel.ISupportInitialize)(this.errorProviderEdition)).BeginInit();
             this.SuspendLayout();
             // 
@@ -100,7 +97,7 @@
             // textBoxAvecTextInvisibleConfNewMdp
             // 
             this.textBoxAvecTextInvisibleConfNewMdp.ForeColor = System.Drawing.SystemColors.ButtonShadow;
-            this.textBoxAvecTextInvisibleConfNewMdp.Location = new System.Drawing.Point(897, 359);
+            this.textBoxAvecTextInvisibleConfNewMdp.Location = new System.Drawing.Point(608, 341);
             this.textBoxAvecTextInvisibleConfNewMdp.Margin = new System.Windows.Forms.Padding(0);
             this.textBoxAvecTextInvisibleConfNewMdp.MotDePasseCache = true;
             this.textBoxAvecTextInvisibleConfNewMdp.Name = "textBoxAvecTextInvisibleConfNewMdp";
@@ -111,7 +108,7 @@
             // textBoxAvecTextInvisibleNouveauMdp
             // 
             this.textBoxAvecTextInvisibleNouveauMdp.ForeColor = System.Drawing.SystemColors.ButtonShadow;
-            this.textBoxAvecTextInvisibleNouveauMdp.Location = new System.Drawing.Point(897, 310);
+            this.textBoxAvecTextInvisibleNouveauMdp.Location = new System.Drawing.Point(608, 292);
             this.textBoxAvecTextInvisibleNouveauMdp.Margin = new System.Windows.Forms.Padding(0);
             this.textBoxAvecTextInvisibleNouveauMdp.MotDePasseCache = true;
             this.textBoxAvecTextInvisibleNouveauMdp.Name = "textBoxAvecTextInvisibleNouveauMdp";
@@ -119,70 +116,38 @@
             this.textBoxAvecTextInvisibleNouveauMdp.Size = new System.Drawing.Size(314, 22);
             this.textBoxAvecTextInvisibleNouveauMdp.TabIndex = 3;
             // 
-            // textBoxAvecTextInvisibleMdpInitial
-            // 
-            this.textBoxAvecTextInvisibleMdpInitial.ForeColor = System.Drawing.SystemColors.ButtonShadow;
-            this.textBoxAvecTextInvisibleMdpInitial.Location = new System.Drawing.Point(297, 357);
-            this.textBoxAvecTextInvisibleMdpInitial.Margin = new System.Windows.Forms.Padding(0);
-            this.textBoxAvecTextInvisibleMdpInitial.MotDePasseCache = true;
-            this.textBoxAvecTextInvisibleMdpInitial.Name = "textBoxAvecTextInvisibleMdpInitial";
-            this.textBoxAvecTextInvisibleMdpInitial.PlaceHolder = "Mot de passe actuel";
-            this.textBoxAvecTextInvisibleMdpInitial.Size = new System.Drawing.Size(314, 22);
-            this.textBoxAvecTextInvisibleMdpInitial.TabIndex = 2;
-            // 
-            // textBoxAvecTextInvisibleLogin
-            // 
-            this.textBoxAvecTextInvisibleLogin.ForeColor = System.Drawing.SystemColors.ButtonShadow;
-            this.textBoxAvecTextInvisibleLogin.Location = new System.Drawing.Point(297, 310);
-            this.textBoxAvecTextInvisibleLogin.Margin = new System.Windows.Forms.Padding(0);
-            this.textBoxAvecTextInvisibleLogin.MotDePasseCache = false;
-            this.textBoxAvecTextInvisibleLogin.Name = "textBoxAvecTextInvisibleLogin";
-            this.textBoxAvecTextInvisibleLogin.PlaceHolder = "Login";
-            this.textBoxAvecTextInvisibleLogin.Size = new System.Drawing.Size(314, 22);
-            this.textBoxAvecTextInvisibleLogin.TabIndex = 1;
-            // 
-            // labelNouveauLogin
-            // 
-            this.labelNouveauLogin.AutoSize = true;
-            this.labelNouveauLogin.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F);
-            this.labelNouveauLogin.Location = new System.Drawing.Point(291, 227);
-            this.labelNouveauLogin.Name = "labelNouveauLogin";
-            this.labelNouveauLogin.Size = new System.Drawing.Size(187, 31);
-            this.labelNouveauLogin.TabIndex = 8;
-            this.labelNouveauLogin.Text = "Nouveau login";
-            // 
             // labelNouveauMdp
             // 
             this.labelNouveauMdp.AutoSize = true;
-            this.labelNouveauMdp.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F);
-            this.labelNouveauMdp.Location = new System.Drawing.Point(891, 227);
+            this.labelNouveauMdp.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F);
+            this.labelNouveauMdp.Location = new System.Drawing.Point(603, 236);
             this.labelNouveauMdp.Name = "labelNouveauMdp";
-            this.labelNouveauMdp.Size = new System.Drawing.Size(292, 31);
+            this.labelNouveauMdp.Size = new System.Drawing.Size(260, 29);
             this.labelNouveauMdp.TabIndex = 9;
             this.labelNouveauMdp.Text = "Nouveau mot de passe";
             // 
-            // panelLigneSeparatrice
+            // textBoxAvecTextInvisibleAncienMdp
             // 
-            this.panelLigneSeparatrice.BackColor = System.Drawing.SystemColors.WindowText;
-            this.panelLigneSeparatrice.Location = new System.Drawing.Point(751, 160);
-            this.panelLigneSeparatrice.Name = "panelLigneSeparatrice";
-            this.panelLigneSeparatrice.Size = new System.Drawing.Size(5, 300);
-            this.panelLigneSeparatrice.TabIndex = 10;
+            this.textBoxAvecTextInvisibleAncienMdp.ForeColor = System.Drawing.SystemColors.ButtonShadow;
+            this.textBoxAvecTextInvisibleAncienMdp.Location = new System.Drawing.Point(608, 389);
+            this.textBoxAvecTextInvisibleAncienMdp.Margin = new System.Windows.Forms.Padding(0);
+            this.textBoxAvecTextInvisibleAncienMdp.MotDePasseCache = true;
+            this.textBoxAvecTextInvisibleAncienMdp.Name = "textBoxAvecTextInvisibleAncienMdp";
+            this.textBoxAvecTextInvisibleAncienMdp.PlaceHolder = "Ancien mot de passe";
+            this.textBoxAvecTextInvisibleAncienMdp.Size = new System.Drawing.Size(314, 22);
+            this.textBoxAvecTextInvisibleAncienMdp.TabIndex = 10;
             // 
             // PageEditionUser
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.Controls.Add(this.panelLigneSeparatrice);
+            this.Controls.Add(this.textBoxAvecTextInvisibleAncienMdp);
             this.Controls.Add(this.labelNouveauMdp);
-            this.Controls.Add(this.labelNouveauLogin);
             this.Controls.Add(this.buttonRetourMenu);
             this.Controls.Add(this.buttonValiderModif);
             this.Controls.Add(this.buttonOptionsUser1);
             this.Controls.Add(this.textBoxAvecTextInvisibleConfNewMdp);
             this.Controls.Add(this.textBoxAvecTextInvisibleNouveauMdp);
-            this.Controls.Add(this.textBoxAvecTextInvisibleMdpInitial);
-            this.Controls.Add(this.textBoxAvecTextInvisibleLogin);
             this.Controls.Add(this.labelEditionUser);
             this.Name = "PageEditionUser";
             this.Size = new System.Drawing.Size(1500, 750);
@@ -196,16 +161,13 @@
         #endregion
 
         private System.Windows.Forms.Label labelEditionUser;
-        private TextBoxAvecTextInvisible textBoxAvecTextInvisibleLogin;
-        private TextBoxAvecTextInvisible textBoxAvecTextInvisibleMdpInitial;
         private TextBoxAvecTextInvisible textBoxAvecTextInvisibleNouveauMdp;
         private TextBoxAvecTextInvisible textBoxAvecTextInvisibleConfNewMdp;
         private ButtonOptionsUser buttonOptionsUser1;
         private System.Windows.Forms.Button buttonValiderModif;
         private System.Windows.Forms.Button buttonRetourMenu;
         private System.Windows.Forms.ErrorProvider errorProviderEdition;
-        private System.Windows.Forms.Panel panelLigneSeparatrice;
         private System.Windows.Forms.Label labelNouveauMdp;
-        private System.Windows.Forms.Label labelNouveauLogin;
+        private TextBoxAvecTextInvisible textBoxAvecTextInvisibleAncienMdp;
     }
 }
