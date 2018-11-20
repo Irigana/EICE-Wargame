@@ -38,7 +38,7 @@
             this.listViewSousFaction.HideSelection = false;
             this.listViewSousFaction.Location = new System.Drawing.Point(0, 28);
             this.listViewSousFaction.Name = "listViewSousFaction";
-            this.listViewSousFaction.Size = new System.Drawing.Size(282, 257);
+            this.listViewSousFaction.Size = new System.Drawing.Size(285, 257);
             this.listViewSousFaction.TabIndex = 2;
             this.listViewSousFaction.UseCompatibleStateImageBehavior = false;
             // 
@@ -46,7 +46,7 @@
             // 
             this.textBoxSousFaction.Location = new System.Drawing.Point(0, 0);
             this.textBoxSousFaction.Name = "textBoxSousFaction";
-            this.textBoxSousFaction.Size = new System.Drawing.Size(282, 22);
+            this.textBoxSousFaction.Size = new System.Drawing.Size(285, 22);
             this.textBoxSousFaction.TabIndex = 3;
             this.textBoxSousFaction.TextChanged += new System.EventHandler(this.textFiltre_TextChanged);
             this.textBoxSousFaction.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textFiltre_KeyPress);
@@ -58,7 +58,7 @@
             this.Controls.Add(this.textBoxSousFaction);
             this.Controls.Add(this.listViewSousFaction);
             this.Name = "FicheSousFaction";
-            this.Size = new System.Drawing.Size(284, 293);
+            this.Size = new System.Drawing.Size(288, 293);
             this.ResumeLayout(false);
             this.PerformLayout();
 
