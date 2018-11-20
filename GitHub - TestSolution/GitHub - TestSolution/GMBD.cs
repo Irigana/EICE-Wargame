@@ -129,10 +129,11 @@ namespace EICE_WARGAME
             return true;
         }
         /*
-        public int NombreDeSousFactionLiee(int IdFaction)
+        public long NombreDeSousFactionLiee(int IdFaction)
         {
-            Faction NombreDeSousFaction = EnumererFaction(new MyDB.CodeSql("SELECT count(*) FROM faction JOIN subfaction ON faction.fa_id = subfaction.sf_fk_faction_id WHERE faction.fa_id = {0}", IdFaction).FirstOrDefault();
-            return (NombreDeSousFaction != 0) ? NombreDeSousFaction : 0;
+
+            long Resultat = m_BD.ValeurDe<long>("SELECT COUNT(*) FROM subfaction WHERE sf_fk_faction_id = {0}", IdFaction);
+            return Resultat;          
         }
         */
         public void MettreAJourListeFaction(ListeDeroulanteFaction Liste)

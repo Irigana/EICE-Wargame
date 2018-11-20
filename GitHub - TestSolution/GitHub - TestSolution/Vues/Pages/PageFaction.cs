@@ -255,18 +255,18 @@ namespace EICE_WARGAME
         {
 
             PopUpConfirmation FormConfirmation = new PopUpConfirmation();
-            // TODO : Test de vérification du nombre de sous faction pour indiquer le nombre de sous faction lié à cette faction
-            //int NombreDeSousFactionLie = Program.GMBD.NombreDeSousFactionLiee(ficheFaction1.FactionSelectionne.Id);
+            //Test de vérification du nombre de sous faction pour indiquer le nombre de sous faction lié à cette faction
+            //long NombreDeSousFactionLie = Program.GMBD.NombreDeSousFactionLiee(ficheFaction1.FactionSelectionne.Id);
 
             //if(NombreDeSousFactionLie == 0)
             {
                 FormConfirmation.LabelDuTexte = "Êtes vous certain de vouloir supprimer cet enregistrement ?";
             }
-            /*
-            else if (NombreDeSousFactionLie > 0)
+            
+           // else if (NombreDeSousFactionLie > 0)
             {
-                FormConfirmation.LabelDuTexte = "Êtes vous certain de vouloir supprimer en cascade cet enregistrement ? Il comporte "+NombreDeSousFactionLie.ToString()+" sous faction";
-            }*/
+                //FormConfirmation.LabelDuTexte = "Êtes vous certain de vouloir supprimer en cascade cet enregistrement ? Il comporte "+NombreDeSousFactionLie.ToString()+" sous faction";
+            }
 
 
             FormConfirmation.ShowDialog();

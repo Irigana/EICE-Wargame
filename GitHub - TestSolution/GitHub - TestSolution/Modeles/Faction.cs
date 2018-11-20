@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using PDSGBD;
 
 namespace EICE_WARGAME
 {
@@ -168,10 +169,17 @@ namespace EICE_WARGAME
         {
             if (base.Connexion == null) return new SousFaction[0];
             return SousFaction.Enumerer(Connexion, Connexion.Enumerer(
-                @"SELECT sf_id, sf_name,
+                @"SELECT sf_id, sf_name,sf_fk_faction_id
                     FROM subfaction
                     WHERE (sf_fk_faction_id = {0})",
                 Id));
+        }
+
+        public override void SupprimerEnCascade(MyDB Connexion)
+        {
+            Connexion.Executer(@"DELETE FROM subfaction WHERE sf_fk_faction_id = {0};
+                                 DELETE FROM faction WHERE fa_id = {0};"
+                                , Id);
         }
         
 
