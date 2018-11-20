@@ -55,19 +55,6 @@ namespace EICE_WARGAME
             m_FactionEnEdition.AvantChangement += FactionEnEdition_AvantChangement;
             m_FactionEnEdition.ApresChangement += FactionEnEdition_ApresChangement;
 
-            Bitmap ImageRessource = new Bitmap(Properties.Resources.Validation25px);
-            ValidationProvider.Icon = Icon.FromHandle(ImageRessource.GetHicon());
-        }
-        /// <summary>
-        /// Se produit sur le chargement de ma page
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void PageFaction_Load(object sender, EventArgs e)
-        {
-            // Permet de passer l'utilisateur par le controler MenuAdmin
-            menuAdmin1.Utilisateur = Utilisateur;
-
             ChargerFaction();
 
             ficheFaction1.SurChangementFiltre += (s, ev) =>
@@ -87,10 +74,20 @@ namespace EICE_WARGAME
                 }
 
 
+                ficheFaction1.SurChangementSelection += ficheFaction_SurChangementSelection;
             };
-
-            ficheFaction1.SurChangementSelection += ficheFaction_SurChangementSelection;
-
+                Bitmap ImageRessource = new Bitmap(Properties.Resources.Validation25px);
+            ValidationProvider.Icon = Icon.FromHandle(ImageRessource.GetHicon());
+        }
+        /// <summary>
+        /// Se produit sur le chargement de ma page
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void PageFaction_Load(object sender, EventArgs e)
+        {
+            // Permet de passer l'utilisateur par le controler MenuAdmin
+            menuAdmin1.Utilisateur = Utilisateur;            
         }
 
 

@@ -38,6 +38,7 @@
             this.textBoxRecherche.Name = "textBoxRecherche";
             this.textBoxRecherche.Size = new System.Drawing.Size(286, 22);
             this.textBoxRecherche.TabIndex = 0;
+            this.textBoxRecherche.TextChanged += new System.EventHandler(this.textFiltre_TextChanged);
             // 
             // listViewFaction
             // 

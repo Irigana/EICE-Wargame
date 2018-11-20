@@ -34,6 +34,7 @@
             this.buttonEquipement = new System.Windows.Forms.Button();
             this.pictureBoxLogoDashboard = new System.Windows.Forms.PictureBox();
             this.buttonSousFaction = new System.Windows.Forms.Button();
+            this.buttonFaction = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxLogoDashboard)).BeginInit();
             this.SuspendLayout();
             // 
@@ -64,7 +65,7 @@
             this.buttonRetourMenuPrincipal.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
             this.buttonRetourMenuPrincipal.Image = global::EICE_WARGAME.Properties.Resources.ReturnLogo35px;
             this.buttonRetourMenuPrincipal.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.buttonRetourMenuPrincipal.Location = new System.Drawing.Point(631, 394);
+            this.buttonRetourMenuPrincipal.Location = new System.Drawing.Point(631, 459);
             this.buttonRetourMenuPrincipal.Name = "buttonRetourMenuPrincipal";
             this.buttonRetourMenuPrincipal.Size = new System.Drawing.Size(300, 55);
             this.buttonRetourMenuPrincipal.TabIndex = 4;
@@ -80,7 +81,7 @@
             this.buttonEquipement.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
             this.buttonEquipement.Image = global::EICE_WARGAME.Properties.Resources.Equipement40px;
             this.buttonEquipement.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.buttonEquipement.Location = new System.Drawing.Point(631, 299);
+            this.buttonEquipement.Location = new System.Drawing.Point(631, 364);
             this.buttonEquipement.Name = "buttonEquipement";
             this.buttonEquipement.Size = new System.Drawing.Size(300, 55);
             this.buttonEquipement.TabIndex = 3;
@@ -105,7 +106,7 @@
             this.buttonSousFaction.BackColor = System.Drawing.SystemColors.Window;
             this.buttonSousFaction.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonSousFaction.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
-            this.buttonSousFaction.Location = new System.Drawing.Point(631, 238);
+            this.buttonSousFaction.Location = new System.Drawing.Point(631, 303);
             this.buttonSousFaction.Name = "buttonSousFaction";
             this.buttonSousFaction.Size = new System.Drawing.Size(300, 55);
             this.buttonSousFaction.TabIndex = 5;
@@ -113,10 +114,24 @@
             this.buttonSousFaction.UseVisualStyleBackColor = false;
             this.buttonSousFaction.Click += new System.EventHandler(this.buttonFactionSF_Click);
             // 
+            // buttonFaction
+            // 
+            this.buttonFaction.BackColor = System.Drawing.SystemColors.Window;
+            this.buttonFaction.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonFaction.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
+            this.buttonFaction.Location = new System.Drawing.Point(631, 242);
+            this.buttonFaction.Name = "buttonFaction";
+            this.buttonFaction.Size = new System.Drawing.Size(300, 55);
+            this.buttonFaction.TabIndex = 6;
+            this.buttonFaction.Text = "Faction";
+            this.buttonFaction.UseVisualStyleBackColor = false;
+            this.buttonFaction.Click += new System.EventHandler(this.buttonFaction_Click);
+            // 
             // PageMenuDashboard
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.buttonFaction);
             this.Controls.Add(this.buttonSousFaction);
             this.Controls.Add(this.buttonRetourMenuPrincipal);
             this.Controls.Add(this.buttonEquipement);
@@ -140,5 +155,6 @@
         private System.Windows.Forms.Button buttonEquipement;
         private System.Windows.Forms.Button buttonRetourMenuPrincipal;
         private System.Windows.Forms.Button buttonSousFaction;
+        private System.Windows.Forms.Button buttonFaction;
     }
 }

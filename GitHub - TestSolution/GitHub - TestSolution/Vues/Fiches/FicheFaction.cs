@@ -210,7 +210,7 @@ namespace EICE_WARGAME
         {
             listViewFaction.Clear();
         }
-
+        
     }
 }
 
