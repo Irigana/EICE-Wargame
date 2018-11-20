@@ -36,14 +36,14 @@
             // 
             this.textBoxRecherche.Location = new System.Drawing.Point(3, 3);
             this.textBoxRecherche.Name = "textBoxRecherche";
-            this.textBoxRecherche.Size = new System.Drawing.Size(285, 22);
+            this.textBoxRecherche.Size = new System.Drawing.Size(286, 22);
             this.textBoxRecherche.TabIndex = 0;
             // 
             // listViewFaction
             // 
             this.listViewFaction.Location = new System.Drawing.Point(3, 31);
             this.listViewFaction.Name = "listViewFaction";
-            this.listViewFaction.Size = new System.Drawing.Size(285, 257);
+            this.listViewFaction.Size = new System.Drawing.Size(286, 257);
             this.listViewFaction.TabIndex = 1;
             this.listViewFaction.UseCompatibleStateImageBehavior = false;
             // 

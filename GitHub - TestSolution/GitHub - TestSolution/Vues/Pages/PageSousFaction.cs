@@ -208,7 +208,7 @@ namespace EICE_WARGAME
                     if ((NouvelleSousFaction.EstValide) && (Program.GMBD.AjouterSousFaction(NouvelleSousFaction)))
                     {
                         Program.GMBD.MettreAJourFicheSousFaction(ficheSousFaction1, listeDeroulanteFaction1.FactionSelectionnee.Id);
-                        errorProviderValider.SetError(textBoxSousFaction, "Enregistrement correctement ajouté");
+                        errorProviderValider.SetError(textBoxSousFaction, "Sous faction correctement ajouté");
                     }
                         
                 }
@@ -279,7 +279,7 @@ namespace EICE_WARGAME
         }
         
         /// <summary>
-        /// Methode permettant de vérifier si la faction existe avant le changement de celle ci dans la base de données
+        /// Methode permettant de vérifier si la sous faction existe avant le changement de celle ci dans la base de données
         /// </summary>
         /// <param name="Entite"></param>
         /// <param name="Champ"></param>
@@ -305,7 +305,7 @@ namespace EICE_WARGAME
         
 
         /// <summary>
-        /// Methode permettant d'agir après le changement de cette faction
+        /// Methode permettant d'agir après le changement de cette sous faction
         /// </summary>
         /// <param name="Entite"></param>
         /// <param name="Champ"></param>

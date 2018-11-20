@@ -83,7 +83,7 @@
             // 
             this.buttonAjouterSF.BackColor = System.Drawing.SystemColors.Window;
             this.buttonAjouterSF.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.buttonAjouterSF.Location = new System.Drawing.Point(580, 571);
+            this.buttonAjouterSF.Location = new System.Drawing.Point(580, 567);
             this.buttonAjouterSF.Name = "buttonAjouterSF";
             this.buttonAjouterSF.Size = new System.Drawing.Size(105, 29);
             this.buttonAjouterSF.TabIndex = 26;
@@ -95,7 +95,7 @@
             // 
             this.buttonModifierSF.BackColor = System.Drawing.SystemColors.Window;
             this.buttonModifierSF.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.buttonModifierSF.Location = new System.Drawing.Point(691, 571);
+            this.buttonModifierSF.Location = new System.Drawing.Point(691, 567);
             this.buttonModifierSF.Name = "buttonModifierSF";
             this.buttonModifierSF.Size = new System.Drawing.Size(105, 29);
             this.buttonModifierSF.TabIndex = 27;
@@ -107,7 +107,7 @@
             // 
             this.buttonSupprimerSF.BackColor = System.Drawing.SystemColors.Window;
             this.buttonSupprimerSF.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.buttonSupprimerSF.Location = new System.Drawing.Point(913, 571);
+            this.buttonSupprimerSF.Location = new System.Drawing.Point(913, 567);
             this.buttonSupprimerSF.Name = "buttonSupprimerSF";
             this.buttonSupprimerSF.Size = new System.Drawing.Size(105, 29);
             this.buttonSupprimerSF.TabIndex = 28;
@@ -119,7 +119,7 @@
             // 
             this.buttonAnnulerSF.BackColor = System.Drawing.SystemColors.Window;
             this.buttonAnnulerSF.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.buttonAnnulerSF.Location = new System.Drawing.Point(802, 571);
+            this.buttonAnnulerSF.Location = new System.Drawing.Point(802, 567);
             this.buttonAnnulerSF.Name = "buttonAnnulerSF";
             this.buttonAnnulerSF.Size = new System.Drawing.Size(105, 29);
             this.buttonAnnulerSF.TabIndex = 29;
@@ -138,7 +138,7 @@
             // labelRecherche
             // 
             this.labelRecherche.AutoSize = true;
-            this.labelRecherche.Location = new System.Drawing.Point(733, 206);
+            this.labelRecherche.Location = new System.Drawing.Point(728, 206);
             this.labelRecherche.Name = "labelRecherche";
             this.labelRecherche.Size = new System.Drawing.Size(190, 17);
             this.labelRecherche.TabIndex = 32;
@@ -146,9 +146,9 @@
             // 
             // textBoxSousFaction
             // 
-            this.textBoxSousFaction.Location = new System.Drawing.Point(736, 516);
+            this.textBoxSousFaction.Location = new System.Drawing.Point(731, 518);
             this.textBoxSousFaction.Name = "textBoxSousFaction";
-            this.textBoxSousFaction.Size = new System.Drawing.Size(282, 22);
+            this.textBoxSousFaction.Size = new System.Drawing.Size(286, 22);
             this.textBoxSousFaction.TabIndex = 33;
             this.textBoxSousFaction.Enter += new System.EventHandler(this.textBoxSousFaction_Enter);
             // 
@@ -166,9 +166,9 @@
             // 
             // ficheSousFaction1
             // 
-            this.ficheSousFaction1.Location = new System.Drawing.Point(736, 226);
+            this.ficheSousFaction1.Location = new System.Drawing.Point(731, 226);
             this.ficheSousFaction1.Name = "ficheSousFaction1";
-            this.ficheSousFaction1.Size = new System.Drawing.Size(282, 284);
+            this.ficheSousFaction1.Size = new System.Drawing.Size(289, 286);
             this.ficheSousFaction1.SousFactionSelectionne = null;
             this.ficheSousFaction1.TabIndex = 31;
             this.ficheSousFaction1.TexteDuFiltre = "";
@@ -185,9 +185,9 @@
             // listeDeroulanteFaction1
             // 
             this.listeDeroulanteFaction1.FactionSelectionnee = null;
-            this.listeDeroulanteFaction1.Location = new System.Drawing.Point(736, 160);
+            this.listeDeroulanteFaction1.Location = new System.Drawing.Point(731, 160);
             this.listeDeroulanteFaction1.Name = "listeDeroulanteFaction1";
-            this.listeDeroulanteFaction1.Size = new System.Drawing.Size(282, 25);
+            this.listeDeroulanteFaction1.Size = new System.Drawing.Size(286, 25);
             this.listeDeroulanteFaction1.TabIndex = 5;
             // 
             // menuAdmin1

@@ -117,6 +117,24 @@ namespace EICE_WARGAME
             return NouvelleFaction.Enregistrer(m_BD, NouvelleFaction, null, false);
         }
 
+        public bool ModifierFaction(Faction Faction)
+        {
+            return Faction.Enregistrer(m_BD, Faction, null, true);
+        }
+
+        public bool SupprimerFaction(Faction Faction)
+        {
+            if (!m_BD.EstConnecte) Initialiser();
+            Faction.SupprimerEnCascade(m_BD);
+            return true;
+        }
+        /*
+        public int NombreDeSousFactionLiee(int IdFaction)
+        {
+            Faction NombreDeSousFaction = EnumererFaction(new MyDB.CodeSql("SELECT count(*) FROM faction JOIN subfaction ON faction.fa_id = subfaction.sf_fk_faction_id WHERE faction.fa_id = {0}", IdFaction).FirstOrDefault();
+            return (NombreDeSousFaction != 0) ? NombreDeSousFaction : 0;
+        }
+        */
         public void MettreAJourListeFaction(ListeDeroulanteFaction Liste)
         {
             Liste.Faction = Program.GMBD.EnumererFaction(null, null, null, new MyDB.CodeSql("ORDER BY fa_name"));

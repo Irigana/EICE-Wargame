@@ -58,7 +58,7 @@
             this.Controls.Add(this.textBoxSousFaction);
             this.Controls.Add(this.listViewSousFaction);
             this.Name = "FicheSousFaction";
-            this.Size = new System.Drawing.Size(288, 293);
+            this.Size = new System.Drawing.Size(286, 287);
             this.ResumeLayout(false);
             this.PerformLayout();
 
