@@ -54,6 +54,24 @@ namespace EICE_WARGAME
             InitializeComponent();
             m_Utilisateur = null;
 
+            #region Initialisation de la ListVieu des caractéristiques
+            listViewCaracteristiques.View = View.Details;
+            listViewCaracteristiques.Columns.Clear();
+            listViewCaracteristiques.Columns.Add(new ColumnHeader()
+            {
+                Text = "Caractéristique",
+                TextAlign = HorizontalAlignment.Left
+
+            });
+            listViewCaracteristiques.Columns.Add(new ColumnHeader()
+            {
+                Text = "Valeur",
+                TextAlign = HorizontalAlignment.Left
+
+            });
+            listViewCaracteristiques.AutoResizeColumns(ColumnHeaderAutoResizeStyle.HeaderSize);
+            #endregion
+
             // Remplir la liste de type
             listeDeroulanteType.Type = Program.GMBD.EnumererType(null, null, null, PDSGBD.MyDB.CreerCodeSql("ty_name"));
             // Attacher la méthode qui doit se produire lorsqu'il y a un changement de sélection
@@ -81,6 +99,7 @@ namespace EICE_WARGAME
 
             listeDeroulanteFeature1.Feature = Program.GMBD.EnumererFeature(null, null, null, PDSGBD.MyDB.CreerCodeSql("fe_name"));
             listeDeroulanteFeature1.SurChangementSelection += ListeFeatureChangementSelection;
+            
         }
 
 
@@ -123,6 +142,8 @@ namespace EICE_WARGAME
                 textBoxNomEquipement.Text = string.Empty;
                 m_StuffEnEdition.Name = null;
                 m_StuffEnEdition.Type = null;
+                errorProvider1.Clear();
+                listeDeroulanteStuff1.Stuff = Program.GMBD.EnumererStuff(null, null, null, PDSGBD.MyDB.CreerCodeSql("st_name"));
             }
         }
 
@@ -207,12 +228,34 @@ namespace EICE_WARGAME
 
         private void ListeStuffChangementSelection(object sender, EventArgs e)
         {
-            // Ajouter qqch
+            listeDeroulanteFeature1.FeatureSelectionnee = null;
+            textBoxValeur.Clear();
+            rafraichirListViewCaracteristiques();
+        }
+
+        private void rafraichirListViewCaracteristiques()
+        {
+            StuffFeature EssaiCar = new StuffFeature();
+            EssaiCar.Stuff = listeDeroulanteStuff1.StuffSelectionnee;
+            listViewCaracteristiques.Items.Clear();
+
+            foreach (StuffFeature sf in EssaiCar.Stuff.Features)
+            {
+                Feature f = sf.Feature;
+                ListViewItem NouvelElement = new ListViewItem()
+                {
+                    Text = f.Name,
+                    Tag = sf.Id
+                };
+                NouvelElement.SubItems.Add(string.Format("{0}", sf.Value));
+                listViewCaracteristiques.Items.Add(NouvelElement);
+            }
         }
 
         private void ListeFeatureChangementSelection(object sender, EventArgs e)
         {
-            // Ajouter qqch
+            //Ajouter qqch
+
         }
 
         private void textBox1_TextChanged(object sender, EventArgs e)
@@ -230,8 +273,9 @@ namespace EICE_WARGAME
             StuffFeature Essai = new StuffFeature();
             Essai.Stuff = listeDeroulanteStuff1.StuffSelectionnee;
             Essai.Feature = listeDeroulanteFeature1.FeatureSelectionnee;
-            Essai.Value = textBox1.Text;
+            Essai.Value = textBoxValeur.Text;
             Essai.Enregistrer(Program.GMBD.BD, Essai);
+            rafraichirListViewCaracteristiques();
         }
         #endregion
 
@@ -256,5 +300,7 @@ namespace EICE_WARGAME
             // Permet de passer l'utilisateur par le controler MenuAdmin
             menuAdmin1.Utilisateur = Utilisateur;
         }
+
+        
     }
 }

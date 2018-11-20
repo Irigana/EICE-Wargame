@@ -15,6 +15,8 @@ namespace EICE_WARGAME
         public ListeDeroulanteStuff()
         {
             InitializeComponent();
+            this.SizeChanged += ListeDeroulanteStuff_SizeChanged;
+            comboBoxStuff.SelectedIndexChanged += ComboStuff_SelectedIndexChanged;
         }
 
         private class Element
@@ -80,7 +82,7 @@ namespace EICE_WARGAME
             }
         }
 
-        private void ListeDeroulanteType_SizeChanged(object sender, EventArgs e)
+        private void ListeDeroulanteStuff_SizeChanged(object sender, EventArgs e)
         {
             this.Size = new Size(this.Size.Width, comboBoxStuff.Height);
         }

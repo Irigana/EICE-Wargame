@@ -228,7 +228,7 @@ namespace EICE_WARGAME
         /// Permet d'énumrer les stuff_features liés à cette stuff
         /// </summary>
         /// <returns></returns>
-        private IEnumerable<StuffFeature> EnumererStuffFeature()
+        public IEnumerable<StuffFeature> EnumererStuffFeature()
         {
             if (base.Connexion == null) return new StuffFeature[0];
             return StuffFeature.Enumerer(Connexion, Connexion.Enumerer(
