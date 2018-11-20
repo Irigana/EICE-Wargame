@@ -74,7 +74,6 @@ namespace EICE_WARGAME
                 }
 
 
-                ficheFaction1.SurChangementSelection += ficheFaction_SurChangementSelection;
             };
                 Bitmap ImageRessource = new Bitmap(Properties.Resources.Validation25px);
             ValidationProvider.Icon = Icon.FromHandle(ImageRessource.GetHicon());
@@ -87,7 +86,9 @@ namespace EICE_WARGAME
         private void PageFaction_Load(object sender, EventArgs e)
         {
             // Permet de passer l'utilisateur par le controler MenuAdmin
-            menuAdmin1.Utilisateur = Utilisateur;            
+            menuAdmin1.Utilisateur = Utilisateur;
+
+            ficheFaction1.SurChangementSelection += ficheFaction_SurChangementSelection;
         }
 
 
