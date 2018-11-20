@@ -28,13 +28,8 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
             this.listViewSousFaction = new System.Windows.Forms.ListView();
             this.textBoxSousFaction = new System.Windows.Forms.TextBox();
-            this.errorProviderSousFaction = new System.Windows.Forms.ErrorProvider(this.components);
-            this.ActionValidee = new System.Windows.Forms.ErrorProvider(this.components);
-            ((System.ComponentModel.ISupportInitialize)(this.errorProviderSousFaction)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.ActionValidee)).BeginInit();
             this.SuspendLayout();
             // 
             // listViewSousFaction
@@ -54,19 +49,7 @@
             this.textBoxSousFaction.Size = new System.Drawing.Size(282, 22);
             this.textBoxSousFaction.TabIndex = 3;
             this.textBoxSousFaction.TextChanged += new System.EventHandler(this.textFiltre_TextChanged);
-            this.textBoxSousFaction.Enter += new System.EventHandler(this.textBoxSousFaction_Enter);
             this.textBoxSousFaction.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textFiltre_KeyPress);
-            this.textBoxSousFaction.Leave += new System.EventHandler(this.textBoxSousFaction_Leave);
-            // 
-            // errorProviderSousFaction
-            // 
-            this.errorProviderSousFaction.ContainerControl = this;
-            // 
-            // ActionValidee
-            // 
-            this.ActionValidee.BlinkRate = 0;
-            this.ActionValidee.BlinkStyle = System.Windows.Forms.ErrorBlinkStyle.NeverBlink;
-            this.ActionValidee.ContainerControl = this;
             // 
             // FicheSousFaction
             // 
@@ -75,9 +58,7 @@
             this.Controls.Add(this.textBoxSousFaction);
             this.Controls.Add(this.listViewSousFaction);
             this.Name = "FicheSousFaction";
-            this.Size = new System.Drawing.Size(327, 293);
-            ((System.ComponentModel.ISupportInitialize)(this.errorProviderSousFaction)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.ActionValidee)).EndInit();
+            this.Size = new System.Drawing.Size(284, 293);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -86,7 +67,5 @@
         #endregion
         private System.Windows.Forms.ListView listViewSousFaction;
         private System.Windows.Forms.TextBox textBoxSousFaction;
-        private System.Windows.Forms.ErrorProvider errorProviderSousFaction;
-        private System.Windows.Forms.ErrorProvider ActionValidee;
     }
 }

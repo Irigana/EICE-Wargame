@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.labelSousFactionTitre = new System.Windows.Forms.Label();
             this.labelSousFaction = new System.Windows.Forms.Label();
             this.labelChoisirFaction = new System.Windows.Forms.Label();
@@ -40,6 +41,12 @@
             this.buttonOptionsUser1 = new EICE_WARGAME.ButtonOptionsUser();
             this.listeDeroulanteFaction1 = new EICE_WARGAME.ListeDeroulanteFaction();
             this.menuAdmin1 = new EICE_WARGAME.MenuAdmin();
+            this.labelRecherche = new System.Windows.Forms.Label();
+            this.textBoxSousFaction = new System.Windows.Forms.TextBox();
+            this.errorProviderSousFaction = new System.Windows.Forms.ErrorProvider(this.components);
+            this.errorProviderValider = new System.Windows.Forms.ErrorProvider(this.components);
+            ((System.ComponentModel.ISupportInitialize)(this.errorProviderSousFaction)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProviderValider)).BeginInit();
             this.SuspendLayout();
             // 
             // labelSousFactionTitre
@@ -56,7 +63,7 @@
             // 
             this.labelSousFaction.AutoSize = true;
             this.labelSousFaction.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F);
-            this.labelSousFaction.Location = new System.Drawing.Point(617, 240);
+            this.labelSousFaction.Location = new System.Drawing.Point(617, 520);
             this.labelSousFaction.Name = "labelSousFaction";
             this.labelSousFaction.Size = new System.Drawing.Size(91, 18);
             this.labelSousFaction.TabIndex = 2;
@@ -76,9 +83,9 @@
             // 
             this.buttonAjouterSF.BackColor = System.Drawing.SystemColors.Window;
             this.buttonAjouterSF.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.buttonAjouterSF.Location = new System.Drawing.Point(1082, 240);
+            this.buttonAjouterSF.Location = new System.Drawing.Point(643, 568);
             this.buttonAjouterSF.Name = "buttonAjouterSF";
-            this.buttonAjouterSF.Size = new System.Drawing.Size(92, 29);
+            this.buttonAjouterSF.Size = new System.Drawing.Size(109, 29);
             this.buttonAjouterSF.TabIndex = 26;
             this.buttonAjouterSF.Text = "Ajouter";
             this.buttonAjouterSF.UseVisualStyleBackColor = false;
@@ -88,9 +95,9 @@
             // 
             this.buttonModifierSF.BackColor = System.Drawing.SystemColors.Window;
             this.buttonModifierSF.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.buttonModifierSF.Location = new System.Drawing.Point(1082, 275);
+            this.buttonModifierSF.Location = new System.Drawing.Point(758, 568);
             this.buttonModifierSF.Name = "buttonModifierSF";
-            this.buttonModifierSF.Size = new System.Drawing.Size(92, 29);
+            this.buttonModifierSF.Size = new System.Drawing.Size(109, 29);
             this.buttonModifierSF.TabIndex = 27;
             this.buttonModifierSF.Text = "Modifier";
             this.buttonModifierSF.UseVisualStyleBackColor = false;
@@ -100,9 +107,9 @@
             // 
             this.buttonSupprimerSF.BackColor = System.Drawing.SystemColors.Window;
             this.buttonSupprimerSF.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.buttonSupprimerSF.Location = new System.Drawing.Point(1082, 345);
+            this.buttonSupprimerSF.Location = new System.Drawing.Point(988, 568);
             this.buttonSupprimerSF.Name = "buttonSupprimerSF";
-            this.buttonSupprimerSF.Size = new System.Drawing.Size(92, 29);
+            this.buttonSupprimerSF.Size = new System.Drawing.Size(109, 29);
             this.buttonSupprimerSF.TabIndex = 28;
             this.buttonSupprimerSF.Text = "Supprimer";
             this.buttonSupprimerSF.UseVisualStyleBackColor = false;
@@ -112,9 +119,9 @@
             // 
             this.buttonAnnulerSF.BackColor = System.Drawing.SystemColors.Window;
             this.buttonAnnulerSF.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.buttonAnnulerSF.Location = new System.Drawing.Point(1082, 310);
+            this.buttonAnnulerSF.Location = new System.Drawing.Point(873, 568);
             this.buttonAnnulerSF.Name = "buttonAnnulerSF";
-            this.buttonAnnulerSF.Size = new System.Drawing.Size(92, 29);
+            this.buttonAnnulerSF.Size = new System.Drawing.Size(109, 29);
             this.buttonAnnulerSF.TabIndex = 29;
             this.buttonAnnulerSF.Text = "Annuler";
             this.buttonAnnulerSF.UseVisualStyleBackColor = false;
@@ -130,13 +137,9 @@
             // 
             // ficheSousFaction1
             // 
-            this.ficheSousFaction1.Location = new System.Drawing.Point(739, 240);
-            this.ficheSousFaction1.MessageErreur = null;
-            this.ficheSousFaction1.MessageValidation = null;
+            this.ficheSousFaction1.Location = new System.Drawing.Point(739, 226);
             this.ficheSousFaction1.Name = "ficheSousFaction1";
-            this.ficheSousFaction1.NombreDeSousFactionFiltre = -1;
-            this.ficheSousFaction1.ReactionEnDirectSurChangementFiltre = false;
-            this.ficheSousFaction1.Size = new System.Drawing.Size(337, 284);
+            this.ficheSousFaction1.Size = new System.Drawing.Size(282, 284);
             this.ficheSousFaction1.SousFactionSelectionne = null;
             this.ficheSousFaction1.TabIndex = 31;
             this.ficheSousFaction1.TexteDuFiltre = "";
@@ -167,10 +170,41 @@
             this.menuAdmin1.TabIndex = 3;
             this.menuAdmin1.Utilisateur = null;
             // 
+            // labelRecherche
+            // 
+            this.labelRecherche.AutoSize = true;
+            this.labelRecherche.Location = new System.Drawing.Point(736, 206);
+            this.labelRecherche.Name = "labelRecherche";
+            this.labelRecherche.Size = new System.Drawing.Size(190, 17);
+            this.labelRecherche.TabIndex = 32;
+            this.labelRecherche.Text = "Rechercher une sous faction";
+            // 
+            // textBoxSousFaction
+            // 
+            this.textBoxSousFaction.Location = new System.Drawing.Point(739, 516);
+            this.textBoxSousFaction.Name = "textBoxSousFaction";
+            this.textBoxSousFaction.Size = new System.Drawing.Size(282, 22);
+            this.textBoxSousFaction.TabIndex = 33;
+            this.textBoxSousFaction.Enter += new System.EventHandler(this.textBoxSousFaction_Enter);
+            // 
+            // errorProviderSousFaction
+            // 
+            this.errorProviderSousFaction.BlinkRate = 0;
+            this.errorProviderSousFaction.BlinkStyle = System.Windows.Forms.ErrorBlinkStyle.NeverBlink;
+            this.errorProviderSousFaction.ContainerControl = this;
+            // 
+            // errorProviderValider
+            // 
+            this.errorProviderValider.BlinkRate = 0;
+            this.errorProviderValider.BlinkStyle = System.Windows.Forms.ErrorBlinkStyle.NeverBlink;
+            this.errorProviderValider.ContainerControl = this;
+            // 
             // PageSousFaction
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.textBoxSousFaction);
+            this.Controls.Add(this.labelRecherche);
             this.Controls.Add(this.ficheSousFaction1);
             this.Controls.Add(this.panelLigne);
             this.Controls.Add(this.buttonAnnulerSF);
@@ -186,6 +220,8 @@
             this.Name = "PageSousFaction";
             this.Size = new System.Drawing.Size(1500, 750);
             this.Load += new System.EventHandler(this.PageAjoutFactionSousFaction_Load);
+            ((System.ComponentModel.ISupportInitialize)(this.errorProviderSousFaction)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProviderValider)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -204,5 +240,9 @@
         private System.Windows.Forms.Button buttonAnnulerSF;
         private System.Windows.Forms.Panel panelLigne;
         private FicheSousFaction ficheSousFaction1;
+        private System.Windows.Forms.Label labelRecherche;
+        private System.Windows.Forms.TextBox textBoxSousFaction;
+        private System.Windows.Forms.ErrorProvider errorProviderSousFaction;
+        private System.Windows.Forms.ErrorProvider errorProviderValider;
     }
 }
