@@ -136,15 +136,16 @@ namespace EICE_WARGAME
             
             FactionExiste = Program.GMBD.EnumererFaction(null,
                                                             null,
-                                                            null,
+                                                            new MyDB.CodeSql("WHERE fa_name = {0}",textBoxFaction.Text),
                                                             null).FirstOrDefault();
             // Si la faction n'existe pas, on crée une nouvelle faction
-            if (FactionExiste != null)
+            if (FactionExiste == null)
             {
                 Faction NouvelleFaction = new Faction();
-                NouvelleFaction.Name = textBoxFaction.Text;
+                NouvelleFaction.SurErreur += FactionEnEdition_SurErreur;
 
-                NouvelleFaction.AvantChangement += FactionEnEdition_AvantChangement;
+                NouvelleFaction.Name = textBoxFaction.Text;
+                
 
                 if ((NouvelleFaction.EstValide) && (Program.GMBD.AjouterFaction(NouvelleFaction)))
                 {
@@ -152,7 +153,11 @@ namespace EICE_WARGAME
                     ValidationProvider.SetError(textBoxFaction, "Faction correctement ajouté");
                 }
 
-            }            
+            }
+            else
+            {
+                errorProviderErreurFaction.SetError(textBoxFaction, "Cette faction existe déjà");
+            }   
             buttonAnnuler.Enabled = false;
         }
 
@@ -220,7 +225,7 @@ namespace EICE_WARGAME
             switch (Champ)
             {
                 case Faction.Champ.Name:
-                    Faction FactionExistante = Program.GMBD.EnumererFaction(null, null, new PDSGBD.MyDB.CodeSql("WHERE faction.fa_name = {0} AND subfaction.sf_id <> {1}", textBoxFaction.Text, ficheFaction1.FactionSelectionne.Id), null).FirstOrDefault();
+                    Faction FactionExistante = Program.GMBD.EnumererFaction(null, null, new PDSGBD.MyDB.CodeSql("WHERE faction.fa_name = {0} AND faction.fa_id <> {1}", textBoxFaction.Text, ficheFaction1.FactionSelectionne.Id), null).FirstOrDefault();
 
                     if (FactionExistante != null)
                     {

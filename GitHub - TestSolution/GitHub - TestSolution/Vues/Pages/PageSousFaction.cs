@@ -200,11 +200,14 @@ namespace EICE_WARGAME
                 if (FactionExiste != null)
                 {
                     SousFaction NouvelleSousFaction = new SousFaction();
+                    NouvelleSousFaction.SurErreur += SousFactionEnEdition_SurErreur;
+                    NouvelleSousFaction.AvantChangement += SousFactionEnAjout_AvantChangement;
                     NouvelleSousFaction.Faction = listeDeroulanteFaction1.FactionSelectionnee;
                     NouvelleSousFaction.Name = textBoxSousFaction.Text;
 
-                    NouvelleSousFaction.AvantChangement += SousFactionEnEdition_AvantChangement;
-                    
+
+
+
                     if ((NouvelleSousFaction.EstValide) && (Program.GMBD.AjouterSousFaction(NouvelleSousFaction)))
                     {
                         Program.GMBD.MettreAJourFicheSousFaction(ficheSousFaction1, listeDeroulanteFaction1.FactionSelectionnee.Id);
@@ -301,8 +304,23 @@ namespace EICE_WARGAME
             }
         }
 
+        private void SousFactionEnAjout_AvantChangement(SousFaction Entite, SousFaction.Champ Champ, object ValeurActuelle, object NouvelleValeur, AccumulateurErreur AccumulateurErreur)
+        {
+            switch (Champ)
+            {
+                case SousFaction.Champ.Name:
+                    SousFaction SousFactionExistant = Program.GMBD.EnumererSousFaction(null, null, new PDSGBD.MyDB.CodeSql("WHERE subfaction.sf_name = {0} AND subfaction.sf_fk_faction_id = {2}", textBoxSousFaction.Text, listeDeroulanteFaction1.FactionSelectionnee.Id), null).FirstOrDefault();
 
-        
+                    if (SousFactionExistant != null)
+                    {
+                        AccumulateurErreur.NotifierErreur("Cette sous faction existe déjà, veuillez en choisir une autre !");
+                    }
+                    break;
+            }
+        }
+
+
+
 
         /// <summary>
         /// Methode permettant d'agir après le changement de cette sous faction
