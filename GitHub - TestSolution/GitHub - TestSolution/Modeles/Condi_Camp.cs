@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace EICE_WARGAME.Modeles
+namespace EICE_WARGAME
 {
     public class Condi_Camp : Entite<Condi_Camp, Condi_Camp.Champ>
     {
