@@ -46,6 +46,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Modeles\Camp.cs" />
+    <Compile Include="Modeles\Condi_Camp.cs" />
+    <Compile Include="Modeles\Scenario.cs" />
+    <Compile Include="Modeles\Scenario_Camp.cs" />
     <Compile Include="Vues\Fiches\FicheFaction.cs">
       <SubType>UserControl</SubType>
     </Compile>
