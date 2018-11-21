@@ -58,31 +58,6 @@ namespace EICE_WARGAME
                 }
             }
         }
-
-        /*public IEnumerable<Scenario_Camp> Scenario_Camp
-        {
-            get
-            {
-                return EnumererScenario_Camp();
-            }
-        }*/
-        /// <summary>
-        /// Id de cette Scenario_Camp
-        /// </summary>
-        public Scenario_Camp Scenario_Camp
-        {
-            get
-            {
-                return m_Scenario_Camp;
-            }
-            set
-            {
-                if ((value != null) && ((m_Scenario_Camp == null) || !int.Equals(value.Id, Scenario_Camp.Id)))
-                {
-                    ModifierChamp(Champ.Scenario_Camp, ref m_Scenario_Camp, value);
-                }
-            }
-        }
         #endregion
 
         #region Constructeur
