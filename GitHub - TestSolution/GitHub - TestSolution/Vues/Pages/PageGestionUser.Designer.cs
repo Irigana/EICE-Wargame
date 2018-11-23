@@ -30,12 +30,13 @@
         {
             this.labelTitreGestionUser = new System.Windows.Forms.Label();
             this.panelLigne = new System.Windows.Forms.Panel();
-            this.buttonOptionsUser1 = new EICE_WARGAME.ButtonOptionsUser();
-            this.menuAdmin1 = new EICE_WARGAME.MenuAdmin();
-            this.ficheUtilisateur1 = new EICE_WARGAME.FicheUtilisateur();
             this.buttonPromouvoir = new System.Windows.Forms.Button();
             this.buttonSupprimer = new System.Windows.Forms.Button();
             this.buttonDestitution = new System.Windows.Forms.Button();
+            this.label1 = new System.Windows.Forms.Label();
+            this.ficheUtilisateur1 = new EICE_WARGAME.FicheUtilisateur();
+            this.buttonOptionsUser1 = new EICE_WARGAME.ButtonOptionsUser();
+            this.menuAdmin1 = new EICE_WARGAME.MenuAdmin();
             this.SuspendLayout();
             // 
             // labelTitreGestionUser
@@ -56,6 +57,62 @@
             this.panelLigne.Size = new System.Drawing.Size(1200, 3);
             this.panelLigne.TabIndex = 32;
             // 
+            // buttonPromouvoir
+            // 
+            this.buttonPromouvoir.BackColor = System.Drawing.SystemColors.Window;
+            this.buttonPromouvoir.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonPromouvoir.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F);
+            this.buttonPromouvoir.Location = new System.Drawing.Point(655, 585);
+            this.buttonPromouvoir.Name = "buttonPromouvoir";
+            this.buttonPromouvoir.Size = new System.Drawing.Size(133, 45);
+            this.buttonPromouvoir.TabIndex = 35;
+            this.buttonPromouvoir.Text = "Promouvoir";
+            this.buttonPromouvoir.UseVisualStyleBackColor = false;
+            this.buttonPromouvoir.Click += new System.EventHandler(this.buttonPromouvoir_Click);
+            // 
+            // buttonSupprimer
+            // 
+            this.buttonSupprimer.BackColor = System.Drawing.SystemColors.Window;
+            this.buttonSupprimer.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonSupprimer.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F);
+            this.buttonSupprimer.Location = new System.Drawing.Point(933, 585);
+            this.buttonSupprimer.Name = "buttonSupprimer";
+            this.buttonSupprimer.Size = new System.Drawing.Size(133, 45);
+            this.buttonSupprimer.TabIndex = 36;
+            this.buttonSupprimer.Text = "Supprimer";
+            this.buttonSupprimer.UseVisualStyleBackColor = false;
+            // 
+            // buttonDestitution
+            // 
+            this.buttonDestitution.BackColor = System.Drawing.SystemColors.Window;
+            this.buttonDestitution.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonDestitution.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F);
+            this.buttonDestitution.Location = new System.Drawing.Point(794, 585);
+            this.buttonDestitution.Name = "buttonDestitution";
+            this.buttonDestitution.Size = new System.Drawing.Size(133, 45);
+            this.buttonDestitution.TabIndex = 37;
+            this.buttonDestitution.Text = "Destituer";
+            this.buttonDestitution.UseVisualStyleBackColor = false;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
+            this.label1.Location = new System.Drawing.Point(652, 93);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(197, 20);
+            this.label1.TabIndex = 38;
+            this.label1.Text = "Rechercher un utilisateur";
+            // 
+            // ficheUtilisateur1
+            // 
+            this.ficheUtilisateur1.Location = new System.Drawing.Point(652, 115);
+            this.ficheUtilisateur1.Name = "ficheUtilisateur1";
+            this.ficheUtilisateur1.Size = new System.Drawing.Size(414, 464);
+            this.ficheUtilisateur1.TabIndex = 33;
+            this.ficheUtilisateur1.TexteRechercheUser = "";
+            this.ficheUtilisateur1.UtilisateurSelectionne = null;
+            // 
             // buttonOptionsUser1
             // 
             this.buttonOptionsUser1.BackColor = System.Drawing.Color.Transparent;
@@ -74,55 +131,11 @@
             this.menuAdmin1.TabIndex = 0;
             this.menuAdmin1.Utilisateur = null;
             // 
-            // ficheUtilisateur1
-            // 
-            this.ficheUtilisateur1.Location = new System.Drawing.Point(514, 96);
-            this.ficheUtilisateur1.Name = "ficheUtilisateur1";
-            this.ficheUtilisateur1.Size = new System.Drawing.Size(414, 464);
-            this.ficheUtilisateur1.TabIndex = 33;
-            this.ficheUtilisateur1.TexteRechercheUser = "";
-            this.ficheUtilisateur1.UtilisateurSelectionne = null;
-            // 
-            // buttonPromouvoir
-            // 
-            this.buttonPromouvoir.BackColor = System.Drawing.SystemColors.Window;
-            this.buttonPromouvoir.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.buttonPromouvoir.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F);
-            this.buttonPromouvoir.Location = new System.Drawing.Point(517, 566);
-            this.buttonPromouvoir.Name = "buttonPromouvoir";
-            this.buttonPromouvoir.Size = new System.Drawing.Size(133, 45);
-            this.buttonPromouvoir.TabIndex = 35;
-            this.buttonPromouvoir.Text = "Promouvoir";
-            this.buttonPromouvoir.UseVisualStyleBackColor = false;
-            // 
-            // buttonSupprimer
-            // 
-            this.buttonSupprimer.BackColor = System.Drawing.SystemColors.Window;
-            this.buttonSupprimer.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.buttonSupprimer.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F);
-            this.buttonSupprimer.Location = new System.Drawing.Point(795, 566);
-            this.buttonSupprimer.Name = "buttonSupprimer";
-            this.buttonSupprimer.Size = new System.Drawing.Size(133, 45);
-            this.buttonSupprimer.TabIndex = 36;
-            this.buttonSupprimer.Text = "Supprimer";
-            this.buttonSupprimer.UseVisualStyleBackColor = false;
-            // 
-            // buttonDestitution
-            // 
-            this.buttonDestitution.BackColor = System.Drawing.SystemColors.Window;
-            this.buttonDestitution.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.buttonDestitution.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F);
-            this.buttonDestitution.Location = new System.Drawing.Point(656, 566);
-            this.buttonDestitution.Name = "buttonDestitution";
-            this.buttonDestitution.Size = new System.Drawing.Size(133, 45);
-            this.buttonDestitution.TabIndex = 37;
-            this.buttonDestitution.Text = "Destituer";
-            this.buttonDestitution.UseVisualStyleBackColor = false;
-            // 
             // PageGestionUser
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.label1);
             this.Controls.Add(this.buttonDestitution);
             this.Controls.Add(this.buttonSupprimer);
             this.Controls.Add(this.buttonPromouvoir);
@@ -149,5 +162,6 @@
         private System.Windows.Forms.Button buttonPromouvoir;
         private System.Windows.Forms.Button buttonSupprimer;
         private System.Windows.Forms.Button buttonDestitution;
+        private System.Windows.Forms.Label label1;
     }
 }

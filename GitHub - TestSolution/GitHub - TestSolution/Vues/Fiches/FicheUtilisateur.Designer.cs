@@ -39,13 +39,15 @@
             this.listViewUsers.Size = new System.Drawing.Size(410, 430);
             this.listViewUsers.TabIndex = 1;
             this.listViewUsers.UseCompatibleStateImageBehavior = false;
+            this.listViewUsers.SelectedIndexChanged += new System.EventHandler(this.listViewUsers_SelectedIndexChanged);
             // 
             // textBoxRechercheUser
             // 
-            this.textBoxRechercheUser.Location = new System.Drawing.Point(3, 3);
+            this.textBoxRechercheUser.Location = new System.Drawing.Point(3, 5);
             this.textBoxRechercheUser.Name = "textBoxRechercheUser";
             this.textBoxRechercheUser.Size = new System.Drawing.Size(410, 22);
             this.textBoxRechercheUser.TabIndex = 0;
+            this.textBoxRechercheUser.TextChanged += new System.EventHandler(this.textRecherche_TextChanged);
             // 
             // FicheUtilisateur
             // 

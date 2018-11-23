@@ -88,7 +88,8 @@ namespace EICE_WARGAME
         #region Requetes utilisateurs
         //+=======================+
         //| Requetes utilisateurs |
-        //+=======================+
+        //+=======================+        
+
         /// <summary>
         /// Permet l'ajout d'un utilisateur
         /// </summary>

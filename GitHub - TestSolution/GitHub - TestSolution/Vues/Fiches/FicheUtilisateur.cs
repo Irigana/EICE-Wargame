@@ -26,6 +26,14 @@ namespace EICE_WARGAME
             listViewUsers.Items.Clear();
             listViewUsers.Columns.Clear();
             listViewUsers.SelectedIndexChanged += listViewUsers_SelectedIndexChanged;
+
+            /*
+            listViewUsers.DrawItem += new
+            DrawListViewItemEventHandler(listViewUsers_DrawItem);
+
+            listViewUsers.DrawColumnHeader += new DrawListViewColumnHeaderEventHandler(listView1_DrawColumnHeader);
+            */
+
         }
 
         /// <summary>
@@ -121,11 +129,16 @@ namespace EICE_WARGAME
 
                 listViewUsers.Columns.Add(new ColumnHeader()
                 {
-                    Name = "Utilisateurs",
+                    Name = "utilisateur",
                     Text = "Utilisateurs",
+                    TextAlign = HorizontalAlignment.Left,                    
+                });
+                listViewUsers.Columns.Add(new ColumnHeader()
+                {
+                    Name = "role",
+                    Text = "Rôles",
                     TextAlign = HorizontalAlignment.Left
                 });
-
             }
 
             foreach (T Entite in Entites)
@@ -137,9 +150,15 @@ namespace EICE_WARGAME
                 NouvelElement.SubItems.Clear();
                 if (EstUtilisateur)
                 {
+
+                    // TODO : Demander au prof pourquoi j'ai du faire de cette façons
                     Utilisateur Utilisateur = Entite as Utilisateur;
+                    NouvelElement.Text = Utilisateur.Role.NomRole;
+                    NouvelElement.SubItems.Add(Utilisateur.Role.NomRole);
+
                     NouvelElement.Text = Utilisateur.Login;
                     NouvelElement.SubItems.Add(Utilisateur.Login);
+
                 }
                 listViewUsers.Items.Add(NouvelElement);
 
@@ -153,9 +172,53 @@ namespace EICE_WARGAME
 
             listViewUsers.Visible = true;
             listViewUsers_SelectedIndexChanged(listViewUsers, EventArgs.Empty);
-            return true;
+
+            return true;            
+        }
+        
+        /*
+        private void listViewUsers_DrawColumnHeader(object sender, DrawListViewColumnHeaderEventArgs e)
+        {
+            e.Graphics.FillRectangle(Brushes.LightBlue, e.Bounds);
+            e.DrawText();
         }
 
+        private void listViewUsers_DrawItem(object sender, DrawListViewItemEventArgs e)
+        {
+            e.DrawDefault = true;
+        }
+
+        // Draws column headers.
+        private void listView1_DrawColumnHeader(object sender,
+            DrawListViewColumnHeaderEventArgs e)
+        {
+            using (StringFormat sf = new StringFormat())
+            {
+                // Store the column text alignment, letting it default
+                // to Left if it has not been set to Center or Right.
+                switch (e.Header.TextAlign)
+                {
+                    case HorizontalAlignment.Center:
+                        sf.Alignment = StringAlignment.Center;
+                        break;
+                    case HorizontalAlignment.Right:
+                        sf.Alignment = StringAlignment.Far;
+                        break;
+                }
+
+                // Draw the standard header background.
+                e.DrawBackground();
+
+                // Draw the header text.
+                using (Font headerFont =
+                            new Font("Helvetica", 10, FontStyle.Bold))
+                {
+                    e.Graphics.DrawString(e.Header.Text, headerFont,
+                        Brushes.Black, e.Bounds, sf);
+                }
+            }
+            return;
+        }*/
 
 
         /// <summary>
