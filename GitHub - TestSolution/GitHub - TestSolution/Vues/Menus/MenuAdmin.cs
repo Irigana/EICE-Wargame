@@ -35,8 +35,15 @@ namespace EICE_WARGAME
         public MenuAdmin()
         {
             InitializeComponent();
+            buttonGestionUser.Hide();
 
         }
+        public MenuAdmin(Utilisateur User)
+        {
+            InitializeComponent();
+
+        }
+
         private bool m_EstAdmin;
 
         public bool EstAdmin
@@ -92,7 +99,7 @@ namespace EICE_WARGAME
         {
             Form_Principal.Instance.CreerPageCourante<PageGestionUser>((Page) =>
             {
-                Page.Utilisateur = Utilisateur;
+                Page.Utilisateur = Utilisateur;                
                 return true;
             });
         }
