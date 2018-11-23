@@ -81,6 +81,7 @@
             this.buttonSupprimer.TabIndex = 36;
             this.buttonSupprimer.Text = "Supprimer";
             this.buttonSupprimer.UseVisualStyleBackColor = false;
+            this.buttonSupprimer.Click += new System.EventHandler(this.buttonSupprimer_Click);
             // 
             // buttonDestitution
             // 
@@ -93,6 +94,7 @@
             this.buttonDestitution.TabIndex = 37;
             this.buttonDestitution.Text = "Destituer";
             this.buttonDestitution.UseVisualStyleBackColor = false;
+            this.buttonDestitution.Click += new System.EventHandler(this.buttonDestitution_Click);
             // 
             // label1
             // 

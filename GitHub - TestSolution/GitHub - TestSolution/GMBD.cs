@@ -109,6 +109,19 @@ namespace EICE_WARGAME
         {
             return Utilisateur.Enregistrer(m_BD, Utilisateur, Utilisateur.IdDeLaTablePrincipale, true);
         }
+
+        /// <summary>
+        /// Permet la suppresion d'un utilisateur
+        /// </summary>
+        /// <param name="Faction"></param>
+        /// <returns></returns>
+        public bool SupprimerUtilisateur(Utilisateur Utilisateur)
+        {
+            if (!m_BD.EstConnecte) Initialiser();
+            Utilisateur.SupprimerEnCascade(m_BD);
+            return true;
+        }
+
         #endregion
 
         #region Requetes Faction

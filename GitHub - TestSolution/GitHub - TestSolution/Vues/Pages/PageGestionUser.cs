@@ -130,41 +130,12 @@ namespace EICE_WARGAME
                     }                    
                 }                
             }
-
-            /*
-            if ((ficheUtilisateur1.Utilisateur != null)&&(ficheUtilisateur1.UtilisateurSelectionne.Role.Id != 1))
-            {
-                if (ficheUtilisateur1.UtilisateurSelectionne.Role.Id == 2)
-                {
-                    buttonSupprimer.Enabled = false;
-                    buttonPromouvoir.Enabled = false;
-                    buttonDestitution.Enabled = false;
-                }
-                else
-                {
-                    if (((ficheUtilisateur1.UtilisateurSelectionne.Role.Id == 3) || (ficheUtilisateur1.UtilisateurSelectionne.Role.Id == 1))
-                        && (Utilisateur.Role.Id == 2))
-                    {
-                        buttonSupprimer.Enabled = true;
-                        buttonPromouvoir.Enabled = false;
-                        buttonDestitution.Enabled = true;
-
-                    }
-                    else if ((Utilisateur.Role.Id == 3) && (ficheUtilisateur1.UtilisateurSelectionne.Role.Id == 1))
-                    {
-                        buttonSupprimer.Enabled = true;
-                        buttonPromouvoir.Enabled = false;
-                        buttonDestitution.Enabled = false;                    
-                    }
-                }
-                //ValidationProvider.Clear();
-            }
             else
             {
                 buttonSupprimer.Enabled = false;
                 buttonPromouvoir.Enabled = false;
                 buttonDestitution.Enabled = false;
-            }*/
+            }
         }
 
         private void buttonPromouvoir_Click(object sender, EventArgs e)
@@ -181,6 +152,38 @@ namespace EICE_WARGAME
                     ChargerUsers();
                 }
                 
+            }
+        }
+
+        private void buttonDestitution_Click(object sender, EventArgs e)
+        {
+            if ((ficheUtilisateur1.UtilisateurSelectionne != null) && (Utilisateur.Id != ficheUtilisateur1.UtilisateurSelectionne.Id))
+            {
+                Role NouveauRole = Program.GMBD.EnumererRole(null, null, new MyDB.CodeSql("WHERE r_id = 1"), null).FirstOrDefault();
+
+                Utilisateur UtilisateurADestituer = ficheUtilisateur1.UtilisateurSelectionne;
+                UtilisateurADestituer.Role = NouveauRole;
+
+                if ((UtilisateurADestituer.EstValide) && (Program.GMBD.ModifierUtilisateur(UtilisateurADestituer)))
+                {
+                    ChargerUsers();
+                }
+
+            }
+        }
+
+        private void buttonSupprimer_Click(object sender, EventArgs e)
+        {
+            if ((ficheUtilisateur1.UtilisateurSelectionne != null) 
+                && (Utilisateur.Id != ficheUtilisateur1.UtilisateurSelectionne.Id)
+                && (Utilisateur.Role.Id == 2))
+            {
+               
+                if (Program.GMBD.SupprimerUtilisateur(ficheUtilisateur1.UtilisateurSelectionne))
+                {
+                    ChargerUsers();
+                }
+
             }
         }
     }
