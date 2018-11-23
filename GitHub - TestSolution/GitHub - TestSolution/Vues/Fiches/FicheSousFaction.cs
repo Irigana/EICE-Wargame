@@ -136,9 +136,9 @@ namespace EICE_WARGAME
 
                 listViewSousFaction.Columns.Add(new ColumnHeader()
                 {
-                    Name = "SousFaction",
-                    Text = "Sous faction",
-                    TextAlign = HorizontalAlignment.Left
+                    Name = "SousFactions",
+                    Text = "Sous factions",
+                    TextAlign = HorizontalAlignment.Center,
                 });
 
             }

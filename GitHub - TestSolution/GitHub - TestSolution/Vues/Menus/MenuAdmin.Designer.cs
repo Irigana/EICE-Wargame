@@ -85,6 +85,7 @@
             this.buttonMenuUser.TabIndex = 3;
             this.buttonMenuUser.Text = "Utilisateurs";
             this.buttonMenuUser.UseVisualStyleBackColor = true;
+            this.buttonMenuUser.Click += new System.EventHandler(this.buttonMenuUser_Click);
             // 
             // buttonSousFaction
             // 

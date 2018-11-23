@@ -42,6 +42,7 @@
             // 
             // listViewFaction
             // 
+            this.listViewFaction.HeaderStyle = System.Windows.Forms.ColumnHeaderStyle.Nonclickable;
             this.listViewFaction.Location = new System.Drawing.Point(3, 31);
             this.listViewFaction.Name = "listViewFaction";
             this.listViewFaction.Size = new System.Drawing.Size(286, 257);

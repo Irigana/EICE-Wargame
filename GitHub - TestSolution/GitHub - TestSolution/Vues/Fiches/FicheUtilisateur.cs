@@ -10,58 +10,57 @@ using System.Windows.Forms;
 
 namespace EICE_WARGAME
 {
-    public partial class FicheFaction : UserControl
+    public partial class FicheUtilisateur : UserControl
     {
-       
-        public FicheFaction()
+        public FicheUtilisateur()
         {
             InitializeComponent();
-            listViewFaction.View = View.Details;
-            listViewFaction.FullRowSelect = true;
-            listViewFaction.LabelEdit = false;
-            listViewFaction.Scrollable = true;
-            listViewFaction.AllowColumnReorder = false;
-            listViewFaction.MultiSelect = false;
-            listViewFaction.GridLines = true;
-            listViewFaction.HideSelection = false;
-            listViewFaction.Items.Clear();
-            listViewFaction.Columns.Clear();
-            listViewFaction.SelectedIndexChanged += listViewFaction_SelectedIndexChanged;
+            listViewUsers.View = View.Details;
+            listViewUsers.FullRowSelect = true;
+            listViewUsers.LabelEdit = false;
+            listViewUsers.Scrollable = true;
+            listViewUsers.AllowColumnReorder = false;
+            listViewUsers.MultiSelect = false;
+            listViewUsers.GridLines = true;
+            listViewUsers.HideSelection = false;
+            listViewUsers.Items.Clear();
+            listViewUsers.Columns.Clear();
+            listViewUsers.SelectedIndexChanged += listViewUsers_SelectedIndexChanged;
         }
 
-
         /// <summary>
-        /// Texte du filtre
+        /// Texte de la recherche
         /// </summary>
-        public string TexteFiltreFaction
+        public string TexteRechercheUser
         {
             get
             {
-                return textBoxRecherche.Text;
+                return textBoxRechercheUser.Text;
             }
             set
             {
                 if (value == null) value = string.Empty;
-                if (value != textBoxRecherche.Text)
+                if (value != textBoxRechercheUser.Text)
                 {
-                    textBoxRecherche.Text = value;
+                    textBoxRechercheUser.Text = value;
                 }
             }
         }
+
 
         /// <summary>
         /// Evénement déclenché lorsque le filtre change
         /// </summary>
         public event EventHandler SurChangementFiltre = null;
 
-        public IEnumerable<Faction> Faction
+        public IEnumerable<Utilisateur> Utilisateur
         {
             get
             {
-                return listViewFaction.Items
+                return listViewUsers.Items
                     .OfType<ListViewItem>()
-                    .Where(Element => Element.Tag is Faction)
-                    .Select(Element => Element.Tag as Faction);
+                    .Where(Element => Element.Tag is Utilisateur)
+                    .Select(Element => Element.Tag as Utilisateur);
             }
             set
             {
@@ -69,43 +68,42 @@ namespace EICE_WARGAME
             }
         }
 
-
         /// <summary>
-        /// Type de faction sélectionné
+        /// Type de Utilisateur sélectionné
         /// </summary>
-        public Faction FactionSelectionne
+        public Utilisateur UtilisateurSelectionne
         {
             get
             {
-                return (listViewFaction.SelectedItems.Count == 1) && (listViewFaction.SelectedItems[0].Tag is Faction)
-                    ? listViewFaction.SelectedItems[0].Tag as Faction
+                return (listViewUsers.SelectedItems.Count == 1) && (listViewUsers.SelectedItems[0].Tag is Utilisateur)
+                    ? listViewUsers.SelectedItems[0].Tag as Utilisateur
                     : null;
             }
             set
             {
                 if (value != null)
                 {
-                    foreach (ListViewItem Element in listViewFaction.Items)
+                    foreach (ListViewItem Element in listViewUsers.Items)
                     {
-                        if ((Element.Tag is Faction) && (Element.Tag as Faction).Id.Equals(value.Id))
+                        if ((Element.Tag is Utilisateur) && (Element.Tag as Utilisateur).Id.Equals(value.Id))
                         {
                             Element.Selected = true;
                             return;
                         }
                     }
                 }
-                listViewFaction.SelectedItems.Clear();
+                listViewUsers.SelectedItems.Clear();
             }
         }
 
 
         /// <summary>
-        /// Evénement déclenché quand il y a un changement de sélection de faction
+        /// Evénement déclenché quand il y a un changement de sélection d'utilisateur
         /// </summary>
         public event EventHandler SurChangementSelection = null;
 
         /// <summary>
-        /// Met à jour la listview des factions et y insére les elements
+        /// Met à jour la listview des utilisateurs et y insére les elements
         /// </summary>
         /// <typeparam name="T"></typeparam>
         /// <param name="Entites"></param>
@@ -113,19 +111,19 @@ namespace EICE_WARGAME
         private bool MettreAJourListe<T>(IEnumerable<T> Entites)
             where T : class, IEntiteMySQL
         {
-            bool EstFaction = typeof(T).Equals(typeof(Faction));
-            if (!EstFaction) return false;
-            listViewFaction.Items.Clear();
+            bool EstUtilisateur = typeof(T).Equals(typeof(Utilisateur));
+            if (!EstUtilisateur) return false;
+            listViewUsers.Items.Clear();
             if (Entites == null) return false;
-            if (EstFaction && (listViewFaction.Columns.Count != 2))
+            if (EstUtilisateur && (listViewUsers.Columns.Count != 2))
             {
-                listViewFaction.Columns.Clear();
+                listViewUsers.Columns.Clear();
 
-                listViewFaction.Columns.Add(new ColumnHeader()
+                listViewUsers.Columns.Add(new ColumnHeader()
                 {
-                    Name = "Factions",
-                    Text = "Factions",
-                    TextAlign = HorizontalAlignment.Center,                              
+                    Name = "Utilisateurs",
+                    Text = "Utilisateurs",
+                    TextAlign = HorizontalAlignment.Left
                 });
 
             }
@@ -137,35 +135,35 @@ namespace EICE_WARGAME
                     Tag = Entite
                 };
                 NouvelElement.SubItems.Clear();
-                if (EstFaction)
+                if (EstUtilisateur)
                 {
-                    Faction Faction = Entite as Faction;
-                    NouvelElement.Text = Faction.Name;
-                    NouvelElement.SubItems.Add(Faction.Name);
+                    Utilisateur Utilisateur = Entite as Utilisateur;
+                    NouvelElement.Text = Utilisateur.Login;
+                    NouvelElement.SubItems.Add(Utilisateur.Login);
                 }
-                listViewFaction.Items.Add(NouvelElement);
+                listViewUsers.Items.Add(NouvelElement);
 
             }
 
-            listViewFaction.Visible = false;
-            foreach (ColumnHeader Colonne in listViewFaction.Columns)
+            listViewUsers.Visible = false;
+            foreach (ColumnHeader Colonne in listViewUsers.Columns)
             {
                 Colonne.AutoResize(ColumnHeaderAutoResizeStyle.HeaderSize);
             }
 
-            listViewFaction.Visible = true;
-            listViewFaction_SelectedIndexChanged(listViewFaction, EventArgs.Empty);
+            listViewUsers.Visible = true;
+            listViewUsers_SelectedIndexChanged(listViewUsers, EventArgs.Empty);
             return true;
         }
 
 
 
         /// <summary>
-        /// Evénement déclenché en cas de changement de sélection de faction
+        /// Evénement déclenché en cas de changement de sélection d'un utilisateur
         /// </summary>
         /// <param name="sender">Emetteur ayant déclenché l'événement</param>
         /// <param name="e">Descriptif de l'événement</param>
-        private void listViewFaction_SelectedIndexChanged(object sender, EventArgs e)
+        private void listViewUsers_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (SurChangementSelection != null)
             {
@@ -179,7 +177,7 @@ namespace EICE_WARGAME
         /// </summary>
         /// <param name="sender">Emetteur ayant déclenché l'événement</param>
         /// <param name="e">Descriptif de l'événement</param>
-        private void textFiltre_TextChanged(object sender, EventArgs e)
+        private void textRecherche_TextChanged(object sender, EventArgs e)
         {
             if (SurChangementFiltre != null)
             {
@@ -208,9 +206,8 @@ namespace EICE_WARGAME
         /// </summary>
         public void NettoyerListView()
         {
-            listViewFaction.Clear();
+            listViewUsers.Clear();
         }
-        
+
     }
 }
-

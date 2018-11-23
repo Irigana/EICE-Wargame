@@ -46,10 +46,22 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Vues\Fiches\FicheUtilisateur.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Vues\Fiches\FicheUtilisateur.Designer.cs">
+      <DependentUpon>FicheUtilisateur.cs</DependentUpon>
+    </Compile>
     <Compile Include="Modeles\Camp.cs" />
     <Compile Include="Modeles\Condi_Camp.cs" />
     <Compile Include="Modeles\Scenario.cs" />
     <Compile Include="Modeles\Scenario_Camp.cs" />
+    <Compile Include="Vues\Pages\PageGestionUser.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Vues\Pages\PageGestionUser.Designer.cs">
+      <DependentUpon>PageGestionUser.cs</DependentUpon>
+    </Compile>
     <Compile Include="Vues\Fiches\FicheFaction.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -207,6 +219,12 @@
     <Compile Include="Vues\TextBoxAvecTextInvisible.Designer.cs">
       <DependentUpon>TextBoxAvecTextInvisible.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="Vues\Fiches\FicheUtilisateur.resx">
+      <DependentUpon>FicheUtilisateur.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Vues\Pages\PageGestionUser.resx">
+      <DependentUpon>PageGestionUser.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Vues\Fiches\FicheFaction.resx">
       <DependentUpon>FicheFaction.cs</DependentUpon>
     </EmbeddedResource>
