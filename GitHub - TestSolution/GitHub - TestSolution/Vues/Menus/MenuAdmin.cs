@@ -37,6 +37,19 @@ namespace EICE_WARGAME
             InitializeComponent();
 
         }
+        private bool m_EstAdmin;
+
+        public bool EstAdmin
+        {
+            get
+            {
+                return m_EstAdmin;
+            }
+            set
+            {
+                if(value != m_EstAdmin) m_EstAdmin = value;
+            }
+        }
 
         private void buttonEquipement_Click(object sender, EventArgs e)
         {          
@@ -79,5 +92,6 @@ namespace EICE_WARGAME
                 return true;
             });
         }
+        
     }
 }

@@ -35,6 +35,7 @@
             this.pictureBoxLogoDashboard = new System.Windows.Forms.PictureBox();
             this.buttonSousFaction = new System.Windows.Forms.Button();
             this.buttonFaction = new System.Windows.Forms.Button();
+            this.buttonGestionUser = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxLogoDashboard)).BeginInit();
             this.SuspendLayout();
             // 
@@ -65,7 +66,7 @@
             this.buttonRetourMenuPrincipal.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
             this.buttonRetourMenuPrincipal.Image = global::EICE_WARGAME.Properties.Resources.ReturnLogo35px;
             this.buttonRetourMenuPrincipal.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.buttonRetourMenuPrincipal.Location = new System.Drawing.Point(631, 459);
+            this.buttonRetourMenuPrincipal.Location = new System.Drawing.Point(631, 492);
             this.buttonRetourMenuPrincipal.Name = "buttonRetourMenuPrincipal";
             this.buttonRetourMenuPrincipal.Size = new System.Drawing.Size(300, 55);
             this.buttonRetourMenuPrincipal.TabIndex = 4;
@@ -127,10 +128,24 @@
             this.buttonFaction.UseVisualStyleBackColor = false;
             this.buttonFaction.Click += new System.EventHandler(this.buttonFaction_Click);
             // 
+            // buttonGestionUser
+            // 
+            this.buttonGestionUser.BackColor = System.Drawing.SystemColors.Window;
+            this.buttonGestionUser.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonGestionUser.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
+            this.buttonGestionUser.Location = new System.Drawing.Point(631, 425);
+            this.buttonGestionUser.Name = "buttonGestionUser";
+            this.buttonGestionUser.Size = new System.Drawing.Size(300, 55);
+            this.buttonGestionUser.TabIndex = 7;
+            this.buttonGestionUser.Text = "Utilisateurs";
+            this.buttonGestionUser.UseVisualStyleBackColor = false;
+            this.buttonGestionUser.Click += new System.EventHandler(this.buttonGestionUser_Click);
+            // 
             // PageMenuDashboard
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.buttonGestionUser);
             this.Controls.Add(this.buttonFaction);
             this.Controls.Add(this.buttonSousFaction);
             this.Controls.Add(this.buttonRetourMenuPrincipal);
@@ -156,5 +171,6 @@
         private System.Windows.Forms.Button buttonRetourMenuPrincipal;
         private System.Windows.Forms.Button buttonSousFaction;
         private System.Windows.Forms.Button buttonFaction;
+        private System.Windows.Forms.Button buttonGestionUser;
     }
 }

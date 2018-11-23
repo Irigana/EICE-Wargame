@@ -31,7 +31,7 @@
             this.buttonEquipement = new System.Windows.Forms.Button();
             this.buttonFigurine = new System.Windows.Forms.Button();
             this.buttonScenario = new System.Windows.Forms.Button();
-            this.buttonMenuUser = new System.Windows.Forms.Button();
+            this.buttonGestionUser = new System.Windows.Forms.Button();
             this.buttonSousFaction = new System.Windows.Forms.Button();
             this.buttonFaction = new System.Windows.Forms.Button();
             this.SuspendLayout();
@@ -74,18 +74,18 @@
             this.buttonScenario.Text = "Scenario";
             this.buttonScenario.UseVisualStyleBackColor = true;
             // 
-            // buttonMenuUser
+            // buttonGestionUser
             // 
-            this.buttonMenuUser.FlatAppearance.BorderSize = 0;
-            this.buttonMenuUser.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.buttonMenuUser.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
-            this.buttonMenuUser.Location = new System.Drawing.Point(0, 280);
-            this.buttonMenuUser.Name = "buttonMenuUser";
-            this.buttonMenuUser.Size = new System.Drawing.Size(190, 50);
-            this.buttonMenuUser.TabIndex = 3;
-            this.buttonMenuUser.Text = "Utilisateurs";
-            this.buttonMenuUser.UseVisualStyleBackColor = true;
-            this.buttonMenuUser.Click += new System.EventHandler(this.buttonMenuUser_Click);
+            this.buttonGestionUser.FlatAppearance.BorderSize = 0;
+            this.buttonGestionUser.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonGestionUser.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
+            this.buttonGestionUser.Location = new System.Drawing.Point(0, 280);
+            this.buttonGestionUser.Name = "buttonGestionUser";
+            this.buttonGestionUser.Size = new System.Drawing.Size(190, 50);
+            this.buttonGestionUser.TabIndex = 3;
+            this.buttonGestionUser.Text = "Utilisateurs";
+            this.buttonGestionUser.UseVisualStyleBackColor = true;
+            this.buttonGestionUser.Click += new System.EventHandler(this.buttonMenuUser_Click);
             // 
             // buttonSousFaction
             // 
@@ -122,12 +122,13 @@
             this.BackColor = System.Drawing.SystemColors.ControlDark;
             this.Controls.Add(this.buttonFaction);
             this.Controls.Add(this.buttonSousFaction);
-            this.Controls.Add(this.buttonMenuUser);
+            this.Controls.Add(this.buttonGestionUser);
             this.Controls.Add(this.buttonEquipement);
             this.Controls.Add(this.buttonFigurine);
             this.Controls.Add(this.buttonScenario);
             this.Name = "MenuAdmin";
             this.Size = new System.Drawing.Size(190, 750);
+            this.Load += new System.EventHandler(this.MenuAdmin_Load);
             this.ResumeLayout(false);
 
         }
@@ -137,7 +138,7 @@
         private System.Windows.Forms.Button buttonScenario;
         private System.Windows.Forms.Button buttonFigurine;
         private System.Windows.Forms.Button buttonEquipement;
-        private System.Windows.Forms.Button buttonMenuUser;
+        private System.Windows.Forms.Button buttonGestionUser;
         private System.Windows.Forms.Button buttonSousFaction;
         private System.Windows.Forms.Button buttonFaction;
     }

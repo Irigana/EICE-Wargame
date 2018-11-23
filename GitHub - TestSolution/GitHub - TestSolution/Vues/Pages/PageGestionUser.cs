@@ -68,7 +68,7 @@ namespace EICE_WARGAME
 
             ficheUtilisateur1.SurChangementSelection += ficheUsers_SurChangementSelection;
         }
-        
+
 
         private void PageGestionUser_Load(object sender, EventArgs e)
         {
@@ -94,14 +94,22 @@ namespace EICE_WARGAME
             if (ficheUtilisateur1.UtilisateurSelectionne != null)
             {
                 // Si admin
-                if(Utilisateur.Role.Id == 2)
+                if (Utilisateur.Role.Id == 2)
                 {
                     // Si il ne s'est pas sélectionner lui même
-                    if(Utilisateur.Id != ficheUtilisateur1.UtilisateurSelectionne.Id)
-                    {
+                    if (Utilisateur.Id != ficheUtilisateur1.UtilisateurSelectionne.Id)
+                    { 
                         buttonSupprimer.Enabled = true;
                         buttonPromouvoir.Enabled = true;
                         buttonDestitution.Enabled = true;
+                    }
+                    // Si l'administrateur choisit un autre administrateur
+                    else if(Utilisateur.Role.Id != ficheUtilisateur1.UtilisateurSelectionne.Role.Id)
+                    {
+                        // TODO : demander à tout le monde le mieux 
+                        buttonSupprimer.Enabled = false;
+                        buttonPromouvoir.Enabled = false;
+                        buttonDestitution.Enabled = false;
                     }
                     // Si il s'est sélectionner lui même
                     else
@@ -111,24 +119,6 @@ namespace EICE_WARGAME
                         buttonDestitution.Enabled = false;
                     }
                 }
-                // Si modérateur
-                else if (Utilisateur.Role.Id == 3)
-                {
-                    // Si il sélectionne un admin ou un modérateur
-                    if((ficheUtilisateur1.UtilisateurSelectionne.Role.Id == 2) || (ficheUtilisateur1.UtilisateurSelectionne.Role.Id == 3))
-                    {
-                        buttonSupprimer.Enabled = false;
-                        buttonPromouvoir.Enabled = false;
-                        buttonDestitution.Enabled = false;
-                    }
-                    // Si il selectionne un membre
-                    else if(ficheUtilisateur1.UtilisateurSelectionne.Role.Id == 1)
-                    {
-                        buttonSupprimer.Enabled = true;
-                        buttonPromouvoir.Enabled = false;
-                        buttonDestitution.Enabled = false;
-                    }                    
-                }                
             }
             else
             {
@@ -142,7 +132,7 @@ namespace EICE_WARGAME
         {
             if ((ficheUtilisateur1.UtilisateurSelectionne != null) && (ficheUtilisateur1.UtilisateurSelectionne.Role.Id == 1))
             {
-                Role NouveauRole = Program.GMBD.EnumererRole(null, null, new MyDB.CodeSql("WHERE r_id = 3 "),null).FirstOrDefault();
+                Role NouveauRole = Program.GMBD.EnumererRole(null, null, new MyDB.CodeSql("WHERE r_id = 3 "), null).FirstOrDefault();
 
                 Utilisateur UtilisateurAPromouvoir = ficheUtilisateur1.UtilisateurSelectionne;
                 UtilisateurAPromouvoir.Role = NouveauRole;
@@ -151,7 +141,7 @@ namespace EICE_WARGAME
                 {
                     ChargerUsers();
                 }
-                
+
             }
         }
 
@@ -174,16 +164,26 @@ namespace EICE_WARGAME
 
         private void buttonSupprimer_Click(object sender, EventArgs e)
         {
-            if ((ficheUtilisateur1.UtilisateurSelectionne != null) 
+            if ((ficheUtilisateur1.UtilisateurSelectionne != null)
                 && (Utilisateur.Id != ficheUtilisateur1.UtilisateurSelectionne.Id)
                 && (Utilisateur.Role.Id == 2))
             {
-               
-                if (Program.GMBD.SupprimerUtilisateur(ficheUtilisateur1.UtilisateurSelectionne))
-                {
-                    ChargerUsers();
-                }
 
+                PopUpConfirmation FormConfirmation = new PopUpConfirmation();
+
+                FormConfirmation.LabelDuTexte = "Êtes vous certain de vouloir supprimer " + ficheUtilisateur1.UtilisateurSelectionne.Login + " ?";
+
+                FormConfirmation.ShowDialog();
+                // S'il accepte
+                if (FormConfirmation.Confirmation)
+                {
+
+                    if (Program.GMBD.SupprimerUtilisateur(ficheUtilisateur1.UtilisateurSelectionne))
+                    {
+                        ChargerUsers();
+                    }
+
+                }
             }
         }
     }
