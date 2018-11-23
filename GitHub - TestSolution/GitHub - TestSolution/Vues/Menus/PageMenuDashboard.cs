@@ -46,7 +46,7 @@ namespace EICE_WARGAME
                 if (Utilisateur.Role.Id == 2) buttonGestionUser.Show();
                 else
                 {
-                    this.buttonRetourMenuPrincipal.Location = new Point(631, 425);
+                    this.buttonRetourMenuPrincipal.Location = new Point(473, 360);
                     buttonGestionUser.Hide();
                 }
             }

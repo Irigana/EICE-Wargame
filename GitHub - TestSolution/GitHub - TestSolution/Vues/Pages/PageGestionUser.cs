@@ -73,7 +73,8 @@ namespace EICE_WARGAME
         private void PageGestionUser_Load(object sender, EventArgs e)
         {
             // Permet de passer l'utilisateur par le controler MenuAdmin
-            menuAdmin1.Utilisateur = Utilisateur;
+            //menuAdmin1.Utilisateur = Utilisateur;
+            if(Utilisateur.Role.Id == 2) menuAdmin1.EstAdmin = true;
         }
 
         /// <summary>

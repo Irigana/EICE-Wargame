@@ -47,7 +47,11 @@ namespace EICE_WARGAME
             }
             set
             {
-                if(value != m_EstAdmin) m_EstAdmin = value;
+                if (value != m_EstAdmin)
+                {
+                    m_EstAdmin = value;
+                    if (m_EstAdmin == true) buttonGestionUser.Show();
+                }
             }
         }
 
