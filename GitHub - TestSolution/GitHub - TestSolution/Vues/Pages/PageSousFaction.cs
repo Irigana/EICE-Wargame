@@ -375,6 +375,7 @@ namespace EICE_WARGAME
         {
             errorProviderSousFaction.Clear();
             errorProviderValider.Clear();
+            if (textBoxSousFaction.Text == "") buttonAjouterSF.Enabled = true; 
         }
     }        
 }

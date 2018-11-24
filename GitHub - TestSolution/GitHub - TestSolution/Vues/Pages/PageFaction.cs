@@ -301,6 +301,7 @@ namespace EICE_WARGAME
         {
             errorProviderErreurFaction.Clear();
             ValidationProvider.Clear();
+            if (textBoxFaction.Text == "") buttonAjouter.Enabled = true;
         }
 
     }
