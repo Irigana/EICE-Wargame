@@ -197,7 +197,7 @@ namespace EICE_WARGAME
             {
                 FactionExiste = Program.GMBD.EnumererFaction(null,
                                                              null,
-                                                             new MyDB.CodeSql("WHERE faction.fa_id = {0} ", listeDeroulanteFaction1.FactionSelectionnee.Id),
+                                                             new MyDB.CodeSql("WHERE faction.fa_id = {0}", listeDeroulanteFaction1.FactionSelectionnee.Id),
                                                              null).FirstOrDefault();
                 // Si la faction n'existe pas, on crée une nouvelle faction
                 if (FactionExiste != null)
@@ -312,7 +312,7 @@ namespace EICE_WARGAME
             switch (Champ)
             {
                 case SousFaction.Champ.Name:
-                    SousFaction SousFactionExistant = Program.GMBD.EnumererSousFaction(null, null, new PDSGBD.MyDB.CodeSql("WHERE subfaction.sf_name = {0} AND subfaction.sf_fk_faction_id = {2}", textBoxSousFaction.Text, listeDeroulanteFaction1.FactionSelectionnee.Id), null).FirstOrDefault();
+                    SousFaction SousFactionExistant = Program.GMBD.EnumererSousFaction(null, null, new PDSGBD.MyDB.CodeSql("WHERE subfaction.sf_name = {0} AND subfaction.sf_fk_faction_id = {1}", textBoxSousFaction.Text, listeDeroulanteFaction1.FactionSelectionnee.Id), null).FirstOrDefault();
 
                     if (SousFactionExistant != null)
                     {
