@@ -34,6 +34,15 @@ namespace EICE_WARGAME
                 return Stuff.Name;
             }
 
+            public override bool Equals(object obj)
+            {
+                return (obj is Element) ? Stuff.Equals((obj as Element).Stuff) : base.Equals(obj);
+            }
+
+            public override int GetHashCode()
+            {
+                return Stuff.GetHashCode();
+            }
         }
 
         public IEnumerable<Stuff> Stuff

@@ -21,6 +21,11 @@ namespace EICE_WARGAME
         /// </summary>
         string IdDeLaTablePrincipale { get; }
 
+        //// <summary>
+        /// Identifiant de cette entité
+        /// </summary>
+        int Id { get; }
+
         /// <summary>
         /// Permet de (re)définir l'identifiant de cette entité suite à l'exécution réussie d'une requête INSERT INTO
         /// </summary>
@@ -32,7 +37,7 @@ namespace EICE_WARGAME
         /// Clause d'assignation utilisable dans une requête INSERT/UPDATE
         /// </summary>
         PDSGBD.MyDB.CodeSql ClauseAssignation { get; }
-        
+
         /// <summary>
         /// Permet de supprimer tous les enregistrements liés à cette entité
         /// </summary>
@@ -369,7 +374,7 @@ namespace EICE_WARGAME
             if (Entite.Id > 0)
             {
                 if (Connexion.Executer("UPDATE {0} SET {1} WHERE {2} = {3}", NomTable, Entite.ClauseAssignation, IdDeLaTable, Entite.Id).Reussite) return true;
-                if (Connexion.ValeurDe<long>("SELECT COUNT(*) FROM {0} WHERE {1} = {2}", NomTable,IdDeLaTablePrincipale, Entite.Id) == 1) return false;
+                if (Connexion.ValeurDe<long>("SELECT COUNT(*) FROM {0} WHERE {1} = {2}", NomTable, IdDeLaTablePrincipale, Entite.Id) == 1) return false;
                 if (!RecreationAutorisee) return false;
             }
             return Entite.DefinirId(Connexion.Executer("INSERT INTO {0} SET {1}", NomTable, Entite.ClauseAssignation));
@@ -379,7 +384,7 @@ namespace EICE_WARGAME
         {
             if (SuppressionEnCascade) Entite.SupprimerEnCascade(Connexion);
             PDSGBD.MyDB.CodeSql NomTable = new PDSGBD.MyDB.CodeSql(NomDeLaTablePrincipale);
-            return Connexion.Executer("DELETE FROM {0} WHERE {1} = {2}", NomTable,IdDeLaTablePrincipale, Entite.Id).Reussite;
+            return Connexion.Executer("DELETE FROM {0} WHERE {1} = {2}", NomTable, IdDeLaTablePrincipale, Entite.Id).Reussite;
         }
 
         #region Fonctionnalités de l'interface IEntiteMySQL
@@ -426,6 +431,16 @@ namespace EICE_WARGAME
         public virtual void SupprimerEnCascade(PDSGBD.MyDB Connexion)
         {
 
+        }
+
+        public override bool Equals(object obj)
+        {
+            return (obj is IEntiteMySQL) ? this.GetType().Equals(obj.GetType()) && m_Id.Equals((obj as IEntiteMySQL).Id) : base.Equals(obj);
+        }
+
+        public override int GetHashCode()
+        {
+            return this.GetType().GetHashCode() ^ m_Id.GetHashCode();
         }
         #endregion
     }

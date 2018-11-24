@@ -136,14 +136,20 @@ namespace EICE_WARGAME
             }
             else
             {
-                Stuff.Enregistrer(Program.GMBD.BD, Stuff);
+                if (Stuff.Enregistrer(Program.GMBD.BD, Stuff))
+                {
+                    listeDeroulanteStuff1.Stuff = Program.GMBD.EnumererStuff(null, null, null, PDSGBD.MyDB.CreerCodeSql("st_name"));
+                }
+                
+                listeDeroulanteStuff1.StuffSelectionnee = Stuff;
                 listeDeroulanteType.TypeSelectionne = null;
                 textBoxNomEquipement.Text = string.Empty;
                 textBoxNomEquipement.Text = string.Empty;
                 m_StuffEnEdition.Name = null;
                 m_StuffEnEdition.Type = null;
                 errorProvider1.Clear();
-                listeDeroulanteStuff1.Stuff = Program.GMBD.EnumererStuff(null, null, null, PDSGBD.MyDB.CreerCodeSql("st_name"));
+                //listeDeroulanteStuff1.Stuff = Program.GMBD.EnumererStuff(null, null, null, PDSGBD.MyDB.CreerCodeSql("st_name"));
+                
             }
         }
 

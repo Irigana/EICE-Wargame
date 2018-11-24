@@ -171,6 +171,7 @@ namespace EICE_WARGAME
             {
                 DefinirId(Enregistrement.ValeurChampComplet<int>(NomDeLaTablePrincipale, "st_id"));
                 this.Name = Enregistrement.ValeurChampComplet<string>(NomDeLaTablePrincipale, "st_name");
+                
                 this.Visibility = Enregistrement.ValeurChampComplet<byte>(NomDeLaTablePrincipale, "st_visibility");
 			}
         }
