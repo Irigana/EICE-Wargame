@@ -145,19 +145,21 @@ namespace EICE_WARGAME
 
             foreach (T Entite in Entites)
             {
-                ListViewItem NouvelElement = new ListViewItem()
-                {
-                    Tag = Entite
-                };
-                NouvelElement.SubItems.Clear();
+
+                SousFaction SousFaction = Entite as SousFaction;
+
                 if (EstSousFaction)
                 {
-                    SousFaction SousFaction = Entite as SousFaction;
-                    NouvelElement.Text = SousFaction.Name;
+                    ListViewItem NouvelElement = new ListViewItem()
+                    {
+                        Tag = Entite,
+                        Text = SousFaction.Name,
+                    };
                     NouvelElement.SubItems.Add(SousFaction.Name);
-                }
-                listViewSousFaction.Items.Add(NouvelElement);
 
+                    listViewSousFaction.Items.Add(NouvelElement);
+                    
+                }
             }
 
             listViewSousFaction.Visible = false;

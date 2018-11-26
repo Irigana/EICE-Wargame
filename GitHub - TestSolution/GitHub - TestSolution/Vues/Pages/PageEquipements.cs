@@ -53,6 +53,7 @@ namespace EICE_WARGAME
         {
             InitializeComponent();
             m_Utilisateur = null;
+            menuAdmin1.MaPageActive = 5;
 
             #region Initialisation de la ListVieu des caractéristiques
             listViewCaracteristiques.View = View.Details;

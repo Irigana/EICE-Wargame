@@ -128,6 +128,7 @@
             this.Controls.Add(this.buttonScenario);
             this.Name = "MenuAdmin";
             this.Size = new System.Drawing.Size(190, 750);
+            this.Load += new System.EventHandler(this.MenuAdmin_Load);
             this.ResumeLayout(false);
 
         }

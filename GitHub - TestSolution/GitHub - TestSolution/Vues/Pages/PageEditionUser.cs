@@ -35,6 +35,7 @@ namespace EICE_WARGAME
         {
             InitializeComponent();
             m_Utilisateur = null;
+            
             textBoxAvecTextInvisibleNouveauMdp.EnterPress += new KeyEventHandler(textBoxAvecTextInvisible_KeyDown);
             textBoxAvecTextInvisibleConfNewMdp.EnterPress += new KeyEventHandler(textBoxAvecTextInvisible_KeyDown);
         }

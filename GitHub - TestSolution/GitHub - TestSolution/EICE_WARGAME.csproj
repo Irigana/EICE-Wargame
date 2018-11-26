@@ -46,6 +46,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Modeles\SubUnity.cs" />
+    <Compile Include="Modeles\Unity.cs" />
     <Compile Include="Vues\Fiches\FicheUtilisateur.cs">
       <SubType>UserControl</SubType>
     </Compile>

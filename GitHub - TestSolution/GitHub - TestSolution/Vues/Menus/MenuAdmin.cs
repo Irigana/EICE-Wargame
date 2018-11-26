@@ -31,7 +31,16 @@ namespace EICE_WARGAME
             }
         }
         #endregion
-        
+
+        private int m_PageActive;
+
+        public int MaPageActive
+        {
+            get { return m_PageActive; }
+            set { m_PageActive = value; }
+        }
+
+
         public MenuAdmin()
         {
             InitializeComponent();
@@ -103,6 +112,42 @@ namespace EICE_WARGAME
                 return true;
             });
         }
-        
+
+        private void MenuAdmin_Load(object sender, EventArgs e)
+        {
+            switch(m_PageActive)
+            {
+                case 1:
+                    {
+                        buttonScenario.BackColor = System.Drawing.SystemColors.Window;
+                        break;
+                    }
+                case 2:
+                    return;
+                case 3:
+                    {
+                        buttonFaction.BackColor = System.Drawing.SystemColors.Window;
+                        break;
+                    }                    
+                case 4:
+                    {
+                        buttonSousFaction.BackColor = System.Drawing.SystemColors.Window;
+                    }
+                    return;
+                case 5:
+                    {
+                        buttonEquipement.BackColor = System.Drawing.SystemColors.Window;
+                        break;
+                    }
+                case 6:
+                    {
+                        buttonGestionUser.BackColor = System.Drawing.SystemColors.Window;
+                    }
+                    return;
+                default:
+                    return;
+                    
+            }
+        }
     }
 }

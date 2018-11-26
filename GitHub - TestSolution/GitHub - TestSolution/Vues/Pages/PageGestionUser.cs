@@ -43,6 +43,7 @@ namespace EICE_WARGAME
             buttonSupprimer.Enabled = false;
             buttonDestitution.Enabled = false;
             buttonPromouvoir.Enabled = false;
+            menuAdmin1.MaPageActive = 6;
 
             ChargerUsers();
 
@@ -108,7 +109,6 @@ namespace EICE_WARGAME
                     // Si l'administrateur choisit un autre administrateur
                     else if(Utilisateur.Role.Id != ficheUtilisateur1.UtilisateurSelectionne.Role.Id)
                     {
-                        // TODO : demander à tout le monde le mieux 
                         buttonSupprimer.Enabled = false;
                         buttonPromouvoir.Enabled = false;
                         buttonDestitution.Enabled = false;

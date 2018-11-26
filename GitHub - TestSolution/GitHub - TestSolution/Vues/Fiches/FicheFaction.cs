@@ -144,6 +144,7 @@ namespace EICE_WARGAME
                     NouvelElement.SubItems.Add(Faction.Name);
                 }
                 listViewFaction.Items.Add(NouvelElement);
+                
 
             }
 
