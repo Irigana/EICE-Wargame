@@ -44,10 +44,10 @@
             // labelEditionUser
             // 
             this.labelEditionUser.AutoSize = true;
-            this.labelEditionUser.Font = new System.Drawing.Font("Microsoft Sans Serif", 26F);
-            this.labelEditionUser.Location = new System.Drawing.Point(599, 86);
+            this.labelEditionUser.Font = new System.Drawing.Font("Verdana", 25.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelEditionUser.Location = new System.Drawing.Point(582, 84);
             this.labelEditionUser.Name = "labelEditionUser";
-            this.labelEditionUser.Size = new System.Drawing.Size(323, 52);
+            this.labelEditionUser.Size = new System.Drawing.Size(371, 53);
             this.labelEditionUser.TabIndex = 0;
             this.labelEditionUser.Text = "Edition du profil";
             // 
@@ -97,7 +97,7 @@
             // textBoxAvecTextInvisibleConfNewMdp
             // 
             this.textBoxAvecTextInvisibleConfNewMdp.ForeColor = System.Drawing.SystemColors.ButtonShadow;
-            this.textBoxAvecTextInvisibleConfNewMdp.Location = new System.Drawing.Point(608, 341);
+            this.textBoxAvecTextInvisibleConfNewMdp.Location = new System.Drawing.Point(608, 405);
             this.textBoxAvecTextInvisibleConfNewMdp.Margin = new System.Windows.Forms.Padding(0);
             this.textBoxAvecTextInvisibleConfNewMdp.MotDePasseCache = true;
             this.textBoxAvecTextInvisibleConfNewMdp.Name = "textBoxAvecTextInvisibleConfNewMdp";
@@ -108,7 +108,7 @@
             // textBoxAvecTextInvisibleNouveauMdp
             // 
             this.textBoxAvecTextInvisibleNouveauMdp.ForeColor = System.Drawing.SystemColors.ButtonShadow;
-            this.textBoxAvecTextInvisibleNouveauMdp.Location = new System.Drawing.Point(608, 292);
+            this.textBoxAvecTextInvisibleNouveauMdp.Location = new System.Drawing.Point(608, 352);
             this.textBoxAvecTextInvisibleNouveauMdp.Margin = new System.Windows.Forms.Padding(0);
             this.textBoxAvecTextInvisibleNouveauMdp.MotDePasseCache = true;
             this.textBoxAvecTextInvisibleNouveauMdp.Name = "textBoxAvecTextInvisibleNouveauMdp";
@@ -129,7 +129,7 @@
             // textBoxAvecTextInvisibleAncienMdp
             // 
             this.textBoxAvecTextInvisibleAncienMdp.ForeColor = System.Drawing.SystemColors.ButtonShadow;
-            this.textBoxAvecTextInvisibleAncienMdp.Location = new System.Drawing.Point(608, 389);
+            this.textBoxAvecTextInvisibleAncienMdp.Location = new System.Drawing.Point(608, 297);
             this.textBoxAvecTextInvisibleAncienMdp.Margin = new System.Windows.Forms.Padding(0);
             this.textBoxAvecTextInvisibleAncienMdp.MotDePasseCache = true;
             this.textBoxAvecTextInvisibleAncienMdp.Name = "textBoxAvecTextInvisibleAncienMdp";

@@ -44,7 +44,8 @@ namespace EICE_WARGAME
         public PageSousFaction()
         {
             InitializeComponent();
-            m_Utilisateur = null;            
+            m_Utilisateur = null;
+            menuAdmin1.MaPageActive = 4;  
             //-------------------------
             buttonAnnulerSF.Enabled = false;
             buttonModifierSF.Enabled = false;
