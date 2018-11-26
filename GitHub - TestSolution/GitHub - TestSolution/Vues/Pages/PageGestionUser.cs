@@ -108,7 +108,6 @@ namespace EICE_WARGAME
                     // Si l'administrateur choisit un autre administrateur
                     else if(Utilisateur.Role.Id != ficheUtilisateur1.UtilisateurSelectionne.Role.Id)
                     {
-                        // TODO : demander à tout le monde le mieux 
                         buttonSupprimer.Enabled = false;
                         buttonPromouvoir.Enabled = false;
                         buttonDestitution.Enabled = false;

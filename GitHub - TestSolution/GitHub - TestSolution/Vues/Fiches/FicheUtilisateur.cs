@@ -143,24 +143,23 @@ namespace EICE_WARGAME
 
             foreach (T Entite in Entites)
             {
-                ListViewItem NouvelElement = new ListViewItem()
-                {
-                    Tag = Entite
-                };
-                NouvelElement.SubItems.Clear();
+                
+                Utilisateur Utilisateur = Entite as Utilisateur;
                 if (EstUtilisateur)
                 {
-
-                    // TODO : Demander au prof pourquoi j'ai du faire de cette façons
-                    Utilisateur Utilisateur = Entite as Utilisateur;
-                    NouvelElement.Text = Utilisateur.Role.NomRole;
+                    ListViewItem NouvelElement = new ListViewItem()
+                    {
+                        Tag = Entite,
+                        Text = Utilisateur.Login,                                      
+                    };
+                
+                    
                     NouvelElement.SubItems.Add(Utilisateur.Role.NomRole);
 
-                    NouvelElement.Text = Utilisateur.Login;
-                    NouvelElement.SubItems.Add(Utilisateur.Login);
-
+                    listViewUsers.Items.Add(NouvelElement);
+                    
                 }
-                listViewUsers.Items.Add(NouvelElement);
+
 
             }
 
