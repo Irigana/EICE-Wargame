@@ -9,20 +9,20 @@ namespace EICE_WARGAME
 {
 	public class Unity : Entite<Unity, Unity.Champ>
 	{
-		/// <summary>
-		/// Champ décrivant cette faction
-		/// </summary>
-		public enum Champ
+        /// <summary>
+        /// Champ décrivant cette Unity
+        /// </summary>
+        public enum Champ
 		{
-			/// <summary>
-			/// Identifiant de cette Faction
-			/// </summary>
-			Id,
-			/// <summary>
-			/// name de ce Faction
-			/// </summary>
-			Name
-		}
+            /// <summary>
+            /// Identifiant de cette Unity
+            /// </summary>
+            Id,
+            /// <summary>
+            /// name de ce Unity
+            /// </summary>
+            Name
+        }
 
         #region Membres privés
         /// <summary>
@@ -31,15 +31,15 @@ namespace EICE_WARGAME
         private string m_Name;
 
         /// <summary>
-        /// Stocke les sous-factions liées à cette Faction
+        /// Stocke les SubUnity liées à cette unity
         /// </summary>
-        private List<Subunity> m_Subunity;
+        private List<SubUnity> m_Subunity;
 
         #endregion
 
         #region Membres publics
         /// <summary>
-        /// Name de ce Faction
+        /// Name de ce Unity
         /// </summary>
         public string Name
         {
@@ -68,11 +68,11 @@ namespace EICE_WARGAME
 			}
 		}
 
-		public IEnumerable<Subunity> Subunity
+		public IEnumerable<SubUnity> Subunity
         {
             get
             {
-                return EnumererSubunity();
+                return EnumererSubUnity();
             }
         }
 		#endregion
@@ -81,18 +81,20 @@ namespace EICE_WARGAME
 		/// <summary>
 		/// Constructeur par défaut
 		/// </summary>
-		public Unity() : base()
+		public Unity() 
+            : base()
         {
 			m_Name = string.Empty;
-            m_Subunity = new List<Subunity>();
+            m_Subunity = new List<SubUnity>();
 		}
 
-		/// <summary>
-		/// Constructeur spécifique
-		/// </summary>
-		/// <param name="Id">Identifiant de ce Faction</param>
-		/// <param name="Name">Nom de l'unité</param>
-		public Subunity(int Id, string Name) : this()
+        /// <summary>
+        /// Constructeur spécifique
+        /// </summary>
+        /// <param name="Id">Identifiant de ce Unity</param>
+        /// <param name="Name">Nom de l'unité</param>
+        public Unity(int Id, string Name) 
+            : this()
         {
 			DefinirId(Id);
 			this.Name = Name;
@@ -103,7 +105,8 @@ namespace EICE_WARGAME
 		/// </summary>
 		/// <param name="Connexion">Connexion au serveur MySQL</param>
 		/// <param name="Enregistrement">Enregistrement d'où extraire les valeurs de champs</param>
-		public Subunity(PDSGBD.MyDB Connexion, PDSGBD.MyDB.IEnregistrement Enregistrement) : this()
+		public Unity(PDSGBD.MyDB Connexion, PDSGBD.MyDB.IEnregistrement Enregistrement)
+            : this()
         {
 			base.Connexion = Connexion;
 			if (Enregistrement != null)
@@ -121,9 +124,9 @@ namespace EICE_WARGAME
 		/// <param name="Connexion">Connexion au serveur MySQL</param>
 		/// <param name="Enregistrements">Enregistrements énumérés, sources des entités à créer</param>
 		/// <returns>Enumération des entités issues des enregistrements énumérés</returns>
-		public static IEnumerable<Subunity> Enumerer(PDSGBD.MyDB Connexion, IEnumerable<PDSGBD.MyDB.IEnregistrement> Enregistrements)
+		public static IEnumerable<Unity> Enumerer(PDSGBD.MyDB Connexion, IEnumerable<PDSGBD.MyDB.IEnregistrement> Enregistrements)
 		{
-			return Enumerer(Enregistrements, Enregistrement => new Subunity(Connexion, Enregistrement));
+			return Enumerer(Enregistrements, Enregistrement => new Unity(Connexion, Enregistrement));
 		}
 
 		
@@ -141,7 +144,7 @@ namespace EICE_WARGAME
 		}
 
         /// <summary>
-        /// Méthode retournant le nom du champs id de la table faction
+        /// Méthode retournant le nom du champs id de la table Unity
         /// </summary>
         public override string IdDeLaTablePrincipale
         {
@@ -162,10 +165,10 @@ namespace EICE_WARGAME
 			}
 		}
 
-        private IEnumerable<Subunity> EnumererSousFactions()
+        private IEnumerable<SubUnity> EnumererSubUnity()
         {
-            if (base.Connexion == null) return new Subunity[0];
-            return Subunity.Enumerer(Connexion, Connexion.Enumerer(
+            if (base.Connexion == null) return new SubUnity[0];
+            return SubUnity.Enumerer(Connexion, Connexion.Enumerer(
                 @"SELECT su_id, su_name, su_fk_unity_id
                     FROM subunity
                     WHERE (su_fk_unity_id = {0})",

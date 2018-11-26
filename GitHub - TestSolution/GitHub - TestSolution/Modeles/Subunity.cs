@@ -7,23 +7,23 @@ using PDSGBD;
 
 namespace EICE_WARGAME
 {
-    public class Subunity : Entite<Subunity, Subunity.Champ>
+    public class SubUnity : Entite<SubUnity, SubUnity.Champ>
     {
         /// <summary>
-        /// Champ décrivant cette SousFaction
+        /// Champ décrivant cette SubUnity
         /// </summary>
         public enum Champ
         {
             /// <summary>
-            /// Identifiant de cette SousFaction
+            /// Identifiant de cette SubUnity
             /// </summary>
             Id,
             /// <summary>
-            /// name de ce SousFaction
+            /// name de ce SubUnity
             /// </summary>
             Name,
             /// <summary>
-            /// Faction de cette SousFaction
+            /// Faction de cette SubUnity
             /// </summary>
             Unity,
         }
@@ -42,12 +42,12 @@ namespace EICE_WARGAME
         /// <summary>
         /// Stock dans une liste toutes les unités liées (unité maitre et "esclaves")
         /// </summary>
-        private List<Sub_Sub> m_Sub_Sub;
+        //TODO : private List<Sub_Sub> m_Sub_Sub;
         #endregion
 
         #region Membres publics
         /// <summary>
-        /// Nom de la sous faction
+        /// Nom de la SubUnity
         /// </summary>
         public string Name
         {
@@ -76,14 +76,15 @@ namespace EICE_WARGAME
                 }
             }
         }
-
+        //TODO :
+        /*
         public IEnumerable<Sub_Sub> Sub_Sub
         {
             get
             {
                 return EnumererSub_Sub();
             }
-        }
+        }*/
 
         /// <summary>
         /// Id de de l'unity en question
@@ -109,18 +110,20 @@ namespace EICE_WARGAME
         /// <summary>
         /// Constructeur par défaut
         /// </summary>
-        public Subunity() : base()
+        public SubUnity() 
+            : base()
         {
             m_Name = string.Empty;
-            m_Sub_Sub = new List<Sub_Sub>();
+            //TODO : m_Sub_Sub = new List<Sub_Sub>();
         }
 
         /// <summary>
         /// Constructeur spécifique
         /// </summary>
-        /// <param name="Id">Identifiant de ce SousFaction</param>
+        /// <param name="Id">Identifiant de ce SubUnity</param>
         /// <param name="Name">Nom de la sous unité</param>
-        public Subunity(int Id, string Name) : this()
+        public SubUnity(int Id, string Name) 
+            : this()
         {
             DefinirId(Id);
             this.Name = Name;
@@ -131,7 +134,7 @@ namespace EICE_WARGAME
         /// </summary>
         /// <param name="Connexion">Connexion au serveur MySQL</param>
         /// <param name="Enregistrement">Enregistrement d'où extraire les valeurs de champs</param>
-        public Subunity(PDSGBD.MyDB Connexion, PDSGBD.MyDB.IEnregistrement Enregistrement) : this()
+        public SubUnity(PDSGBD.MyDB Connexion, PDSGBD.MyDB.IEnregistrement Enregistrement) : this()
         {
             base.Connexion = Connexion;
             if (Enregistrement != null)
@@ -149,9 +152,9 @@ namespace EICE_WARGAME
         /// <param name="Connexion">Connexion au serveur MySQL</param>
         /// <param name="Enregistrements">Enregistrements énumérés, sources des entités à créer</param>
         /// <returns>Enumération des entités issues des enregistrements énumérés</returns>
-        public static IEnumerable<Subunity> Enumerer(PDSGBD.MyDB Connexion, IEnumerable<PDSGBD.MyDB.IEnregistrement> Enregistrements)
+        public static IEnumerable<SubUnity> Enumerer(PDSGBD.MyDB Connexion, IEnumerable<PDSGBD.MyDB.IEnregistrement> Enregistrements)
         {
-            return Enumerer(Enregistrements, Enregistrement => new Subunity(Connexion, Enregistrement));
+            return Enumerer(Enregistrements, Enregistrement => new SubUnity(Connexion, Enregistrement));
         }
 
 
@@ -169,7 +172,7 @@ namespace EICE_WARGAME
         }
 
         /// <summary>
-        /// Méthode retournant le nom du champs id de la table sousfaction
+        /// Méthode retournant le nom du champs id de la table SubUnity
         /// </summary>
         public override string IdDeLaTablePrincipale
         {
