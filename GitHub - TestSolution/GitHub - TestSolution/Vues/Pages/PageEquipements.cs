@@ -89,16 +89,18 @@ namespace EICE_WARGAME
             checkBoxVisibility.Checked = true;
 
             // TODO: Modifier la page de la manière suivante:
-            // Ajouter une liste dans laquelle les caractéristiques existantes ou en cours d'ajout seront affichées
-            // Sur cette page on peut ajouter un nouvel équipement avec ses caractéristiques ET ...
-            // ... Ajouter des caractéristiques à un équipement existant => ListeDéroulante pour choisir un équipement en haut de la page
-            // Si l'utilisateur sélectionne un équipement existant alors les caractéristiques existantes sont montrées dans la liste d'affichage des caractéristiques ET ...
-            // ... Le textbox du nom de l'équipement et la liste du type de l'équipement sont rempli avec les données de l'équipement existant sélectionné
+            // Ajouter la modification de l'équipement 
+            //                  * Modifier le nom
+            //                  * Modifier la valeur d'une de ces caractéristique
+            //                  * Supprimer une caractéristique d'un équipement
+            // Listes déroulantes mettre en dropdown au lieu de dropdownlist
+            // Ajouter un machin autocomplete dans le ctor voir listederoulante faction ligne 40-41
             listeDeroulanteStuff1.Stuff = Program.GMBD.EnumererStuff(null, null, null, PDSGBD.MyDB.CreerCodeSql("st_name"));
             listeDeroulanteStuff1.SurChangementSelection += ListeStuffChangementSelection;
 
             listeDeroulanteFeature1.Feature = Program.GMBD.EnumererFeature(null, null, null, PDSGBD.MyDB.CreerCodeSql("fe_name"));
             listeDeroulanteFeature1.SurChangementSelection += ListeFeatureChangementSelection;
+            
             
         }
 
