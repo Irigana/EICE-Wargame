@@ -142,14 +142,7 @@ namespace EICE_WARGAME
             Faction.SupprimerEnCascade(m_BD);
             return true;
         }
-        /*
-        public long NombreDeSousFactionLiee(int IdFaction)
-        {
-
-            long Resultat = m_BD.ValeurDe<long>("SELECT COUNT(*) FROM subfaction WHERE sf_fk_faction_id = {0}", IdFaction);
-            return Resultat;          
-        }
-        */
+        
         public void MettreAJourListeFaction(ListeDeroulanteFaction Liste)
         {
             Liste.Faction = Program.GMBD.EnumererFaction(null, null, null, new MyDB.CodeSql("ORDER BY fa_name"));
@@ -181,9 +174,20 @@ namespace EICE_WARGAME
                         null, null,
                         new MyDB.CodeSql("WHERE subfaction.sf_fk_faction_id = {0}", IdFactionSelectionne),
                         new MyDB.CodeSql("ORDER BY subfaction.sf_name"));           
+        }        
+
+        public void MettreAJourListeSousFaction(ListeDeroulanteSousFaction Liste, int IdFactionSelectionne)
+        {
+            Liste.SousFaction = Program.GMBD.EnumererSousFaction(null, null, new MyDB.CodeSql("WHERE subfaction.sf_id = {0}",IdFactionSelectionne), new MyDB.CodeSql("ORDER BY sf_name"));
         }
         #endregion
 
+        #region Requetes caractère
+        //+=======================+
+        //| Requetes utilisateurs |
+        //+=======================+
+
+        #endregion
         #region Toutes les énumérations
         //+==================+
         //| Les énumérations |
@@ -222,6 +226,15 @@ namespace EICE_WARGAME
             if (ClauseJoin == null) ClauseJoin = MyDB.CodeSql.Vide;
             if (ValeurSouhaitee == null) ValeurSouhaitee = new MyDB.CodeSql("*");
             return Faction.Enumerer(m_BD, m_BD.Enumerer("SELECT {0} FROM {1} {2} {3} {4}", ValeurSouhaitee, c_NomTable_Faction, ClauseJoin, ClauseWhere, ClauseOrderBy));
+        }
+
+        public IEnumerable<Charact> EnumererCaractere(MyDB.CodeSql ValeurSouhaitee, MyDB.CodeSql ClauseJoin, MyDB.CodeSql ClauseWhere, MyDB.CodeSql ClauseOrderBy)
+        {
+            if (ClauseWhere == null) ClauseWhere = MyDB.CodeSql.Vide;
+            if (ClauseOrderBy == null) ClauseOrderBy = MyDB.CodeSql.Vide;
+            if (ClauseJoin == null) ClauseJoin = MyDB.CodeSql.Vide;
+            if (ValeurSouhaitee == null) ValeurSouhaitee = new MyDB.CodeSql("*");
+            return Charact.Enumerer(m_BD, m_BD.Enumerer("SELECT {0} FROM {1} {2} {3} {4}", ValeurSouhaitee, c_NomTable_Charact, ClauseJoin, ClauseWhere, ClauseOrderBy));
         }
 
         public IEnumerable<SousFaction> EnumererSousFaction(MyDB.CodeSql ValeurSouhaitee, MyDB.CodeSql ClauseJoin, MyDB.CodeSql ClauseWhere, MyDB.CodeSql ClauseOrderBy)
@@ -267,16 +280,7 @@ namespace EICE_WARGAME
             if (ClauseJoin == null) ClauseJoin = MyDB.CodeSql.Vide;
             if (ValeurSouhaitee == null) ValeurSouhaitee = new MyDB.CodeSql("*");
             return Feature.Enumerer(m_BD, m_BD.Enumerer("SELECT {0} FROM {1} {2} {3} {4}", ValeurSouhaitee, c_NomTable_Feature, ClauseJoin, ClauseWhere, ClauseOrderBy));
-        }
-
-        public IEnumerable<Charact> EnumererCharact(MyDB.CodeSql ValeurSouhaitee, MyDB.CodeSql ClauseJoin, MyDB.CodeSql ClauseWhere, MyDB.CodeSql ClauseOrderBy)
-        {
-            if (ClauseWhere == null) ClauseWhere = MyDB.CodeSql.Vide;
-            if (ClauseOrderBy == null) ClauseOrderBy = MyDB.CodeSql.Vide;
-            if (ClauseJoin == null) ClauseJoin = MyDB.CodeSql.Vide;
-            if (ValeurSouhaitee == null) ValeurSouhaitee = new MyDB.CodeSql("*");
-            return Charact.Enumerer(m_BD, m_BD.Enumerer("SELECT {0} FROM {1} {2} {3} {4}", ValeurSouhaitee, c_NomTable_Charact, ClauseJoin, ClauseWhere, ClauseOrderBy));
-        }
+        }        
 
         public IEnumerable<FigurineStuff> EnumererFigurineStuff(MyDB.CodeSql ValeurSouhaitee, MyDB.CodeSql ClauseJoin, MyDB.CodeSql ClauseWhere, MyDB.CodeSql ClauseOrderBy)
         {

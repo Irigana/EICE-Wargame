@@ -34,7 +34,6 @@
             // comboBoxListeSousFaction
             // 
             this.comboBoxListeSousFaction.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.comboBoxListeSousFaction.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboBoxListeSousFaction.FormattingEnabled = true;
             this.comboBoxListeSousFaction.Location = new System.Drawing.Point(0, 0);
             this.comboBoxListeSousFaction.Name = "comboBoxListeSousFaction";

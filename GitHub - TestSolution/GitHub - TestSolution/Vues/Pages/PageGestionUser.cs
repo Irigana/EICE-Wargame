@@ -102,24 +102,30 @@ namespace EICE_WARGAME
                     // Si il ne s'est pas sélectionner lui même
                     if (Utilisateur.Id != ficheUtilisateur1.UtilisateurSelectionne.Id)
                     { 
-                        buttonSupprimer.Enabled = true;
-                        buttonPromouvoir.Enabled = true;
-                        buttonDestitution.Enabled = true;
-                    }
-                    // Si l'administrateur choisit un autre administrateur
-                    else if(Utilisateur.Role.Id != ficheUtilisateur1.UtilisateurSelectionne.Role.Id)
+                        // Si c'est un autre admin il ne peut rien faire
+                        if(ficheUtilisateur1.UtilisateurSelectionne.Role.Id == 2)
+                        {
+                            buttonSupprimer.Enabled = false;
+                            buttonPromouvoir.Enabled = false;
+                            buttonDestitution.Enabled = false;
+                        }
+                        // Sinon
+                        else
+                        {
+                            buttonSupprimer.Enabled = true;
+                            buttonPromouvoir.Enabled = true;
+                            buttonDestitution.Enabled = true;
+                        }
+                    }                   
+                }
+                else
+                {
+                    Form_Principal.Instance.CreerPageCourante<PageMenuDashboard>(
+                    (page) =>
                     {
-                        buttonSupprimer.Enabled = false;
-                        buttonPromouvoir.Enabled = false;
-                        buttonDestitution.Enabled = false;
-                    }
-                    // Si il s'est sélectionner lui même
-                    else
-                    {
-                        buttonSupprimer.Enabled = false;
-                        buttonPromouvoir.Enabled = false;
-                        buttonDestitution.Enabled = false;
-                    }
+                        page.Utilisateur = Utilisateur;
+                        return true;
+                    });
                 }
             }
             else

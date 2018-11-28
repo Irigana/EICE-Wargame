@@ -113,6 +113,15 @@ namespace EICE_WARGAME
             });
         }
 
+        private void buttonCaractere_Click(object sender, EventArgs e)
+        {
+            Form_Principal.Instance.CreerPageCourante<PageCaractere>((Page) =>
+            {
+                Page.Utilisateur = Utilisateur;
+                return true;
+            });
+        }
+
         private void MenuAdmin_Load(object sender, EventArgs e)
         {
             switch(m_PageActive)
@@ -123,7 +132,10 @@ namespace EICE_WARGAME
                         break;
                     }
                 case 2:
-                    return;
+                    {
+                        buttonCaractere.BackColor = System.Drawing.SystemColors.Window;
+                        break;
+                    }
                 case 3:
                     {
                         buttonFaction.BackColor = System.Drawing.SystemColors.Window;
@@ -149,5 +161,7 @@ namespace EICE_WARGAME
                     
             }
         }
+
+        
     }
 }
