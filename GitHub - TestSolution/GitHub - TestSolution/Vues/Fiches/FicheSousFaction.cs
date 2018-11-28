@@ -39,7 +39,7 @@ namespace EICE_WARGAME
             listViewSousFaction.Items.Clear();
             listViewSousFaction.Columns.Clear();
             listViewSousFaction.SelectedIndexChanged += listViewSousFaction_SelectedIndexChanged;
-            textBoxSousFaction.Enabled = false;
+            textBoxSousFaction.Enabled = false;            
         }
 
        

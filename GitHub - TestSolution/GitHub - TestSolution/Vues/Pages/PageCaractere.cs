@@ -48,8 +48,7 @@ namespace EICE_WARGAME
             buttonSupprimerCaract.Enabled = false;
             buttonAjouterCaract.Enabled = false;
             ficheCaractere1.Enabled = false;
-            menuAdmin1.MaPageActive = 2;
-
+            menuAdmin1.MaPageActive = 2;            
 
             Program.GMBD.MettreAJourListeFaction(listeDeroulanteFaction1);
 

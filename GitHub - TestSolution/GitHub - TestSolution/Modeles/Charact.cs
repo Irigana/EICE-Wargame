@@ -124,8 +124,8 @@ namespace EICE_WARGAME
             base.Connexion = Connexion;
             if (Enregistrement != null)
             {
-                DefinirId(Enregistrement.ValeurChampComplet<int>(NomDeLaTablePrincipale, "sf_id"));
-                this.Name = Enregistrement.ValeurChampComplet<string>(NomDeLaTablePrincipale, "sf_name");
+                DefinirId(Enregistrement.ValeurChampComplet<int>(NomDeLaTablePrincipale, "ch_id"));
+                this.Name = Enregistrement.ValeurChampComplet<string>(NomDeLaTablePrincipale, "ch_name");
             }
         }
 

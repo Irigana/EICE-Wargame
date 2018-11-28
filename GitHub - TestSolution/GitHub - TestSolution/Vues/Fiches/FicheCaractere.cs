@@ -137,7 +137,7 @@ namespace EICE_WARGAME
                 listViewCaractere.Columns.Add(new ColumnHeader()
                 {
                     Name = "Caracteres",
-                    Text = "Caractères",
+                    Text = "Caractères",                    
                     TextAlign = HorizontalAlignment.Center,
                 });
 
