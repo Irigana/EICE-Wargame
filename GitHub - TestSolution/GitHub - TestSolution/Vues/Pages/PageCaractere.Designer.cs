@@ -40,13 +40,13 @@
             this.buttonModifierCaract = new System.Windows.Forms.Button();
             this.buttonAjouterCaract = new System.Windows.Forms.Button();
             this.labelNouveauCaract = new System.Windows.Forms.Label();
+            this.errorProviderErreurCaractere = new System.Windows.Forms.ErrorProvider(this.components);
+            this.ValidationProvider = new System.Windows.Forms.ErrorProvider(this.components);
             this.ficheCaractere1 = new EICE_WARGAME.FicheCaractere();
             this.listeDeroulanteSousFaction1 = new EICE_WARGAME.ListeDeroulanteSousFaction();
             this.listeDeroulanteFaction1 = new EICE_WARGAME.ListeDeroulanteFaction();
             this.buttonOptionsUser1 = new EICE_WARGAME.ButtonOptionsUser();
             this.menuAdmin1 = new EICE_WARGAME.MenuAdmin();
-            this.errorProviderErreurCaractere = new System.Windows.Forms.ErrorProvider(this.components);
-            this.ValidationProvider = new System.Windows.Forms.ErrorProvider(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.errorProviderErreurCaractere)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ValidationProvider)).BeginInit();
             this.SuspendLayout();
@@ -73,7 +73,7 @@
             // 
             this.labelFaction.AutoSize = true;
             this.labelFaction.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F);
-            this.labelFaction.Location = new System.Drawing.Point(672, 153);
+            this.labelFaction.Location = new System.Drawing.Point(451, 132);
             this.labelFaction.Name = "labelFaction";
             this.labelFaction.Size = new System.Drawing.Size(65, 18);
             this.labelFaction.TabIndex = 35;
@@ -83,7 +83,7 @@
             // 
             this.labelSF.AutoSize = true;
             this.labelSF.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F);
-            this.labelSF.Location = new System.Drawing.Point(672, 208);
+            this.labelSF.Location = new System.Drawing.Point(451, 187);
             this.labelSF.Name = "labelSF";
             this.labelSF.Size = new System.Drawing.Size(99, 18);
             this.labelSF.TabIndex = 36;
@@ -93,7 +93,7 @@
             // 
             this.labelRechercheCaract.AutoSize = true;
             this.labelRechercheCaract.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F);
-            this.labelRechercheCaract.Location = new System.Drawing.Point(672, 269);
+            this.labelRechercheCaract.Location = new System.Drawing.Point(923, 132);
             this.labelRechercheCaract.Name = "labelRechercheCaract";
             this.labelRechercheCaract.Size = new System.Drawing.Size(179, 18);
             this.labelRechercheCaract.TabIndex = 37;
@@ -101,69 +101,87 @@
             // 
             // textBoxCaractere
             // 
-            this.textBoxCaractere.Location = new System.Drawing.Point(675, 601);
+            this.textBoxCaractere.Location = new System.Drawing.Point(454, 274);
             this.textBoxCaractere.Name = "textBoxCaractere";
             this.textBoxCaractere.Size = new System.Drawing.Size(286, 22);
             this.textBoxCaractere.TabIndex = 39;
+            this.textBoxCaractere.Enter += new System.EventHandler(this.textBoxCaractere_Enter);
+            this.textBoxCaractere.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBoxCaractere_KeyPress);
             // 
             // buttonAnnulerCaract
             // 
             this.buttonAnnulerCaract.BackColor = System.Drawing.SystemColors.Window;
             this.buttonAnnulerCaract.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.buttonAnnulerCaract.Location = new System.Drawing.Point(815, 644);
+            this.buttonAnnulerCaract.Location = new System.Drawing.Point(838, 494);
             this.buttonAnnulerCaract.Name = "buttonAnnulerCaract";
-            this.buttonAnnulerCaract.Size = new System.Drawing.Size(105, 29);
+            this.buttonAnnulerCaract.Size = new System.Drawing.Size(121, 39);
             this.buttonAnnulerCaract.TabIndex = 43;
             this.buttonAnnulerCaract.Text = "Annuler";
             this.buttonAnnulerCaract.UseVisualStyleBackColor = false;
+            this.buttonAnnulerCaract.Click += new System.EventHandler(this.buttonAnnulerCaract_Click);
             // 
             // buttonSupprimerCaract
             // 
             this.buttonSupprimerCaract.BackColor = System.Drawing.SystemColors.Window;
             this.buttonSupprimerCaract.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.buttonSupprimerCaract.Location = new System.Drawing.Point(926, 644);
+            this.buttonSupprimerCaract.Location = new System.Drawing.Point(965, 494);
             this.buttonSupprimerCaract.Name = "buttonSupprimerCaract";
-            this.buttonSupprimerCaract.Size = new System.Drawing.Size(105, 29);
+            this.buttonSupprimerCaract.Size = new System.Drawing.Size(121, 39);
             this.buttonSupprimerCaract.TabIndex = 42;
             this.buttonSupprimerCaract.Text = "Supprimer";
             this.buttonSupprimerCaract.UseVisualStyleBackColor = false;
+            this.buttonSupprimerCaract.Click += new System.EventHandler(this.buttonSupprimerCaract_Click);
             // 
             // buttonModifierCaract
             // 
             this.buttonModifierCaract.BackColor = System.Drawing.SystemColors.Window;
             this.buttonModifierCaract.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.buttonModifierCaract.Location = new System.Drawing.Point(704, 644);
+            this.buttonModifierCaract.Location = new System.Drawing.Point(711, 494);
             this.buttonModifierCaract.Name = "buttonModifierCaract";
-            this.buttonModifierCaract.Size = new System.Drawing.Size(105, 29);
+            this.buttonModifierCaract.Size = new System.Drawing.Size(121, 39);
             this.buttonModifierCaract.TabIndex = 41;
             this.buttonModifierCaract.Text = "Modifier";
             this.buttonModifierCaract.UseVisualStyleBackColor = false;
+            this.buttonModifierCaract.Click += new System.EventHandler(this.buttonModifierCaract_Click);
             // 
             // buttonAjouterCaract
             // 
             this.buttonAjouterCaract.BackColor = System.Drawing.SystemColors.Window;
             this.buttonAjouterCaract.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.buttonAjouterCaract.Location = new System.Drawing.Point(593, 644);
+            this.buttonAjouterCaract.Location = new System.Drawing.Point(584, 494);
             this.buttonAjouterCaract.Name = "buttonAjouterCaract";
-            this.buttonAjouterCaract.Size = new System.Drawing.Size(105, 29);
+            this.buttonAjouterCaract.Size = new System.Drawing.Size(121, 39);
             this.buttonAjouterCaract.TabIndex = 40;
             this.buttonAjouterCaract.Text = "Ajouter";
             this.buttonAjouterCaract.UseVisualStyleBackColor = false;
+            this.buttonAjouterCaract.Click += new System.EventHandler(this.buttonAjouterCaract_Click);
             // 
             // labelNouveauCaract
             // 
             this.labelNouveauCaract.AutoSize = true;
             this.labelNouveauCaract.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F);
-            this.labelNouveauCaract.Location = new System.Drawing.Point(672, 580);
+            this.labelNouveauCaract.Location = new System.Drawing.Point(451, 253);
             this.labelNouveauCaract.Name = "labelNouveauCaract";
             this.labelNouveauCaract.Size = new System.Drawing.Size(141, 18);
             this.labelNouveauCaract.TabIndex = 44;
             this.labelNouveauCaract.Text = "Nouveau caractère :";
             // 
+            // errorProviderErreurCaractere
+            // 
+            this.errorProviderErreurCaractere.BlinkRate = 0;
+            this.errorProviderErreurCaractere.BlinkStyle = System.Windows.Forms.ErrorBlinkStyle.NeverBlink;
+            this.errorProviderErreurCaractere.ContainerControl = this;
+            // 
+            // ValidationProvider
+            // 
+            this.ValidationProvider.BlinkRate = 0;
+            this.ValidationProvider.BlinkStyle = System.Windows.Forms.ErrorBlinkStyle.NeverBlink;
+            this.ValidationProvider.ContainerControl = this;
+            // 
             // ficheCaractere1
             // 
             this.ficheCaractere1.CaractereSelectionne = null;
-            this.ficheCaractere1.Location = new System.Drawing.Point(675, 290);
+            this.ficheCaractere1.Location = new System.Drawing.Point(926, 153);
             this.ficheCaractere1.Name = "ficheCaractere1";
             this.ficheCaractere1.Size = new System.Drawing.Size(298, 287);
             this.ficheCaractere1.TabIndex = 38;
@@ -172,7 +190,7 @@
             // listeDeroulanteSousFaction1
             // 
             this.listeDeroulanteSousFaction1.Enabled = false;
-            this.listeDeroulanteSousFaction1.Location = new System.Drawing.Point(675, 229);
+            this.listeDeroulanteSousFaction1.Location = new System.Drawing.Point(454, 208);
             this.listeDeroulanteSousFaction1.Name = "listeDeroulanteSousFaction1";
             this.listeDeroulanteSousFaction1.Size = new System.Drawing.Size(286, 25);
             this.listeDeroulanteSousFaction1.SousFactionSelectionnee = null;
@@ -181,7 +199,7 @@
             // listeDeroulanteFaction1
             // 
             this.listeDeroulanteFaction1.FactionSelectionnee = null;
-            this.listeDeroulanteFaction1.Location = new System.Drawing.Point(675, 174);
+            this.listeDeroulanteFaction1.Location = new System.Drawing.Point(454, 153);
             this.listeDeroulanteFaction1.Name = "listeDeroulanteFaction1";
             this.listeDeroulanteFaction1.Size = new System.Drawing.Size(286, 25);
             this.listeDeroulanteFaction1.TabIndex = 33;
@@ -206,18 +224,6 @@
             this.menuAdmin1.TabIndex = 0;
             this.menuAdmin1.Utilisateur = null;
             this.menuAdmin1.Load += new System.EventHandler(this.PageCaractere_Load);
-            // 
-            // errorProviderErreurCaractere
-            // 
-            this.errorProviderErreurCaractere.BlinkRate = 0;
-            this.errorProviderErreurCaractere.BlinkStyle = System.Windows.Forms.ErrorBlinkStyle.NeverBlink;
-            this.errorProviderErreurCaractere.ContainerControl = this;
-            // 
-            // ValidationProvider
-            // 
-            this.ValidationProvider.BlinkRate = 0;
-            this.ValidationProvider.BlinkStyle = System.Windows.Forms.ErrorBlinkStyle.NeverBlink;
-            this.ValidationProvider.ContainerControl = this;
             // 
             // PageCaractere
             // 

@@ -349,9 +349,9 @@ namespace EICE_WARGAME
         {            
 
             PopUpConfirmation FormConfirmation = new PopUpConfirmation();            
-            // TODO : Vérifier si il a des enregistrement pour modifier le texte en dessous et dire à l'utilisateur le nombre de charact qu'a cet sous faction
+            // TODO ( OPTI ): Vérifier si il a des enregistrement pour modifier le texte en dessous et dire à l'utilisateur le nombre de charact qu'a cet sous faction
 
-            FormConfirmation.LabelDuTexte = "Êtes vous certain de vouloir supprimer cet enregistrement ?";
+            FormConfirmation.LabelDuTexte = "Êtes vous certain de vouloir supprimer cette sous faction ?";
             FormConfirmation.ShowDialog();
             if(FormConfirmation.Confirmation)
             {
@@ -362,7 +362,7 @@ namespace EICE_WARGAME
                     buttonAnnulerSF.Enabled = false;
                     buttonModifierSF.Enabled = false;
                     buttonSupprimerSF.Enabled = false;
-                    errorProviderValider.SetError(textBoxSousFaction,"Suppresion correctement effectuée");
+                    errorProviderValider.SetError(textBoxSousFaction,"Suppression correctement effectuée");
                     textBoxSousFaction.Text = "";
                 }
             }

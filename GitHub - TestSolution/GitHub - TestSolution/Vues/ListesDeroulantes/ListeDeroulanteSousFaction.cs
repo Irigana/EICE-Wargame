@@ -29,6 +29,11 @@ namespace EICE_WARGAME
 
         }
 
+        public void ResetTextSousFaction()
+        {
+            comboBoxListeSousFaction.Text = "";
+        }
+
 
         public ListeDeroulanteSousFaction()
         {
@@ -85,6 +90,7 @@ namespace EICE_WARGAME
         {
             this.Size = new Size(this.Size.Width, comboBoxListeSousFaction.Height);
         }
+
     }
 
 }

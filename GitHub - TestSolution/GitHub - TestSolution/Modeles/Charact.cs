@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using PDSGBD;
 
 namespace EICE_WARGAME
 {
@@ -174,8 +175,15 @@ namespace EICE_WARGAME
         {
             get
             {
-                return new PDSGBD.MyDB.CodeSql("ch_name = {0}, sf_fk_faction_id = {1}", m_Name, m_SousFaction.Id);
+                return new PDSGBD.MyDB.CodeSql("ch_name = {0}, ch_fk_subfaction_id = {1}", m_Name, m_SousFaction.Id);
             }
+        }
+
+        public override void SupprimerEnCascade(MyDB Connexion)
+        {
+            // TODO : rajouter la suite du chemin
+            Connexion.Executer(@"DELETE FROM charact WHERE ch_id = {0};"
+                                , Id);
         }
 
         #endregion

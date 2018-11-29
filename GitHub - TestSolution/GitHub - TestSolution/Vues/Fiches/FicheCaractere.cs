@@ -82,6 +82,10 @@ namespace EICE_WARGAME
             }
         }
 
+        public void RefreshListViewCaract()
+        {
+            listViewCaractere.Refresh();
+        }
 
         /// <summary>
         /// Type de sous faction sélectionné

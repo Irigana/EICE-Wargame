@@ -105,5 +105,15 @@ namespace EICE_WARGAME
                                 return true;
                             });
         }
+
+        private void buttonCaractère_Click(object sender, EventArgs e)
+        {
+            Form_Principal.Instance.CreerPageCourante<PageCaractere>(
+                            (page) =>
+                            {
+                                page.Utilisateur = Utilisateur;
+                                return true;
+                            });
+        }
     }
 }

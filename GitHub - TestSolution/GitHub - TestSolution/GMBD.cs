@@ -178,14 +178,40 @@ namespace EICE_WARGAME
 
         public void MettreAJourListeSousFaction(ListeDeroulanteSousFaction Liste, int IdFactionSelectionne)
         {
-            Liste.SousFaction = Program.GMBD.EnumererSousFaction(null, null, new MyDB.CodeSql("WHERE subfaction.sf_id = {0}",IdFactionSelectionne), new MyDB.CodeSql("ORDER BY sf_name"));
+            Liste.SousFaction = Program.GMBD.EnumererSousFaction(null, null, new MyDB.CodeSql("WHERE subfaction.sf_fk_faction_id = {0}",IdFactionSelectionne), new MyDB.CodeSql("ORDER BY sf_name"));
         }
         #endregion
 
         #region Requetes caractère
-        //+=======================+
-        //| Requetes utilisateurs |
-        //+=======================+
+        //+====================+
+        //| Requetes caractère |
+        //+====================+
+
+        public bool AjouterCaractere(Charact NouveauCaractere)
+        {
+            return NouveauCaractere.Enregistrer(m_BD, NouveauCaractere, null, false);
+        }
+
+        public void MettreAJourFicheCaractere(FicheCaractere Fiche, int IdFactionSelectionne, int IdSousFactionSelectionne)
+        {
+            Fiche.Caractere = Program.GMBD.EnumererCaractere(
+                        null,
+                        new MyDB.CodeSql("JOIN subfaction ON charact.ch_fk_subfaction_id = subfaction.sf_id JOIN faction ON subfaction.sf_fk_faction_id = faction.fa_id"),
+                        new MyDB.CodeSql("WHERE faction.fa_id = {0} AND subfaction.sf_id = {1}", IdFactionSelectionne,IdSousFactionSelectionne),
+                        new MyDB.CodeSql("ORDER BY charact.ch_name"));
+        }
+
+        public bool ModifierCaractere(Charact Caractere)
+        {
+            return Caractere.Enregistrer(m_BD, Caractere, null, false);
+        }
+
+        public bool SupprimerCaractere(Charact Caractere)
+        {
+            if (!m_BD.EstConnecte) Initialiser();
+            Caractere.SupprimerEnCascade(m_BD);
+            return true;
+        }
 
         #endregion
         #region Toutes les énumérations
