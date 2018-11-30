@@ -49,6 +49,7 @@ namespace EICE_WARGAME
             buttonModifier.Enabled = false;
             buttonSupprimer.Enabled = false;
             buttonAjouter.Enabled = true;
+            menuAdmin1.MaPageActive = 3;
 
             m_FactionEnEdition = new Faction();
             m_FactionEnEdition.SurErreur += FactionEnEdition_SurErreur;
@@ -88,6 +89,9 @@ namespace EICE_WARGAME
             // Permet de passer l'utilisateur par le controler MenuAdmin
             menuAdmin1.Utilisateur = Utilisateur;
 
+            // Permet d'obtenir l'option du menu admin utilisateur une fois l'admin identifié            
+            if (Utilisateur.Role.Id == 2) menuAdmin1.EstAdmin = true;
+            
             ficheFaction1.SurChangementSelection += ficheFaction_SurChangementSelection;
         }
 
@@ -298,6 +302,7 @@ namespace EICE_WARGAME
         {
             errorProviderErreurFaction.Clear();
             ValidationProvider.Clear();
+            if (textBoxFaction.Text == "") buttonAjouter.Enabled = true;
         }
 
     }

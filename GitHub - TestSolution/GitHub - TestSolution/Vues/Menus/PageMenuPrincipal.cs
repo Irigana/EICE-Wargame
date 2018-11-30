@@ -45,7 +45,7 @@ namespace EICE_WARGAME
             if (Utilisateur != null)
             {
                 buttonOptionsUser1.ButtonOptionsUserUpdate();
-                if(Utilisateur.Role.Id == 2)
+                if((Utilisateur.Role.Id == 2) || (Utilisateur.Role.Id == 3))
                 {
                     buttonDashboard.Show();
                 }

@@ -44,7 +44,8 @@ namespace EICE_WARGAME
         public PageSousFaction()
         {
             InitializeComponent();
-            m_Utilisateur = null;            
+            m_Utilisateur = null;
+            menuAdmin1.MaPageActive = 4;  
             //-------------------------
             buttonAnnulerSF.Enabled = false;
             buttonModifierSF.Enabled = false;
@@ -177,8 +178,11 @@ namespace EICE_WARGAME
         /// <param name="e"></param>
         private void PageAjoutFactionSousFaction_Load(object sender, EventArgs e)
         {
-            // Permet de passer l'utilisateur par le controler MenuAdmin
+            // Permet de passer l'utilisateur par le controler MenuAdmin pour le récuperer sur l'autre page
             menuAdmin1.Utilisateur = Utilisateur;
+
+            // Permet d'obtenir l'option du menu admin utilisateur une fois l'admin identifié
+            if (Utilisateur != null) if (Utilisateur.Role.Id == 2) menuAdmin1.EstAdmin = true;
         }
 
         /// <summary>
@@ -194,7 +198,7 @@ namespace EICE_WARGAME
             {
                 FactionExiste = Program.GMBD.EnumererFaction(null,
                                                              null,
-                                                             new MyDB.CodeSql("WHERE faction.fa_id = {0} ", listeDeroulanteFaction1.FactionSelectionnee.Id),
+                                                             new MyDB.CodeSql("WHERE faction.fa_id = {0}", listeDeroulanteFaction1.FactionSelectionnee.Id),
                                                              null).FirstOrDefault();
                 // Si la faction n'existe pas, on crée une nouvelle faction
                 if (FactionExiste != null)
@@ -309,7 +313,7 @@ namespace EICE_WARGAME
             switch (Champ)
             {
                 case SousFaction.Champ.Name:
-                    SousFaction SousFactionExistant = Program.GMBD.EnumererSousFaction(null, null, new PDSGBD.MyDB.CodeSql("WHERE subfaction.sf_name = {0} AND subfaction.sf_fk_faction_id = {2}", textBoxSousFaction.Text, listeDeroulanteFaction1.FactionSelectionnee.Id), null).FirstOrDefault();
+                    SousFaction SousFactionExistant = Program.GMBD.EnumererSousFaction(null, null, new PDSGBD.MyDB.CodeSql("WHERE subfaction.sf_name = {0} AND subfaction.sf_fk_faction_id = {1}", textBoxSousFaction.Text, listeDeroulanteFaction1.FactionSelectionnee.Id), null).FirstOrDefault();
 
                     if (SousFactionExistant != null)
                     {
@@ -345,9 +349,9 @@ namespace EICE_WARGAME
         {            
 
             PopUpConfirmation FormConfirmation = new PopUpConfirmation();            
-            // TODO : Vérifier si il a des enregistrement pour modifier le texte en dessous et dire à l'utilisateur le nombre de charact qu'a cet sous faction
+            // TODO ( OPTI ): Vérifier si il a des enregistrement pour modifier le texte en dessous et dire à l'utilisateur le nombre de charact qu'a cet sous faction
 
-            FormConfirmation.LabelDuTexte = "Êtes vous certain de vouloir supprimer cet enregistrement ?";
+            FormConfirmation.LabelDuTexte = "Êtes vous certain de vouloir supprimer cette sous faction ?";
             FormConfirmation.ShowDialog();
             if(FormConfirmation.Confirmation)
             {
@@ -358,7 +362,7 @@ namespace EICE_WARGAME
                     buttonAnnulerSF.Enabled = false;
                     buttonModifierSF.Enabled = false;
                     buttonSupprimerSF.Enabled = false;
-                    errorProviderValider.SetError(textBoxSousFaction,"Suppresion correctement effectuée");
+                    errorProviderValider.SetError(textBoxSousFaction,"Suppression correctement effectuée");
                     textBoxSousFaction.Text = "";
                 }
             }
@@ -372,6 +376,7 @@ namespace EICE_WARGAME
         {
             errorProviderSousFaction.Clear();
             errorProviderValider.Clear();
+            if (textBoxSousFaction.Text == "") buttonAjouterSF.Enabled = true; 
         }
     }        
 }

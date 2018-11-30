@@ -10,41 +10,54 @@ using System.Windows.Forms;
 
 namespace EICE_WARGAME
 {
-    public partial class FicheFaction : UserControl
+    public partial class FicheCaractere : UserControl
     {
        
-        public FicheFaction()
+        /// <summary>
+        /// Mettre à true pour activer la textBox, sinon false
+        /// </summary>
+        public bool ActiverTextBox
+        {
+            set
+            {
+                textBoxCaractere.Enabled = value;
+            }
+        }
+        
+
+        public FicheCaractere()
         {
             InitializeComponent();
-            listViewFaction.View = View.Details;
-            listViewFaction.FullRowSelect = true;
-            listViewFaction.LabelEdit = false;
-            listViewFaction.Scrollable = true;
-            listViewFaction.AllowColumnReorder = false;
-            listViewFaction.MultiSelect = false;
-            listViewFaction.GridLines = true;
-            listViewFaction.HideSelection = false;
-            listViewFaction.Items.Clear();
-            listViewFaction.Columns.Clear();
-            listViewFaction.SelectedIndexChanged += listViewFaction_SelectedIndexChanged;
+            listViewCaractere.View = View.Details;
+            listViewCaractere.FullRowSelect = true;
+            listViewCaractere.LabelEdit = false;
+            listViewCaractere.Scrollable = true;
+            listViewCaractere.AllowColumnReorder = false;
+            listViewCaractere.MultiSelect = false;
+            listViewCaractere.GridLines = true;
+            listViewCaractere.HideSelection = false;
+            listViewCaractere.Items.Clear();
+            listViewCaractere.Columns.Clear();
+            listViewCaractere.SelectedIndexChanged += listViewCaractere_SelectedIndexChanged;
+            textBoxCaractere.Enabled = false;
         }
 
-
+       
         /// <summary>
         /// Texte du filtre
         /// </summary>
-        public string TexteFiltreFaction
+        public string TexteDuFiltre
         {
             get
             {
-                return textBoxRecherche.Text;
+                return textBoxCaractere.Text;
             }
             set
             {
                 if (value == null) value = string.Empty;
-                if (value != textBoxRecherche.Text)
+                if (value != textBoxCaractere.Text)
                 {
-                    textBoxRecherche.Text = value;
+                    textBoxCaractere.Text = value;
                 }
             }
         }
@@ -54,14 +67,14 @@ namespace EICE_WARGAME
         /// </summary>
         public event EventHandler SurChangementFiltre = null;
 
-        public IEnumerable<Faction> Faction
+        public IEnumerable<Charact> Caractere
         {
             get
             {
-                return listViewFaction.Items
+                return listViewCaractere.Items
                     .OfType<ListViewItem>()
-                    .Where(Element => Element.Tag is Faction)
-                    .Select(Element => Element.Tag as Faction);
+                    .Where(Element => Element.Tag is Charact)
+                    .Select(Element => Element.Tag as Charact);
             }
             set
             {
@@ -69,43 +82,47 @@ namespace EICE_WARGAME
             }
         }
 
+        public void RefreshListViewCaract()
+        {
+            listViewCaractere.Refresh();
+        }
 
         /// <summary>
-        /// Type de faction sélectionné
+        /// Type de sous faction sélectionné
         /// </summary>
-        public Faction FactionSelectionne
+        public Charact CaractereSelectionne
         {
             get
             {
-                return (listViewFaction.SelectedItems.Count == 1) && (listViewFaction.SelectedItems[0].Tag is Faction)
-                    ? listViewFaction.SelectedItems[0].Tag as Faction
+                return (listViewCaractere.SelectedItems.Count == 1) && (listViewCaractere.SelectedItems[0].Tag is Charact)
+                    ? listViewCaractere.SelectedItems[0].Tag as Charact
                     : null;
             }
             set
             {
                 if (value != null)
                 {
-                    foreach (ListViewItem Element in listViewFaction.Items)
+                    foreach (ListViewItem Element in listViewCaractere.Items)
                     {
-                        if ((Element.Tag is Faction) && (Element.Tag as Faction).Id.Equals(value.Id))
+                        if ((Element.Tag is Charact) && (Element.Tag as Charact).Id.Equals(value.Id))
                         {
                             Element.Selected = true;
                             return;
                         }
                     }
                 }
-                listViewFaction.SelectedItems.Clear();
+                listViewCaractere.SelectedItems.Clear();
             }
         }
 
 
         /// <summary>
-        /// Evénement déclenché quand il y a un changement de sélection de faction
+        /// Evénement déclenché quand il y a un changement de sélection de sous faction
         /// </summary>
         public event EventHandler SurChangementSelection = null;
 
         /// <summary>
-        /// Met à jour la listview des factions et y insére les elements
+        /// Met à jour la listview des sous factions et y insére les elements
         /// </summary>
         /// <typeparam name="T"></typeparam>
         /// <param name="Entites"></param>
@@ -113,60 +130,61 @@ namespace EICE_WARGAME
         private bool MettreAJourListe<T>(IEnumerable<T> Entites)
             where T : class, IEntiteMySQL
         {
-            bool EstFaction = typeof(T).Equals(typeof(Faction));
-            if (!EstFaction) return false;
-            listViewFaction.Items.Clear();
+            bool EstCaractere = typeof(T).Equals(typeof(Charact));
+            if (!EstCaractere) return false;
+            listViewCaractere.Items.Clear();
             if (Entites == null) return false;
-            if (EstFaction && (listViewFaction.Columns.Count != 2))
+            if (EstCaractere && (listViewCaractere.Columns.Count != 2))
             {
-                listViewFaction.Columns.Clear();
+                listViewCaractere.Columns.Clear();
 
-                listViewFaction.Columns.Add(new ColumnHeader()
+                listViewCaractere.Columns.Add(new ColumnHeader()
                 {
-                    Name = "Factions",
-                    Text = "Factions",
-                    TextAlign = HorizontalAlignment.Center,                              
+                    Name = "Caracteres",
+                    Text = "Caractères",                    
+                    TextAlign = HorizontalAlignment.Center,
                 });
 
             }
 
             foreach (T Entite in Entites)
             {
-                ListViewItem NouvelElement = new ListViewItem()
-                {
-                    Tag = Entite
-                };
-                NouvelElement.SubItems.Clear();
-                if (EstFaction)
-                {
-                    Faction Faction = Entite as Faction;
-                    NouvelElement.Text = Faction.Name;
-                    NouvelElement.SubItems.Add(Faction.Name);
-                }
-                listViewFaction.Items.Add(NouvelElement);
-                
 
+                Charact Caractere = Entite as Charact;
+
+                if (EstCaractere)
+                {
+                    ListViewItem NouvelElement = new ListViewItem()
+                    {
+                        Tag = Entite,
+                        Text = Caractere.Name,
+                    };
+                    NouvelElement.SubItems.Add(Caractere.Name);
+
+                    listViewCaractere.Items.Add(NouvelElement);
+                    
+                }
             }
 
-            listViewFaction.Visible = false;
-            foreach (ColumnHeader Colonne in listViewFaction.Columns)
+            listViewCaractere.Visible = false;
+            foreach (ColumnHeader Colonne in listViewCaractere.Columns)
             {
                 Colonne.AutoResize(ColumnHeaderAutoResizeStyle.HeaderSize);
             }
 
-            listViewFaction.Visible = true;
-            listViewFaction_SelectedIndexChanged(listViewFaction, EventArgs.Empty);
+            listViewCaractere.Visible = true;
+            listViewCaractere_SelectedIndexChanged(listViewCaractere, EventArgs.Empty);
             return true;
         }
 
 
 
         /// <summary>
-        /// Evénement déclenché en cas de changement de sélection de faction
+        /// Evénement déclenché en cas de changement de sélection de sous faction
         /// </summary>
         /// <param name="sender">Emetteur ayant déclenché l'événement</param>
         /// <param name="e">Descriptif de l'événement</param>
-        private void listViewFaction_SelectedIndexChanged(object sender, EventArgs e)
+        private void listViewCaractere_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (SurChangementSelection != null)
             {
@@ -209,9 +227,8 @@ namespace EICE_WARGAME
         /// </summary>
         public void NettoyerListView()
         {
-            listViewFaction.Clear();
+            listViewCaractere.Clear();
         }
         
     }
 }
-

@@ -29,13 +29,23 @@ namespace EICE_WARGAME
 
         }
 
+        public void ResetTextSousFaction()
+        {
+            comboBoxListeSousFaction.Text = "";
+        }
+
 
         public ListeDeroulanteSousFaction()
         {
             InitializeComponent();
+            this.SizeChanged += ListeDeroulanteSousFaction_SizeChanged;
+            comboBoxListeSousFaction.SelectedIndexChanged += ComboFaction_SelectedIndexChanged;
+
+            comboBoxListeSousFaction.AutoCompleteMode = AutoCompleteMode.Suggest;
+            comboBoxListeSousFaction.AutoCompleteSource = AutoCompleteSource.ListItems;
         }                   
 
-        public IEnumerable<SousFaction> Feature
+        public IEnumerable<SousFaction> SousFaction
         {
             get
             {
@@ -52,14 +62,9 @@ namespace EICE_WARGAME
                     }
                 }
             }
-        }
+        }        
 
-        public int SelectedIndex(int Index)
-        {
-            return comboBoxListeSousFaction.SelectedIndex = Index - 1;
-        }
-
-        public SousFaction FactionSelectionnee
+        public SousFaction SousFactionSelectionnee
         {
             get
             {
@@ -73,7 +78,7 @@ namespace EICE_WARGAME
 
         public EventHandler SurChangementSelection = null;
 
-        private void ComboFeature_SelectedIndexChanged(object sender, EventArgs e)
+        private void ComboFaction_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (SurChangementSelection != null)
             {
@@ -81,10 +86,11 @@ namespace EICE_WARGAME
             }
         }
 
-        private void ListeDeroulanteType_SizeChanged(object sender, EventArgs e)
+        private void ListeDeroulanteSousFaction_SizeChanged(object sender, EventArgs e)
         {
             this.Size = new Size(this.Size.Width, comboBoxListeSousFaction.Height);
         }
+
     }
 
 }

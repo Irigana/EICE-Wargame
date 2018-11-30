@@ -39,7 +39,7 @@ namespace EICE_WARGAME
             listViewSousFaction.Items.Clear();
             listViewSousFaction.Columns.Clear();
             listViewSousFaction.SelectedIndexChanged += listViewSousFaction_SelectedIndexChanged;
-            textBoxSousFaction.Enabled = false;
+            textBoxSousFaction.Enabled = false;            
         }
 
        
@@ -136,28 +136,30 @@ namespace EICE_WARGAME
 
                 listViewSousFaction.Columns.Add(new ColumnHeader()
                 {
-                    Name = "SousFaction",
-                    Text = "Sous faction",
-                    TextAlign = HorizontalAlignment.Left
+                    Name = "SousFactions",
+                    Text = "Sous factions",
+                    TextAlign = HorizontalAlignment.Center,
                 });
 
             }
 
             foreach (T Entite in Entites)
             {
-                ListViewItem NouvelElement = new ListViewItem()
-                {
-                    Tag = Entite
-                };
-                NouvelElement.SubItems.Clear();
+
+                SousFaction SousFaction = Entite as SousFaction;
+
                 if (EstSousFaction)
                 {
-                    SousFaction SousFaction = Entite as SousFaction;
-                    NouvelElement.Text = SousFaction.Name;
+                    ListViewItem NouvelElement = new ListViewItem()
+                    {
+                        Tag = Entite,
+                        Text = SousFaction.Name,
+                    };
                     NouvelElement.SubItems.Add(SousFaction.Name);
-                }
-                listViewSousFaction.Items.Add(NouvelElement);
 
+                    listViewSousFaction.Items.Add(NouvelElement);
+                    
+                }
             }
 
             listViewSousFaction.Visible = false;

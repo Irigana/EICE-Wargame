@@ -53,6 +53,7 @@ namespace EICE_WARGAME
         {
             InitializeComponent();
             m_Utilisateur = null;
+            menuAdmin1.MaPageActive = 5;
 
             #region Initialisation de la ListVieu des caractéristiques
             listViewCaracteristiques.View = View.Details;
@@ -89,16 +90,18 @@ namespace EICE_WARGAME
             checkBoxVisibility.Checked = true;
 
             // TODO: Modifier la page de la manière suivante:
-            // Ajouter une liste dans laquelle les caractéristiques existantes ou en cours d'ajout seront affichées
-            // Sur cette page on peut ajouter un nouvel équipement avec ses caractéristiques ET ...
-            // ... Ajouter des caractéristiques à un équipement existant => ListeDéroulante pour choisir un équipement en haut de la page
-            // Si l'utilisateur sélectionne un équipement existant alors les caractéristiques existantes sont montrées dans la liste d'affichage des caractéristiques ET ...
-            // ... Le textbox du nom de l'équipement et la liste du type de l'équipement sont rempli avec les données de l'équipement existant sélectionné
+            // Ajouter la modification de l'équipement 
+            //                  * Modifier le nom
+            //                  * Modifier la valeur d'une de ces caractéristique
+            //                  * Supprimer une caractéristique d'un équipement
+            // Listes déroulantes mettre en dropdown au lieu de dropdownlist
+            // Ajouter un machin autocomplete dans le ctor voir listederoulante faction ligne 40-41
             listeDeroulanteStuff1.Stuff = Program.GMBD.EnumererStuff(null, null, null, PDSGBD.MyDB.CreerCodeSql("st_name"));
             listeDeroulanteStuff1.SurChangementSelection += ListeStuffChangementSelection;
 
             listeDeroulanteFeature1.Feature = Program.GMBD.EnumererFeature(null, null, null, PDSGBD.MyDB.CreerCodeSql("fe_name"));
             listeDeroulanteFeature1.SurChangementSelection += ListeFeatureChangementSelection;
+            
             
         }
 
@@ -136,14 +139,20 @@ namespace EICE_WARGAME
             }
             else
             {
-                Stuff.Enregistrer(Program.GMBD.BD, Stuff);
+                if (Stuff.Enregistrer(Program.GMBD.BD, Stuff))
+                {
+                    listeDeroulanteStuff1.Stuff = Program.GMBD.EnumererStuff(null, null, null, PDSGBD.MyDB.CreerCodeSql("st_name"));
+                }
+                
+                listeDeroulanteStuff1.StuffSelectionnee = Stuff;
                 listeDeroulanteType.TypeSelectionne = null;
                 textBoxNomEquipement.Text = string.Empty;
                 textBoxNomEquipement.Text = string.Empty;
                 m_StuffEnEdition.Name = null;
                 m_StuffEnEdition.Type = null;
                 errorProvider1.Clear();
-                listeDeroulanteStuff1.Stuff = Program.GMBD.EnumererStuff(null, null, null, PDSGBD.MyDB.CreerCodeSql("st_name"));
+                //listeDeroulanteStuff1.Stuff = Program.GMBD.EnumererStuff(null, null, null, PDSGBD.MyDB.CreerCodeSql("st_name"));
+                
             }
         }
 
@@ -299,6 +308,8 @@ namespace EICE_WARGAME
         {
             // Permet de passer l'utilisateur par le controler MenuAdmin
             menuAdmin1.Utilisateur = Utilisateur;
+            // Permet d'obtenir l'option du menu admin utilisateur une fois l'admin identifié
+            if (Utilisateur != null) if (Utilisateur.Role.Id == 2) menuAdmin1.EstAdmin = true;
         }
 
         

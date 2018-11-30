@@ -185,6 +185,13 @@ namespace EICE_WARGAME
             }
         }
 
+        public override void SupprimerEnCascade(MyDB Connexion)
+        {
+            // TODO : rajouter la suite du chemin de la cascade
+            Connexion.Executer(@"DELETE FROM user WHERE u_id = {0};"
+                                , Id);
+        }
+
         public override string IdDeLaTablePrincipale
         {
             get

@@ -31,11 +31,44 @@ namespace EICE_WARGAME
             }
         }
         #endregion
-        
+
+        private int m_PageActive;
+
+        public int MaPageActive
+        {
+            get { return m_PageActive; }
+            set { m_PageActive = value; }
+        }
+
+
         public MenuAdmin()
         {
             InitializeComponent();
+            buttonGestionUser.Hide();
 
+        }
+        public MenuAdmin(Utilisateur User)
+        {
+            InitializeComponent();
+
+        }
+
+        private bool m_EstAdmin;
+
+        public bool EstAdmin
+        {
+            get
+            {
+                return m_EstAdmin;
+            }
+            set
+            {
+                if (value != m_EstAdmin)
+                {
+                    m_EstAdmin = value;
+                    if (m_EstAdmin == true) buttonGestionUser.Show();
+                }
+            }
         }
 
         private void buttonEquipement_Click(object sender, EventArgs e)
@@ -70,5 +103,65 @@ namespace EICE_WARGAME
                 return true;
             });
         }
+
+        private void buttonMenuUser_Click(object sender, EventArgs e)
+        {
+            Form_Principal.Instance.CreerPageCourante<PageGestionUser>((Page) =>
+            {
+                Page.Utilisateur = Utilisateur;                
+                return true;
+            });
+        }
+
+        private void buttonCaractere_Click(object sender, EventArgs e)
+        {
+            Form_Principal.Instance.CreerPageCourante<PageCaractere>((Page) =>
+            {
+                Page.Utilisateur = Utilisateur;
+                return true;
+            });
+        }
+
+        private void MenuAdmin_Load(object sender, EventArgs e)
+        {
+            switch(m_PageActive)
+            {
+                case 1:
+                    {
+                        buttonScenario.BackColor = System.Drawing.SystemColors.Window;
+                        break;
+                    }
+                case 2:
+                    {
+                        buttonCaractere.BackColor = System.Drawing.SystemColors.Window;
+                        break;
+                    }
+                case 3:
+                    {
+                        buttonFaction.BackColor = System.Drawing.SystemColors.Window;
+                        break;
+                    }                    
+                case 4:
+                    {
+                        buttonSousFaction.BackColor = System.Drawing.SystemColors.Window;
+                    }
+                    return;
+                case 5:
+                    {
+                        buttonEquipement.BackColor = System.Drawing.SystemColors.Window;
+                        break;
+                    }
+                case 6:
+                    {
+                        buttonGestionUser.BackColor = System.Drawing.SystemColors.Window;
+                    }
+                    return;
+                default:
+                    return;
+                    
+            }
+        }
+
+        
     }
 }

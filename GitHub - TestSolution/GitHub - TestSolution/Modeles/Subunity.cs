@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -7,25 +7,25 @@ using PDSGBD;
 
 namespace EICE_WARGAME
 {
-    public class Charact : Entite<Charact, Charact.Champ>
+    public class SubUnity : Entite<SubUnity, SubUnity.Champ>
     {
         /// <summary>
-        /// Champ décrivant cette Charact
+        /// Champ décrivant cette SubUnity
         /// </summary>
         public enum Champ
         {
             /// <summary>
-            /// Identifiant de ce charact
+            /// Identifiant de cette SubUnity
             /// </summary>
             Id,
             /// <summary>
-            /// name de ce charact
+            /// name de ce SubUnity
             /// </summary>
             Name,
             /// <summary>
-            /// Sous-faction de ce dharact
+            /// Faction de cette SubUnity
             /// </summary>
-            SousFaction,
+            Unity,
         }
 
         #region Membres privés
@@ -35,14 +35,19 @@ namespace EICE_WARGAME
         private string m_Name;
 
         /// <summary>
-        /// Stocke la Sous-Faction de ce charact
+        /// Stock les unités 
         /// </summary>
-        private SousFaction m_SousFaction;
+        private Unity m_Unity;
+
+        /// <summary>
+        /// Stock dans une liste toutes les unités liées (unité maitre et "esclaves")
+        /// </summary>
+        //TODO : private List<Sub_Sub> m_Sub_Sub;
         #endregion
 
         #region Membres publics
         /// <summary>
-        /// Name de ce charact
+        /// Nom de la SubUnity
         /// </summary>
         public string Name
         {
@@ -71,21 +76,30 @@ namespace EICE_WARGAME
                 }
             }
         }
-
-        /// <summary>
-        /// Id de cette Sous-Faction
-        /// </summary>
-        public SousFaction SousFaction
+        //TODO :
+        /*
+        public IEnumerable<Sub_Sub> Sub_Sub
         {
             get
             {
-                return m_SousFaction;
+                return EnumererSub_Sub();
+            }
+        }*/
+
+        /// <summary>
+        /// Id de de l'unity en question
+        /// </summary>
+        public Unity Unity
+        {
+            get
+            {
+                return m_Unity;
             }
             set
             {
-                if ((value != null) && ((m_SousFaction == null) || !int.Equals(value.Id, SousFaction.Id)))
+                if ((value != null) && ((m_Unity == null) || !int.Equals(value.Id, Unity.Id)))
                 {
-                    ModifierChamp(Champ.SousFaction, ref m_SousFaction, value);
+                    ModifierChamp(Champ.Unity, ref m_Unity, value);
                 }
             }
         }
@@ -96,18 +110,19 @@ namespace EICE_WARGAME
         /// <summary>
         /// Constructeur par défaut
         /// </summary>
-        public Charact()
+        public SubUnity() 
             : base()
         {
             m_Name = string.Empty;
+            //TODO : m_Sub_Sub = new List<Sub_Sub>();
         }
 
         /// <summary>
         /// Constructeur spécifique
         /// </summary>
-        /// <param name="Id">Identifiant de ce Charact</param>
-        /// <param name="Name">Nom de ce Charact</param>
-        public Charact(int Id, string Name)
+        /// <param name="Id">Identifiant de ce SubUnity</param>
+        /// <param name="Name">Nom de la sous unité</param>
+        public SubUnity(int Id, string Name) 
             : this()
         {
             DefinirId(Id);
@@ -119,14 +134,13 @@ namespace EICE_WARGAME
         /// </summary>
         /// <param name="Connexion">Connexion au serveur MySQL</param>
         /// <param name="Enregistrement">Enregistrement d'où extraire les valeurs de champs</param>
-        public Charact(PDSGBD.MyDB Connexion, PDSGBD.MyDB.IEnregistrement Enregistrement)
-            : this()
+        public SubUnity(PDSGBD.MyDB Connexion, PDSGBD.MyDB.IEnregistrement Enregistrement) : this()
         {
             base.Connexion = Connexion;
             if (Enregistrement != null)
             {
-                DefinirId(Enregistrement.ValeurChampComplet<int>(NomDeLaTablePrincipale, "ch_id"));
-                this.Name = Enregistrement.ValeurChampComplet<string>(NomDeLaTablePrincipale, "ch_name");
+                DefinirId(Enregistrement.ValeurChampComplet<int>(NomDeLaTablePrincipale, "su_id"));
+                this.Name = Enregistrement.ValeurChampComplet<string>(NomDeLaTablePrincipale, "su_name");
             }
         }
 
@@ -138,9 +152,9 @@ namespace EICE_WARGAME
         /// <param name="Connexion">Connexion au serveur MySQL</param>
         /// <param name="Enregistrements">Enregistrements énumérés, sources des entités à créer</param>
         /// <returns>Enumération des entités issues des enregistrements énumérés</returns>
-        public static IEnumerable<Charact> Enumerer(PDSGBD.MyDB Connexion, IEnumerable<PDSGBD.MyDB.IEnregistrement> Enregistrements)
+        public static IEnumerable<SubUnity> Enumerer(PDSGBD.MyDB Connexion, IEnumerable<PDSGBD.MyDB.IEnregistrement> Enregistrements)
         {
-            return Enumerer(Enregistrements, Enregistrement => new Charact(Connexion, Enregistrement));
+            return Enumerer(Enregistrements, Enregistrement => new SubUnity(Connexion, Enregistrement));
         }
 
 
@@ -153,18 +167,18 @@ namespace EICE_WARGAME
         {
             get
             {
-                return "charact";
+                return "subunity";
             }
         }
 
         /// <summary>
-        /// Méthode retournant le nom du champs id de la table charact
+        /// Méthode retournant le nom du champs id de la table SubUnity
         /// </summary>
         public override string IdDeLaTablePrincipale
         {
             get
             {
-                return "ch_id";
+                return "su_id";
             }
         }
 
@@ -175,15 +189,27 @@ namespace EICE_WARGAME
         {
             get
             {
-                return new PDSGBD.MyDB.CodeSql("ch_name = {0}, ch_fk_subfaction_id = {1}", m_Name, m_SousFaction.Id);
+                return new PDSGBD.MyDB.CodeSql("su_name = {0}, su_fk_unity_id = {1}", m_Name, m_Unity.Id);
             }
         }
 
-        public override void SupprimerEnCascade(MyDB Connexion)
+        public override void SupprimerEnCascade(PDSGBD.MyDB connexion)
         {
-            // TODO : rajouter la suite du chemin
-            Connexion.Executer(@"DELETE FROM charact WHERE ch_id = {0};"
-                                , Id);
+            Connexion.Executer("DELETE FROM subunity WHERE su_id = {0}", Id);            
+        }
+
+        /// <summary>
+        /// Permet de récupérer les listes des Sous unité appartenant à une meme unité
+        /// </summary>
+        /// <returns></returns>
+        private IEnumerable<Unity> EnumererUnity()
+        {
+            if (base.Connexion == null) return new Unity[0];
+            return Unity.Enumerer(Connexion, Connexion.Enumerer(
+                @"SELECT un_id, un_name
+                    FROM subunity
+                    WHERE (un_fk_unity_id = {0})",
+                Id));
         }
 
         #endregion

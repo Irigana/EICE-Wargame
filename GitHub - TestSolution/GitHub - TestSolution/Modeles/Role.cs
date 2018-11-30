@@ -42,7 +42,7 @@ namespace EICE_WARGAME
                 else
                 {
                     value = value.Trim();
-                    if ((value.Length >= 10) || (value.Length <= 1))
+                    if ((value.Length >= 30) || (value.Length <= 1))
                     {
                         Declencher_SurErreur(this, Champs.NomRole, "Le role doit être compris entre 1 et 10 caractères");
                     }

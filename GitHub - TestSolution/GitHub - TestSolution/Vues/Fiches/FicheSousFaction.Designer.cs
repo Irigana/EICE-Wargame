@@ -35,6 +35,7 @@
             // listViewSousFaction
             // 
             this.listViewSousFaction.FullRowSelect = true;
+            this.listViewSousFaction.HeaderStyle = System.Windows.Forms.ColumnHeaderStyle.None;
             this.listViewSousFaction.HideSelection = false;
             this.listViewSousFaction.Location = new System.Drawing.Point(0, 28);
             this.listViewSousFaction.Name = "listViewSousFaction";

@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace EICE_WARGAME.Modeles
+namespace EICE_WARGAME
 {
 	public class Scenario : Entite<Scenario, Scenario.Champ>
 	{
