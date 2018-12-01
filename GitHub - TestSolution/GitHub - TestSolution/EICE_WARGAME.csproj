@@ -46,8 +46,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Modeles\CharactRank.cs" />
     <Compile Include="Modeles\SubUnity.cs" />
     <Compile Include="Modeles\Unity.cs" />
+    <Compile Include="Modeles\Rank.cs" />
     <Compile Include="Vues\Fiches\FicheCaractere.cs">
       <SubType>UserControl</SubType>
     </Compile>
