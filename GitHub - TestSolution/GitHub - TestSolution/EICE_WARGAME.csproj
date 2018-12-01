@@ -50,6 +50,7 @@
     <Compile Include="Modeles\SubUnity.cs" />
     <Compile Include="Modeles\Unity.cs" />
     <Compile Include="Modeles\Rank.cs" />
+    <Compile Include="SubSub.cs" />
     <Compile Include="Vues\Fiches\FicheCaractere.cs">
       <SubType>UserControl</SubType>
     </Compile>

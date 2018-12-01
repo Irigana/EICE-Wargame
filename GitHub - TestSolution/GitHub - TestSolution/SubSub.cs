@@ -6,35 +6,35 @@ using System.Threading.Tasks;
 
 namespace EICE_WARGAME
 {
-    public class CharactRank : Entite<CharactRank, CharactRank.Champ>
+    public class SubSub : Entite<SubSub, SubSub.Champ>
     {
         /// <summary>
-        /// Champs décrivant cette Charact_Rank
+        /// Champs décrivant cette SubSub
         /// </summary>
         public enum Champ
         {
             Id,
-            Caractere,
-            Rank,
-            Cost,
+            Master,
+            Slave,
+            Quantite,
         }
 
         #region Membres privés
 
         /// <summary>
-        /// Membre stockant la référence de caractère
+        /// Membre stockant la référence du master
         /// </summary>
-        private Charact m_Charact;
+        private SubUnity m_Master;
 
         /// <summary>
-        /// Membre stockant la référence de rank
+        /// Membre stockant la référence du slave
         /// </summary>
-        private Feature m_Rank;
+        private SubUnity m_Slave;
 
         /// <summary>
-        /// Membre stockant le cout 
+        /// Membre stockant la quantité
         /// </summary>
-        private int m_Cost;
+        private int m_Quantite;
 
         #endregion
 
@@ -43,50 +43,50 @@ namespace EICE_WARGAME
         /// <summary>
         /// Membre public permettant d'accéder à l'id du character
         /// </summary>
-        public IEnumerable<Charact> Charact
+        public IEnumerable<SubUnity> Master
         {
             get
             {
-                return EnumererCharacts();
-            }            
+                return EnumererMaster();
+            }
         }
 
         /// <summary>
         /// Membre public permettant d'accéder à l'id du rank
         /// </summary>
-        public IEnumerable<Rank> Rank
+        public IEnumerable<SubUnity> Slave
         {
             get
             {
-                return EnumererRank();
-            }            
+                return EnumererSlave();
+            }
         }
 
         /// <summary>
         /// Membre public permettant d'accéder au coût
         /// </summary>
-        public int Cost
+        public int Quantite
         {
             get
             {
-                return m_Cost;
+                return m_Quantite;
             }
 
             set
             {
                 if (value < int.MinValue)
                 {
-                    Declencher_SurErreur(this, Champ.Cost, "Cout inférieur au minimum autoriser");
+                    Declencher_SurErreur(this, Champ.Quantite, "Quantité inférieur au minimum autorisé");
                 }
                 else if (value > int.MaxValue)
                 {
-                    Declencher_SurErreur(this, Champ.Cost, "Cout supérieur au maximum autoriser");
+                    Declencher_SurErreur(this, Champ.Quantite, "Quantité supérieur au maximum autorisé");
                 }
                 else
-                {                    
-                    if (!int.Equals(value, m_Cost))
+                {
+                    if (!int.Equals(value, m_Quantite))
                     {
-                        ModifierChamp(Champ.Cost, ref m_Cost, value);
+                        ModifierChamp(Champ.Quantite, ref m_Quantite, value);
                     }
                 }
             }
@@ -99,24 +99,24 @@ namespace EICE_WARGAME
         /// <summary>
         /// Constructeur par défaut
         /// </summary>
-        public CharactRank()
+        public SubSub()
         : base()
         {
-            m_Cost = -1;
-            m_Charact = null;
-            m_Rank = null;            
+            m_Master = null;
+            m_Slave = null;
+            m_Quantite = -1;
         }
 
         /// <summary>
         /// Constructeur spécifique
         /// </summary>
-        /// <param name="Id">Identifiant du Charact_Rank</param>
-        /// <param name="Cost">cout de ce Charact_Rank</param>
-        public CharactRank(int Id, int Cost)
+        /// <param name="Id">Identifiant du SubSub</param>
+        /// <param name="Quantite">Quantite de ce SubSub</param>
+        public SubSub(int Id, int Quantite)
         : this()
         {
             DefinirId(Id);
-            this.Cost = Cost;            
+            this.Quantite = Quantite;
         }
 
         /// <summary>
@@ -124,69 +124,71 @@ namespace EICE_WARGAME
         /// </summary>
         /// <param name="Connexion">Connexion au serveur MySQL</param>
         /// <param name="Enregistrement">Enregistrement d'où extraire les valeurs de champs</param>
-        public CharactRank(PDSGBD.MyDB Connexion, PDSGBD.MyDB.IEnregistrement Enregistrement)
+        public SubSub(PDSGBD.MyDB Connexion, PDSGBD.MyDB.IEnregistrement Enregistrement)
             : this()
         {
             base.Connexion = Connexion;
             if (Enregistrement != null)
             {
-                DefinirId(Enregistrement.ValeurChampComplet<int>(NomDeLaTablePrincipale, "cr_id"));                
-                this.Cost = Enregistrement.ValeurChampComplet<int>(NomDeLaTablePrincipale, "cr_cost");
+                DefinirId(Enregistrement.ValeurChampComplet<int>(NomDeLaTablePrincipale, "ss_id"));
+                this.Quantite = Enregistrement.ValeurChampComplet<int>(NomDeLaTablePrincipale, "ss_count");
             }
         }
 
         #endregion
 
-        #region Membres relatifs à la base de données        
-
+        #region Membres relatifs à la base de données
+        
         /// <summary>
-        /// Permet de récupérer le character lié
+        /// Permet de récupérer le master lié
         /// </summary>
         /// <returns></returns>
-        private IEnumerable<Charact> EnumererCharacts()
+        private IEnumerable<SubUnity> EnumererMaster()
         {
-            if (base.Connexion == null) return new Charact[0];
-            return EICE_WARGAME.Charact.Enumerer(Connexion, Connexion.Enumerer(
-                @"SELECT ch_id, ch_name
-                    FROM charact
-                    WHERE ch_id = {0}",
-                m_Charact.Id));
+            if (base.Connexion == null) return new SubUnity[0];
+            return EICE_WARGAME.SubUnity.Enumerer(Connexion, Connexion.Enumerer(
+                @"SELECT su_id,su_name, su_fk_unity_id
+                    FROM subunity
+                    JOIN sub_sub on subunity.su_id = sub_sub.ss_fk_master_id
+                    WHERE su_id = {0}",
+                m_Master.Id));
         }
 
         /// <summary>
-        /// Permet de récupérer les rank lié à ce caractère
+        /// Permet de récupérer le slave lié
         /// </summary>
         /// <returns></returns>
-        private IEnumerable<Rank> EnumererRank()
+        private IEnumerable<SubUnity> EnumererSlave()
         {
-            if (base.Connexion == null) return new Rank[0];
-            return EICE_WARGAME.Rank.Enumerer(Connexion, Connexion.Enumerer(
-                @"SELECT ra_id, ra_name, ra_fk_su_id
-                    FROM rank
-                    WHERE ra_id = {0}",
-                m_Rank.Id));
+            if (base.Connexion == null) return new SubUnity[0];
+            return EICE_WARGAME.SubUnity.Enumerer(Connexion, Connexion.Enumerer(
+                @"SELECT su_id,su_name, su_fk_unity_id
+                    FROM subunity
+                    JOIN sub_sub on subunity.su_id = sub_sub.ss_fk_slave_id
+                    WHERE su_id = {0}",
+                m_Slave.Id));
         }
 
         /// <summary>
-        /// Méthode retournant le nom de la table principale de Charact_Rank
+        /// Méthode retournant le nom de la table principale de SubSub
         /// </summary>
         /// <returns>Nom de la table principale de ce type d'entités</returns>
         public override string NomDeLaTablePrincipale
         {
             get
             {
-                return "char_rank";
+                return "sub_sub";
             }
         }
 
         /// <summary>
-        /// Méthode retournant l'id de cette table table Charact_Rank
+        /// Méthode retournant l'id de cette table table SubSub
         /// </summary>
         public override string IdDeLaTablePrincipale
         {
             get
             {
-                return "cr_id";
+                return "ss_id";
             }
         }
 
@@ -197,7 +199,7 @@ namespace EICE_WARGAME
         {
             get
             {
-                return new PDSGBD.MyDB.CodeSql("cr_fk_ch_id = {0}, cr_fk_ra_id = {1}, cr_cost = {2}", m_Charact.Id, m_Rank.Id, m_Cost);
+                return new PDSGBD.MyDB.CodeSql("ss_fk_master_id = {0}, ss_fk_slave_id = {1}, ss_count = {2}", m_Master.Id, m_Slave.Id, m_Quantite);
             }
         }
 
@@ -207,7 +209,7 @@ namespace EICE_WARGAME
         /// <param name="Connexion">Connexion au serveur MySQL</param>
         public override void SupprimerEnCascade(PDSGBD.MyDB Connexion)
         {
-            Connexion.Executer("DELETE FROM char_rank WHERE cr_id = {0}", Id);
+            Connexion.Executer("DELETE FROM sub_sub WHERE ss_id = {0}", Id);
         }
 
         /// <summary>
@@ -216,9 +218,9 @@ namespace EICE_WARGAME
         /// <param name="Connexion">Connexion au serveur MySQL</param>
         /// <param name="Enregistrements">Enregistrements énumérés, sources des entités à créer</param>
         /// <returns>Enumération des entités issues des enregistrements énumérés</returns>
-        public static IEnumerable<CharactRank> Enumerer(PDSGBD.MyDB Connexion, IEnumerable<PDSGBD.MyDB.IEnregistrement> Enregistrements)
+        public static IEnumerable<SubSub> Enumerer(PDSGBD.MyDB Connexion, IEnumerable<PDSGBD.MyDB.IEnregistrement> Enregistrements)
         {
-            return Enumerer(Enregistrements, Enregistrement => new CharactRank(Connexion, Enregistrement));
+            return Enumerer(Enregistrements, Enregistrement => new SubSub(Connexion, Enregistrement));
         }
 
         #endregion
