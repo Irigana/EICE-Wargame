@@ -55,6 +55,7 @@
             // 
             this.labelCaractere.AutoSize = true;
             this.labelCaractere.Font = new System.Drawing.Font("Microsoft Sans Serif", 24F);
+            this.labelCaractere.ForeColor = System.Drawing.Color.SlateGray;
             this.labelCaractere.Location = new System.Drawing.Point(233, 20);
             this.labelCaractere.Name = "labelCaractere";
             this.labelCaractere.Size = new System.Drawing.Size(215, 46);
@@ -63,7 +64,8 @@
             // 
             // panelLigne
             // 
-            this.panelLigne.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.panelLigne.BackColor = System.Drawing.Color.SteelBlue;
+            this.panelLigne.ForeColor = System.Drawing.Color.SteelBlue;
             this.panelLigne.Location = new System.Drawing.Point(241, 69);
             this.panelLigne.Name = "panelLigne";
             this.panelLigne.Size = new System.Drawing.Size(1200, 3);
@@ -73,7 +75,7 @@
             // 
             this.labelFaction.AutoSize = true;
             this.labelFaction.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F);
-            this.labelFaction.Location = new System.Drawing.Point(451, 132);
+            this.labelFaction.Location = new System.Drawing.Point(600, 132);
             this.labelFaction.Name = "labelFaction";
             this.labelFaction.Size = new System.Drawing.Size(65, 18);
             this.labelFaction.TabIndex = 35;
@@ -83,7 +85,7 @@
             // 
             this.labelSF.AutoSize = true;
             this.labelSF.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F);
-            this.labelSF.Location = new System.Drawing.Point(451, 187);
+            this.labelSF.Location = new System.Drawing.Point(600, 187);
             this.labelSF.Name = "labelSF";
             this.labelSF.Size = new System.Drawing.Size(99, 18);
             this.labelSF.TabIndex = 36;
@@ -101,7 +103,7 @@
             // 
             // textBoxCaractere
             // 
-            this.textBoxCaractere.Location = new System.Drawing.Point(454, 274);
+            this.textBoxCaractere.Location = new System.Drawing.Point(603, 274);
             this.textBoxCaractere.Name = "textBoxCaractere";
             this.textBoxCaractere.Size = new System.Drawing.Size(286, 22);
             this.textBoxCaractere.TabIndex = 39;
@@ -112,7 +114,7 @@
             // 
             this.buttonAnnulerCaract.BackColor = System.Drawing.SystemColors.Window;
             this.buttonAnnulerCaract.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.buttonAnnulerCaract.Location = new System.Drawing.Point(838, 494);
+            this.buttonAnnulerCaract.Location = new System.Drawing.Point(894, 484);
             this.buttonAnnulerCaract.Name = "buttonAnnulerCaract";
             this.buttonAnnulerCaract.Size = new System.Drawing.Size(121, 39);
             this.buttonAnnulerCaract.TabIndex = 43;
@@ -124,7 +126,7 @@
             // 
             this.buttonSupprimerCaract.BackColor = System.Drawing.SystemColors.Window;
             this.buttonSupprimerCaract.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.buttonSupprimerCaract.Location = new System.Drawing.Point(965, 494);
+            this.buttonSupprimerCaract.Location = new System.Drawing.Point(1021, 484);
             this.buttonSupprimerCaract.Name = "buttonSupprimerCaract";
             this.buttonSupprimerCaract.Size = new System.Drawing.Size(121, 39);
             this.buttonSupprimerCaract.TabIndex = 42;
@@ -136,7 +138,7 @@
             // 
             this.buttonModifierCaract.BackColor = System.Drawing.SystemColors.Window;
             this.buttonModifierCaract.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.buttonModifierCaract.Location = new System.Drawing.Point(711, 494);
+            this.buttonModifierCaract.Location = new System.Drawing.Point(767, 484);
             this.buttonModifierCaract.Name = "buttonModifierCaract";
             this.buttonModifierCaract.Size = new System.Drawing.Size(121, 39);
             this.buttonModifierCaract.TabIndex = 41;
@@ -148,7 +150,7 @@
             // 
             this.buttonAjouterCaract.BackColor = System.Drawing.SystemColors.Window;
             this.buttonAjouterCaract.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.buttonAjouterCaract.Location = new System.Drawing.Point(584, 494);
+            this.buttonAjouterCaract.Location = new System.Drawing.Point(640, 484);
             this.buttonAjouterCaract.Name = "buttonAjouterCaract";
             this.buttonAjouterCaract.Size = new System.Drawing.Size(121, 39);
             this.buttonAjouterCaract.TabIndex = 40;
@@ -160,7 +162,7 @@
             // 
             this.labelNouveauCaract.AutoSize = true;
             this.labelNouveauCaract.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F);
-            this.labelNouveauCaract.Location = new System.Drawing.Point(451, 253);
+            this.labelNouveauCaract.Location = new System.Drawing.Point(600, 253);
             this.labelNouveauCaract.Name = "labelNouveauCaract";
             this.labelNouveauCaract.Size = new System.Drawing.Size(141, 18);
             this.labelNouveauCaract.TabIndex = 44;
@@ -190,7 +192,7 @@
             // listeDeroulanteSousFaction1
             // 
             this.listeDeroulanteSousFaction1.Enabled = false;
-            this.listeDeroulanteSousFaction1.Location = new System.Drawing.Point(454, 208);
+            this.listeDeroulanteSousFaction1.Location = new System.Drawing.Point(603, 208);
             this.listeDeroulanteSousFaction1.Name = "listeDeroulanteSousFaction1";
             this.listeDeroulanteSousFaction1.Size = new System.Drawing.Size(286, 25);
             this.listeDeroulanteSousFaction1.SousFactionSelectionnee = null;
@@ -199,7 +201,7 @@
             // listeDeroulanteFaction1
             // 
             this.listeDeroulanteFaction1.FactionSelectionnee = null;
-            this.listeDeroulanteFaction1.Location = new System.Drawing.Point(454, 153);
+            this.listeDeroulanteFaction1.Location = new System.Drawing.Point(603, 153);
             this.listeDeroulanteFaction1.Name = "listeDeroulanteFaction1";
             this.listeDeroulanteFaction1.Size = new System.Drawing.Size(286, 25);
             this.listeDeroulanteFaction1.TabIndex = 33;
@@ -215,20 +217,20 @@
             // 
             // menuAdmin1
             // 
-            this.menuAdmin1.BackColor = System.Drawing.SystemColors.ControlDark;
+            this.menuAdmin1.BackColor = System.Drawing.Color.SteelBlue;
             this.menuAdmin1.EstAdmin = false;
-            this.menuAdmin1.Location = new System.Drawing.Point(0, -3);
+            this.menuAdmin1.Location = new System.Drawing.Point(0, 0);
             this.menuAdmin1.MaPageActive = 0;
             this.menuAdmin1.Name = "menuAdmin1";
             this.menuAdmin1.Size = new System.Drawing.Size(190, 750);
-            this.menuAdmin1.TabIndex = 0;
+            this.menuAdmin1.TabIndex = 45;
             this.menuAdmin1.Utilisateur = null;
-            this.menuAdmin1.Load += new System.EventHandler(this.PageCaractere_Load);
             // 
             // PageCaractere
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.menuAdmin1);
             this.Controls.Add(this.labelNouveauCaract);
             this.Controls.Add(this.buttonAnnulerCaract);
             this.Controls.Add(this.buttonSupprimerCaract);
@@ -244,7 +246,6 @@
             this.Controls.Add(this.panelLigne);
             this.Controls.Add(this.labelCaractere);
             this.Controls.Add(this.buttonOptionsUser1);
-            this.Controls.Add(this.menuAdmin1);
             this.Name = "PageCaractere";
             this.Size = new System.Drawing.Size(1500, 750);
             ((System.ComponentModel.ISupportInitialize)(this.errorProviderErreurCaractere)).EndInit();
@@ -255,8 +256,6 @@
         }
 
         #endregion
-
-        private MenuAdmin menuAdmin1;
         private ButtonOptionsUser buttonOptionsUser1;
         private System.Windows.Forms.Label labelCaractere;
         private System.Windows.Forms.Panel panelLigne;
@@ -274,5 +273,6 @@
         private System.Windows.Forms.Label labelNouveauCaract;
         private System.Windows.Forms.ErrorProvider errorProviderErreurCaractere;
         private System.Windows.Forms.ErrorProvider ValidationProvider;
+        private MenuAdmin menuAdmin1;
     }
 }

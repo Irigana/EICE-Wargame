@@ -45,9 +45,10 @@
             // 
             this.labelEditionUser.AutoSize = true;
             this.labelEditionUser.Font = new System.Drawing.Font("Verdana", 25.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelEditionUser.ForeColor = System.Drawing.Color.SlateGray;
             this.labelEditionUser.Location = new System.Drawing.Point(582, 84);
             this.labelEditionUser.Name = "labelEditionUser";
-            this.labelEditionUser.Size = new System.Drawing.Size(371, 53);
+            this.labelEditionUser.Size = new System.Drawing.Size(365, 52);
             this.labelEditionUser.TabIndex = 0;
             this.labelEditionUser.Text = "Edition du profil";
             // 
@@ -120,6 +121,7 @@
             // 
             this.labelNouveauMdp.AutoSize = true;
             this.labelNouveauMdp.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F);
+            this.labelNouveauMdp.ForeColor = System.Drawing.Color.SlateGray;
             this.labelNouveauMdp.Location = new System.Drawing.Point(603, 236);
             this.labelNouveauMdp.Name = "labelNouveauMdp";
             this.labelNouveauMdp.Size = new System.Drawing.Size(260, 29);

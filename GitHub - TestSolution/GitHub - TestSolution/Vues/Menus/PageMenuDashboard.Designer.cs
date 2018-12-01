@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.labelDashboard = new System.Windows.Forms.Label();
+            this.labelMenuAdmin = new System.Windows.Forms.Label();
             this.buttonOptionsUser1 = new EICE_WARGAME.ButtonOptionsUser();
             this.buttonRetourMenuPrincipal = new System.Windows.Forms.Button();
             this.buttonEquipement = new System.Windows.Forms.Button();
@@ -41,15 +41,16 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxLogoDashboard)).BeginInit();
             this.SuspendLayout();
             // 
-            // labelDashboard
+            // labelMenuAdmin
             // 
-            this.labelDashboard.AutoSize = true;
-            this.labelDashboard.Font = new System.Drawing.Font("Microsoft Sans Serif", 26F);
-            this.labelDashboard.Location = new System.Drawing.Point(662, 155);
-            this.labelDashboard.Name = "labelDashboard";
-            this.labelDashboard.Size = new System.Drawing.Size(236, 52);
-            this.labelDashboard.TabIndex = 0;
-            this.labelDashboard.Text = "Dashboard";
+            this.labelMenuAdmin.AutoSize = true;
+            this.labelMenuAdmin.Font = new System.Drawing.Font("Microsoft Sans Serif", 26F);
+            this.labelMenuAdmin.ForeColor = System.Drawing.Color.SlateGray;
+            this.labelMenuAdmin.Location = new System.Drawing.Point(662, 155);
+            this.labelMenuAdmin.Name = "labelMenuAdmin";
+            this.labelMenuAdmin.Size = new System.Drawing.Size(236, 52);
+            this.labelMenuAdmin.TabIndex = 0;
+            this.labelMenuAdmin.Text = "Dashboard";
             // 
             // buttonOptionsUser1
             // 
@@ -181,7 +182,7 @@
             this.Controls.Add(this.buttonEquipement);
             this.Controls.Add(this.buttonOptionsUser1);
             this.Controls.Add(this.pictureBoxLogoDashboard);
-            this.Controls.Add(this.labelDashboard);
+            this.Controls.Add(this.labelMenuAdmin);
             this.Name = "PageMenuDashboard";
             this.Size = new System.Drawing.Size(1500, 750);
             this.Load += new System.EventHandler(this.PageMenuDashBoard_Load);
@@ -193,7 +194,7 @@
 
         #endregion
 
-        private System.Windows.Forms.Label labelDashboard;
+        private System.Windows.Forms.Label labelMenuAdmin;
         private System.Windows.Forms.PictureBox pictureBoxLogoDashboard;
         private ButtonOptionsUser buttonOptionsUser1;
         private System.Windows.Forms.Button buttonEquipement;

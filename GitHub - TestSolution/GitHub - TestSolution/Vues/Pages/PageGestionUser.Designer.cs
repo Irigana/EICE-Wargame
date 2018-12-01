@@ -43,6 +43,7 @@
             // 
             this.labelTitreGestionUser.AutoSize = true;
             this.labelTitreGestionUser.Font = new System.Drawing.Font("Microsoft Sans Serif", 24F);
+            this.labelTitreGestionUser.ForeColor = System.Drawing.Color.SlateGray;
             this.labelTitreGestionUser.Location = new System.Drawing.Point(233, 20);
             this.labelTitreGestionUser.Name = "labelTitreGestionUser";
             this.labelTitreGestionUser.Size = new System.Drawing.Size(434, 46);
@@ -51,7 +52,7 @@
             // 
             // panelLigne
             // 
-            this.panelLigne.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.panelLigne.BackColor = System.Drawing.Color.SteelBlue;
             this.panelLigne.Location = new System.Drawing.Point(241, 69);
             this.panelLigne.Name = "panelLigne";
             this.panelLigne.Size = new System.Drawing.Size(1200, 3);
@@ -126,17 +127,20 @@
             // 
             // menuAdmin1
             // 
-            this.menuAdmin1.BackColor = System.Drawing.SystemColors.ControlDark;
+            this.menuAdmin1.BackColor = System.Drawing.Color.SteelBlue;
+            this.menuAdmin1.EstAdmin = false;
             this.menuAdmin1.Location = new System.Drawing.Point(0, 0);
+            this.menuAdmin1.MaPageActive = 0;
             this.menuAdmin1.Name = "menuAdmin1";
             this.menuAdmin1.Size = new System.Drawing.Size(190, 750);
-            this.menuAdmin1.TabIndex = 0;
+            this.menuAdmin1.TabIndex = 39;
             this.menuAdmin1.Utilisateur = null;
             // 
             // PageGestionUser
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.menuAdmin1);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.buttonDestitution);
             this.Controls.Add(this.buttonSupprimer);
@@ -145,7 +149,6 @@
             this.Controls.Add(this.panelLigne);
             this.Controls.Add(this.labelTitreGestionUser);
             this.Controls.Add(this.buttonOptionsUser1);
-            this.Controls.Add(this.menuAdmin1);
             this.Name = "PageGestionUser";
             this.Size = new System.Drawing.Size(1500, 750);
             this.Load += new System.EventHandler(this.PageGestionUser_Load);
@@ -155,8 +158,6 @@
         }
 
         #endregion
-
-        private MenuAdmin menuAdmin1;
         private ButtonOptionsUser buttonOptionsUser1;
         private System.Windows.Forms.Label labelTitreGestionUser;
         private System.Windows.Forms.Panel panelLigne;
@@ -165,5 +166,6 @@
         private System.Windows.Forms.Button buttonSupprimer;
         private System.Windows.Forms.Button buttonDestitution;
         private System.Windows.Forms.Label label1;
+        private MenuAdmin menuAdmin1;
     }
 }

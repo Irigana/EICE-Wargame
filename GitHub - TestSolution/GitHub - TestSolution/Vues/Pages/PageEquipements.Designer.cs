@@ -52,10 +52,10 @@
             this.listeDeroulanteFeature1 = new EICE_WARGAME.ListeDeroulanteFeature();
             this.listeDeroulanteType = new EICE_WARGAME.ListeDeroulanteType();
             this.buttonOptionsUser1 = new EICE_WARGAME.ButtonOptionsUser();
-            this.menuAdmin1 = new EICE_WARGAME.MenuAdmin();
             this.label4 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.listViewCaracteristiques = new System.Windows.Forms.ListView();
+            this.menuAdmin1 = new EICE_WARGAME.MenuAdmin();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -63,6 +63,7 @@
             // 
             this.labelCRUDArmes.AutoSize = true;
             this.labelCRUDArmes.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F);
+            this.labelCRUDArmes.ForeColor = System.Drawing.Color.SlateGray;
             this.labelCRUDArmes.Location = new System.Drawing.Point(223, 25);
             this.labelCRUDArmes.Name = "labelCRUDArmes";
             this.labelCRUDArmes.Size = new System.Drawing.Size(188, 36);
@@ -71,7 +72,7 @@
             // 
             // panelLigneSeparatriceAjout
             // 
-            this.panelLigneSeparatriceAjout.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.panelLigneSeparatriceAjout.BackColor = System.Drawing.Color.SteelBlue;
             this.panelLigneSeparatriceAjout.Location = new System.Drawing.Point(219, 75);
             this.panelLigneSeparatriceAjout.Name = "panelLigneSeparatriceAjout";
             this.panelLigneSeparatriceAjout.Size = new System.Drawing.Size(1250, 3);
@@ -100,7 +101,7 @@
             // 
             // panel1
             // 
-            this.panel1.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.panel1.BackColor = System.Drawing.Color.SteelBlue;
             this.panel1.Location = new System.Drawing.Point(219, 340);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(1250, 3);
@@ -283,19 +284,11 @@
             this.buttonOptionsUser1.TabIndex = 16;
             this.buttonOptionsUser1.Utilisateur = null;
             // 
-            // menuAdmin1
-            // 
-            this.menuAdmin1.BackColor = System.Drawing.SystemColors.ControlDark;
-            this.menuAdmin1.Location = new System.Drawing.Point(0, 0);
-            this.menuAdmin1.Name = "menuAdmin1";
-            this.menuAdmin1.Size = new System.Drawing.Size(190, 750);
-            this.menuAdmin1.TabIndex = 0;
-            this.menuAdmin1.Utilisateur = null;
-            // 
             // label4
             // 
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold);
+            this.label4.ForeColor = System.Drawing.Color.SlateGray;
             this.label4.Location = new System.Drawing.Point(225, 92);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(197, 25);
@@ -306,6 +299,7 @@
             // 
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold);
+            this.label5.ForeColor = System.Drawing.Color.SlateGray;
             this.label5.Location = new System.Drawing.Point(225, 362);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(169, 25);
@@ -320,10 +314,22 @@
             this.listViewCaracteristiques.TabIndex = 36;
             this.listViewCaracteristiques.UseCompatibleStateImageBehavior = false;
             // 
+            // menuAdmin1
+            // 
+            this.menuAdmin1.BackColor = System.Drawing.Color.SteelBlue;
+            this.menuAdmin1.EstAdmin = false;
+            this.menuAdmin1.Location = new System.Drawing.Point(0, 0);
+            this.menuAdmin1.MaPageActive = 0;
+            this.menuAdmin1.Name = "menuAdmin1";
+            this.menuAdmin1.Size = new System.Drawing.Size(190, 750);
+            this.menuAdmin1.TabIndex = 37;
+            this.menuAdmin1.Utilisateur = null;
+            // 
             // PageEquipements
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.menuAdmin1);
             this.Controls.Add(this.listViewCaracteristiques);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.label4);
@@ -349,7 +355,6 @@
             this.Controls.Add(this.labelNomEquipement);
             this.Controls.Add(this.panelLigneSeparatriceAjout);
             this.Controls.Add(this.labelCRUDArmes);
-            this.Controls.Add(this.menuAdmin1);
             this.Name = "PageEquipements";
             this.Size = new System.Drawing.Size(1500, 750);
             this.Load += new System.EventHandler(this.PageAjouterEquipements_Load);
@@ -360,8 +365,6 @@
         }
 
         #endregion
-
-        private MenuAdmin menuAdmin1;
         private System.Windows.Forms.Label labelCRUDArmes;
         private System.Windows.Forms.Panel panelLigneSeparatriceAjout;
         private System.Windows.Forms.Label labelNomEquipement;
@@ -388,5 +391,6 @@
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.ListView listViewCaracteristiques;
+        private MenuAdmin menuAdmin1;
     }
 }

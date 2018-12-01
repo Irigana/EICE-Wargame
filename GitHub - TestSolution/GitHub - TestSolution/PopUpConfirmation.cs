@@ -34,7 +34,7 @@ namespace EICE_WARGAME
                 if (!string.Equals(value, m_LabelDuTexte))
                 {
                     string NouvelleValue = null;
-                    // TODO : à amélioré 
+                    // TODO (opti): à amélioré 
                     if ((value.Length > 60)&&(value.Length < 120))
                     {
                         NouvelleValue = value.ToString().Insert(50, "\n");

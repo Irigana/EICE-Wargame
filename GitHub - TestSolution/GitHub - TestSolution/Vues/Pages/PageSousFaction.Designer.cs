@@ -53,6 +53,7 @@
             // 
             this.labelSousFactionTitre.AutoSize = true;
             this.labelSousFactionTitre.Font = new System.Drawing.Font("Microsoft Sans Serif", 24F);
+            this.labelSousFactionTitre.ForeColor = System.Drawing.Color.SlateGray;
             this.labelSousFactionTitre.Location = new System.Drawing.Point(233, 20);
             this.labelSousFactionTitre.Name = "labelSousFactionTitre";
             this.labelSousFactionTitre.Size = new System.Drawing.Size(242, 46);
@@ -63,7 +64,7 @@
             // 
             this.labelSousFaction.AutoSize = true;
             this.labelSousFaction.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F);
-            this.labelSousFaction.Location = new System.Drawing.Point(617, 520);
+            this.labelSousFaction.Location = new System.Drawing.Point(597, 232);
             this.labelSousFaction.Name = "labelSousFaction";
             this.labelSousFaction.Size = new System.Drawing.Size(91, 18);
             this.labelSousFaction.TabIndex = 2;
@@ -73,7 +74,7 @@
             // 
             this.labelChoisirFaction.AutoSize = true;
             this.labelChoisirFaction.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F);
-            this.labelChoisirFaction.Location = new System.Drawing.Point(577, 160);
+            this.labelChoisirFaction.Location = new System.Drawing.Point(597, 169);
             this.labelChoisirFaction.Name = "labelChoisirFaction";
             this.labelChoisirFaction.Size = new System.Drawing.Size(131, 18);
             this.labelChoisirFaction.TabIndex = 6;
@@ -83,7 +84,7 @@
             // 
             this.buttonAjouterSF.BackColor = System.Drawing.SystemColors.Window;
             this.buttonAjouterSF.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.buttonAjouterSF.Location = new System.Drawing.Point(580, 567);
+            this.buttonAjouterSF.Location = new System.Drawing.Point(670, 505);
             this.buttonAjouterSF.Name = "buttonAjouterSF";
             this.buttonAjouterSF.Size = new System.Drawing.Size(105, 29);
             this.buttonAjouterSF.TabIndex = 26;
@@ -95,7 +96,7 @@
             // 
             this.buttonModifierSF.BackColor = System.Drawing.SystemColors.Window;
             this.buttonModifierSF.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.buttonModifierSF.Location = new System.Drawing.Point(691, 567);
+            this.buttonModifierSF.Location = new System.Drawing.Point(781, 505);
             this.buttonModifierSF.Name = "buttonModifierSF";
             this.buttonModifierSF.Size = new System.Drawing.Size(105, 29);
             this.buttonModifierSF.TabIndex = 27;
@@ -107,7 +108,7 @@
             // 
             this.buttonSupprimerSF.BackColor = System.Drawing.SystemColors.Window;
             this.buttonSupprimerSF.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.buttonSupprimerSF.Location = new System.Drawing.Point(913, 567);
+            this.buttonSupprimerSF.Location = new System.Drawing.Point(1003, 505);
             this.buttonSupprimerSF.Name = "buttonSupprimerSF";
             this.buttonSupprimerSF.Size = new System.Drawing.Size(105, 29);
             this.buttonSupprimerSF.TabIndex = 28;
@@ -119,7 +120,7 @@
             // 
             this.buttonAnnulerSF.BackColor = System.Drawing.SystemColors.Window;
             this.buttonAnnulerSF.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.buttonAnnulerSF.Location = new System.Drawing.Point(802, 567);
+            this.buttonAnnulerSF.Location = new System.Drawing.Point(892, 505);
             this.buttonAnnulerSF.Name = "buttonAnnulerSF";
             this.buttonAnnulerSF.Size = new System.Drawing.Size(105, 29);
             this.buttonAnnulerSF.TabIndex = 29;
@@ -129,7 +130,7 @@
             // 
             // panelLigne
             // 
-            this.panelLigne.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.panelLigne.BackColor = System.Drawing.Color.SteelBlue;
             this.panelLigne.Location = new System.Drawing.Point(241, 69);
             this.panelLigne.Name = "panelLigne";
             this.panelLigne.Size = new System.Drawing.Size(1200, 3);
@@ -138,7 +139,7 @@
             // labelRecherche
             // 
             this.labelRecherche.AutoSize = true;
-            this.labelRecherche.Location = new System.Drawing.Point(728, 206);
+            this.labelRecherche.Location = new System.Drawing.Point(889, 170);
             this.labelRecherche.Name = "labelRecherche";
             this.labelRecherche.Size = new System.Drawing.Size(190, 17);
             this.labelRecherche.TabIndex = 32;
@@ -146,7 +147,7 @@
             // 
             // textBoxSousFaction
             // 
-            this.textBoxSousFaction.Location = new System.Drawing.Point(731, 518);
+            this.textBoxSousFaction.Location = new System.Drawing.Point(600, 253);
             this.textBoxSousFaction.Name = "textBoxSousFaction";
             this.textBoxSousFaction.Size = new System.Drawing.Size(286, 22);
             this.textBoxSousFaction.TabIndex = 33;
@@ -166,7 +167,7 @@
             // 
             // ficheSousFaction1
             // 
-            this.ficheSousFaction1.Location = new System.Drawing.Point(731, 226);
+            this.ficheSousFaction1.Location = new System.Drawing.Point(892, 190);
             this.ficheSousFaction1.Name = "ficheSousFaction1";
             this.ficheSousFaction1.Size = new System.Drawing.Size(289, 286);
             this.ficheSousFaction1.SousFactionSelectionne = null;
@@ -185,24 +186,27 @@
             // listeDeroulanteFaction1
             // 
             this.listeDeroulanteFaction1.FactionSelectionnee = null;
-            this.listeDeroulanteFaction1.Location = new System.Drawing.Point(731, 160);
+            this.listeDeroulanteFaction1.Location = new System.Drawing.Point(600, 190);
             this.listeDeroulanteFaction1.Name = "listeDeroulanteFaction1";
             this.listeDeroulanteFaction1.Size = new System.Drawing.Size(286, 25);
             this.listeDeroulanteFaction1.TabIndex = 5;
             // 
             // menuAdmin1
             // 
-            this.menuAdmin1.BackColor = System.Drawing.SystemColors.ControlDark;
+            this.menuAdmin1.BackColor = System.Drawing.Color.SteelBlue;
+            this.menuAdmin1.EstAdmin = false;
             this.menuAdmin1.Location = new System.Drawing.Point(0, 0);
+            this.menuAdmin1.MaPageActive = 0;
             this.menuAdmin1.Name = "menuAdmin1";
             this.menuAdmin1.Size = new System.Drawing.Size(190, 750);
-            this.menuAdmin1.TabIndex = 3;
+            this.menuAdmin1.TabIndex = 34;
             this.menuAdmin1.Utilisateur = null;
             // 
             // PageSousFaction
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.menuAdmin1);
             this.Controls.Add(this.textBoxSousFaction);
             this.Controls.Add(this.labelRecherche);
             this.Controls.Add(this.ficheSousFaction1);
@@ -214,7 +218,6 @@
             this.Controls.Add(this.buttonOptionsUser1);
             this.Controls.Add(this.labelChoisirFaction);
             this.Controls.Add(this.listeDeroulanteFaction1);
-            this.Controls.Add(this.menuAdmin1);
             this.Controls.Add(this.labelSousFaction);
             this.Controls.Add(this.labelSousFactionTitre);
             this.Name = "PageSousFaction";
@@ -230,7 +233,6 @@
         #endregion
         private System.Windows.Forms.Label labelSousFactionTitre;
         private System.Windows.Forms.Label labelSousFaction;
-        private MenuAdmin menuAdmin1;
         private ListeDeroulanteFaction listeDeroulanteFaction1;
         private System.Windows.Forms.Label labelChoisirFaction;
         private ButtonOptionsUser buttonOptionsUser1;
@@ -244,5 +246,6 @@
         private System.Windows.Forms.TextBox textBoxSousFaction;
         private System.Windows.Forms.ErrorProvider errorProviderSousFaction;
         private System.Windows.Forms.ErrorProvider errorProviderValider;
+        private MenuAdmin menuAdmin1;
     }
 }

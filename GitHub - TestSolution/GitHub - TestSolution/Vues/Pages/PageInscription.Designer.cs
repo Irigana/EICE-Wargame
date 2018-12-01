@@ -56,9 +56,10 @@ namespace EICE_WARGAME
             // 
             this.labelInscription.AutoSize = true;
             this.labelInscription.Font = new System.Drawing.Font("Verdana", 25.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelInscription.ForeColor = System.Drawing.Color.SlateGray;
             this.labelInscription.Location = new System.Drawing.Point(651, 199);
             this.labelInscription.Name = "labelInscription";
-            this.labelInscription.Size = new System.Drawing.Size(257, 53);
+            this.labelInscription.Size = new System.Drawing.Size(251, 52);
             this.labelInscription.TabIndex = 0;
             this.labelInscription.Text = "Inscription";
             // 
@@ -68,6 +69,8 @@ namespace EICE_WARGAME
             // 
             // buttonSInscrire
             // 
+            this.buttonSInscrire.BackColor = System.Drawing.SystemColors.Window;
+            this.buttonSInscrire.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonSInscrire.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
             this.buttonSInscrire.Image = global::EICE_WARGAME.Properties.Resources.Validation25px;
             this.buttonSInscrire.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -77,7 +80,7 @@ namespace EICE_WARGAME
             this.buttonSInscrire.Size = new System.Drawing.Size(237, 32);
             this.buttonSInscrire.TabIndex = 6;
             this.buttonSInscrire.Text = "S\'inscrire";
-            this.buttonSInscrire.UseVisualStyleBackColor = true;
+            this.buttonSInscrire.UseVisualStyleBackColor = false;
             this.buttonSInscrire.Click += new System.EventHandler(this.buttonSInscrire_Click);
             // 
             // textBoxAvecTextInvisibleMdpConf

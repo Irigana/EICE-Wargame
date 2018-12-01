@@ -42,6 +42,7 @@
             this.ficheFaction1 = new EICE_WARGAME.FicheFaction();
             this.buttonOptionsUser1 = new EICE_WARGAME.ButtonOptionsUser();
             this.menuAdmin1 = new EICE_WARGAME.MenuAdmin();
+            this.labelNew = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.errorProviderErreurFaction)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ValidationProvider)).BeginInit();
             this.SuspendLayout();
@@ -50,6 +51,7 @@
             // 
             this.labelFaction.AutoSize = true;
             this.labelFaction.Font = new System.Drawing.Font("Microsoft Sans Serif", 24F);
+            this.labelFaction.ForeColor = System.Drawing.Color.SlateGray;
             this.labelFaction.Location = new System.Drawing.Point(233, 20);
             this.labelFaction.Name = "labelFaction";
             this.labelFaction.Size = new System.Drawing.Size(152, 46);
@@ -58,7 +60,7 @@
             // 
             // panelLigne
             // 
-            this.panelLigne.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.panelLigne.BackColor = System.Drawing.Color.SteelBlue;
             this.panelLigne.Location = new System.Drawing.Point(241, 69);
             this.panelLigne.Name = "panelLigne";
             this.panelLigne.Size = new System.Drawing.Size(1200, 3);
@@ -161,17 +163,30 @@
             // 
             // menuAdmin1
             // 
-            this.menuAdmin1.BackColor = System.Drawing.SystemColors.ControlDark;
+            this.menuAdmin1.BackColor = System.Drawing.Color.SteelBlue;
+            this.menuAdmin1.EstAdmin = false;
             this.menuAdmin1.Location = new System.Drawing.Point(0, 0);
+            this.menuAdmin1.MaPageActive = 0;
             this.menuAdmin1.Name = "menuAdmin1";
             this.menuAdmin1.Size = new System.Drawing.Size(190, 750);
             this.menuAdmin1.TabIndex = 0;
             this.menuAdmin1.Utilisateur = null;
             // 
+            // labelNew
+            // 
+            this.labelNew.AutoSize = true;
+            this.labelNew.Location = new System.Drawing.Point(671, 525);
+            this.labelNew.Name = "labelNew";
+            this.labelNew.Size = new System.Drawing.Size(62, 17);
+            this.labelNew.TabIndex = 40;
+            this.labelNew.Text = "Faction :";
+            // 
             // PageFaction
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.labelNew);
+            this.Controls.Add(this.menuAdmin1);
             this.Controls.Add(this.buttonSupprimer);
             this.Controls.Add(this.buttonAnnuler);
             this.Controls.Add(this.buttonModifier);
@@ -182,7 +197,6 @@
             this.Controls.Add(this.panelLigne);
             this.Controls.Add(this.labelFaction);
             this.Controls.Add(this.buttonOptionsUser1);
-            this.Controls.Add(this.menuAdmin1);
             this.Name = "PageFaction";
             this.Size = new System.Drawing.Size(1500, 750);
             this.Load += new System.EventHandler(this.PageFaction_Load);
@@ -194,8 +208,6 @@
         }
 
         #endregion
-
-        private MenuAdmin menuAdmin1;
         private ButtonOptionsUser buttonOptionsUser1;
         private System.Windows.Forms.Label labelFaction;
         private System.Windows.Forms.Panel panelLigne;
@@ -208,5 +220,7 @@
         private System.Windows.Forms.Button buttonSupprimer;
         private System.Windows.Forms.ErrorProvider errorProviderErreurFaction;
         private System.Windows.Forms.ErrorProvider ValidationProvider;
+        private System.Windows.Forms.Label labelNew;
+        private MenuAdmin menuAdmin1;
     }
 }

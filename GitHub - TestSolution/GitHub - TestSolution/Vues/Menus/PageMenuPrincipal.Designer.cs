@@ -40,6 +40,7 @@
             // 
             this.labelMenuPrincipal.AutoSize = true;
             this.labelMenuPrincipal.Font = new System.Drawing.Font("Microsoft Sans Serif", 30F);
+            this.labelMenuPrincipal.ForeColor = System.Drawing.Color.SlateGray;
             this.labelMenuPrincipal.Location = new System.Drawing.Point(608, 81);
             this.labelMenuPrincipal.Name = "labelMenuPrincipal";
             this.labelMenuPrincipal.Size = new System.Drawing.Size(351, 58);
