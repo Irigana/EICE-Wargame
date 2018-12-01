@@ -196,9 +196,11 @@ namespace EICE_WARGAME
         public StuffCharactRank()
             : base()
         {
-            m_Feature = null;
-            m_Rank = null;
-            m_Value = -1;
+            m_CharactRank = null;
+            m_Stuff = null;
+            m_Max = -1;
+            m_Min = -1;
+            m_Cout = -1;
         }
 
         /// <summary>
@@ -207,12 +209,15 @@ namespace EICE_WARGAME
         /// <param name="Id">ID de la table StuffCharactRank</param>
         /// <param name="Stuff">Stuff de ce StuffCharactRank</param>
         /// <param name="ArmyUnity">ArmyUnity de ce StuffCharactRank</param>
-        public StuffCharactRank(int Id, Rank Rank, Feature Feature)
+        public StuffCharactRank(int Id, Stuff Stuff, CharactRank CharactRank, int Max, int Min, int Cout)
             : this()
         {
             DefinirId(Id);
-            this.Rank = Rank;
-            this.Feature = Feature;
+            this.CharactRank = CharactRank;
+            this.Stuff = Stuff;
+            this.Max = Max;
+            this.Min = Min;
+            this.Cout = Cout;
         }
 
         /// <summary>
@@ -220,15 +225,18 @@ namespace EICE_WARGAME
         /// </summary>
         /// <param name="Connexion"> Connexion au serveur MySQL</param>
         /// <param name="Enregistrement"> Enregistrement d'où extraire les valeurs des champs</param>
-        public StuffCharactRank(PDSGBD.MyDB Connexion, PDSGBD.MyDB.IEnregistrement Enregistrement) : this()
+        public StuffCharactRank(PDSGBD.MyDB Connexion, PDSGBD.MyDB.IEnregistrement Enregistrement) 
+            : this()
         {
             base.Connexion = Connexion;
             if (Enregistrement != null)
             {
-                DefinirId(Enregistrement.ValeurChampComplet<int>(NomDeLaTablePrincipale, "cf_id"));
-                this.Rank = new Rank(Connexion, Enregistrement);
-                this.Feature = new Feature(Connexion, Enregistrement);
-                this.Value = Enregistrement.ValeurChampComplet<int>(NomDeLaTablePrincipale, "cf_value");
+                DefinirId(Enregistrement.ValeurChampComplet<int>(NomDeLaTablePrincipale, "scr_id"));
+                this.CharactRank = new CharactRank(Connexion, Enregistrement);
+                this.Stuff = new Stuff(Connexion, Enregistrement);
+                this.Max = Enregistrement.ValeurChampComplet<int>(NomDeLaTablePrincipale, "scr_max");
+                this.Min = Enregistrement.ValeurChampComplet<int>(NomDeLaTablePrincipale, "scr_min");
+                this.Cout = Enregistrement.ValeurChampComplet<int>(NomDeLaTablePrincipale, "scr_cout");
             }
         }
         #endregion
@@ -242,7 +250,7 @@ namespace EICE_WARGAME
         {
             get
             {
-                return "char_feature";
+                return "stuff_char_rank";
             }
         }
 
@@ -253,7 +261,7 @@ namespace EICE_WARGAME
         {
             get
             {
-                return "cf_id";
+                return "scr_id";
             }
         }
 
@@ -264,7 +272,7 @@ namespace EICE_WARGAME
         {
             get
             {
-                return new PDSGBD.MyDB.CodeSql("cf_fk_rank_id = {0}, cf_fk_feature_id = {1},cf_value = {2}", Rank.Id, Feature.Id, Value);
+                return new PDSGBD.MyDB.CodeSql("scr_fk_stuff_id = {0}, scr_fk_rank_id = {1},scr_max = {2}, scr_min = {3}, scr_cost = {4}", Stuff.Id, CharactRank.Id, Max, Min, Cout);
             }
         }
 

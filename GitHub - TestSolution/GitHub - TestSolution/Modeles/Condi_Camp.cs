@@ -6,9 +6,8 @@ using System.Threading.Tasks;
 
 namespace EICE_WARGAME
 {
-    public class Condi_Camp //: Entite<Condi_Camp, Condi_Camp.Champ>
+    public class Condi_Camp : Entite<Condi_Camp, Condi_Camp.Champ>
     {
-        /* EN ATTENTE DE CREATION DES AUTRES CLASSES LIEES A CELLE-CI  /!\
         // Champ décrivant la table Condi_Camp
         public enum Champ
         {
@@ -232,6 +231,6 @@ namespace EICE_WARGAME
         }
 
         #endregion
-        */
+        
     }
 }
