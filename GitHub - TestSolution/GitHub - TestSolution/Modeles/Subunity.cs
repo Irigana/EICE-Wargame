@@ -202,7 +202,7 @@ namespace EICE_WARGAME
         {
             get
             {
-                return new PDSGBD.MyDB.CodeSql("su_name = {0}, su_fk_unity_id = {1}", m_Name, m_Unity.Id);
+                return new PDSGBD.MyDB.CodeSql("su_name = {0}, su_fk_unity_id = {1}", Name, Unity.Id);
             }
         }
 

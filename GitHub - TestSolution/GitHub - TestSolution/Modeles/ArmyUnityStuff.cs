@@ -7,76 +7,76 @@ using PDSGBD;
 
 namespace EICE_WARGAME
 {
-    public class Scenario_Camp : Entite<Scenario_Camp, Scenario_Camp.Champ>
+    public class ArmyUnityStuff : Entite<ArmyUnityStuff, ArmyUnityStuff.Champ>
     {
         /// <summary>
-        /// Champ décrivant la table scenario_camp
+        /// Champ décrivant la table ArmyUnityStuff
         /// </summary>
         public enum Champ
         {
             Id,
-            Scenario,
-            Camp
+            ArmyUnity,
+            Stuff,
         }
 
         #region Membre privé
         /// <summary>
-        /// Membre stockant la réf&rence du scénario
+        /// Membre stockant la référence de l'armée
         /// </summary>
-        private Scenario m_Scenario;
+        private ArmyUnity m_ArmyUnity;
 
         /// <summary>
-        /// Membr stockant la réf&rence du camp
+        /// Membr stockant la réf&rence du stuff
         /// </summary>
-        private Camp m_Camp;
+        private Stuff m_Stuff;
         #endregion
 
         #region Membre public
         /// <summary>
-        /// Membre public permettant d'accéder à l'id du Scénario
+        /// Membre public permettant d'accéder à l'id de ArmyUnity
         /// </summary>
-        public Scenario Scenario
+        public ArmyUnity ArmyUnity
         {
             get
             {
-                return m_Scenario;
+                return m_ArmyUnity;
             }
             set
             {
                 if (value == null)
                 {
-                    Declencher_SurErreur(this, Champ.Scenario, "Scénario non défini");
+                    Declencher_SurErreur(this, Champ.ArmyUnity, "Armée non défini");
                 }
                 else
                 {
-                    if ((m_Scenario == null) || int.Equals(value.Id, m_Scenario.Id))
+                    if ((m_ArmyUnity == null) || int.Equals(value.Id, m_ArmyUnity.Id))
                     {
-                        ModifierChamp(Champ.Scenario, ref m_Scenario, value);
+                        ModifierChamp(Champ.ArmyUnity, ref m_ArmyUnity, value);
                     }
                 }
             }
         }
 
         /// <summary>
-        /// Membre permettant d'accéder à l'id du Camp
+        /// Membre permettant d'accéder à l'id du Stuff
         /// </summary>
-        public Camp Camp
+        public Stuff Stuff
         {
             get
             {
-                return m_Camp;
+                return m_Stuff;
             }
             set
             {
                 if (value == null)
                 {
-                    Declencher_SurErreur(this, Champ.Camp, "Camp non défini");
+                    Declencher_SurErreur(this, Champ.Stuff, "Stuff non défini");
                 }
                 else
                 {
-                    if ((m_Camp == null) || int.Equals(value.Id, m_Camp.Id))
+                    if ((m_Stuff == null) || int.Equals(value.Id, m_Stuff.Id))
                     {
-                        ModifierChamp(Champ.Camp, ref m_Camp, value);
+                        ModifierChamp(Champ.Stuff, ref m_Stuff, value);
                     }
                 }
             }
@@ -87,23 +87,23 @@ namespace EICE_WARGAME
         /// <summary>
         /// Constructeur par défaut
         /// </summary>
-        public Scenario_Camp() : base()
+        public ArmyUnityStuff() : base()
         {
-            m_Camp = null;
-            m_Scenario = null;
+            m_ArmyUnity = null;
+            m_Stuff = null;
         }
 
         /// <summary>
         /// Constructeur spécifique
         /// </summary>
-        /// <param name="Id">ID de la table Scenario_Camp</param>
-        /// <param name="Camp">Camp de ce Scenario_Camp</param>
-        /// <param name="Scenario">Scenario de ce Scenario_Camp</param>
-        public Scenario_Camp(int Id, Camp Camp, Scenario Scenario) : this()
+        /// <param name="Id">ID de la table ArmyUnityStuff</param>
+        /// <param name="Stuff">Stuff de ce ArmyUnityStuff</param>
+        /// <param name="ArmyUnity">ArmyUnity de ce ArmyUnityStuff</param>
+        public ArmyUnityStuff(int Id, Stuff Stuff, ArmyUnity ArmyUnity) : this()
         {
             DefinirId(Id);
-            this.Camp = Camp;
-            this.Scenario = Scenario;
+            this.Stuff = Stuff;
+            this.ArmyUnity = ArmyUnity;
         }
 
         /// <summary>
@@ -111,28 +111,28 @@ namespace EICE_WARGAME
         /// </summary>
         /// <param name="Connexion"> Connexion au serveur MySQL</param>
         /// <param name="Enregistrement"> Enregistrement d'où extraire les valeurs des champs</param>
-        public Scenario_Camp(PDSGBD.MyDB Connexion, PDSGBD.MyDB.IEnregistrement Enregistrement) : this()
+        public ArmyUnityStuff(PDSGBD.MyDB Connexion, PDSGBD.MyDB.IEnregistrement Enregistrement) : this()
         {
             base.Connexion = Connexion;
             if (Enregistrement != null)
             {
-                DefinirId(Enregistrement.ValeurChampComplet<int>(NomDeLaTablePrincipale, "sca_id"));
-                this.Camp = new Camp(Connexion, Enregistrement);
-                this.Scenario = new Scenario(Connexion, Enregistrement);
+                DefinirId(Enregistrement.ValeurChampComplet<int>(NomDeLaTablePrincipale, "ars_id"));
+                this.ArmyUnity = new ArmyUnity(Connexion, Enregistrement);
+                this.Stuff = new Stuff(Connexion, Enregistrement);
             }
         }
         #endregion
 
         #region Membres relatifs à la base de données
         /// <summary>
-        /// Méthode retournant le nom de la table Scenario_Camp
+        /// Méthode retournant le nom de la table ArmyUnityStuff
         /// </summary>
         /// <returns>Nom de la table principale de ce type d'entités</returns>
         public override string NomDeLaTablePrincipale
         {
             get
             {
-                return "scenario_camp";
+                return "armyunitystuff";
             }
         }
 
@@ -143,7 +143,7 @@ namespace EICE_WARGAME
         {
             get
             {
-                return "sca_id";
+                return "ars_id";
             }
         }
 
@@ -154,7 +154,7 @@ namespace EICE_WARGAME
         {
             get
             {
-                return new PDSGBD.MyDB.CodeSql("sca_fk_camp_id = {0}, sca_fk_scenario_id = {1}", Camp.Id, Scenario.Id);
+                return new PDSGBD.MyDB.CodeSql("ars_fk_stuff_id = {0}, ars_fk_army_unity_id = {1}", Stuff.Id, ArmyUnity.Id);
             }
         }
 
@@ -163,8 +163,8 @@ namespace EICE_WARGAME
         /// </summary>
         /// <param name="Connexion">Connexion au serveur MySQL</param>
         public override void SupprimerEnCascade(MyDB Connexion)
-        {
-            Connexion.Executer("DELETE from scenario_camp WHERE sca_id = {0}", Id);
+        {// TODO
+            Connexion.Executer("DELETE from armyunitystuff WHERE ars_id = {0}", Id);
         }
 
         /// <summary>
@@ -173,9 +173,9 @@ namespace EICE_WARGAME
         /// <param name="Connexion">Connexion au serveur MySQL</param>
         /// <param name="Enregistrements">Enregistrements énumérés, sources des entités à créer</param>
         /// <returns>Enumération des entités issues des enregistrements énumérés</returns>
-        public static IEnumerable<Scenario_Camp> Enumerer(PDSGBD.MyDB Connexion, IEnumerable<PDSGBD.MyDB.IEnregistrement> Enregistrements)
+        public static IEnumerable<ArmyUnityStuff> Enumerer(PDSGBD.MyDB Connexion, IEnumerable<PDSGBD.MyDB.IEnregistrement> Enregistrements)
         {
-            return Enumerer(Enregistrements, Enregistrement => new Scenario_Camp(Connexion, Enregistrement));
+            return Enumerer(Enregistrements, Enregistrement => new ArmyUnityStuff(Connexion, Enregistrement));
         }
         #endregion
     }
