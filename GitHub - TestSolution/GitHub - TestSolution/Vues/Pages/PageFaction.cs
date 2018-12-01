@@ -90,7 +90,7 @@ namespace EICE_WARGAME
             menuAdmin1.Utilisateur = Utilisateur;
 
             // Permet d'obtenir l'option du menu admin utilisateur une fois l'admin identifié            
-            if (Utilisateur.Role.Id == 2) menuAdmin1.EstAdmin = true;
+            if(Utilisateur != null) if (Utilisateur.Role.Id == 2) menuAdmin1.EstAdmin = true;
             
             ficheFaction1.SurChangementSelection += ficheFaction_SurChangementSelection;
         }

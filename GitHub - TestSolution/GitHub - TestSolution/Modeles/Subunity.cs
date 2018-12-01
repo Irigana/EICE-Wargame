@@ -40,9 +40,14 @@ namespace EICE_WARGAME
         private Unity m_Unity;
 
         /// <summary>
-        /// Stock dans une liste toutes les unités liées (unité maitre et "esclaves")
+        /// unité master
         /// </summary>
-        //TODO : private List<Sub_Sub> m_Sub_Sub;
+        private SubSub m_SubSub_Master;
+
+        /// <summary>
+        /// unité slave
+        /// </summary>
+        private SubSub m_SubSub_Slave;
         #endregion
 
         #region Membres publics
@@ -76,15 +81,22 @@ namespace EICE_WARGAME
                 }
             }
         }
-        //TODO :
-        /*
-        public IEnumerable<Sub_Sub> Sub_Sub
+
+        public IEnumerable<SubSub> SubSub_Master
         {
             get
             {
-                return EnumererSub_Sub();
+                return EnumererSubSubMaster();
             }
-        }*/
+        }
+
+        public IEnumerable<SubSub> SubSub_Slave
+        {
+            get
+            {
+                return EnumererSubSubSlave();
+            }
+        }
 
         /// <summary>
         /// Id de de l'unity en question
@@ -114,7 +126,8 @@ namespace EICE_WARGAME
             : base()
         {
             m_Name = string.Empty;
-            //TODO : m_Sub_Sub = new List<Sub_Sub>();
+            m_SubSub_Master = new SubSub();
+            m_SubSub_Slave = new SubSub();
         }
 
         /// <summary>
@@ -211,6 +224,37 @@ namespace EICE_WARGAME
                     WHERE (un_fk_unity_id = {0})",
                 Id));
         }
+
+        /// <summary>
+        /// Permet de récupérer les rank lié à ce caractère
+        /// </summary>
+        /// <returns></returns>
+        private IEnumerable<SubSub> EnumererSubSubSlave()
+        {
+            if (base.Connexion == null) return new SubSub[0];
+            return EICE_WARGAME.SubSub.Enumerer(Connexion, Connexion.Enumerer(
+                @"SELECT ss_id, ss_fk_master_id, ss_fk_slave_id, ss_count
+                    FROM sub_sub
+                    JOIN subunity ON subsub.ss_fk_slave_id = subunity.su_id
+                    WHERE ss_fk_slave_id = {0}",
+                m_SubSub_Slave.Id));
+        }
+
+        /// <summary>
+        /// Permet de récupérer les rank lié à ce caractère
+        /// </summary>
+        /// <returns></returns>
+        private IEnumerable<SubSub> EnumererSubSubMaster()
+        {
+            if (base.Connexion == null) return new SubSub[0];
+            return EICE_WARGAME.SubSub.Enumerer(Connexion, Connexion.Enumerer(
+                @"SELECT ss_id, ss_fk_master_id, ss_fk_slave_id, ss_count
+                    FROM sub_sub
+                    JOIN subunity ON subsub.ss_fk_master_id = subunity.su_id
+                    WHERE ss_fk_master_id = {0}",
+                m_SubSub_Master.Id));
+        }
+
 
         #endregion
 

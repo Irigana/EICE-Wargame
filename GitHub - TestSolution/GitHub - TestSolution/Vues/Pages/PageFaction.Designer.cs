@@ -39,10 +39,10 @@
             this.buttonSupprimer = new System.Windows.Forms.Button();
             this.errorProviderErreurFaction = new System.Windows.Forms.ErrorProvider(this.components);
             this.ValidationProvider = new System.Windows.Forms.ErrorProvider(this.components);
+            this.labelNew = new System.Windows.Forms.Label();
+            this.menuAdmin1 = new EICE_WARGAME.MenuAdmin();
             this.ficheFaction1 = new EICE_WARGAME.FicheFaction();
             this.buttonOptionsUser1 = new EICE_WARGAME.ButtonOptionsUser();
-            this.menuAdmin1 = new EICE_WARGAME.MenuAdmin();
-            this.labelNew = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.errorProviderErreurFaction)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ValidationProvider)).BeginInit();
             this.SuspendLayout();
@@ -143,6 +143,27 @@
             this.ValidationProvider.BlinkStyle = System.Windows.Forms.ErrorBlinkStyle.NeverBlink;
             this.ValidationProvider.ContainerControl = this;
             // 
+            // labelNew
+            // 
+            this.labelNew.AutoSize = true;
+            this.labelNew.Location = new System.Drawing.Point(671, 525);
+            this.labelNew.Name = "labelNew";
+            this.labelNew.Size = new System.Drawing.Size(62, 17);
+            this.labelNew.TabIndex = 40;
+            this.labelNew.Text = "Faction :";
+            // 
+            // menuAdmin1
+            // 
+            this.menuAdmin1.BackColor = System.Drawing.Color.SteelBlue;
+            this.menuAdmin1.EstAdmin = false;
+            this.menuAdmin1.Location = new System.Drawing.Point(0, 0);
+            this.menuAdmin1.MaPageActive = 0;
+            this.menuAdmin1.Name = "menuAdmin1";
+            this.menuAdmin1.Size = new System.Drawing.Size(190, 750);
+            this.menuAdmin1.TabIndex = 0;
+            this.menuAdmin1.Utilisateur = null;
+            this.menuAdmin1.Load += new System.EventHandler(this.PageFaction_Load);
+            // 
             // ficheFaction1
             // 
             this.ficheFaction1.FactionSelectionne = null;
@@ -160,26 +181,6 @@
             this.buttonOptionsUser1.Size = new System.Drawing.Size(219, 45);
             this.buttonOptionsUser1.TabIndex = 1;
             this.buttonOptionsUser1.Utilisateur = null;
-            // 
-            // menuAdmin1
-            // 
-            this.menuAdmin1.BackColor = System.Drawing.Color.SteelBlue;
-            this.menuAdmin1.EstAdmin = false;
-            this.menuAdmin1.Location = new System.Drawing.Point(0, 0);
-            this.menuAdmin1.MaPageActive = 0;
-            this.menuAdmin1.Name = "menuAdmin1";
-            this.menuAdmin1.Size = new System.Drawing.Size(190, 750);
-            this.menuAdmin1.TabIndex = 0;
-            this.menuAdmin1.Utilisateur = null;
-            // 
-            // labelNew
-            // 
-            this.labelNew.AutoSize = true;
-            this.labelNew.Location = new System.Drawing.Point(671, 525);
-            this.labelNew.Name = "labelNew";
-            this.labelNew.Size = new System.Drawing.Size(62, 17);
-            this.labelNew.TabIndex = 40;
-            this.labelNew.Text = "Faction :";
             // 
             // PageFaction
             // 
@@ -199,7 +200,6 @@
             this.Controls.Add(this.buttonOptionsUser1);
             this.Name = "PageFaction";
             this.Size = new System.Drawing.Size(1500, 750);
-            this.Load += new System.EventHandler(this.PageFaction_Load);
             ((System.ComponentModel.ISupportInitialize)(this.errorProviderErreurFaction)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ValidationProvider)).EndInit();
             this.ResumeLayout(false);

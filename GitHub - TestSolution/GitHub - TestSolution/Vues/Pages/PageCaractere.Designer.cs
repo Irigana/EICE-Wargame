@@ -248,6 +248,7 @@
             this.Controls.Add(this.buttonOptionsUser1);
             this.Name = "PageCaractere";
             this.Size = new System.Drawing.Size(1500, 750);
+            this.Load += new System.EventHandler(this.PageCaractere_Load);
             ((System.ComponentModel.ISupportInitialize)(this.errorProviderErreurCaractere)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ValidationProvider)).EndInit();
             this.ResumeLayout(false);
