@@ -37,7 +37,7 @@ namespace EICE_WARGAME
         /// <summary>
         /// Name de ce ArmyUnity
         /// </summary>
-        public string Army
+        public Army Army
         {
             get
             {

@@ -46,6 +46,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Army.cs" />
     <Compile Include="Modeles\ArmyUnity.cs" />
     <Compile Include="Modeles\ArmyUnityFigurineStuff.cs" />
     <Compile Include="Modeles\CharactRank.cs" />

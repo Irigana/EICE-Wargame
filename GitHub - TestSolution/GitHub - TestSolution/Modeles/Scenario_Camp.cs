@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using PDSGBD;
 
-namespace EICE_WARGAME.Modeles
+namespace EICE_WARGAME
 {
     public class Scenario_Camp : Entite<Scenario_Camp, Scenario_Camp.Champ>
     {
