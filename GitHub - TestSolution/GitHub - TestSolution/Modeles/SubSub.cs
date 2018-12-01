@@ -41,7 +41,7 @@ namespace EICE_WARGAME
         #region Membres publics
 
         /// <summary>
-        /// Membre public permettant d'accéder à l'id du character
+        /// Membre public permettant d'accéder à l'id du Master
         /// </summary>
         public IEnumerable<SubUnity> Master
         {
@@ -52,7 +52,7 @@ namespace EICE_WARGAME
         }
 
         /// <summary>
-        /// Membre public permettant d'accéder à l'id du rank
+        /// Membre public permettant d'accéder à l'id du Slave
         /// </summary>
         public IEnumerable<SubUnity> Slave
         {
@@ -63,7 +63,7 @@ namespace EICE_WARGAME
         }
 
         /// <summary>
-        /// Membre public permettant d'accéder au coût
+        /// Membre public permettant d'accéder à la quantité
         /// </summary>
         public int Quantite
         {

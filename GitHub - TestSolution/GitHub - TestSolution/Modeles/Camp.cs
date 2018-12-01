@@ -9,16 +9,16 @@ namespace EICE_WARGAME
     public class Camp : Entite<Camp, Camp.Champ>
     {
         /// <summary>
-        /// Champ décrivant cette faction
+        /// Champ décrivant ce camp
         /// </summary>
         public enum Champ
         {
             /// <summary>
-            /// Identifiant du scénario
+            /// Identifiant du camp
             /// </summary>
             Id,
             /// <summary>
-            /// nom de la faction
+            /// nom du camp
             /// </summary>
             Name
         }

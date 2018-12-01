@@ -46,6 +46,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CharactFeature.cs" />
     <Compile Include="Modeles\Army.cs" />
     <Compile Include="Modeles\ArmyUnityStuff.cs" />
     <Compile Include="Modeles\ArmyUnity.cs" />
@@ -56,6 +57,7 @@
     <Compile Include="Modeles\Rank.cs" />
     <Compile Include="Modeles\SubSub.cs" />
     <Compile Include="Modeles\StuffSubUnity.cs" />
+    <Compile Include="StuffCharactRank.cs" />
     <Compile Include="Vues\Fiches\FicheCaractere.cs">
       <SubType>UserControl</SubType>
     </Compile>
