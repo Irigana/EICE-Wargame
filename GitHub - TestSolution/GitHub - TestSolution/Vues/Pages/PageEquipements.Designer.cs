@@ -196,7 +196,9 @@
             this.textBoxNomEquipement.Name = "textBoxNomEquipement";
             this.textBoxNomEquipement.Size = new System.Drawing.Size(197, 22);
             this.textBoxNomEquipement.TabIndex = 26;
-            this.textBoxNomEquipement.TextChanged += new System.EventHandler(this.textBoxNomEquipement_TextChanged);
+            //this.textBoxNomEquipement.TextChanged += new System.EventHandler(this.textBoxNomEquipement_TextChanged);
+            this.textBoxNomEquipement.Enter += new System.EventHandler(this.textBoxNomEquipement_Enter);
+            this.textBoxNomEquipement.Leave += new System.EventHandler(this.textBoxNomEquipement_Leave);
             // 
             // errorProvider1
             // 

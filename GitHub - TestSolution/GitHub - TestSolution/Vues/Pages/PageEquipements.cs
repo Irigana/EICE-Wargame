@@ -39,7 +39,9 @@ namespace EICE_WARGAME
         private Stuff m_Stuff;
         private Stuff m_StuffEnEdition;
 
-
+        /// <summary>
+        /// Permet d'accéder au membre privé m_Stuff depuis une autre classe
+        /// </summary>
         public Stuff Stuff
         {
             get
@@ -55,7 +57,7 @@ namespace EICE_WARGAME
             m_Utilisateur = null;
             menuAdmin1.MaPageActive = 5;
 
-            #region Initialisation de la ListVieu des caractéristiques
+            #region Initialisation de la ListView des caractéristiques
             listViewCaracteristiques.View = View.Details;
             listViewCaracteristiques.Columns.Clear();
             listViewCaracteristiques.Columns.Add(new ColumnHeader()
@@ -91,6 +93,7 @@ namespace EICE_WARGAME
 
             // TODO: Modifier la page de la manière suivante:
             // Ajouter la modification de l'équipement 
+            //                  * Vérifier unicité qd ajoute caractéristique à équipement
             //                  * Modifier le nom
             //                  * Modifier la valeur d'une de ces caractéristique
             //                  * Supprimer une caractéristique d'un équipement
@@ -128,6 +131,9 @@ namespace EICE_WARGAME
         private void buttonAjouter_Click(object sender, EventArgs e)
         {
             errorProvider1.Clear();
+
+            //Stuff StuffExistant = new Stuff();
+
             m_Stuff = new Stuff();
             m_Stuff.Name = m_StuffEnEdition.Name;
             m_Stuff.Type = m_StuffEnEdition.Type;
@@ -186,11 +192,19 @@ namespace EICE_WARGAME
             }
         }
 
-        private void textBoxNomEquipement_TextChanged(object sender, EventArgs e)
+        //private void textBoxNomEquipement_TextChanged(object sender, EventArgs e)
+        //{
+          //  errorProvider1.Clear();
+        //}
+        private void textBoxNomEquipement_Enter(object sender, EventArgs e)
+        {
+            errorProvider1.Clear();
+        }
+        private void textBoxNomEquipement_Leave(object sender, EventArgs e)
         {
             m_StuffEnEdition.Name = textBoxNomEquipement.Text;
         }
-        
+
         private void StuffEnEdition_SurErreur(Stuff Entite, Stuff.Champ Champ, string MessageErreur)
         {
             switch (Champ)
