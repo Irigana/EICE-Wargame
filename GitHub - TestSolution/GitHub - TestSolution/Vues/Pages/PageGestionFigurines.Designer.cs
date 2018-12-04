@@ -46,6 +46,7 @@
             this.textBoxPtsParUnite = new System.Windows.Forms.TextBox();
             this.panel1 = new System.Windows.Forms.Panel();
             this.labelCaracteristiques = new System.Windows.Forms.Label();
+            this.buttonRetourDashBoard1 = new EICE_WARGAME.ButtonRetourDashBoard();
             this.SuspendLayout();
             // 
             // menuAdmin1
@@ -103,7 +104,7 @@
             this.listeDeroulanteFaction1.FactionSelectionnee = null;
             this.listeDeroulanteFaction1.Location = new System.Drawing.Point(655, 148);
             this.listeDeroulanteFaction1.Name = "listeDeroulanteFaction1";
-            this.listeDeroulanteFaction1.Size = new System.Drawing.Size(208, 24);
+            this.listeDeroulanteFaction1.Size = new System.Drawing.Size(208, 25);
             this.listeDeroulanteFaction1.TabIndex = 34;
             // 
             // labelSousFaction
@@ -169,7 +170,7 @@
             // 
             this.listeDeroulanteType1.Location = new System.Drawing.Point(655, 250);
             this.listeDeroulanteType1.Name = "listeDeroulanteType1";
-            this.listeDeroulanteType1.Size = new System.Drawing.Size(208, 24);
+            this.listeDeroulanteType1.Size = new System.Drawing.Size(208, 25);
             this.listeDeroulanteType1.TabIndex = 42;
             this.listeDeroulanteType1.TypeSelectionne = null;
             // 
@@ -209,10 +210,19 @@
             this.labelCaracteristiques.TabIndex = 45;
             this.labelCaracteristiques.Text = "Caracteristiques";
             // 
+            // buttonRetourDashBoard1
+            // 
+            this.buttonRetourDashBoard1.Location = new System.Drawing.Point(196, 3);
+            this.buttonRetourDashBoard1.Name = "buttonRetourDashBoard1";
+            this.buttonRetourDashBoard1.Size = new System.Drawing.Size(44, 34);
+            this.buttonRetourDashBoard1.TabIndex = 46;
+            this.buttonRetourDashBoard1.Utilisateur = null;
+            // 
             // PageGestionFigurines
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.buttonRetourDashBoard1);
             this.Controls.Add(this.labelCaracteristiques);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.textBoxPtsParUnite);
@@ -259,5 +269,6 @@
         private System.Windows.Forms.TextBox textBoxPtsParUnite;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Label labelCaracteristiques;
+        private ButtonRetourDashBoard buttonRetourDashBoard1;
     }
 }

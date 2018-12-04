@@ -43,6 +43,7 @@
             this.menuAdmin1 = new EICE_WARGAME.MenuAdmin();
             this.ficheFaction1 = new EICE_WARGAME.FicheFaction();
             this.buttonOptionsUser1 = new EICE_WARGAME.ButtonOptionsUser();
+            this.buttonRetourDashBoard1 = new EICE_WARGAME.ButtonRetourDashBoard();
             ((System.ComponentModel.ISupportInitialize)(this.errorProviderErreurFaction)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ValidationProvider)).BeginInit();
             this.SuspendLayout();
@@ -182,10 +183,19 @@
             this.buttonOptionsUser1.TabIndex = 1;
             this.buttonOptionsUser1.Utilisateur = null;
             // 
+            // buttonRetourDashBoard1
+            // 
+            this.buttonRetourDashBoard1.Location = new System.Drawing.Point(197, 4);
+            this.buttonRetourDashBoard1.Name = "buttonRetourDashBoard1";
+            this.buttonRetourDashBoard1.Size = new System.Drawing.Size(44, 34);
+            this.buttonRetourDashBoard1.TabIndex = 41;
+            this.buttonRetourDashBoard1.Utilisateur = null;
+            // 
             // PageFaction
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.buttonRetourDashBoard1);
             this.Controls.Add(this.labelNew);
             this.Controls.Add(this.menuAdmin1);
             this.Controls.Add(this.buttonSupprimer);
@@ -222,5 +232,6 @@
         private System.Windows.Forms.ErrorProvider ValidationProvider;
         private System.Windows.Forms.Label labelNew;
         private MenuAdmin menuAdmin1;
+        private ButtonRetourDashBoard buttonRetourDashBoard1;
     }
 }

@@ -46,6 +46,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ButtonRetourDashBoard.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="ButtonRetourDashBoard.Designer.cs">
+      <DependentUpon>ButtonRetourDashBoard.cs</DependentUpon>
+    </Compile>
     <Compile Include="Modeles\CharactFeature.cs" />
     <Compile Include="Modeles\Army.cs" />
     <Compile Include="Modeles\ArmyUnityStuff.cs" />
@@ -185,12 +191,6 @@
     <Compile Include="Modeles\Stuff.cs" />
     <Compile Include="Modeles\StuffFeature.cs" />
     <Compile Include="Modeles\Type.cs" />
-    <Compile Include="Vues\Pages\PageFigurine.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="Vues\Pages\PageFigurine.Designer.cs">
-      <DependentUpon>PageFigurine.cs</DependentUpon>
-    </Compile>
     <Compile Include="Vues\Pages\PageEditionUser.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -249,6 +249,9 @@
     <Compile Include="Vues\TextBoxAvecTextInvisible.Designer.cs">
       <DependentUpon>TextBoxAvecTextInvisible.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="ButtonRetourDashBoard.resx">
+      <DependentUpon>ButtonRetourDashBoard.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Vues\Fiches\FicheCaractere.resx">
       <DependentUpon>FicheCaractere.cs</DependentUpon>
     </EmbeddedResource>
@@ -353,6 +356,8 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Informations\SchemaDB.PNG" />
+    <None Include="Resources\ReturnLogoBlue25px.png" />
+    <None Include="Resources\ReturnLogoBlue35px.png" />
     <None Include="Resources\Title_warhammer_2.png" />
     <None Include="Resources\Equipement40px.png" />
     <None Include="Resources\ReturnLogo35px.png" />

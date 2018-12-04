@@ -10,9 +10,8 @@ using System.Windows.Forms;
 
 namespace EICE_WARGAME
 {
-    public partial class PageGestionFigurines : UserControl
+    public partial class ButtonRetourDashBoard : UserControl
     {
-
 
         #region Utilisateur
         private Utilisateur m_Utilisateur = null;
@@ -28,26 +27,23 @@ namespace EICE_WARGAME
                 if ((m_Utilisateur == null) && (value != null))
                 {
                     m_Utilisateur = value;
-                    buttonOptionsUser1.Utilisateur = m_Utilisateur;
                 }
             }
         }
         #endregion
 
-
-        public PageGestionFigurines()
+        public ButtonRetourDashBoard()
         {
             InitializeComponent();
         }
 
-
-        private void PageGestionFigurine_Load(object sender, EventArgs e)
+        private void pictureBox1_Click(object sender, EventArgs e)
         {
-            // Permet de passer l'utilisateur par le controler MenuAdmin
-            menuAdmin1.Utilisateur = Utilisateur;
-            buttonRetourDashBoard1.Utilisateur = Utilisateur;
-            // Permet d'obtenir l'option du menu admin utilisateur une fois l'admin identifié            
-            if (Utilisateur.Role.Id == 2) menuAdmin1.EstAdmin = true;
+            Form_Principal.Instance.CreerPageCourante<PageMenuDashboard>((Page) =>
+            {
+                Page.Utilisateur = Utilisateur;
+                return true;
+            });
         }
     }
 }

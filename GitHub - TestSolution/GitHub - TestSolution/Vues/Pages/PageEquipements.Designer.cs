@@ -56,6 +56,7 @@
             this.label5 = new System.Windows.Forms.Label();
             this.listViewCaracteristiques = new System.Windows.Forms.ListView();
             this.menuAdmin1 = new EICE_WARGAME.MenuAdmin();
+            this.buttonRetourDashBoard1 = new EICE_WARGAME.ButtonRetourDashBoard();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -64,7 +65,7 @@
             this.labelCRUDArmes.AutoSize = true;
             this.labelCRUDArmes.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F);
             this.labelCRUDArmes.ForeColor = System.Drawing.Color.SlateGray;
-            this.labelCRUDArmes.Location = new System.Drawing.Point(223, 25);
+            this.labelCRUDArmes.Location = new System.Drawing.Point(242, 26);
             this.labelCRUDArmes.Name = "labelCRUDArmes";
             this.labelCRUDArmes.Size = new System.Drawing.Size(188, 36);
             this.labelCRUDArmes.TabIndex = 1;
@@ -196,7 +197,6 @@
             this.textBoxNomEquipement.Name = "textBoxNomEquipement";
             this.textBoxNomEquipement.Size = new System.Drawing.Size(197, 22);
             this.textBoxNomEquipement.TabIndex = 26;
-            //this.textBoxNomEquipement.TextChanged += new System.EventHandler(this.textBoxNomEquipement_TextChanged);
             this.textBoxNomEquipement.Enter += new System.EventHandler(this.textBoxNomEquipement_Enter);
             this.textBoxNomEquipement.Leave += new System.EventHandler(this.textBoxNomEquipement_Leave);
             // 
@@ -291,7 +291,7 @@
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold);
             this.label4.ForeColor = System.Drawing.Color.SlateGray;
-            this.label4.Location = new System.Drawing.Point(225, 92);
+            this.label4.Location = new System.Drawing.Point(243, 81);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(197, 25);
             this.label4.TabIndex = 34;
@@ -302,7 +302,7 @@
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold);
             this.label5.ForeColor = System.Drawing.Color.SlateGray;
-            this.label5.Location = new System.Drawing.Point(225, 362);
+            this.label5.Location = new System.Drawing.Point(244, 346);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(169, 25);
             this.label5.TabIndex = 35;
@@ -327,10 +327,19 @@
             this.menuAdmin1.TabIndex = 37;
             this.menuAdmin1.Utilisateur = null;
             // 
+            // buttonRetourDashBoard1
+            // 
+            this.buttonRetourDashBoard1.Location = new System.Drawing.Point(196, 3);
+            this.buttonRetourDashBoard1.Name = "buttonRetourDashBoard1";
+            this.buttonRetourDashBoard1.Size = new System.Drawing.Size(44, 34);
+            this.buttonRetourDashBoard1.TabIndex = 38;
+            this.buttonRetourDashBoard1.Utilisateur = null;
+            // 
             // PageEquipements
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.buttonRetourDashBoard1);
             this.Controls.Add(this.menuAdmin1);
             this.Controls.Add(this.listViewCaracteristiques);
             this.Controls.Add(this.label5);
@@ -394,5 +403,6 @@
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.ListView listViewCaracteristiques;
         private MenuAdmin menuAdmin1;
+        private ButtonRetourDashBoard buttonRetourDashBoard1;
     }
 }

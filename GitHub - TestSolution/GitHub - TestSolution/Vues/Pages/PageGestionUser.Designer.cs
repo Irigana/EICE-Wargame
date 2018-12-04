@@ -37,6 +37,7 @@
             this.ficheUtilisateur1 = new EICE_WARGAME.FicheUtilisateur();
             this.buttonOptionsUser1 = new EICE_WARGAME.ButtonOptionsUser();
             this.menuAdmin1 = new EICE_WARGAME.MenuAdmin();
+            this.buttonRetourDashBoard1 = new EICE_WARGAME.ButtonRetourDashBoard();
             this.SuspendLayout();
             // 
             // labelTitreGestionUser
@@ -136,10 +137,19 @@
             this.menuAdmin1.TabIndex = 39;
             this.menuAdmin1.Utilisateur = null;
             // 
+            // buttonRetourDashBoard1
+            // 
+            this.buttonRetourDashBoard1.Location = new System.Drawing.Point(197, 4);
+            this.buttonRetourDashBoard1.Name = "buttonRetourDashBoard1";
+            this.buttonRetourDashBoard1.Size = new System.Drawing.Size(44, 34);
+            this.buttonRetourDashBoard1.TabIndex = 40;
+            this.buttonRetourDashBoard1.Utilisateur = null;
+            // 
             // PageGestionUser
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.buttonRetourDashBoard1);
             this.Controls.Add(this.menuAdmin1);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.buttonDestitution);
@@ -167,5 +177,6 @@
         private System.Windows.Forms.Button buttonDestitution;
         private System.Windows.Forms.Label label1;
         private MenuAdmin menuAdmin1;
+        private ButtonRetourDashBoard buttonRetourDashBoard1;
     }
 }

@@ -42,11 +42,12 @@
             this.labelNouveauCaract = new System.Windows.Forms.Label();
             this.errorProviderErreurCaractere = new System.Windows.Forms.ErrorProvider(this.components);
             this.ValidationProvider = new System.Windows.Forms.ErrorProvider(this.components);
+            this.buttonRetourDashBoard1 = new EICE_WARGAME.ButtonRetourDashBoard();
+            this.menuAdmin1 = new EICE_WARGAME.MenuAdmin();
             this.ficheCaractere1 = new EICE_WARGAME.FicheCaractere();
             this.listeDeroulanteSousFaction1 = new EICE_WARGAME.ListeDeroulanteSousFaction();
             this.listeDeroulanteFaction1 = new EICE_WARGAME.ListeDeroulanteFaction();
             this.buttonOptionsUser1 = new EICE_WARGAME.ButtonOptionsUser();
-            this.menuAdmin1 = new EICE_WARGAME.MenuAdmin();
             ((System.ComponentModel.ISupportInitialize)(this.errorProviderErreurCaractere)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ValidationProvider)).BeginInit();
             this.SuspendLayout();
@@ -180,6 +181,25 @@
             this.ValidationProvider.BlinkStyle = System.Windows.Forms.ErrorBlinkStyle.NeverBlink;
             this.ValidationProvider.ContainerControl = this;
             // 
+            // buttonRetourDashBoard1
+            // 
+            this.buttonRetourDashBoard1.Location = new System.Drawing.Point(196, 3);
+            this.buttonRetourDashBoard1.Name = "buttonRetourDashBoard1";
+            this.buttonRetourDashBoard1.Size = new System.Drawing.Size(44, 34);
+            this.buttonRetourDashBoard1.TabIndex = 46;
+            this.buttonRetourDashBoard1.Utilisateur = null;
+            // 
+            // menuAdmin1
+            // 
+            this.menuAdmin1.BackColor = System.Drawing.Color.SteelBlue;
+            this.menuAdmin1.EstAdmin = false;
+            this.menuAdmin1.Location = new System.Drawing.Point(0, 0);
+            this.menuAdmin1.MaPageActive = 0;
+            this.menuAdmin1.Name = "menuAdmin1";
+            this.menuAdmin1.Size = new System.Drawing.Size(190, 750);
+            this.menuAdmin1.TabIndex = 45;
+            this.menuAdmin1.Utilisateur = null;
+            // 
             // ficheCaractere1
             // 
             this.ficheCaractere1.CaractereSelectionne = null;
@@ -215,21 +235,11 @@
             this.buttonOptionsUser1.TabIndex = 1;
             this.buttonOptionsUser1.Utilisateur = null;
             // 
-            // menuAdmin1
-            // 
-            this.menuAdmin1.BackColor = System.Drawing.Color.SteelBlue;
-            this.menuAdmin1.EstAdmin = false;
-            this.menuAdmin1.Location = new System.Drawing.Point(0, 0);
-            this.menuAdmin1.MaPageActive = 0;
-            this.menuAdmin1.Name = "menuAdmin1";
-            this.menuAdmin1.Size = new System.Drawing.Size(190, 750);
-            this.menuAdmin1.TabIndex = 45;
-            this.menuAdmin1.Utilisateur = null;
-            // 
             // PageCaractere
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.buttonRetourDashBoard1);
             this.Controls.Add(this.menuAdmin1);
             this.Controls.Add(this.labelNouveauCaract);
             this.Controls.Add(this.buttonAnnulerCaract);
@@ -275,5 +285,6 @@
         private System.Windows.Forms.ErrorProvider errorProviderErreurCaractere;
         private System.Windows.Forms.ErrorProvider ValidationProvider;
         private MenuAdmin menuAdmin1;
+        private ButtonRetourDashBoard buttonRetourDashBoard1;
     }
 }
