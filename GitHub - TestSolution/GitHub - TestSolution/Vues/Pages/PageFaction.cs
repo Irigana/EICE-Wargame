@@ -49,7 +49,7 @@ namespace EICE_WARGAME
             buttonModifier.Enabled = false;
             buttonSupprimer.Enabled = false;
             buttonAjouter.Enabled = true;
-            menuAdmin1.MaPageActive = 3;
+            menuAdmin1.MaPageActive = 4;
 
             m_FactionEnEdition = new Faction();
             m_FactionEnEdition.SurErreur += FactionEnEdition_SurErreur;

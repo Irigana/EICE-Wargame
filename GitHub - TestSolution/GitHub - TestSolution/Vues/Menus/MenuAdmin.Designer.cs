@@ -64,6 +64,7 @@
             this.buttonFigurine.TabIndex = 1;
             this.buttonFigurine.Text = "Figurine";
             this.buttonFigurine.UseVisualStyleBackColor = true;
+            this.buttonFigurine.Click += new System.EventHandler(this.buttonFigurine_Click);
             // 
             // buttonScenario
             // 

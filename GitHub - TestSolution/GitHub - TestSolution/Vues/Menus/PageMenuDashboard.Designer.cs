@@ -168,6 +168,7 @@
             this.buttonFigurine.TabIndex = 9;
             this.buttonFigurine.Text = "Figurines";
             this.buttonFigurine.UseVisualStyleBackColor = false;
+            this.buttonFigurine.Click += new System.EventHandler(this.buttonFigurine_Click);
             // 
             // PageMenuDashboard
             // 

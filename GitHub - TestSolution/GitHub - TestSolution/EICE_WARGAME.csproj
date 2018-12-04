@@ -58,6 +58,12 @@
     <Compile Include="Modeles\SubSub.cs" />
     <Compile Include="Modeles\StuffSubUnity.cs" />
     <Compile Include="Modeles\StuffCharactRank.cs" />
+    <Compile Include="Vues\Pages\PageGestionFigurines.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Vues\Pages\PageGestionFigurines.Designer.cs">
+      <DependentUpon>PageGestionFigurines.cs</DependentUpon>
+    </Compile>
     <Compile Include="Vues\Fiches\FicheCaractere.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -251,6 +257,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Vues\Fiches\FicheUtilisateur.resx">
       <DependentUpon>FicheUtilisateur.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Vues\Pages\PageGestionFigurines.resx">
+      <DependentUpon>PageGestionFigurines.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Vues\Pages\PageGestionUser.resx">
       <DependentUpon>PageGestionUser.cs</DependentUpon>

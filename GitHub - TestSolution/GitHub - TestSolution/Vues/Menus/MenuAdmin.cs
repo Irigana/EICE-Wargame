@@ -140,34 +140,49 @@ namespace EICE_WARGAME
                     }
                 case 3:
                     {
-                        buttonFaction.ForeColor = Color.SteelBlue;
-                        buttonFaction.BackColor = System.Drawing.SystemColors.Window;
+                        buttonFigurine.ForeColor = Color.SteelBlue;
+                        buttonFigurine.BackColor = System.Drawing.SystemColors.Window;
                         break;
                     }                    
                 case 4:
                     {
-                        buttonSousFaction.ForeColor = Color.SteelBlue;
-                        buttonSousFaction.BackColor = System.Drawing.SystemColors.Window;
-                    }
-                    return;
+                        buttonFaction.ForeColor = Color.SteelBlue;
+                        buttonFaction.BackColor = System.Drawing.SystemColors.Window;
+                        break;
+                    }                    
                 case 5:
                     {
-                        buttonEquipement.ForeColor = Color.SteelBlue;
-                        buttonEquipement.BackColor = System.Drawing.SystemColors.Window;
+
+                        buttonSousFaction.ForeColor = Color.SteelBlue;
+                        buttonSousFaction.BackColor = System.Drawing.SystemColors.Window;
                         break;
                     }
                 case 6:
                     {
+
+                        buttonEquipement.ForeColor = Color.SteelBlue;
+                        buttonEquipement.BackColor = System.Drawing.SystemColors.Window;
+                        break;
+                    }
+                case 7:
+                    {
                         buttonGestionUser.ForeColor = Color.SteelBlue;
                         buttonGestionUser.BackColor = System.Drawing.SystemColors.Window;
+                        break;
                     }
-                    return;
                 default:
                     return;
                     
             }
         }
 
-        
+        private void buttonFigurine_Click(object sender, EventArgs e)
+        {
+            Form_Principal.Instance.CreerPageCourante<PageGestionFigurines>((Page) =>
+            {
+                Page.Utilisateur = Utilisateur;
+                return true;
+            });
+        }
     }
 }
