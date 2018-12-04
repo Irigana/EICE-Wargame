@@ -46,10 +46,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="ButtonRetourDashBoard.cs">
+    <Compile Include="Vues\ButtonRetourDashBoard.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="ButtonRetourDashBoard.Designer.cs">
+    <Compile Include="Vues\ButtonRetourDashBoard.Designer.cs">
       <DependentUpon>ButtonRetourDashBoard.cs</DependentUpon>
     </Compile>
     <Compile Include="Modeles\CharactFeature.cs" />
@@ -249,7 +249,7 @@
     <Compile Include="Vues\TextBoxAvecTextInvisible.Designer.cs">
       <DependentUpon>TextBoxAvecTextInvisible.cs</DependentUpon>
     </Compile>
-    <EmbeddedResource Include="ButtonRetourDashBoard.resx">
+    <EmbeddedResource Include="Vues\ButtonRetourDashBoard.resx">
       <DependentUpon>ButtonRetourDashBoard.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Vues\Fiches\FicheCaractere.resx">

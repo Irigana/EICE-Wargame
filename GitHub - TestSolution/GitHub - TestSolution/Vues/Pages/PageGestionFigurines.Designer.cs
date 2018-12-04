@@ -47,6 +47,7 @@
             this.panel1 = new System.Windows.Forms.Panel();
             this.labelCaracteristiques = new System.Windows.Forms.Label();
             this.buttonRetourDashBoard1 = new EICE_WARGAME.ButtonRetourDashBoard();
+            this.label = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // menuAdmin1
@@ -218,10 +219,20 @@
             this.buttonRetourDashBoard1.TabIndex = 46;
             this.buttonRetourDashBoard1.Utilisateur = null;
             // 
+            // label
+            // 
+            this.label.AutoSize = true;
+            this.label.Location = new System.Drawing.Point(298, 443);
+            this.label.Name = "label";
+            this.label.Size = new System.Drawing.Size(46, 17);
+            this.label.TabIndex = 47;
+            this.label.Text = "label1";
+            // 
             // PageGestionFigurines
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.label);
             this.Controls.Add(this.buttonRetourDashBoard1);
             this.Controls.Add(this.labelCaracteristiques);
             this.Controls.Add(this.panel1);
@@ -270,5 +281,6 @@
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Label labelCaracteristiques;
         private ButtonRetourDashBoard buttonRetourDashBoard1;
+        private System.Windows.Forms.Label label;
     }
 }
