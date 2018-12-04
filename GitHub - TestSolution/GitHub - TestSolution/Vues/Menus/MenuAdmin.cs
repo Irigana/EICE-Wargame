@@ -47,11 +47,6 @@ namespace EICE_WARGAME
             buttonGestionUser.Hide();
 
         }
-        public MenuAdmin(Utilisateur User)
-        {
-            InitializeComponent();
-
-        }
 
         private bool m_EstAdmin;
 
@@ -122,6 +117,15 @@ namespace EICE_WARGAME
             });
         }
 
+        private void buttonFigurine_Click(object sender, EventArgs e)
+        {
+            Form_Principal.Instance.CreerPageCourante<PageGestionFigurines>((Page) =>
+            {
+                Page.Utilisateur = Utilisateur;
+                return true;
+            });
+        }
+
         private void MenuAdmin_Load(object sender, EventArgs e)
         {
             switch(m_PageActive)
@@ -176,13 +180,5 @@ namespace EICE_WARGAME
             }
         }
 
-        private void buttonFigurine_Click(object sender, EventArgs e)
-        {
-            Form_Principal.Instance.CreerPageCourante<PageGestionFigurines>((Page) =>
-            {
-                Page.Utilisateur = Utilisateur;
-                return true;
-            });
-        }
     }
 }

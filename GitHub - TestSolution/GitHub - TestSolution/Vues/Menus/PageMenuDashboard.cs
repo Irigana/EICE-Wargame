@@ -39,14 +39,31 @@ namespace EICE_WARGAME
         }
 
         private void PageMenuDashBoard_Load(object sender, EventArgs e)
-        {
+        {            
             if (Utilisateur != null)
             {
-                buttonOptionsUser1.ButtonOptionsUserUpdate();
                 if (Utilisateur.Role.Id == 2) buttonGestionUser.Show();
                 else
                 {
-                    this.buttonRetourMenuPrincipal.Location = new Point(473, 360);
+
+                    buttonFaction.Location = new Point(475, 185);
+                    buttonFaction.Size = new Size(225, 45);
+
+                    buttonSousFaction.Location = new Point(475, 235);
+                    buttonSousFaction.Size = new Size(225, 45);
+
+                    buttonCaractère.Location = new Point(475, 285);
+                    buttonCaractère.Size = new Size(225, 45);
+
+                    buttonFigurine.Location = new Point(475, 335);
+                    buttonFigurine.Size = new Size(225, 45);
+
+                    buttonEquipement.Location = new Point(475, 385);
+                    buttonEquipement.Size = new Size(225, 45);
+
+                    buttonRetourMenuPrincipal.Location = new Point(475, 435);
+                    buttonRetourMenuPrincipal.Size = new Size(225, 45);
+
                     buttonGestionUser.Hide();
                 }
             }
@@ -54,6 +71,8 @@ namespace EICE_WARGAME
             {
                 Form_Principal.Instance.CreerPageCourante<PageConnexion>();
             }
+
+
         }
 
         private void buttonEquipements_Click(object sender, EventArgs e)
