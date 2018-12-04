@@ -45,7 +45,7 @@ namespace EICE_WARGAME
         {
             InitializeComponent();
             m_Utilisateur = null;
-            menuAdmin1.MaPageActive = 5;  
+            menuAdmin1.MaPageActive = 4;  
             //-------------------------
             buttonAnnulerSF.Enabled = false;
             buttonModifierSF.Enabled = false;

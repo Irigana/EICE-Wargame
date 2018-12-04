@@ -43,7 +43,7 @@ namespace EICE_WARGAME
             buttonSupprimer.Enabled = false;
             buttonDestitution.Enabled = false;
             buttonPromouvoir.Enabled = false;
-            menuAdmin1.MaPageActive = 7;
+            menuAdmin1.MaPageActive = 6;
 
             ChargerUsers();
 

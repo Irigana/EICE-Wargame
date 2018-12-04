@@ -138,37 +138,31 @@ namespace EICE_WARGAME
                     }
                 case 2:
                     {
-                        buttonCaractere.ForeColor = Color.SteelBlue;
-                        buttonCaractere.BackColor = System.Drawing.SystemColors.Window;
+                        buttonPersonnage.ForeColor = Color.SteelBlue;
+                        buttonPersonnage.BackColor = System.Drawing.SystemColors.Window;
                         break;
-                    }
+                    }                           
                 case 3:
-                    {
-                        buttonFigurine.ForeColor = Color.SteelBlue;
-                        buttonFigurine.BackColor = System.Drawing.SystemColors.Window;
-                        break;
-                    }                    
-                case 4:
                     {
                         buttonFaction.ForeColor = Color.SteelBlue;
                         buttonFaction.BackColor = System.Drawing.SystemColors.Window;
                         break;
                     }                    
-                case 5:
+                case 4:
                     {
 
                         buttonSousFaction.ForeColor = Color.SteelBlue;
                         buttonSousFaction.BackColor = System.Drawing.SystemColors.Window;
                         break;
                     }
-                case 6:
+                case 5:
                     {
 
                         buttonEquipement.ForeColor = Color.SteelBlue;
                         buttonEquipement.BackColor = System.Drawing.SystemColors.Window;
                         break;
                     }
-                case 7:
+                case 6:
                     {
                         buttonGestionUser.ForeColor = Color.SteelBlue;
                         buttonGestionUser.BackColor = System.Drawing.SystemColors.Window;
