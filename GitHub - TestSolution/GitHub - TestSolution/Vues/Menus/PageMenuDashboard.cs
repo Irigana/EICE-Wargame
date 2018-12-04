@@ -42,7 +42,10 @@ namespace EICE_WARGAME
         {            
             if (Utilisateur != null)
             {
-                if (Utilisateur.Role.Id == 2) buttonGestionUser.Show();
+                if (Utilisateur.Role.Id == 2)
+                {
+                    buttonGestionUser.Show();
+                }
                 else
                 {
 
@@ -55,13 +58,10 @@ namespace EICE_WARGAME
                     buttonCaractère.Location = new Point(475, 285);
                     buttonCaractère.Size = new Size(225, 45);
 
-                    buttonFigurine.Location = new Point(475, 335);
-                    buttonFigurine.Size = new Size(225, 45);
-
-                    buttonEquipement.Location = new Point(475, 385);
+                    buttonEquipement.Location = new Point(475, 335);
                     buttonEquipement.Size = new Size(225, 45);
 
-                    buttonRetourMenuPrincipal.Location = new Point(475, 435);
+                    buttonRetourMenuPrincipal.Location = new Point(475, 385);
                     buttonRetourMenuPrincipal.Size = new Size(225, 45);
 
                     buttonGestionUser.Hide();
@@ -133,15 +133,6 @@ namespace EICE_WARGAME
                                 page.Utilisateur = Utilisateur;
                                 return true;
                             });
-        }
-
-        private void buttonFigurine_Click(object sender, EventArgs e)
-        {
-            Form_Principal.Instance.CreerPageCourante<PageGestionFigurines>((Page) =>
-            {
-                Page.Utilisateur = Utilisateur;
-                return true;
-            });
-        }
+        }        
     }
 }
