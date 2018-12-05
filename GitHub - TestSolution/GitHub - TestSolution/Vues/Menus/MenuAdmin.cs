@@ -110,7 +110,7 @@ namespace EICE_WARGAME
 
         private void buttonCaractere_Click(object sender, EventArgs e)
         {
-            Form_Principal.Instance.CreerPageCourante<PageCaractere>((Page) =>
+            Form_Principal.Instance.CreerPageCourante<PagePersonnage>((Page) =>
             {
                 Page.Utilisateur = Utilisateur;
                 return true;

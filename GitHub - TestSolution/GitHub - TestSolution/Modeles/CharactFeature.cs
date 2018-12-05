@@ -15,7 +15,7 @@ namespace EICE_WARGAME
         public enum Champ
         {
             Id,
-            Rank,
+            CharactRank,
             Feature,
             Value,
         }
@@ -24,7 +24,7 @@ namespace EICE_WARGAME
         /// <summary>
         /// Membre stockant la référence du rank
         /// </summary>
-        private Rank m_Rank;
+        private CharactRank m_CharactRank;
 
         /// <summary>
         /// Membr stockant la référence de feature
@@ -41,23 +41,23 @@ namespace EICE_WARGAME
         /// <summary>
         /// Membre public permettant d'accéder au Rank de cette CharactFeature
         /// </summary>
-        public Rank Rank
+        public CharactRank CharactRank
         {
             get
             {
-                return m_Rank;
+                return m_CharactRank;
             }
             set
             {
                 if (value == null)
                 {
-                    Declencher_SurErreur(this, Champ.Rank, "Rank non défini");
+                    Declencher_SurErreur(this, Champ.CharactRank, "Rank non défini");
                 }
                 else
                 {
-                    if ((m_Rank == null) || int.Equals(value.Id, m_Rank.Id))
+                    if ((m_CharactRank == null) || int.Equals(value.Id, m_CharactRank.Id))
                     {
-                        ModifierChamp(Champ.Rank, ref m_Rank, value);
+                        ModifierChamp(Champ.CharactRank, ref m_CharactRank, value);
                     }
                 }
             }
@@ -128,7 +128,7 @@ namespace EICE_WARGAME
             : base()
         {
             m_Feature = null;
-            m_Rank = null;
+            m_CharactRank = null;
             m_Value = -1;
         }
 
@@ -138,11 +138,11 @@ namespace EICE_WARGAME
         /// <param name="Id">ID de la table CharactFeature</param>
         /// <param name="Stuff">Stuff de ce CharactFeature</param>
         /// <param name="ArmyUnity">ArmyUnity de ce CharactFeature</param>
-        public CharactFeature(int Id, Rank Rank, Feature Feature) 
+        public CharactFeature(int Id, CharactRank CharactRank, Feature Feature) 
             : this()
         {
             DefinirId(Id);
-            this.Rank = Rank;
+            this.CharactRank = CharactRank;
             this.Feature = Feature;
         }
 
@@ -156,10 +156,10 @@ namespace EICE_WARGAME
             base.Connexion = Connexion;
             if (Enregistrement != null)
             {
-                DefinirId(Enregistrement.ValeurChampComplet<int>(NomDeLaTablePrincipale, "cf_id"));
-                this.Rank = new Rank(Connexion, Enregistrement);
+                DefinirId(Enregistrement.ValeurChampComplet<int>(NomDeLaTablePrincipale, "crf_id"));
+                this.CharactRank = new CharactRank(Connexion, Enregistrement);
                 this.Feature = new Feature(Connexion, Enregistrement);
-                this.Value = Enregistrement.ValeurChampComplet<int>(NomDeLaTablePrincipale, "cf_value");
+                this.Value = Enregistrement.ValeurChampComplet<int>(NomDeLaTablePrincipale, "crf_value");
             }
         }
         #endregion
@@ -173,7 +173,7 @@ namespace EICE_WARGAME
         {
             get
             {
-                return "char_feature";
+                return "char_rank_feature";
             }
         }
 
@@ -184,7 +184,7 @@ namespace EICE_WARGAME
         {
             get
             {
-                return "cf_id";
+                return "crf_id";
             }
         }
 
@@ -195,7 +195,7 @@ namespace EICE_WARGAME
         {
             get
             {
-                return new PDSGBD.MyDB.CodeSql("cf_fk_rank_id = {0}, cf_fk_feature_id = {1},cf_value = {2}", Rank.Id, Feature.Id, Value);
+                return new PDSGBD.MyDB.CodeSql("crf_fk_rank_id = {0}, crf_fk_feature_id = {1},crf_value = {2}", CharactRank.Id, Feature.Id, Value);
             }
         }
 

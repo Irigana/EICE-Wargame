@@ -32,7 +32,7 @@ namespace EICE_WARGAME
 		/// <summary>
 		/// Référence de la table Scenario_Camp
 		/// </summary>
-		//private List<Scenario_Camp> m_Scenario_Camp;
+		private List<Scenario_Camp> m_Scenario_Camp;
 		#endregion
 
 		#region Membres public
@@ -79,7 +79,7 @@ namespace EICE_WARGAME
 		public Scenario() : base()
 		{
 			m_Name = string.Empty;
-			//m_Scenario_Camp = new List<Scenario_Camp>();
+			m_Scenario_Camp = new List<Scenario_Camp>();
 		}
 
 		/// <summary>

@@ -26,6 +26,7 @@ namespace EICE_WARGAME
             /// Sous-faction de ce dharact
             /// </summary>
             SousFaction,
+            CharactRank,
         }
 
         #region Membres privés
@@ -38,6 +39,8 @@ namespace EICE_WARGAME
         /// Stocke la Sous-Faction de ce charact
         /// </summary>
         private SousFaction m_SousFaction;
+
+        private CharactRank m_CharactRank;
         #endregion
 
         #region Membres publics
@@ -83,9 +86,41 @@ namespace EICE_WARGAME
             }
             set
             {
-                if ((value != null) && ((m_SousFaction == null) || !int.Equals(value.Id, SousFaction.Id)))
+                if (value == null)
                 {
-                    ModifierChamp(Champ.SousFaction, ref m_SousFaction, value);
+                    Declencher_SurErreur(this, Champ.SousFaction, "Sous faction non définie");
+                }
+                else
+                {
+                    if ((m_SousFaction == null) || int.Equals(value.Id, m_SousFaction.Id))
+                    {
+                        ModifierChamp(Champ.SousFaction, ref m_SousFaction, value);
+                    }
+                }
+            }
+        }
+
+        /// <summary>
+        /// Membre public permettant d'accéder à l'id du rank
+        /// </summary>
+        public CharactRank CharactRank
+        {
+            get
+            {
+                return m_CharactRank;
+            }
+            set
+            {
+                if (value == null)
+                {
+                    Declencher_SurErreur(this, Champ.CharactRank, "Rank non défini");
+                }
+                else
+                {
+                    if ((m_CharactRank == null) || int.Equals(value.Id, m_CharactRank.Id))
+                    {
+                        ModifierChamp(Champ.CharactRank, ref m_CharactRank, value);
+                    }
                 }
             }
         }
@@ -184,7 +219,8 @@ namespace EICE_WARGAME
             // TODO : rajouter la suite du chemin
             Connexion.Executer(@"DELETE FROM charact WHERE ch_id = {0};"
                                 , Id);
-        }
+        }        
+        
 
         #endregion
 
