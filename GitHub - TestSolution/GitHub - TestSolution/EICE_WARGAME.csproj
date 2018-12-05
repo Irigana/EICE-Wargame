@@ -46,6 +46,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Vues\ListesDeroulantes\ListBoxCharacter.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Vues\ListesDeroulantes\ListBoxCharacter.Designer.cs">
+      <DependentUpon>ListBoxCharacter.cs</DependentUpon>
+    </Compile>
     <Compile Include="Modeles\CharactFeature.cs" />
     <Compile Include="Modeles\Army.cs" />
     <Compile Include="Modeles\ArmyUnityStuff.cs" />
@@ -243,6 +249,9 @@
     <Compile Include="Vues\TextBoxAvecTextInvisible.Designer.cs">
       <DependentUpon>TextBoxAvecTextInvisible.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="Vues\ListesDeroulantes\ListBoxCharacter.resx">
+      <DependentUpon>ListBoxCharacter.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Vues\Fiches\FicheCaractere.resx">
       <DependentUpon>FicheCaractere.cs</DependentUpon>
     </EmbeddedResource>
