@@ -16,7 +16,9 @@ namespace EICE_WARGAME
             Id,
             Caractere,
             Rank,
+            Feature,
             Cost,
+            SubUnity,
         }
 
         #region Membres privés
@@ -29,7 +31,17 @@ namespace EICE_WARGAME
         /// <summary>
         /// Membre stockant la référence de rank
         /// </summary>
-        private Feature m_Rank;
+        private Rank m_Rank;
+
+        /// <summary>
+        /// Membre stockant les features
+        /// </summary>
+        private List<CharactFeature> m_CharactFeature;
+
+        /// <summary>
+        /// Membre stockant la référence de sa sous unité
+        /// </summary>
+        private SubUnity m_SubUnity;        
 
         /// <summary>
         /// Membre stockant le cout 
@@ -38,28 +50,92 @@ namespace EICE_WARGAME
 
         #endregion
 
-        #region Membres publics
+        #region Membres publics       
 
         /// <summary>
-        /// Membre public permettant d'accéder à l'id du character
+        /// Liste des Types de Stuff
         /// </summary>
-        public IEnumerable<Charact> Charact
+        public IEnumerable<CharactFeature> CharacFeatures
         {
             get
             {
-                return EnumererCharacts();
-            }            
+                return EnumererCharactFeatures();
+            }
         }
 
         /// <summary>
         /// Membre public permettant d'accéder à l'id du rank
         /// </summary>
-        public IEnumerable<Rank> Rank
+        public Charact Caractere
         {
             get
             {
-                return EnumererRank();
-            }            
+                return m_Charact;
+            }
+            set
+            {
+                if (value == null)
+                {
+                    Declencher_SurErreur(this, Champ.Caractere, "Caractère non défini");
+                }
+                else
+                {
+                    if ((m_Charact == null) || int.Equals(value.Id, m_Charact.Id))
+                    {
+                        ModifierChamp(Champ.Caractere, ref m_Charact, value);
+                    }
+                }
+            }
+        }
+
+        /// <summary>
+        /// Membre public permettant d'accéder à l'id de la sub unité
+        /// </summary>
+        public SubUnity SubUnity
+        {
+            get
+            {
+                return m_SubUnity;
+            }
+            set
+            {
+                if (value == null)
+                {
+                    Declencher_SurErreur(this, Champ.Rank, "SubUnity non défini");
+                }
+                else
+                {
+                    if ((m_SubUnity == null) || int.Equals(value.Id, m_SubUnity.Id))
+                    {
+                        ModifierChamp(Champ.SubUnity, ref m_SubUnity, value);
+                    }
+                }
+            }
+        }
+
+        /// <summary>
+        /// Membre public permettant d'accéder à l'id du rank
+        /// </summary>
+        public Rank Rank
+        {
+            get
+            {
+                return m_Rank;
+            }
+            set
+            {
+                if (value == null)
+                {
+                    Declencher_SurErreur(this, Champ.Rank, "Rank non défini");
+                }
+                else
+                {
+                    if ((m_Rank == null) || int.Equals(value.Id, m_Rank.Id))
+                    {
+                        ModifierChamp(Champ.Rank, ref m_Rank, value);
+                    }
+                }
+            }
         }
 
         /// <summary>
@@ -104,7 +180,9 @@ namespace EICE_WARGAME
         {
             m_Cost = -1;
             m_Charact = null;
-            m_Rank = null;            
+            m_Rank = null;
+            m_CharactFeature = null;
+            m_SubUnity = null;        
         }
 
         /// <summary>
@@ -112,11 +190,14 @@ namespace EICE_WARGAME
         /// </summary>
         /// <param name="Id">Identifiant du Charact_Rank</param>
         /// <param name="Cost">cout de ce Charact_Rank</param>
-        public CharactRank(int Id, int Cost)
+        public CharactRank(int Id, int Cost,Charact Caractere, Rank Rank, SubUnity SubUnity)
         : this()
         {
             DefinirId(Id);
-            this.Cost = Cost;            
+            this.Cost = Cost;
+            this.SubUnity = SubUnity;
+            this.Caractere = Caractere;
+            this.Rank = Rank;
         }
 
         /// <summary>
@@ -167,6 +248,17 @@ namespace EICE_WARGAME
                 m_Rank.Id));
         }
 
+        private IEnumerable<CharactFeature> EnumererCharactFeatures()
+        {
+            if (base.Connexion == null) return new CharactFeature[0];
+            return CharactFeature.Enumerer(Connexion, Connexion.Enumerer(
+                @"SELECT *
+                FROM char_rank_feature
+                JOIN feature ON crf_fk_feature_id = fe_id                
+                WHERE fe_id = {0}",
+                Id));
+        }
+
         /// <summary>
         /// Méthode retournant le nom de la table principale de Charact_Rank
         /// </summary>
@@ -197,7 +289,7 @@ namespace EICE_WARGAME
         {
             get
             {
-                return new PDSGBD.MyDB.CodeSql("cr_fk_ch_id = {0}, cr_fk_ra_id = {1}, cr_cost = {2}", m_Charact.Id, m_Rank.Id, m_Cost);
+                return new PDSGBD.MyDB.CodeSql("cr_fk_ch_id = {0}, cr_fk_ra_id = {1}, cr_cost = {2}, cr_sub_id = {0}", Caractere.Id, Rank.Id, Cost,SubUnity.Id);
             }
         }
 

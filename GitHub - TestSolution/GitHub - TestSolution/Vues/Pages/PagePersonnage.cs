@@ -11,7 +11,7 @@ using PDSGBD;
 
 namespace EICE_WARGAME
 {
-    public partial class PageCaractere : UserControl
+    public partial class PagePersonnage : UserControl
     {
 
         #region Utilisateur
@@ -39,27 +39,29 @@ namespace EICE_WARGAME
 
         private Charact m_CaractereEnEdition;
 
-        public PageCaractere()
+        public PagePersonnage()
         {
             InitializeComponent();
 
-            buttonAnnulerCaract.Enabled = false;
-            buttonModifierCaract.Enabled = false;
-            buttonSupprimerCaract.Enabled = false;
-            buttonAjouterCaract.Enabled = false;
+            buttonAnnulerPersonnage.Enabled = false;
+            buttonModifierPersonnage.Enabled = false;
+            buttonSupprimerPersonnage.Enabled = false;
+            buttonAjouterPersonnage.Enabled = false;
             textBoxCaractere.Enabled = false;            
             menuAdmin1.MaPageActive = 2;            
 
             Program.GMBD.MettreAJourListeFaction(listeDeroulanteFaction1);
 
             m_CaractereEnEdition = new Charact();
-            /*
+            
             m_CaractereEnEdition.SurErreur += CaractereEnEdition_SurErreur;
             m_CaractereEnEdition.AvantChangement += CaractereEnEdition_AvantChangement;
             m_CaractereEnEdition.ApresChangement += CaractereEnEdition_ApresChangement;
-            */
-
-
+            
+            
+            listeDeroulanteFeature1.Feature = Program.GMBD.EnumererFeature(null, null, null, PDSGBD.MyDB.CreerCodeSql("fe_name"));
+            listeDeroulanteFeature1.SurChangementSelection += ListeFeatureChangementSelection;
+            
             ficheCaractere1.SurChangementFiltre += ChargerCaractere; 
 
             listeDeroulanteFaction1.SurChangementSelection += ListeDeroulanteFaction_SurChangementSelection;
@@ -79,14 +81,22 @@ namespace EICE_WARGAME
                         new MyDB.CodeSql("ORDER BY charact.ch_name"));           
         }
 
+        private void ChargerCaracteristique()
+        {
+            ficheCaracteristique1.Caracteristique = Program.GMBD.EnumererCharactFeature(null, 
+                new MyDB.CodeSql(@"JOIN feature ON crf_fk_feature_id = fe_id
+                                    JOIN char_rank ON crf_fk_char_rank_id = cr_id"), 
+                new MyDB.CodeSql("WHERE cr_fk_ch_id = {0}",ficheCaractere1.CaractereSelectionne.Id), null);
+        }
+        #region Sur changement de selection
         private void ListeDeroulanteFaction_SurChangementSelection(object sender, EventArgs e)
         {
             listeDeroulanteSousFaction1.Enabled = true;
-            buttonAjouterCaract.Enabled = false;
+            buttonAjouterPersonnage.Enabled = false;
             
-            buttonAnnulerCaract.Enabled = false;
-            buttonModifierCaract.Enabled = false;
-            buttonSupprimerCaract.Enabled = false;
+            buttonAnnulerPersonnage.Enabled = false;
+            buttonModifierPersonnage.Enabled = false;
+            buttonSupprimerPersonnage.Enabled = false;
             
             listeDeroulanteSousFaction1.ResetTextSousFaction();
             ficheCaractere1.NettoyerListView();   
@@ -111,38 +121,45 @@ namespace EICE_WARGAME
             if ((ficheCaractere1.CaractereSelectionne != null)&&(listeDeroulanteFaction1.FactionSelectionnee != null) &&(listeDeroulanteSousFaction1.SousFactionSelectionnee !=null))
             {
                 
-                buttonAjouterCaract.Enabled = false;
-                buttonAnnulerCaract.Enabled = true;
-                buttonModifierCaract.Enabled = true;
-                buttonSupprimerCaract.Enabled = true;
+                buttonAjouterPersonnage.Enabled = false;
+                buttonAnnulerPersonnage.Enabled = true;
+                buttonModifierPersonnage.Enabled = true;
+                buttonSupprimerPersonnage.Enabled = true;
 
                 ficheCaractere1.ActiverTextBox = true;
                 textBoxCaractere.Text = ficheCaractere1.CaractereSelectionne.Name;
+
+                listeDeroulanteFeature1.FeatureSelectionnee = null;
+                textBoxCaractere.Text = ficheCaractere1.CaractereSelectionne.Name;
+                textBoxPersonnageSelectionne.Text = ficheCaractere1.CaractereSelectionne.Name.ToString();
+                textBoxValeur.Clear();
+                ChargerCaracteristique();
 
                 errorProviderErreurCaractere.Clear();
                 ValidationProvider.Clear();
             }
             else if ((listeDeroulanteFaction1.FactionSelectionnee != null) && (listeDeroulanteSousFaction1.SousFactionSelectionnee != null))
             {
-                buttonAjouterCaract.Enabled = true;
-                buttonAnnulerCaract.Enabled = false;
-                buttonModifierCaract.Enabled = false;
-                buttonSupprimerCaract.Enabled = false;
+                buttonAjouterPersonnage.Enabled = true;
+                buttonAnnulerPersonnage.Enabled = false;
+                buttonModifierPersonnage.Enabled = false;
+                buttonSupprimerPersonnage.Enabled = false;
             }
             else 
             {
-                buttonAjouterCaract.Enabled = false;
-                buttonAnnulerCaract.Enabled = false;
-                buttonModifierCaract.Enabled = false;
-                buttonSupprimerCaract.Enabled = false;
+                buttonAjouterPersonnage.Enabled = false;
+                buttonAnnulerPersonnage.Enabled = false;
+                buttonModifierPersonnage.Enabled = false;
+                buttonSupprimerPersonnage.Enabled = false;
             }
 
         }
-       
+        #endregion
         private void PageCaractere_Load(object sender, EventArgs e)
         {
              // Permet de passer l'utilisateur par le controler MenuAdmin
-             menuAdmin1.Utilisateur = Utilisateur;
+            menuAdmin1.Utilisateur = Utilisateur;
+            buttonRetourDashBoard1.Utilisateur = Utilisateur;
 
             // Permet d'obtenir l'option du menu admin utilisateur une fois l'admin identifié            
             if (Utilisateur.Role.Id == 2) menuAdmin1.EstAdmin = true;            
@@ -187,7 +204,8 @@ namespace EICE_WARGAME
                                 ficheCaractere1.TexteDuFiltre = "";
                                 Program.GMBD.MettreAJourFicheCaractere(ficheCaractere1, listeDeroulanteFaction1.FactionSelectionnee.Id,listeDeroulanteSousFaction1.SousFactionSelectionnee.Id);
                                 errorProviderErreurCaractere.Clear();
-                                ValidationProvider.SetError(textBoxCaractere, "Caractère correctement ajouté");
+                                ValidationProvider.SetError(textBoxCaractere, "Personnage correctement ajouté");
+                                textBoxCaractere.Text = NouveauCaractere.Name;
                             }
                         }
                     }
@@ -197,7 +215,7 @@ namespace EICE_WARGAME
                 }
             }
             textBoxCaractere.Text = "";
-            buttonAjouterCaract.Enabled = true;
+            buttonAjouterPersonnage.Enabled = true;
         }
 
         private void buttonModifierCaract_Click(object sender, EventArgs e)
@@ -242,10 +260,10 @@ namespace EICE_WARGAME
                 if ((ficheCaractere1.CaractereSelectionne != null) && (Program.GMBD.SupprimerCaractere(ficheCaractere1.CaractereSelectionne)))
                 {
                     Program.GMBD.MettreAJourFicheCaractere(ficheCaractere1, listeDeroulanteFaction1.FactionSelectionnee.Id,listeDeroulanteSousFaction1.SousFactionSelectionnee.Id);
-                    buttonAjouterCaract.Enabled = true;
-                    buttonAnnulerCaract.Enabled = false;
-                    buttonModifierCaract.Enabled = false;
-                    buttonSupprimerCaract.Enabled = false;
+                    buttonAjouterPersonnage.Enabled = true;
+                    buttonAnnulerPersonnage.Enabled = false;
+                    buttonModifierPersonnage.Enabled = false;
+                    buttonSupprimerPersonnage.Enabled = false;
                     ValidationProvider.SetError(textBoxCaractere, "Suppression correctement effectuée");
                     textBoxCaractere.Text = "";
                 }
@@ -271,7 +289,7 @@ namespace EICE_WARGAME
                     errorProviderErreurCaractere.SetError(textBoxCaractere, MessageErreur);
                     break;
             }
-            buttonAjouterCaract.Enabled = false;
+            buttonAjouterPersonnage.Enabled = false;
         }
         
         /// <summary>
@@ -333,13 +351,14 @@ namespace EICE_WARGAME
                     break;
 
             }
-            buttonAjouterCaract.Enabled = m_CaractereEnEdition.EstValide;
+            buttonAjouterPersonnage.Enabled = m_CaractereEnEdition.EstValide;
         }
 
         private void textBoxCaractere_Enter(object sender, EventArgs e)
         {
             errorProviderErreurCaractere.Clear();
             ValidationProvider.Clear();
+            
         }
 
       
@@ -353,5 +372,34 @@ namespace EICE_WARGAME
             buttonSupprimerCaract.Enabled = false;
             */
         }
+
+        #region Code sur les caractéristiques
+
+        private void rafraichirListViewCaracteristiques()
+        {
+            /*
+            CharactRank CharactF = new CharactRank();
+            CharactF.Caractere = ficheCaractere1.CaractereSelectionne;
+            listViewCaracteristiques.Items.Clear();
+
+            foreach (CharactFeature CF  in CharactF.CharacFeatures)
+            {
+                Feature f = CF.Feature;
+                ListViewItem NouvelElement = new ListViewItem()
+                {
+                    Text = f.Name,
+                    Tag = CF.Id
+                };
+                NouvelElement.SubItems.Add(string.Format("{0}", CF.Value));
+                listViewCaracteristiques.Items.Add(NouvelElement);
+            }*/
+        }
+
+        private void ListeFeatureChangementSelection(object sender, EventArgs e)
+        {
+            //Ajouter qqch
+
+        }
+        #endregion
     }   
 }

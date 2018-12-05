@@ -47,11 +47,6 @@ namespace EICE_WARGAME
             buttonGestionUser.Hide();
 
         }
-        public MenuAdmin(Utilisateur User)
-        {
-            InitializeComponent();
-
-        }
 
         private bool m_EstAdmin;
 
@@ -115,12 +110,12 @@ namespace EICE_WARGAME
 
         private void buttonCaractere_Click(object sender, EventArgs e)
         {
-            Form_Principal.Instance.CreerPageCourante<PageCaractere>((Page) =>
+            Form_Principal.Instance.CreerPageCourante<PagePersonnage>((Page) =>
             {
                 Page.Utilisateur = Utilisateur;
                 return true;
             });
-        }
+        }        
 
         private void MenuAdmin_Load(object sender, EventArgs e)
         {
@@ -134,10 +129,10 @@ namespace EICE_WARGAME
                     }
                 case 2:
                     {
-                        buttonCaractere.ForeColor = Color.SteelBlue;
-                        buttonCaractere.BackColor = System.Drawing.SystemColors.Window;
+                        buttonPersonnage.ForeColor = Color.SteelBlue;
+                        buttonPersonnage.BackColor = System.Drawing.SystemColors.Window;
                         break;
-                    }
+                    }                           
                 case 3:
                     {
                         buttonFaction.ForeColor = Color.SteelBlue;
@@ -146,12 +141,14 @@ namespace EICE_WARGAME
                     }                    
                 case 4:
                     {
+
                         buttonSousFaction.ForeColor = Color.SteelBlue;
                         buttonSousFaction.BackColor = System.Drawing.SystemColors.Window;
+                        break;
                     }
-                    return;
                 case 5:
                     {
+
                         buttonEquipement.ForeColor = Color.SteelBlue;
                         buttonEquipement.BackColor = System.Drawing.SystemColors.Window;
                         break;
@@ -160,14 +157,13 @@ namespace EICE_WARGAME
                     {
                         buttonGestionUser.ForeColor = Color.SteelBlue;
                         buttonGestionUser.BackColor = System.Drawing.SystemColors.Window;
+                        break;
                     }
-                    return;
                 default:
                     return;
                     
             }
         }
 
-        
     }
 }

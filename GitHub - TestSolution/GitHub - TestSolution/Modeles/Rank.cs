@@ -15,16 +15,9 @@ namespace EICE_WARGAME
         {
             Id,
             Name,
-            SubUnity,
         }
 
-        #region Membres privés
-
-        /// <summary>
-        /// Membre stockant la référence subunity
-        /// </summary>
-        private SubUnity m_SubUnity;      
-
+        #region Membres privés        
         /// <summary>
         /// Membre stockant le nom du rank 
         /// </summary>
@@ -33,18 +26,7 @@ namespace EICE_WARGAME
         #endregion
 
         #region Membres publics
-
-        /// <summary>
-        /// Membre public référent les SubUnity ayant ce rank
-        /// </summary>
-        public IEnumerable<SubUnity> SubUnity
-        {
-            get
-            {
-                return EnumererSubUnity();
-            }            
-        }
-        
+       
         /// <summary>
         /// Membre public permettant d'accéder à la value
         /// </summary>
@@ -87,7 +69,6 @@ namespace EICE_WARGAME
         : base()
         {
             m_Name = string.Empty;
-            m_SubUnity = null;
         }
 
         /// <summary>
@@ -120,22 +101,7 @@ namespace EICE_WARGAME
 
         #endregion
 
-        #region Membres relatifs à la base de données
-        /// <summary>
-        /// Permet de récupérer le character lié
-        /// </summary>
-        /// <returns></returns>
-        private IEnumerable<SubUnity> EnumererSubUnity()
-        {
-            if (base.Connexion == null) return new SubUnity[0];
-            return EICE_WARGAME.SubUnity.Enumerer(Connexion, Connexion.Enumerer(
-                @"SELECT su_id, su_name, su_fk_unity_id
-                    FROM subunity
-                    JOIN rank ON ra_fk_su_id = rank.ra_id
-                    WHERE ra_id = {0}",
-                Id));
-        }
-
+        #region Membres relatifs à la base de données       
         /// <summary>
         /// Méthode retournant le nom de la table principale de Rank
         /// </summary>
@@ -166,7 +132,7 @@ namespace EICE_WARGAME
         {
             get
             {
-                return new PDSGBD.MyDB.CodeSql("ra_id = {0}, ra_fk_su_id = {1}, ra_name = {2}", Id, m_SubUnity.Id, m_Name);
+                return new PDSGBD.MyDB.CodeSql("ra_id = {0}, ra_name = {2}", Id, m_Name);
             }
         }
 
