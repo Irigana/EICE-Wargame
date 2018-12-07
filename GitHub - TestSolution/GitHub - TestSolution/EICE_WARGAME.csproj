@@ -46,6 +46,18 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Vues\Fiches\FicheEquipement.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Vues\Fiches\FicheEquipement.Designer.cs">
+      <DependentUpon>FicheEquipement.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Vues\ListesDeroulantes\ListBoxCharacter.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Vues\ListesDeroulantes\ListBoxCharacter.Designer.cs">
+      <DependentUpon>ListBoxCharacter.cs</DependentUpon>
+    </Compile>
     <Compile Include="Vues\ListesDeroulantes\ListeDeroulanteSubUnity.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -267,6 +279,12 @@
     <Compile Include="Vues\TextBoxAvecTextInvisible.Designer.cs">
       <DependentUpon>TextBoxAvecTextInvisible.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="Vues\Fiches\FicheEquipement.resx">
+      <DependentUpon>FicheEquipement.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Vues\ListesDeroulantes\ListBoxCharacter.resx">
+      <DependentUpon>ListBoxCharacter.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Vues\ListesDeroulantes\ListeDeroulanteSubUnity.resx">
       <DependentUpon>ListeDeroulanteSubUnity.cs</DependentUpon>
     </EmbeddedResource>
