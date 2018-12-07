@@ -188,11 +188,15 @@ namespace EICE_WARGAME
             }
         }
 
+
+
         public override void SupprimerEnCascade(MyDB Connexion)
         {
+            
             // TODO : rajouter la suite du chemin
-            Connexion.Executer(@"DELETE FROM charact WHERE ch_id = {0};"
-                                , Id);
+            Connexion.Executer(@"DELETE FROM charact WHERE ch_id = {0};
+                                 "
+                                , Id);            
         }        
         
 

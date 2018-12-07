@@ -48,7 +48,6 @@
             this.labelPersonnageSelectionne = new System.Windows.Forms.Label();
             this.buttonAjouterCaracteristique = new System.Windows.Forms.Button();
             this.labelValeur = new System.Windows.Forms.Label();
-            this.textBoxValeur = new System.Windows.Forms.TextBox();
             this.labelCaracteristique = new System.Windows.Forms.Label();
             this.labelCout = new System.Windows.Forms.Label();
             this.numericUpDown1 = new System.Windows.Forms.NumericUpDown();
@@ -57,6 +56,7 @@
             this.labelRank = new System.Windows.Forms.Label();
             this.labelSubUnity = new System.Windows.Forms.Label();
             this.labelUnity = new System.Windows.Forms.Label();
+            this.numericUpDown2 = new System.Windows.Forms.NumericUpDown();
             this.listeDeroulanteSubUnity1 = new EICE_WARGAME.ListeDeroulanteSubUnity();
             this.listeDeroulanteUnity1 = new EICE_WARGAME.ListeDeroulanteUnity();
             this.listeDeroulanteRank1 = new EICE_WARGAME.ListeDeroulanteRank();
@@ -71,6 +71,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.errorProviderErreurCaractere)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ValidationProvider)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown2)).BeginInit();
             this.SuspendLayout();
             // 
             // labelPersonnage
@@ -125,12 +126,12 @@
             // 
             // textBoxCaractere
             // 
+            this.textBoxCaractere.Enabled = false;
             this.textBoxCaractere.Location = new System.Drawing.Point(588, 119);
             this.textBoxCaractere.Name = "textBoxCaractere";
             this.textBoxCaractere.Size = new System.Drawing.Size(248, 22);
             this.textBoxCaractere.TabIndex = 39;
             this.textBoxCaractere.Enter += new System.EventHandler(this.textBoxCaractere_Enter);
-            this.textBoxCaractere.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBoxCaractere_KeyPress);
             // 
             // buttonAnnulerPersonnage
             // 
@@ -251,6 +252,7 @@
             this.buttonAjouterCaracteristique.TabIndex = 53;
             this.buttonAjouterCaracteristique.Text = "Ajouter Caracteristique";
             this.buttonAjouterCaracteristique.UseVisualStyleBackColor = false;
+            this.buttonAjouterCaracteristique.Click += new System.EventHandler(this.buttonAjouterCaracteristique_Click);
             // 
             // labelValeur
             // 
@@ -260,14 +262,6 @@
             this.labelValeur.Size = new System.Drawing.Size(57, 17);
             this.labelValeur.TabIndex = 52;
             this.labelValeur.Text = "Valeur :";
-            // 
-            // textBoxValeur
-            // 
-            this.textBoxValeur.Enabled = true;
-            this.textBoxValeur.Location = new System.Drawing.Point(470, 618);
-            this.textBoxValeur.Name = "textBoxValeur";
-            this.textBoxValeur.Size = new System.Drawing.Size(246, 22);
-            this.textBoxValeur.TabIndex = 51;
             // 
             // labelCaracteristique
             // 
@@ -290,6 +284,7 @@
             // 
             // numericUpDown1
             // 
+            this.numericUpDown1.Enabled = false;
             this.numericUpDown1.Location = new System.Drawing.Point(588, 227);
             this.numericUpDown1.Name = "numericUpDown1";
             this.numericUpDown1.Size = new System.Drawing.Size(246, 22);
@@ -351,8 +346,18 @@
             this.labelUnity.TabIndex = 64;
             this.labelUnity.Text = "Unité :";
             // 
+            // numericUpDown2
+            // 
+            this.numericUpDown2.Enabled = false;
+            this.numericUpDown2.Location = new System.Drawing.Point(470, 619);
+            this.numericUpDown2.Name = "numericUpDown2";
+            this.numericUpDown2.Size = new System.Drawing.Size(246, 22);
+            this.numericUpDown2.TabIndex = 67;
+            this.numericUpDown2.Enter += new System.EventHandler(this.numericUpDown2_Enter);
+            // 
             // listeDeroulanteSubUnity1
             // 
+            this.listeDeroulanteSubUnity1.Enabled = false;
             this.listeDeroulanteSubUnity1.Location = new System.Drawing.Point(279, 276);
             this.listeDeroulanteSubUnity1.Name = "listeDeroulanteSubUnity1";
             this.listeDeroulanteSubUnity1.Size = new System.Drawing.Size(248, 25);
@@ -361,6 +366,7 @@
             // 
             // listeDeroulanteUnity1
             // 
+            this.listeDeroulanteUnity1.Enabled = false;
             this.listeDeroulanteUnity1.Location = new System.Drawing.Point(279, 224);
             this.listeDeroulanteUnity1.Name = "listeDeroulanteUnity1";
             this.listeDeroulanteUnity1.Size = new System.Drawing.Size(248, 25);
@@ -369,6 +375,7 @@
             // 
             // listeDeroulanteRank1
             // 
+            this.listeDeroulanteRank1.Enabled = false;
             this.listeDeroulanteRank1.Location = new System.Drawing.Point(588, 171);
             this.listeDeroulanteRank1.Name = "listeDeroulanteRank1";
             this.listeDeroulanteRank1.RankSelectionnee = null;
@@ -385,6 +392,7 @@
             // 
             // listeDeroulanteFeature1
             // 
+            this.listeDeroulanteFeature1.Enabled = false;
             this.listeDeroulanteFeature1.FeatureSelectionnee = null;
             this.listeDeroulanteFeature1.Location = new System.Drawing.Point(470, 554);
             this.listeDeroulanteFeature1.Name = "listeDeroulanteFeature1";
@@ -449,6 +457,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.numericUpDown2);
             this.Controls.Add(this.listeDeroulanteSubUnity1);
             this.Controls.Add(this.listeDeroulanteUnity1);
             this.Controls.Add(this.labelUnity);
@@ -462,7 +471,6 @@
             this.Controls.Add(this.labelCout);
             this.Controls.Add(this.buttonAjouterCaracteristique);
             this.Controls.Add(this.labelValeur);
-            this.Controls.Add(this.textBoxValeur);
             this.Controls.Add(this.listeDeroulanteFeature1);
             this.Controls.Add(this.labelCaracteristique);
             this.Controls.Add(this.labelPersonnageSelectionne);
@@ -492,6 +500,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.errorProviderErreurCaractere)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ValidationProvider)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown2)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -523,7 +532,6 @@
         private System.Windows.Forms.Label labelPersonnageSelectionne;
         private System.Windows.Forms.Button buttonAjouterCaracteristique;
         private System.Windows.Forms.Label labelValeur;
-        private System.Windows.Forms.TextBox textBoxValeur;
         private ListeDeroulanteFeature listeDeroulanteFeature1;
         private System.Windows.Forms.Label labelCaracteristique;
         private System.Windows.Forms.Button buttonSupprimerCaracteristique;
@@ -537,5 +545,6 @@
         private ListeDeroulanteUnity listeDeroulanteUnity1;
         private System.Windows.Forms.Label labelUnity;
         private System.Windows.Forms.Label labelSubUnity;
+        private System.Windows.Forms.NumericUpDown numericUpDown2;
     }
 }

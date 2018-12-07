@@ -211,6 +211,10 @@ namespace EICE_WARGAME
                 new MyDB.CodeSql("ORDER BY su_name"));
         }
 
+        public bool AjouterFeaturePersonnage(CharactFeature Feature)
+        {
+            return Feature.Enregistrer(m_BD, Feature, null, false);
+        }
 
 
         public bool ModifierCaractere(Charact Caractere)
@@ -225,7 +229,7 @@ namespace EICE_WARGAME
             return true;
         }
 
-        #endregion
+        #endregion        
 
 
         #region Requetes personnage
@@ -256,6 +260,7 @@ namespace EICE_WARGAME
             if (!m_BD.EstConnecte) Initialiser();
             Personnage.SupprimerEnCascade(m_BD);
             return true;
+            
         }
 
         #endregion

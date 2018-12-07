@@ -43,6 +43,7 @@ namespace EICE_WARGAME
         /// </summary>
         /// <param name="Connexion">Connexion au serveur MySQL</param>
         void SupprimerEnCascade(PDSGBD.MyDB Connexion);
+
     }
 
     /// <summary>

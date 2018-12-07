@@ -195,7 +195,7 @@ namespace EICE_WARGAME
         {
             get
             {
-                return new PDSGBD.MyDB.CodeSql("crf_fk_rank_id = {0}, crf_fk_feature_id = {1},crf_value = {2}", CharactRank.Id, Feature.Id, Value);
+                return new PDSGBD.MyDB.CodeSql("crf_fk_char_rank_id = {0}, crf_fk_feature_id = {1},crf_value = {2}", CharactRank.Id, Feature.Id, Value);
             }
         }
 

@@ -38,6 +38,7 @@ namespace EICE_WARGAME
         private const string c_CritereQuiContient = "%{0}%";
 
         private CharactRank m_PersonnageEnEdition;
+        CharactFeature m_CFEnEdition;
 
         public PagePersonnage()
         {
@@ -47,6 +48,9 @@ namespace EICE_WARGAME
             buttonModifierPersonnage.Enabled = false;
             buttonSupprimerPersonnage.Enabled = false;
             buttonAjouterPersonnage.Enabled = false;
+            buttonAjouterCaracteristique.Enabled = false;
+            buttonSupprimerCaracteristique.Enabled = false;
+            buttonModifCaracteristique.Enabled = false;            
             textBoxCaractere.Enabled = false;
             menuAdmin1.MaPageActive = 2;
 
@@ -93,6 +97,7 @@ namespace EICE_WARGAME
 
         private void ListeDeroulanteSousFaction_SurChangementSelection(object sender, EventArgs e)
         {
+            listeDeroulanteUnity1.Enabled = true;
             listeDeroulanteUnity1.Unity = Program.GMBD.EnumererUnity(new MyDB.CodeSql("DISTINCT unity.un_id,unity.un_name"),
                 new MyDB.CodeSql(@"JOIN subunity ON unity.un_id = subunity.su_fk_unity_id
                                     JOIN char_rank ON subunity.su_id = char_rank.cr_sub_id
@@ -107,6 +112,7 @@ namespace EICE_WARGAME
 
         private void ListeDeroulanteUnity_SurChangementSelection(object sender, EventArgs e)
         {
+            listeDeroulanteSubUnity1.Enabled = true;
             listeDeroulanteSubUnity1.SubUnity = Program.GMBD.EnumererSubUnity(new MyDB.CodeSql("DISTINCT su_id,su_name"),
                 new MyDB.CodeSql(@"JOIN unity ON subunity.su_fk_unity_id = unity.un_id
                                     JOIN char_rank ON subunity.su_id = char_rank.cr_sub_id
@@ -121,6 +127,10 @@ namespace EICE_WARGAME
 
         private void ListeDeroulanteSubUnity_SurChangementSelection(object sender, EventArgs e)
         {
+            numericUpDown1.Enabled = true;
+            listeDeroulanteRank1.Enabled = true;
+            textBoxCaractere.Enabled = true;
+            buttonAjouterPersonnage.Enabled = true;
             ficheCaractere1.Caractere = Program.GMBD.EnumererPersonnage(null,
                 new MyDB.CodeSql(@"JOIN charact ON charact.ch_id = char_rank.cr_fk_ch_id
                                     JOIN rank ON rank.ra_id = char_rank.cr_fk_ra_id
@@ -132,8 +142,6 @@ namespace EICE_WARGAME
                 listeDeroulanteFaction1.FactionSelectionnee.Id, listeDeroulanteSousFaction1.SousFactionSelectionnee.Id,
                 listeDeroulanteUnity1.UnitySelectionnee.Id, listeDeroulanteSubUnity1.SubUnitySelectionnee.Id),
                 new MyDB.CodeSql("ORDER BY su_name"));
-            textBoxCaractere.Enabled = true;
-            buttonAjouterPersonnage.Enabled = true;
             listeDeroulanteRank1.Rank = Program.GMBD.EnumererRank(null, null, null, new MyDB.CodeSql("ORDER BY ra_name"));
 
 
@@ -152,39 +160,40 @@ namespace EICE_WARGAME
                 buttonAnnulerPersonnage.Enabled = true;
                 buttonModifierPersonnage.Enabled = true;
                 buttonSupprimerPersonnage.Enabled = true;
+                numericUpDown2.Enabled = true;
+                listeDeroulanteFeature1.Enabled = true;
+                ficheCaractere1.ActiverTextBox = true;
+                buttonAjouterCaracteristique.Enabled = true;
 
 
                 listeDeroulanteRank1.RankSelectionnee = ficheCaractere1.CaractereSelectionne.Rank;
                 numericUpDown1.Value = ficheCaractere1.CaractereSelectionne.Cost;
                 textBoxCaractere.Text = ficheCaractere1.CaractereSelectionne.Caractere.Name;
                 textBoxPersonnageSelectionne.Text = ficheCaractere1.CaractereSelectionne.Caractere.Name.ToString();
-
-                ficheCaractere1.ActiverTextBox = true;
                 ficheCaracteristique1.Caracteristique = Program.GMBD.EnumererCharactFeature(null,
-                new MyDB.CodeSql(@"JOIN charact ON charact.ch_id = char_rank.cr_fk_ch_id
+                new MyDB.CodeSql(@"JOIN char_rank ON char_rank_feature.crf_fk_char_rank_id = char_rank.cr_id
+                JOIN charact ON char_rank.cr_fk_ch_id = charact.ch_id
                 JOIN rank ON rank.ra_id = char_rank.cr_fk_ra_id
                 JOIN subunity ON char_rank.cr_sub_id = subunity.su_id
                 JOIN unity ON subunity.su_fk_unity_id = unity.un_id
                 JOIN subfaction ON charact.ch_fk_subfaction_id = subfaction.sf_id
-                JOIN faction ON subfaction.sf_fk_faction_id = faction.fa_id 
-                JOIN char_rank_feature ON char_rank.cr_id = crf_fk_char_rank_id
+                JOIN faction ON subfaction.sf_fk_faction_id = faction.fa_id                 
                 JOIN feature ON feature.fe_id = crf_fk_feature_id"),
                 new MyDB.CodeSql("WHERE fa_id = {0} AND sf_id = {1} AND un_id = {2} AND su_id = {3} AND ch_id = {4} AND ra_id = {5}",
                 listeDeroulanteFaction1.FactionSelectionnee.Id, listeDeroulanteSousFaction1.SousFactionSelectionnee.Id,
                 listeDeroulanteUnity1.UnitySelectionnee.Id, listeDeroulanteSubUnity1.SubUnitySelectionnee.Id,
                 ficheCaractere1.CaractereSelectionne.Id,listeDeroulanteRank1.RankSelectionnee.Id),
-                new MyDB.CodeSql("ORDER BY fe_name")); 
-                listeDeroulanteFeature1.Enabled = true;
-                listeDeroulanteFeature1.Feature = Program.GMBD.EnumererFeature(null, null, new MyDB.CodeSql("WHERE fe_filtre = {0}", "P"), new MyDB.CodeSql(" ORDER BY fe_name"));
-                
+                new MyDB.CodeSql("ORDER BY fe_name"));
+                ficheCaracteristique1.SurChangementSelection += FicheCaracteristique_SurChangementSelection;
 
-                textBoxValeur.Clear();
+                listeDeroulanteFeature1.Enabled = true;
+                listeDeroulanteFeature1.Feature = Program.GMBD.EnumererFeature(null, null, new MyDB.CodeSql("WHERE fe_filtre = {0}", "P"), new MyDB.CodeSql(" ORDER BY fe_name"));                               
 
                 errorProviderErreurCaractere.Clear();
                 ValidationProvider.Clear();
 
                 listeDeroulanteFeature1.SurChangementSelection += ListeDeroulanteFeature_SurChangementSelection;
-
+                RafraichirListViewCaracteristiques();
             }
             else if ((listeDeroulanteFaction1.FactionSelectionnee != null) &&
                 (listeDeroulanteSousFaction1.SousFactionSelectionnee != null) &&
@@ -209,7 +218,7 @@ namespace EICE_WARGAME
 
         private void ListeDeroulanteFeature_SurChangementSelection(object sender, EventArgs e)
         {
-            textBoxValeur.Enabled = true;
+            numericUpDown2.Enabled = true;
             buttonAjouterCaracteristique.Enabled = true;            
         }
 
@@ -375,7 +384,7 @@ namespace EICE_WARGAME
             FormConfirmation.ShowDialog();
             if (FormConfirmation.Confirmation)
             {
-                if ((ficheCaractere1.CaractereSelectionne != null) && (Program.GMBD.SupprimerCaractere(ficheCaractere1.CaractereSelectionne.Caractere)))
+                if ((ficheCaractere1.CaractereSelectionne != null) && (Program.GMBD.SupprimerPersonnage(ficheCaractere1.CaractereSelectionne)))
                 {
                     Program.GMBD.MettreAJourFicheCaractere(ficheCaractere1, listeDeroulanteFaction1.FactionSelectionnee.Id, listeDeroulanteSousFaction1.SousFactionSelectionnee.Id, listeDeroulanteUnity1.UnitySelectionnee.Id, listeDeroulanteSubUnity1.SubUnitySelectionnee.Id);
                     buttonAjouterPersonnage.Enabled = true;
@@ -384,6 +393,10 @@ namespace EICE_WARGAME
                     buttonSupprimerPersonnage.Enabled = false;
                     ValidationProvider.SetError(textBoxCaractere, "Suppression correctement effectuée");
                     textBoxCaractere.Text = "";
+                }
+                else
+                {
+
                 }
             }
             else if (FormConfirmation.Annulation)
@@ -427,13 +440,13 @@ namespace EICE_WARGAME
                     if (ficheCaractere1.CaractereSelectionne != null)
                     {
                         Charact CaractereExiste = Program.GMBD.EnumererCaractere(null, 
-                            new MyDB.CodeSql(@"JOIN subfaction ON charact.ch_fk_subfaction_id = subfaction.sf_id 
+                            new MyDB.CodeSql(@"JOIN char_rank ON charact.ch_id = char_rank.cr_fk_ch_id
+                                                JOIN subfaction ON charact.ch_fk_subfaction_id = subfaction.sf_id                                                
                                                 JOIN faction ON subfaction.sf_fk_faction_id = faction.fa_id
-                                                JOIN subunity ON char_rank.cr_sub_id = subunity.su_id    
-                                                JOIN unity ON subunity.su_fk_unity_id = unity.un_id"),
+                                                JOIN subunity ON char_rank.cr_sub_id = subunity.su_id"),
                             new MyDB.CodeSql(@"WHERE faction.fa_id = {0} AND subfaction.sf_id = {1}
                                                 AND charact.ch_name = {2} AND charact.ch_id <> {3}
-                                                AND subunity.su_id = {4} AND unity.un_id = {5}", 
+                                                AND subunity.su_id = {4} AND subunity.su_fk_unity_id = {5}", 
                             listeDeroulanteFaction1.FactionSelectionnee.Id, listeDeroulanteSousFaction1.SousFactionSelectionnee.Id,
                             textBoxCaractere.Text, ficheCaractere1.CaractereSelectionne.Caractere.Id,
                             listeDeroulanteSubUnity1.SubUnitySelectionnee.Id,listeDeroulanteUnity1.UnitySelectionnee.Id), null).FirstOrDefault();
@@ -538,18 +551,7 @@ namespace EICE_WARGAME
             }
             buttonAjouterPersonnage.Enabled = m_PersonnageEnEdition.EstValide;
         }
-        #endregion
-
-        private void textBoxCaractere_KeyPress(object sender, KeyPressEventArgs e)
-        {
-            /*
-            ficheCaractere1.CaractereSelectionne = null;
-            buttonAjouterCaract.Enabled = true;
-            buttonAnnulerCaract.Enabled = false;
-            buttonModifierCaract.Enabled = false;
-            buttonSupprimerCaract.Enabled = false;
-            */
-        }        
+        #endregion        
 
         private void textBoxCaractere_Enter(object sender, EventArgs e)
         {
@@ -558,6 +560,103 @@ namespace EICE_WARGAME
         }
 
         private void numericUpDown1_Enter(object sender, EventArgs e)
+        {
+            errorProviderErreurCaractere.Clear();
+            ValidationProvider.Clear();
+        }
+
+        private void buttonAjouterCaracteristique_Click(object sender, EventArgs e)
+        {
+            m_CFEnEdition = new CharactFeature();
+            m_CFEnEdition.SurErreur += FeatureEnEdition_SurErreur;
+            m_CFEnEdition.AvantChangement += FeatureEnEdition_AvantChangement;
+            m_CFEnEdition.ApresChangement += FeatureEnEdition_ApresChangement;
+            m_CFEnEdition.CharactRank = ficheCaractere1.CaractereSelectionne;
+            m_CFEnEdition.Feature = listeDeroulanteFeature1.FeatureSelectionnee;
+            m_CFEnEdition.CharactRank = ficheCaractere1.CaractereSelectionne;
+            m_CFEnEdition.Value = Convert.ToInt32(numericUpDown2.Value);
+            if(Program.GMBD.AjouterFeaturePersonnage(m_CFEnEdition))
+            {
+                RafraichirListViewCaracteristiques();
+            }
+        }
+
+        private void RafraichirListViewCaracteristiques()
+        {
+            ficheCaracteristique1.Caracteristique = Program.GMBD.EnumererCharactFeature(null, new MyDB.CodeSql("JOIN feature ON char_rank_feature.crf_fk_feature_id = feature.fe_id"), new MyDB.CodeSql("WHERE crf_fk_char_rank_id = {0}", ficheCaractere1.CaractereSelectionne.Id), null);
+        }
+
+        private void FeatureEnEdition_AvantChangement(CharactFeature Entite, CharactFeature.Champ Champ, object ValeurActuelle, object NouvelleValeur, AccumulateurErreur AccumulateurErreur)
+        {
+            switch (Champ)
+            {
+                case CharactFeature.Champ.Value:
+                    {
+                        Feature FeatureExiste = Program.GMBD.EnumererFeature(null, new MyDB.CodeSql("JOIN char_rank_feature ON char_rank_feature.crf_fk_feature_id = feature.fe_id"),
+                                                                             new MyDB.CodeSql("WHERE crf_fk_char_rank_id = {0}", ficheCaractere1.CaractereSelectionne.Id), null).FirstOrDefault();
+                        if (FeatureExiste != null)
+                        {
+                            AccumulateurErreur.NotifierErreur("Ce personnage dispose déjà de cette caractèristique, veuillez en choisir une autre !");
+                        }
+                        break;
+                    }
+            }
+        }
+
+        private void FeatureEnEdition_ApresChangement(CharactFeature Entite, CharactFeature.Champ Champ, object ValeurPrecedente, object ValeurActuelle)
+        {
+            switch (Champ)
+            {
+                case CharactFeature.Champ.Value:
+                    // Si modification
+                    if (ficheCaracteristique1.FeatureSelectionne != null)
+                    {
+                        ValidationProvider.SetError(numericUpDown2, "Votre caractèristique a bien été modifiée");
+                    }
+                    // Si ajout
+                    else if (ficheCaracteristique1.FeatureSelectionne == null)
+                    {
+                       
+                         ValidationProvider.SetError(numericUpDown2,"Votre caractèristique a bien ajoutée");
+                       
+                    }
+                    break;
+            }
+            buttonAjouterCaracteristique.Enabled = m_CFEnEdition.EstValide;
+        }
+
+        private void FeatureEnEdition_SurErreur(CharactFeature Entite, CharactFeature.Champ Champ, string MessageErreur)
+        {
+            switch (Champ)
+            {
+                case CharactFeature.Champ.Value:
+                    if ((Entite.Value > Int32.MaxValue) || (Entite.Value < 0))
+                    {
+                        errorProviderErreurCaractere.SetError(numericUpDown2, MessageErreur);
+                    }
+                    break;
+            }
+            //buttonAjouterCaracteristique.Enabled = false;
+        }
+
+        private void FicheCaracteristique_SurChangementSelection(object sender,EventArgs e)
+        {
+            if (ficheCaracteristique1.FeatureSelectionne != null)
+            {
+                buttonModifCaracteristique.Enabled = true;
+                buttonSupprimerCaracteristique.Enabled = true;
+                buttonAjouterCaracteristique.Enabled = false;
+            }
+            else
+            {
+                buttonModifCaracteristique.Enabled = false;
+                buttonSupprimerCaracteristique.Enabled = false;
+                buttonAjouterCaracteristique.Enabled = true;
+            }
+            
+        }
+
+        private void numericUpDown2_Enter(object sender, EventArgs e)
         {
             errorProviderErreurCaractere.Clear();
             ValidationProvider.Clear();
