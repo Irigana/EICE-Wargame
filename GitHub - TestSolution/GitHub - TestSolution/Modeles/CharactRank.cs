@@ -16,7 +16,7 @@ namespace EICE_WARGAME
             Id,
             Caractere,
             Rank,
-            Feature,
+            //Feature,
             Cost,
             SubUnity,
         }
@@ -51,7 +51,7 @@ namespace EICE_WARGAME
         #endregion
 
         #region Membres publics       
-
+        /*
         /// <summary>
         /// Liste des Types de Stuff
         /// </summary>
@@ -62,7 +62,7 @@ namespace EICE_WARGAME
                 return EnumererCharactFeatures();
             }
         }
-
+        */
         /// <summary>
         /// Membre public permettant d'accéder à l'id du rank
         /// </summary>
@@ -213,6 +213,9 @@ namespace EICE_WARGAME
             {
                 DefinirId(Enregistrement.ValeurChampComplet<int>(NomDeLaTablePrincipale, "cr_id"));                
                 this.Cost = Enregistrement.ValeurChampComplet<int>(NomDeLaTablePrincipale, "cr_cost");
+                this.Rank = new Rank(Connexion,Enregistrement);
+                this.SubUnity = new SubUnity(Connexion, Enregistrement);
+                this.Caractere = new Charact(Connexion, Enregistrement);                
             }
         }
 
@@ -289,7 +292,7 @@ namespace EICE_WARGAME
         {
             get
             {
-                return new PDSGBD.MyDB.CodeSql("cr_fk_ch_id = {0}, cr_fk_ra_id = {1}, cr_cost = {2}, cr_sub_id = {0}", Caractere.Id, Rank.Id, Cost,SubUnity.Id);
+                return new PDSGBD.MyDB.CodeSql("cr_fk_ch_id = {0}, cr_fk_ra_id = {1}, cr_cost = {2}, cr_sub_id = {3}", Caractere.Id, Rank.Id, Cost,SubUnity.Id);
             }
         }
 

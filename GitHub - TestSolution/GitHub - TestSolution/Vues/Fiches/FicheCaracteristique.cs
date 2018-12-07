@@ -28,7 +28,7 @@ namespace EICE_WARGAME
             listviewCaracteristique.HideSelection = false;
             listviewCaracteristique.Items.Clear();
             listviewCaracteristique.Columns.Clear();
-            listviewCaracteristique.SelectedIndexChanged += listViewCaractere_SelectedIndexChanged;
+            listviewCaracteristique.SelectedIndexChanged += listViewCaractere_SelectedIndexChanged;            
         }
 
         
@@ -48,9 +48,9 @@ namespace EICE_WARGAME
         }
         
         /// <summary>
-        /// Type de sous faction sélectionné
+        /// Type de sous Feature sélectionné
         /// </summary>
-        public Feature CaracteristiqueSelectionne
+        public Feature FeatureSelectionne
         {
             get
             {
@@ -77,12 +77,12 @@ namespace EICE_WARGAME
 
 
         /// <summary>
-        /// Evénement déclenché quand il y a un changement de sélection de sous faction
+        /// Evénement déclenché quand il y a un changement de sélection de sous Feature
         /// </summary>
         public event EventHandler SurChangementSelection = null;
 
         /// <summary>
-        /// Met à jour la listview des sous factions et y insére les elements
+        /// Met à jour la listview des sous Features et y insére les elements
         /// </summary>
         /// <typeparam name="T"></typeparam>
         /// <param name="Entites"></param>
@@ -97,6 +97,7 @@ namespace EICE_WARGAME
             if (EstCaracteristique && (listviewCaracteristique.Columns.Count != 2))
             {
                 listviewCaracteristique.Columns.Clear();
+
 
                 listviewCaracteristique.Columns.Add(new ColumnHeader()
                 {
@@ -147,7 +148,7 @@ namespace EICE_WARGAME
 
 
         /// <summary>
-        /// Evénement déclenché en cas de changement de sélection de sous faction
+        /// Evénement déclenché en cas de changement de sélection de sous Feature
         /// </summary>
         /// <param name="sender">Emetteur ayant déclenché l'événement</param>
         /// <param name="e">Descriptif de l'événement</param>

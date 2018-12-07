@@ -17,7 +17,7 @@ namespace EICE_WARGAME
 
             public Rank Rank { get; private set; }
 
-            public Element(Rank SousFaction)
+            public Element(Rank Rank)
             {
                 this.Rank = Rank;
             }
@@ -25,6 +25,17 @@ namespace EICE_WARGAME
             public override string ToString()
             {
                 return Rank.Name;
+            }
+
+
+            public override bool Equals(object obj)
+            {
+                return (obj is Element) ? Rank.Equals((obj as Element).Rank) : base.Equals(obj);
+            }
+
+            public override int GetHashCode()
+            {
+                return Rank.GetHashCode();
             }
 
         }        

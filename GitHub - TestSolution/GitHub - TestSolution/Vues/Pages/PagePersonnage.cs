@@ -37,7 +37,7 @@ namespace EICE_WARGAME
 
         private const string c_CritereQuiContient = "%{0}%";
 
-        private Charact m_CaractereEnEdition;
+        private CharactRank m_PersonnageEnEdition;
 
         public PagePersonnage()
         {
@@ -47,105 +47,156 @@ namespace EICE_WARGAME
             buttonModifierPersonnage.Enabled = false;
             buttonSupprimerPersonnage.Enabled = false;
             buttonAjouterPersonnage.Enabled = false;
-            textBoxCaractere.Enabled = false;            
-            menuAdmin1.MaPageActive = 2;            
+            textBoxCaractere.Enabled = false;
+            menuAdmin1.MaPageActive = 2;
+
 
             Program.GMBD.MettreAJourListeFaction(listeDeroulanteFaction1);
+            listeDeroulanteFeature1.FeatureSelectionnee = null;
+            m_PersonnageEnEdition = new CharactRank();
 
-            m_CaractereEnEdition = new Charact();
-            
-            m_CaractereEnEdition.SurErreur += CaractereEnEdition_SurErreur;
-            m_CaractereEnEdition.AvantChangement += CaractereEnEdition_AvantChangement;
-            m_CaractereEnEdition.ApresChangement += CaractereEnEdition_ApresChangement;
-            
-            
-            listeDeroulanteFeature1.Feature = Program.GMBD.EnumererFeature(null, null, null, PDSGBD.MyDB.CreerCodeSql("fe_name"));
-            listeDeroulanteFeature1.SurChangementSelection += ListeFeatureChangementSelection;
-            
-            ficheCaractere1.SurChangementFiltre += ChargerCaractere; 
+            m_PersonnageEnEdition.SurErreur += PersonnageEnEdition_SurErreur;
+            m_PersonnageEnEdition.AvantChangement += PersonnageEnEdition_AvantChangement;
+            m_PersonnageEnEdition.ApresChangement += PersonnageEnEdition_ApresChangement;
+
+
+            ficheCaractere1.SurChangementSelection += ficheCaractere_SurChangementSelection;
 
             listeDeroulanteFaction1.SurChangementSelection += ListeDeroulanteFaction_SurChangementSelection;
-            ficheCaractere1.SurChangementSelection += ficheFaction_SurChangementSelection;
+            //ficheCaractere1.SurChangementSelection += ficheFaction_SurChangementSelection;
             Bitmap ImageRessource = new Bitmap(Properties.Resources.Validation25px);
             ValidationProvider.Icon = Icon.FromHandle(ImageRessource.GetHicon());
-        }
-        
-
-        private void ChargerCaractere(object s,EventArgs ev)
-        {
-            ficheCaractere1.Caractere = Program.GMBD.EnumererCaractere(
-                        null,
-                        null,
-                        new MyDB.CodeSql("WHERE charact.ch_name LIKE {0} AND charact.ch_fk_subfaction_id = {1}",
-                                         string.Format(c_CritereQuiContient, ficheCaractere1.TexteDuFiltre),listeDeroulanteSousFaction1.SousFactionSelectionnee.Id),
-                        new MyDB.CodeSql("ORDER BY charact.ch_name"));           
         }
 
         private void ChargerCaracteristique()
         {
-            ficheCaracteristique1.Caracteristique = Program.GMBD.EnumererCharactFeature(null, 
+            ficheCaracteristique1.Caracteristique = Program.GMBD.EnumererCharactFeature(null,
                 new MyDB.CodeSql(@"JOIN feature ON crf_fk_feature_id = fe_id
-                                    JOIN char_rank ON crf_fk_char_rank_id = cr_id"), 
-                new MyDB.CodeSql("WHERE cr_fk_ch_id = {0}",ficheCaractere1.CaractereSelectionne.Id), null);
+                                    JOIN char_rank ON crf_fk_char_rank_id = cr_id"),
+                new MyDB.CodeSql("WHERE cr_fk_ch_id = {0}", ficheCaractere1.CaractereSelectionne.Id), null);
         }
         #region Sur changement de selection
         private void ListeDeroulanteFaction_SurChangementSelection(object sender, EventArgs e)
         {
             listeDeroulanteSousFaction1.Enabled = true;
             buttonAjouterPersonnage.Enabled = false;
-            
+
             buttonAnnulerPersonnage.Enabled = false;
             buttonModifierPersonnage.Enabled = false;
             buttonSupprimerPersonnage.Enabled = false;
-            
+
             listeDeroulanteSousFaction1.ResetTextSousFaction();
-            ficheCaractere1.NettoyerListView();   
+            ficheCaractere1.NettoyerListView();
             Program.GMBD.MettreAJourListeSousFaction(listeDeroulanteSousFaction1, listeDeroulanteFaction1.FactionSelectionnee.Id);
             listeDeroulanteSousFaction1.SurChangementSelection += ListeDeroulanteSousFaction_SurChangementSelection;
         }
 
         private void ListeDeroulanteSousFaction_SurChangementSelection(object sender, EventArgs e)
         {
-            ficheCaractere1.ActiverTextBox = true;
-            textBoxCaractere.Enabled = true;
-            ficheCaractere1.Caractere = Program.GMBD.EnumererCaractere(new MyDB.CodeSql("*"),
-                new MyDB.CodeSql("JOIN subfaction ON charact.ch_fk_subfaction_id = subfaction.sf_id JOIN faction ON subfaction.sf_fk_faction_id = faction.fa_id"),
-                new MyDB.CodeSql("WHERE fa_id = {0} AND sf_id = {1}", listeDeroulanteFaction1.FactionSelectionnee.Id, listeDeroulanteSousFaction1.SousFactionSelectionnee.Id)
-                                                                        ,new MyDB.CodeSql("ORDER BY ch_name"));
-            listeDeroulanteSousFaction1.SurChangementSelection += ficheFaction_SurChangementSelection;
+            listeDeroulanteUnity1.Unity = Program.GMBD.EnumererUnity(new MyDB.CodeSql("DISTINCT unity.un_id,unity.un_name"),
+                new MyDB.CodeSql(@"JOIN subunity ON unity.un_id = subunity.su_fk_unity_id
+                                    JOIN char_rank ON subunity.su_id = char_rank.cr_sub_id
+                                    JOIN charact ON char_rank.cr_fk_ch_id = charact.ch_id                                    
+                                    JOIN subfaction ON charact.ch_fk_subfaction_id = subfaction.sf_id
+                                    JOIN faction ON subfaction.sf_fk_faction_id = faction.fa_id "),
+                new MyDB.CodeSql("WHERE fa_id = {0} AND sf_id = {1}", listeDeroulanteFaction1.FactionSelectionnee.Id, listeDeroulanteSousFaction1.SousFactionSelectionnee.Id),
+                new MyDB.CodeSql("ORDER BY un_name"));
+            listeDeroulanteUnity1.SurChangementSelection += ListeDeroulanteUnity_SurChangementSelection;
 
         }
 
-        private void ficheFaction_SurChangementSelection(object sender, EventArgs e)
+        private void ListeDeroulanteUnity_SurChangementSelection(object sender, EventArgs e)
         {
-            if ((ficheCaractere1.CaractereSelectionne != null)&&(listeDeroulanteFaction1.FactionSelectionnee != null) &&(listeDeroulanteSousFaction1.SousFactionSelectionnee !=null))
+            listeDeroulanteSubUnity1.SubUnity = Program.GMBD.EnumererSubUnity(new MyDB.CodeSql("DISTINCT su_id,su_name"),
+                new MyDB.CodeSql(@"JOIN unity ON subunity.su_fk_unity_id = unity.un_id
+                                    JOIN char_rank ON subunity.su_id = char_rank.cr_sub_id
+                                    JOIN charact ON char_rank.cr_fk_ch_id = charact.ch_id                                    
+                                    JOIN subfaction ON charact.ch_fk_subfaction_id = subfaction.sf_id
+                                    JOIN faction ON subfaction.sf_fk_faction_id = faction.fa_id "),
+                new MyDB.CodeSql("WHERE fa_id = {0} AND sf_id = {1} AND un_id = {2}",
+                listeDeroulanteFaction1.FactionSelectionnee.Id, listeDeroulanteSousFaction1.SousFactionSelectionnee.Id, listeDeroulanteUnity1.UnitySelectionnee.Id),
+                new MyDB.CodeSql("ORDER BY su_name"));
+            listeDeroulanteSubUnity1.SurChangementSelection += ListeDeroulanteSubUnity_SurChangementSelection;
+        }
+
+        private void ListeDeroulanteSubUnity_SurChangementSelection(object sender, EventArgs e)
+        {
+            ficheCaractere1.Caractere = Program.GMBD.EnumererPersonnage(null,
+                new MyDB.CodeSql(@"JOIN charact ON charact.ch_id = char_rank.cr_fk_ch_id
+                                    JOIN rank ON rank.ra_id = char_rank.cr_fk_ra_id
+                                    JOIN subunity ON char_rank.cr_sub_id = subunity.su_id    
+                                    JOIN unity ON subunity.su_fk_unity_id = unity.un_id                                                                   
+                                    JOIN subfaction ON charact.ch_fk_subfaction_id = subfaction.sf_id
+                                    JOIN faction ON subfaction.sf_fk_faction_id = faction.fa_id "),
+                new MyDB.CodeSql("WHERE fa_id = {0} AND sf_id = {1} AND un_id = {2} AND su_id = {3}",
+                listeDeroulanteFaction1.FactionSelectionnee.Id, listeDeroulanteSousFaction1.SousFactionSelectionnee.Id,
+                listeDeroulanteUnity1.UnitySelectionnee.Id, listeDeroulanteSubUnity1.SubUnitySelectionnee.Id),
+                new MyDB.CodeSql("ORDER BY su_name"));
+            textBoxCaractere.Enabled = true;
+            buttonAjouterPersonnage.Enabled = true;
+            listeDeroulanteRank1.Rank = Program.GMBD.EnumererRank(null, null, null, new MyDB.CodeSql("ORDER BY ra_name"));
+
+
+        }
+
+        private void ficheCaractere_SurChangementSelection(object sender, EventArgs e)
+        {
+            if ((ficheCaractere1.CaractereSelectionne != null) &&
+                (listeDeroulanteFaction1.FactionSelectionnee != null) &&
+                (listeDeroulanteSousFaction1.SousFactionSelectionnee != null) &&
+                (listeDeroulanteUnity1.UnitySelectionnee != null) &&
+                (listeDeroulanteSubUnity1.SubUnitySelectionnee != null))
             {
-                
+
                 buttonAjouterPersonnage.Enabled = false;
                 buttonAnnulerPersonnage.Enabled = true;
                 buttonModifierPersonnage.Enabled = true;
                 buttonSupprimerPersonnage.Enabled = true;
 
-                ficheCaractere1.ActiverTextBox = true;
-                textBoxCaractere.Text = ficheCaractere1.CaractereSelectionne.Name;
 
-                listeDeroulanteFeature1.FeatureSelectionnee = null;
-                textBoxCaractere.Text = ficheCaractere1.CaractereSelectionne.Name;
-                textBoxPersonnageSelectionne.Text = ficheCaractere1.CaractereSelectionne.Name.ToString();
+                listeDeroulanteRank1.RankSelectionnee = ficheCaractere1.CaractereSelectionne.Rank;
+                numericUpDown1.Value = ficheCaractere1.CaractereSelectionne.Cost;
+                textBoxCaractere.Text = ficheCaractere1.CaractereSelectionne.Caractere.Name;
+                textBoxPersonnageSelectionne.Text = ficheCaractere1.CaractereSelectionne.Caractere.Name.ToString();
+
+                ficheCaractere1.ActiverTextBox = true;
+                ficheCaracteristique1.Caracteristique = Program.GMBD.EnumererCharactFeature(null,
+                new MyDB.CodeSql(@"JOIN charact ON charact.ch_id = char_rank.cr_fk_ch_id
+                JOIN rank ON rank.ra_id = char_rank.cr_fk_ra_id
+                JOIN subunity ON char_rank.cr_sub_id = subunity.su_id
+                JOIN unity ON subunity.su_fk_unity_id = unity.un_id
+                JOIN subfaction ON charact.ch_fk_subfaction_id = subfaction.sf_id
+                JOIN faction ON subfaction.sf_fk_faction_id = faction.fa_id 
+                JOIN char_rank_feature ON char_rank.cr_id = crf_fk_char_rank_id
+                JOIN feature ON feature.fe_id = crf_fk_feature_id"),
+                new MyDB.CodeSql("WHERE fa_id = {0} AND sf_id = {1} AND un_id = {2} AND su_id = {3} AND ch_id = {4} AND ra_id = {5}",
+                listeDeroulanteFaction1.FactionSelectionnee.Id, listeDeroulanteSousFaction1.SousFactionSelectionnee.Id,
+                listeDeroulanteUnity1.UnitySelectionnee.Id, listeDeroulanteSubUnity1.SubUnitySelectionnee.Id,
+                ficheCaractere1.CaractereSelectionne.Id,listeDeroulanteRank1.RankSelectionnee.Id),
+                new MyDB.CodeSql("ORDER BY fe_name")); 
+                listeDeroulanteFeature1.Enabled = true;
+                listeDeroulanteFeature1.Feature = Program.GMBD.EnumererFeature(null, null, new MyDB.CodeSql("WHERE fe_filtre = {0}", "P"), new MyDB.CodeSql(" ORDER BY fe_name"));
+                
+
                 textBoxValeur.Clear();
-                ChargerCaracteristique();
 
                 errorProviderErreurCaractere.Clear();
                 ValidationProvider.Clear();
+
+                listeDeroulanteFeature1.SurChangementSelection += ListeDeroulanteFeature_SurChangementSelection;
+
             }
-            else if ((listeDeroulanteFaction1.FactionSelectionnee != null) && (listeDeroulanteSousFaction1.SousFactionSelectionnee != null))
+            else if ((listeDeroulanteFaction1.FactionSelectionnee != null) &&
+                (listeDeroulanteSousFaction1.SousFactionSelectionnee != null) &&
+                (listeDeroulanteUnity1.UnitySelectionnee != null) &&
+                (listeDeroulanteSubUnity1.SubUnitySelectionnee != null))
             {
                 buttonAjouterPersonnage.Enabled = true;
                 buttonAnnulerPersonnage.Enabled = false;
                 buttonModifierPersonnage.Enabled = false;
                 buttonSupprimerPersonnage.Enabled = false;
             }
-            else 
+            else
             {
                 buttonAjouterPersonnage.Enabled = false;
                 buttonAnnulerPersonnage.Enabled = false;
@@ -154,6 +205,14 @@ namespace EICE_WARGAME
             }
 
         }
+    
+
+        private void ListeDeroulanteFeature_SurChangementSelection(object sender, EventArgs e)
+        {
+            textBoxValeur.Enabled = true;
+            buttonAjouterCaracteristique.Enabled = true;            
+        }
+
         #endregion
         private void PageCaractere_Load(object sender, EventArgs e)
         {
@@ -181,61 +240,120 @@ namespace EICE_WARGAME
                 if (FactionExiste != null)
                 {
 
-                    if(listeDeroulanteSousFaction1.SousFactionSelectionnee != null)
+                    if (listeDeroulanteSousFaction1.SousFactionSelectionnee != null)
                     {
                         SousFactionExiste = Program.GMBD.EnumererSousFaction(null,
                                                                              null,
-                                                                             new MyDB.CodeSql("WHERE subfaction.sf_fk_faction_id = {0} AND subfaction.sf_id = {1}",listeDeroulanteFaction1.FactionSelectionnee.Id ,listeDeroulanteSousFaction1.SousFactionSelectionnee.Id),
+                                                                             new MyDB.CodeSql("WHERE subfaction.sf_fk_faction_id = {0} AND subfaction.sf_id = {1}", listeDeroulanteFaction1.FactionSelectionnee.Id, listeDeroulanteSousFaction1.SousFactionSelectionnee.Id),
                                                                              null).FirstOrDefault();
                         if (SousFactionExiste != null)
                         {
-                            Charact NouveauCaractere = new Charact();
-                            NouveauCaractere.SurErreur += CaractereEnEdition_SurErreur;
-                            NouveauCaractere.AvantChangement += CaractereEnEdition_AvantChangement;
-                            NouveauCaractere.ApresChangement += CaractereEnEdition_ApresChangement;
-                            NouveauCaractere.SousFaction = listeDeroulanteSousFaction1.SousFactionSelectionnee;
-                            NouveauCaractere.Name = textBoxCaractere.Text;
+                            
 
-
-
-
-                            if ((NouveauCaractere.EstValide) && (Program.GMBD.AjouterCaractere(NouveauCaractere)))
+                            if (listeDeroulanteUnity1.UnitySelectionnee != null)
                             {
-                                ficheCaractere1.TexteDuFiltre = "";
-                                Program.GMBD.MettreAJourFicheCaractere(ficheCaractere1, listeDeroulanteFaction1.FactionSelectionnee.Id,listeDeroulanteSousFaction1.SousFactionSelectionnee.Id);
-                                errorProviderErreurCaractere.Clear();
-                                ValidationProvider.SetError(textBoxCaractere, "Personnage correctement ajouté");
-                                textBoxCaractere.Text = NouveauCaractere.Name;
+                                Unity UnityExiste = Program.GMBD.EnumererUnity(null,
+                                                                                    new MyDB.CodeSql(@"JOIN subunity ON unity.un_id = subunity.su_fk_unity_id
+                                                                                        JOIN char_rank ON subunity.su_id = char_rank.cr_sub_id
+                                                                                        JOIN charact ON char_rank.cr_fk_ch_id = charact.ch_id                                    
+                                                                                        JOIN subfaction ON charact.ch_fk_subfaction_id = subfaction.sf_id
+                                                                                        JOIN faction ON subfaction.sf_fk_faction_id = faction.fa_id "),
+                                                                    new MyDB.CodeSql("WHERE fa_id = {0} AND sf_id = {1} AND un_id = {2}",
+                                                                    listeDeroulanteFaction1.FactionSelectionnee.Id, listeDeroulanteSousFaction1.SousFactionSelectionnee.Id, listeDeroulanteUnity1.UnitySelectionnee.Id),
+                                                                    null).FirstOrDefault();
+                                if (UnityExiste != null)
+                                {
+
+                                    SubUnity SubUnityExiste = Program.GMBD.EnumererSubUnity(null,
+                                                                                            new MyDB.CodeSql(@"JOIN unity ON subunity.su_fk_unity_id = unity.un_id
+                                                                                                                JOIN char_rank ON subunity.su_id = char_rank.cr_sub_id
+                                                                                                                JOIN charact ON char_rank.cr_fk_ch_id = charact.ch_id                                    
+                                                                                                                JOIN subfaction ON charact.ch_fk_subfaction_id = subfaction.sf_id
+                                                                                                                JOIN faction ON subfaction.sf_fk_faction_id = faction.fa_id "),
+                                                                                            new MyDB.CodeSql("WHERE fa_id = {0} AND sf_id = {1} AND un_id = {2} AND su_id = {3}",
+                                                                                            listeDeroulanteFaction1.FactionSelectionnee.Id, listeDeroulanteSousFaction1.SousFactionSelectionnee.Id, listeDeroulanteUnity1.UnitySelectionnee.Id, listeDeroulanteSubUnity1.SubUnitySelectionnee.Id),
+                                                                                            null).FirstOrDefault();
+                                    if (SubUnityExiste != null)
+                                    {
+
+                                        Charact NouveauCaractere = new Charact();
+                                        NouveauCaractere.SurErreur += CaractereEnEdition_SurErreur;
+                                        NouveauCaractere.AvantChangement += CaractereEnEdition_AvantChangement;
+                                        NouveauCaractere.ApresChangement += CaractereEnEdition_ApresChangement;
+                                        NouveauCaractere.SousFaction = listeDeroulanteSousFaction1.SousFactionSelectionnee;
+                                        NouveauCaractere.Name = textBoxCaractere.Text;
+
+                                        if ((NouveauCaractere.EstValide) && (Program.GMBD.AjouterCaractere(NouveauCaractere)))
+                                        {
+
+                                            CharactRank NouveauPersonnage = new CharactRank();
+                                            NouveauPersonnage.Caractere = NouveauCaractere;
+                                            NouveauPersonnage.Cost = Convert.ToInt32(numericUpDown1.Value);
+                                            NouveauPersonnage.SubUnity = listeDeroulanteSubUnity1.SubUnitySelectionnee;
+                                            NouveauPersonnage.Rank = listeDeroulanteRank1.RankSelectionnee;
+                                            if((NouveauPersonnage.EstValide) && Program.GMBD.AjouterPersonnage(NouveauPersonnage))
+                                            {
+                                                Program.GMBD.MettreAJourFicheCaractere(ficheCaractere1, listeDeroulanteFaction1.FactionSelectionnee.Id, listeDeroulanteSousFaction1.SousFactionSelectionnee.Id, listeDeroulanteUnity1.UnitySelectionnee.Id, listeDeroulanteSubUnity1.SubUnitySelectionnee.Id);
+                                                errorProviderErreurCaractere.Clear();
+                                                ValidationProvider.SetError(textBoxCaractere, "Personnage correctement ajouté");
+                                                textBoxCaractere.Text = NouveauCaractere.Name;
+
+                                                ficheCaractere1.TexteDuFiltre = "";
+                                                listeDeroulanteRank1.RankSelectionnee = null;
+                                                numericUpDown1.Value = 0;
+                                                ficheCaractere1.CaractereSelectionne = null;
+                                            }
+                                            else
+                                            {
+                                                Program.GMBD.SupprimerCaractere(NouveauCaractere);
+                                            }
+                                        }
+                                        
+
+                                            
+                                        }
+                                    }
+                                }
                             }
                         }
                     }
-
-                    
-
                 }
-            }
+            
             textBoxCaractere.Text = "";
             buttonAjouterPersonnage.Enabled = true;
         }
 
-        private void buttonModifierCaract_Click(object sender, EventArgs e)
+        private void buttonModifierPersonnage_Click(object sender, EventArgs e)
         {
-            if ((listeDeroulanteFaction1.FactionSelectionnee != null) &&(listeDeroulanteSousFaction1.SousFactionSelectionnee != null) && (ficheCaractere1.CaractereSelectionne != null))
+            if ((listeDeroulanteFaction1.FactionSelectionnee != null) && 
+                (listeDeroulanteSousFaction1.SousFactionSelectionnee != null) &&
+                (listeDeroulanteUnity1.UnitySelectionnee != null) &&
+                (listeDeroulanteSubUnity1.SubUnitySelectionnee != null) &&
+                (ficheCaractere1.CaractereSelectionne != null))
             {
 
-                m_CaractereEnEdition = ficheCaractere1.CaractereSelectionne;
-                m_CaractereEnEdition.SurErreur += CaractereEnEdition_SurErreur;
-                m_CaractereEnEdition.AvantChangement += CaractereEnEdition_AvantChangement;
-                m_CaractereEnEdition.ApresChangement += CaractereEnEdition_ApresChangement;
+                m_PersonnageEnEdition = ficheCaractere1.CaractereSelectionne;
+                m_PersonnageEnEdition.SurErreur += PersonnageEnEdition_SurErreur;
+                m_PersonnageEnEdition.AvantChangement += PersonnageEnEdition_AvantChangement;
+                m_PersonnageEnEdition.ApresChangement += PersonnageEnEdition_ApresChangement;
 
-                m_CaractereEnEdition.SousFaction = listeDeroulanteSousFaction1.SousFactionSelectionnee;
-                m_CaractereEnEdition.Name = textBoxCaractere.Text;
+                m_PersonnageEnEdition.Caractere.SurErreur += CaractereEnEdition_SurErreur;
+                m_PersonnageEnEdition.Caractere.AvantChangement += CaractereEnEdition_AvantChangement;
+                m_PersonnageEnEdition.Caractere.ApresChangement += CaractereEnEdition_ApresChangement;
 
-                if ((m_CaractereEnEdition.EstValide) && (Program.GMBD.ModifierCaractere(m_CaractereEnEdition)))
+                
+                m_PersonnageEnEdition.Cost = Convert.ToInt32(numericUpDown1.Value);
+                m_PersonnageEnEdition.Caractere.Name = textBoxCaractere.Text;
+                if(listeDeroulanteRank1.RankSelectionnee != null) m_PersonnageEnEdition.Rank = listeDeroulanteRank1.RankSelectionnee;
+                m_PersonnageEnEdition.Caractere.SousFaction = listeDeroulanteSousFaction1.SousFactionSelectionnee;
+                if ((m_PersonnageEnEdition.EstValide) && (Program.GMBD.ModifierPersonnage(m_PersonnageEnEdition)))
                 {
-                    Program.GMBD.MettreAJourFicheCaractere(ficheCaractere1, listeDeroulanteFaction1.FactionSelectionnee.Id,listeDeroulanteSousFaction1.SousFactionSelectionnee.Id);
+                    Program.GMBD.MettreAJourFicheCaractere(ficheCaractere1,listeDeroulanteFaction1.FactionSelectionnee.Id, listeDeroulanteSousFaction1.SousFactionSelectionnee.Id, listeDeroulanteUnity1.UnitySelectionnee.Id, listeDeroulanteSubUnity1.SubUnitySelectionnee.Id);
                     ficheCaractere1.TexteDuFiltre = "";
                     textBoxCaractere.Text = "";
+                    numericUpDown1.Value = 0;
+                    listeDeroulanteRank1.RankSelectionnee = null;
+                    ficheCaractere1.CaractereSelectionne = null;
                 }
 
             }
@@ -257,9 +375,9 @@ namespace EICE_WARGAME
             FormConfirmation.ShowDialog();
             if (FormConfirmation.Confirmation)
             {
-                if ((ficheCaractere1.CaractereSelectionne != null) && (Program.GMBD.SupprimerCaractere(ficheCaractere1.CaractereSelectionne)))
+                if ((ficheCaractere1.CaractereSelectionne != null) && (Program.GMBD.SupprimerCaractere(ficheCaractere1.CaractereSelectionne.Caractere)))
                 {
-                    Program.GMBD.MettreAJourFicheCaractere(ficheCaractere1, listeDeroulanteFaction1.FactionSelectionnee.Id,listeDeroulanteSousFaction1.SousFactionSelectionnee.Id);
+                    Program.GMBD.MettreAJourFicheCaractere(ficheCaractere1, listeDeroulanteFaction1.FactionSelectionnee.Id, listeDeroulanteSousFaction1.SousFactionSelectionnee.Id, listeDeroulanteUnity1.UnitySelectionnee.Id, listeDeroulanteSubUnity1.SubUnitySelectionnee.Id);
                     buttonAjouterPersonnage.Enabled = true;
                     buttonAnnulerPersonnage.Enabled = false;
                     buttonModifierPersonnage.Enabled = false;
@@ -274,7 +392,7 @@ namespace EICE_WARGAME
             }
         }
 
-
+        #region Caractère en édition
         /// <summary>
         /// Methode permettant de réagir sur l'erreur d'un ajout ou d'une édition de caractère
         /// </summary>
@@ -309,13 +427,20 @@ namespace EICE_WARGAME
                     if (ficheCaractere1.CaractereSelectionne != null)
                     {
                         Charact CaractereExiste = Program.GMBD.EnumererCaractere(null, 
-                            new MyDB.CodeSql("JOIN subfaction ON charact.ch_fk_subfaction_id = subfaction.sf_id JOIN faction ON subfaction.sf_fk_faction_id = faction.fa_id"),
-                            new MyDB.CodeSql("WHERE faction.fa_id = {0} AND subfaction.sf_id = {1} AND charact.ch_name = {2} AND charact.ch_id <> {3}", 
-                            listeDeroulanteFaction1.FactionSelectionnee.Id, listeDeroulanteSousFaction1.SousFactionSelectionnee.Id, textBoxCaractere.Text, ficheCaractere1.CaractereSelectionne.Id), null).FirstOrDefault();
+                            new MyDB.CodeSql(@"JOIN subfaction ON charact.ch_fk_subfaction_id = subfaction.sf_id 
+                                                JOIN faction ON subfaction.sf_fk_faction_id = faction.fa_id
+                                                JOIN subunity ON char_rank.cr_sub_id = subunity.su_id    
+                                                JOIN unity ON subunity.su_fk_unity_id = unity.un_id"),
+                            new MyDB.CodeSql(@"WHERE faction.fa_id = {0} AND subfaction.sf_id = {1}
+                                                AND charact.ch_name = {2} AND charact.ch_id <> {3}
+                                                AND subunity.su_id = {4} AND unity.un_id = {5}", 
+                            listeDeroulanteFaction1.FactionSelectionnee.Id, listeDeroulanteSousFaction1.SousFactionSelectionnee.Id,
+                            textBoxCaractere.Text, ficheCaractere1.CaractereSelectionne.Caractere.Id,
+                            listeDeroulanteSubUnity1.SubUnitySelectionnee.Id,listeDeroulanteUnity1.UnitySelectionnee.Id), null).FirstOrDefault();
 
                         if (CaractereExiste != null)
                         {
-                            AccumulateurErreur.NotifierErreur("Cette sous faction existe déjà, veuillez en choisir une autre !");
+                            AccumulateurErreur.NotifierErreur("Ce caractère existe déjà, veuillez en choisir une autre !");
                         }
                     }
                     // Si il est en ajout
@@ -328,12 +453,13 @@ namespace EICE_WARGAME
 
                         if (CaractereExiste != null)
                         {
-                            AccumulateurErreur.NotifierErreur("Cette sous faction existe déjà, veuillez en choisir une autre !");
+                            AccumulateurErreur.NotifierErreur("Ce caractère existe déjà, veuillez en choisir une autre !");
                         }
                     }
                     break;
             }
         }
+
         private void CaractereEnEdition_ApresChangement(Charact Entite, Charact.Champ Champ, object ValeurPrecedente, object ValeurActuelle)
         {
             switch (Champ)
@@ -351,17 +477,69 @@ namespace EICE_WARGAME
                     break;
 
             }
-            buttonAjouterPersonnage.Enabled = m_CaractereEnEdition.EstValide;
+            buttonAjouterPersonnage.Enabled = m_PersonnageEnEdition.EstValide;
         }
+        #endregion
 
-        private void textBoxCaractere_Enter(object sender, EventArgs e)
+
+
+        #region Caractère en édition
+        /// <summary>
+        /// Methode permettant de réagir sur l'erreur d'un ajout ou d'une édition de caractère
+        /// </summary>
+        /// <param name="Entite"></param>
+        /// <param name="Champ"></param>
+        /// <param name="MessageErreur"></param>
+        private void PersonnageEnEdition_SurErreur(CharactRank Entite, CharactRank.Champ Champ, string MessageErreur)
         {
-            errorProviderErreurCaractere.Clear();
-            ValidationProvider.Clear();
-            
+            switch (Champ)
+            {
+                case CharactRank.Champ.Cost:
+                    errorProviderErreurCaractere.SetError(numericUpDown1, MessageErreur);
+                    break;
+            }
+            buttonAjouterPersonnage.Enabled = false;
         }
 
-      
+        /// <summary>
+        /// Methode permettant de vérifier si la sous faction existe avant le changement de celle ci dans la base de données
+        /// </summary>
+        /// <param name="Entite"></param>
+        /// <param name="Champ"></param>
+        /// <param name="ValeurActuelle"></param>
+        /// <param name="NouvelleValeur"></param>
+        /// <param name="AccumulateurErreur"></param>
+        private void PersonnageEnEdition_AvantChangement(CharactRank Entite, CharactRank.Champ Champ, object ValeurActuelle, object NouvelleValeur, AccumulateurErreur AccumulateurErreur)
+        {
+            switch (Champ)
+            {
+                case CharactRank.Champ.Cost:
+                    {
+                        if ((Entite.Cost > int.MaxValue) || (Entite.Cost < 0))
+                        {
+                            AccumulateurErreur.NotifierErreur("Ce coût n'est pas correct, veuillez en choisir une autre !");
+                        }
+                        break;
+                    }                   
+            }
+        }
+
+        private void PersonnageEnEdition_ApresChangement(CharactRank Entite, CharactRank.Champ Champ, object ValeurPrecedente, object ValeurActuelle)
+        {
+            switch (Champ)
+            {
+                case CharactRank.Champ.Cost:
+                    if (ficheCaractere1.CaractereSelectionne != null)
+                    {
+                        ValidationProvider.SetError(numericUpDown1, "Votre cout a bien été modifié");
+                        numericUpDown1.Value = Entite.Cost;
+                    }                    
+                    break;
+            }
+            buttonAjouterPersonnage.Enabled = m_PersonnageEnEdition.EstValide;
+        }
+        #endregion
+
         private void textBoxCaractere_KeyPress(object sender, KeyPressEventArgs e)
         {
             /*
@@ -371,35 +549,18 @@ namespace EICE_WARGAME
             buttonModifierCaract.Enabled = false;
             buttonSupprimerCaract.Enabled = false;
             */
-        }
+        }        
 
-        #region Code sur les caractéristiques
-
-        private void rafraichirListViewCaracteristiques()
+        private void textBoxCaractere_Enter(object sender, EventArgs e)
         {
-            /*
-            CharactRank CharactF = new CharactRank();
-            CharactF.Caractere = ficheCaractere1.CaractereSelectionne;
-            listViewCaracteristiques.Items.Clear();
-
-            foreach (CharactFeature CF  in CharactF.CharacFeatures)
-            {
-                Feature f = CF.Feature;
-                ListViewItem NouvelElement = new ListViewItem()
-                {
-                    Text = f.Name,
-                    Tag = CF.Id
-                };
-                NouvelElement.SubItems.Add(string.Format("{0}", CF.Value));
-                listViewCaracteristiques.Items.Add(NouvelElement);
-            }*/
+            errorProviderErreurCaractere.Clear();
+            ValidationProvider.Clear();
         }
 
-        private void ListeFeatureChangementSelection(object sender, EventArgs e)
+        private void numericUpDown1_Enter(object sender, EventArgs e)
         {
-            //Ajouter qqch
-
+            errorProviderErreurCaractere.Clear();
+            ValidationProvider.Clear();
         }
-        #endregion
     }   
 }

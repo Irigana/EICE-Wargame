@@ -19,10 +19,12 @@ namespace EICE_WARGAME
         private static readonly MyDB.CodeSql c_NomTable_Stuff = new MyDB.CodeSql(new Stuff().NomDeLaTablePrincipale);
         private static readonly MyDB.CodeSql c_NomTable_StuffFeature = new MyDB.CodeSql(new StuffFeature().NomDeLaTablePrincipale);
         private static readonly MyDB.CodeSql c_NomTable_Charact = new MyDB.CodeSql(new Charact().NomDeLaTablePrincipale);
+        private static readonly MyDB.CodeSql c_NomTable_CharactRank = new MyDB.CodeSql(new CharactRank().NomDeLaTablePrincipale);
         private static readonly MyDB.CodeSql c_NomTable_FigurineStuff = new MyDB.CodeSql(new FigurineStuff().NomDeLaTablePrincipale);
         private static readonly MyDB.CodeSql c_NomTable_CharactFeature = new MyDB.CodeSql(new CharactFeature().NomDeLaTablePrincipale);
-        private static readonly MyDB.CodeSql c_NomTable_Unity = new MyDB.CodeSql(new CharactFeature().NomDeLaTablePrincipale);
-        private static readonly MyDB.CodeSql c_NomTable_SubUnity = new MyDB.CodeSql(new CharactFeature().NomDeLaTablePrincipale);
+        private static readonly MyDB.CodeSql c_NomTable_Unity = new MyDB.CodeSql(new Unity().NomDeLaTablePrincipale);
+        private static readonly MyDB.CodeSql c_NomTable_SubUnity = new MyDB.CodeSql(new SubUnity().NomDeLaTablePrincipale);
+        private static readonly MyDB.CodeSql c_NomTable_Rank = new MyDB.CodeSql(new Rank().NomDeLaTablePrincipale);
 
         /// <summary>
         /// Référence l'objet de connexion au serveur de base de données MySql
@@ -195,13 +197,18 @@ namespace EICE_WARGAME
             return NouveauCaractere.Enregistrer(m_BD, NouveauCaractere, null, false);
         }
 
-        public void MettreAJourFicheCaractere(FicheCaractere Fiche, int IdFactionSelectionne, int IdSousFactionSelectionne)
+        public void MettreAJourFicheCaractere(FicheCaractere Fiche, int IdFactionSelectionne, int IdSousFactionSelectionne,int IdUnity,int IdSubUnity)
         {
-            Fiche.Caractere = Program.GMBD.EnumererCaractere(
-                        null,
-                        new MyDB.CodeSql("JOIN subfaction ON charact.ch_fk_subfaction_id = subfaction.sf_id JOIN faction ON subfaction.sf_fk_faction_id = faction.fa_id"),
-                        new MyDB.CodeSql("WHERE faction.fa_id = {0} AND subfaction.sf_id = {1}", IdFactionSelectionne,IdSousFactionSelectionne),
-                        new MyDB.CodeSql("ORDER BY charact.ch_name"));
+            Fiche.Caractere = Program.GMBD.EnumererPersonnage(null,
+                new MyDB.CodeSql(@"JOIN charact ON charact.ch_id = char_rank.cr_fk_ch_id
+                                    JOIN rank ON rank.ra_id = char_rank.cr_fk_ra_id
+                                    JOIN subunity ON char_rank.cr_sub_id = subunity.su_id    
+                                    JOIN unity ON subunity.su_fk_unity_id = unity.un_id                                                                   
+                                    JOIN subfaction ON charact.ch_fk_subfaction_id = subfaction.sf_id
+                                    JOIN faction ON subfaction.sf_fk_faction_id = faction.fa_id "),
+                new MyDB.CodeSql("WHERE fa_id = {0} AND sf_id = {1} AND un_id = {2} AND su_id = {3}",
+                IdFactionSelectionne,IdSousFactionSelectionne,IdUnity,IdSubUnity),
+                new MyDB.CodeSql("ORDER BY su_name"));
         }
 
 
@@ -219,6 +226,40 @@ namespace EICE_WARGAME
         }
 
         #endregion
+
+
+        #region Requetes personnage
+        //+====================+
+        //| Requetes personnage |
+        //+====================+
+
+        public bool AjouterPersonnage(CharactRank NouveauPersonnage)
+        {
+            return NouveauPersonnage.Enregistrer(m_BD, NouveauPersonnage, null, false);
+        }        
+
+        public bool ModifierPersonnage(CharactRank Personnage)
+        {
+            if (Personnage.Enregistrer(m_BD, Personnage, null, false) &&
+                (Personnage.Caractere.Enregistrer(m_BD, Personnage.Caractere, null, false)))
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+
+        public bool SupprimerPersonnage(CharactRank Personnage)
+        {
+            if (!m_BD.EstConnecte) Initialiser();
+            Personnage.SupprimerEnCascade(m_BD);
+            return true;
+        }
+
+        #endregion
+
         #region Toutes les énumérations
         //+==================+
         //| Les énumérations |
@@ -277,6 +318,24 @@ namespace EICE_WARGAME
             return Charact.Enumerer(m_BD, m_BD.Enumerer("SELECT {0} FROM {1} {2} {3} {4}", ValeurSouhaitee, c_NomTable_Charact, ClauseJoin, ClauseWhere, ClauseOrderBy));
         }
 
+        public IEnumerable<CharactRank> EnumererPersonnage(MyDB.CodeSql ValeurSouhaitee, MyDB.CodeSql ClauseJoin, MyDB.CodeSql ClauseWhere, MyDB.CodeSql ClauseOrderBy)
+        {
+            if (ClauseWhere == null) ClauseWhere = MyDB.CodeSql.Vide;
+            if (ClauseOrderBy == null) ClauseOrderBy = MyDB.CodeSql.Vide;
+            if (ClauseJoin == null) ClauseJoin = MyDB.CodeSql.Vide;
+            if (ValeurSouhaitee == null) ValeurSouhaitee = new MyDB.CodeSql("*");
+            return CharactRank.Enumerer(m_BD, m_BD.Enumerer("SELECT {0} FROM {1} {2} {3} {4}", ValeurSouhaitee, c_NomTable_CharactRank, ClauseJoin, ClauseWhere, ClauseOrderBy));
+        }
+
+        public IEnumerable<Rank> EnumererRank(MyDB.CodeSql ValeurSouhaitee, MyDB.CodeSql ClauseJoin, MyDB.CodeSql ClauseWhere, MyDB.CodeSql ClauseOrderBy)
+        {
+            if (ClauseWhere == null) ClauseWhere = MyDB.CodeSql.Vide;
+            if (ClauseOrderBy == null) ClauseOrderBy = MyDB.CodeSql.Vide;
+            if (ClauseJoin == null) ClauseJoin = MyDB.CodeSql.Vide;
+            if (ValeurSouhaitee == null) ValeurSouhaitee = new MyDB.CodeSql("*");
+            return Rank.Enumerer(m_BD, m_BD.Enumerer("SELECT {0} FROM {1} {2} {3} {4}", ValeurSouhaitee, c_NomTable_Rank, ClauseJoin, ClauseWhere, ClauseOrderBy));
+        }
+
         public IEnumerable<SousFaction> EnumererSousFaction(MyDB.CodeSql ValeurSouhaitee, MyDB.CodeSql ClauseJoin, MyDB.CodeSql ClauseWhere, MyDB.CodeSql ClauseOrderBy)
         {
             if (ClauseWhere == null) ClauseWhere = MyDB.CodeSql.Vide;
@@ -329,6 +388,24 @@ namespace EICE_WARGAME
             if (ClauseJoin == null) ClauseJoin = MyDB.CodeSql.Vide;
             if (ValeurSouhaitee == null) ValeurSouhaitee = new MyDB.CodeSql("*");
             return FigurineStuff.Enumerer(m_BD, m_BD.Enumerer("SELECT {0} FROM {1} {2} {3} {4}", ValeurSouhaitee, c_NomTable_FigurineStuff, ClauseJoin, ClauseWhere, ClauseOrderBy));
+        }
+
+        public IEnumerable<Unity> EnumererUnity(MyDB.CodeSql ValeurSouhaitee, MyDB.CodeSql ClauseJoin, MyDB.CodeSql ClauseWhere, MyDB.CodeSql ClauseOrderBy)
+        {
+            if (ClauseWhere == null) ClauseWhere = MyDB.CodeSql.Vide;
+            if (ClauseOrderBy == null) ClauseOrderBy = MyDB.CodeSql.Vide;
+            if (ClauseJoin == null) ClauseJoin = MyDB.CodeSql.Vide;
+            if (ValeurSouhaitee == null) ValeurSouhaitee = new MyDB.CodeSql("*");
+            return Unity.Enumerer(m_BD, m_BD.Enumerer("SELECT {0} FROM {1} {2} {3} {4}", ValeurSouhaitee, c_NomTable_Unity, ClauseJoin, ClauseWhere, ClauseOrderBy));
+        }
+
+        public IEnumerable<SubUnity> EnumererSubUnity(MyDB.CodeSql ValeurSouhaitee, MyDB.CodeSql ClauseJoin, MyDB.CodeSql ClauseWhere, MyDB.CodeSql ClauseOrderBy)
+        {
+            if (ClauseWhere == null) ClauseWhere = MyDB.CodeSql.Vide;
+            if (ClauseOrderBy == null) ClauseOrderBy = MyDB.CodeSql.Vide;
+            if (ClauseJoin == null) ClauseJoin = MyDB.CodeSql.Vide;
+            if (ValeurSouhaitee == null) ValeurSouhaitee = new MyDB.CodeSql("*");
+            return SubUnity.Enumerer(m_BD, m_BD.Enumerer("SELECT {0} FROM {1} {2} {3} {4}", ValeurSouhaitee, c_NomTable_SubUnity, ClauseJoin, ClauseWhere, ClauseOrderBy));
         }
 
 

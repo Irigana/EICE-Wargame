@@ -67,14 +67,14 @@ namespace EICE_WARGAME
         /// </summary>
         public event EventHandler SurChangementFiltre = null;
 
-        public IEnumerable<Charact> Caractere
+        public IEnumerable<CharactRank> Caractere
         {
             get
             {
                 return listViewCaractere.Items
                     .OfType<ListViewItem>()
-                    .Where(Element => Element.Tag is Charact)
-                    .Select(Element => Element.Tag as Charact);
+                    .Where(Element => Element.Tag is CharactRank)
+                    .Select(Element => Element.Tag as CharactRank);
             }
             set
             {
@@ -90,12 +90,12 @@ namespace EICE_WARGAME
         /// <summary>
         /// Type de sous faction sélectionné
         /// </summary>
-        public Charact CaractereSelectionne
+        public CharactRank CaractereSelectionne
         {
             get
             {
-                return (listViewCaractere.SelectedItems.Count == 1) && (listViewCaractere.SelectedItems[0].Tag is Charact)
-                    ? listViewCaractere.SelectedItems[0].Tag as Charact
+                return (listViewCaractere.SelectedItems.Count == 1) && (listViewCaractere.SelectedItems[0].Tag is CharactRank)
+                    ? listViewCaractere.SelectedItems[0].Tag as CharactRank
                     : null;
             }
             set
@@ -104,7 +104,7 @@ namespace EICE_WARGAME
                 {
                     foreach (ListViewItem Element in listViewCaractere.Items)
                     {
-                        if ((Element.Tag is Charact) && (Element.Tag as Charact).Id.Equals(value.Id))
+                        if ((Element.Tag is CharactRank) && (Element.Tag as CharactRank).Id.Equals(value.Id))
                         {
                             Element.Selected = true;
                             return;
@@ -130,7 +130,7 @@ namespace EICE_WARGAME
         private bool MettreAJourListe<T>(IEnumerable<T> Entites)
             where T : class, IEntiteMySQL
         {
-            bool EstCaractere = typeof(T).Equals(typeof(Charact));
+            bool EstCaractere = typeof(T).Equals(typeof(CharactRank));
             if (!EstCaractere) return false;
             listViewCaractere.Items.Clear();
             if (Entites == null) return false;
@@ -144,34 +144,40 @@ namespace EICE_WARGAME
                     Text = "Caractères",                    
                     TextAlign = HorizontalAlignment.Center,
                 });
+                listViewCaractere.Columns.Add(new ColumnHeader()
+                {
+                    Name = "Rank",
+                    Text = "Rank",
+                    TextAlign = HorizontalAlignment.Center,
+                });
 
             }
 
             foreach (T Entite in Entites)
             {
 
-                Charact Caractere = Entite as Charact;
+                CharactRank Caractere = Entite as CharactRank;
 
                 if (EstCaractere)
                 {
                     ListViewItem NouvelElement = new ListViewItem()
                     {
                         Tag = Entite,
-                        Text = Caractere.Name,
+                        Text = Caractere.Caractere.Name,
                     };
-                    NouvelElement.SubItems.Add(Caractere.Name);
-
+                    NouvelElement.SubItems.Add(Caractere.Rank.Name);
+                    
                     listViewCaractere.Items.Add(NouvelElement);
                     
                 }
             }
-
+            
             listViewCaractere.Visible = false;
             foreach (ColumnHeader Colonne in listViewCaractere.Columns)
             {
                 Colonne.AutoResize(ColumnHeaderAutoResizeStyle.HeaderSize);
             }
-
+            
             listViewCaractere.Visible = true;
             listViewCaractere_SelectedIndexChanged(listViewCaractere, EventArgs.Empty);
             return true;
