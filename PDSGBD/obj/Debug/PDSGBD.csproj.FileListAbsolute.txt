@@ -1,0 +1,6 @@
+A:\Documents\Backup depositery\EICE-Wargame-8bb9c1cc444a12aabb00d8ddc442ef382a58cffa\PDSGBD\bin\Debug\PDSGBD.dll
+A:\Documents\Backup depositery\EICE-Wargame-8bb9c1cc444a12aabb00d8ddc442ef382a58cffa\PDSGBD\bin\Debug\PDSGBD.pdb
+A:\Documents\Backup depositery\EICE-Wargame-8bb9c1cc444a12aabb00d8ddc442ef382a58cffa\PDSGBD\bin\Debug\MySql.Data.dll
+A:\Documents\Backup depositery\EICE-Wargame-8bb9c1cc444a12aabb00d8ddc442ef382a58cffa\PDSGBD\obj\Debug\PDSGBD.csprojResolveAssemblyReference.cache
+A:\Documents\Backup depositery\EICE-Wargame-8bb9c1cc444a12aabb00d8ddc442ef382a58cffa\PDSGBD\obj\Debug\PDSGBD.dll
+A:\Documents\Backup depositery\EICE-Wargame-8bb9c1cc444a12aabb00d8ddc442ef382a58cffa\PDSGBD\obj\Debug\PDSGBD.pdb
