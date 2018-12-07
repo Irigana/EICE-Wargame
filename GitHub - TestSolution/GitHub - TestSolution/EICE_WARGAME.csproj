@@ -1,0 +1,371 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{2CD074E0-7033-4A12-92EA-396A48144ADE}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>EICE_WARGAME</RootNamespace>
+    <AssemblyName>EICE_WARGAME</AssemblyName>
+    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Modeles\CharactFeature.cs" />
+    <Compile Include="Modeles\Army.cs" />
+    <Compile Include="Modeles\ArmyUnityStuff.cs" />
+    <Compile Include="Modeles\ArmyUnity.cs" />
+    <Compile Include="Modeles\ArmyUnityFigurineStuff.cs" />
+    <Compile Include="Modeles\CharactRank.cs" />
+    <Compile Include="Modeles\SubUnity.cs" />
+    <Compile Include="Modeles\Unity.cs" />
+    <Compile Include="Modeles\Rank.cs" />
+    <Compile Include="Modeles\SubSub.cs" />
+    <Compile Include="Modeles\StuffSubUnity.cs" />
+    <Compile Include="Modeles\StuffCharactRank.cs" />
+    <Compile Include="Vues\Fiches\FicheCaractere.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Vues\Fiches\FicheCaractere.Designer.cs">
+      <DependentUpon>FicheCaractere.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Vues\Pages\PagePersonnage.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Vues\Pages\PagePersonnage.Designer.cs">
+      <DependentUpon>PagePersonnage.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Vues\Fiches\FicheUtilisateur.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Vues\Fiches\FicheUtilisateur.Designer.cs">
+      <DependentUpon>FicheUtilisateur.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Modeles\Camp.cs" />
+    <Compile Include="Modeles\Condi_Camp.cs" />
+    <Compile Include="Modeles\Scenario.cs" />
+    <Compile Include="Modeles\Scenario_Camp.cs" />
+    <Compile Include="Vues\Pages\PageGestionUser.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Vues\Pages\PageGestionUser.Designer.cs">
+      <DependentUpon>PageGestionUser.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Vues\Fiches\FicheFaction.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Vues\Fiches\FicheFaction.Designer.cs">
+      <DependentUpon>FicheFaction.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Modeles\Charact.cs" />
+    <Compile Include="Modeles\Figurine.cs" />
+    <Compile Include="Modeles\FigurineStuff.cs" />
+    <Compile Include="Vues\Pages\PageFaction.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Vues\Pages\PageFaction.Designer.cs">
+      <DependentUpon>PageFaction.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PopUpConfirmation.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PopUpConfirmation.Designer.cs">
+      <DependentUpon>PopUpConfirmation.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Vues\Fiches\FicheSousFaction.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Vues\Fiches\FicheSousFaction.Designer.cs">
+      <DependentUpon>FicheSousFaction.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Vues\ListesDeroulantes\ListeDeroulanteSousFaction.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Vues\ListesDeroulantes\ListeDeroulanteSousFaction.Designer.cs">
+      <DependentUpon>ListeDeroulanteSousFaction.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Vues\ListesDeroulantes\ListeDeroulanteFaction.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Vues\ListesDeroulantes\ListeDeroulanteFaction.Designer.cs">
+      <DependentUpon>ListeDeroulanteFaction.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Vues\Pages\PageSousFaction.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Vues\Pages\PageSousFaction.Designer.cs">
+      <DependentUpon>PageSousFaction.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Vues\ListesDeroulantes\ListeDeroulanteFeature.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Vues\ListesDeroulantes\ListeDeroulanteFeature.Designer.cs">
+      <DependentUpon>ListeDeroulanteFeature.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Vues\ListesDeroulantes\ListeDeroulanteStuff.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Vues\ListesDeroulantes\ListeDeroulanteStuff.Designer.cs">
+      <DependentUpon>ListeDeroulanteStuff.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Vues\Pages\PageMaCollection.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Vues\Pages\PageMaCollection.Designer.cs">
+      <DependentUpon>PageMaCollection.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Vues\Menus\PageMenuDashboard.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Vues\Menus\PageMenuDashboard.Designer.cs">
+      <DependentUpon>PageMenuDashboard.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Vues\ListesDeroulantes\ListeDeroulanteType.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Vues\ListesDeroulantes\ListeDeroulanteType.Designer.cs">
+      <DependentUpon>ListeDeroulanteType.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Vues\Pages\PageEquipements.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Vues\Pages\PageEquipements.Designer.cs">
+      <DependentUpon>PageEquipements.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Vues\Menus\MenuAdmin.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Vues\Menus\MenuAdmin.Designer.cs">
+      <DependentUpon>MenuAdmin.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Modeles\Faction.cs" />
+    <Compile Include="Modeles\Feature.cs" />
+    <Compile Include="Modeles\SousFaction.cs" />
+    <Compile Include="Modeles\Stuff.cs" />
+    <Compile Include="Modeles\StuffFeature.cs" />
+    <Compile Include="Modeles\Type.cs" />
+    <Compile Include="Vues\Pages\PageEditionUser.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Vues\Pages\PageEditionUser.Designer.cs">
+      <DependentUpon>PageEditionUser.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Vues\ButtonOptionsUser.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Vues\ButtonOptionsUser.Designer.cs">
+      <DependentUpon>ButtonOptionsUser.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Form_Principal.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form_Principal.Designer.cs">
+      <DependentUpon>Form_Principal.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GMBD.cs" />
+    <Compile Include="Modeles\Entite.cs" />
+    <Compile Include="Modeles\Role.cs" />
+    <Compile Include="Modeles\Utilisateur.cs" />
+    <Compile Include="Outils\AccumulateurErreur.cs" />
+    <Compile Include="Outils\ElementEnQuantite.cs" />
+    <Compile Include="Outils\IU.Listes.cs" />
+    <Compile Include="Outils\Outils.Chaine.cs" />
+    <Compile Include="Outils\Outils.Validation.cs" />
+    <Compile Include="Vues\Menus\PageMenuPrincipal.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Vues\Menus\PageMenuPrincipal.Designer.cs">
+      <DependentUpon>PageMenuPrincipal.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Vues\Pages\PageInscription.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Vues\Pages\PageInscription.Designer.cs">
+      <DependentUpon>PageInscription.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Vues\Pages\PageConnexion.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Vues\Pages\PageConnexion.Designer.cs">
+      <DependentUpon>PageConnexion.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Vues\TextBoxAvecTextInvisible.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Vues\TextBoxAvecTextInvisible.Designer.cs">
+      <DependentUpon>TextBoxAvecTextInvisible.cs</DependentUpon>
+    </Compile>
+    <EmbeddedResource Include="Vues\Fiches\FicheCaractere.resx">
+      <DependentUpon>FicheCaractere.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Vues\Fiches\FicheCaracteristique.resx">
+      <DependentUpon>FicheCaracteristique.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Vues\Pages\PagePersonnage.resx">
+      <DependentUpon>PagePersonnage.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Vues\Fiches\FicheUtilisateur.resx">
+      <DependentUpon>FicheUtilisateur.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Vues\Pages\PageGestionUser.resx">
+      <DependentUpon>PageGestionUser.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Vues\Fiches\FicheFaction.resx">
+      <DependentUpon>FicheFaction.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Vues\Pages\PageFaction.resx">
+      <DependentUpon>PageFaction.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PopUpConfirmation.resx">
+      <DependentUpon>PopUpConfirmation.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Vues\Fiches\FicheSousFaction.resx">
+      <DependentUpon>FicheSousFaction.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form_Principal.resx">
+      <DependentUpon>Form_Principal.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Vues\ListesDeroulantes\ListeDeroulanteSousFaction.resx">
+      <DependentUpon>ListeDeroulanteSousFaction.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Vues\ListesDeroulantes\ListeDeroulanteFaction.resx">
+      <DependentUpon>ListeDeroulanteFaction.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Vues\Pages\PageSousFaction.resx">
+      <DependentUpon>PageSousFaction.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Vues\ListesDeroulantes\ListeDeroulanteFeature.resx">
+      <DependentUpon>ListeDeroulanteFeature.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Vues\ListesDeroulantes\ListeDeroulanteStuff.resx">
+      <DependentUpon>ListeDeroulanteStuff.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Vues\Pages\PageMaCollection.resx">
+      <DependentUpon>PageMaCollection.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Vues\Menus\PageMenuDashboard.resx">
+      <DependentUpon>PageMenuDashboard.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Vues\ListesDeroulantes\ListeDeroulanteType.resx">
+      <DependentUpon>ListeDeroulanteType.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Vues\Menus\MenuAdmin.resx">
+      <DependentUpon>MenuAdmin.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Vues\Pages\PageEquipements.resx">
+      <DependentUpon>PageEquipements.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Vues\Pages\PageEditionUser.resx">
+      <DependentUpon>PageEditionUser.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <SubType>Designer</SubType>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Vues\ButtonOptionsUser.resx">
+      <DependentUpon>ButtonOptionsUser.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Vues\Menus\PageMenuPrincipal.resx">
+      <DependentUpon>PageMenuPrincipal.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Vues\Pages\PageInscription.resx">
+      <DependentUpon>PageInscription.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Vues\Pages\PageConnexion.resx">
+      <DependentUpon>PageConnexion.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Vues\TextBoxAvecTextInvisible.resx">
+      <DependentUpon>TextBoxAvecTextInvisible.cs</DependentUpon>
+    </EmbeddedResource>
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\PDSGBD\PDSGBD.csproj">
+      <Project>{9b3289f9-8d92-41e3-abe9-bfcfcab37266}</Project>
+      <Name>PDSGBD</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Informations\SchemaDB.PNG" />
+    <None Include="Resources\ReturnLogoBlue25px.png" />
+    <None Include="Resources\ReturnLogoBlue35px.png" />
+    <None Include="Resources\Title_warhammer_2.png" />
+    <None Include="Resources\Equipement40px.png" />
+    <None Include="Resources\ReturnLogo35px.png" />
+    <None Include="Resources\Dashboard150px.png" />
+    <None Include="Resources\LogOffLogo30px.png" />
+    <None Include="Resources\FigurineWarhammer30px.png" />
+    <None Include="Resources\Dashboard40px.png" />
+    <None Include="Resources\UserIcon25px.png" />
+    <None Include="Resources\MenuAdminUserIcon150px.png" />
+    <None Include="Resources\Scenario75px.png" />
+    <None Include="Resources\Equipement.png" />
+    <None Include="Resources\FigurineWarhammer.png" />
+    <None Include="Resources\Validation25px.png" />
+    <None Include="Resources\CadenaOuvert25px.png" />
+    <None Include="Resources\CadenaFerme75px.png" />
+  </ItemGroup>
+  <ItemGroup />
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

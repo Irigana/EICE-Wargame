@@ -1,4 +1,4 @@
-﻿namespace GitHub___TestSolution
+﻿namespace EICE_WARGAME
 {
     partial class TextBoxAvecTextInvisible
     {
@@ -42,6 +42,7 @@
             this.textBoxText.Size = new System.Drawing.Size(215, 26);
             this.textBoxText.TabIndex = 0;
             this.textBoxText.Enter += new System.EventHandler(this.textBoxText_Enter);
+            this.textBoxText.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Enter_Press);
             this.textBoxText.Leave += new System.EventHandler(this.textBoxText_Leave);
             // 
             // TextBoxAvecTextInvisible
