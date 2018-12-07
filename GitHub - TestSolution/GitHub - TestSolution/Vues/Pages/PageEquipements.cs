@@ -104,8 +104,8 @@ namespace EICE_WARGAME
 
             listeDeroulanteFeature1.Feature = Program.GMBD.EnumererFeature(null, null, null, PDSGBD.MyDB.CreerCodeSql("fe_name"));
             listeDeroulanteFeature1.SurChangementSelection += ListeFeatureChangementSelection;
-
-            listBoxCharacter1.Charact = Program.GMBD.EnumererCaractere(null, null, null, PDSGBD.MyDB.CreerCodeSql("ch_name"));
+            
+            
         }
 
 
@@ -327,21 +327,6 @@ namespace EICE_WARGAME
             if (Utilisateur != null) if (Utilisateur.Role.Id == 2) menuAdmin1.EstAdmin = true;
         }
 
-        private void buttonModifier_Click(object sender, EventArgs e)
-        {
-            // Ce bouton doit être visible uniquement si on sélectionne un équipement existant
-            // 
-        }
         
-        private void buttonAjouterListBox_Click(object sender, EventArgs e)
-        {
-            listBoxEquipablePar.Items.Clear();
-            foreach(Charact c in listBoxCharacter1.CharactSelectionnes)
-            {
-                listBoxEquipablePar.Items.Add(c.Name);
-            }
-            //listBoxEquipablePar.Items.Add(listBoxCharacter1.CharactSelectionnes);
-            //foreach(Charact c in listBoxCharacter1)
-        }
     }
 }

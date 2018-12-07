@@ -35,6 +35,7 @@
             this.labelTypeArme = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
             this.labelEquipablePar = new System.Windows.Forms.Label();
+            this.checkedListBoxEquipable = new System.Windows.Forms.CheckedListBox();
             this.buttonAjouter = new System.Windows.Forms.Button();
             this.buttonModifier = new System.Windows.Forms.Button();
             this.buttonSupprimer = new System.Windows.Forms.Button();
@@ -47,11 +48,6 @@
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.buttonAjouterCaract = new System.Windows.Forms.Button();
-            this.label4 = new System.Windows.Forms.Label();
-            this.label5 = new System.Windows.Forms.Label();
-            this.listViewCaracteristiques = new System.Windows.Forms.ListView();
-            this.listBoxCharacter1 = new EICE_WARGAME.ListBoxCharacter();
-            this.menuAdmin1 = new EICE_WARGAME.MenuAdmin();
             this.listeDeroulanteStuff1 = new EICE_WARGAME.ListeDeroulanteStuff();
             this.listeDeroulanteFeature1 = new EICE_WARGAME.ListeDeroulanteFeature();
             this.listeDeroulanteType = new EICE_WARGAME.ListeDeroulanteType();
@@ -60,6 +56,7 @@
             this.label5 = new System.Windows.Forms.Label();
             this.listViewCaracteristiques = new System.Windows.Forms.ListView();
             this.menuAdmin1 = new EICE_WARGAME.MenuAdmin();
+            this.buttonRetourDashBoard1 = new EICE_WARGAME.ButtonRetourDashBoard();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -115,11 +112,19 @@
             // 
             this.labelEquipablePar.AutoSize = true;
             this.labelEquipablePar.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
-            this.labelEquipablePar.Location = new System.Drawing.Point(645, 130);
+            this.labelEquipablePar.Location = new System.Drawing.Point(645, 125);
             this.labelEquipablePar.Name = "labelEquipablePar";
             this.labelEquipablePar.Size = new System.Drawing.Size(111, 20);
             this.labelEquipablePar.TabIndex = 14;
             this.labelEquipablePar.Text = "Equipable par";
+            // 
+            // checkedListBoxEquipable
+            // 
+            this.checkedListBoxEquipable.FormattingEnabled = true;
+            this.checkedListBoxEquipable.Location = new System.Drawing.Point(784, 125);
+            this.checkedListBoxEquipable.Name = "checkedListBoxEquipable";
+            this.checkedListBoxEquipable.Size = new System.Drawing.Size(331, 208);
+            this.checkedListBoxEquipable.TabIndex = 15;
             // 
             // buttonAjouter
             // 
@@ -127,7 +132,7 @@
             this.buttonAjouter.FlatAppearance.BorderColor = System.Drawing.SystemColors.WindowFrame;
             this.buttonAjouter.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonAjouter.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F);
-            this.buttonAjouter.Location = new System.Drawing.Point(1056, 125);
+            this.buttonAjouter.Location = new System.Drawing.Point(1152, 125);
             this.buttonAjouter.Name = "buttonAjouter";
             this.buttonAjouter.Size = new System.Drawing.Size(110, 40);
             this.buttonAjouter.TabIndex = 18;
@@ -141,13 +146,12 @@
             this.buttonModifier.FlatAppearance.BorderColor = System.Drawing.SystemColors.WindowFrame;
             this.buttonModifier.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonModifier.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F);
-            this.buttonModifier.Location = new System.Drawing.Point(1056, 171);
+            this.buttonModifier.Location = new System.Drawing.Point(1152, 171);
             this.buttonModifier.Name = "buttonModifier";
             this.buttonModifier.Size = new System.Drawing.Size(110, 40);
             this.buttonModifier.TabIndex = 22;
             this.buttonModifier.Text = "Modifier";
             this.buttonModifier.UseVisualStyleBackColor = false;
-            this.buttonModifier.Click += new System.EventHandler(this.buttonModifier_Click);
             // 
             // buttonSupprimer
             // 
@@ -155,7 +159,7 @@
             this.buttonSupprimer.FlatAppearance.BorderColor = System.Drawing.SystemColors.WindowFrame;
             this.buttonSupprimer.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonSupprimer.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F);
-            this.buttonSupprimer.Location = new System.Drawing.Point(1056, 263);
+            this.buttonSupprimer.Location = new System.Drawing.Point(1152, 263);
             this.buttonSupprimer.Name = "buttonSupprimer";
             this.buttonSupprimer.Size = new System.Drawing.Size(110, 40);
             this.buttonSupprimer.TabIndex = 23;
@@ -179,7 +183,7 @@
             this.buttonAnnuler.FlatAppearance.BorderColor = System.Drawing.SystemColors.WindowFrame;
             this.buttonAnnuler.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonAnnuler.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F);
-            this.buttonAnnuler.Location = new System.Drawing.Point(1056, 217);
+            this.buttonAnnuler.Location = new System.Drawing.Point(1152, 217);
             this.buttonAnnuler.Name = "buttonAnnuler";
             this.buttonAnnuler.Size = new System.Drawing.Size(110, 40);
             this.buttonAnnuler.TabIndex = 25;
@@ -249,6 +253,39 @@
             this.buttonAjouterCaract.UseVisualStyleBackColor = false;
             this.buttonAjouterCaract.Click += new System.EventHandler(this.buttonAjouterCaract_Click);
             // 
+            // listeDeroulanteStuff1
+            // 
+            this.listeDeroulanteStuff1.Location = new System.Drawing.Point(391, 400);
+            this.listeDeroulanteStuff1.Name = "listeDeroulanteStuff1";
+            this.listeDeroulanteStuff1.Size = new System.Drawing.Size(206, 26);
+            this.listeDeroulanteStuff1.StuffSelectionnee = null;
+            this.listeDeroulanteStuff1.TabIndex = 32;
+            // 
+            // listeDeroulanteFeature1
+            // 
+            this.listeDeroulanteFeature1.FeatureSelectionnee = null;
+            this.listeDeroulanteFeature1.Location = new System.Drawing.Point(391, 444);
+            this.listeDeroulanteFeature1.Name = "listeDeroulanteFeature1";
+            this.listeDeroulanteFeature1.Size = new System.Drawing.Size(206, 25);
+            this.listeDeroulanteFeature1.TabIndex = 28;
+            // 
+            // listeDeroulanteType
+            // 
+            this.listeDeroulanteType.Location = new System.Drawing.Point(442, 130);
+            this.listeDeroulanteType.Name = "listeDeroulanteType";
+            this.listeDeroulanteType.Size = new System.Drawing.Size(197, 25);
+            this.listeDeroulanteType.TabIndex = 17;
+            this.listeDeroulanteType.TypeSelectionne = null;
+            // 
+            // buttonOptionsUser1
+            // 
+            this.buttonOptionsUser1.BackColor = System.Drawing.Color.Transparent;
+            this.buttonOptionsUser1.Location = new System.Drawing.Point(1278, 3);
+            this.buttonOptionsUser1.Name = "buttonOptionsUser1";
+            this.buttonOptionsUser1.Size = new System.Drawing.Size(219, 45);
+            this.buttonOptionsUser1.TabIndex = 16;
+            this.buttonOptionsUser1.Utilisateur = null;
+            // 
             // label4
             // 
             this.label4.AutoSize = true;
@@ -279,14 +316,6 @@
             this.listViewCaracteristiques.TabIndex = 36;
             this.listViewCaracteristiques.UseCompatibleStateImageBehavior = false;
             // 
-            // listBoxCharacter1
-            // 
-            this.listBoxCharacter1.CharactSelectionnee = null;
-            this.listBoxCharacter1.Location = new System.Drawing.Point(645, 153);
-            this.listBoxCharacter1.Name = "listBoxCharacter1";
-            this.listBoxCharacter1.Size = new System.Drawing.Size(370, 151);
-            this.listBoxCharacter1.TabIndex = 38;
-            // 
             // menuAdmin1
             // 
             this.menuAdmin1.BackColor = System.Drawing.Color.SteelBlue;
@@ -298,10 +327,19 @@
             this.menuAdmin1.TabIndex = 37;
             this.menuAdmin1.Utilisateur = null;
             // 
+            // buttonRetourDashBoard1
+            // 
+            this.buttonRetourDashBoard1.Location = new System.Drawing.Point(196, 3);
+            this.buttonRetourDashBoard1.Name = "buttonRetourDashBoard1";
+            this.buttonRetourDashBoard1.Size = new System.Drawing.Size(44, 34);
+            this.buttonRetourDashBoard1.TabIndex = 38;
+            this.buttonRetourDashBoard1.Utilisateur = null;
+            // 
             // PageEquipements
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.buttonRetourDashBoard1);
             this.Controls.Add(this.menuAdmin1);
             this.Controls.Add(this.listViewCaracteristiques);
             this.Controls.Add(this.label5);
@@ -321,6 +359,7 @@
             this.Controls.Add(this.buttonAjouter);
             this.Controls.Add(this.listeDeroulanteType);
             this.Controls.Add(this.buttonOptionsUser1);
+            this.Controls.Add(this.checkedListBoxEquipable);
             this.Controls.Add(this.labelEquipablePar);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.labelTypeArme);
@@ -343,6 +382,7 @@
         private System.Windows.Forms.Label labelTypeArme;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Label labelEquipablePar;
+        private System.Windows.Forms.CheckedListBox checkedListBoxEquipable;
         private ButtonOptionsUser buttonOptionsUser1;
         private ListeDeroulanteType listeDeroulanteType;
         private System.Windows.Forms.Button buttonAjouter;
@@ -363,5 +403,6 @@
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.ListView listViewCaracteristiques;
         private MenuAdmin menuAdmin1;
+        private ButtonRetourDashBoard buttonRetourDashBoard1;
     }
 }

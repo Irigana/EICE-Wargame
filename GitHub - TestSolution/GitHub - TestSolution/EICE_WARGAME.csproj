@@ -46,6 +46,36 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Vues\ListesDeroulantes\ListeDeroulanteSubUnity.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Vues\ListesDeroulantes\ListeDeroulanteSubUnity.Designer.cs">
+      <DependentUpon>ListeDeroulanteSubUnity.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Vues\ListesDeroulantes\ListeDeroulanteUnity.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Vues\ListesDeroulantes\ListeDeroulanteUnity.Designer.cs">
+      <DependentUpon>ListeDeroulanteUnity.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Vues\ListesDeroulantes\ListeDeroulanteRank.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Vues\ListesDeroulantes\ListeDeroulanteRank.Designer.cs">
+      <DependentUpon>ListeDeroulanteRank.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Vues\Fiches\FicheCaracteristique.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Vues\Fiches\FicheCaracteristique.Designer.cs">
+      <DependentUpon>FicheCaracteristique.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Vues\ButtonRetourDashBoard.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Vues\ButtonRetourDashBoard.Designer.cs">
+      <DependentUpon>ButtonRetourDashBoard.cs</DependentUpon>
+    </Compile>
     <Compile Include="Modeles\CharactFeature.cs" />
     <Compile Include="Modeles\Army.cs" />
     <Compile Include="Modeles\ArmyUnityStuff.cs" />
@@ -237,6 +267,18 @@
     <Compile Include="Vues\TextBoxAvecTextInvisible.Designer.cs">
       <DependentUpon>TextBoxAvecTextInvisible.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="Vues\ListesDeroulantes\ListeDeroulanteSubUnity.resx">
+      <DependentUpon>ListeDeroulanteSubUnity.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Vues\ListesDeroulantes\ListeDeroulanteUnity.resx">
+      <DependentUpon>ListeDeroulanteUnity.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Vues\ListesDeroulantes\ListeDeroulanteRank.resx">
+      <DependentUpon>ListeDeroulanteRank.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Vues\ButtonRetourDashBoard.resx">
+      <DependentUpon>ButtonRetourDashBoard.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Vues\Fiches\FicheCaractere.resx">
       <DependentUpon>FicheCaractere.cs</DependentUpon>
     </EmbeddedResource>
