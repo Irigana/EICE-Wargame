@@ -68,6 +68,7 @@
             this.listeDeroulanteSousFaction1 = new EICE_WARGAME.ListeDeroulanteSousFaction();
             this.listeDeroulanteFaction1 = new EICE_WARGAME.ListeDeroulanteFaction();
             this.buttonOptionsUser1 = new EICE_WARGAME.ButtonOptionsUser();
+            this.buttonAnnulerFeature = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.errorProviderErreurCaractere)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ValidationProvider)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).BeginInit();
@@ -246,7 +247,7 @@
             this.buttonAjouterCaracteristique.FlatAppearance.BorderColor = System.Drawing.SystemColors.WindowFrame;
             this.buttonAjouterCaracteristique.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonAjouterCaracteristique.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F);
-            this.buttonAjouterCaracteristique.Location = new System.Drawing.Point(336, 669);
+            this.buttonAjouterCaracteristique.Location = new System.Drawing.Point(241, 669);
             this.buttonAjouterCaracteristique.Name = "buttonAjouterCaracteristique";
             this.buttonAjouterCaracteristique.Size = new System.Drawing.Size(148, 49);
             this.buttonAjouterCaracteristique.TabIndex = 53;
@@ -297,7 +298,7 @@
             this.buttonModifCaracteristique.FlatAppearance.BorderColor = System.Drawing.SystemColors.WindowFrame;
             this.buttonModifCaracteristique.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonModifCaracteristique.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F);
-            this.buttonModifCaracteristique.Location = new System.Drawing.Point(510, 669);
+            this.buttonModifCaracteristique.Location = new System.Drawing.Point(395, 669);
             this.buttonModifCaracteristique.Name = "buttonModifCaracteristique";
             this.buttonModifCaracteristique.Size = new System.Drawing.Size(148, 49);
             this.buttonModifCaracteristique.TabIndex = 58;
@@ -311,12 +312,13 @@
             this.buttonSupprimerCaracteristique.FlatAppearance.BorderColor = System.Drawing.SystemColors.WindowFrame;
             this.buttonSupprimerCaracteristique.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonSupprimerCaracteristique.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F);
-            this.buttonSupprimerCaracteristique.Location = new System.Drawing.Point(684, 669);
+            this.buttonSupprimerCaracteristique.Location = new System.Drawing.Point(703, 669);
             this.buttonSupprimerCaracteristique.Name = "buttonSupprimerCaracteristique";
             this.buttonSupprimerCaracteristique.Size = new System.Drawing.Size(148, 49);
             this.buttonSupprimerCaracteristique.TabIndex = 59;
             this.buttonSupprimerCaracteristique.Text = "Supprimer Caracteristique";
             this.buttonSupprimerCaracteristique.UseVisualStyleBackColor = false;
+            this.buttonSupprimerCaracteristique.Click += new System.EventHandler(this.buttonSupprimerCaracteristique_Click);
             // 
             // labelRank
             // 
@@ -454,10 +456,25 @@
             this.buttonOptionsUser1.TabIndex = 1;
             this.buttonOptionsUser1.Utilisateur = null;
             // 
+            // buttonAnnulerFeature
+            // 
+            this.buttonAnnulerFeature.BackColor = System.Drawing.SystemColors.Window;
+            this.buttonAnnulerFeature.FlatAppearance.BorderColor = System.Drawing.SystemColors.WindowFrame;
+            this.buttonAnnulerFeature.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonAnnulerFeature.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F);
+            this.buttonAnnulerFeature.Location = new System.Drawing.Point(549, 669);
+            this.buttonAnnulerFeature.Name = "buttonAnnulerFeature";
+            this.buttonAnnulerFeature.Size = new System.Drawing.Size(148, 49);
+            this.buttonAnnulerFeature.TabIndex = 68;
+            this.buttonAnnulerFeature.Text = "Annuler";
+            this.buttonAnnulerFeature.UseVisualStyleBackColor = false;
+            this.buttonAnnulerFeature.Click += new System.EventHandler(this.buttonAnnulerFeature_Click);
+            // 
             // PagePersonnage
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.buttonAnnulerFeature);
             this.Controls.Add(this.numericUpDown2);
             this.Controls.Add(this.listeDeroulanteSubUnity1);
             this.Controls.Add(this.listeDeroulanteUnity1);
@@ -547,5 +564,6 @@
         private System.Windows.Forms.Label labelUnity;
         private System.Windows.Forms.Label labelSubUnity;
         private System.Windows.Forms.NumericUpDown numericUpDown2;
+        private System.Windows.Forms.Button buttonAnnulerFeature;
     }
 }
