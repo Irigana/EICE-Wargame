@@ -422,8 +422,6 @@ namespace EICE_WARGAME
             return SubUnity.Enumerer(m_BD, m_BD.Enumerer("SELECT {0} FROM {1} {2} {3} {4}", ValeurSouhaitee, c_NomTable_SubUnity, ClauseJoin, ClauseWhere, ClauseOrderBy));
         }
 
-
-
         #endregion
 
     }

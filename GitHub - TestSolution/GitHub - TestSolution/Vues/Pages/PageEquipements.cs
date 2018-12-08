@@ -108,7 +108,7 @@ namespace EICE_WARGAME
             listeDeroulanteFeature1.Feature = Program.GMBD.EnumererFeature(null, null, null, PDSGBD.MyDB.CreerCodeSql("fe_name"));
             listeDeroulanteFeature1.SurChangementSelection += ListeFeatureChangementSelection;
 
-            listBoxCharacter1.Charact = Program.GMBD.EnumererCaractereRank(null, null, null, PDSGBD.MyDB.CreerCodeSql("ch_name"));
+            listBoxCharacter1.Charact = Program.GMBD.EnumererPersonnage (null, new MyDB.CodeSql("JOIN charact ON char_rank.cr_fk_ch_id = charact.ch_id"), null, PDSGBD.MyDB.CreerCodeSql("ORDER BY ch_name"));
             ficheEquipement1.Equipement = Program.GMBD.EnumererStuff(null, null, null, PDSGBD.MyDB.CreerCodeSql("st_name"));
             
             // Permet de réagir sur le changement de filtre pour aller rechercher les différents équipements qui correspondent au filtre
@@ -361,10 +361,9 @@ namespace EICE_WARGAME
         private void buttonAjouterEquipable_Click(object sender, EventArgs e)
         {
             listBoxEquipablePar.Items.Clear();
-            
-            foreach (Charact c in listBoxCharacter1.CharactSelectionnes)
+            foreach (CharactRank c in listBoxCharacter1.CharactSelectionnes)
             {
-                listBoxEquipablePar.Items.Add(c.Name);
+                listBoxEquipablePar.Items.Add(c.Caractere.Name);
             }
         }
     }
