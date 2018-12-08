@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using PDSGBD;
 
 namespace EICE_WARGAME
 {
@@ -34,6 +35,8 @@ namespace EICE_WARGAME
             }
         }
         #endregion
+
+        private const string c_CritereQuiContient = "%{0}%";
 
         #region Equipement
         private Stuff m_Stuff;
@@ -104,8 +107,36 @@ namespace EICE_WARGAME
 
             listeDeroulanteFeature1.Feature = Program.GMBD.EnumererFeature(null, null, null, PDSGBD.MyDB.CreerCodeSql("fe_name"));
             listeDeroulanteFeature1.SurChangementSelection += ListeFeatureChangementSelection;
+
+            //listBoxCharacter1.Charact = Program.GMBD.EnumererCaractereRank(null, null, null, PDSGBD.MyDB.CreerCodeSql("ch_name"));
+            ficheEquipement1.Equipement = Program.GMBD.EnumererStuff(null, null, null, PDSGBD.MyDB.CreerCodeSql("st_name"));
             
-            
+            // Permet de réagir sur le changement de filtre pour aller rechercher les différents équipements qui correspondent au filtre
+            ficheEquipement1.SurChangementFiltre += (s, ev) =>
+            {
+                if (ficheEquipement1.TexteFiltreEquipement != "")
+                {
+                    ficheEquipement1.Equipement = Program.GMBD.EnumererStuff(
+                        null,
+                        null,
+                        new MyDB.CodeSql("WHERE stuff.st_name LIKE {0}",
+                                         string.Format(c_CritereQuiContient, ficheEquipement1.TexteFiltreEquipement)),
+                        new MyDB.CodeSql("ORDER BY st_name"));
+                }
+                else
+                {
+                    Program.GMBD.EnumererStuff(null, null, null, PDSGBD.MyDB.CreerCodeSql("st_name"));
+                }
+
+
+            };
+            // Equipable devrait être visible uniquement si il y a un equipement
+            // dans la liste equipable par ça doit être des charact rank 
+            // Rajouter le coût de l'équipement par personnage sélectionné
+            // Ajouter un filtre faction et sous-faction pour proposer des characters cohérents dans la listview equipables par 
+            // Listview avec Personnage 
+            // Qd l'utilisateur appuie sur approuver les liaisons => faire les insert dans la db
+
         }
 
 
@@ -327,6 +358,13 @@ namespace EICE_WARGAME
             if (Utilisateur != null) if (Utilisateur.Role.Id == 2) menuAdmin1.EstAdmin = true;
         }
 
-        
+        private void buttonAjouterEquipable_Click(object sender, EventArgs e)
+        {
+            listBoxEquipablePar.Items.Clear();
+            foreach (Charact c in listBoxCharacter1.CharactSelectionnes)
+            {
+                listBoxEquipablePar.Items.Add(c.Name);
+            }
+        }
     }
 }

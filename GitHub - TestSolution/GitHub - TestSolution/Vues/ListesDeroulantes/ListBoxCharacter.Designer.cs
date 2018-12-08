@@ -36,7 +36,7 @@
             this.checkedListBoxCharacter.FormattingEnabled = true;
             this.checkedListBoxCharacter.Location = new System.Drawing.Point(0, 3);
             this.checkedListBoxCharacter.Name = "checkedListBoxCharacter";
-            this.checkedListBoxCharacter.Size = new System.Drawing.Size(366, 140);
+            this.checkedListBoxCharacter.Size = new System.Drawing.Size(200, 191);
             this.checkedListBoxCharacter.TabIndex = 0;
             // 
             // ListBoxCharacter
@@ -45,7 +45,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.Controls.Add(this.checkedListBoxCharacter);
             this.Name = "ListBoxCharacter";
-            this.Size = new System.Drawing.Size(370, 151);
+            this.Size = new System.Drawing.Size(208, 204);
             this.ResumeLayout(false);
 
         }
