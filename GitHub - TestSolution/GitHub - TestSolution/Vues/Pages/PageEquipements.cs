@@ -361,10 +361,11 @@ namespace EICE_WARGAME
         private void buttonAjouterEquipable_Click(object sender, EventArgs e)
         {
             listBoxEquipablePar.Items.Clear();
+            /*
             foreach (Charact c in listBoxCharacter1.CharactSelectionnes)
             {
                 listBoxEquipablePar.Items.Add(c.Name);
-            }
+            }*/
         }
     }
 }

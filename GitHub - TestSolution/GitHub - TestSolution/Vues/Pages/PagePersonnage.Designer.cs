@@ -303,6 +303,7 @@
             this.buttonModifCaracteristique.TabIndex = 58;
             this.buttonModifCaracteristique.Text = "Modifier Caracteristique";
             this.buttonModifCaracteristique.UseVisualStyleBackColor = false;
+            this.buttonModifCaracteristique.Click += new System.EventHandler(this.buttonModifCaracteristique_Click);
             // 
             // buttonSupprimerCaracteristique
             // 
