@@ -193,8 +193,8 @@ namespace EICE_WARGAME
         /// </summary>
         /// <param name="Connexion">Connexion au serveur MySQL</param>
         public override void SupprimerEnCascade(MyDB Connexion)
-        {// TODO
-            Connexion.Executer("DELETE from char_feature WHERE cf_id = {0}", Id);
+        {
+            Connexion.Executer("DELETE from char_rank_feature WHERE crf_id = {0}", Id);
         }
 
         /// <summary>

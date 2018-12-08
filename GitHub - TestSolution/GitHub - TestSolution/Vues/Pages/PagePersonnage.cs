@@ -132,6 +132,7 @@ namespace EICE_WARGAME
             listeDeroulanteRank1.Enabled = true;
             textBoxCaractere.Enabled = true;
             buttonAjouterPersonnage.Enabled = true;
+            ficheCaractere1.ActiverTextBox = true;
             ficheCaractere1.Caractere = Program.GMBD.EnumererPersonnage(null,
                 new MyDB.CodeSql(@"JOIN charact ON charact.ch_id = char_rank.cr_fk_ch_id
                                     JOIN rank ON rank.ra_id = char_rank.cr_fk_ra_id
@@ -394,7 +395,12 @@ namespace EICE_WARGAME
                     buttonAnnulerPersonnage.Enabled = false;
                     buttonModifierPersonnage.Enabled = false;
                     buttonSupprimerPersonnage.Enabled = false;
-                    ValidationProvider.SetError(textBoxCaractere, "Suppression correctement effectuée");
+                    buttonAjouterCaracteristique.Enabled = false;
+                    listeDeroulanteFeature1.Enabled = false;
+                    numericUpDown2.Enabled = false;
+                    ficheCaracteristique1.NettoyerListView();
+                    textBoxPersonnageSelectionne.Clear();
+                    ValidationProvider.SetError(ficheCaractere1, "Suppression correctement effectuée");
                     textBoxCaractere.Text = "";
                 }
                 else
@@ -751,6 +757,7 @@ namespace EICE_WARGAME
             {
                 if(Program.GMBD.SupprimerFeaturePersonnage(ficheCaracteristique1.FeatureSelectionne))
                 {
+                    RafraichirListViewCaracteristiques();
                     ValidationProvider.SetError(ficheCaracteristique1, "Votre caractèristique a été supprimée");
                 }
             }
