@@ -33,6 +33,7 @@ namespace EICE_WARGAME
             }
 
         }
+        
 
         public IEnumerable<CharactRank> Charact
         {
