@@ -48,14 +48,14 @@ namespace EICE_WARGAME
         }
         
         /// <summary>
-        /// Type de sous Feature sélectionné
+        /// Type de Feature sélectionné
         /// </summary>
-        public Feature FeatureSelectionne
+        public CharactFeature FeatureSelectionne
         {
             get
             {
-                return (listviewCaracteristique.SelectedItems.Count == 1) && (listviewCaracteristique.SelectedItems[0].Tag is Charact)
-                    ? listviewCaracteristique.SelectedItems[0].Tag as Feature
+                return (listviewCaracteristique.SelectedItems.Count == 1) && (listviewCaracteristique.SelectedItems[0].Tag is CharactFeature)
+                    ? listviewCaracteristique.SelectedItems[0].Tag as CharactFeature
                     : null;
             }
             set
@@ -64,7 +64,7 @@ namespace EICE_WARGAME
                 {
                     foreach (ListViewItem Element in listviewCaracteristique.Items)
                     {
-                        if ((Element.Tag is Feature) && (Element.Tag as Feature).Id.Equals(value.Id))
+                        if ((Element.Tag is CharactFeature) && (Element.Tag as CharactFeature).Id.Equals(value.Id))
                         {
                             Element.Selected = true;
                             return;

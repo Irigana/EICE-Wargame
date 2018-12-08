@@ -572,12 +572,28 @@ namespace EICE_WARGAME
             m_CFEnEdition.AvantChangement += FeatureEnEdition_AvantChangement;
             m_CFEnEdition.ApresChangement += FeatureEnEdition_ApresChangement;
             m_CFEnEdition.CharactRank = ficheCaractere1.CaractereSelectionne;
-            m_CFEnEdition.Feature = listeDeroulanteFeature1.FeatureSelectionnee;
-            m_CFEnEdition.CharactRank = ficheCaractere1.CaractereSelectionne;
+            m_CFEnEdition.Feature = listeDeroulanteFeature1.FeatureSelectionnee;            
             m_CFEnEdition.Value = Convert.ToInt32(numericUpDown2.Value);
             if(Program.GMBD.AjouterFeaturePersonnage(m_CFEnEdition))
             {
                 RafraichirListViewCaracteristiques();
+            }
+        }
+
+        private void buttonModifCaracteristique_Click(object sender, EventArgs e)
+        {
+
+            m_CFEnEdition = new CharactFeature();
+            m_CFEnEdition.SurErreur += FeatureEnEdition_SurErreur;
+            m_CFEnEdition.AvantChangement += FeatureEnEdition_AvantChangement;
+            m_CFEnEdition.ApresChangement += FeatureEnEdition_ApresChangement;
+            m_CFEnEdition = ficheCaracteristique1.FeatureSelectionne;
+            m_CFEnEdition.CharactRank = ficheCaractere1.CaractereSelectionne;
+            m_CFEnEdition.Feature = listeDeroulanteFeature1.FeatureSelectionnee;
+            m_CFEnEdition.Value = Convert.ToInt32(numericUpDown2.Value);
+            if ((m_CFEnEdition.EstValide) && (Program.GMBD.ModifierFeaturePersonnage(m_CFEnEdition)))
+            {
+                ValidationProvider.SetError(numericUpDown2, "Votre caractèristique a bien été modifiée");
             }
         }
 
@@ -592,19 +608,41 @@ namespace EICE_WARGAME
             {
                 case CharactFeature.Champ.Value:
                     {
-                        Feature FeatureExiste = Program.GMBD.EnumererFeature(null, new MyDB.CodeSql(@"JOIN char_rank_feature ON char_rank_feature.crf_fk_feature_id = feature.fe_id
+                        // Si en ajout
+                        if (ficheCaracteristique1.FeatureSelectionne == null)
+                        {
+                            Feature FeatureExiste = Program.GMBD.EnumererFeature(null, new MyDB.CodeSql(@"JOIN char_rank_feature ON char_rank_feature.crf_fk_feature_id = feature.fe_id
                                                                                                         JOIN char_rank ON char_rank_feature.crf_fk_feature_id = char_rank.cr_id                                                                                                      
                                                                                                         JOIN charact ON char_rank.cr_fk_ch_id = charact.ch_id 
                                                                                                         JOIN subunity ON char_rank.cr_sub_id = subunity.su_id
                                                                                                         JOIN unity ON subunity.su_fk_unity_id = unity.un_id
-                                                                                                        JOIN subfaction ON charaect.ch_fk_subfaction_id = subfaction.sf_id                                                
+                                                                                                        JOIN subfaction ON charact.ch_fk_subfaction_id = subfaction.sf_id                                                
                                                                                                         JOIN faction ON subfaction.sf_fk_faction_id = faction.fa_id"),
-                                                                             new MyDB.CodeSql("WHERE charact.ch_id <> {0} AND subfaction.sf_id = {1} AND faction.fa_id = {2}  AND subunity.su_id = {3} AND unity.un_id = {4} AND char_rank.cr_fk_ra_id = {5} AND feature.fe_id = {6} ", 
-                                                                             ficheCaractere1.CaractereSelectionne.Id,listeDeroulanteSousFaction1.SousFactionSelectionnee.Id, listeDeroulanteFaction1.FactionSelectionnee.Id,
-                                                                             listeDeroulanteSubUnity1.SubUnitySelectionnee.Id,listeDeroulanteUnity1.UnitySelectionnee.Id,listeDeroulanteRank1.RankSelectionnee.Id, listeDeroulanteFeature1.FeatureSelectionnee.Id), null).FirstOrDefault();
-                        if (FeatureExiste != null)
+                                                                             new MyDB.CodeSql("WHERE charact.ch_id <> {0} AND subfaction.sf_id = {1} AND faction.fa_id = {2}  AND subunity.su_id = {3} AND unity.un_id = {4} AND char_rank.cr_fk_ra_id = {5} AND feature.fe_id = {6} ",
+                                                                             ficheCaractere1.CaractereSelectionne.Id, listeDeroulanteSousFaction1.SousFactionSelectionnee.Id, listeDeroulanteFaction1.FactionSelectionnee.Id,
+                                                                             listeDeroulanteSubUnity1.SubUnitySelectionnee.Id, listeDeroulanteUnity1.UnitySelectionnee.Id, listeDeroulanteRank1.RankSelectionnee.Id, listeDeroulanteFeature1.FeatureSelectionnee.Id), null).FirstOrDefault();
+                            if (FeatureExiste != null)
+                            {
+                                AccumulateurErreur.NotifierErreur("Ce personnage dispose déjà de cette caractèristique, veuillez en choisir une autre !");
+                            }
+                        }
+                        // Si en modification
+                        else if (ficheCaracteristique1.FeatureSelectionne != null)                            
                         {
-                            AccumulateurErreur.NotifierErreur("Ce personnage dispose déjà de cette caractèristique, veuillez en choisir une autre !");
+                            Feature FeatureExiste = Program.GMBD.EnumererFeature(null, new MyDB.CodeSql(@"JOIN char_rank_feature ON char_rank_feature.crf_fk_feature_id = feature.fe_id
+                                                                                                        JOIN char_rank ON char_rank_feature.crf_fk_feature_id = char_rank.cr_id                                                                                                      
+                                                                                                        JOIN charact ON char_rank.cr_fk_ch_id = charact.ch_id 
+                                                                                                        JOIN subunity ON char_rank.cr_sub_id = subunity.su_id
+                                                                                                        JOIN unity ON subunity.su_fk_unity_id = unity.un_id
+                                                                                                        JOIN subfaction ON charact.ch_fk_subfaction_id = subfaction.sf_id                                                
+                                                                                                        JOIN faction ON subfaction.sf_fk_faction_id = faction.fa_id"),
+                                                                             new MyDB.CodeSql("WHERE charact.ch_id <> {0} AND subfaction.sf_id = {1} AND faction.fa_id = {2}  AND subunity.su_id = {3} AND unity.un_id = {4} AND char_rank.cr_fk_ra_id = {5} AND feature.fe_id = {6} AND char_rank_feature.crf_id = {7}",
+                                                                             ficheCaractere1.CaractereSelectionne.Id, listeDeroulanteSousFaction1.SousFactionSelectionnee.Id, listeDeroulanteFaction1.FactionSelectionnee.Id,
+                                                                             listeDeroulanteSubUnity1.SubUnitySelectionnee.Id, listeDeroulanteUnity1.UnitySelectionnee.Id, listeDeroulanteRank1.RankSelectionnee.Id, listeDeroulanteFeature1.FeatureSelectionnee.Id,ficheCaracteristique1.FeatureSelectionne.Feature.Id), null).FirstOrDefault();
+                            if (FeatureExiste != null)
+                            {
+                                AccumulateurErreur.NotifierErreur("Ce personnage dispose déjà de cette caractèristique, veuillez en choisir une autre !");
+                            }
                         }
                         break;
                     }
@@ -654,14 +692,17 @@ namespace EICE_WARGAME
                 buttonModifCaracteristique.Enabled = true;
                 buttonSupprimerCaracteristique.Enabled = true;
                 buttonAjouterCaracteristique.Enabled = false;
+                numericUpDown2.Value = ficheCaracteristique1.FeatureSelectionne.Value;
+                listeDeroulanteFeature1.FeatureSelectionnee = ficheCaracteristique1.FeatureSelectionne.Feature;
             }
             else
             {
+                numericUpDown2.Value = 0;
+                listeDeroulanteFeature1.FeatureSelectionnee = null;
                 buttonModifCaracteristique.Enabled = false;
                 buttonSupprimerCaracteristique.Enabled = false;
                 buttonAjouterCaracteristique.Enabled = true;
-            }
-            
+            }           
         }
 
         private void numericUpDown2_Enter(object sender, EventArgs e)
@@ -669,5 +710,7 @@ namespace EICE_WARGAME
             errorProviderErreurCaractere.Clear();
             ValidationProvider.Clear();
         }
+
+        
     }   
 }
