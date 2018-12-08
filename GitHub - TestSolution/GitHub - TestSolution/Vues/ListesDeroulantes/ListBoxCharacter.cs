@@ -20,21 +20,21 @@ namespace EICE_WARGAME
         private class Element
         {
 
-            public Charact Charact { get; private set; }
+            public CharactRank Charact { get; private set; }
 
-            public Element(Charact Charact)
+            public Element(CharactRank Charact)
             {
                 this.Charact = Charact;
             }
 
             public override string ToString()
             {
-                return Charact.Name;
+                return Charact.Caractere.Name;
             }
 
         }
 
-        public IEnumerable<Charact> Charact
+        public IEnumerable<CharactRank> Charact
         {
             get
             {
@@ -45,7 +45,7 @@ namespace EICE_WARGAME
                 if (value != null)
                 {
                     checkedListBoxCharacter.Items.Clear();
-                    foreach (Charact Charact in value)
+                    foreach (CharactRank Charact in value)
                     {
                         checkedListBoxCharacter.Items.Add(new Element(Charact));
                     }
@@ -53,7 +53,7 @@ namespace EICE_WARGAME
             }
         }
         
-        public IEnumerable<Charact> CharactSelectionnes
+        public IEnumerable<CharactRank> CharactSelectionnes
         {
             get
             {
@@ -66,7 +66,7 @@ namespace EICE_WARGAME
             return checkedListBoxCharacter.SelectedIndex = Index - 1;
         }
 
-        public Charact CharactSelectionnee
+        public CharactRank CharactSelectionnee
         {
             get
             {
