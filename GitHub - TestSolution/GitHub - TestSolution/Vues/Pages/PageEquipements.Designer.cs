@@ -34,7 +34,6 @@
             this.labelNomEquipement = new System.Windows.Forms.Label();
             this.labelTypeArme = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.labelEquipablePar = new System.Windows.Forms.Label();
             this.buttonAjouter = new System.Windows.Forms.Button();
             this.buttonModifier = new System.Windows.Forms.Button();
             this.buttonSupprimer = new System.Windows.Forms.Button();
@@ -62,6 +61,9 @@
             this.buttonAjouterEquipable = new System.Windows.Forms.Button();
             this.listeDeroulanteFaction1 = new EICE_WARGAME.ListeDeroulanteFaction();
             this.listeDeroulanteSousFaction1 = new EICE_WARGAME.ListeDeroulanteSousFaction();
+            this.label6 = new System.Windows.Forms.Label();
+            this.label7 = new System.Windows.Forms.Label();
+            this.label8 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -98,11 +100,11 @@
             // 
             this.labelTypeArme.AutoSize = true;
             this.labelTypeArme.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
-            this.labelTypeArme.Location = new System.Drawing.Point(245, 130);
+            this.labelTypeArme.Location = new System.Drawing.Point(344, 125);
             this.labelTypeArme.Name = "labelTypeArme";
-            this.labelTypeArme.Size = new System.Drawing.Size(149, 20);
+            this.labelTypeArme.Size = new System.Drawing.Size(45, 20);
             this.labelTypeArme.TabIndex = 5;
-            this.labelTypeArme.Text = "Type d\'équipement";
+            this.labelTypeArme.Text = "Type";
             this.labelTypeArme.TextAlign = System.Drawing.ContentAlignment.TopRight;
             // 
             // panel1
@@ -112,16 +114,6 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(1250, 3);
             this.panel1.TabIndex = 7;
-            // 
-            // labelEquipablePar
-            // 
-            this.labelEquipablePar.AutoSize = true;
-            this.labelEquipablePar.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
-            this.labelEquipablePar.Location = new System.Drawing.Point(966, 96);
-            this.labelEquipablePar.Name = "labelEquipablePar";
-            this.labelEquipablePar.Size = new System.Drawing.Size(111, 20);
-            this.labelEquipablePar.TabIndex = 14;
-            this.labelEquipablePar.Text = "Equipable par";
             // 
             // buttonAjouter
             // 
@@ -166,7 +158,7 @@
             // checkBoxVisibility
             // 
             this.checkBoxVisibility.AutoSize = true;
-            this.checkBoxVisibility.Location = new System.Drawing.Point(442, 207);
+            this.checkBoxVisibility.Location = new System.Drawing.Point(400, 210);
             this.checkBoxVisibility.Name = "checkBoxVisibility";
             this.checkBoxVisibility.Size = new System.Drawing.Size(71, 21);
             this.checkBoxVisibility.TabIndex = 24;
@@ -190,7 +182,7 @@
             // 
             // textBoxNomEquipement
             // 
-            this.textBoxNomEquipement.Location = new System.Drawing.Point(442, 169);
+            this.textBoxNomEquipement.Location = new System.Drawing.Point(400, 169);
             this.textBoxNomEquipement.Name = "textBoxNomEquipement";
             this.textBoxNomEquipement.Size = new System.Drawing.Size(197, 22);
             this.textBoxNomEquipement.TabIndex = 26;
@@ -204,7 +196,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(271, 540);
+            this.label1.Location = new System.Drawing.Point(949, 169);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(103, 17);
             this.label1.TabIndex = 27;
@@ -212,7 +204,7 @@
             // 
             // textBoxValeur
             // 
-            this.textBoxValeur.Location = new System.Drawing.Point(391, 590);
+            this.textBoxValeur.Location = new System.Drawing.Point(1072, 208);
             this.textBoxValeur.Name = "textBoxValeur";
             this.textBoxValeur.Size = new System.Drawing.Size(206, 22);
             this.textBoxValeur.TabIndex = 29;
@@ -221,7 +213,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(325, 590);
+            this.label2.Location = new System.Drawing.Point(1003, 208);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(49, 17);
             this.label2.TabIndex = 30;
@@ -230,7 +222,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(291, 496);
+            this.label3.Location = new System.Drawing.Point(949, 129);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(83, 17);
             this.label3.TabIndex = 31;
@@ -242,7 +234,7 @@
             this.buttonAjouterCaract.FlatAppearance.BorderColor = System.Drawing.SystemColors.WindowFrame;
             this.buttonAjouterCaract.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonAjouterCaract.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F);
-            this.buttonAjouterCaract.Location = new System.Drawing.Point(391, 629);
+            this.buttonAjouterCaract.Location = new System.Drawing.Point(1308, 181);
             this.buttonAjouterCaract.Name = "buttonAjouterCaract";
             this.buttonAjouterCaract.Size = new System.Drawing.Size(148, 49);
             this.buttonAjouterCaract.TabIndex = 33;
@@ -266,7 +258,7 @@
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold);
             this.label5.ForeColor = System.Drawing.Color.SlateGray;
-            this.label5.Location = new System.Drawing.Point(244, 451);
+            this.label5.Location = new System.Drawing.Point(936, 81);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(169, 25);
             this.label5.TabIndex = 35;
@@ -274,7 +266,7 @@
             // 
             // listViewCaracteristiques
             // 
-            this.listViewCaracteristiques.Location = new System.Drawing.Point(660, 496);
+            this.listViewCaracteristiques.Location = new System.Drawing.Point(1072, 247);
             this.listViewCaracteristiques.Name = "listViewCaracteristiques";
             this.listViewCaracteristiques.Size = new System.Drawing.Size(370, 151);
             this.listViewCaracteristiques.TabIndex = 36;
@@ -283,9 +275,9 @@
             // ficheEquipement1
             // 
             this.ficheEquipement1.EquipementSelectionne = null;
-            this.ficheEquipement1.Location = new System.Drawing.Point(660, 125);
+            this.ficheEquipement1.Location = new System.Drawing.Point(645, 125);
             this.ficheEquipement1.Name = "ficheEquipement1";
-            this.ficheEquipement1.Size = new System.Drawing.Size(293, 295);
+            this.ficheEquipement1.Size = new System.Drawing.Size(290, 295);
             this.ficheEquipement1.TabIndex = 39;
             this.ficheEquipement1.TexteFiltreEquipement = "";
             // 
@@ -310,7 +302,7 @@
             // 
             // listeDeroulanteStuff1
             // 
-            this.listeDeroulanteStuff1.Location = new System.Drawing.Point(391, 496);
+            this.listeDeroulanteStuff1.Location = new System.Drawing.Point(1072, 129);
             this.listeDeroulanteStuff1.Name = "listeDeroulanteStuff1";
             this.listeDeroulanteStuff1.Size = new System.Drawing.Size(206, 26);
             this.listeDeroulanteStuff1.StuffSelectionnee = null;
@@ -319,14 +311,14 @@
             // listeDeroulanteFeature1
             // 
             this.listeDeroulanteFeature1.FeatureSelectionnee = null;
-            this.listeDeroulanteFeature1.Location = new System.Drawing.Point(391, 540);
+            this.listeDeroulanteFeature1.Location = new System.Drawing.Point(1072, 171);
             this.listeDeroulanteFeature1.Name = "listeDeroulanteFeature1";
             this.listeDeroulanteFeature1.Size = new System.Drawing.Size(206, 25);
             this.listeDeroulanteFeature1.TabIndex = 28;
             // 
             // listeDeroulanteType
             // 
-            this.listeDeroulanteType.Location = new System.Drawing.Point(442, 130);
+            this.listeDeroulanteType.Location = new System.Drawing.Point(400, 125);
             this.listeDeroulanteType.Name = "listeDeroulanteType";
             this.listeDeroulanteType.Size = new System.Drawing.Size(197, 25);
             this.listeDeroulanteType.TabIndex = 17;
@@ -344,23 +336,23 @@
             // listBoxCharacter1
             // 
             this.listBoxCharacter1.CharactSelectionnee = null;
-            this.listBoxCharacter1.Location = new System.Drawing.Point(959, 207);
+            this.listBoxCharacter1.Location = new System.Drawing.Point(603, 476);
             this.listBoxCharacter1.Name = "listBoxCharacter1";
-            this.listBoxCharacter1.Size = new System.Drawing.Size(210, 208);
+            this.listBoxCharacter1.Size = new System.Drawing.Size(320, 260);
             this.listBoxCharacter1.TabIndex = 40;
             // 
             // listBoxEquipablePar
             // 
             this.listBoxEquipablePar.FormattingEnabled = true;
             this.listBoxEquipablePar.ItemHeight = 16;
-            this.listBoxEquipablePar.Location = new System.Drawing.Point(1185, 125);
+            this.listBoxEquipablePar.Location = new System.Drawing.Point(1098, 496);
             this.listBoxEquipablePar.Name = "listBoxEquipablePar";
             this.listBoxEquipablePar.Size = new System.Drawing.Size(290, 132);
             this.listBoxEquipablePar.TabIndex = 41;
             // 
             // buttonAjouterEquipable
             // 
-            this.buttonAjouterEquipable.Location = new System.Drawing.Point(1400, 282);
+            this.buttonAjouterEquipable.Location = new System.Drawing.Point(993, 496);
             this.buttonAjouterEquipable.Name = "buttonAjouterEquipable";
             this.buttonAjouterEquipable.Size = new System.Drawing.Size(75, 23);
             this.buttonAjouterEquipable.TabIndex = 42;
@@ -371,23 +363,55 @@
             // listeDeroulanteFaction1
             // 
             this.listeDeroulanteFaction1.FactionSelectionnee = null;
-            this.listeDeroulanteFaction1.Location = new System.Drawing.Point(960, 130);
+            this.listeDeroulanteFaction1.Location = new System.Drawing.Point(399, 476);
             this.listeDeroulanteFaction1.Name = "listeDeroulanteFaction1";
             this.listeDeroulanteFaction1.Size = new System.Drawing.Size(198, 22);
             this.listeDeroulanteFaction1.TabIndex = 43;
             // 
             // listeDeroulanteSousFaction1
             // 
-            this.listeDeroulanteSousFaction1.Location = new System.Drawing.Point(960, 171);
+            this.listeDeroulanteSousFaction1.Location = new System.Drawing.Point(399, 513);
             this.listeDeroulanteSousFaction1.Name = "listeDeroulanteSousFaction1";
-            this.listeDeroulanteSousFaction1.Size = new System.Drawing.Size(198, 24);
+            this.listeDeroulanteSousFaction1.Size = new System.Drawing.Size(198, 25);
             this.listeDeroulanteSousFaction1.SousFactionSelectionnee = null;
             this.listeDeroulanteSousFaction1.TabIndex = 44;
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold);
+            this.label6.ForeColor = System.Drawing.Color.SlateGray;
+            this.label6.Location = new System.Drawing.Point(244, 442);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(145, 25);
+            this.label6.TabIndex = 45;
+            this.label6.Text = "Equipable par";
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Location = new System.Drawing.Point(322, 481);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(54, 17);
+            this.label7.TabIndex = 46;
+            this.label7.Text = "Faction";
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Location = new System.Drawing.Point(285, 521);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(91, 17);
+            this.label8.TabIndex = 47;
+            this.label8.Text = "Sous-Faction";
             // 
             // PageEquipements
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.label8);
+            this.Controls.Add(this.label7);
+            this.Controls.Add(this.label6);
             this.Controls.Add(this.listeDeroulanteSousFaction1);
             this.Controls.Add(this.listeDeroulanteFaction1);
             this.Controls.Add(this.buttonAjouterEquipable);
@@ -414,7 +438,6 @@
             this.Controls.Add(this.buttonAjouter);
             this.Controls.Add(this.listeDeroulanteType);
             this.Controls.Add(this.buttonOptionsUser1);
-            this.Controls.Add(this.labelEquipablePar);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.labelTypeArme);
             this.Controls.Add(this.labelNomEquipement);
@@ -435,7 +458,6 @@
         private System.Windows.Forms.Label labelNomEquipement;
         private System.Windows.Forms.Label labelTypeArme;
         private System.Windows.Forms.Panel panel1;
-        private System.Windows.Forms.Label labelEquipablePar;
         private ButtonOptionsUser buttonOptionsUser1;
         private ListeDeroulanteType listeDeroulanteType;
         private System.Windows.Forms.Button buttonAjouter;
@@ -463,5 +485,8 @@
         private System.Windows.Forms.Button buttonAjouterEquipable;
         private ListeDeroulanteSousFaction listeDeroulanteSousFaction1;
         private ListeDeroulanteFaction listeDeroulanteFaction1;
+        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.Label label7;
     }
 }

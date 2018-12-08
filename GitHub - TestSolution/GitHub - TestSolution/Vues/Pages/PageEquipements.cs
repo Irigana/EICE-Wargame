@@ -108,7 +108,10 @@ namespace EICE_WARGAME
             listeDeroulanteFeature1.Feature = Program.GMBD.EnumererFeature(null, null, null, PDSGBD.MyDB.CreerCodeSql("fe_name"));
             listeDeroulanteFeature1.SurChangementSelection += ListeFeatureChangementSelection;
 
-            listBoxCharacter1.Charact = Program.GMBD.EnumererPersonnage (null, new MyDB.CodeSql("JOIN charact ON char_rank.cr_fk_ch_id = charact.ch_id"), null, PDSGBD.MyDB.CreerCodeSql("ORDER BY ch_name"));
+            listeDeroulanteFaction1.Faction = Program.GMBD.EnumererFaction(null, null, null, PDSGBD.MyDB.CreerCodeSql("fa_name"));
+            listeDeroulanteFaction1.SurChangementSelection += ListeDeroulanteFaction_SurChangementSelection;
+
+            
             ficheEquipement1.Equipement = Program.GMBD.EnumererStuff(null, null, null, PDSGBD.MyDB.CreerCodeSql("st_name"));
             
             // Permet de réagir sur le changement de filtre pour aller rechercher les différents équipements qui correspondent au filtre
@@ -349,6 +352,21 @@ namespace EICE_WARGAME
 
         #endregion
 
+        private void ListeDeroulanteFaction_SurChangementSelection(object sender, EventArgs e)
+        {
+            listeDeroulanteSousFaction1.Enabled = true;
+            listeDeroulanteSousFaction1.ResetTextSousFaction();
+            Program.GMBD.MettreAJourListeSousFaction(listeDeroulanteSousFaction1, listeDeroulanteFaction1.FactionSelectionnee.Id);
+            listeDeroulanteSousFaction1.SurChangementSelection += ListeDeroulanteSousFaction_SurChangementSelection;
+        }
+
+        private void ListeDeroulanteSousFaction_SurChangementSelection(object sender, EventArgs e)
+        {
+            listBoxCharacter1.Charact = Program.GMBD.EnumererPersonnage(null, new MyDB.CodeSql(@"JOIN charact ON char_rank.cr_fk_ch_id = charact.ch_id 
+                                                                                                    JOIN rank ON char_rank.cr_fk_ra_id = rank.ra_id"),
+                                                                                                    new MyDB.CodeSql("WHERE charact.ch_fk_subfaction_id = {0}",listeDeroulanteSousFaction1.SousFactionSelectionnee.Id), PDSGBD.MyDB.CreerCodeSql("ORDER BY ch_name"));
+        }
+
         private void PageAjouterEquipements_Load(object sender, EventArgs e)
         {
             // Permet de passer l'utilisateur par le controler MenuAdmin
@@ -363,7 +381,7 @@ namespace EICE_WARGAME
             listBoxEquipablePar.Items.Clear();
             foreach (CharactRank c in listBoxCharacter1.CharactSelectionnes)
             {
-                listBoxEquipablePar.Items.Add(c.Caractere.Name);
+                listBoxEquipablePar.Items.Add(string.Format("{0} - {1}",c.Caractere.Name,c.Rank.Name));
             }
         }
     }

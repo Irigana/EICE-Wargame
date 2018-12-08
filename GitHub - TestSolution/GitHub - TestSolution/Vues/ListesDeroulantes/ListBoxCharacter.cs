@@ -29,7 +29,7 @@ namespace EICE_WARGAME
 
             public override string ToString()
             {
-                return Charact.Caractere.Name;
+                return string.Format("{0} - {1}",Charact.Caractere.Name,Charact.Rank.Name);
             }
 
         }
