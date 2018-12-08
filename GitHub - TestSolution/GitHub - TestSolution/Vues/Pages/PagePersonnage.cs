@@ -35,6 +35,7 @@ namespace EICE_WARGAME
         #endregion
 
 
+        private bool m_FeatureValidee = false;
         private const string c_CritereQuiContient = "%{0}%";
 
         private CharactRank m_PersonnageEnEdition;
@@ -568,7 +569,6 @@ namespace EICE_WARGAME
         private void buttonAjouterCaracteristique_Click(object sender, EventArgs e)
         {
             m_CFEnEdition = new CharactFeature();
-            m_CFEnEdition.SurErreur += FeatureEnEdition_SurErreur;
             m_CFEnEdition.AvantChangement += FeatureEnEdition_AvantChangement;
             m_CFEnEdition.ApresChangement += FeatureEnEdition_ApresChangement;
             m_CFEnEdition.CharactRank = ficheCaractere1.CaractereSelectionne;
@@ -584,16 +584,31 @@ namespace EICE_WARGAME
         {
 
             m_CFEnEdition = new CharactFeature();
-            m_CFEnEdition.SurErreur += FeatureEnEdition_SurErreur;
+            m_CFEnEdition = ficheCaracteristique1.FeatureSelectionne;
             m_CFEnEdition.AvantChangement += FeatureEnEdition_AvantChangement;
             m_CFEnEdition.ApresChangement += FeatureEnEdition_ApresChangement;
-            m_CFEnEdition = ficheCaracteristique1.FeatureSelectionne;
             m_CFEnEdition.CharactRank = ficheCaractere1.CaractereSelectionne;
             m_CFEnEdition.Feature = listeDeroulanteFeature1.FeatureSelectionnee;
-            m_CFEnEdition.Value = Convert.ToInt32(numericUpDown2.Value);
-            if ((m_CFEnEdition.EstValide) && (Program.GMBD.ModifierFeaturePersonnage(m_CFEnEdition)))
+
+            // Pas le choix de le mettre ici sinon il supprime ma valeur en le convertissant 
+            if(numericUpDown2.Value > Int32.MaxValue)
             {
-                ValidationProvider.SetError(numericUpDown2, "Votre caractèristique a bien été modifiée");
+                errorProviderErreurCaractere.SetError(numericUpDown2, "Votre nombre est trop grand");
+                m_FeatureValidee = false;
+            }
+            else if(numericUpDown2.Value < 0)
+            {
+                m_FeatureValidee = false;
+                errorProviderErreurCaractere.SetError(numericUpDown2, " Votre nombre ne peut être inférieur à 0");
+            }
+
+            m_CFEnEdition.Value = Convert.ToInt32(numericUpDown2.Value);
+            if ((m_CFEnEdition.EstValide) &&(m_FeatureValidee == true)&& (Program.GMBD.ModifierFeaturePersonnage(m_CFEnEdition)))
+            {
+                RafraichirListViewCaracteristiques();
+            }
+            else
+            {
             }
         }
 
@@ -602,11 +617,12 @@ namespace EICE_WARGAME
             ficheCaracteristique1.Caracteristique = Program.GMBD.EnumererCharactFeature(null, new MyDB.CodeSql("JOIN feature ON char_rank_feature.crf_fk_feature_id = feature.fe_id"), new MyDB.CodeSql("WHERE crf_fk_char_rank_id = {0}", ficheCaractere1.CaractereSelectionne.Id), null);
         }
 
+
         private void FeatureEnEdition_AvantChangement(CharactFeature Entite, CharactFeature.Champ Champ, object ValeurActuelle, object NouvelleValeur, AccumulateurErreur AccumulateurErreur)
         {
             switch (Champ)
             {
-                case CharactFeature.Champ.Value:
+                case CharactFeature.Champ.Feature:
                     {
                         // Si en ajout
                         if (ficheCaracteristique1.FeatureSelectionne == null)
@@ -623,11 +639,13 @@ namespace EICE_WARGAME
                                                                              listeDeroulanteSubUnity1.SubUnitySelectionnee.Id, listeDeroulanteUnity1.UnitySelectionnee.Id, listeDeroulanteRank1.RankSelectionnee.Id, listeDeroulanteFeature1.FeatureSelectionnee.Id), null).FirstOrDefault();
                             if (FeatureExiste != null)
                             {
+                                m_FeatureValidee = false;
                                 AccumulateurErreur.NotifierErreur("Ce personnage dispose déjà de cette caractèristique, veuillez en choisir une autre !");
                             }
+                            m_FeatureValidee = true;
                         }
                         // Si en modification
-                        else if (ficheCaracteristique1.FeatureSelectionne != null)                            
+                        else if (ficheCaracteristique1.FeatureSelectionne != null)
                         {
                             Feature FeatureExiste = Program.GMBD.EnumererFeature(null, new MyDB.CodeSql(@"JOIN char_rank_feature ON char_rank_feature.crf_fk_feature_id = feature.fe_id
                                                                                                         JOIN char_rank ON char_rank_feature.crf_fk_feature_id = char_rank.cr_id                                                                                                      
@@ -636,55 +654,44 @@ namespace EICE_WARGAME
                                                                                                         JOIN unity ON subunity.su_fk_unity_id = unity.un_id
                                                                                                         JOIN subfaction ON charact.ch_fk_subfaction_id = subfaction.sf_id                                                
                                                                                                         JOIN faction ON subfaction.sf_fk_faction_id = faction.fa_id"),
-                                                                             new MyDB.CodeSql("WHERE charact.ch_id <> {0} AND subfaction.sf_id = {1} AND faction.fa_id = {2}  AND subunity.su_id = {3} AND unity.un_id = {4} AND char_rank.cr_fk_ra_id = {5} AND feature.fe_id = {6} AND char_rank_feature.crf_id = {7}",
+                                                                             new MyDB.CodeSql("WHERE charact.ch_id <> {0} AND subfaction.sf_id = {1} AND faction.fa_id = {2}  AND subunity.su_id = {3} AND unity.un_id = {4} AND char_rank.cr_fk_ra_id = {5} AND feature.fe_id = {6} AND char_rank_feature.crf_fk_char_rank_id = {7}",
                                                                              ficheCaractere1.CaractereSelectionne.Id, listeDeroulanteSousFaction1.SousFactionSelectionnee.Id, listeDeroulanteFaction1.FactionSelectionnee.Id,
-                                                                             listeDeroulanteSubUnity1.SubUnitySelectionnee.Id, listeDeroulanteUnity1.UnitySelectionnee.Id, listeDeroulanteRank1.RankSelectionnee.Id, listeDeroulanteFeature1.FeatureSelectionnee.Id,ficheCaracteristique1.FeatureSelectionne.Feature.Id), null).FirstOrDefault();
+                                                                             listeDeroulanteSubUnity1.SubUnitySelectionnee.Id, listeDeroulanteUnity1.UnitySelectionnee.Id, listeDeroulanteRank1.RankSelectionnee.Id, listeDeroulanteFeature1.FeatureSelectionnee.Id, ficheCaractere1.CaractereSelectionne.Id), null).FirstOrDefault();
                             if (FeatureExiste != null)
                             {
+                                m_FeatureValidee = false;
                                 AccumulateurErreur.NotifierErreur("Ce personnage dispose déjà de cette caractèristique, veuillez en choisir une autre !");
+                                errorProviderErreurCaractere.SetError(listeDeroulanteFeature1, "Ce personnage dispose déjà de cette caractèristique, veuillez en choisir une autre !");
                             }
+                            m_FeatureValidee = true;
                         }
                         break;
-                    }
+                    }               
             }
         }
 
         private void FeatureEnEdition_ApresChangement(CharactFeature Entite, CharactFeature.Champ Champ, object ValeurPrecedente, object ValeurActuelle)
         {
             switch (Champ)
-            {
+            {               
                 case CharactFeature.Champ.Value:
                     // Si modification
-                    if (ficheCaracteristique1.FeatureSelectionne != null)
+                    if ((ficheCaracteristique1.FeatureSelectionne != null) && (m_FeatureValidee == true))
                     {
-                        ValidationProvider.SetError(numericUpDown2, "Votre caractèristique a bien été modifiée");
+                        ValidationProvider.SetError(numericUpDown2, "Votre coût a bien été modifiée");
                     }
                     // Si ajout
                     else if (ficheCaracteristique1.FeatureSelectionne == null)
                     {
                        
-                         ValidationProvider.SetError(numericUpDown2,"Votre caractèristique a bien ajoutée");
+                         ValidationProvider.SetError(numericUpDown2,"Votre coût a bien ajoutée");
                        
                     }
                     break;
             }
             buttonAjouterCaracteristique.Enabled = m_CFEnEdition.EstValide;
         }
-
-        private void FeatureEnEdition_SurErreur(CharactFeature Entite, CharactFeature.Champ Champ, string MessageErreur)
-        {
-            switch (Champ)
-            {
-                case CharactFeature.Champ.Value:
-                    if ((Entite.Value > Int32.MaxValue) || (Entite.Value < 0))
-                    {
-                        errorProviderErreurCaractere.SetError(numericUpDown2, MessageErreur);
-                    }
-                    break;
-            }
-            //buttonAjouterCaracteristique.Enabled = false;
-        }
-
+        
         private void FicheCaracteristique_SurChangementSelection(object sender,EventArgs e)
         {
             if (ficheCaracteristique1.FeatureSelectionne != null)
