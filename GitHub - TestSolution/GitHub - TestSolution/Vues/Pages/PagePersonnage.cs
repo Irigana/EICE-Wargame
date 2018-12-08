@@ -187,7 +187,7 @@ namespace EICE_WARGAME
                 ficheCaracteristique1.SurChangementSelection += FicheCaracteristique_SurChangementSelection;
 
                 listeDeroulanteFeature1.Enabled = true;
-                listeDeroulanteFeature1.Feature = Program.GMBD.EnumererFeature(null, null, new MyDB.CodeSql("WHERE fe_filtre = {0}", "P"), new MyDB.CodeSql(" ORDER BY fe_name"));                               
+                listeDeroulanteFeature1.Feature = Program.GMBD.EnumererFeature(null, null, new MyDB.CodeSql("WHERE fe_filtre = {0} OR {1}", "P","PE"), new MyDB.CodeSql(" ORDER BY fe_name"));                               
 
                 errorProviderErreurCaractere.Clear();
                 ValidationProvider.Clear();
@@ -592,8 +592,16 @@ namespace EICE_WARGAME
             {
                 case CharactFeature.Champ.Value:
                     {
-                        Feature FeatureExiste = Program.GMBD.EnumererFeature(null, new MyDB.CodeSql("JOIN char_rank_feature ON char_rank_feature.crf_fk_feature_id = feature.fe_id"),
-                                                                             new MyDB.CodeSql("WHERE crf_fk_char_rank_id = {0}", ficheCaractere1.CaractereSelectionne.Id), null).FirstOrDefault();
+                        Feature FeatureExiste = Program.GMBD.EnumererFeature(null, new MyDB.CodeSql(@"JOIN char_rank_feature ON char_rank_feature.crf_fk_feature_id = feature.fe_id
+                                                                                                        JOIN char_rank ON char_rank_feature.crf_fk_feature_id = char_rank.cr_id                                                                                                      
+                                                                                                        JOIN charact ON char_rank.cr_fk_ch_id = charact.ch_id 
+                                                                                                        JOIN subunity ON char_rank.cr_sub_id = subunity.su_id
+                                                                                                        JOIN unity ON subunity.su_fk_unity_id = unity.un_id
+                                                                                                        JOIN subfaction ON charaect.ch_fk_subfaction_id = subfaction.sf_id                                                
+                                                                                                        JOIN faction ON subfaction.sf_fk_faction_id = faction.fa_id"),
+                                                                             new MyDB.CodeSql("WHERE charact.ch_id <> {0} AND subfaction.sf_id = {1} AND faction.fa_id = {2}  AND subunity.su_id = {3} AND unity.un_id = {4} AND char_rank.cr_fk_ra_id = {5} AND feature.fe_id = {6} ", 
+                                                                             ficheCaractere1.CaractereSelectionne.Id,listeDeroulanteSousFaction1.SousFactionSelectionnee.Id, listeDeroulanteFaction1.FactionSelectionnee.Id,
+                                                                             listeDeroulanteSubUnity1.SubUnitySelectionnee.Id,listeDeroulanteUnity1.UnitySelectionnee.Id,listeDeroulanteRank1.RankSelectionnee.Id, listeDeroulanteFeature1.FeatureSelectionnee.Id), null).FirstOrDefault();
                         if (FeatureExiste != null)
                         {
                             AccumulateurErreur.NotifierErreur("Ce personnage dispose déjà de cette caractèristique, veuillez en choisir une autre !");
