@@ -60,6 +60,8 @@
             this.listBoxCharacter1 = new EICE_WARGAME.ListBoxCharacter();
             this.listBoxEquipablePar = new System.Windows.Forms.ListBox();
             this.buttonAjouterEquipable = new System.Windows.Forms.Button();
+            this.listeDeroulanteFaction1 = new EICE_WARGAME.ListeDeroulanteFaction();
+            this.listeDeroulanteSousFaction1 = new EICE_WARGAME.ListeDeroulanteSousFaction();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -342,23 +344,23 @@
             // listBoxCharacter1
             // 
             this.listBoxCharacter1.CharactSelectionnee = null;
-            this.listBoxCharacter1.Location = new System.Drawing.Point(970, 125);
+            this.listBoxCharacter1.Location = new System.Drawing.Point(959, 207);
             this.listBoxCharacter1.Name = "listBoxCharacter1";
-            this.listBoxCharacter1.Size = new System.Drawing.Size(370, 151);
+            this.listBoxCharacter1.Size = new System.Drawing.Size(210, 208);
             this.listBoxCharacter1.TabIndex = 40;
             // 
             // listBoxEquipablePar
             // 
             this.listBoxEquipablePar.FormattingEnabled = true;
             this.listBoxEquipablePar.ItemHeight = 16;
-            this.listBoxEquipablePar.Location = new System.Drawing.Point(970, 283);
+            this.listBoxEquipablePar.Location = new System.Drawing.Point(1185, 125);
             this.listBoxEquipablePar.Name = "listBoxEquipablePar";
-            this.listBoxEquipablePar.Size = new System.Drawing.Size(370, 132);
+            this.listBoxEquipablePar.Size = new System.Drawing.Size(290, 132);
             this.listBoxEquipablePar.TabIndex = 41;
             // 
             // buttonAjouterEquipable
             // 
-            this.buttonAjouterEquipable.Location = new System.Drawing.Point(1346, 241);
+            this.buttonAjouterEquipable.Location = new System.Drawing.Point(1400, 282);
             this.buttonAjouterEquipable.Name = "buttonAjouterEquipable";
             this.buttonAjouterEquipable.Size = new System.Drawing.Size(75, 23);
             this.buttonAjouterEquipable.TabIndex = 42;
@@ -366,10 +368,28 @@
             this.buttonAjouterEquipable.UseVisualStyleBackColor = true;
             this.buttonAjouterEquipable.Click += new System.EventHandler(this.buttonAjouterEquipable_Click);
             // 
+            // listeDeroulanteFaction1
+            // 
+            this.listeDeroulanteFaction1.FactionSelectionnee = null;
+            this.listeDeroulanteFaction1.Location = new System.Drawing.Point(960, 130);
+            this.listeDeroulanteFaction1.Name = "listeDeroulanteFaction1";
+            this.listeDeroulanteFaction1.Size = new System.Drawing.Size(198, 22);
+            this.listeDeroulanteFaction1.TabIndex = 43;
+            // 
+            // listeDeroulanteSousFaction1
+            // 
+            this.listeDeroulanteSousFaction1.Location = new System.Drawing.Point(960, 171);
+            this.listeDeroulanteSousFaction1.Name = "listeDeroulanteSousFaction1";
+            this.listeDeroulanteSousFaction1.Size = new System.Drawing.Size(198, 24);
+            this.listeDeroulanteSousFaction1.SousFactionSelectionnee = null;
+            this.listeDeroulanteSousFaction1.TabIndex = 44;
+            // 
             // PageEquipements
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.listeDeroulanteSousFaction1);
+            this.Controls.Add(this.listeDeroulanteFaction1);
             this.Controls.Add(this.buttonAjouterEquipable);
             this.Controls.Add(this.listBoxEquipablePar);
             this.Controls.Add(this.listBoxCharacter1);
@@ -441,5 +461,7 @@
         private ListBoxCharacter listBoxCharacter1;
         private System.Windows.Forms.ListBox listBoxEquipablePar;
         private System.Windows.Forms.Button buttonAjouterEquipable;
+        private ListeDeroulanteSousFaction listeDeroulanteSousFaction1;
+        private ListeDeroulanteFaction listeDeroulanteFaction1;
     }
 }

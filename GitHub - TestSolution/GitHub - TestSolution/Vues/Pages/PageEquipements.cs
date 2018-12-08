@@ -110,6 +110,8 @@ namespace EICE_WARGAME
 
             listBoxCharacter1.Charact = Program.GMBD.EnumererCaractere(null, null, null, PDSGBD.MyDB.CreerCodeSql("ch_name"));
             ficheEquipement1.Equipement = Program.GMBD.EnumererStuff(null, null, null, PDSGBD.MyDB.CreerCodeSql("st_name"));
+            
+            // Permet de réagir sur le changement de filtre pour aller rechercher les différents équipements qui correspondent au filtre
             ficheEquipement1.SurChangementFiltre += (s, ev) =>
             {
                 if (ficheEquipement1.TexteFiltreEquipement != "")
@@ -128,6 +130,12 @@ namespace EICE_WARGAME
 
 
             };
+            // Equipable devrait être visible uniquement si il y a un equipement
+            // dans la liste equipable par ça doit être des charact rank 
+            // Rajouter le coût de l'équipement par personnage sélectionné
+            // Ajouter un filtre faction et sous-faction pour proposer des characters cohérents dans la listview equipables par 
+            // Listview avec Personnage 
+            // Qd l'utilisateur appuie sur approuver les liaisons => faire les insert dans la db
 
         }
 
