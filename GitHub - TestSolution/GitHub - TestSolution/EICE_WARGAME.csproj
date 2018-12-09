@@ -52,6 +52,12 @@
     <Compile Include="FichePersonnageEquipement.Designer.cs">
       <DependentUpon>FichePersonnageEquipement.cs</DependentUpon>
     </Compile>
+    <Compile Include="Vues\Pages\PageScenario.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Vues\Pages\PageScenario.Designer.cs">
+      <DependentUpon>PageScenario.cs</DependentUpon>
+    </Compile>
     <Compile Include="Vues\Fiches\FicheEquipement.cs">
       <SubType>UserControl</SubType>
     </Compile>
