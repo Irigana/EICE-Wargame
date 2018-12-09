@@ -300,6 +300,9 @@
     <EmbeddedResource Include="FichePersonnageEquipement.resx">
       <DependentUpon>FichePersonnageEquipement.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="FicheScenario.resx">
+      <DependentUpon>FicheScenario.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Vues\Fiches\FicheEquipement.resx">
       <DependentUpon>FicheEquipement.cs</DependentUpon>
     </EmbeddedResource>

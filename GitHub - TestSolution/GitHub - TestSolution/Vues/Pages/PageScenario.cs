@@ -36,6 +36,8 @@ namespace EICE_WARGAME
         public PageScenario()
         {
             InitializeComponent();
+            menuAdmin1.MaPageActive = 1;
+            int test = ficheScenarioCamp1.QG;         
         }
 
         private void PageScenario_Load(object sender, EventArgs e)
@@ -45,6 +47,12 @@ namespace EICE_WARGAME
 
             // Permet d'obtenir l'option du menu admin utilisateur une fois l'admin identifié            
             if (Utilisateur.Role.Id == 2) menuAdmin1.EstAdmin = true;
+        }
+
+        private void buttonNouveauCamp_Click(object sender, EventArgs e)
+        {
+            ficheScenarioCamp2.Enabled = true;
+            int test = ficheScenarioCamp1.QG;
         }
     }
 }
