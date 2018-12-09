@@ -17,16 +17,16 @@ namespace EICE_WARGAME
         private class Element
         {
 
-            public Scenario_Camp Scenario { get; private set; }
+            public Scenario Scenario { get; private set; }
 
-            public Element(Scenario_Camp Scenario)
+            public Element(Scenario Scenario)
             {
                 this.Scenario = Scenario;
             }
 
             public override string ToString()
             {
-                return Scenario.Scenario.Name;
+                return Scenario.Name;
             }
 
         }
@@ -41,7 +41,7 @@ namespace EICE_WARGAME
             comboBoxScenario.AutoCompleteSource = AutoCompleteSource.ListItems;
         }
 
-        public IEnumerable<Scenario_Camp> Scenario
+        public IEnumerable<Scenario> Scenario
         {
             get
             {
@@ -52,7 +52,7 @@ namespace EICE_WARGAME
                 if (value != null)
                 {
                     comboBoxScenario.Items.Clear();
-                    foreach (Scenario_Camp Scenario in value)
+                    foreach (Scenario Scenario in value)
                     {
                         comboBoxScenario.Items.Add(new Element(Scenario));
                     }
@@ -70,7 +70,7 @@ namespace EICE_WARGAME
             return comboBoxScenario.SelectedIndex = ScenarioTrouve;
         }
 
-        public Scenario_Camp ScenarioSelectionnee
+        public Scenario ScenarioSelectionnee
         {
             get
             {

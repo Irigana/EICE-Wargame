@@ -16,7 +16,8 @@ namespace EICE_WARGAME
         {
             Id,
             Scenario,
-            Camp
+            Camp,
+            Condi_Camp,
         }
 
         #region Membre privé
@@ -29,9 +30,23 @@ namespace EICE_WARGAME
         /// Membr stockant la réf&rence du camp
         /// </summary>
         private Camp m_Camp;
+
+        private List<Condi_Camp> m_CondiCamp;
         #endregion
 
         #region Membre public
+        public IEnumerable<Condi_Camp> CondiCamp
+        {
+            get
+            {
+                ChargerUtilisations();
+                return m_CondiCamp;
+            }
+            set
+            {
+                ChargerUtilisations();               
+            }
+        }
         /// <summary>
         /// Membre public permettant d'accéder à l'id du Scénario
         /// </summary>
@@ -83,6 +98,15 @@ namespace EICE_WARGAME
         }
         #endregion
 
+        private bool ChargerUtilisations()
+        {
+            if (Id <= 0) return false;
+            m_CondiCamp.Clear();
+            m_CondiCamp.AddRange(EnumererCondiCamp());
+            return true;
+        }
+
+
         #region Constructeurs
         /// <summary>
         /// Constructeur par défaut
@@ -91,6 +115,7 @@ namespace EICE_WARGAME
         {
             m_Camp = null;
             m_Scenario = null;
+            m_CondiCamp = new List<Condi_Camp>();
         }
 
         /// <summary>
@@ -119,6 +144,7 @@ namespace EICE_WARGAME
                 DefinirId(Enregistrement.ValeurChampComplet<int>(NomDeLaTablePrincipale, "sca_id"));
                 this.Camp = new Camp(Connexion, Enregistrement);
                 this.Scenario = new Scenario(Connexion, Enregistrement);
+                this.CondiCamp = EnumererCondiCamp();
             }
         }
         #endregion
@@ -176,6 +202,14 @@ namespace EICE_WARGAME
         public static IEnumerable<Scenario_Camp> Enumerer(PDSGBD.MyDB Connexion, IEnumerable<PDSGBD.MyDB.IEnregistrement> Enregistrements)
         {
             return Enumerer(Enregistrements, Enregistrement => new Scenario_Camp(Connexion, Enregistrement));
+        }
+
+        private IEnumerable<Condi_Camp> EnumererCondiCamp()
+        {
+            return Condi_Camp.Enumerer(Connexion, Connexion.Enumerer(@"SELECT * FROM  condi_camp 
+                                                                        JOIN scenario_camp ON condi_camp.cc_fk_scenario_camp_id = scenario_camp.sca_id
+                                                                        JOIN scenario ON scenario.sc_id = scenario_camp.sca_fk_scenario_id
+                                                                    WHERE scenario.sc_id = {0} AND scenario_camp.sca_fk_camp_id = {1}", Scenario.Id, Camp.Id));
         }
         #endregion
     }

@@ -184,6 +184,11 @@ namespace EICE_WARGAME
                 this.Max = Enregistrement.ValeurChampComplet<int>(NomDeLaTablePrincipale, "cc_max");
             }
         }
+
+        public static IEnumerable<Condi_Camp> Enumerer(PDSGBD.MyDB Connexion, IEnumerable<PDSGBD.MyDB.IEnregistrement> Enregistrements)
+        {
+            return Enumerer(Enregistrements, Enregistrement => new Condi_Camp(Connexion, Enregistrement));
+        }
         #endregion
 
         #region Membres relatifs à DB

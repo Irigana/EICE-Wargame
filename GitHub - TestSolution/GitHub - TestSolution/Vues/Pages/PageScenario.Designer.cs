@@ -28,22 +28,27 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.panelLigne = new System.Windows.Forms.Panel();
             this.labelScenario = new System.Windows.Forms.Label();
             this.labelNomScenario = new System.Windows.Forms.Label();
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.buttonNouveauCamp = new System.Windows.Forms.Button();
-            this.buttonSupprimer = new System.Windows.Forms.Button();
-            this.buttonAnnuler = new System.Windows.Forms.Button();
             this.buttonModifier = new System.Windows.Forms.Button();
             this.buttonAjouter = new System.Windows.Forms.Button();
+            this.labelCampDefense = new System.Windows.Forms.Label();
+            this.labelCampNeutreOuAttaque = new System.Windows.Forms.Label();
+            this.labelRechercheScenario = new System.Windows.Forms.Label();
+            this.listeDeroulanteScenario1 = new EICE_WARGAME.ListeDeroulanteScenario();
             this.ficheScenarioCamp2 = new EICE_WARGAME.FicheScenario();
             this.ficheScenarioCamp1 = new EICE_WARGAME.FicheScenario();
             this.buttonRetourDashBoard1 = new EICE_WARGAME.ButtonRetourDashBoard();
             this.buttonOptionsUser1 = new EICE_WARGAME.ButtonOptionsUser();
             this.menuAdmin1 = new EICE_WARGAME.MenuAdmin();
-            this.labelCampDefense = new System.Windows.Forms.Label();
-            this.labelCampNeutreOuAttaque = new System.Windows.Forms.Label();
+            this.errorProvider = new System.Windows.Forms.ErrorProvider(this.components);
+            this.errorProviderValidation = new System.Windows.Forms.ErrorProvider(this.components);
+            ((System.ComponentModel.ISupportInitialize)(this.errorProvider)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProviderValidation)).BeginInit();
             this.SuspendLayout();
             // 
             // panelLigne
@@ -70,7 +75,7 @@
             // 
             this.labelNomScenario.AutoSize = true;
             this.labelNomScenario.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F);
-            this.labelNomScenario.Location = new System.Drawing.Point(755, 578);
+            this.labelNomScenario.Location = new System.Drawing.Point(755, 149);
             this.labelNomScenario.Name = "labelNomScenario";
             this.labelNomScenario.Size = new System.Drawing.Size(130, 18);
             this.labelNomScenario.TabIndex = 50;
@@ -78,7 +83,7 @@
             // 
             // textBox1
             // 
-            this.textBox1.Location = new System.Drawing.Point(758, 608);
+            this.textBox1.Location = new System.Drawing.Point(758, 170);
             this.textBox1.Name = "textBox1";
             this.textBox1.Size = new System.Drawing.Size(216, 22);
             this.textBox1.TabIndex = 51;
@@ -88,7 +93,7 @@
             this.buttonNouveauCamp.BackColor = System.Drawing.SystemColors.Window;
             this.buttonNouveauCamp.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonNouveauCamp.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F);
-            this.buttonNouveauCamp.Location = new System.Drawing.Point(842, 307);
+            this.buttonNouveauCamp.Location = new System.Drawing.Point(844, 418);
             this.buttonNouveauCamp.Name = "buttonNouveauCamp";
             this.buttonNouveauCamp.Size = new System.Drawing.Size(43, 40);
             this.buttonNouveauCamp.TabIndex = 54;
@@ -96,33 +101,11 @@
             this.buttonNouveauCamp.UseVisualStyleBackColor = false;
             this.buttonNouveauCamp.Click += new System.EventHandler(this.buttonNouveauCamp_Click);
             // 
-            // buttonSupprimer
-            // 
-            this.buttonSupprimer.BackColor = System.Drawing.SystemColors.Window;
-            this.buttonSupprimer.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.buttonSupprimer.Location = new System.Drawing.Point(980, 659);
-            this.buttonSupprimer.Name = "buttonSupprimer";
-            this.buttonSupprimer.Size = new System.Drawing.Size(105, 29);
-            this.buttonSupprimer.TabIndex = 58;
-            this.buttonSupprimer.Text = "Supprimer";
-            this.buttonSupprimer.UseVisualStyleBackColor = false;
-            // 
-            // buttonAnnuler
-            // 
-            this.buttonAnnuler.BackColor = System.Drawing.SystemColors.Window;
-            this.buttonAnnuler.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.buttonAnnuler.Location = new System.Drawing.Point(869, 659);
-            this.buttonAnnuler.Name = "buttonAnnuler";
-            this.buttonAnnuler.Size = new System.Drawing.Size(105, 29);
-            this.buttonAnnuler.TabIndex = 57;
-            this.buttonAnnuler.Text = "Annuler";
-            this.buttonAnnuler.UseVisualStyleBackColor = false;
-            // 
             // buttonModifier
             // 
             this.buttonModifier.BackColor = System.Drawing.SystemColors.Window;
             this.buttonModifier.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.buttonModifier.Location = new System.Drawing.Point(758, 659);
+            this.buttonModifier.Location = new System.Drawing.Point(871, 659);
             this.buttonModifier.Name = "buttonModifier";
             this.buttonModifier.Size = new System.Drawing.Size(105, 29);
             this.buttonModifier.TabIndex = 56;
@@ -133,19 +116,58 @@
             // 
             this.buttonAjouter.BackColor = System.Drawing.SystemColors.Window;
             this.buttonAjouter.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.buttonAjouter.Location = new System.Drawing.Point(647, 659);
+            this.buttonAjouter.Location = new System.Drawing.Point(760, 659);
             this.buttonAjouter.Name = "buttonAjouter";
             this.buttonAjouter.Size = new System.Drawing.Size(105, 29);
             this.buttonAjouter.TabIndex = 55;
             this.buttonAjouter.Text = "Ajouter";
             this.buttonAjouter.UseVisualStyleBackColor = false;
+            this.buttonAjouter.Click += new System.EventHandler(this.buttonAjouter_Click);
+            // 
+            // labelCampDefense
+            // 
+            this.labelCampDefense.AutoSize = true;
+            this.labelCampDefense.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F);
+            this.labelCampDefense.ForeColor = System.Drawing.Color.SlateGray;
+            this.labelCampDefense.Location = new System.Drawing.Point(900, 214);
+            this.labelCampDefense.Name = "labelCampDefense";
+            this.labelCampDefense.Size = new System.Drawing.Size(0, 31);
+            this.labelCampDefense.TabIndex = 59;
+            // 
+            // labelCampNeutreOuAttaque
+            // 
+            this.labelCampNeutreOuAttaque.AutoSize = true;
+            this.labelCampNeutreOuAttaque.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F);
+            this.labelCampNeutreOuAttaque.ForeColor = System.Drawing.Color.SlateGray;
+            this.labelCampNeutreOuAttaque.Location = new System.Drawing.Point(310, 214);
+            this.labelCampNeutreOuAttaque.Name = "labelCampNeutreOuAttaque";
+            this.labelCampNeutreOuAttaque.Size = new System.Drawing.Size(151, 29);
+            this.labelCampNeutreOuAttaque.TabIndex = 60;
+            this.labelCampNeutreOuAttaque.Text = "Camp neutre";
+            // 
+            // labelRechercheScenario
+            // 
+            this.labelRechercheScenario.AutoSize = true;
+            this.labelRechercheScenario.Location = new System.Drawing.Point(755, 91);
+            this.labelRechercheScenario.Name = "labelRechercheScenario";
+            this.labelRechercheScenario.Size = new System.Drawing.Size(168, 17);
+            this.labelRechercheScenario.TabIndex = 61;
+            this.labelRechercheScenario.Text = "Rechercher un scenario :";
+            // 
+            // listeDeroulanteScenario1
+            // 
+            this.listeDeroulanteScenario1.Location = new System.Drawing.Point(758, 111);
+            this.listeDeroulanteScenario1.Name = "listeDeroulanteScenario1";
+            this.listeDeroulanteScenario1.ScenarioSelectionnee = null;
+            this.listeDeroulanteScenario1.Size = new System.Drawing.Size(216, 25);
+            this.listeDeroulanteScenario1.TabIndex = 62;
             // 
             // ficheScenarioCamp2
             // 
             this.ficheScenarioCamp2.AttaqueRapide = 0;
             this.ficheScenarioCamp2.Elite = 0;
             this.ficheScenarioCamp2.Enabled = false;
-            this.ficheScenarioCamp2.Location = new System.Drawing.Point(904, 135);
+            this.ficheScenarioCamp2.Location = new System.Drawing.Point(906, 246);
             this.ficheScenarioCamp2.MAttaqueRapide = 0;
             this.ficheScenarioCamp2.MElite = 0;
             this.ficheScenarioCamp2.MQG = 0;
@@ -162,7 +184,7 @@
             // 
             this.ficheScenarioCamp1.AttaqueRapide = 0;
             this.ficheScenarioCamp1.Elite = 0;
-            this.ficheScenarioCamp1.Location = new System.Drawing.Point(313, 135);
+            this.ficheScenarioCamp1.Location = new System.Drawing.Point(315, 246);
             this.ficheScenarioCamp1.MAttaqueRapide = 0;
             this.ficheScenarioCamp1.MElite = 0;
             this.ficheScenarioCamp1.MQG = 0;
@@ -203,35 +225,22 @@
             this.menuAdmin1.TabIndex = 0;
             this.menuAdmin1.Utilisateur = null;
             // 
-            // labelCampDefense
+            // errorProvider
             // 
-            this.labelCampDefense.AutoSize = true;
-            this.labelCampDefense.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F);
-            this.labelCampDefense.ForeColor = System.Drawing.Color.SlateGray;
-            this.labelCampDefense.Location = new System.Drawing.Point(898, 103);
-            this.labelCampDefense.Name = "labelCampDefense";
-            this.labelCampDefense.Size = new System.Drawing.Size(0, 31);
-            this.labelCampDefense.TabIndex = 59;
+            this.errorProvider.ContainerControl = this;
             // 
-            // labelCampNeutreOuAttaque
+            // errorProviderValidation
             // 
-            this.labelCampNeutreOuAttaque.AutoSize = true;
-            this.labelCampNeutreOuAttaque.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F);
-            this.labelCampNeutreOuAttaque.ForeColor = System.Drawing.Color.SlateGray;
-            this.labelCampNeutreOuAttaque.Location = new System.Drawing.Point(308, 103);
-            this.labelCampNeutreOuAttaque.Name = "labelCampNeutreOuAttaque";
-            this.labelCampNeutreOuAttaque.Size = new System.Drawing.Size(151, 29);
-            this.labelCampNeutreOuAttaque.TabIndex = 60;
-            this.labelCampNeutreOuAttaque.Text = "Camp neutre";
+            this.errorProviderValidation.ContainerControl = this;
             // 
             // PageScenario
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.listeDeroulanteScenario1);
+            this.Controls.Add(this.labelRechercheScenario);
             this.Controls.Add(this.labelCampNeutreOuAttaque);
             this.Controls.Add(this.labelCampDefense);
-            this.Controls.Add(this.buttonSupprimer);
-            this.Controls.Add(this.buttonAnnuler);
             this.Controls.Add(this.buttonModifier);
             this.Controls.Add(this.buttonAjouter);
             this.Controls.Add(this.buttonNouveauCamp);
@@ -247,6 +256,8 @@
             this.Name = "PageScenario";
             this.Size = new System.Drawing.Size(1500, 750);
             this.Load += new System.EventHandler(this.PageScenario_Load);
+            ((System.ComponentModel.ISupportInitialize)(this.errorProvider)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProviderValidation)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -264,11 +275,13 @@
         private FicheScenario ficheScenarioCamp1;
         private FicheScenario ficheScenarioCamp2;
         private System.Windows.Forms.Button buttonNouveauCamp;
-        private System.Windows.Forms.Button buttonSupprimer;
-        private System.Windows.Forms.Button buttonAnnuler;
         private System.Windows.Forms.Button buttonModifier;
         private System.Windows.Forms.Button buttonAjouter;
         private System.Windows.Forms.Label labelCampDefense;
         private System.Windows.Forms.Label labelCampNeutreOuAttaque;
+        private System.Windows.Forms.Label labelRechercheScenario;
+        private ListeDeroulanteScenario listeDeroulanteScenario1;
+        private System.Windows.Forms.ErrorProvider errorProvider;
+        private System.Windows.Forms.ErrorProvider errorProviderValidation;
     }
 }

@@ -25,6 +25,10 @@ namespace EICE_WARGAME
         private static readonly MyDB.CodeSql c_NomTable_Unity = new MyDB.CodeSql(new Unity().NomDeLaTablePrincipale);
         private static readonly MyDB.CodeSql c_NomTable_SubUnity = new MyDB.CodeSql(new SubUnity().NomDeLaTablePrincipale);
         private static readonly MyDB.CodeSql c_NomTable_Rank = new MyDB.CodeSql(new Rank().NomDeLaTablePrincipale);
+        private static readonly MyDB.CodeSql c_NomTable_ScenarioCamp = new MyDB.CodeSql(new Scenario_Camp().NomDeLaTablePrincipale);
+        private static readonly MyDB.CodeSql c_NomTable_Scenario = new MyDB.CodeSql(new Scenario().NomDeLaTablePrincipale);
+        private static readonly MyDB.CodeSql c_NomTable_CondiCamp = new MyDB.CodeSql(new Condi_Camp().NomDeLaTablePrincipale);
+        private static readonly MyDB.CodeSql c_NomTable_Camp = new MyDB.CodeSql(new Camp().NomDeLaTablePrincipale);
 
         /// <summary>
         /// Référence l'objet de connexion au serveur de base de données MySql
@@ -240,8 +244,19 @@ namespace EICE_WARGAME
             return true;
         }
 
-        #endregion        
+        #endregion
 
+        #region Requêtes scénario
+        public bool AjouterScenario(Scenario_Camp NouveauScenario)
+        {
+            return NouveauScenario.Enregistrer(m_BD, NouveauScenario, null, false);
+        }
+
+        public bool AjouterSpecificite(Condi_Camp NouvelleSpecificite)
+        {
+            return NouvelleSpecificite.Enregistrer(m_BD, NouvelleSpecificite, null, false);
+        }
+        #endregion
 
         #region Requetes personnage
         //+====================+
@@ -305,6 +320,43 @@ namespace EICE_WARGAME
             if (ClauseJoin == null) ClauseJoin = MyDB.CodeSql.Vide;
             if (ValeurSouhaitee == null) ValeurSouhaitee = new MyDB.CodeSql("*");
             return CharactFeature.Enumerer(m_BD, m_BD.Enumerer("SELECT {0} FROM  {1} {2} {3} {4}", ValeurSouhaitee, c_NomTable_CharactFeature, ClauseJoin, ClauseWhere, ClauseOrderBy));
+        }
+
+
+        public IEnumerable<Scenario_Camp> EnumererScenarioCamp(MyDB.CodeSql ValeurSouhaitee, MyDB.CodeSql ClauseJoin, MyDB.CodeSql ClauseWhere, MyDB.CodeSql ClauseOrderBy)
+        {
+            if (ClauseWhere == null) ClauseWhere = MyDB.CodeSql.Vide;
+            if (ClauseOrderBy == null) ClauseOrderBy = MyDB.CodeSql.Vide;
+            if (ClauseJoin == null) ClauseJoin = MyDB.CodeSql.Vide;
+            if (ValeurSouhaitee == null) ValeurSouhaitee = new MyDB.CodeSql("*");
+            return Scenario_Camp.Enumerer(m_BD, m_BD.Enumerer("SELECT {0} FROM  {1} {2} {3} {4}", ValeurSouhaitee, c_NomTable_ScenarioCamp, ClauseJoin, ClauseWhere, ClauseOrderBy));
+        }
+
+        public IEnumerable<Condi_Camp> EnumererCondiCamp(MyDB.CodeSql ValeurSouhaitee, MyDB.CodeSql ClauseJoin, MyDB.CodeSql ClauseWhere, MyDB.CodeSql ClauseOrderBy)
+        {
+            if (ClauseWhere == null) ClauseWhere = MyDB.CodeSql.Vide;
+            if (ClauseOrderBy == null) ClauseOrderBy = MyDB.CodeSql.Vide;
+            if (ClauseJoin == null) ClauseJoin = MyDB.CodeSql.Vide;
+            if (ValeurSouhaitee == null) ValeurSouhaitee = new MyDB.CodeSql("*");
+            return Condi_Camp.Enumerer(m_BD, m_BD.Enumerer("SELECT {0} FROM  {1} {2} {3} {4}", ValeurSouhaitee, c_NomTable_CondiCamp, ClauseJoin, ClauseWhere, ClauseOrderBy));
+        }
+
+        public IEnumerable<Scenario> EnumererScenario(MyDB.CodeSql ValeurSouhaitee, MyDB.CodeSql ClauseJoin, MyDB.CodeSql ClauseWhere, MyDB.CodeSql ClauseOrderBy)
+        {
+            if (ClauseWhere == null) ClauseWhere = MyDB.CodeSql.Vide;
+            if (ClauseOrderBy == null) ClauseOrderBy = MyDB.CodeSql.Vide;
+            if (ClauseJoin == null) ClauseJoin = MyDB.CodeSql.Vide;
+            if (ValeurSouhaitee == null) ValeurSouhaitee = new MyDB.CodeSql("*");
+            return Scenario.Enumerer(m_BD, m_BD.Enumerer("SELECT {0} FROM  {1} {2} {3} {4}", ValeurSouhaitee, c_NomTable_Scenario, ClauseJoin, ClauseWhere, ClauseOrderBy));
+        }
+
+        public IEnumerable<Camp> EnumererCamp(MyDB.CodeSql ValeurSouhaitee, MyDB.CodeSql ClauseJoin, MyDB.CodeSql ClauseWhere, MyDB.CodeSql ClauseOrderBy)
+        {
+            if (ClauseWhere == null) ClauseWhere = MyDB.CodeSql.Vide;
+            if (ClauseOrderBy == null) ClauseOrderBy = MyDB.CodeSql.Vide;
+            if (ClauseJoin == null) ClauseJoin = MyDB.CodeSql.Vide;
+            if (ValeurSouhaitee == null) ValeurSouhaitee = new MyDB.CodeSql("*");
+            return Camp.Enumerer(m_BD, m_BD.Enumerer("SELECT {0} FROM  {1} {2} {3} {4}", ValeurSouhaitee, c_NomTable_Camp, ClauseJoin, ClauseWhere, ClauseOrderBy));
         }
 
         public IEnumerable<Role> EnumererRole(MyDB.CodeSql ValeurSouhaitee, MyDB.CodeSql ClauseJoin, MyDB.CodeSql ClauseWhere, MyDB.CodeSql ClauseOrderBy)
