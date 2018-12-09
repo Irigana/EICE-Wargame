@@ -52,6 +52,12 @@
     <Compile Include="FichePersonnageEquipement.Designer.cs">
       <DependentUpon>FichePersonnageEquipement.cs</DependentUpon>
     </Compile>
+    <Compile Include="FicheScenario.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="FicheScenario.Designer.cs">
+      <DependentUpon>FicheScenario.cs</DependentUpon>
+    </Compile>
     <Compile Include="Vues\Pages\PageScenario.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -347,6 +353,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Vues\ListesDeroulantes\ListeDeroulanteFaction.resx">
       <DependentUpon>ListeDeroulanteFaction.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Vues\Pages\PageScenario.resx">
+      <DependentUpon>PageScenario.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Vues\Pages\PageSousFaction.resx">
       <DependentUpon>PageSousFaction.cs</DependentUpon>
