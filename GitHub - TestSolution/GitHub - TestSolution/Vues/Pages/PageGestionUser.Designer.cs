@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.labelTitreGestionUser = new System.Windows.Forms.Label();
             this.panelLigne = new System.Windows.Forms.Panel();
             this.buttonPromouvoir = new System.Windows.Forms.Button();
@@ -38,6 +39,14 @@
             this.buttonOptionsUser1 = new EICE_WARGAME.ButtonOptionsUser();
             this.menuAdmin1 = new EICE_WARGAME.MenuAdmin();
             this.buttonRetourDashBoard1 = new EICE_WARGAME.ButtonRetourDashBoard();
+            this.labelNouveauMotDePasse = new System.Windows.Forms.Label();
+            this.textBoxAvecTextInvisibleMdp = new EICE_WARGAME.TextBoxAvecTextInvisible();
+            this.textBoxAvecTextInvisibleConfMdp = new EICE_WARGAME.TextBoxAvecTextInvisible();
+            this.buttonValider = new System.Windows.Forms.Button();
+            this.errorProviderValidation = new System.Windows.Forms.ErrorProvider(this.components);
+            this.errorProvider = new System.Windows.Forms.ErrorProvider(this.components);
+            ((System.ComponentModel.ISupportInitialize)(this.errorProviderValidation)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProvider)).BeginInit();
             this.SuspendLayout();
             // 
             // labelTitreGestionUser
@@ -64,7 +73,7 @@
             this.buttonPromouvoir.BackColor = System.Drawing.SystemColors.Window;
             this.buttonPromouvoir.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonPromouvoir.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F);
-            this.buttonPromouvoir.Location = new System.Drawing.Point(655, 585);
+            this.buttonPromouvoir.Location = new System.Drawing.Point(375, 591);
             this.buttonPromouvoir.Name = "buttonPromouvoir";
             this.buttonPromouvoir.Size = new System.Drawing.Size(133, 45);
             this.buttonPromouvoir.TabIndex = 35;
@@ -77,7 +86,7 @@
             this.buttonSupprimer.BackColor = System.Drawing.SystemColors.Window;
             this.buttonSupprimer.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonSupprimer.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F);
-            this.buttonSupprimer.Location = new System.Drawing.Point(933, 585);
+            this.buttonSupprimer.Location = new System.Drawing.Point(653, 591);
             this.buttonSupprimer.Name = "buttonSupprimer";
             this.buttonSupprimer.Size = new System.Drawing.Size(133, 45);
             this.buttonSupprimer.TabIndex = 36;
@@ -90,7 +99,7 @@
             this.buttonDestitution.BackColor = System.Drawing.SystemColors.Window;
             this.buttonDestitution.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonDestitution.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F);
-            this.buttonDestitution.Location = new System.Drawing.Point(794, 585);
+            this.buttonDestitution.Location = new System.Drawing.Point(514, 591);
             this.buttonDestitution.Name = "buttonDestitution";
             this.buttonDestitution.Size = new System.Drawing.Size(133, 45);
             this.buttonDestitution.TabIndex = 37;
@@ -102,7 +111,7 @@
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
-            this.label1.Location = new System.Drawing.Point(652, 93);
+            this.label1.Location = new System.Drawing.Point(372, 99);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(197, 20);
             this.label1.TabIndex = 38;
@@ -110,7 +119,7 @@
             // 
             // ficheUtilisateur1
             // 
-            this.ficheUtilisateur1.Location = new System.Drawing.Point(652, 115);
+            this.ficheUtilisateur1.Location = new System.Drawing.Point(372, 121);
             this.ficheUtilisateur1.Name = "ficheUtilisateur1";
             this.ficheUtilisateur1.Size = new System.Drawing.Size(414, 464);
             this.ficheUtilisateur1.TabIndex = 33;
@@ -145,10 +154,70 @@
             this.buttonRetourDashBoard1.TabIndex = 40;
             this.buttonRetourDashBoard1.Utilisateur = null;
             // 
+            // labelNouveauMotDePasse
+            // 
+            this.labelNouveauMotDePasse.AutoSize = true;
+            this.labelNouveauMotDePasse.Font = new System.Drawing.Font("Microsoft Sans Serif", 24F);
+            this.labelNouveauMotDePasse.ForeColor = System.Drawing.Color.SlateGray;
+            this.labelNouveauMotDePasse.Location = new System.Drawing.Point(916, 227);
+            this.labelNouveauMotDePasse.Name = "labelNouveauMotDePasse";
+            this.labelNouveauMotDePasse.Size = new System.Drawing.Size(429, 46);
+            this.labelNouveauMotDePasse.TabIndex = 41;
+            this.labelNouveauMotDePasse.Text = "Nouveau mot de passe";
+            // 
+            // textBoxAvecTextInvisibleMdp
+            // 
+            this.textBoxAvecTextInvisibleMdp.ForeColor = System.Drawing.SystemColors.ButtonShadow;
+            this.textBoxAvecTextInvisibleMdp.Location = new System.Drawing.Point(1008, 366);
+            this.textBoxAvecTextInvisibleMdp.Margin = new System.Windows.Forms.Padding(0);
+            this.textBoxAvecTextInvisibleMdp.MotDePasseCache = true;
+            this.textBoxAvecTextInvisibleMdp.Name = "textBoxAvecTextInvisibleMdp";
+            this.textBoxAvecTextInvisibleMdp.PlaceHolder = "Nouveau mot de passe";
+            this.textBoxAvecTextInvisibleMdp.Size = new System.Drawing.Size(288, 22);
+            this.textBoxAvecTextInvisibleMdp.TabIndex = 42;
+            this.textBoxAvecTextInvisibleMdp.Enter += new System.EventHandler(this.textBoxAvecTextInvisibleMdp_Enter);
+            // 
+            // textBoxAvecTextInvisibleConfMdp
+            // 
+            this.textBoxAvecTextInvisibleConfMdp.ForeColor = System.Drawing.SystemColors.ButtonShadow;
+            this.textBoxAvecTextInvisibleConfMdp.Location = new System.Drawing.Point(1008, 314);
+            this.textBoxAvecTextInvisibleConfMdp.Margin = new System.Windows.Forms.Padding(0);
+            this.textBoxAvecTextInvisibleConfMdp.MotDePasseCache = true;
+            this.textBoxAvecTextInvisibleConfMdp.Name = "textBoxAvecTextInvisibleConfMdp";
+            this.textBoxAvecTextInvisibleConfMdp.PlaceHolder = "Confirmation mot de passe";
+            this.textBoxAvecTextInvisibleConfMdp.Size = new System.Drawing.Size(288, 22);
+            this.textBoxAvecTextInvisibleConfMdp.TabIndex = 43;
+            this.textBoxAvecTextInvisibleConfMdp.Enter += new System.EventHandler(this.textBoxAvecTextInvisibleConfMdp_Enter);
+            // 
+            // buttonValider
+            // 
+            this.buttonValider.BackColor = System.Drawing.SystemColors.Window;
+            this.buttonValider.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonValider.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F);
+            this.buttonValider.Location = new System.Drawing.Point(1008, 423);
+            this.buttonValider.Name = "buttonValider";
+            this.buttonValider.Size = new System.Drawing.Size(288, 31);
+            this.buttonValider.TabIndex = 44;
+            this.buttonValider.Text = "Valider";
+            this.buttonValider.UseVisualStyleBackColor = false;
+            this.buttonValider.Click += new System.EventHandler(this.buttonValider_Click);
+            // 
+            // errorProviderValidation
+            // 
+            this.errorProviderValidation.ContainerControl = this;
+            // 
+            // errorProvider
+            // 
+            this.errorProvider.ContainerControl = this;
+            // 
             // PageGestionUser
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.buttonValider);
+            this.Controls.Add(this.textBoxAvecTextInvisibleConfMdp);
+            this.Controls.Add(this.textBoxAvecTextInvisibleMdp);
+            this.Controls.Add(this.labelNouveauMotDePasse);
             this.Controls.Add(this.buttonRetourDashBoard1);
             this.Controls.Add(this.menuAdmin1);
             this.Controls.Add(this.label1);
@@ -162,6 +231,8 @@
             this.Name = "PageGestionUser";
             this.Size = new System.Drawing.Size(1500, 750);
             this.Load += new System.EventHandler(this.PageGestionUser_Load);
+            ((System.ComponentModel.ISupportInitialize)(this.errorProviderValidation)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProvider)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -178,5 +249,11 @@
         private System.Windows.Forms.Label label1;
         private MenuAdmin menuAdmin1;
         private ButtonRetourDashBoard buttonRetourDashBoard1;
+        private System.Windows.Forms.Label labelNouveauMotDePasse;
+        private TextBoxAvecTextInvisible textBoxAvecTextInvisibleMdp;
+        private TextBoxAvecTextInvisible textBoxAvecTextInvisibleConfMdp;
+        private System.Windows.Forms.Button buttonValider;
+        private System.Windows.Forms.ErrorProvider errorProviderValidation;
+        private System.Windows.Forms.ErrorProvider errorProvider;
     }
 }

@@ -16,7 +16,7 @@ namespace EICE_WARGAME
         {
             InitializeComponent();
             listViewUsers.View = View.Details;
-            listViewCaractere.HeaderStyle = ColumnHeaderStyle.Nonclickable;
+            listViewUsers.HeaderStyle = ColumnHeaderStyle.Nonclickable;
             listViewUsers.FullRowSelect = true;
             listViewUsers.LabelEdit = false;
             listViewUsers.Scrollable = true;
@@ -26,15 +26,8 @@ namespace EICE_WARGAME
             listViewUsers.HideSelection = false;
             listViewUsers.Items.Clear();
             listViewUsers.Columns.Clear();
-            listViewUsers.SelectedIndexChanged += listViewUsers_SelectedIndexChanged;
-
-            /*
-            listViewUsers.DrawItem += new
-            DrawListViewItemEventHandler(listViewUsers_DrawItem);
-
-            listViewUsers.DrawColumnHeader += new DrawListViewColumnHeaderEventHandler(listView1_DrawColumnHeader);
-            */
-
+            listViewUsers.SelectedIndexChanged += listViewUsers_SelectedIndexChanged;            
+        
         }
 
         /// <summary>

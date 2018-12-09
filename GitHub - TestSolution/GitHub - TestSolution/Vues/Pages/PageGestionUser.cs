@@ -66,7 +66,8 @@ namespace EICE_WARGAME
             };
 
 
-
+            Bitmap ImageRessource = new Bitmap(Properties.Resources.Validation25px);
+            errorProviderValidation.Icon = Icon.FromHandle(ImageRessource.GetHicon());
             ficheUtilisateur1.SurChangementSelection += ficheUsers_SurChangementSelection;
         }
 
@@ -195,5 +196,53 @@ namespace EICE_WARGAME
                 }
             }
         }
+
+        private void buttonValider_Click(object sender, EventArgs e)
+        {
+                Utilisateur UtilisateurEnEdition = ficheUtilisateur1.UtilisateurSelectionne;
+            if (ficheUtilisateur1.UtilisateurSelectionne != null)
+            {
+                if (string.Compare(UtilisateurEnEdition.MotDePasse.ToString(), Outils.hash(textBoxAvecTextInvisibleConfMdp.Text.ToString())) != 0)
+                {
+                    if ((textBoxAvecTextInvisibleMdp.Text != "") && (textBoxAvecTextInvisibleConfMdp.Text != ""))
+                    {
+                        if (string.Compare(textBoxAvecTextInvisibleMdp.Text.ToString(), textBoxAvecTextInvisibleConfMdp.Text) == 0)
+                        {
+                            UtilisateurEnEdition.MotDePasse = Outils.hash(textBoxAvecTextInvisibleConfMdp.Text);
+
+                            if ((UtilisateurEnEdition.EstValide) && (Program.GMBD.ModifierUtilisateur(UtilisateurEnEdition)))
+                            {
+                                errorProviderValidation.SetError(buttonValider, "Modification du mot de passe correctement effectuée");
+                            }
+                            else
+                            {
+                                errorProvider.SetError(textBoxAvecTextInvisibleConfMdp, "Mot de passe incorrect ou ne correspondant pas");
+                            }
+                        }
+                    }
+                    else
+                    {
+                        errorProviderValidation.SetError(textBoxAvecTextInvisibleConfMdp, "Tous les champs doivent être remplis");
+                    }
+                }
+                else
+                {
+                    errorProvider.SetError(textBoxAvecTextInvisibleConfMdp, "Même mot de passe que l'initial");
+                }
+            }
+        }
+
+        private void textBoxAvecTextInvisibleMdp_Enter(object sender, EventArgs e)
+        {
+            errorProviderValidation.Clear();
+            errorProvider.Clear();
+        }
+
+        private void textBoxAvecTextInvisibleConfMdp_Enter(object sender, EventArgs e)
+        {
+            errorProviderValidation.Clear();
+            errorProvider.Clear();
+        }
     }
 }
+

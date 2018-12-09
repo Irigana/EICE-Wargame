@@ -53,7 +53,7 @@ namespace EICE_WARGAME
             Utilisateur UtilisateurEnEdition = Utilisateur;
 
             // Si le mot de passe de l'utilisateur est différent et que les textbox du nouveau mot de passe sont pas vide et égale
-            if ((string.Compare(UtilisateurEnEdition.MotDePasse.ToString(),textBoxAvecTextInvisibleNouveauMdp.Text.ToString()) != 0)
+            if ((string.Compare(UtilisateurEnEdition.MotDePasse.ToString(),Outils.hash(textBoxAvecTextInvisibleNouveauMdp.Text.ToString())) != 0)
                 && ((textBoxAvecTextInvisibleConfNewMdp.Text != "") && (textBoxAvecTextInvisibleNouveauMdp.Text != ""))
                 && (string.Compare(textBoxAvecTextInvisibleNouveauMdp.Text.ToString(),textBoxAvecTextInvisibleConfNewMdp.Text.ToString()) == 0))
             {
