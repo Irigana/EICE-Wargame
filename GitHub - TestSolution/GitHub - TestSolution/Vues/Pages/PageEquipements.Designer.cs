@@ -64,6 +64,7 @@
             this.label6 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
+            this.fichePersonnageEquipement1 = new EICE_WARGAME.FichePersonnageEquipement();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -345,14 +346,14 @@
             // 
             this.listBoxEquipablePar.FormattingEnabled = true;
             this.listBoxEquipablePar.ItemHeight = 16;
-            this.listBoxEquipablePar.Location = new System.Drawing.Point(1098, 496);
+            this.listBoxEquipablePar.Location = new System.Drawing.Point(307, 567);
             this.listBoxEquipablePar.Name = "listBoxEquipablePar";
             this.listBoxEquipablePar.Size = new System.Drawing.Size(290, 132);
             this.listBoxEquipablePar.TabIndex = 41;
             // 
             // buttonAjouterEquipable
             // 
-            this.buttonAjouterEquipable.Location = new System.Drawing.Point(993, 496);
+            this.buttonAjouterEquipable.Location = new System.Drawing.Point(957, 481);
             this.buttonAjouterEquipable.Name = "buttonAjouterEquipable";
             this.buttonAjouterEquipable.Size = new System.Drawing.Size(75, 23);
             this.buttonAjouterEquipable.TabIndex = 42;
@@ -405,10 +406,19 @@
             this.label8.TabIndex = 47;
             this.label8.Text = "Sous-Faction";
             // 
+            // fichePersonnageEquipement1
+            // 
+            this.fichePersonnageEquipement1.CaractereSelectionne = null;
+            this.fichePersonnageEquipement1.Location = new System.Drawing.Point(1072, 476);
+            this.fichePersonnageEquipement1.Name = "fichePersonnageEquipement1";
+            this.fichePersonnageEquipement1.Size = new System.Drawing.Size(400, 260);
+            this.fichePersonnageEquipement1.TabIndex = 48;
+            // 
             // PageEquipements
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.fichePersonnageEquipement1);
             this.Controls.Add(this.label8);
             this.Controls.Add(this.label7);
             this.Controls.Add(this.label6);
@@ -488,5 +498,6 @@
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.Label label7;
+        private FichePersonnageEquipement fichePersonnageEquipement1;
     }
 }

@@ -360,11 +360,17 @@ namespace EICE_WARGAME
             listeDeroulanteSousFaction1.SurChangementSelection += ListeDeroulanteSousFaction_SurChangementSelection;
         }
 
+        /// <summary>
+        /// Lors du changement de sélection de la sous-faction la checkedlistbox des personnages est remplie avec les personnages correspondants à celle-ci
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void ListeDeroulanteSousFaction_SurChangementSelection(object sender, EventArgs e)
         {
             listBoxCharacter1.Charact = Program.GMBD.EnumererPersonnage(null, new MyDB.CodeSql(@"JOIN charact ON char_rank.cr_fk_ch_id = charact.ch_id 
                                                                                                     JOIN rank ON char_rank.cr_fk_ra_id = rank.ra_id"),
-                                                                                                    new MyDB.CodeSql("WHERE charact.ch_fk_subfaction_id = {0}",listeDeroulanteSousFaction1.SousFactionSelectionnee.Id), PDSGBD.MyDB.CreerCodeSql("ORDER BY ch_name"));
+                                                                                                    new MyDB.CodeSql("WHERE charact.ch_fk_subfaction_id = {0}",listeDeroulanteSousFaction1.SousFactionSelectionnee.Id), 
+                                                                                                    PDSGBD.MyDB.CreerCodeSql("ORDER BY ch_name"));
         }
 
         private void PageAjouterEquipements_Load(object sender, EventArgs e)
@@ -382,7 +388,9 @@ namespace EICE_WARGAME
             foreach (CharactRank c in listBoxCharacter1.CharactSelectionnes)
             {
                 listBoxEquipablePar.Items.Add(string.Format("{0} - {1}",c.Caractere.Name,c.Rank.Name));
+                
             }
+            fichePersonnageEquipement1.Caractere = listBoxCharacter1.CharactSelectionnes;
         }
     }
 }
