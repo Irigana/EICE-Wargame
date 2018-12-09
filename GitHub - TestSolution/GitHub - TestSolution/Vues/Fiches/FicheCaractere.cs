@@ -29,6 +29,7 @@ namespace EICE_WARGAME
         {
             InitializeComponent();
             listViewCaractere.View = View.Details;
+            listViewCaractere.HeaderStyle = ColumnHeaderStyle.Nonclickable;            
             listViewCaractere.FullRowSelect = true;
             listViewCaractere.LabelEdit = false;
             listViewCaractere.Scrollable = true;
@@ -39,7 +40,7 @@ namespace EICE_WARGAME
             listViewCaractere.Items.Clear();
             listViewCaractere.Columns.Clear();
             listViewCaractere.SelectedIndexChanged += listViewCaractere_SelectedIndexChanged;
-            textBoxCaractere.Enabled = false;
+            textBoxCaractere.Enabled = false;            
         }
 
        
@@ -150,6 +151,12 @@ namespace EICE_WARGAME
                     Text = "Rank",
                     TextAlign = HorizontalAlignment.Center,
                 });
+                listViewCaractere.Columns.Add(new ColumnHeader()
+                {
+                    Name = "Cout",
+                    Text = "Coût",
+                    TextAlign = HorizontalAlignment.Center,
+                });
 
             }
 
@@ -166,6 +173,7 @@ namespace EICE_WARGAME
                         Text = Caractere.Caractere.Name,
                     };
                     NouvelElement.SubItems.Add(Caractere.Rank.Name);
+                    NouvelElement.SubItems.Add(Caractere.Cost.ToString());
                     
                     listViewCaractere.Items.Add(NouvelElement);
                     

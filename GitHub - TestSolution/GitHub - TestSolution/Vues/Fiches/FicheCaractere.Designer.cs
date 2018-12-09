@@ -39,7 +39,7 @@
             this.listViewCaractere.HideSelection = false;
             this.listViewCaractere.Location = new System.Drawing.Point(0, 28);
             this.listViewCaractere.Name = "listViewCaractere";
-            this.listViewCaractere.Size = new System.Drawing.Size(285, 257);
+            this.listViewCaractere.Size = new System.Drawing.Size(398, 257);
             this.listViewCaractere.TabIndex = 2;
             this.listViewCaractere.UseCompatibleStateImageBehavior = false;
             // 
@@ -47,7 +47,7 @@
             // 
             this.textBoxCaractere.Location = new System.Drawing.Point(0, 0);
             this.textBoxCaractere.Name = "textBoxCaractere";
-            this.textBoxCaractere.Size = new System.Drawing.Size(285, 22);
+            this.textBoxCaractere.Size = new System.Drawing.Size(398, 22);
             this.textBoxCaractere.TabIndex = 3;
             this.textBoxCaractere.TextChanged += new System.EventHandler(this.textFiltre_TextChanged);
             this.textBoxCaractere.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textFiltre_KeyPress);
@@ -59,7 +59,7 @@
             this.Controls.Add(this.textBoxCaractere);
             this.Controls.Add(this.listViewCaractere);
             this.Name = "FicheCaractere";
-            this.Size = new System.Drawing.Size(286, 287);
+            this.Size = new System.Drawing.Size(401, 287);
             this.ResumeLayout(false);
             this.PerformLayout();
 

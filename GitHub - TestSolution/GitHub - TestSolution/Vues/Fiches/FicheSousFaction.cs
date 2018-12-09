@@ -28,7 +28,8 @@ namespace EICE_WARGAME
         public FicheSousFaction()
         {
             InitializeComponent();
-            listViewSousFaction.View = View.Details;
+            listViewSousFaction.View = View.Details;        
+            listViewSousFaction.HeaderStyle = ColumnHeaderStyle.Nonclickable;
             listViewSousFaction.FullRowSelect = true;
             listViewSousFaction.LabelEdit = false;
             listViewSousFaction.Scrollable = true;

@@ -16,6 +16,7 @@ namespace EICE_WARGAME
         {
             InitializeComponent();
             listViewUsers.View = View.Details;
+            listViewCaractere.HeaderStyle = ColumnHeaderStyle.Nonclickable;
             listViewUsers.FullRowSelect = true;
             listViewUsers.LabelEdit = false;
             listViewUsers.Scrollable = true;

@@ -440,7 +440,7 @@
             this.ficheCaractere1.CaractereSelectionne = null;
             this.ficheCaractere1.Location = new System.Drawing.Point(879, 107);
             this.ficheCaractere1.Name = "ficheCaractere1";
-            this.ficheCaractere1.Size = new System.Drawing.Size(298, 287);
+            this.ficheCaractere1.Size = new System.Drawing.Size(401, 287);
             this.ficheCaractere1.TabIndex = 40;
             this.ficheCaractere1.TexteDuFiltre = "";
             // 
