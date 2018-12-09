@@ -58,6 +58,12 @@
     <Compile Include="FicheScenario.Designer.cs">
       <DependentUpon>FicheScenario.cs</DependentUpon>
     </Compile>
+    <Compile Include="ListeDeroulanteScenario.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="ListeDeroulanteScenario.Designer.cs">
+      <DependentUpon>ListeDeroulanteScenario.cs</DependentUpon>
+    </Compile>
     <Compile Include="Vues\Pages\PageScenario.cs">
       <SubType>UserControl</SubType>
     </Compile>

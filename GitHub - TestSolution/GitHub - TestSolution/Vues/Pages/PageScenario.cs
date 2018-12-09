@@ -36,8 +36,7 @@ namespace EICE_WARGAME
         public PageScenario()
         {
             InitializeComponent();
-            menuAdmin1.MaPageActive = 1;
-            int test = ficheScenarioCamp1.QG;         
+            menuAdmin1.MaPageActive = 1;      
         }
 
         private void PageScenario_Load(object sender, EventArgs e)
