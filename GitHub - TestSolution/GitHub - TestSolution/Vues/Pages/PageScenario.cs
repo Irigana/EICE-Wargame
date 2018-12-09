@@ -50,6 +50,8 @@ namespace EICE_WARGAME
 
         private void buttonNouveauCamp_Click(object sender, EventArgs e)
         {
+            labelCampNeutreOuAttaque.Text = "Attaque";
+            labelCampDefense.Text = "Défense";
             ficheScenarioCamp2.Enabled = true;
             int test = ficheScenarioCamp1.QG;
         }
