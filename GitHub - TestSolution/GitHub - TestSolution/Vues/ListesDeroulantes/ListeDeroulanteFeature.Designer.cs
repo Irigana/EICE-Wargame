@@ -40,6 +40,7 @@
             this.comboBoxFeature.Name = "comboBoxFeature";
             this.comboBoxFeature.Size = new System.Drawing.Size(200, 24);
             this.comboBoxFeature.TabIndex = 0;
+            this.comboBoxFeature.SelectedIndexChanged += new System.EventHandler(this.ComboFeature_SelectedIndexChanged);
             // 
             // ListeDeroulanteFeature
             // 

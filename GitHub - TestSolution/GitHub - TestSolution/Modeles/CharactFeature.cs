@@ -49,17 +49,11 @@ namespace EICE_WARGAME
             }
             set
             {
-                if (value == null)
+                if ((value != null) && ((m_CharactRank == null) || !int.Equals(value.Id, CharactRank.Id)))
                 {
-                    Declencher_SurErreur(this, Champ.CharactRank, "Rank non défini");
+                    ModifierChamp(Champ.CharactRank, ref m_CharactRank, value);
                 }
-                else
-                {
-                    if ((m_CharactRank == null) || int.Equals(value.Id, m_CharactRank.Id))
-                    {
-                        ModifierChamp(Champ.CharactRank, ref m_CharactRank, value);
-                    }
-                }
+
             }
         }
 
@@ -74,17 +68,12 @@ namespace EICE_WARGAME
             }
             set
             {
-                if (value == null)
+
+                if ((value != null) && ((m_Feature == null) || !int.Equals(value.Id, Feature.Id)))
                 {
-                    Declencher_SurErreur(this, Champ.Feature, "Feature non définie");
-                }
-                else
-                {
-                    if ((m_Feature == null) || int.Equals(value.Id, m_Feature.Id))
-                    {
                         ModifierChamp(Champ.Feature, ref m_Feature, value);
-                    }
                 }
+                
             }
         }
 
@@ -204,8 +193,8 @@ namespace EICE_WARGAME
         /// </summary>
         /// <param name="Connexion">Connexion au serveur MySQL</param>
         public override void SupprimerEnCascade(MyDB Connexion)
-        {// TODO
-            Connexion.Executer("DELETE from char_feature WHERE cf_id = {0}", Id);
+        {
+            Connexion.Executer("DELETE from char_rank_feature WHERE crf_id = {0}", Id);
         }
 
         /// <summary>

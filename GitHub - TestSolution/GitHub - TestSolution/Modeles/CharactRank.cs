@@ -292,7 +292,7 @@ namespace EICE_WARGAME
         {
             get
             {
-                return new PDSGBD.MyDB.CodeSql("cr_fk_ch_id = {0}, cr_fk_ra_id = {1}, cr_cost = {2}, cr_sub_id = {3}", Id, Rank.Id, Cost,SubUnity.Id);
+                return new PDSGBD.MyDB.CodeSql("cr_fk_ch_id = {0}, cr_fk_ra_id = {1}, cr_cost = {2}, cr_sub_id = {3}", Caractere.Id, Rank.Id, Cost,SubUnity.Id);
             }
         }
 
@@ -302,9 +302,8 @@ namespace EICE_WARGAME
         /// <param name="Connexion">Connexion au serveur MySQL</param>
         public override void SupprimerEnCascade(PDSGBD.MyDB Connexion)
         {
-            Connexion.Executer(@"
-DELETE FROM char_rank_feature WHERE crf_fk_char_rank_id = {0}
-DELETE FROM char_rank WHERE cr_id = {1};                         
+            Connexion.Executer(@"DELETE FROM char_rank_feature WHERE crf_fk_char_rank_id = {0};
+                                 DELETE FROM char_rank WHERE cr_id = {1};                         
                                   ", Id,Id);
         }
 

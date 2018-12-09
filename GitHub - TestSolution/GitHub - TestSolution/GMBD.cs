@@ -218,12 +218,14 @@ namespace EICE_WARGAME
 
         public bool ModifierFeaturePersonnage(CharactFeature Feature)
         {
-            return Feature.Enregistrer(m_BD, Feature, null, false);
+            return Feature.Enregistrer(m_BD, Feature, null, true);
         }
 
         public bool SupprimerFeaturePersonnage(CharactFeature Feature)
         {
-            return Feature.Enregistrer(m_BD, Feature, null, false);
+            if (!m_BD.EstConnecte) Initialiser();
+            Feature.SupprimerEnCascade(m_BD);
+            return true;
         }
 
         public bool ModifierCaractere(Charact Caractere)

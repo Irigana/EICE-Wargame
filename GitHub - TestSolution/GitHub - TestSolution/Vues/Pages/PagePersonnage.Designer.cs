@@ -57,6 +57,7 @@
             this.labelSubUnity = new System.Windows.Forms.Label();
             this.labelUnity = new System.Windows.Forms.Label();
             this.numericUpDown2 = new System.Windows.Forms.NumericUpDown();
+            this.buttonAnnulerFeature = new System.Windows.Forms.Button();
             this.listeDeroulanteSubUnity1 = new EICE_WARGAME.ListeDeroulanteSubUnity();
             this.listeDeroulanteUnity1 = new EICE_WARGAME.ListeDeroulanteUnity();
             this.listeDeroulanteRank1 = new EICE_WARGAME.ListeDeroulanteRank();
@@ -130,7 +131,7 @@
             this.textBoxCaractere.Location = new System.Drawing.Point(588, 119);
             this.textBoxCaractere.Name = "textBoxCaractere";
             this.textBoxCaractere.Size = new System.Drawing.Size(248, 22);
-            this.textBoxCaractere.TabIndex = 39;
+            this.textBoxCaractere.TabIndex = 37;
             this.textBoxCaractere.Enter += new System.EventHandler(this.textBoxCaractere_Enter);
             // 
             // buttonAnnulerPersonnage
@@ -152,7 +153,7 @@
             this.buttonSupprimerPersonnage.Location = new System.Drawing.Point(717, 355);
             this.buttonSupprimerPersonnage.Name = "buttonSupprimerPersonnage";
             this.buttonSupprimerPersonnage.Size = new System.Drawing.Size(121, 39);
-            this.buttonSupprimerPersonnage.TabIndex = 42;
+            this.buttonSupprimerPersonnage.TabIndex = 44;
             this.buttonSupprimerPersonnage.Text = "Supprimer";
             this.buttonSupprimerPersonnage.UseVisualStyleBackColor = false;
             this.buttonSupprimerPersonnage.Click += new System.EventHandler(this.buttonSupprimerCaract_Click);
@@ -164,7 +165,7 @@
             this.buttonModifierPersonnage.Location = new System.Drawing.Point(463, 355);
             this.buttonModifierPersonnage.Name = "buttonModifierPersonnage";
             this.buttonModifierPersonnage.Size = new System.Drawing.Size(121, 39);
-            this.buttonModifierPersonnage.TabIndex = 41;
+            this.buttonModifierPersonnage.TabIndex = 42;
             this.buttonModifierPersonnage.Text = "Modifier";
             this.buttonModifierPersonnage.UseVisualStyleBackColor = false;
             this.buttonModifierPersonnage.Click += new System.EventHandler(this.buttonModifierPersonnage_Click);
@@ -176,7 +177,7 @@
             this.buttonAjouterPersonnage.Location = new System.Drawing.Point(336, 355);
             this.buttonAjouterPersonnage.Name = "buttonAjouterPersonnage";
             this.buttonAjouterPersonnage.Size = new System.Drawing.Size(121, 39);
-            this.buttonAjouterPersonnage.TabIndex = 40;
+            this.buttonAjouterPersonnage.TabIndex = 41;
             this.buttonAjouterPersonnage.Text = "Ajouter";
             this.buttonAjouterPersonnage.UseVisualStyleBackColor = false;
             this.buttonAjouterPersonnage.Click += new System.EventHandler(this.buttonAjouterCaract_Click);
@@ -246,10 +247,10 @@
             this.buttonAjouterCaracteristique.FlatAppearance.BorderColor = System.Drawing.SystemColors.WindowFrame;
             this.buttonAjouterCaracteristique.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonAjouterCaracteristique.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F);
-            this.buttonAjouterCaracteristique.Location = new System.Drawing.Point(336, 669);
+            this.buttonAjouterCaracteristique.Location = new System.Drawing.Point(241, 669);
             this.buttonAjouterCaracteristique.Name = "buttonAjouterCaracteristique";
             this.buttonAjouterCaracteristique.Size = new System.Drawing.Size(148, 49);
-            this.buttonAjouterCaracteristique.TabIndex = 53;
+            this.buttonAjouterCaracteristique.TabIndex = 48;
             this.buttonAjouterCaracteristique.Text = "Ajouter Caracteristique";
             this.buttonAjouterCaracteristique.UseVisualStyleBackColor = false;
             this.buttonAjouterCaracteristique.Click += new System.EventHandler(this.buttonAjouterCaracteristique_Click);
@@ -288,7 +289,7 @@
             this.numericUpDown1.Location = new System.Drawing.Point(588, 227);
             this.numericUpDown1.Name = "numericUpDown1";
             this.numericUpDown1.Size = new System.Drawing.Size(246, 22);
-            this.numericUpDown1.TabIndex = 57;
+            this.numericUpDown1.TabIndex = 39;
             this.numericUpDown1.Enter += new System.EventHandler(this.numericUpDown1_Enter);
             // 
             // buttonModifCaracteristique
@@ -297,10 +298,10 @@
             this.buttonModifCaracteristique.FlatAppearance.BorderColor = System.Drawing.SystemColors.WindowFrame;
             this.buttonModifCaracteristique.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonModifCaracteristique.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F);
-            this.buttonModifCaracteristique.Location = new System.Drawing.Point(510, 669);
+            this.buttonModifCaracteristique.Location = new System.Drawing.Point(395, 669);
             this.buttonModifCaracteristique.Name = "buttonModifCaracteristique";
             this.buttonModifCaracteristique.Size = new System.Drawing.Size(148, 49);
-            this.buttonModifCaracteristique.TabIndex = 58;
+            this.buttonModifCaracteristique.TabIndex = 50;
             this.buttonModifCaracteristique.Text = "Modifier Caracteristique";
             this.buttonModifCaracteristique.UseVisualStyleBackColor = false;
             this.buttonModifCaracteristique.Click += new System.EventHandler(this.buttonModifCaracteristique_Click);
@@ -311,12 +312,13 @@
             this.buttonSupprimerCaracteristique.FlatAppearance.BorderColor = System.Drawing.SystemColors.WindowFrame;
             this.buttonSupprimerCaracteristique.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonSupprimerCaracteristique.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F);
-            this.buttonSupprimerCaracteristique.Location = new System.Drawing.Point(684, 669);
+            this.buttonSupprimerCaracteristique.Location = new System.Drawing.Point(703, 669);
             this.buttonSupprimerCaracteristique.Name = "buttonSupprimerCaracteristique";
             this.buttonSupprimerCaracteristique.Size = new System.Drawing.Size(148, 49);
-            this.buttonSupprimerCaracteristique.TabIndex = 59;
+            this.buttonSupprimerCaracteristique.TabIndex = 52;
             this.buttonSupprimerCaracteristique.Text = "Supprimer Caracteristique";
             this.buttonSupprimerCaracteristique.UseVisualStyleBackColor = false;
+            this.buttonSupprimerCaracteristique.Click += new System.EventHandler(this.buttonSupprimerCaracteristique_Click);
             // 
             // labelRank
             // 
@@ -353,8 +355,22 @@
             this.numericUpDown2.Location = new System.Drawing.Point(470, 619);
             this.numericUpDown2.Name = "numericUpDown2";
             this.numericUpDown2.Size = new System.Drawing.Size(246, 22);
-            this.numericUpDown2.TabIndex = 67;
+            this.numericUpDown2.TabIndex = 46;
             this.numericUpDown2.Enter += new System.EventHandler(this.numericUpDown2_Enter);
+            // 
+            // buttonAnnulerFeature
+            // 
+            this.buttonAnnulerFeature.BackColor = System.Drawing.SystemColors.Window;
+            this.buttonAnnulerFeature.FlatAppearance.BorderColor = System.Drawing.SystemColors.WindowFrame;
+            this.buttonAnnulerFeature.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonAnnulerFeature.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F);
+            this.buttonAnnulerFeature.Location = new System.Drawing.Point(549, 669);
+            this.buttonAnnulerFeature.Name = "buttonAnnulerFeature";
+            this.buttonAnnulerFeature.Size = new System.Drawing.Size(148, 49);
+            this.buttonAnnulerFeature.TabIndex = 51;
+            this.buttonAnnulerFeature.Text = "Annuler";
+            this.buttonAnnulerFeature.UseVisualStyleBackColor = false;
+            this.buttonAnnulerFeature.Click += new System.EventHandler(this.buttonAnnulerFeature_Click);
             // 
             // listeDeroulanteSubUnity1
             // 
@@ -363,7 +379,7 @@
             this.listeDeroulanteSubUnity1.Name = "listeDeroulanteSubUnity1";
             this.listeDeroulanteSubUnity1.Size = new System.Drawing.Size(248, 25);
             this.listeDeroulanteSubUnity1.SubUnitySelectionnee = null;
-            this.listeDeroulanteSubUnity1.TabIndex = 66;
+            this.listeDeroulanteSubUnity1.TabIndex = 36;
             // 
             // listeDeroulanteUnity1
             // 
@@ -371,7 +387,7 @@
             this.listeDeroulanteUnity1.Location = new System.Drawing.Point(279, 224);
             this.listeDeroulanteUnity1.Name = "listeDeroulanteUnity1";
             this.listeDeroulanteUnity1.Size = new System.Drawing.Size(248, 25);
-            this.listeDeroulanteUnity1.TabIndex = 65;
+            this.listeDeroulanteUnity1.TabIndex = 35;
             this.listeDeroulanteUnity1.UnitySelectionnee = null;
             // 
             // listeDeroulanteRank1
@@ -381,7 +397,7 @@
             this.listeDeroulanteRank1.Name = "listeDeroulanteRank1";
             this.listeDeroulanteRank1.RankSelectionnee = null;
             this.listeDeroulanteRank1.Size = new System.Drawing.Size(246, 26);
-            this.listeDeroulanteRank1.TabIndex = 62;
+            this.listeDeroulanteRank1.TabIndex = 38;
             // 
             // ficheCaracteristique1
             // 
@@ -389,7 +405,7 @@
             this.ficheCaracteristique1.Location = new System.Drawing.Point(879, 456);
             this.ficheCaracteristique1.Name = "ficheCaracteristique1";
             this.ficheCaracteristique1.Size = new System.Drawing.Size(284, 262);
-            this.ficheCaracteristique1.TabIndex = 60;
+            this.ficheCaracteristique1.TabIndex = 53;
             // 
             // listeDeroulanteFeature1
             // 
@@ -398,7 +414,7 @@
             this.listeDeroulanteFeature1.Location = new System.Drawing.Point(470, 554);
             this.listeDeroulanteFeature1.Name = "listeDeroulanteFeature1";
             this.listeDeroulanteFeature1.Size = new System.Drawing.Size(246, 25);
-            this.listeDeroulanteFeature1.TabIndex = 50;
+            this.listeDeroulanteFeature1.TabIndex = 45;
             // 
             // buttonRetourDashBoard1
             // 
@@ -425,7 +441,7 @@
             this.ficheCaractere1.Location = new System.Drawing.Point(879, 107);
             this.ficheCaractere1.Name = "ficheCaractere1";
             this.ficheCaractere1.Size = new System.Drawing.Size(298, 287);
-            this.ficheCaractere1.TabIndex = 38;
+            this.ficheCaractere1.TabIndex = 40;
             this.ficheCaractere1.TexteDuFiltre = "";
             // 
             // listeDeroulanteSousFaction1
@@ -458,6 +474,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.buttonAnnulerFeature);
             this.Controls.Add(this.numericUpDown2);
             this.Controls.Add(this.listeDeroulanteSubUnity1);
             this.Controls.Add(this.listeDeroulanteUnity1);
@@ -547,5 +564,6 @@
         private System.Windows.Forms.Label labelUnity;
         private System.Windows.Forms.Label labelSubUnity;
         private System.Windows.Forms.NumericUpDown numericUpDown2;
+        private System.Windows.Forms.Button buttonAnnulerFeature;
     }
 }
