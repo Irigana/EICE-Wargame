@@ -247,7 +247,12 @@ namespace EICE_WARGAME
         #endregion
 
         #region Requêtes scénario
-        public bool AjouterScenario(Scenario_Camp NouveauScenario)
+        public bool AjouterScenarioCamp(Scenario_Camp NouveauScenario)
+        {
+            return NouveauScenario.Enregistrer(m_BD, NouveauScenario, null, false);
+        }
+
+        public bool AjouterScenario(Scenario NouveauScenario)
         {
             return NouveauScenario.Enregistrer(m_BD, NouveauScenario, null, false);
         }

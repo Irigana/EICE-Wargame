@@ -34,14 +34,15 @@ namespace EICE_WARGAME
         #endregion
 
         private Scenario_Camp m_ScenarioCampUn;
-        private bool m_ScenarioValide = false;
 
         public PageScenario()
         {
             InitializeComponent();
             menuAdmin1.MaPageActive = 1;
             buttonAjouter.Enabled = true;
-            buttonModifier.Enabled = false;
+            buttonSupprimer.Enabled = false;
+            buttonNouveauCamp.Enabled = false;
+            buttonRetirerCamp.Enabled = false;
 
             listeDeroulanteScenario1.Scenario = Program.GMBD.EnumererScenario(null, null, null, null);
 
@@ -53,276 +54,79 @@ namespace EICE_WARGAME
         {
             if (listeDeroulanteScenario1.ScenarioSelectionnee != null)
             {
-                int i = -1;
+                ficheScenarioCamp1.Enabled = true;
+                ficheScenarioCamp1.DesactiverButtonSurSelection();
+                ficheScenarioCamp2.DesactiverButtonSurSelection();
+                buttonNouveauCamp.Enabled = false;
                 buttonAjouter.Enabled = false;
-                buttonModifier.Enabled = true;
+                buttonSupprimer.Enabled = true;
                 Scenario ScenarioEnEdition = listeDeroulanteScenario1.ScenarioSelectionnee;
 
 
-                m_ScenarioCampUn = Program.GMBD.EnumererScenarioCamp(null, new MyDB.CodeSql(@"JOIN scenario ON scenario.sc_id = scenario_camp.sca_fk_scenario_id 
+                m_ScenarioCampUn = Program.GMBD.EnumererScenarioCamp(null, new MyDB.CodeSql(@"JOIN scenareio ON scenario.sc_id = scenario_camp.sca_fk_scenario_id 
                                                                                                         JOIN camp ON camp.ca_id = scenario_camp.sca_fk_camp_id 
                                                                                                         JOIN condi_camp ON scenario_camp.sca_id = condi_camp.cc_fk_scenario_camp_id"),
                                                                                       new MyDB.CodeSql("WHERE scenario.sc_id = {0} ", listeDeroulanteScenario1.ScenarioSelectionnee.Id), null).FirstOrDefault();
+
+
 
                 Scenario_Camp ScenarioSecondCamp = null;
                 // Si il existe 2 camp
                 if (m_ScenarioCampUn.Camp.Id != 3)
                 {
+
+                    labelCampNeutreOuAttaque.Text = "Camp attaquant";
+
+                    labelCampDefense.Text = "Camp défenseur";
+                    ficheScenarioCamp2.ClearFiche();
+                    ficheScenarioCamp1.ClearFiche();
                     textBox1.Text = m_ScenarioCampUn.Scenario.Name;
                     ficheScenarioCamp2.Enabled = true;
                     // Si le camp déjà chargé correspond au camp 1 alors je charge le camp 2
                     if (m_ScenarioCampUn.Camp.Id == 1)
                     {
-                        i = 0;
+                        ficheScenarioCamp1.NumeroDeCamp = 1;
+                        ficheScenarioCamp1.Scenario = m_ScenarioCampUn.Scenario;
+                        ficheScenarioCamp1.ChargerFiches();
+
                         ScenarioSecondCamp = Program.GMBD.EnumererScenarioCamp(null, new MyDB.CodeSql(@"JOIN scenario ON scenario.sc_id = scenario_camp.sca_fk_scenario_id 
                                                                                                         JOIN camp ON camp.ca_id = scenario_camp.sca_fk_camp_id 
                                                                                                         JOIN condi_camp ON scenario_camp.sca_id = condi_camp.cc_fk_scenario_camp_id"),
                                                                                           new MyDB.CodeSql("WHERE scenario.sc_id = {0} AND camp.ca_id = {1}", listeDeroulanteScenario1.ScenarioSelectionnee.Id, 2), null).FirstOrDefault();
-                        #region Assignation des valeurs du camp 1
-                        foreach (Condi_Camp CC in m_ScenarioCampUn.CondiCamp)
-                        {
-                            if (i == 0)
-                            {
-                                ficheScenarioCamp1.QG = CC.Min;
-                            }
-                            else if (i == 1)
-                            {
-                                ficheScenarioCamp1.Troupes = CC.Min;
-                            }
-                            else if (i == 2)
-                            {
-                                ficheScenarioCamp1.AttaqueRapide = CC.Min;
-                            }
-                            else if (i == 3)
-                            {
-                                ficheScenarioCamp1.Soutien = CC.Min;
-                            }
-                            else if (i == 4)
-                            {
-                                ficheScenarioCamp1.Elite = CC.Min;
-                            }
-                            else if (i == 5)
-                            {
-                                ficheScenarioCamp1.MQG = CC.Max;
-                            }
-                            else if (i == 6)
-                            {
-                                ficheScenarioCamp1.MTroupes = CC.Max;
-                            }
-                            else if (i == 7)
-                            {
-                                ficheScenarioCamp1.MAttaqueRapide = CC.Max;
-                            }
-                            else if (i == 8)
-                            {
-                                ficheScenarioCamp1.MSoutien = CC.Max;
-                            }
-                            else if (i == 9)
-                            {
-                                ficheScenarioCamp1.MElite = CC.Max;
-                            }
-                        }
-                        #endregion
 
-                        #region Assignation des valeurs du camp 2
-                        foreach (Condi_Camp CC in ScenarioSecondCamp.CondiCamp)
-                        {
-                            if (i == 0)
-                            {
-                                ficheScenarioCamp2.QG = CC.Min;
-                            }
-                            else if (i == 1)
-                            {
-                                ficheScenarioCamp2.Troupes = CC.Min;
-                            }
-                            else if (i == 2)
-                            {
-                                ficheScenarioCamp2.AttaqueRapide = CC.Min;
-                            }
-                            else if (i == 3)
-                            {
-                                ficheScenarioCamp2.Soutien = CC.Min;
-                            }
-                            else if (i == 4)
-                            {
-                                ficheScenarioCamp2.Elite = CC.Min;
-                            }
-                            else if (i == 5)
-                            {
-                                ficheScenarioCamp2.MQG = CC.Max;
-                            }
-                            else if (i == 6)
-                            {
-                                ficheScenarioCamp2.MTroupes = CC.Max;
-                            }
-                            else if (i == 7)
-                            {
-                                ficheScenarioCamp2.MAttaqueRapide = CC.Max;
-                            }
-                            else if (i == 8)
-                            {
-                                ficheScenarioCamp2.MSoutien = CC.Max;
-                            }
-                            else if (i == 9)
-                            {
-                                ficheScenarioCamp2.MElite = CC.Max;
-                            }
-                        }
-                        #endregion
+                        ficheScenarioCamp2.NumeroDeCamp = 2;
+                        ficheScenarioCamp2.Scenario = m_ScenarioCampUn.Scenario;
+                        ficheScenarioCamp2.ChargerFiches();
+
                     }
                     // Si le camp déjà chargé correspond au camp 2 alors je charge le camp 1
                     else if (m_ScenarioCampUn.Camp.Id == 2)
                     {
-                        i = 0;
+                        ficheScenarioCamp1.NumeroDeCamp = 1;
+                        ficheScenarioCamp1.Scenario = m_ScenarioCampUn.Scenario;
+                        ficheScenarioCamp1.ChargerFiches();
                         ficheScenarioCamp2.Enabled = true;
                         ScenarioSecondCamp = Program.GMBD.EnumererScenarioCamp(null, new MyDB.CodeSql(@"JOIN scenario ON scenario.sc_id = scenario_camp.sca_fk_scenario_id 
                                                                                                         JOIN camp ON camp.ca_id = scenario_camp.sca_fk_camp_id 
                                                                                                         JOIN condi_camp ON scenario_camp.sca_id = condi_camp.cc_fk_scenario_camp_id"),
                                                                                           new MyDB.CodeSql("WHERE scenario.sc_id = {0} AND camp.ca_id = {1}", listeDeroulanteScenario1.ScenarioSelectionnee.Id, 1), null).FirstOrDefault();
 
-                        #region Assignation des valeurs du camp 1
-                        foreach (Condi_Camp CC in m_ScenarioCampUn.CondiCamp)
-                        {
-                            if (i == 0)
-                            {
-                                ficheScenarioCamp1.QG = CC.Min;
-                            }
-                            else if (i == 1)
-                            {
-                                ficheScenarioCamp1.Troupes = CC.Min;
-                            }
-                            else if (i == 2)
-                            {
-                                ficheScenarioCamp1.AttaqueRapide = CC.Min;
-                            }
-                            else if (i == 3)
-                            {
-                                ficheScenarioCamp1.Soutien = CC.Min;
-                            }
-                            else if (i == 4)
-                            {
-                                ficheScenarioCamp1.Elite = CC.Min;
-                            }
-                            else if (i == 5)
-                            {
-                                ficheScenarioCamp1.MQG = CC.Max;
-                            }
-                            else if (i == 6)
-                            {
-                                ficheScenarioCamp1.MTroupes = CC.Max;
-                            }
-                            else if (i == 7)
-                            {
-                                ficheScenarioCamp1.MAttaqueRapide = CC.Max;
-                            }
-                            else if (i == 8)
-                            {
-                                ficheScenarioCamp1.MSoutien = CC.Max;
-                            }
-                            else if (i == 9)
-                            {
-                                ficheScenarioCamp1.MElite = CC.Max;
-                            }
-                        }
-                        #endregion
-
-                        #region Assignation des valeurs du camp 2
-                        foreach (Condi_Camp CC in ScenarioSecondCamp.CondiCamp)
-                        {
-                            if (i == 0)
-                            {
-                                ficheScenarioCamp2.QG = CC.Min;
-                            }
-                            else if (i == 1)
-                            {
-                                ficheScenarioCamp2.Troupes = CC.Min;
-                            }
-                            else if (i == 2)
-                            {
-                                ficheScenarioCamp2.AttaqueRapide = CC.Min;
-                            }
-                            else if (i == 3)
-                            {
-                                ficheScenarioCamp2.Soutien = CC.Min;
-                            }
-                            else if (i == 4)
-                            {
-                                ficheScenarioCamp2.Elite = CC.Min;
-                            }
-                            else if (i == 5)
-                            {
-                                ficheScenarioCamp2.MQG = CC.Max;
-                            }
-                            else if (i == 6)
-                            {
-                                ficheScenarioCamp2.MTroupes = CC.Max;
-                            }
-                            else if (i == 7)
-                            {
-                                ficheScenarioCamp2.MAttaqueRapide = CC.Max;
-                            }
-                            else if (i == 8)
-                            {
-                                ficheScenarioCamp2.MSoutien = CC.Max;
-                            }
-                            else if (i == 9)
-                            {
-                                ficheScenarioCamp2.MElite = CC.Max;
-                            }
-                        }
-                        #endregion
+                        ficheScenarioCamp2.NumeroDeCamp = 2;
+                        ficheScenarioCamp2.Scenario = ScenarioSecondCamp.Scenario;
+                        ficheScenarioCamp2.ChargerFiches();
                     }
                 }
                 // Sinon c'est un camp neutre donc 1 seul camp
                 else
                 {
+                    labelCampDefense.Text = "";
                     labelCampNeutreOuAttaque.Text = "Camp neutre";
                     ficheScenarioCamp2.Enabled = false;
                     textBox1.Text = m_ScenarioCampUn.Scenario.Name;
-                    i = 0;
-                    foreach (Condi_Camp CC in m_ScenarioCampUn.CondiCamp)
-                    {
-                        if (i == 0)
-                        {
-                            ficheScenarioCamp1.QG = CC.Min;
-                        }
-                        else if (i == 1)
-                        {
-                            ficheScenarioCamp1.Troupes = CC.Min;
-                        }
-                        else if (i == 2)
-                        {
-                            ficheScenarioCamp1.AttaqueRapide = CC.Min;
-                        }
-                        else if (i == 3)
-                        {
-                            ficheScenarioCamp1.Soutien = CC.Min;
-                        }
-                        else if (i == 4)
-                        {
-                            ficheScenarioCamp1.Elite = CC.Min;
-                        }
-                        else if (i == 5)
-                        {
-                            ficheScenarioCamp1.MQG = CC.Max;
-                        }
-                        else if (i == 6)
-                        {
-                            ficheScenarioCamp1.MTroupes = CC.Max;
-                        }
-                        else if (i == 7)
-                        {
-                            ficheScenarioCamp1.MAttaqueRapide = CC.Max;
-                        }
-                        else if (i == 8)
-                        {
-                            ficheScenarioCamp1.MSoutien = CC.Max;
-                        }
-                        else if (i == 9)
-                        {
-                            ficheScenarioCamp1.MElite = CC.Max;
-                        }
-                    }
+                    ficheScenarioCamp2.ClearFiche();
+                    ficheScenarioCamp1.NumeroDeCamp = 3;
+                    ficheScenarioCamp1.Scenario = m_ScenarioCampUn.Scenario;
+                    ficheScenarioCamp1.ChargerFiches();
                 }
             }
         }
@@ -341,25 +145,46 @@ namespace EICE_WARGAME
         {
             labelCampNeutreOuAttaque.Text = "Attaque";
             labelCampDefense.Text = "Défense";
-            ficheScenarioCamp2.Enabled = true;
-            int test = ficheScenarioCamp1.QG;
+            ficheScenarioCamp2.Enabled = true;            
         }
 
         private void buttonAjouter_Click(object sender, EventArgs e)
         {
-            Scenario_Camp NouveauScenario = new Scenario_Camp();
-            NouveauScenario.Scenario = new Scenario();
-            NouveauScenario.Scenario.SurErreur += Scenario_SurErreur;
-            NouveauScenario.Scenario.AvantChangement += Scenario_AvantChangement;
-            NouveauScenario.Camp = Program.GMBD.EnumererCamp(null, null, new MyDB.CodeSql("WHERE ca_id = 3"), null).FirstOrDefault();
-            if (ficheScenarioCamp2.Enabled == true)
+            if (ficheScenarioCamp1.AuMoinsUneSpecificite == true)
             {
-                if (Program.GMBD.AjouterScenario(NouveauScenario))
+                ficheScenarioCamp1.Enabled = true;
+                Scenario_Camp NouveauScenario = new Scenario_Camp();
+                NouveauScenario.Scenario = new Scenario();
+                NouveauScenario.Scenario.SurErreur += Scenario_SurErreur;
+                NouveauScenario.Scenario.AvantChangement += Scenario_AvantChangement;
+                NouveauScenario.Scenario.Name = textBox1.Text;
+                NouveauScenario.Camp = Program.GMBD.EnumererCamp(null, null, new MyDB.CodeSql("WHERE ca_id = 3"), null).FirstOrDefault();
+                if (NouveauScenario.Scenario.EstValide && Program.GMBD.AjouterScenario(NouveauScenario.Scenario))
                 {
-                    Condi_Camp NouvelleSpecificite = new Condi_Camp();
+                    if ((NouveauScenario.EstValide) && (Program.GMBD.AjouterScenarioCamp(NouveauScenario)))
+                    {
+                        ficheScenarioCamp1.Scenario = NouveauScenario.Scenario;
+                        ficheScenarioCamp2.Scenario = NouveauScenario.Scenario;
+                        if (ficheScenarioCamp2.Enabled == false)
+                        {
+                            ficheScenarioCamp1.NumeroDeCamp = 3;
+                        }
+                        else
+                        {
+                            ficheScenarioCamp1.NumeroDeCamp = 1;
+                            ficheScenarioCamp2.NumeroDeCamp = 2;
+                        }
+                        //if(NouvelleSpecificite.EstValide && Program.GMBD.AjouterSpecificite(NouvelleSpecificite))
+                        {
 
+                        }
+                    }
                 }
             }
+            else
+            {
+                errorProvider.SetError(textBox1, "Vous devez au moins ajouter une spécificité à ce scénario avant de pouvoir l'ajouter");
+            }            
         }
 
 
@@ -369,7 +194,6 @@ namespace EICE_WARGAME
             switch (Champ)
             {
                 case Scenario.Champ.Name:
-                    m_ScenarioValide = false;
                     errorProvider.SetError(textBox1, MessageErreur);
                     break;
             }
@@ -386,7 +210,6 @@ namespace EICE_WARGAME
                         Scenario ScenarioExiste = Program.GMBD.EnumererScenario(null, null, new MyDB.CodeSql("WHERE sc_name = {0}", textBox1.Text), null).FirstOrDefault();
                         if (ScenarioExiste != null)
                         {
-                            m_ScenarioValide = false;
                             AccumulateurErreur.NotifierErreur("Ce nom de scénario existe déjà, veuillez en choisir une autre !");
                         }
                         break;
@@ -406,6 +229,23 @@ namespace EICE_WARGAME
                         break;
                     }
             }
+        }
+
+        private void buttonAnnuler_Click(object sender, EventArgs e)
+        {
+            listeDeroulanteScenario1.ScenarioSelectionnee = null;
+            textBox1.Text = "";
+            buttonAjouter.Enabled = true;
+            buttonSupprimer.Enabled = false;
+            buttonAnnuler.Enabled = false;
+        }
+
+        private void buttonRetirerCamp_Click(object sender, EventArgs e)
+        {
+            labelCampNeutreOuAttaque.Text = "Camp neutre";
+            labelCampDefense.Text = "";
+            ficheScenarioCamp2.Enabled = false;
+            ficheScenarioCamp2.ClearFiche();
         }
     }
 }

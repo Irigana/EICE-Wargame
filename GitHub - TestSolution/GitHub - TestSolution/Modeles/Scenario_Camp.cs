@@ -17,7 +17,7 @@ namespace EICE_WARGAME
             Id,
             Scenario,
             Camp,
-            Condi_Camp,
+            
         }
 
         #region Membre privé

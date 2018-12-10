@@ -58,6 +58,12 @@
     <Compile Include="FicheScenario.Designer.cs">
       <DependentUpon>FicheScenario.cs</DependentUpon>
     </Compile>
+    <Compile Include="FicheSpecifiteScenario.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="FicheSpecifiteScenario.Designer.cs">
+      <DependentUpon>FicheSpecifiteScenario.cs</DependentUpon>
+    </Compile>
     <Compile Include="Vues\ListesDeroulantes\ListeDeroulanteScenario.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -308,6 +314,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="FicheScenario.resx">
       <DependentUpon>FicheScenario.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FicheSpecifiteScenario.resx">
+      <DependentUpon>FicheSpecifiteScenario.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Vues\ListesDeroulantes\ListeDeroulanteScenario.resx">
       <DependentUpon>ListeDeroulanteScenario.cs</DependentUpon>

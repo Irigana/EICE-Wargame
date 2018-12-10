@@ -28,43 +28,29 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.panel1 = new System.Windows.Forms.Panel();
             this.panel2 = new System.Windows.Forms.Panel();
             this.panel4 = new System.Windows.Forms.Panel();
             this.panel3 = new System.Windows.Forms.Panel();
+            this.ficheSpecifiteScenario1 = new EICE_WARGAME.FicheSpecifiteScenario();
+            this.listeDeroulanteUnity1 = new EICE_WARGAME.ListeDeroulanteUnity();
             this.labelOptionnel = new System.Windows.Forms.Label();
             this.labelObligatoire = new System.Windows.Forms.Label();
+            this.labelRechercherUnity = new System.Windows.Forms.Label();
+            this.numericUpDownObligatoire = new System.Windows.Forms.NumericUpDown();
+            this.numericUpDown2 = new System.Windows.Forms.NumericUpDown();
+            this.labelOblige = new System.Windows.Forms.Label();
             this.panel5 = new System.Windows.Forms.Panel();
-            this.labelQG = new System.Windows.Forms.Label();
-            this.labelTroupes = new System.Windows.Forms.Label();
-            this.labelSoutien = new System.Windows.Forms.Label();
-            this.labelElite = new System.Windows.Forms.Label();
-            this.labelAtqRapide = new System.Windows.Forms.Label();
-            this.numericUpDownQG = new System.Windows.Forms.NumericUpDown();
-            this.numericUpDownTroupes = new System.Windows.Forms.NumericUpDown();
-            this.numericUpDownAtqRapide = new System.Windows.Forms.NumericUpDown();
-            this.numericUpDownSoutien = new System.Windows.Forms.NumericUpDown();
-            this.numericUpDownElite = new System.Windows.Forms.NumericUpDown();
-            this.numericUpDownMElite = new System.Windows.Forms.NumericUpDown();
-            this.numericUpDownMSoutien = new System.Windows.Forms.NumericUpDown();
-            this.numericUpDownMATQRapide = new System.Windows.Forms.NumericUpDown();
-            this.numericUpDownMTroupes = new System.Windows.Forms.NumericUpDown();
-            this.numericUpDownMQG = new System.Windows.Forms.NumericUpDown();
-            this.labelMATQRapide = new System.Windows.Forms.Label();
-            this.labelMElite = new System.Windows.Forms.Label();
-            this.labelMSoutien = new System.Windows.Forms.Label();
-            this.labelMTroupes = new System.Windows.Forms.Label();
-            this.labelMQG = new System.Windows.Forms.Label();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownQG)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownTroupes)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownAtqRapide)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownSoutien)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownElite)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownMElite)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownMSoutien)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownMATQRapide)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownMTroupes)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownMQG)).BeginInit();
+            this.labelsupp = new System.Windows.Forms.Label();
+            this.buttonSupprimer = new System.Windows.Forms.Button();
+            this.buttonAjouter = new System.Windows.Forms.Button();
+            this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
+            this.ValidationProvider = new System.Windows.Forms.ErrorProvider(this.components);
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownObligatoire)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ValidationProvider)).BeginInit();
             this.SuspendLayout();
             // 
             // panel1
@@ -99,6 +85,22 @@
             this.panel3.Size = new System.Drawing.Size(500, 2);
             this.panel3.TabIndex = 2;
             // 
+            // ficheSpecifiteScenario1
+            // 
+            this.ficheSpecifiteScenario1.Location = new System.Drawing.Point(110, 206);
+            this.ficheSpecifiteScenario1.Name = "ficheSpecifiteScenario1";
+            this.ficheSpecifiteScenario1.Size = new System.Drawing.Size(299, 162);
+            this.ficheSpecifiteScenario1.SpecificiteSelectionne = null;
+            this.ficheSpecifiteScenario1.TabIndex = 5;
+            // 
+            // listeDeroulanteUnity1
+            // 
+            this.listeDeroulanteUnity1.Location = new System.Drawing.Point(45, 82);
+            this.listeDeroulanteUnity1.Name = "listeDeroulanteUnity1";
+            this.listeDeroulanteUnity1.Size = new System.Drawing.Size(179, 24);
+            this.listeDeroulanteUnity1.TabIndex = 6;
+            this.listeDeroulanteUnity1.UnitySelectionnee = null;
+            // 
             // labelOptionnel
             // 
             this.labelOptionnel.AutoSize = true;
@@ -119,199 +121,104 @@
             this.labelObligatoire.TabIndex = 4;
             this.labelObligatoire.Text = "Obligatoire";
             // 
+            // labelRechercherUnity
+            // 
+            this.labelRechercherUnity.AutoSize = true;
+            this.labelRechercherUnity.Location = new System.Drawing.Point(42, 62);
+            this.labelRechercherUnity.Name = "labelRechercherUnity";
+            this.labelRechercherUnity.Size = new System.Drawing.Size(153, 17);
+            this.labelRechercherUnity.TabIndex = 7;
+            this.labelRechercherUnity.Text = "Selectionné une unité :";
+            // 
+            // numericUpDownObligatoire
+            // 
+            this.numericUpDownObligatoire.Location = new System.Drawing.Point(45, 141);
+            this.numericUpDownObligatoire.Name = "numericUpDownObligatoire";
+            this.numericUpDownObligatoire.Size = new System.Drawing.Size(179, 22);
+            this.numericUpDownObligatoire.TabIndex = 8;
+            this.numericUpDownObligatoire.Enter += new System.EventHandler(this.numericUpDownObligatoire_Enter);
+            // 
+            // numericUpDown2
+            // 
+            this.numericUpDown2.Location = new System.Drawing.Point(287, 84);
+            this.numericUpDown2.Name = "numericUpDown2";
+            this.numericUpDown2.Size = new System.Drawing.Size(179, 22);
+            this.numericUpDown2.TabIndex = 9;
+            this.numericUpDown2.Enter += new System.EventHandler(this.numericUpDown2_Enter);
+            // 
+            // labelOblige
+            // 
+            this.labelOblige.AutoSize = true;
+            this.labelOblige.Location = new System.Drawing.Point(42, 121);
+            this.labelOblige.Name = "labelOblige";
+            this.labelOblige.Size = new System.Drawing.Size(63, 17);
+            this.labelOblige.TabIndex = 10;
+            this.labelOblige.Text = "Minimum";
+            // 
             // panel5
             // 
             this.panel5.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.panel5.Location = new System.Drawing.Point(251, 18);
+            this.panel5.Location = new System.Drawing.Point(257, 11);
             this.panel5.Name = "panel5";
-            this.panel5.Size = new System.Drawing.Size(2, 375);
-            this.panel5.TabIndex = 1;
+            this.panel5.Size = new System.Drawing.Size(2, 189);
+            this.panel5.TabIndex = 11;
             // 
-            // labelQG
+            // labelsupp
             // 
-            this.labelQG.AutoSize = true;
-            this.labelQG.Location = new System.Drawing.Point(32, 91);
-            this.labelQG.Name = "labelQG";
-            this.labelQG.Size = new System.Drawing.Size(30, 17);
-            this.labelQG.TabIndex = 5;
-            this.labelQG.Text = "QG";
+            this.labelsupp.AutoSize = true;
+            this.labelsupp.Location = new System.Drawing.Point(284, 64);
+            this.labelsupp.Name = "labelsupp";
+            this.labelsupp.Size = new System.Drawing.Size(204, 17);
+            this.labelsupp.TabIndex = 12;
+            this.labelsupp.Text = "Unité supplémentaire maximum";
             // 
-            // labelTroupes
+            // buttonSupprimer
             // 
-            this.labelTroupes.AutoSize = true;
-            this.labelTroupes.Location = new System.Drawing.Point(32, 135);
-            this.labelTroupes.Name = "labelTroupes";
-            this.labelTroupes.Size = new System.Drawing.Size(61, 17);
-            this.labelTroupes.TabIndex = 6;
-            this.labelTroupes.Text = "Troupes";
+            this.buttonSupprimer.BackColor = System.Drawing.SystemColors.Window;
+            this.buttonSupprimer.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonSupprimer.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F);
+            this.buttonSupprimer.Location = new System.Drawing.Point(266, 371);
+            this.buttonSupprimer.Name = "buttonSupprimer";
+            this.buttonSupprimer.Size = new System.Drawing.Size(143, 29);
+            this.buttonSupprimer.TabIndex = 45;
+            this.buttonSupprimer.Text = "Supprimer";
+            this.buttonSupprimer.UseVisualStyleBackColor = false;
             // 
-            // labelSoutien
+            // buttonAjouter
             // 
-            this.labelSoutien.AutoSize = true;
-            this.labelSoutien.Location = new System.Drawing.Point(32, 230);
-            this.labelSoutien.Name = "labelSoutien";
-            this.labelSoutien.Size = new System.Drawing.Size(56, 17);
-            this.labelSoutien.TabIndex = 7;
-            this.labelSoutien.Text = "Soutien";
+            this.buttonAjouter.BackColor = System.Drawing.SystemColors.Window;
+            this.buttonAjouter.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonAjouter.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F);
+            this.buttonAjouter.Location = new System.Drawing.Point(110, 371);
+            this.buttonAjouter.Name = "buttonAjouter";
+            this.buttonAjouter.Size = new System.Drawing.Size(143, 29);
+            this.buttonAjouter.TabIndex = 46;
+            this.buttonAjouter.Text = "Ajouter";
+            this.buttonAjouter.UseVisualStyleBackColor = false;
+            this.buttonAjouter.Click += new System.EventHandler(this.buttonAjouter_Click);
             // 
-            // labelElite
+            // errorProvider1
             // 
-            this.labelElite.AutoSize = true;
-            this.labelElite.Location = new System.Drawing.Point(32, 281);
-            this.labelElite.Name = "labelElite";
-            this.labelElite.Size = new System.Drawing.Size(35, 17);
-            this.labelElite.TabIndex = 8;
-            this.labelElite.Text = "Elite";
+            this.errorProvider1.ContainerControl = this;
             // 
-            // labelAtqRapide
+            // ValidationProvider
             // 
-            this.labelAtqRapide.AutoSize = true;
-            this.labelAtqRapide.Location = new System.Drawing.Point(32, 180);
-            this.labelAtqRapide.Name = "labelAtqRapide";
-            this.labelAtqRapide.Size = new System.Drawing.Size(101, 17);
-            this.labelAtqRapide.TabIndex = 9;
-            this.labelAtqRapide.Text = "Attaque rapide";
-            // 
-            // numericUpDownQG
-            // 
-            this.numericUpDownQG.Location = new System.Drawing.Point(168, 89);
-            this.numericUpDownQG.Name = "numericUpDownQG";
-            this.numericUpDownQG.Size = new System.Drawing.Size(55, 22);
-            this.numericUpDownQG.TabIndex = 10;
-            // 
-            // numericUpDownTroupes
-            // 
-            this.numericUpDownTroupes.Location = new System.Drawing.Point(168, 133);
-            this.numericUpDownTroupes.Name = "numericUpDownTroupes";
-            this.numericUpDownTroupes.Size = new System.Drawing.Size(55, 22);
-            this.numericUpDownTroupes.TabIndex = 11;
-            // 
-            // numericUpDownAtqRapide
-            // 
-            this.numericUpDownAtqRapide.Location = new System.Drawing.Point(168, 178);
-            this.numericUpDownAtqRapide.Name = "numericUpDownAtqRapide";
-            this.numericUpDownAtqRapide.Size = new System.Drawing.Size(55, 22);
-            this.numericUpDownAtqRapide.TabIndex = 12;
-            // 
-            // numericUpDownSoutien
-            // 
-            this.numericUpDownSoutien.Location = new System.Drawing.Point(168, 228);
-            this.numericUpDownSoutien.Name = "numericUpDownSoutien";
-            this.numericUpDownSoutien.Size = new System.Drawing.Size(55, 22);
-            this.numericUpDownSoutien.TabIndex = 13;
-            // 
-            // numericUpDownElite
-            // 
-            this.numericUpDownElite.Location = new System.Drawing.Point(168, 279);
-            this.numericUpDownElite.Name = "numericUpDownElite";
-            this.numericUpDownElite.Size = new System.Drawing.Size(55, 22);
-            this.numericUpDownElite.TabIndex = 14;
-            // 
-            // numericUpDownMElite
-            // 
-            this.numericUpDownMElite.Location = new System.Drawing.Point(433, 282);
-            this.numericUpDownMElite.Name = "numericUpDownMElite";
-            this.numericUpDownMElite.Size = new System.Drawing.Size(55, 22);
-            this.numericUpDownMElite.TabIndex = 24;
-            // 
-            // numericUpDownMSoutien
-            // 
-            this.numericUpDownMSoutien.Location = new System.Drawing.Point(433, 231);
-            this.numericUpDownMSoutien.Name = "numericUpDownMSoutien";
-            this.numericUpDownMSoutien.Size = new System.Drawing.Size(55, 22);
-            this.numericUpDownMSoutien.TabIndex = 23;
-            // 
-            // numericUpDownMATQRapide
-            // 
-            this.numericUpDownMATQRapide.Location = new System.Drawing.Point(433, 181);
-            this.numericUpDownMATQRapide.Name = "numericUpDownMATQRapide";
-            this.numericUpDownMATQRapide.Size = new System.Drawing.Size(55, 22);
-            this.numericUpDownMATQRapide.TabIndex = 22;
-            // 
-            // numericUpDownMTroupes
-            // 
-            this.numericUpDownMTroupes.Location = new System.Drawing.Point(433, 136);
-            this.numericUpDownMTroupes.Name = "numericUpDownMTroupes";
-            this.numericUpDownMTroupes.Size = new System.Drawing.Size(55, 22);
-            this.numericUpDownMTroupes.TabIndex = 21;
-            // 
-            // numericUpDownMQG
-            // 
-            this.numericUpDownMQG.Location = new System.Drawing.Point(433, 92);
-            this.numericUpDownMQG.Name = "numericUpDownMQG";
-            this.numericUpDownMQG.Size = new System.Drawing.Size(55, 22);
-            this.numericUpDownMQG.TabIndex = 20;
-            // 
-            // labelMATQRapide
-            // 
-            this.labelMATQRapide.AutoSize = true;
-            this.labelMATQRapide.Location = new System.Drawing.Point(263, 183);
-            this.labelMATQRapide.Name = "labelMATQRapide";
-            this.labelMATQRapide.Size = new System.Drawing.Size(162, 17);
-            this.labelMATQRapide.TabIndex = 19;
-            this.labelMATQRapide.Text = "Maximum attaque rapide";
-            // 
-            // labelMElite
-            // 
-            this.labelMElite.AutoSize = true;
-            this.labelMElite.Location = new System.Drawing.Point(263, 284);
-            this.labelMElite.Name = "labelMElite";
-            this.labelMElite.Size = new System.Drawing.Size(35, 17);
-            this.labelMElite.TabIndex = 18;
-            this.labelMElite.Text = "Elite";
-            // 
-            // labelMSoutien
-            // 
-            this.labelMSoutien.AutoSize = true;
-            this.labelMSoutien.Location = new System.Drawing.Point(263, 233);
-            this.labelMSoutien.Name = "labelMSoutien";
-            this.labelMSoutien.Size = new System.Drawing.Size(116, 17);
-            this.labelMSoutien.TabIndex = 17;
-            this.labelMSoutien.Text = "Maximum soutien";
-            // 
-            // labelMTroupes
-            // 
-            this.labelMTroupes.AutoSize = true;
-            this.labelMTroupes.Location = new System.Drawing.Point(263, 138);
-            this.labelMTroupes.Name = "labelMTroupes";
-            this.labelMTroupes.Size = new System.Drawing.Size(118, 17);
-            this.labelMTroupes.TabIndex = 16;
-            this.labelMTroupes.Text = "Maximum troupes";
-            // 
-            // labelMQG
-            // 
-            this.labelMQG.AutoSize = true;
-            this.labelMQG.Location = new System.Drawing.Point(263, 94);
-            this.labelMQG.Name = "labelMQG";
-            this.labelMQG.Size = new System.Drawing.Size(92, 17);
-            this.labelMQG.TabIndex = 15;
-            this.labelMQG.Text = "Maximum QG";
+            this.ValidationProvider.ContainerControl = this;
             // 
             // FicheScenario
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.Controls.Add(this.numericUpDownMElite);
-            this.Controls.Add(this.numericUpDownMSoutien);
-            this.Controls.Add(this.numericUpDownMATQRapide);
-            this.Controls.Add(this.numericUpDownMTroupes);
-            this.Controls.Add(this.numericUpDownMQG);
-            this.Controls.Add(this.labelMATQRapide);
-            this.Controls.Add(this.labelMElite);
-            this.Controls.Add(this.labelMSoutien);
-            this.Controls.Add(this.labelMTroupes);
-            this.Controls.Add(this.labelMQG);
-            this.Controls.Add(this.numericUpDownElite);
-            this.Controls.Add(this.numericUpDownSoutien);
-            this.Controls.Add(this.numericUpDownAtqRapide);
-            this.Controls.Add(this.numericUpDownTroupes);
-            this.Controls.Add(this.numericUpDownQG);
-            this.Controls.Add(this.labelAtqRapide);
-            this.Controls.Add(this.labelElite);
-            this.Controls.Add(this.labelSoutien);
-            this.Controls.Add(this.labelTroupes);
-            this.Controls.Add(this.labelQG);
+            this.Controls.Add(this.buttonAjouter);
+            this.Controls.Add(this.buttonSupprimer);
+            this.Controls.Add(this.labelsupp);
             this.Controls.Add(this.panel5);
+            this.Controls.Add(this.labelOblige);
+            this.Controls.Add(this.numericUpDown2);
+            this.Controls.Add(this.numericUpDownObligatoire);
+            this.Controls.Add(this.labelRechercherUnity);
+            this.Controls.Add(this.listeDeroulanteUnity1);
+            this.Controls.Add(this.ficheSpecifiteScenario1);
             this.Controls.Add(this.labelObligatoire);
             this.Controls.Add(this.labelOptionnel);
             this.Controls.Add(this.panel3);
@@ -320,16 +227,10 @@
             this.Controls.Add(this.panel1);
             this.Name = "FicheScenario";
             this.Size = new System.Drawing.Size(509, 407);
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownQG)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownTroupes)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownAtqRapide)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownSoutien)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownElite)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownMElite)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownMSoutien)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownMATQRapide)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownMTroupes)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownMQG)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownObligatoire)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ValidationProvider)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -341,28 +242,19 @@
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.Panel panel4;
         private System.Windows.Forms.Panel panel3;
+        private FicheSpecifiteScenario ficheSpecifiteScenario1;
+        private ListeDeroulanteUnity listeDeroulanteUnity1;
         private System.Windows.Forms.Label labelOptionnel;
         private System.Windows.Forms.Label labelObligatoire;
+        private System.Windows.Forms.Label labelRechercherUnity;
+        private System.Windows.Forms.NumericUpDown numericUpDownObligatoire;
+        private System.Windows.Forms.NumericUpDown numericUpDown2;
+        private System.Windows.Forms.Label labelOblige;
         private System.Windows.Forms.Panel panel5;
-        private System.Windows.Forms.Label labelQG;
-        private System.Windows.Forms.Label labelTroupes;
-        private System.Windows.Forms.Label labelSoutien;
-        private System.Windows.Forms.Label labelElite;
-        private System.Windows.Forms.Label labelAtqRapide;
-        private System.Windows.Forms.NumericUpDown numericUpDownQG;
-        private System.Windows.Forms.NumericUpDown numericUpDownTroupes;
-        private System.Windows.Forms.NumericUpDown numericUpDownAtqRapide;
-        private System.Windows.Forms.NumericUpDown numericUpDownSoutien;
-        private System.Windows.Forms.NumericUpDown numericUpDownElite;
-        private System.Windows.Forms.NumericUpDown numericUpDownMElite;
-        private System.Windows.Forms.NumericUpDown numericUpDownMSoutien;
-        private System.Windows.Forms.NumericUpDown numericUpDownMATQRapide;
-        private System.Windows.Forms.NumericUpDown numericUpDownMTroupes;
-        private System.Windows.Forms.NumericUpDown numericUpDownMQG;
-        private System.Windows.Forms.Label labelMATQRapide;
-        private System.Windows.Forms.Label labelMElite;
-        private System.Windows.Forms.Label labelMSoutien;
-        private System.Windows.Forms.Label labelMTroupes;
-        private System.Windows.Forms.Label labelMQG;
+        private System.Windows.Forms.Label labelsupp;
+        private System.Windows.Forms.Button buttonSupprimer;
+        private System.Windows.Forms.Button buttonAjouter;
+        private System.Windows.Forms.ErrorProvider errorProvider1;
+        private System.Windows.Forms.ErrorProvider ValidationProvider;
     }
 }
