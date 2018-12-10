@@ -115,7 +115,16 @@ namespace EICE_WARGAME
                 Page.Utilisateur = Utilisateur;
                 return true;
             });
-        }        
+        }
+
+        private void buttonScenario_Click(object sender, EventArgs e)
+        {
+            Form_Principal.Instance.CreerPageCourante<PageScenario>((Page) =>
+            {
+                Page.Utilisateur = Utilisateur;
+                return true;
+            });
+        }
 
         private void MenuAdmin_Load(object sender, EventArgs e)
         {

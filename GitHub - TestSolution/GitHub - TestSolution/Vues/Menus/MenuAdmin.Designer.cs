@@ -62,6 +62,7 @@
             this.buttonScenario.TabIndex = 0;
             this.buttonScenario.Text = "Scenario";
             this.buttonScenario.UseVisualStyleBackColor = true;
+            this.buttonScenario.Click += new System.EventHandler(this.buttonScenario_Click);
             // 
             // buttonGestionUser
             // 
