@@ -62,6 +62,40 @@ namespace EICE_WARGAME
             m_Utilisateur = null;
             menuAdmin1.MaPageActive = 5;
 
+            // Création d'une instance de type stuff, y attacher les méthodes permettant de gérer les erreurs d'édition
+            m_StuffEnEdition = new Stuff();
+            m_StuffEnEdition.SurErreur += StuffEnEdition_SurErreur;
+            m_StuffEnEdition.AvantChangement += StuffEnEdition_AvantChangement;
+            m_StuffEnEdition.ApresChangement += StuffEnEdition_ApresChangement;
+
+            z_ficheEquipement.Enabled = false;
+            
+            // L'utilisateur ne peut pas encoder de nom tant qu'il n'a pas choisi un type d'équipement
+            z_textBoxNomEquipement.Enabled = false;
+            // Visibilité est cochée par défaut
+            z_checkBoxVisibility.Checked = true;
+
+            z_listeDeroulanteStuff.Enabled = false;
+            z_listeDeroulanteFeature.Enabled = false;
+            z_textBoxValeur.Enabled = false;
+
+            z_listeDeroulanteFaction.Enabled = false;
+            z_listeDeroulanteSousFaction.Enabled = false;
+            z_listeDeroulanteUnity.Enabled = false;
+            z_listeDeroulanteSubUnity.Enabled = false;
+            z_listeDeroulanteCharRank.Enabled = false;
+            z_numericUpDownCout.Enabled = false;
+            z_numericUpDownCout.Enabled = false;
+            z_numericUpDownMinimum.Enabled = false;
+            z_numericUpDownMaximum.Enabled = false;
+
+            q_buttonAjouter.Enabled = false;
+            q_buttonAjouterCaract.Enabled = false;
+            q_buttonModifier.Enabled = false;
+            q_buttonSupprimer.Enabled = false;
+            q_buttonAjouterEquipable.Enabled = false;
+
+
             #region Initialisation de la ListView des caractéristiques
             listViewCaracteristiques.View = View.Details;
             listViewCaracteristiques.Columns.Clear();
@@ -84,18 +118,9 @@ namespace EICE_WARGAME
             z_listeDeroulanteType.Type = Program.GMBD.EnumererType(null, null, null, PDSGBD.MyDB.CreerCodeSql("ty_name"));
             // Attacher la méthode qui doit se produire lorsqu'il y a un changement de sélection
             z_listeDeroulanteType.SurChangementSelection += ListeTypeChangementSelection;
-           
-            // Création d'une instance de type stuff, y attacher quelques méthodes
-            m_StuffEnEdition = new Stuff();
-            m_StuffEnEdition.SurErreur += StuffEnEdition_SurErreur;
-            m_StuffEnEdition.AvantChangement += StuffEnEdition_AvantChangement;
-            m_StuffEnEdition.ApresChangement += StuffEnEdition_ApresChangement;
-
-            // L'utilisateur ne peut pas encoder de nom tant qu'il n'a pas choisi un type d'équipement
-            z_textBoxNomEquipement.Enabled = false;
-            // Visibilité est cochée par défaut
-            z_checkBoxVisibility.Checked = true;
-
+        
+             
+          
             // TODO: Modifier la page de la manière suivante:
             // Ajouter la modification de l'équipement 
             //                  * Vérifier unicité qd ajoute caractéristique à équipement
@@ -107,11 +132,9 @@ namespace EICE_WARGAME
             z_listeDeroulanteStuff.Stuff = Program.GMBD.EnumererStuff(null, null, null, PDSGBD.MyDB.CreerCodeSql("st_name"));
             z_listeDeroulanteStuff.SurChangementSelection += ListeStuffChangementSelection;
 
-            z_listeDeroulanteFeature.Feature = Program.GMBD.EnumererFeature(null, null, null, PDSGBD.MyDB.CreerCodeSql("fe_name"));
-            z_listeDeroulanteFeature.SurChangementSelection += ListeFeatureChangementSelection;
+            
 
-            z_listeDeroulanteFaction.Faction = Program.GMBD.EnumererFaction(null, null, null, PDSGBD.MyDB.CreerCodeSql("fa_name"));
-            z_listeDeroulanteFaction.SurChangementSelection += ListeDeroulanteFaction_SurChangementSelection;
+            
 
             
             
@@ -153,18 +176,28 @@ namespace EICE_WARGAME
             // le type de l'équipement en édition devient le type sélectionné
             m_StuffEnEdition.Type = z_listeDeroulanteType.TypeSelectionne;
 
-            // j'autorise d'entrer du texte dans le textbox
+            /*// j'autorise d'entrer du texte dans le textbox
             if ((z_textBoxNomEquipement.Enabled == false))
             {
                 z_textBoxNomEquipement.Enabled = true;
                 z_textBoxNomEquipement.Enabled = true;
-            }
+            }*/
+
+            z_ficheEquipement.Enabled = true;
+
+            // L'utilisateur ne peut pas encoder de nom tant qu'il n'a pas choisi un type d'équipement
+            z_textBoxNomEquipement.Enabled = true;
+            
+            z_listeDeroulanteStuff.Enabled = true;
+            
 
 
             z_ficheEquipement.Equipement = Program.GMBD.EnumererStuff(null, null, new MyDB.CodeSql("WHERE st_fk_type_id = {0}", z_listeDeroulanteType.TypeSelectionne.Id),
                                                                         new MyDB.CodeSql("ORDER BY st_name"));
             z_ficheEquipement.SurChangementSelection += FicheEquipement_SurChangementSelection;
         }
+
+        
 
         /// <summary>
         /// Méthode permettant d'ajouter un nouvel équipement
@@ -320,7 +353,9 @@ namespace EICE_WARGAME
 
         private void ListeFeatureChangementSelection(object sender, EventArgs e)
         {
-            //Ajouter qqch
+            
+            q_buttonAjouterCaract.Enabled = true;
+            
 
         }
 
@@ -363,6 +398,8 @@ namespace EICE_WARGAME
 
         private void ListeDeroulanteFaction_SurChangementSelection(object sender, EventArgs e)
         {
+           
+            
             z_listeDeroulanteSousFaction.Enabled = true;
             z_listeDeroulanteSousFaction.ResetTextSousFaction();
             Program.GMBD.MettreAJourListeSousFaction(z_listeDeroulanteSousFaction, z_listeDeroulanteFaction.FactionSelectionnee.Id);
@@ -376,6 +413,7 @@ namespace EICE_WARGAME
         /// <param name="e"></param>
         private void ListeDeroulanteSousFaction_SurChangementSelection(object sender, EventArgs e)
         {
+            z_listeDeroulanteUnity.Enabled = true;
             z_listeDeroulanteUnity.Unity = Program.GMBD.EnumererUnity(null, null, null, PDSGBD.MyDB.CreerCodeSql("un_name"));
             z_listeDeroulanteUnity.SurChangementSelection += ListeDeroulanteUnity_SurChangementSelection;
         }
@@ -391,6 +429,7 @@ namespace EICE_WARGAME
 
         private void ListeDeroulanteSubUnity_SurChangementSelection(object sender, EventArgs e)
         {
+            z_listeDeroulanteCharRank.Enabled = true;
             z_listeDeroulanteSubUnity.SubUnitySelectionnee.Unity = z_listeDeroulanteUnity.UnitySelectionnee;
             z_listeDeroulanteCharRank.Charact = Program.GMBD.EnumererPersonnage(null, new MyDB.CodeSql(@"JOIN charact ON char_rank.cr_fk_ch_id = charact.ch_id 
                                                                                                         JOIN rank ON char_rank.cr_fk_ra_id = rank.ra_id
@@ -405,10 +444,7 @@ namespace EICE_WARGAME
                                                                                                     PDSGBD.MyDB.CreerCodeSql("ORDER BY ch_name"));
         }
 
-        
-
-
-
+       
         private void PageAjouterEquipements_Load(object sender, EventArgs e)
         {
             // Permet de passer l'utilisateur par le controler MenuAdmin
@@ -422,6 +458,19 @@ namespace EICE_WARGAME
         {
             if ((z_listeDeroulanteType.TypeSelectionne != null) && (z_ficheEquipement.EquipementSelectionne != null))
             {
+                
+                q_buttonModifier.Enabled = true;
+                q_buttonSupprimer.Enabled = true;
+                
+                z_listeDeroulanteFeature.Feature = Program.GMBD.EnumererFeature(null, null, null, PDSGBD.MyDB.CreerCodeSql("fe_name"));
+                z_listeDeroulanteFeature.SurChangementSelection += ListeFeatureChangementSelection;
+                z_listeDeroulanteFeature.Enabled = true;
+                z_textBoxValeur.Enabled = true;
+
+                z_listeDeroulanteFaction.Faction = Program.GMBD.EnumererFaction(null, null, null, PDSGBD.MyDB.CreerCodeSql("fa_name"));
+                z_listeDeroulanteFaction.SurChangementSelection += ListeDeroulanteFaction_SurChangementSelection;
+                z_listeDeroulanteFaction.Enabled = true;
+
                 m_Stuff = new Stuff();
                 m_Stuff = z_ficheEquipement.EquipementSelectionne;
                 m_Stuff.Type = z_listeDeroulanteType.TypeSelectionne;
@@ -430,10 +479,17 @@ namespace EICE_WARGAME
 
         private void ListeDeroulanteCharRank_SurChangementSelection(object sender, EventArgs e)
         {
+            z_numericUpDownCout.Enabled = true;
+            z_numericUpDownCout.Enabled = true;
+            z_numericUpDownMinimum.Enabled = true;
+            z_numericUpDownMaximum.Enabled = true;
+
             m_CharRank = new CharactRank();
             m_CharRank = z_listeDeroulanteCharRank.CharactSelectionnee;
             m_CharRank.Caractere.SousFaction = z_listeDeroulanteSousFaction.SousFactionSelectionnee;
             m_CharRank.SubUnity = z_listeDeroulanteSubUnity.SubUnitySelectionnee;
+
+            q_buttonAjouterEquipable.Enabled = m_CharRank.EstValide;
         }
 
         private void buttonAjouterEquipable_Click(object sender, EventArgs e)
