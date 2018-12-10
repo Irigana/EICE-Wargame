@@ -36,7 +36,7 @@
             this.buttonSousFaction = new System.Windows.Forms.Button();
             this.buttonFaction = new System.Windows.Forms.Button();
             this.buttonGestionUser = new System.Windows.Forms.Button();
-            this.buttonCaractère = new System.Windows.Forms.Button();
+            this.buttonPersonnage = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxLogoDashboard)).BeginInit();
             this.SuspendLayout();
             // 
@@ -143,24 +143,24 @@
             this.buttonGestionUser.UseVisualStyleBackColor = false;
             this.buttonGestionUser.Click += new System.EventHandler(this.buttonGestionUser_Click);
             // 
-            // buttonCaractère
+            // buttonPersonnage
             // 
-            this.buttonCaractère.BackColor = System.Drawing.SystemColors.Window;
-            this.buttonCaractère.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.buttonCaractère.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
-            this.buttonCaractère.Location = new System.Drawing.Point(624, 400);
-            this.buttonCaractère.Name = "buttonCaractère";
-            this.buttonCaractère.Size = new System.Drawing.Size(300, 55);
-            this.buttonCaractère.TabIndex = 8;
-            this.buttonCaractère.Text = "Caractères";
-            this.buttonCaractère.UseVisualStyleBackColor = false;
-            this.buttonCaractère.Click += new System.EventHandler(this.buttonCaractère_Click);
+            this.buttonPersonnage.BackColor = System.Drawing.SystemColors.Window;
+            this.buttonPersonnage.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonPersonnage.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
+            this.buttonPersonnage.Location = new System.Drawing.Point(624, 400);
+            this.buttonPersonnage.Name = "buttonPersonnage";
+            this.buttonPersonnage.Size = new System.Drawing.Size(300, 55);
+            this.buttonPersonnage.TabIndex = 8;
+            this.buttonPersonnage.Text = "Personnages";
+            this.buttonPersonnage.UseVisualStyleBackColor = false;
+            this.buttonPersonnage.Click += new System.EventHandler(this.buttonCaractère_Click);
             // 
             // PageMenuDashboard
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.Controls.Add(this.buttonCaractère);
+            this.Controls.Add(this.buttonPersonnage);
             this.Controls.Add(this.buttonGestionUser);
             this.Controls.Add(this.buttonFaction);
             this.Controls.Add(this.buttonSousFaction);
@@ -188,6 +188,6 @@
         private System.Windows.Forms.Button buttonSousFaction;
         private System.Windows.Forms.Button buttonFaction;
         private System.Windows.Forms.Button buttonGestionUser;
-        private System.Windows.Forms.Button buttonCaractère;
+        private System.Windows.Forms.Button buttonPersonnage;
     }
 }

@@ -55,8 +55,8 @@ namespace EICE_WARGAME
                     buttonSousFaction.Location = new Point(475, 235);
                     buttonSousFaction.Size = new Size(225, 45);
 
-                    buttonCaractère.Location = new Point(475, 285);
-                    buttonCaractère.Size = new Size(225, 45);
+                    buttonPersonnage.Location = new Point(475, 285);
+                    buttonPersonnage.Size = new Size(225, 45);
 
                     buttonEquipement.Location = new Point(475, 335);
                     buttonEquipement.Size = new Size(225, 45);
