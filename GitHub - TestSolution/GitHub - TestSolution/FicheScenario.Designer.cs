@@ -97,7 +97,7 @@
             // 
             this.listeDeroulanteUnity1.Location = new System.Drawing.Point(45, 82);
             this.listeDeroulanteUnity1.Name = "listeDeroulanteUnity1";
-            this.listeDeroulanteUnity1.Size = new System.Drawing.Size(179, 24);
+            this.listeDeroulanteUnity1.Size = new System.Drawing.Size(179, 25);
             this.listeDeroulanteUnity1.TabIndex = 6;
             this.listeDeroulanteUnity1.UnitySelectionnee = null;
             // 
@@ -126,9 +126,9 @@
             this.labelRechercherUnity.AutoSize = true;
             this.labelRechercherUnity.Location = new System.Drawing.Point(42, 62);
             this.labelRechercherUnity.Name = "labelRechercherUnity";
-            this.labelRechercherUnity.Size = new System.Drawing.Size(153, 17);
+            this.labelRechercherUnity.Size = new System.Drawing.Size(160, 17);
             this.labelRechercherUnity.TabIndex = 7;
-            this.labelRechercherUnity.Text = "Selectionné une unité :";
+            this.labelRechercherUnity.Text = "Selectionnez une unité :";
             // 
             // numericUpDownObligatoire
             // 

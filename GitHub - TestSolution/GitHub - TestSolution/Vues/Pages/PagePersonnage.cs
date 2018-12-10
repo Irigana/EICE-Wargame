@@ -104,8 +104,7 @@ namespace EICE_WARGAME
                                     JOIN char_rank ON subunity.su_id = char_rank.cr_sub_id
                                     JOIN charact ON char_rank.cr_fk_ch_id = charact.ch_id                                    
                                     JOIN subfaction ON charact.ch_fk_subfaction_id = subfaction.sf_id
-                                    JOIN faction ON subfaction.sf_fk_faction_id = faction.fa_id "),
-                new MyDB.CodeSql("WHERE fa_id = {0} AND sf_id = {1}", listeDeroulanteFaction1.FactionSelectionnee.Id, listeDeroulanteSousFaction1.SousFactionSelectionnee.Id),
+                                    JOIN faction ON subfaction.sf_fk_faction_id = faction.fa_id "),null,
                 new MyDB.CodeSql("ORDER BY un_name"));
             listeDeroulanteUnity1.SurChangementSelection += ListeDeroulanteUnity_SurChangementSelection;
 
@@ -120,8 +119,8 @@ namespace EICE_WARGAME
                                     JOIN charact ON char_rank.cr_fk_ch_id = charact.ch_id                                    
                                     JOIN subfaction ON charact.ch_fk_subfaction_id = subfaction.sf_id
                                     JOIN faction ON subfaction.sf_fk_faction_id = faction.fa_id "),
-                new MyDB.CodeSql("WHERE fa_id = {0} AND sf_id = {1} AND un_id = {2}",
-                listeDeroulanteFaction1.FactionSelectionnee.Id, listeDeroulanteSousFaction1.SousFactionSelectionnee.Id, listeDeroulanteUnity1.UnitySelectionnee.Id),
+                new MyDB.CodeSql("WHERE un_id = {0}",
+                listeDeroulanteUnity1.UnitySelectionnee.Id),
                 new MyDB.CodeSql("ORDER BY su_name"));
             listeDeroulanteSubUnity1.SurChangementSelection += ListeDeroulanteSubUnity_SurChangementSelection;
         }
