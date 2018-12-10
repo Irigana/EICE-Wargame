@@ -1,6 +1,6 @@
 ﻿namespace EICE_WARGAME
 {
-    partial class ListBoxCharacter
+    partial class ListeDeroulanteCharRank
     {
         /// <summary> 
         /// Variable nécessaire au concepteur.
@@ -28,30 +28,31 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.checkedListBoxCharacter = new System.Windows.Forms.CheckedListBox();
+            this.comboBoxCharRank = new System.Windows.Forms.ComboBox();
             this.SuspendLayout();
             // 
-            // checkedListBoxCharacter
+            // comboBoxCharRank
             // 
-            this.checkedListBoxCharacter.FormattingEnabled = true;
-            this.checkedListBoxCharacter.Location = new System.Drawing.Point(0, 3);
-            this.checkedListBoxCharacter.Name = "checkedListBoxCharacter";
-            this.checkedListBoxCharacter.Size = new System.Drawing.Size(316, 242);
-            this.checkedListBoxCharacter.TabIndex = 0;
+            this.comboBoxCharRank.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.comboBoxCharRank.FormattingEnabled = true;
+            this.comboBoxCharRank.Location = new System.Drawing.Point(0, 0);
+            this.comboBoxCharRank.Name = "comboBoxCharRank";
+            this.comboBoxCharRank.Size = new System.Drawing.Size(260, 24);
+            this.comboBoxCharRank.TabIndex = 0;
             // 
-            // ListBoxCharacter
+            // ListeDeroulanteCharRank
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.Controls.Add(this.checkedListBoxCharacter);
-            this.Name = "ListBoxCharacter";
-            this.Size = new System.Drawing.Size(320, 260);
+            this.Controls.Add(this.comboBoxCharRank);
+            this.Name = "ListeDeroulanteCharRank";
+            this.Size = new System.Drawing.Size(260, 30);
             this.ResumeLayout(false);
 
         }
 
         #endregion
 
-        private System.Windows.Forms.CheckedListBox checkedListBoxCharacter;
+        private System.Windows.Forms.ComboBox comboBoxCharRank;
     }
 }

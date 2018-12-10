@@ -181,7 +181,7 @@ namespace EICE_WARGAME
                 {
                     if (!int.Equals(value, m_Max))
                     {
-                        ModifierChamp(Champ.Cout, ref m_Max, value);
+                        ModifierChamp(Champ.Max, ref m_Max, value);
                     }
                 }
             }
@@ -272,7 +272,7 @@ namespace EICE_WARGAME
         {
             get
             {
-                return new PDSGBD.MyDB.CodeSql("scr_fk_stuff_id = {0}, scr_fk_rank_id = {1},scr_max = {2}, scr_min = {3}, scr_cost = {4}", Stuff.Id, CharactRank.Id, Max, Min, Cout);
+                return new PDSGBD.MyDB.CodeSql("scr_fk_stuff_id = {0}, scr_fk_char_rank_id = {1},scr_cost = {2}, scr_min = {3}, scr_max = {4}", Stuff.Id, CharactRank.Id, Cout, Min, Max);
             }
         }
 

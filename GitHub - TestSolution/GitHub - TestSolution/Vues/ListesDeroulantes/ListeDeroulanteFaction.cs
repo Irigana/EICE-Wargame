@@ -97,10 +97,6 @@ namespace EICE_WARGAME
             this.Size = new Size(this.Size.Width, comboBoxListeFaction.Height);
         }
 
-        private void comboBoxListeFaction_TextChanged(object sender, EventArgs e)
-        {
-
-        }        
         
     }
 

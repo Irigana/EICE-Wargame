@@ -10,11 +10,13 @@ using System.Windows.Forms;
 
 namespace EICE_WARGAME
 {
-    public partial class ListBoxCharacter : UserControl
+    public partial class ListeDeroulanteCharRank : UserControl
     {
-        public ListBoxCharacter()
+        public ListeDeroulanteCharRank()
         {
             InitializeComponent();
+            this.SizeChanged += ListeDeroulanteCharRank_SizeChanged;
+            comboBoxCharRank.SelectedIndexChanged += ComboCharact_SelectedIndexChanged;
         }
         
         private class Element
@@ -39,43 +41,35 @@ namespace EICE_WARGAME
         {
             get
             {
-                return checkedListBoxCharacter.Items.OfType<Element>().Select(Element => Element.Charact);
+                return comboBoxCharRank.Items.OfType<Element>().Select(Element => Element.Charact);
             }
             set
             {
                 if (value != null)
                 {
-                    checkedListBoxCharacter.Items.Clear();
+                    comboBoxCharRank.Items.Clear();
                     foreach (CharactRank Charact in value)
                     {
-                        checkedListBoxCharacter.Items.Add(new Element(Charact));
+                        comboBoxCharRank.Items.Add(new Element(Charact));
                     }
                 }
             }
         }
         
-        public IEnumerable<CharactRank> CharactSelectionnes
-        {
-            get
-            {
-                return checkedListBoxCharacter.CheckedItems.OfType<Element>().Select(Element => Element.Charact);
-            }
-        }
-
         public int SelectedIndex(int Index)
         {
-            return checkedListBoxCharacter.SelectedIndex = Index - 1;
+            return comboBoxCharRank.SelectedIndex = Index - 1;
         }
 
         public CharactRank CharactSelectionnee
         {
             get
             {
-                return (checkedListBoxCharacter.SelectedItem is Element) ? (checkedListBoxCharacter.SelectedItem as Element).Charact : null;
+                return (comboBoxCharRank.SelectedItem is Element) ? (comboBoxCharRank.SelectedItem as Element).Charact : null;
             }
             set
             {
-                checkedListBoxCharacter.SelectedItem = (value != null) ? new Element(value) : null;
+                comboBoxCharRank.SelectedItem = (value != null) ? new Element(value) : null;
             }
         }
 
@@ -89,9 +83,9 @@ namespace EICE_WARGAME
             }
         }
 
-        private void ListeDeroulanteType_SizeChanged(object sender, EventArgs e)
+        private void ListeDeroulanteCharRank_SizeChanged(object sender, EventArgs e)
         {
-            this.Size = new Size(this.Size.Width, checkedListBoxCharacter.Height);
+            this.Size = new Size(this.Size.Width, comboBoxCharRank.Height);
         }
     }
 }

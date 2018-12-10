@@ -70,11 +70,11 @@
     <Compile Include="Vues\Fiches\FicheEquipement.Designer.cs">
       <DependentUpon>FicheEquipement.cs</DependentUpon>
     </Compile>
-    <Compile Include="Vues\ListesDeroulantes\ListBoxCharacter.cs">
+    <Compile Include="Vues\ListesDeroulantes\ListeDeroulanteCharRank.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="Vues\ListesDeroulantes\ListBoxCharacter.Designer.cs">
-      <DependentUpon>ListBoxCharacter.cs</DependentUpon>
+    <Compile Include="Vues\ListesDeroulantes\ListeDeroulanteCharRank.Designer.cs">
+      <DependentUpon>ListeDeroulanteCharRank.cs</DependentUpon>
     </Compile>
     <Compile Include="Vues\ListesDeroulantes\ListeDeroulanteSubUnity.cs">
       <SubType>UserControl</SubType>
@@ -303,8 +303,8 @@
     <EmbeddedResource Include="Vues\Fiches\FicheEquipement.resx">
       <DependentUpon>FicheEquipement.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Vues\ListesDeroulantes\ListBoxCharacter.resx">
-      <DependentUpon>ListBoxCharacter.cs</DependentUpon>
+    <EmbeddedResource Include="Vues\ListesDeroulantes\ListeDeroulanteCharRank.resx">
+      <DependentUpon>ListeDeroulanteCharRank.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Vues\ListesDeroulantes\ListeDeroulanteSubUnity.resx">
       <DependentUpon>ListeDeroulanteSubUnity.cs</DependentUpon>

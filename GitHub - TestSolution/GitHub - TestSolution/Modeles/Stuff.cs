@@ -142,6 +142,8 @@ namespace EICE_WARGAME
         {
             m_Name = string.Empty;
             m_Features = new List<StuffFeature>();
+            m_Type = null;
+            m_Visibility = 1;
         }
 
         /// <summary>
@@ -150,11 +152,12 @@ namespace EICE_WARGAME
         /// <param name="Id">Identifiant de cette Stuff</param>
         /// <param name="Name">Nom de cette Stuff</param>
         /// <param name="Cost">Visibilité de cette Stuff</param>
-        public Stuff(int Id, string Name, byte Visibility)
+        public Stuff(int Id, string Name, Type type, byte Visibility)
             : this()
         {
             DefinirId(Id);
             this.Name = Name;
+            this.Type = Type;
             this.Visibility = Visibility;
         }
 
@@ -171,7 +174,7 @@ namespace EICE_WARGAME
             {
                 DefinirId(Enregistrement.ValeurChampComplet<int>(NomDeLaTablePrincipale, "st_id"));
                 this.Name = Enregistrement.ValeurChampComplet<string>(NomDeLaTablePrincipale, "st_name");
-                
+                this.Type = new Type(Connexion, Enregistrement);
                 this.Visibility = Enregistrement.ValeurChampComplet<byte>(NomDeLaTablePrincipale, "st_visibility");
 			}
         }
