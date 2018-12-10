@@ -93,15 +93,7 @@ namespace EICE_WARGAME
                         });
         }
 
-        private void labelFigurine_Click(object sender, EventArgs e)
-        {
 
-        }
-
-        private void labelSubunity_Click(object sender, EventArgs e)
-        {
-
-        }
 
         private void ficheEquipement1_Load(object sender, EventArgs e)
         {
@@ -148,54 +140,5 @@ namespace EICE_WARGAME
 
         }
 
-        private void labelMesFigurines_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void labelQuantite_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void labelEquipement_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void labelRang_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void labelUnity_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void labelSousFaction_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void labelFaction_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void panelLigneSeparatrice_Paint(object sender, PaintEventArgs e)
-        {
-
-        }
-
-        private void labelMaCollection_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void dataGridView2_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
-
-        }
     }
 }
