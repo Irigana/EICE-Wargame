@@ -41,9 +41,10 @@
             this.labelMenuPrincipal.AutoSize = true;
             this.labelMenuPrincipal.Font = new System.Drawing.Font("Microsoft Sans Serif", 30F);
             this.labelMenuPrincipal.ForeColor = System.Drawing.Color.SlateGray;
-            this.labelMenuPrincipal.Location = new System.Drawing.Point(608, 81);
+            this.labelMenuPrincipal.Location = new System.Drawing.Point(456, 66);
+            this.labelMenuPrincipal.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.labelMenuPrincipal.Name = "labelMenuPrincipal";
-            this.labelMenuPrincipal.Size = new System.Drawing.Size(351, 58);
+            this.labelMenuPrincipal.Size = new System.Drawing.Size(279, 46);
             this.labelMenuPrincipal.TabIndex = 0;
             this.labelMenuPrincipal.Text = "Menu principal";
             // 
@@ -53,9 +54,10 @@
             this.buttonMesArmees.FlatAppearance.BorderColor = System.Drawing.SystemColors.ControlDarkDark;
             this.buttonMesArmees.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonMesArmees.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F);
-            this.buttonMesArmees.Location = new System.Drawing.Point(635, 290);
+            this.buttonMesArmees.Location = new System.Drawing.Point(476, 236);
+            this.buttonMesArmees.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.buttonMesArmees.Name = "buttonMesArmees";
-            this.buttonMesArmees.Size = new System.Drawing.Size(300, 55);
+            this.buttonMesArmees.Size = new System.Drawing.Size(225, 45);
             this.buttonMesArmees.TabIndex = 4;
             this.buttonMesArmees.Text = "Mes armées";
             this.buttonMesArmees.UseVisualStyleBackColor = false;
@@ -68,9 +70,10 @@
             this.buttonDeconnexion.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F);
             this.buttonDeconnexion.Image = global::EICE_WARGAME.Properties.Resources.LogOffLogo30px;
             this.buttonDeconnexion.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.buttonDeconnexion.Location = new System.Drawing.Point(635, 479);
+            this.buttonDeconnexion.Location = new System.Drawing.Point(476, 389);
+            this.buttonDeconnexion.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.buttonDeconnexion.Name = "buttonDeconnexion";
-            this.buttonDeconnexion.Size = new System.Drawing.Size(300, 55);
+            this.buttonDeconnexion.Size = new System.Drawing.Size(225, 45);
             this.buttonDeconnexion.TabIndex = 6;
             this.buttonDeconnexion.Text = "Se déconnecter";
             this.buttonDeconnexion.UseVisualStyleBackColor = false;
@@ -84,12 +87,14 @@
             this.buttonMaCollection.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F);
             this.buttonMaCollection.Image = global::EICE_WARGAME.Properties.Resources.FigurineWarhammer30px;
             this.buttonMaCollection.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.buttonMaCollection.Location = new System.Drawing.Point(635, 200);
+            this.buttonMaCollection.Location = new System.Drawing.Point(476, 162);
+            this.buttonMaCollection.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.buttonMaCollection.Name = "buttonMaCollection";
-            this.buttonMaCollection.Size = new System.Drawing.Size(300, 55);
+            this.buttonMaCollection.Size = new System.Drawing.Size(225, 45);
             this.buttonMaCollection.TabIndex = 5;
             this.buttonMaCollection.Text = "Ma collection";
             this.buttonMaCollection.UseVisualStyleBackColor = false;
+            this.buttonMaCollection.Click += new System.EventHandler(this.buttonMaCollection_Click);
             // 
             // buttonDashboard
             // 
@@ -99,9 +104,10 @@
             this.buttonDashboard.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F);
             this.buttonDashboard.Image = global::EICE_WARGAME.Properties.Resources.Dashboard40px;
             this.buttonDashboard.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.buttonDashboard.Location = new System.Drawing.Point(635, 380);
+            this.buttonDashboard.Location = new System.Drawing.Point(476, 309);
+            this.buttonDashboard.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.buttonDashboard.Name = "buttonDashboard";
-            this.buttonDashboard.Size = new System.Drawing.Size(300, 55);
+            this.buttonDashboard.Size = new System.Drawing.Size(225, 45);
             this.buttonDashboard.TabIndex = 3;
             this.buttonDashboard.Text = "Dashboard";
             this.buttonDashboard.UseVisualStyleBackColor = false;
@@ -110,15 +116,16 @@
             // buttonOptionsUser1
             // 
             this.buttonOptionsUser1.BackColor = System.Drawing.Color.Transparent;
-            this.buttonOptionsUser1.Location = new System.Drawing.Point(1276, 3);
+            this.buttonOptionsUser1.Location = new System.Drawing.Point(957, 2);
+            this.buttonOptionsUser1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.buttonOptionsUser1.Name = "buttonOptionsUser1";
-            this.buttonOptionsUser1.Size = new System.Drawing.Size(221, 45);
+            this.buttonOptionsUser1.Size = new System.Drawing.Size(166, 37);
             this.buttonOptionsUser1.TabIndex = 1;
             this.buttonOptionsUser1.Utilisateur = null;
             // 
             // PageMenuPrincipal
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.Controls.Add(this.buttonDeconnexion);
             this.Controls.Add(this.buttonMaCollection);
@@ -126,8 +133,9 @@
             this.Controls.Add(this.buttonDashboard);
             this.Controls.Add(this.buttonOptionsUser1);
             this.Controls.Add(this.labelMenuPrincipal);
+            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.Name = "PageMenuPrincipal";
-            this.Size = new System.Drawing.Size(1500, 750);
+            this.Size = new System.Drawing.Size(1125, 609);
             this.Load += new System.EventHandler(this.PageMenuPrincipal_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
