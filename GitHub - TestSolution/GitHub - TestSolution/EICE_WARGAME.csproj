@@ -46,10 +46,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="FichePersonnageEquipement.cs">
+    <Compile Include="Vues\Fiches\FichePersonnageEquipement.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="FichePersonnageEquipement.Designer.cs">
+    <Compile Include="Vues\Fiches\FichePersonnageEquipement.Designer.cs">
       <DependentUpon>FichePersonnageEquipement.cs</DependentUpon>
     </Compile>
     <Compile Include="Vues\Fiches\FicheEquipementSurFigurine.cs">
@@ -321,7 +321,7 @@
     <Compile Include="Vues\TextBoxAvecTextInvisible.Designer.cs">
       <DependentUpon>TextBoxAvecTextInvisible.cs</DependentUpon>
     </Compile>
-    <EmbeddedResource Include="FichePersonnageEquipement.resx">
+    <EmbeddedResource Include="Vues\Fiches\FichePersonnageEquipement.resx">
       <DependentUpon>FichePersonnageEquipement.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Vues\Fiches\FicheEquipementSurFigurine.resx">
