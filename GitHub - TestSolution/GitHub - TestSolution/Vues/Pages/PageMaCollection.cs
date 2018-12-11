@@ -47,24 +47,8 @@ namespace EICE_WARGAME
             Program.GMBD.MettreAJourListeFaction(listeDeroulanteFaction1);
             listeDeroulanteFaction1.SurChangementSelection += ListeDeroulanteFaction_SurChangementSelection;
 
-            ficheEquipement1.SurChangementFiltre += (s, ev) =>
-            {
-                if (ficheEquipement1.TexteFiltreEquipement != "")
-                {
-                    ficheEquipement1.Equipement = Program.GMBD.EnumererStuff(
-                        null,
-                        null,
-                        new MyDB.CodeSql("WHERE stuff.st_name LIKE {0}",
-                                         string.Format(c_CritereQuiContient, ficheEquipement1.TexteFiltreEquipement)),
-                        new MyDB.CodeSql("ORDER BY st_name"));
-                }
-                else
-                {
-                    Program.GMBD.EnumererStuff(null, null, null, PDSGBD.MyDB.CreerCodeSql("st_name"));
-                }
 
 
-            };
         }
 
         private void ListeDeroulanteFaction_SurChangementSelection(object sender, EventArgs e)
@@ -104,6 +88,17 @@ namespace EICE_WARGAME
                                                                                                              listeDeroulanteFaction1.FactionSelectionnee.Id, listeDeroulanteSousFaction1.SousFactionSelectionnee.Id,
                                                                                                              listeDeroulanteUnity1.UnitySelectionnee.Id, listeDeroulanteSubUnity1.SubUnitySelectionnee.Id),
                                                                                                     new MyDB.CodeSql(@"GROUP BY ch_id ORDER BY ch_name"));
+        }
+
+        private void ListeDeroulanteChar_SurChangementSelection(object sender, EventArgs e)
+        { 
+                    ficheEquipement1.Equipement = Program.GMBD.EnumererStuff(
+                        null,
+                        new MyDB.CodeSql(@"JOIN stuff_char_rank ON scr_fk_stuff_id = st_id
+                                           JOIN char_rank ON scr_fk_char_rank_id = cr_id
+                                           JOIN charact ON cr_fk_ch_id = ch_id"),
+                        new MyDB.CodeSql("WHERE ch_id = {0}",listeDeroulanteChar1.CharactSelectionnee.Id),
+                        new MyDB.CodeSql("ORDER BY st_name"));
         }
 
         private void CreationFigurine()
@@ -173,8 +168,13 @@ namespace EICE_WARGAME
 
         private void AjoutEquipementSurFigurine(object sender, EventArgs e)
         {
-            //INSERT INTO figurine_stuff (fs_fk_figurine_id, fs_fk_stuff_id, fs_fk_user_id) VALUES (???, ficheEquipement1.EquipementSelectionne.Id,  m_Utilisateur.Id)
+            //INSERT INTO figurine_stuff (fs_fk_figurine_id, fs_fk_stuff_id, fs_fk_user_id) VALUES (Figurine_Id, ficheEquipement1.EquipementSelectionne.Id,  m_Utilisateur.Id)
 
+        }
+
+        private void EnleverEquipementSurFigurine(object sender, EventArgs e)
+        {
+            //DELETE * FROM figurine_stuff
         }
     }
 }
