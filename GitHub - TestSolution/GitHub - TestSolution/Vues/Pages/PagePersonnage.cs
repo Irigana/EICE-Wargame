@@ -167,12 +167,10 @@ namespace EICE_WARGAME
                 new MyDB.CodeSql(@"JOIN char_rank ON char_rank_feature.crf_fk_char_rank_id = char_rank.cr_id
                 JOIN charact ON char_rank.cr_fk_ch_id = charact.ch_id
                 JOIN rank ON rank.ra_id = char_rank.cr_fk_ra_id
-                JOIN subunity ON char_rank.cr_sub_id = subunity.su_id
-                JOIN unity ON subunity.su_fk_unity_id = unity.un_id
-                JOIN subfaction ON charact.ch_fk_subfaction_id = subfaction.sf_id
-                JOIN faction ON subfaction.sf_fk_faction_id = faction.fa_id                 
+                JOIN subunity ON char_rank.cr_sub_id = subunity.su_id                
+                JOIN subfaction ON charact.ch_fk_subfaction_id = subfaction.sf_id                                 
                 JOIN feature ON feature.fe_id = crf_fk_feature_id"),
-                new MyDB.CodeSql("WHERE fa_id = {0} AND sf_id = {1} AND un_id = {2} AND su_id = {3} AND ch_id = {4} AND ra_id = {5}",
+                new MyDB.CodeSql("WHERE subfaction.sf_fk_faction_id = {0} AND sf_id = {1} AND subunity.su_fk_unity_id = {2} AND su_id = {3} AND ch_id = {4} AND ra_id = {5}",
                 listeDeroulanteFaction1.FactionSelectionnee.Id, listeDeroulanteSousFaction1.SousFactionSelectionnee.Id,
                 listeDeroulanteUnity1.UnitySelectionnee.Id, listeDeroulanteSubUnity1.SubUnitySelectionnee.Id,
                 ficheCaractere1.CaractereSelectionne.Id,listeDeroulanteRank1.RankSelectionnee.Id),
@@ -470,10 +468,9 @@ namespace EICE_WARGAME
                         Charact CaractereExiste = Program.GMBD.EnumererCaractere(null, 
                             new MyDB.CodeSql(@"JOIN char_rank ON charact.ch_id = char_rank.cr_fk_ch_id
                                                 JOIN subfaction ON charact.ch_fk_subfaction_id = subfaction.sf_id                                                
-                                                JOIN faction ON subfaction.sf_fk_faction_id = faction.fa_id
                                                 JOIN subunity ON char_rank.cr_sub_id = subunity.su_id"),
-                            new MyDB.CodeSql(@"WHERE faction.fa_id = {0} AND subfaction.sf_id = {1}
-                                                AND charact.ch_name = {2} AND AND char_rank.cr_fk_ra_id = {3}
+                            new MyDB.CodeSql(@"WHERE subfaction.sf_fk_faction_id = {0} AND subfaction.sf_id = {1}
+                                                AND charact.ch_name = {2} AND char_rank.cr_fk_ra_id = {3}
                                                 AND subunity.su_id = {4} AND subunity.su_fk_unity_id = {5}", 
                             listeDeroulanteFaction1.FactionSelectionnee.Id, listeDeroulanteSousFaction1.SousFactionSelectionnee.Id,
                             textBoxCaractere.Text, listeDeroulanteRank1.RankSelectionnee.Id,
@@ -488,11 +485,10 @@ namespace EICE_WARGAME
                     else if (ficheCaractere1.CaractereSelectionne == null)
                     {
                         Charact CaractereExiste = Program.GMBD.EnumererCaractere(null,
-                            new MyDB.CodeSql(@"JOIN char_rank ON charact.ch_id = char_rank.cr_fk_ch_id
+                            new MyDB.CodeSql(@"JOIN cehar_rank ON charact.ch_id = char_rank.cr_fk_ch_id
                                                 JOIN subfaction ON charact.ch_fk_subfaction_id = subfaction.sf_id                                                
-                                                JOIN faction ON subfaction.sf_fk_faction_id = faction.fa_id
                                                 JOIN subunity ON char_rank.cr_sub_id = subunity.su_id"),
-                             new MyDB.CodeSql(@"WHERE faction.fa_id = {0} AND subfaction.sf_id = {1}
+                             new MyDB.CodeSql(@"WHERE subfaction.sf_fk_faction_id = {0} AND subfaction.sf_id = {1}
                                                 AND charact.ch_name = {2} AND char_rank.cr_fk_ra_id = {5}
                                                 AND subunity.su_id = {3} AND subunity.su_fk_unity_id = {4}",
                             listeDeroulanteFaction1.FactionSelectionnee.Id, listeDeroulanteSousFaction1.SousFactionSelectionnee.Id,
@@ -671,10 +667,8 @@ namespace EICE_WARGAME
                                                                                                         JOIN char_rank ON char_rank_feature.crf_fk_char_rank_id = char_rank.cr_id                                                                                                      
                                                                                                         JOIN charact ON char_rank.cr_fk_ch_id = charact.ch_id 
                                                                                                         JOIN subunity ON char_rank.cr_sub_id = subunity.su_id
-                                                                                                        JOIN unity ON subunity.su_fk_unity_id = unity.un_id
-                                                                                                        JOIN subfaction ON charact.ch_fk_subfaction_id = subfaction.sf_id                                                
-                                                                                                        JOIN faction ON subfaction.sf_fk_faction_id = faction.fa_id"),
-                                                                             new MyDB.CodeSql("WHERE char_rank_feature.crf_fk_char_rank_id = {0} AND subfaction.sf_id = {1} AND faction.fa_id = {2}  AND subunity.su_id = {3} AND unity.un_id = {4} AND char_rank.cr_fk_ra_id = {5} AND feature.fe_id = {6} ",
+                                                                                                        JOIN subfaction ON charact.ch_fk_subfaction_id = subfaction.sf_id"),
+                                                                             new MyDB.CodeSql("WHERE char_rank_feature.crf_fk_char_rank_id = {0} AND subfaction.sf_id = {1} AND subfaction.sf_fk_faction_id = {2}  AND subunity.su_id = {3} AND subunity.su_fk_unity_id = {4} AND char_rank.cr_fk_ra_id = {5} AND feature.fe_id = {6} ",
                                                                              ficheCaractere1.CaractereSelectionne.Id, listeDeroulanteSousFaction1.SousFactionSelectionnee.Id, listeDeroulanteFaction1.FactionSelectionnee.Id,
                                                                              listeDeroulanteSubUnity1.SubUnitySelectionnee.Id, listeDeroulanteUnity1.UnitySelectionnee.Id, listeDeroulanteRank1.RankSelectionnee.Id, listeDeroulanteFeature1.FeatureSelectionnee.Id), null).FirstOrDefault();
                             if (FeatureExiste != null)
@@ -690,10 +684,8 @@ namespace EICE_WARGAME
                                                                                                         JOIN char_rank ON char_rank_feature.crf_fk_char_rank_id = char_rank.cr_id                                                                                                      
                                                                                                         JOIN charact ON char_rank.cr_fk_ch_id = charact.ch_id 
                                                                                                         JOIN subunity ON char_rank.cr_sub_id = subunity.su_id
-                                                                                                        JOIN unity ON subunity.su_fk_unity_id = unity.un_id
-                                                                                                        JOIN subfaction ON charact.ch_fk_subfaction_id = subfaction.sf_id                                                
-                                                                                                        JOIN faction ON subfaction.sf_fk_faction_id = faction.fa_id"),
-                                                                             new MyDB.CodeSql("WHERE charact.ch_id <> {0} AND subfaction.sf_id = {1} AND faction.fa_id = {2}  AND subunity.su_id = {3} AND unity.un_id = {4} AND char_rank.cr_fk_ra_id = {5} AND feature.fe_id = {6} AND char_rank_feature.crf_fk_char_rank_id = {7}",
+                                                                                                        JOIN subfaction ON charact.ch_fk_subfaction_id = subfaction.sf_id"),
+                                                                             new MyDB.CodeSql("WHERE charact.ch_id <> {0} AND subfaction.sf_id = {1} AND subfaction.sf_fk_faction_id = {2}  AND subunity.su_id = {3} AND subunity.su_fk_unity_id = {4} AND char_rank.cr_fk_ra_id = {5} AND feature.fe_id = {6} AND char_rank_feature.crf_fk_char_rank_id = {7}",
                                                                              ficheCaractere1.CaractereSelectionne.Id, listeDeroulanteSousFaction1.SousFactionSelectionnee.Id, listeDeroulanteFaction1.FactionSelectionnee.Id,
                                                                              listeDeroulanteSubUnity1.SubUnitySelectionnee.Id, listeDeroulanteUnity1.UnitySelectionnee.Id, listeDeroulanteRank1.RankSelectionnee.Id, listeDeroulanteFeature1.FeatureSelectionnee.Id, ficheCaractere1.CaractereSelectionne.Id), null).FirstOrDefault();
                             if (FeatureExiste != null)

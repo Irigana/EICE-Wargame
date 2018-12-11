@@ -57,7 +57,7 @@ namespace EICE_WARGAME
                 }
                 else
                 {
-                    if ((m_FigurineStuff == null) || int.Equals(value.Id, m_FigurineStuff.Id))
+                    if ((m_FigurineStuff == null) || !int.Equals(value.Id, m_FigurineStuff.Id))
                     {
                         ModifierChamp(Champ.FigurineStuff, ref m_FigurineStuff, value);
                     }
@@ -82,7 +82,7 @@ namespace EICE_WARGAME
                 }
                 else
                 {
-                    if ((m_ArmyUnity == null) || int.Equals(value.Id, m_ArmyUnity.Id))
+                    if ((m_ArmyUnity == null) || !int.Equals(value.Id, m_ArmyUnity.Id))
                     {
                         ModifierChamp(Champ.ArmyUnity, ref m_ArmyUnity, value);
                     }
@@ -107,7 +107,7 @@ namespace EICE_WARGAME
                 }
                 else
                 {
-                    if ((m_Rank == null) || int.Equals(value.Id, m_Rank.Id))
+                    if ((m_Rank == null) || !int.Equals(value.Id, m_Rank.Id))
                     {
                         ModifierChamp(Champ.Rank, ref m_Rank, value);
                     }

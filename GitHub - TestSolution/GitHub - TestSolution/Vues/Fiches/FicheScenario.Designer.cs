@@ -87,7 +87,7 @@
             // 
             // ficheSpecifiteScenario1
             // 
-            this.ficheSpecifiteScenario1.Location = new System.Drawing.Point(110, 206);
+            this.ficheSpecifiteScenario1.Location = new System.Drawing.Point(109, 198);
             this.ficheSpecifiteScenario1.Name = "ficheSpecifiteScenario1";
             this.ficheSpecifiteScenario1.Size = new System.Drawing.Size(299, 162);
             this.ficheSpecifiteScenario1.SpecificiteSelectionne = null;
@@ -160,7 +160,7 @@
             this.panel5.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.panel5.Location = new System.Drawing.Point(257, 11);
             this.panel5.Name = "panel5";
-            this.panel5.Size = new System.Drawing.Size(2, 189);
+            this.panel5.Size = new System.Drawing.Size(2, 180);
             this.panel5.TabIndex = 11;
             // 
             // labelsupp
@@ -177,7 +177,7 @@
             this.buttonSupprimer.BackColor = System.Drawing.SystemColors.Window;
             this.buttonSupprimer.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonSupprimer.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F);
-            this.buttonSupprimer.Location = new System.Drawing.Point(266, 371);
+            this.buttonSupprimer.Location = new System.Drawing.Point(266, 365);
             this.buttonSupprimer.Name = "buttonSupprimer";
             this.buttonSupprimer.Size = new System.Drawing.Size(143, 29);
             this.buttonSupprimer.TabIndex = 45;
@@ -189,7 +189,7 @@
             this.buttonAjouter.BackColor = System.Drawing.SystemColors.Window;
             this.buttonAjouter.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonAjouter.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F);
-            this.buttonAjouter.Location = new System.Drawing.Point(110, 371);
+            this.buttonAjouter.Location = new System.Drawing.Point(109, 365);
             this.buttonAjouter.Name = "buttonAjouter";
             this.buttonAjouter.Size = new System.Drawing.Size(143, 29);
             this.buttonAjouter.TabIndex = 46;

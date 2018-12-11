@@ -49,7 +49,7 @@ namespace EICE_WARGAME
                 }
                 else
                 {
-                    if ((m_SubUnity == null) || int.Equals(value.Id, m_SubUnity.Id))
+                    if ((m_SubUnity == null) || !int.Equals(value.Id, m_SubUnity.Id))
                     {
                         ModifierChamp(Champ.SubUnity, ref m_SubUnity, value);
                     }
@@ -74,7 +74,7 @@ namespace EICE_WARGAME
                 }
                 else
                 {
-                    if ((m_Stuff == null) || int.Equals(value.Id, m_Stuff.Id))
+                    if ((m_Stuff == null) || !int.Equals(value.Id, m_Stuff.Id))
                     {
                         ModifierChamp(Champ.Stuff, ref m_Stuff, value);
                     }

@@ -68,7 +68,7 @@ namespace EICE_WARGAME
                 }
                 else
                 {
-                    if ((m_Charact == null) || int.Equals(value.Id, m_Charact.Id))
+                    if ((m_Charact == null) || !int.Equals(value.Id, m_Charact.Id))
                     {
                         ModifierChamp(Champ.Caractere, ref m_Charact, value);
                     }
@@ -93,7 +93,7 @@ namespace EICE_WARGAME
                 }
                 else
                 {
-                    if ((m_SubUnity == null) || int.Equals(value.Id, m_SubUnity.Id))
+                    if ((m_SubUnity == null) || !int.Equals(value.Id, m_SubUnity.Id))
                     {
                         ModifierChamp(Champ.SubUnity, ref m_SubUnity, value);
                     }
@@ -118,7 +118,7 @@ namespace EICE_WARGAME
                 }
                 else
                 {
-                    if (m_Rank == null || value.Id != m_Rank.Id)
+                    if ((m_Rank == null) || !int.Equals(value.Id, m_Rank.Id))
                     {
                         ModifierChamp(Champ.Rank, ref m_Rank, value);
                     }
