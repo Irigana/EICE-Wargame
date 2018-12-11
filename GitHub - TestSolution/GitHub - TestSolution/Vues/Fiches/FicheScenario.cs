@@ -13,24 +13,11 @@ namespace EICE_WARGAME
 {
     public partial class FicheScenario : UserControl
     {
-        private Scenario m_ScenarioLie;
+        private Scenario_Camp m_ScenarioLie;
 
         private int m_NumeroDeCamp;
 
-        private bool m_AuMoinsUneSpecificite = false;
-
-        public bool AuMoinsUneSpecificite
-        {
-            get
-            {
-                return m_AuMoinsUneSpecificite;
-            }
-            set
-            {
-                m_AuMoinsUneSpecificite = true;
-            }
-        }
-        public Scenario Scenario
+        public Scenario_Camp Scenario
         {
             get
             {
@@ -67,13 +54,22 @@ namespace EICE_WARGAME
         {
             InitializeComponent();
 
+            listeDeroulanteUnity1.SurChangementSelection += ListeUnity_SurChangementSelection;
+            
+
             Bitmap ImageRessource = new Bitmap(Properties.Resources.Validation25px);
             ValidationProvider.Icon = Icon.FromHandle(ImageRessource.GetHicon());
         }
 
         public void ChargerFiches()
-        {            
-            ficheSpecifiteScenario1.SpecifiteScenario = Program.GMBD.EnumererCondiCamp(null, new MyDB.CodeSql("JOIN scenario_camp ON cc_fk_scenario_camp_id = sca_id JOIN unity on cc_fk_unity_id = un_id"), new MyDB.CodeSql("WHERE scenario_camp.sca_fk_camp_id = {0} AND sca_fk_scenario_id = {1}", NumeroDeCamp, Scenario.Id), null);
+        {
+            listeDeroulanteUnity1.Unity = Program.GMBD.EnumererUnity(null, null, null, new MyDB.CodeSql("ORDER BY un_name"));
+            ficheSpecifiteScenario1.SpecifiteScenario = Program.GMBD.EnumererCondiCamp(null, new MyDB.CodeSql("JOIN scenario_camp ON cc_fk_scenario_camp_id = sca_id JOIN unity on cc_fk_unity_id = un_id"), new MyDB.CodeSql("WHERE scenario_camp.sca_fk_camp_id = {0} AND condi_camp.cc_fk_scenario_camp_id = {1}", NumeroDeCamp, Scenario.Id), null);
+        }
+
+        public void ChargerSpecificite()
+        {
+            ficheSpecifiteScenario1.SpecifiteScenario = Program.GMBD.EnumererCondiCamp(null, new MyDB.CodeSql("JOIN scenario_camp ON cc_fk_scenario_camp_id = sca_id JOIN unity on cc_fk_unity_id = un_id"), new MyDB.CodeSql("WHERE scenario_camp.sca_fk_camp_id = {0} AND condi_camp.cc_fk_scenario_camp_id = {1}", NumeroDeCamp, Scenario.Id), null);       
         }
 
         public void ClearFiche()
@@ -91,10 +87,15 @@ namespace EICE_WARGAME
             NouvelleSpecificite.Max = Convert.ToInt32(numericUpDown2.Value);
             if (NouvelleSpecificite.EstValide && Program.GMBD.AjouterSpecificite(NouvelleSpecificite))
             {
-                m_AuMoinsUneSpecificite = true;
+                ChargerSpecificite();
                 ValidationProvider.SetError(ficheSpecifiteScenario1, "Spécificité correctement rajoutée");
             }
 
+        }
+
+        private void ListeUnity_SurChangementSelection(object sender, EventArgs e)
+        {
+            buttonAjouter.Enabled = true;
         }
 
         public void DesactiverButtonSurSelection()

@@ -35,6 +35,8 @@ namespace EICE_WARGAME
 
         private Scenario_Camp m_ScenarioCampUn;
 
+        private Scenario_Camp m_ScenarioEnEdition;
+
         public PageScenario()
         {
             InitializeComponent();
@@ -63,16 +65,15 @@ namespace EICE_WARGAME
                 Scenario ScenarioEnEdition = listeDeroulanteScenario1.ScenarioSelectionnee;
 
 
-                m_ScenarioCampUn = Program.GMBD.EnumererScenarioCamp(null, new MyDB.CodeSql(@"JOIN scenareio ON scenario.sc_id = scenario_camp.sca_fk_scenario_id 
-                                                                                                        JOIN camp ON camp.ca_id = scenario_camp.sca_fk_camp_id 
-                                                                                                        JOIN condi_camp ON scenario_camp.sca_id = condi_camp.cc_fk_scenario_camp_id"),
+                m_ScenarioCampUn = Program.GMBD.EnumererScenarioCamp(null, new MyDB.CodeSql(@"JOIN scenario ON scenario.sc_id = scenario_camp.sca_fk_scenario_id 
+                                                                                                        JOIN camp ON camp.ca_id = scenario_camp.sca_fk_camp_id "),
                                                                                       new MyDB.CodeSql("WHERE scenario.sc_id = {0} ", listeDeroulanteScenario1.ScenarioSelectionnee.Id), null).FirstOrDefault();
 
 
 
                 Scenario_Camp ScenarioSecondCamp = null;
                 // Si il existe 2 camp
-                if (m_ScenarioCampUn.Camp.Id != 3)
+                if ((m_ScenarioCampUn.Camp.Id != 3))
                 {
 
                     labelCampNeutreOuAttaque.Text = "Camp attaquant";
@@ -86,7 +87,7 @@ namespace EICE_WARGAME
                     if (m_ScenarioCampUn.Camp.Id == 1)
                     {
                         ficheScenarioCamp1.NumeroDeCamp = 1;
-                        ficheScenarioCamp1.Scenario = m_ScenarioCampUn.Scenario;
+                        ficheScenarioCamp1.Scenario = m_ScenarioCampUn;
                         ficheScenarioCamp1.ChargerFiches();
 
                         ScenarioSecondCamp = Program.GMBD.EnumererScenarioCamp(null, new MyDB.CodeSql(@"JOIN scenario ON scenario.sc_id = scenario_camp.sca_fk_scenario_id 
@@ -95,7 +96,7 @@ namespace EICE_WARGAME
                                                                                           new MyDB.CodeSql("WHERE scenario.sc_id = {0} AND camp.ca_id = {1}", listeDeroulanteScenario1.ScenarioSelectionnee.Id, 2), null).FirstOrDefault();
 
                         ficheScenarioCamp2.NumeroDeCamp = 2;
-                        ficheScenarioCamp2.Scenario = m_ScenarioCampUn.Scenario;
+                        ficheScenarioCamp2.Scenario = m_ScenarioCampUn;
                         ficheScenarioCamp2.ChargerFiches();
 
                     }
@@ -103,7 +104,7 @@ namespace EICE_WARGAME
                     else if (m_ScenarioCampUn.Camp.Id == 2)
                     {
                         ficheScenarioCamp1.NumeroDeCamp = 1;
-                        ficheScenarioCamp1.Scenario = m_ScenarioCampUn.Scenario;
+                        ficheScenarioCamp1.Scenario = m_ScenarioCampUn;
                         ficheScenarioCamp1.ChargerFiches();
                         ficheScenarioCamp2.Enabled = true;
                         ScenarioSecondCamp = Program.GMBD.EnumererScenarioCamp(null, new MyDB.CodeSql(@"JOIN scenario ON scenario.sc_id = scenario_camp.sca_fk_scenario_id 
@@ -112,7 +113,7 @@ namespace EICE_WARGAME
                                                                                           new MyDB.CodeSql("WHERE scenario.sc_id = {0} AND camp.ca_id = {1}", listeDeroulanteScenario1.ScenarioSelectionnee.Id, 1), null).FirstOrDefault();
 
                         ficheScenarioCamp2.NumeroDeCamp = 2;
-                        ficheScenarioCamp2.Scenario = ScenarioSecondCamp.Scenario;
+                        ficheScenarioCamp2.Scenario = ScenarioSecondCamp;
                         ficheScenarioCamp2.ChargerFiches();
                     }
                 }
@@ -125,7 +126,7 @@ namespace EICE_WARGAME
                     textBox1.Text = m_ScenarioCampUn.Scenario.Name;
                     ficheScenarioCamp2.ClearFiche();
                     ficheScenarioCamp1.NumeroDeCamp = 3;
-                    ficheScenarioCamp1.Scenario = m_ScenarioCampUn.Scenario;
+                    ficheScenarioCamp1.Scenario = m_ScenarioCampUn;
                     ficheScenarioCamp1.ChargerFiches();
                 }
             }
@@ -145,22 +146,37 @@ namespace EICE_WARGAME
         {
             labelCampNeutreOuAttaque.Text = "Attaque";
             labelCampDefense.Text = "Défense";
-            ficheScenarioCamp2.Enabled = true;            
+            ficheScenarioCamp2.Enabled = true;
+            ficheScenarioCamp2.ChargerFiches();
+            ficheScenarioCamp2.Scenario = m_ScenarioEnEdition; 
         }
 
         private void buttonAjouter_Click(object sender, EventArgs e)
         {
-            if (ficheScenarioCamp1.AuMoinsUneSpecificite == true)
-            {
+            if(ficheScenarioCamp2.Enabled == false)
+            { 
                 ficheScenarioCamp1.Enabled = true;
-                Scenario_Camp NouveauScenario = new Scenario_Camp();
-                NouveauScenario.Scenario = new Scenario();
-                NouveauScenario.Scenario.SurErreur += Scenario_SurErreur;
-                NouveauScenario.Scenario.AvantChangement += Scenario_AvantChangement;
-                NouveauScenario.Scenario.Name = textBox1.Text;
-                NouveauScenario.Camp = Program.GMBD.EnumererCamp(null, null, new MyDB.CodeSql("WHERE ca_id = 3"), null).FirstOrDefault();
-                if (NouveauScenario.Scenario.EstValide && Program.GMBD.AjouterScenario(NouveauScenario.Scenario))
+                m_ScenarioEnEdition = new Scenario_Camp();
+                m_ScenarioEnEdition.Scenario = new Scenario();
+                m_ScenarioEnEdition.Scenario.SurErreur += Scenario_SurErreur;
+                m_ScenarioEnEdition.Scenario.AvantChangement += Scenario_AvantChangement;
+                m_ScenarioEnEdition.Scenario.Name = textBox1.Text;
+                m_ScenarioEnEdition.Camp = Program.GMBD.EnumererCamp(null, null, new MyDB.CodeSql("WHERE ca_id = 3"), null).FirstOrDefault();
+                if (m_ScenarioEnEdition.Scenario.EstValide && Program.GMBD.AjouterScenario(m_ScenarioEnEdition.Scenario))
                 {
+                    ficheScenarioCamp1.Enabled = true;
+                    m_ScenarioEnEdition = new Scenario_Camp();
+                    ficheScenarioCamp1.Scenario = m_ScenarioEnEdition;
+                    ficheScenarioCamp1.NumeroDeCamp = 3;
+                    ficheScenarioCamp1.ChargerFiches();
+                    listeDeroulanteScenario1.ScenarioSelectionnee = m_ScenarioEnEdition.Scenario;
+                    buttonAjouter.Enabled = false;
+                    buttonSupprimer.Enabled = true;
+                    buttonAnnuler.Enabled = true;
+
+                    errorProviderValidation.SetError(textBox1, "Votre scénario a été correctement rajouté, veuillez rajouter ses spécificitées");
+
+                    /*
                     if ((NouveauScenario.EstValide) && (Program.GMBD.AjouterScenarioCamp(NouveauScenario)))
                     {
                         ficheScenarioCamp1.Scenario = NouveauScenario.Scenario;
@@ -178,7 +194,7 @@ namespace EICE_WARGAME
                         {
 
                         }
-                    }
+                    }*/
                 }
             }
             else

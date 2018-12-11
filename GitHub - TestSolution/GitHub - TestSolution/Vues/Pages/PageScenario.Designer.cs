@@ -209,7 +209,6 @@
             // 
             // ficheScenarioCamp2
             // 
-            this.ficheScenarioCamp2.AuMoinsUneSpecificite = true;
             this.ficheScenarioCamp2.Enabled = false;
             this.ficheScenarioCamp2.Location = new System.Drawing.Point(906, 318);
             this.ficheScenarioCamp2.Name = "ficheScenarioCamp2";
@@ -220,7 +219,7 @@
             // 
             // ficheScenarioCamp1
             // 
-            this.ficheScenarioCamp1.AuMoinsUneSpecificite = true;
+            this.ficheScenarioCamp1.Enabled = false;
             this.ficheScenarioCamp1.Location = new System.Drawing.Point(315, 318);
             this.ficheScenarioCamp1.Name = "ficheScenarioCamp1";
             this.ficheScenarioCamp1.NumeroDeCamp = 0;

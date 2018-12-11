@@ -52,16 +52,16 @@
     <Compile Include="FichePersonnageEquipement.Designer.cs">
       <DependentUpon>FichePersonnageEquipement.cs</DependentUpon>
     </Compile>
-    <Compile Include="FicheScenario.cs">
+    <Compile Include="Vues\Fiches\FicheScenario.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="FicheScenario.Designer.cs">
+    <Compile Include="Vues\Fiches\FicheScenario.Designer.cs">
       <DependentUpon>FicheScenario.cs</DependentUpon>
     </Compile>
-    <Compile Include="FicheSpecifiteScenario.cs">
+    <Compile Include="Vues\Fiches\FicheSpecifiteScenario.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="FicheSpecifiteScenario.Designer.cs">
+    <Compile Include="Vues\Fiches\FicheSpecifiteScenario.Designer.cs">
       <DependentUpon>FicheSpecifiteScenario.cs</DependentUpon>
     </Compile>
     <Compile Include="Vues\ListesDeroulantes\ListeDeroulanteScenario.cs">
@@ -312,10 +312,10 @@
     <EmbeddedResource Include="FichePersonnageEquipement.resx">
       <DependentUpon>FichePersonnageEquipement.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="FicheScenario.resx">
+    <EmbeddedResource Include="Vues\Fiches\FicheScenario.resx">
       <DependentUpon>FicheScenario.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="FicheSpecifiteScenario.resx">
+    <EmbeddedResource Include="Vues\Fiches\FicheSpecifiteScenario.resx">
       <DependentUpon>FicheSpecifiteScenario.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Vues\ListesDeroulantes\ListeDeroulanteScenario.resx">
