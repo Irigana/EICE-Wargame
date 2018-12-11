@@ -99,12 +99,8 @@ namespace EICE_WARGAME
         private void ListeDeroulanteSousFaction_SurChangementSelection(object sender, EventArgs e)
         {
             listeDeroulanteUnity1.Enabled = true;
-            listeDeroulanteUnity1.Unity = Program.GMBD.EnumererUnity(new MyDB.CodeSql("DISTINCT unity.un_id,unity.un_name"),
-                new MyDB.CodeSql(@"JOIN subunity ON unity.un_id = subunity.su_fk_unity_id
-                                    JOIN char_rank ON subunity.su_id = char_rank.cr_sub_id
-                                    JOIN charact ON char_rank.cr_fk_ch_id = charact.ch_id                                    
-                                    JOIN subfaction ON charact.ch_fk_subfaction_id = subfaction.sf_id
-                                    JOIN faction ON subfaction.sf_fk_faction_id = faction.fa_id "),null,
+            listeDeroulanteUnity1.Unity = Program.GMBD.EnumererUnity(new MyDB.CodeSql("unity.un_id,unity.un_name"),
+                null,null,
                 new MyDB.CodeSql("ORDER BY un_name"));
             listeDeroulanteUnity1.SurChangementSelection += ListeDeroulanteUnity_SurChangementSelection;
 
