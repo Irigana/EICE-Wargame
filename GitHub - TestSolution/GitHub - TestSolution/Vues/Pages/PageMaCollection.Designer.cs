@@ -42,15 +42,15 @@
             this.buttonAjoutEquipementSurPersonnage = new System.Windows.Forms.Button();
             this.buttonEnleverEquipementSurPersonnage = new System.Windows.Forms.Button();
             this.buttonReturn = new System.Windows.Forms.Button();
+            this.buttonValiderFigurineStuff = new System.Windows.Forms.Button();
             this.ficheEquipementSurFigurine1 = new EICE_WARGAME.FicheEquipementSurFigurine();
             this.listeDeroulanteChar1 = new EICE_WARGAME.ListeDeroulanteChar();
-            this.ficheEquipement1 = new EICE_WARGAME.FicheEquipement();
             this.listeDeroulanteSubUnity1 = new EICE_WARGAME.ListeDeroulanteSubUnity();
             this.listeDeroulanteUnity1 = new EICE_WARGAME.ListeDeroulanteUnity();
             this.listeDeroulanteSousFaction1 = new EICE_WARGAME.ListeDeroulanteSousFaction();
             this.listeDeroulanteFaction1 = new EICE_WARGAME.ListeDeroulanteFaction();
             this.buttonOptionsUser1 = new EICE_WARGAME.ButtonOptionsUser();
-            this.buttonValiderFigurineStuff = new System.Windows.Forms.Button();
+            this.ficheEquipementSansRecherche1 = new EICE_WARGAME.FicheEquipementSansRecherche();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -208,15 +208,23 @@
             this.buttonReturn.UseVisualStyleBackColor = true;
             this.buttonReturn.Click += new System.EventHandler(this.buttonReturn_Click);
             // 
+            // buttonValiderFigurineStuff
+            // 
+            this.buttonValiderFigurineStuff.Location = new System.Drawing.Point(430, 260);
+            this.buttonValiderFigurineStuff.Name = "buttonValiderFigurineStuff";
+            this.buttonValiderFigurineStuff.Size = new System.Drawing.Size(75, 23);
+            this.buttonValiderFigurineStuff.TabIndex = 31;
+            this.buttonValiderFigurineStuff.Text = "Valider";
+            this.buttonValiderFigurineStuff.UseVisualStyleBackColor = true;
+            // 
             // ficheEquipementSurFigurine1
             // 
             this.ficheEquipementSurFigurine1.EquipementSelectionne = null;
             this.ficheEquipementSurFigurine1.Location = new System.Drawing.Point(308, 324);
-            this.ficheEquipementSurFigurine1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.ficheEquipementSurFigurine1.Margin = new System.Windows.Forms.Padding(2);
             this.ficheEquipementSurFigurine1.Name = "ficheEquipementSurFigurine1";
             this.ficheEquipementSurFigurine1.Size = new System.Drawing.Size(220, 240);
             this.ficheEquipementSurFigurine1.TabIndex = 30;
-            this.ficheEquipementSurFigurine1.TexteFiltreEquipement = "";
             // 
             // listeDeroulanteChar1
             // 
@@ -226,17 +234,6 @@
             this.listeDeroulanteChar1.Name = "listeDeroulanteChar1";
             this.listeDeroulanteChar1.Size = new System.Drawing.Size(218, 21);
             this.listeDeroulanteChar1.TabIndex = 24;
-            // 
-            // ficheEquipement1
-            // 
-            this.ficheEquipement1.EquipementSelectionne = null;
-            this.ficheEquipement1.Location = new System.Drawing.Point(49, 324);
-            this.ficheEquipement1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
-            this.ficheEquipement1.Name = "ficheEquipement1";
-            this.ficheEquipement1.Size = new System.Drawing.Size(220, 245);
-            this.ficheEquipement1.TabIndex = 21;
-            this.ficheEquipement1.TexteFiltreEquipement = "";
-            this.ficheEquipement1.Load += new System.EventHandler(this.ficheEquipement1_Load);
             // 
             // listeDeroulanteSubUnity1
             // 
@@ -289,26 +286,26 @@
             this.buttonOptionsUser1.Utilisateur = null;
             this.buttonOptionsUser1.Load += new System.EventHandler(this.buttonOptionsUser1_Load);
             // 
-            // buttonValiderFigurineStuff
+            // ficheEquipementSansRecherche1
             // 
-            this.buttonValiderFigurineStuff.Location = new System.Drawing.Point(430, 260);
-            this.buttonValiderFigurineStuff.Name = "buttonValiderFigurineStuff";
-            this.buttonValiderFigurineStuff.Size = new System.Drawing.Size(75, 23);
-            this.buttonValiderFigurineStuff.TabIndex = 31;
-            this.buttonValiderFigurineStuff.Text = "Valider";
-            this.buttonValiderFigurineStuff.UseVisualStyleBackColor = true;
+            this.ficheEquipementSansRecherche1.EquipementSelectionne = null;
+            this.ficheEquipementSansRecherche1.Location = new System.Drawing.Point(48, 324);
+            this.ficheEquipementSansRecherche1.Margin = new System.Windows.Forms.Padding(2);
+            this.ficheEquipementSansRecherche1.Name = "ficheEquipementSansRecherche1";
+            this.ficheEquipementSansRecherche1.Size = new System.Drawing.Size(220, 240);
+            this.ficheEquipementSansRecherche1.TabIndex = 32;
             // 
             // PageMaCollection
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.ficheEquipementSansRecherche1);
             this.Controls.Add(this.buttonValiderFigurineStuff);
             this.Controls.Add(this.ficheEquipementSurFigurine1);
             this.Controls.Add(this.buttonEnleverEquipementSurPersonnage);
             this.Controls.Add(this.buttonAjoutEquipementSurPersonnage);
             this.Controls.Add(this.listeDeroulanteChar1);
             this.Controls.Add(this.labelSubunity);
-            this.Controls.Add(this.ficheEquipement1);
             this.Controls.Add(this.numericUpDown1);
             this.Controls.Add(this.listeDeroulanteSubUnity1);
             this.Controls.Add(this.listeDeroulanteUnity1);
@@ -352,12 +349,12 @@
         private ListeDeroulanteUnity listeDeroulanteUnity1;
         private ListeDeroulanteSubUnity listeDeroulanteSubUnity1;
         private System.Windows.Forms.NumericUpDown numericUpDown1;
-        private FicheEquipement ficheEquipement1;
         private System.Windows.Forms.Label labelSubunity;
         private ListeDeroulanteChar listeDeroulanteChar1;
         private System.Windows.Forms.Button buttonAjoutEquipementSurPersonnage;
         private System.Windows.Forms.Button buttonEnleverEquipementSurPersonnage;
         private FicheEquipementSurFigurine ficheEquipementSurFigurine1;
         private System.Windows.Forms.Button buttonValiderFigurineStuff;
+        private FicheEquipementSansRecherche ficheEquipementSansRecherche1;
     }
 }

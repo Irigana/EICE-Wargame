@@ -1,6 +1,6 @@
 ﻿namespace EICE_WARGAME
 {
-    partial class FicheEquipementSurFigurine
+    partial class FicheEquipementSansRecherche
     {
         /// <summary> 
         /// Variable nécessaire au concepteur.
@@ -41,13 +41,13 @@
             this.listViewEquipement.TabIndex = 1;
             this.listViewEquipement.UseCompatibleStateImageBehavior = false;
             // 
-            // FicheEquipementSurFigurine
+            // FicheEquipementSansRecherche
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.Controls.Add(this.listViewEquipement);
             this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
-            this.Name = "FicheEquipementSurFigurine";
+            this.Name = "FicheEquipementSansRecherche";
             this.Size = new System.Drawing.Size(220, 240);
             this.ResumeLayout(false);
 
