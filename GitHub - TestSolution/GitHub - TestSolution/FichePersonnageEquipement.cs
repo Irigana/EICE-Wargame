@@ -22,14 +22,14 @@ namespace EICE_WARGAME
         /// </summary>
         public event EventHandler SurChangementFiltre = null;
 
-        public IEnumerable<CharactRank> Caractere
+        public IEnumerable<StuffCharactRank> Caractere
         {
             get
             {
                 return listViewCaractere.Items
                     .OfType<ListViewItem>()
-                    .Where(Element => Element.Tag is CharactRank)
-                    .Select(Element => Element.Tag as CharactRank);
+                    .Where(Element => Element.Tag is StuffCharactRank)
+                    .Select(Element => Element.Tag as StuffCharactRank);
             }
             set
             {
@@ -45,12 +45,12 @@ namespace EICE_WARGAME
         /// <summary>
         /// Type de sous faction sélectionné
         /// </summary>
-        public CharactRank CaractereSelectionne
+        public StuffCharactRank CaractereSelectionne
         {
             get
             {
-                return (listViewCaractere.SelectedItems.Count == 1) && (listViewCaractere.SelectedItems[0].Tag is CharactRank)
-                    ? listViewCaractere.SelectedItems[0].Tag as CharactRank
+                return (listViewCaractere.SelectedItems.Count == 1) && (listViewCaractere.SelectedItems[0].Tag is StuffCharactRank)
+                    ? listViewCaractere.SelectedItems[0].Tag as StuffCharactRank
                     : null;
             }
             set
@@ -59,7 +59,7 @@ namespace EICE_WARGAME
                 {
                     foreach (ListViewItem Element in listViewCaractere.Items)
                     {
-                        if ((Element.Tag is CharactRank) && (Element.Tag as CharactRank).Id.Equals(value.Id))
+                        if ((Element.Tag is StuffCharactRank) && (Element.Tag as StuffCharactRank).Id.Equals(value.Id))
                         {
                             Element.Selected = true;
                             return;
@@ -85,7 +85,7 @@ namespace EICE_WARGAME
         private bool MettreAJourListe<T>(IEnumerable<T> Entites)
             where T : class, IEntiteMySQL
         {
-            bool EstCaractere = typeof(T).Equals(typeof(CharactRank));
+            bool EstCaractere = typeof(T).Equals(typeof(StuffCharactRank));
             if (!EstCaractere) return false;
             listViewCaractere.Items.Clear();
             if (Entites == null) return false;
@@ -117,17 +117,17 @@ namespace EICE_WARGAME
             foreach (T Entite in Entites)
             {
 
-                CharactRank Caractere = Entite as CharactRank;
+                StuffCharactRank Caractere = Entite as StuffCharactRank;
 
                 if (EstCaractere)
                 {
                     ListViewItem NouvelElement = new ListViewItem()
                     {
                         Tag = Entite,
-                        Text = Caractere.Caractere.Name,
+                        Text = Caractere.CharactRank.Caractere.Name,
                     };
-                    NouvelElement.SubItems.Add(Caractere.Rank.Name);
-                    NouvelElement.SubItems.Add(Caractere.Cost.ToString());
+                    NouvelElement.SubItems.Add(Caractere.CharactRank.Rank.Name);
+                    NouvelElement.SubItems.Add(Caractere.Cout.ToString());
 
                     listViewCaractere.Items.Add(NouvelElement);
 

@@ -44,7 +44,6 @@
             this.label1 = new System.Windows.Forms.Label();
             this.z_textBoxValeur = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
             this.q_buttonAjouterCaract = new System.Windows.Forms.Button();
             this.label4 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
@@ -52,7 +51,6 @@
             this.z_ficheEquipement = new EICE_WARGAME.FicheEquipement();
             this.buttonRetourDashBoard1 = new EICE_WARGAME.ButtonRetourDashBoard();
             this.menuAdmin1 = new EICE_WARGAME.MenuAdmin();
-            this.z_listeDeroulanteStuff = new EICE_WARGAME.ListeDeroulanteStuff();
             this.z_listeDeroulanteFeature = new EICE_WARGAME.ListeDeroulanteFeature();
             this.z_listeDeroulanteType = new EICE_WARGAME.ListeDeroulanteType();
             this.buttonOptionsUser1 = new EICE_WARGAME.ButtonOptionsUser();
@@ -76,6 +74,8 @@
             this.z_listeDeroulanteSubUnity = new EICE_WARGAME.ListeDeroulanteSubUnity();
             this.label14 = new System.Windows.Forms.Label();
             this.label15 = new System.Windows.Forms.Label();
+            this.z_textBoxSelection = new System.Windows.Forms.TextBox();
+            this.label16 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.z_numericUpDownCout)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.z_numericUpDownMinimum)).BeginInit();
@@ -211,7 +211,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(949, 169);
+            this.label1.Location = new System.Drawing.Point(967, 210);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(103, 17);
             this.label1.TabIndex = 27;
@@ -219,7 +219,7 @@
             // 
             // z_textBoxValeur
             // 
-            this.z_textBoxValeur.Location = new System.Drawing.Point(1072, 208);
+            this.z_textBoxValeur.Location = new System.Drawing.Point(1076, 241);
             this.z_textBoxValeur.Name = "z_textBoxValeur";
             this.z_textBoxValeur.Size = new System.Drawing.Size(206, 22);
             this.z_textBoxValeur.TabIndex = 29;
@@ -228,20 +228,11 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(1003, 208);
+            this.label2.Location = new System.Drawing.Point(1021, 244);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(49, 17);
             this.label2.TabIndex = 30;
             this.label2.Text = "Valeur";
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(949, 129);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(83, 17);
-            this.label3.TabIndex = 31;
-            this.label3.Text = "Equipement";
             // 
             // q_buttonAjouterCaract
             // 
@@ -249,7 +240,7 @@
             this.q_buttonAjouterCaract.FlatAppearance.BorderColor = System.Drawing.SystemColors.WindowFrame;
             this.q_buttonAjouterCaract.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.q_buttonAjouterCaract.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F);
-            this.q_buttonAjouterCaract.Location = new System.Drawing.Point(1308, 181);
+            this.q_buttonAjouterCaract.Location = new System.Drawing.Point(1308, 195);
             this.q_buttonAjouterCaract.Name = "q_buttonAjouterCaract";
             this.q_buttonAjouterCaract.Size = new System.Drawing.Size(148, 49);
             this.q_buttonAjouterCaract.TabIndex = 33;
@@ -273,7 +264,7 @@
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold);
             this.label5.ForeColor = System.Drawing.Color.SlateGray;
-            this.label5.Location = new System.Drawing.Point(936, 81);
+            this.label5.Location = new System.Drawing.Point(941, 156);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(169, 25);
             this.label5.TabIndex = 35;
@@ -281,7 +272,7 @@
             // 
             // listViewCaracteristiques
             // 
-            this.listViewCaracteristiques.Location = new System.Drawing.Point(1072, 247);
+            this.listViewCaracteristiques.Location = new System.Drawing.Point(1076, 269);
             this.listViewCaracteristiques.Name = "listViewCaracteristiques";
             this.listViewCaracteristiques.Size = new System.Drawing.Size(370, 151);
             this.listViewCaracteristiques.TabIndex = 36;
@@ -315,18 +306,10 @@
             this.menuAdmin1.TabIndex = 37;
             this.menuAdmin1.Utilisateur = null;
             // 
-            // z_listeDeroulanteStuff
-            // 
-            this.z_listeDeroulanteStuff.Location = new System.Drawing.Point(1072, 129);
-            this.z_listeDeroulanteStuff.Name = "z_listeDeroulanteStuff";
-            this.z_listeDeroulanteStuff.Size = new System.Drawing.Size(206, 26);
-            this.z_listeDeroulanteStuff.StuffSelectionnee = null;
-            this.z_listeDeroulanteStuff.TabIndex = 32;
-            // 
             // z_listeDeroulanteFeature
             // 
             this.z_listeDeroulanteFeature.FeatureSelectionnee = null;
-            this.z_listeDeroulanteFeature.Location = new System.Drawing.Point(1072, 171);
+            this.z_listeDeroulanteFeature.Location = new System.Drawing.Point(1076, 206);
             this.z_listeDeroulanteFeature.Name = "z_listeDeroulanteFeature";
             this.z_listeDeroulanteFeature.Size = new System.Drawing.Size(206, 25);
             this.z_listeDeroulanteFeature.TabIndex = 28;
@@ -526,10 +509,30 @@
             this.label15.TabIndex = 61;
             this.label15.Text = "Sous-Unité";
             // 
+            // z_textBoxSelection
+            // 
+            this.z_textBoxSelection.Location = new System.Drawing.Point(1076, 125);
+            this.z_textBoxSelection.Name = "z_textBoxSelection";
+            this.z_textBoxSelection.Size = new System.Drawing.Size(206, 22);
+            this.z_textBoxSelection.TabIndex = 62;
+            // 
+            // label16
+            // 
+            this.label16.AutoSize = true;
+            this.label16.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold);
+            this.label16.ForeColor = System.Drawing.Color.SlateGray;
+            this.label16.Location = new System.Drawing.Point(941, 89);
+            this.label16.Name = "label16";
+            this.label16.Size = new System.Drawing.Size(242, 25);
+            this.label16.TabIndex = 64;
+            this.label16.Text = "Equipement sélectionné";
+            // 
             // PageEquipements
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.label16);
+            this.Controls.Add(this.z_textBoxSelection);
             this.Controls.Add(this.label15);
             this.Controls.Add(this.label14);
             this.Controls.Add(this.z_listeDeroulanteSubUnity);
@@ -557,8 +560,6 @@
             this.Controls.Add(this.label5);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.q_buttonAjouterCaract);
-            this.Controls.Add(this.z_listeDeroulanteStuff);
-            this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.z_textBoxValeur);
             this.Controls.Add(this.z_listeDeroulanteFeature);
@@ -607,8 +608,6 @@
         private System.Windows.Forms.TextBox z_textBoxValeur;
         private ListeDeroulanteFeature z_listeDeroulanteFeature;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Label label3;
-        private ListeDeroulanteStuff z_listeDeroulanteStuff;
         private System.Windows.Forms.Button q_buttonAjouterCaract;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label5;
@@ -636,5 +635,7 @@
         private System.Windows.Forms.Label label14;
         private ListeDeroulanteSubUnity z_listeDeroulanteSubUnity;
         private ListeDeroulanteUnity z_listeDeroulanteUnity;
+        private System.Windows.Forms.Label label16;
+        private System.Windows.Forms.TextBox z_textBoxSelection;
     }
 }

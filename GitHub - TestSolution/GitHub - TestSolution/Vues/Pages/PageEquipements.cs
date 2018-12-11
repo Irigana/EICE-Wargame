@@ -43,7 +43,11 @@ namespace EICE_WARGAME
         private Stuff m_StuffEnEdition;
 
         private CharactRank m_CharRank;
-
+        /// <summary>
+        /// Membre privé contenant la liste ses StuffCharRank Equipables
+        /// </summary>
+        private List<StuffCharactRank> m_StuffCharactRankEquipables;
+        
         /// <summary>
         /// Permet d'accéder au membre privé m_Stuff depuis une autre classe
         /// </summary>
@@ -68,6 +72,10 @@ namespace EICE_WARGAME
             m_StuffEnEdition.AvantChangement += StuffEnEdition_AvantChangement;
             m_StuffEnEdition.ApresChangement += StuffEnEdition_ApresChangement;
 
+            // Initialisation de la liste des characters equipables
+            m_StuffCharactRankEquipables = new List<StuffCharactRank>();
+
+            #region Désactivation des différents boutons et listes déroulantes
             z_ficheEquipement.Enabled = false;
             
             // L'utilisateur ne peut pas encoder de nom tant qu'il n'a pas choisi un type d'équipement
@@ -75,7 +83,7 @@ namespace EICE_WARGAME
             // Visibilité est cochée par défaut
             z_checkBoxVisibility.Checked = true;
 
-            z_listeDeroulanteStuff.Enabled = false;
+            
             z_listeDeroulanteFeature.Enabled = false;
             z_textBoxValeur.Enabled = false;
 
@@ -94,7 +102,7 @@ namespace EICE_WARGAME
             q_buttonModifier.Enabled = false;
             q_buttonSupprimer.Enabled = false;
             q_buttonAjouterEquipable.Enabled = false;
-
+            #endregion
 
             #region Initialisation de la ListView des caractéristiques
             listViewCaracteristiques.View = View.Details;
@@ -129,14 +137,6 @@ namespace EICE_WARGAME
             //                  * Supprimer une caractéristique d'un équipement
             // Listes déroulantes mettre en dropdown au lieu de dropdownlist
             // Ajouter un machin autocomplete dans le ctor voir listederoulante faction ligne 40-41
-            z_listeDeroulanteStuff.Stuff = Program.GMBD.EnumererStuff(null, null, null, PDSGBD.MyDB.CreerCodeSql("st_name"));
-            z_listeDeroulanteStuff.SurChangementSelection += ListeStuffChangementSelection;
-
-            
-
-            
-
-            
             
             // Permet de réagir sur le changement de filtre pour aller rechercher les différents équipements qui correspondent au filtre
             z_ficheEquipement.SurChangementFiltre += (s, ev) =>
@@ -169,7 +169,6 @@ namespace EICE_WARGAME
 
         }
 
-
         #region Méthodes relatives à l'ajout d'équipement
         private void ListeTypeChangementSelection(object sender, EventArgs e)
         {
@@ -188,7 +187,7 @@ namespace EICE_WARGAME
             // L'utilisateur ne peut pas encoder de nom tant qu'il n'a pas choisi un type d'équipement
             z_textBoxNomEquipement.Enabled = true;
             
-            z_listeDeroulanteStuff.Enabled = true;
+            
             
 
 
@@ -223,18 +222,17 @@ namespace EICE_WARGAME
             {
                 if (Stuff.Enregistrer(Program.GMBD.BD, Stuff))
                 {
-                    z_listeDeroulanteStuff.Stuff = Program.GMBD.EnumererStuff(null, null, null, PDSGBD.MyDB.CreerCodeSql("st_name"));
+                    z_ficheEquipement.Equipement = Program.GMBD.EnumererStuff(null, null, new MyDB.CodeSql("WHERE st_fk_type_id = {0}", z_listeDeroulanteType.TypeSelectionne.Id),
+                                                                        new MyDB.CodeSql("ORDER BY st_name"));
                 }
                 
-                z_listeDeroulanteStuff.StuffSelectionnee = Stuff;
-                z_listeDeroulanteType.TypeSelectionne = null;
+                z_ficheEquipement.EquipementSelectionne = Stuff;
+                //z_listeDeroulanteType.TypeSelectionne = null;
                 z_textBoxNomEquipement.Text = string.Empty;
                 z_textBoxNomEquipement.Text = string.Empty;
                 m_StuffEnEdition.Name = null;
                 m_StuffEnEdition.Type = null;
                 errorProvider1.Clear();
-                //listeDeroulanteStuff1.Stuff = Program.GMBD.EnumererStuff(null, null, null, PDSGBD.MyDB.CreerCodeSql("st_name"));
-                
             }
         }
 
@@ -325,17 +323,10 @@ namespace EICE_WARGAME
 
         #region Méthodes relatives à l'ajout des caractéristiques d'un équipement
 
-        private void ListeStuffChangementSelection(object sender, EventArgs e)
-        {
-            z_listeDeroulanteFeature.FeatureSelectionnee = null;
-            z_textBoxValeur.Clear();
-            rafraichirListViewCaracteristiques();
-        }
-
         private void rafraichirListViewCaracteristiques()
         {
             StuffFeature EssaiCar = new StuffFeature();
-            EssaiCar.Stuff = z_listeDeroulanteStuff.StuffSelectionnee;
+            EssaiCar.Stuff = z_ficheEquipement.EquipementSelectionne;
             listViewCaracteristiques.Items.Clear();
 
             foreach (StuffFeature sf in EssaiCar.Stuff.Features)
@@ -353,10 +344,7 @@ namespace EICE_WARGAME
 
         private void ListeFeatureChangementSelection(object sender, EventArgs e)
         {
-            
             q_buttonAjouterCaract.Enabled = true;
-            
-
         }
 
         private void textBox1_TextChanged(object sender, EventArgs e)
@@ -372,7 +360,7 @@ namespace EICE_WARGAME
         private void buttonAjouterCaract_Click(object sender, EventArgs e)
         {
             StuffFeature Essai = new StuffFeature();
-            Essai.Stuff = z_listeDeroulanteStuff.StuffSelectionnee;
+            Essai.Stuff = z_ficheEquipement.EquipementSelectionne;
             Essai.Feature = z_listeDeroulanteFeature.FeatureSelectionnee;
             Essai.Value = z_textBoxValeur.Text;
             Essai.Enregistrer(Program.GMBD.BD, Essai);
@@ -392,14 +380,10 @@ namespace EICE_WARGAME
                         });
         }
 
-
-
         #endregion
 
         private void ListeDeroulanteFaction_SurChangementSelection(object sender, EventArgs e)
         {
-           
-            
             z_listeDeroulanteSousFaction.Enabled = true;
             z_listeDeroulanteSousFaction.ResetTextSousFaction();
             Program.GMBD.MettreAJourListeSousFaction(z_listeDeroulanteSousFaction, z_listeDeroulanteFaction.FactionSelectionnee.Id);
@@ -414,7 +398,22 @@ namespace EICE_WARGAME
         private void ListeDeroulanteSousFaction_SurChangementSelection(object sender, EventArgs e)
         {
             z_listeDeroulanteUnity.Enabled = true;
-            z_listeDeroulanteUnity.Unity = Program.GMBD.EnumererUnity(null, null, null, PDSGBD.MyDB.CreerCodeSql("un_name"));
+            // J'ai la sous-faction
+            // Je vais dans table charact je trouve tous les ch_id dont le ch_fk_subfaction_id = sousfactionselectionnee.id
+            // Je vais dans char_rank je trouve tous les cr_sub_id dont le cr_fk_ch_id = ch_id
+            // Je vais dans subunity je trouve tous les su_fr_unity_id dont le su_id = cr_sub_id
+            // Je vais dans unity je sélectionne toutes les unity dont le su_fk_unity_id = un_id
+
+            // Remplir la liste des unity avec possédants des personnages de la sous-faction sélectionnée
+            z_listeDeroulanteUnity.Unity = Program.GMBD.EnumererUnity(new MyDB.CodeSql("DISTINCT unity.un_id,unity.un_name"),
+                new MyDB.CodeSql(@"JOIN subunity ON unity.un_id = subunity.su_fk_unity_id
+                                    JOIN char_rank ON subunity.su_id = char_rank.cr_sub_id
+                                    JOIN charact ON char_rank.cr_fk_ch_id = charact.ch_id                                    
+                                    JOIN subfaction ON charact.ch_fk_subfaction_id = subfaction.sf_id
+                                    JOIN faction ON subfaction.sf_fk_faction_id = faction.fa_id "), 
+                new MyDB.CodeSql("WHERE subfaction.sf_id = {0}",
+                z_listeDeroulanteSousFaction.SousFactionSelectionnee.Id),
+                new MyDB.CodeSql("ORDER BY un_name"));
             z_listeDeroulanteUnity.SurChangementSelection += ListeDeroulanteUnity_SurChangementSelection;
         }
 
@@ -467,6 +466,10 @@ namespace EICE_WARGAME
                 z_listeDeroulanteFeature.Enabled = true;
                 z_textBoxValeur.Enabled = true;
 
+                z_listeDeroulanteFeature.FeatureSelectionnee = null;
+                z_textBoxValeur.Clear();
+                rafraichirListViewCaracteristiques();
+
                 z_listeDeroulanteFaction.Faction = Program.GMBD.EnumererFaction(null, null, null, PDSGBD.MyDB.CreerCodeSql("fa_name"));
                 z_listeDeroulanteFaction.SurChangementSelection += ListeDeroulanteFaction_SurChangementSelection;
                 z_listeDeroulanteFaction.Enabled = true;
@@ -474,6 +477,9 @@ namespace EICE_WARGAME
                 m_Stuff = new Stuff();
                 m_Stuff = z_ficheEquipement.EquipementSelectionne;
                 m_Stuff.Type = z_listeDeroulanteType.TypeSelectionne;
+                m_StuffCharactRankEquipables.Clear();
+
+                z_textBoxSelection.Text = z_ficheEquipement.EquipementSelectionne.Name.ToString();
             }
         }
 
@@ -492,6 +498,8 @@ namespace EICE_WARGAME
             q_buttonAjouterEquipable.Enabled = m_CharRank.EstValide;
         }
 
+        
+
         private void buttonAjouterEquipable_Click(object sender, EventArgs e)
         {
             if( (m_Stuff != null) && (z_listeDeroulanteCharRank.CharactSelectionnee != null))
@@ -504,8 +512,8 @@ namespace EICE_WARGAME
                 StChRa.Max = Convert.ToInt32(z_numericUpDownMaximum.Value);
 
                 StChRa.Enregistrer(Program.GMBD.BD, StChRa);
-
-                
+                m_StuffCharactRankEquipables.Add(StChRa);
+                z_fichePersonnageEquipement1.Caractere = m_StuffCharactRankEquipables;
             }
         }
     }
