@@ -38,6 +38,7 @@ namespace EICE_WARGAME
 
 
         private const string c_CritereQuiContient = "%{0}%";
+        int Figurine_Id;
 
         public PageMaCollection()
         {
@@ -107,7 +108,9 @@ namespace EICE_WARGAME
 
         private void CreationFigurine()
         {
-            //TODO : le INSERT INTO FIGURINE
+            //TODO : le INSERT INTO figurine (fi_fk_character_id) VALUES (listeDeroulanteChar1.CharactSelectionnee.Id)
+            //
+            // Figurine_Id = ID de la figurine
         }
 
 
@@ -170,7 +173,7 @@ namespace EICE_WARGAME
 
         private void AjoutEquipementSurFigurine(object sender, EventArgs e)
         {
-            CreationFigurine();
+            //INSERT INTO figurine_stuff (fs_fk_figurine_id, fs_fk_stuff_id, fs_fk_user_id) VALUES (???, ficheEquipement1.EquipementSelectionne.Id,  m_Utilisateur.Id)
 
         }
     }
