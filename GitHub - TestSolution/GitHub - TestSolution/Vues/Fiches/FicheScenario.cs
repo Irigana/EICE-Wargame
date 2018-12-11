@@ -69,7 +69,7 @@ namespace EICE_WARGAME
 
         public void ChargerSpecificite()
         {
-            ficheSpecifiteScenario1.SpecifiteScenario = Program.GMBD.EnumererCondiCamp(null, new MyDB.CodeSql("JOIN scenario_camp ON cc_fk_scenario_camp_id = sca_id JOIN unity on cc_fk_unity_id = un_id"), new MyDB.CodeSql("WHERE scenario_camp.sca_fk_camp_id = {0} AND condi_camp.cc_fk_scenario_camp_id = {1}", NumeroDeCamp, Scenario.Id), null);       
+            ficheSpecifiteScenario1.SpecifiteScenario = Program.GMBD.EnumererCondiCamp(null, new MyDB.CodeSql("JOIN sceanario_camp ON cc_fk_scenario_camp_id = sca_id JOIN unity on cc_fk_unity_id = un_id"), new MyDB.CodeSql("WHERE scenario_camp.sca_fk_camp_id = {0} AND condi_camp.cc_fk_scenario_camp_id = {1}", NumeroDeCamp, Scenario.Id), null);       
         }
 
         public void ClearFiche()

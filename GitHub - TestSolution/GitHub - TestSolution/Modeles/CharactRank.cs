@@ -118,7 +118,7 @@ namespace EICE_WARGAME
                 }
                 else
                 {
-                    if ((m_Rank == null) || (int.Equals(value.Id, m_Rank.Id)))
+                    if (m_Rank == null || value.Id != m_Rank.Id)
                     {
                         ModifierChamp(Champ.Rank, ref m_Rank, value);
                     }

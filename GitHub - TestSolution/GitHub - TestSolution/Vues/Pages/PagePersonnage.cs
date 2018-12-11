@@ -361,10 +361,20 @@ namespace EICE_WARGAME
                 m_PersonnageEnEdition.Caractere.SurErreur += CaractereEnEdition_SurErreur;
                 m_PersonnageEnEdition.Caractere.AvantChangement += CaractereEnEdition_AvantChangement;
                 m_PersonnageEnEdition.Caractere.ApresChangement += CaractereEnEdition_ApresChangement;
-
                 
                 m_PersonnageEnEdition.Cost = Convert.ToInt32(numericUpDown1.Value);
-                m_PersonnageEnEdition.Caractere.Name = textBoxCaractere.Text;
+                Charact CaractereExistant = Program.GMBD.EnumererCaractere(null, null, new MyDB.CodeSql("WHERE ch_name = {0}", textBoxCaractere.Text), null).FirstOrDefault();
+                if (CaractereExistant == null)
+                {
+                    m_PersonnageEnEdition.Caractere.Name = textBoxCaractere.Text;
+                }
+                else
+                {
+                    m_PersonnageEnEdition.Caractere = CaractereExistant;
+                }
+
+                // TODO : StuffCharactRank LienExistant = Program.GMBD.EnumererStuff
+
                 if(listeDeroulanteRank1.RankSelectionnee != null) m_PersonnageEnEdition.Rank = listeDeroulanteRank1.RankSelectionnee;
                 m_PersonnageEnEdition.Caractere.SousFaction = listeDeroulanteSousFaction1.SousFactionSelectionnee;
                 if ((m_PersonnageEnEdition.EstValide) && (Program.GMBD.ModifierPersonnage(m_PersonnageEnEdition)))
@@ -376,6 +386,7 @@ namespace EICE_WARGAME
                     listeDeroulanteRank1.RankSelectionnee = null;
                     ficheCaractere1.CaractereSelectionne = null;
                 }
+
 
             }
         }
