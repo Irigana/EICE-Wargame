@@ -485,7 +485,7 @@ namespace EICE_WARGAME
                     else if (ficheCaractere1.CaractereSelectionne == null)
                     {
                         Charact CaractereExiste = Program.GMBD.EnumererCaractere(null,
-                            new MyDB.CodeSql(@"JOIN cehar_rank ON charact.ch_id = char_rank.cr_fk_ch_id
+                            new MyDB.CodeSql(@"JOIN char_rank ON charact.ch_id = char_rank.cr_fk_ch_id
                                                 JOIN subfaction ON charact.ch_fk_subfaction_id = subfaction.sf_id                                                
                                                 JOIN subunity ON char_rank.cr_sub_id = subunity.su_id"),
                              new MyDB.CodeSql(@"WHERE subfaction.sf_fk_faction_id = {0} AND subfaction.sf_id = {1}
@@ -498,7 +498,7 @@ namespace EICE_WARGAME
                             AccumulateurErreur.NotifierErreur("Ce caractère existe déjà, veuillez en choisir une autre !");
                         }
                     }
-                    break;
+                    break;                
             }
         }
 
