@@ -42,6 +42,8 @@
             this.button1 = new System.Windows.Forms.Button();
             this.buttonAjoutEquipementSurPersonnage = new System.Windows.Forms.Button();
             this.buttonEnleverEquipementSurPersonnage = new System.Windows.Forms.Button();
+            this.buttonReturn = new System.Windows.Forms.Button();
+            this.fichePersonnageEquipement1 = new EICE_WARGAME.FichePersonnageEquipement();
             this.listeDeroulanteChar1 = new EICE_WARGAME.ListeDeroulanteChar();
             this.ficheEquipement1 = new EICE_WARGAME.FicheEquipement();
             this.listeDeroulanteSubUnity1 = new EICE_WARGAME.ListeDeroulanteSubUnity();
@@ -49,8 +51,7 @@
             this.listeDeroulanteSousFaction1 = new EICE_WARGAME.ListeDeroulanteSousFaction();
             this.listeDeroulanteFaction1 = new EICE_WARGAME.ListeDeroulanteFaction();
             this.buttonOptionsUser1 = new EICE_WARGAME.ButtonOptionsUser();
-            this.buttonReturn = new System.Windows.Forms.Button();
-            this.fichePersonnageEquipement1 = new EICE_WARGAME.FichePersonnageEquipement();
+            this.ficheEquipementSurFigurine1 = new EICE_WARGAME.FicheEquipementSurFigurine();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -202,6 +203,28 @@
             this.buttonEnleverEquipementSurPersonnage.Text = "<";
             this.buttonEnleverEquipementSurPersonnage.UseVisualStyleBackColor = true;
             // 
+            // buttonReturn
+            // 
+            this.buttonReturn.FlatAppearance.BorderSize = 0;
+            this.buttonReturn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonReturn.Image = global::EICE_WARGAME.Properties.Resources.ReturnLogo35px;
+            this.buttonReturn.Location = new System.Drawing.Point(2, 2);
+            this.buttonReturn.Margin = new System.Windows.Forms.Padding(2);
+            this.buttonReturn.Name = "buttonReturn";
+            this.buttonReturn.Size = new System.Drawing.Size(33, 32);
+            this.buttonReturn.TabIndex = 1;
+            this.buttonReturn.UseVisualStyleBackColor = true;
+            this.buttonReturn.Click += new System.EventHandler(this.buttonReturn_Click);
+            // 
+            // fichePersonnageEquipement1
+            // 
+            this.fichePersonnageEquipement1.CaractereSelectionne = null;
+            this.fichePersonnageEquipement1.Location = new System.Drawing.Point(637, 100);
+            this.fichePersonnageEquipement1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.fichePersonnageEquipement1.Name = "fichePersonnageEquipement1";
+            this.fichePersonnageEquipement1.Size = new System.Drawing.Size(356, 324);
+            this.fichePersonnageEquipement1.TabIndex = 29;
+            // 
             // listeDeroulanteChar1
             // 
             this.listeDeroulanteChar1.CharactSelectionnee = null;
@@ -273,32 +296,21 @@
             this.buttonOptionsUser1.Utilisateur = null;
             this.buttonOptionsUser1.Load += new System.EventHandler(this.buttonOptionsUser1_Load);
             // 
-            // buttonReturn
+            // ficheEquipementSurFigurine1
             // 
-            this.buttonReturn.FlatAppearance.BorderSize = 0;
-            this.buttonReturn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.buttonReturn.Image = global::EICE_WARGAME.Properties.Resources.ReturnLogo35px;
-            this.buttonReturn.Location = new System.Drawing.Point(2, 2);
-            this.buttonReturn.Margin = new System.Windows.Forms.Padding(2);
-            this.buttonReturn.Name = "buttonReturn";
-            this.buttonReturn.Size = new System.Drawing.Size(33, 32);
-            this.buttonReturn.TabIndex = 1;
-            this.buttonReturn.UseVisualStyleBackColor = true;
-            this.buttonReturn.Click += new System.EventHandler(this.buttonReturn_Click);
-            // 
-            // fichePersonnageEquipement1
-            // 
-            this.fichePersonnageEquipement1.CaractereSelectionne = null;
-            this.fichePersonnageEquipement1.Location = new System.Drawing.Point(637, 100);
-            this.fichePersonnageEquipement1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
-            this.fichePersonnageEquipement1.Name = "fichePersonnageEquipement1";
-            this.fichePersonnageEquipement1.Size = new System.Drawing.Size(356, 324);
-            this.fichePersonnageEquipement1.TabIndex = 29;
+            this.ficheEquipementSurFigurine1.EquipementSelectionne = null;
+            this.ficheEquipementSurFigurine1.Location = new System.Drawing.Point(308, 324);
+            this.ficheEquipementSurFigurine1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.ficheEquipementSurFigurine1.Name = "ficheEquipementSurFigurine1";
+            this.ficheEquipementSurFigurine1.Size = new System.Drawing.Size(220, 240);
+            this.ficheEquipementSurFigurine1.TabIndex = 30;
+            this.ficheEquipementSurFigurine1.TexteFiltreEquipement = "";
             // 
             // PageMaCollection
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.ficheEquipementSurFigurine1);
             this.Controls.Add(this.fichePersonnageEquipement1);
             this.Controls.Add(this.buttonEnleverEquipementSurPersonnage);
             this.Controls.Add(this.buttonAjoutEquipementSurPersonnage);
@@ -356,5 +368,6 @@
         private System.Windows.Forms.Button buttonAjoutEquipementSurPersonnage;
         private System.Windows.Forms.Button buttonEnleverEquipementSurPersonnage;
         private FichePersonnageEquipement fichePersonnageEquipement1;
+        private FicheEquipementSurFigurine ficheEquipementSurFigurine1;
     }
 }
