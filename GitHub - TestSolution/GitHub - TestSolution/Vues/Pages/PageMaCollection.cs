@@ -88,6 +88,8 @@ namespace EICE_WARGAME
                                                                                                              listeDeroulanteFaction1.FactionSelectionnee.Id, listeDeroulanteSousFaction1.SousFactionSelectionnee.Id,
                                                                                                              listeDeroulanteUnity1.UnitySelectionnee.Id, listeDeroulanteSubUnity1.SubUnitySelectionnee.Id),
                                                                                                     new MyDB.CodeSql(@"GROUP BY ch_id ORDER BY ch_name"));
+            // ici tu réagis au moment de ta selection comme tu as fais au dessus pour aller dans ta méthode
+            listeDeroulanteChar1.SurChangementSelection += ListeDeroulanteChar_SurChangementSelection;
         }
 
         private void ListeDeroulanteChar_SurChangementSelection(object sender, EventArgs e)
