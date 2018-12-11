@@ -257,7 +257,7 @@ namespace EICE_WARGAME
                                                                     new MyDB.CodeSql("WHERE un_id = {0}",
                                                                     listeDeroulanteUnity1.UnitySelectionnee.Id),
                                                                     null).FirstOrDefault();
-                                if (UnityExiste != null)
+                                if ((UnityExiste != null)&&(listeDeroulanteSubUnity1.SubUnitySelectionnee != null))
                                 {
 
                                     SubUnity SubUnityExiste = Program.GMBD.EnumererSubUnity(null,
@@ -308,6 +308,8 @@ namespace EICE_WARGAME
                                         }
                                         else
                                         {
+                                            errorProviderErreurCaractere.Clear();
+                                            ValidationProvider.Clear();
                                             CharactRank NouveauPersonnage = new CharactRank();
                                             NouveauPersonnage.Caractere = CaractereExistant;
                                             NouveauPersonnage.AvantChangement += PersonnageEnEdition_AvantChangement;
@@ -560,22 +562,19 @@ namespace EICE_WARGAME
             {
                 case CharactRank.Champ.Cost:
                     {
-                        if ((Entite.Cost > int.MaxValue) || (Entite.Cost < 0))
+                        if ((numericUpDown1.Value > int.MaxValue) || (numericUpDown1.Value < 0))
                         {
+                            errorProviderErreurCaractere.SetError(numericUpDown1,"Votre coût doit être supérieur ou égal à 1");
                             AccumulateurErreur.NotifierErreur("Ce coût n'est pas correct, veuillez en choisir une autre !");
                         }
                         CharactRank PersonnageAvecCeRankExiste = Program.GMBD.EnumererPersonnage(null, null, new MyDB.CodeSql("WHERE cr_fk_ra_id = {0} AND cr_fk_ch_id = {1}", Entite.Rank.Id, Entite.Caractere.Id), null).FirstOrDefault();
                         if (PersonnageAvecCeRankExiste != null)
                         {
+                            errorProviderErreurCaractere.SetError(listeDeroulanteRank1, "Un personnage avec ce rank existe déjà");
                             AccumulateurErreur.NotifierErreur("Un personnage avec ce rank existe déjà");
                         }
                         break;
-                    }/*
-                case CharactRank.Champ.Rank:
-                    {
-                        
-                    }
-                    break;     */            
+                    }        
             }
         }
 
