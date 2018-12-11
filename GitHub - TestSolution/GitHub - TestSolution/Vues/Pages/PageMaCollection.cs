@@ -79,7 +79,7 @@ namespace EICE_WARGAME
                                                                                                                         AND un_id = {2} AND su_id = {3}",
                                                                                                              listeDeroulanteFaction1.FactionSelectionnee.Id, listeDeroulanteSousFaction1.SousFactionSelectionnee.Id,
                                                                                                              listeDeroulanteUnity1.UnitySelectionnee.Id, listeDeroulanteSubUnity1.SubUnitySelectionnee.Id),
-                                                                                                        MyDB.CreerCodeSql("ORDER BY ch_name"));
+                                                                                                    new MyDB.CodeSql(@"GROUP BY ch_id ORDER BY ch_name"));
         }
 
 
