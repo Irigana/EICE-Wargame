@@ -12,6 +12,7 @@ using PDSGBD;
 
 namespace EICE_WARGAME
 {
+
     public partial class PageMaCollection : UserControl
     {
 
@@ -36,11 +37,33 @@ namespace EICE_WARGAME
         #endregion
 
 
+        private const string c_CritereQuiContient = "%{0}%";
+
         public PageMaCollection()
         {
+
             InitializeComponent();
             Program.GMBD.MettreAJourListeFaction(listeDeroulanteFaction1);
             listeDeroulanteFaction1.SurChangementSelection += ListeDeroulanteFaction_SurChangementSelection;
+
+            ficheEquipement1.SurChangementFiltre += (s, ev) =>
+            {
+                if (ficheEquipement1.TexteFiltreEquipement != "")
+                {
+                    ficheEquipement1.Equipement = Program.GMBD.EnumererStuff(
+                        null,
+                        null,
+                        new MyDB.CodeSql("WHERE stuff.st_name LIKE {0}",
+                                         string.Format(c_CritereQuiContient, ficheEquipement1.TexteFiltreEquipement)),
+                        new MyDB.CodeSql("ORDER BY st_name"));
+                }
+                else
+                {
+                    Program.GMBD.EnumererStuff(null, null, null, PDSGBD.MyDB.CreerCodeSql("st_name"));
+                }
+
+
+            };
         }
             // Program.GMBD.MettreAJourListeSousFaction(listeDeroulanteSousFaction1);
 
@@ -81,6 +104,8 @@ namespace EICE_WARGAME
                                                                                                              listeDeroulanteUnity1.UnitySelectionnee.Id, listeDeroulanteSubUnity1.SubUnitySelectionnee.Id),
                                                                                                     new MyDB.CodeSql(@"GROUP BY ch_id ORDER BY ch_name"));
         }
+
+
 
 
         private void buttonReturn_Click(object sender, EventArgs e)
