@@ -40,15 +40,14 @@
             this.labelMesFigurines = new System.Windows.Forms.Label();
             this.numericUpDown1 = new System.Windows.Forms.NumericUpDown();
             this.labelSubunity = new System.Windows.Forms.Label();
+            this.listeDeroulanteChar1 = new EICE_WARGAME.ListeDeroulanteChar();
+            this.listeDeroulanteStuff1 = new EICE_WARGAME.ListeDeroulanteStuff();
             this.ficheEquipement1 = new EICE_WARGAME.FicheEquipement();
-            this.listeDeroulanteCharRank1 = new EICE_WARGAME.ListeDeroulanteCharRank();
             this.listeDeroulanteSubUnity1 = new EICE_WARGAME.ListeDeroulanteSubUnity();
             this.listeDeroulanteUnity1 = new EICE_WARGAME.ListeDeroulanteUnity();
             this.listeDeroulanteSousFaction1 = new EICE_WARGAME.ListeDeroulanteSousFaction();
             this.listeDeroulanteFaction1 = new EICE_WARGAME.ListeDeroulanteFaction();
             this.buttonOptionsUser1 = new EICE_WARGAME.ButtonOptionsUser();
-            this.listeDeroulanteStuff1 = new EICE_WARGAME.ListeDeroulanteStuff();
-            this.listeDeroulanteChar1 = new EICE_WARGAME.ListeDeroulanteChar();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -186,6 +185,24 @@
             this.labelSubunity.TabIndex = 22;
             this.labelSubunity.Text = "Sous Unité";
             // 
+            // listeDeroulanteChar1
+            // 
+            this.listeDeroulanteChar1.CharactSelectionnee = null;
+            this.listeDeroulanteChar1.Location = new System.Drawing.Point(158, 260);
+            this.listeDeroulanteChar1.Margin = new System.Windows.Forms.Padding(2);
+            this.listeDeroulanteChar1.Name = "listeDeroulanteChar1";
+            this.listeDeroulanteChar1.Size = new System.Drawing.Size(218, 21);
+            this.listeDeroulanteChar1.TabIndex = 24;
+            // 
+            // listeDeroulanteStuff1
+            // 
+            this.listeDeroulanteStuff1.Location = new System.Drawing.Point(158, 294);
+            this.listeDeroulanteStuff1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.listeDeroulanteStuff1.Name = "listeDeroulanteStuff1";
+            this.listeDeroulanteStuff1.Size = new System.Drawing.Size(218, 21);
+            this.listeDeroulanteStuff1.StuffSelectionnee = null;
+            this.listeDeroulanteStuff1.TabIndex = 23;
+            // 
             // ficheEquipement1
             // 
             this.ficheEquipement1.EquipementSelectionne = null;
@@ -196,16 +213,6 @@
             this.ficheEquipement1.TabIndex = 21;
             this.ficheEquipement1.TexteFiltreEquipement = "";
             this.ficheEquipement1.Load += new System.EventHandler(this.ficheEquipement1_Load);
-            // 
-            // listeDeroulanteCharRank1
-            // 
-            this.listeDeroulanteCharRank1.CharactSelectionnee = null;
-            this.listeDeroulanteCharRank1.Location = new System.Drawing.Point(158, 260);
-            this.listeDeroulanteCharRank1.Margin = new System.Windows.Forms.Padding(2);
-            this.listeDeroulanteCharRank1.Name = "listeDeroulanteCharRank1";
-            this.listeDeroulanteCharRank1.Size = new System.Drawing.Size(218, 21);
-            this.listeDeroulanteCharRank1.TabIndex = 20;
-            this.listeDeroulanteCharRank1.Load += new System.EventHandler(this.listeDeroulanteCharRank1_Load);
             // 
             // listeDeroulanteSubUnity1
             // 
@@ -258,24 +265,6 @@
             this.buttonOptionsUser1.Utilisateur = null;
             this.buttonOptionsUser1.Load += new System.EventHandler(this.buttonOptionsUser1_Load);
             // 
-            // listeDeroulanteStuff1
-            // 
-            this.listeDeroulanteStuff1.Location = new System.Drawing.Point(158, 294);
-            this.listeDeroulanteStuff1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
-            this.listeDeroulanteStuff1.Name = "listeDeroulanteStuff1";
-            this.listeDeroulanteStuff1.Size = new System.Drawing.Size(218, 21);
-            this.listeDeroulanteStuff1.StuffSelectionnee = null;
-            this.listeDeroulanteStuff1.TabIndex = 23;
-            // 
-            // listeDeroulanteChar1
-            // 
-            this.listeDeroulanteChar1.CharactSelectionnee = null;
-            this.listeDeroulanteChar1.Location = new System.Drawing.Point(391, 260);
-            this.listeDeroulanteChar1.Margin = new System.Windows.Forms.Padding(2);
-            this.listeDeroulanteChar1.Name = "listeDeroulanteChar1";
-            this.listeDeroulanteChar1.Size = new System.Drawing.Size(195, 24);
-            this.listeDeroulanteChar1.TabIndex = 24;
-            // 
             // PageMaCollection
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -284,7 +273,6 @@
             this.Controls.Add(this.listeDeroulanteStuff1);
             this.Controls.Add(this.labelSubunity);
             this.Controls.Add(this.ficheEquipement1);
-            this.Controls.Add(this.listeDeroulanteCharRank1);
             this.Controls.Add(this.numericUpDown1);
             this.Controls.Add(this.listeDeroulanteSubUnity1);
             this.Controls.Add(this.listeDeroulanteUnity1);
@@ -328,7 +316,6 @@
         private ListeDeroulanteUnity listeDeroulanteUnity1;
         private ListeDeroulanteSubUnity listeDeroulanteSubUnity1;
         private System.Windows.Forms.NumericUpDown numericUpDown1;
-        private ListeDeroulanteCharRank listeDeroulanteCharRank1;
         private FicheEquipement ficheEquipement1;
         private System.Windows.Forms.Label labelSubunity;
         private ListeDeroulanteStuff listeDeroulanteStuff1;

@@ -69,18 +69,17 @@ namespace EICE_WARGAME
         private void ListeDeroulanteSubUnity_SurChangementSelection(object sender, EventArgs e)
         {
             listeDeroulanteSubUnity1.SubUnitySelectionnee.Unity = listeDeroulanteUnity1.UnitySelectionnee;
-            listeDeroulanteCharRank1.Charact = Program.GMBD.EnumererPersonnage(null, new MyDB.CodeSql(@"JOIN charact ON char_rank.cr_fk_ch_id = charact.ch_id 
-                                                                                                        JOIN rank ON char_rank.cr_fk_ra_id = rank.ra_id
-                                                                                                        JOIN subunity ON char_rank.cr_sub_id = subunity.su_id    
-                                                                                                        JOIN unity ON subunity.su_fk_unity_id = unity.un_id                                                                   
-                                                                                                        JOIN subfaction ON charact.ch_fk_subfaction_id = subfaction.sf_id
-                                                                                                        JOIN faction ON subfaction.sf_fk_faction_id = faction.fa_id"),
+            listeDeroulanteChar1.Charact = Program.GMBD.EnumererCaractere(null, new MyDB.CodeSql(@"JOIN char_rank ON char_rank.cr_fk_ch_id = charact.ch_id 
+                                                                                                   JOIN rank ON char_rank.cr_fk_ra_id = rank.ra_id 
+                                                                                                   JOIN subunity ON char_rank.cr_sub_id = subunity.su_id 
+                                                                                                   JOIN unity ON subunity.su_fk_unity_id = unity.un_id 
+                                                                                                   JOIN subfaction ON charact.ch_fk_subfaction_id = subfaction.sf_id 
+                                                                                                   JOIN faction ON subfaction.sf_fk_faction_id = faction.fa_id"),
                                                                                                     new MyDB.CodeSql(@"WHERE fa_id = {0} AND sf_id = {1}
                                                                                                                         AND un_id = {2} AND su_id = {3}",
                                                                                                              listeDeroulanteFaction1.FactionSelectionnee.Id, listeDeroulanteSousFaction1.SousFactionSelectionnee.Id,
                                                                                                              listeDeroulanteUnity1.UnitySelectionnee.Id, listeDeroulanteSubUnity1.SubUnitySelectionnee.Id),
                                                                                                         MyDB.CreerCodeSql("ORDER BY ch_name"));
-           // listeDeroulanteChar1.Charact = Program.GMBD.EnumererPersonnage(null, new MyDB.CodeSql(@""))
         }
 
 
