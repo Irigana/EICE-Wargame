@@ -43,7 +43,6 @@
             this.buttonEnleverEquipementSurPersonnage = new System.Windows.Forms.Button();
             this.buttonReturn = new System.Windows.Forms.Button();
             this.ficheEquipementSurFigurine1 = new EICE_WARGAME.FicheEquipementSurFigurine();
-            this.fichePersonnageEquipement1 = new EICE_WARGAME.FichePersonnageEquipement();
             this.listeDeroulanteChar1 = new EICE_WARGAME.ListeDeroulanteChar();
             this.ficheEquipement1 = new EICE_WARGAME.FicheEquipement();
             this.listeDeroulanteSubUnity1 = new EICE_WARGAME.ListeDeroulanteSubUnity();
@@ -81,9 +80,9 @@
             this.labelFaction.Location = new System.Drawing.Point(46, 124);
             this.labelFaction.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.labelFaction.Name = "labelFaction";
-            this.labelFaction.Size = new System.Drawing.Size(54, 17);
+            this.labelFaction.Size = new System.Drawing.Size(62, 17);
             this.labelFaction.TabIndex = 3;
-            this.labelFaction.Text = "Faction";
+            this.labelFaction.Text = "Faction :";
             // 
             // labelSousFaction
             // 
@@ -92,9 +91,9 @@
             this.labelSousFaction.Location = new System.Drawing.Point(46, 158);
             this.labelSousFaction.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.labelSousFaction.Name = "labelSousFaction";
-            this.labelSousFaction.Size = new System.Drawing.Size(86, 17);
+            this.labelSousFaction.Size = new System.Drawing.Size(94, 17);
             this.labelSousFaction.TabIndex = 4;
-            this.labelSousFaction.Text = "Sous faction";
+            this.labelSousFaction.Text = "Sous faction :";
             // 
             // labelUnity
             // 
@@ -103,9 +102,9 @@
             this.labelUnity.Location = new System.Drawing.Point(45, 192);
             this.labelUnity.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.labelUnity.Name = "labelUnity";
-            this.labelUnity.Size = new System.Drawing.Size(41, 17);
+            this.labelUnity.Size = new System.Drawing.Size(49, 17);
             this.labelUnity.TabIndex = 5;
-            this.labelUnity.Text = "Unité";
+            this.labelUnity.Text = "Unité :";
             // 
             // labelFigurine
             // 
@@ -114,9 +113,9 @@
             this.labelFigurine.Location = new System.Drawing.Point(45, 260);
             this.labelFigurine.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.labelFigurine.Name = "labelFigurine";
-            this.labelFigurine.Size = new System.Drawing.Size(85, 17);
+            this.labelFigurine.Size = new System.Drawing.Size(93, 17);
             this.labelFigurine.TabIndex = 6;
-            this.labelFigurine.Text = "Personnage";
+            this.labelFigurine.Text = "Personnage :";
             // 
             // labelEquipement
             // 
@@ -136,9 +135,9 @@
             this.labelQuantite.Location = new System.Drawing.Point(46, 94);
             this.labelQuantite.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.labelQuantite.Name = "labelQuantite";
-            this.labelQuantite.Size = new System.Drawing.Size(62, 17);
+            this.labelQuantite.Size = new System.Drawing.Size(70, 17);
             this.labelQuantite.TabIndex = 9;
-            this.labelQuantite.Text = "Quantité";
+            this.labelQuantite.Text = "Quantité :";
             // 
             // labelMesFigurines
             // 
@@ -171,9 +170,9 @@
             this.labelSubunity.Location = new System.Drawing.Point(45, 226);
             this.labelSubunity.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.labelSubunity.Name = "labelSubunity";
-            this.labelSubunity.Size = new System.Drawing.Size(77, 17);
+            this.labelSubunity.Size = new System.Drawing.Size(85, 17);
             this.labelSubunity.TabIndex = 22;
-            this.labelSubunity.Text = "Sous Unité";
+            this.labelSubunity.Text = "Sous Unité :";
             // 
             // buttonAjoutEquipementSurPersonnage
             // 
@@ -183,6 +182,7 @@
             this.buttonAjoutEquipementSurPersonnage.TabIndex = 27;
             this.buttonAjoutEquipementSurPersonnage.Text = ">";
             this.buttonAjoutEquipementSurPersonnage.UseVisualStyleBackColor = true;
+            this.buttonAjoutEquipementSurPersonnage.Click += new System.EventHandler(this.AjoutEquipementSurFigurine);
             // 
             // buttonEnleverEquipementSurPersonnage
             // 
@@ -215,15 +215,6 @@
             this.ficheEquipementSurFigurine1.Size = new System.Drawing.Size(220, 240);
             this.ficheEquipementSurFigurine1.TabIndex = 30;
             this.ficheEquipementSurFigurine1.TexteFiltreEquipement = "";
-            // 
-            // fichePersonnageEquipement1
-            // 
-            this.fichePersonnageEquipement1.CaractereSelectionne = null;
-            this.fichePersonnageEquipement1.Location = new System.Drawing.Point(637, 100);
-            this.fichePersonnageEquipement1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
-            this.fichePersonnageEquipement1.Name = "fichePersonnageEquipement1";
-            this.fichePersonnageEquipement1.Size = new System.Drawing.Size(356, 324);
-            this.fichePersonnageEquipement1.TabIndex = 29;
             // 
             // listeDeroulanteChar1
             // 
@@ -301,7 +292,6 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.Controls.Add(this.ficheEquipementSurFigurine1);
-            this.Controls.Add(this.fichePersonnageEquipement1);
             this.Controls.Add(this.buttonEnleverEquipementSurPersonnage);
             this.Controls.Add(this.buttonAjoutEquipementSurPersonnage);
             this.Controls.Add(this.listeDeroulanteChar1);
@@ -355,7 +345,6 @@
         private ListeDeroulanteChar listeDeroulanteChar1;
         private System.Windows.Forms.Button buttonAjoutEquipementSurPersonnage;
         private System.Windows.Forms.Button buttonEnleverEquipementSurPersonnage;
-        private FichePersonnageEquipement fichePersonnageEquipement1;
         private FicheEquipementSurFigurine ficheEquipementSurFigurine1;
     }
 }

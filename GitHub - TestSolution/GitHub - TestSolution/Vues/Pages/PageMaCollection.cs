@@ -105,7 +105,10 @@ namespace EICE_WARGAME
                                                                                                     new MyDB.CodeSql(@"GROUP BY ch_id ORDER BY ch_name"));
         }
 
-
+        private void CreationFigurine()
+        {
+            //TODO : le INSERT INTO FIGURINE
+        }
 
 
         private void buttonReturn_Click(object sender, EventArgs e)
@@ -165,5 +168,10 @@ namespace EICE_WARGAME
 
         }
 
+        private void AjoutEquipementSurFigurine(object sender, EventArgs e)
+        {
+            CreationFigurine();
+
+        }
     }
 }
