@@ -166,6 +166,7 @@
             this.buttonScenario.TabIndex = 9;
             this.buttonScenario.Text = "Scénarios";
             this.buttonScenario.UseVisualStyleBackColor = false;
+            this.buttonScenario.Click += new System.EventHandler(this.buttonScenario_Click);
             // 
             // PageMenuDashboard
             // 
