@@ -50,6 +50,7 @@
             this.listeDeroulanteSousFaction1 = new EICE_WARGAME.ListeDeroulanteSousFaction();
             this.listeDeroulanteFaction1 = new EICE_WARGAME.ListeDeroulanteFaction();
             this.buttonOptionsUser1 = new EICE_WARGAME.ButtonOptionsUser();
+            this.buttonValiderFigurineStuff = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -288,10 +289,20 @@
             this.buttonOptionsUser1.Utilisateur = null;
             this.buttonOptionsUser1.Load += new System.EventHandler(this.buttonOptionsUser1_Load);
             // 
+            // buttonValiderFigurineStuff
+            // 
+            this.buttonValiderFigurineStuff.Location = new System.Drawing.Point(430, 260);
+            this.buttonValiderFigurineStuff.Name = "buttonValiderFigurineStuff";
+            this.buttonValiderFigurineStuff.Size = new System.Drawing.Size(75, 23);
+            this.buttonValiderFigurineStuff.TabIndex = 31;
+            this.buttonValiderFigurineStuff.Text = "Valider";
+            this.buttonValiderFigurineStuff.UseVisualStyleBackColor = true;
+            // 
             // PageMaCollection
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.buttonValiderFigurineStuff);
             this.Controls.Add(this.ficheEquipementSurFigurine1);
             this.Controls.Add(this.buttonEnleverEquipementSurPersonnage);
             this.Controls.Add(this.buttonAjoutEquipementSurPersonnage);
@@ -347,5 +358,6 @@
         private System.Windows.Forms.Button buttonAjoutEquipementSurPersonnage;
         private System.Windows.Forms.Button buttonEnleverEquipementSurPersonnage;
         private FicheEquipementSurFigurine ficheEquipementSurFigurine1;
+        private System.Windows.Forms.Button buttonValiderFigurineStuff;
     }
 }
