@@ -58,9 +58,9 @@ namespace EICE_WARGAME
                 {
                     Declencher_SurErreur(this, Champ.Name, "Nom vide ou ne contient que des espaces");
                 }
-                else if (value.Trim().Length > 20)
+                else if (value.Trim().Length > 40)
                 {
-                    Declencher_SurErreur(this, Champ.Name, "Ce champ peut contenir au maximum 20 caractères");
+                    Declencher_SurErreur(this, Champ.Name, "Ce champ peut contenir au maximum 40 caractères");
                 }
                 else
                 {

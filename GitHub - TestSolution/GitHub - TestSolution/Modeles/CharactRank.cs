@@ -15,8 +15,7 @@ namespace EICE_WARGAME
         {
             Id,
             Caractere,
-            Rank,
-            //Feature,
+            Rank,           
             Cost,
             SubUnity,
         }
@@ -51,18 +50,7 @@ namespace EICE_WARGAME
         #endregion
 
         #region Membres publics       
-        /*
-        /// <summary>
-        /// Liste des Types de Stuff
-        /// </summary>
-        public IEnumerable<CharactFeature> CharacFeatures
-        {
-            get
-            {
-                return EnumererCharactFeatures();
-            }
-        }
-        */
+        
         /// <summary>
         /// Membre public permettant d'accéder à l'id du rank
         /// </summary>
@@ -150,9 +138,9 @@ namespace EICE_WARGAME
 
             set
             {
-                if (value < int.MinValue)
+                if (value < 0)
                 {
-                    Declencher_SurErreur(this, Champ.Cost, "Cout inférieur au minimum autoriser");
+                    Declencher_SurErreur(this, Champ.Cost, "Votre coût doit être supérieur à 0");
                 }
                 else if (value > int.MaxValue)
                 {

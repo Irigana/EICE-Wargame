@@ -37,6 +37,7 @@
             this.buttonFaction = new System.Windows.Forms.Button();
             this.buttonGestionUser = new System.Windows.Forms.Button();
             this.buttonPersonnage = new System.Windows.Forms.Button();
+            this.buttonScenario = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxLogoDashboard)).BeginInit();
             this.SuspendLayout();
             // 
@@ -66,9 +67,8 @@
             this.buttonRetourMenuPrincipal.FlatAppearance.BorderColor = System.Drawing.SystemColors.ControlDarkDark;
             this.buttonRetourMenuPrincipal.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonRetourMenuPrincipal.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
-            this.buttonRetourMenuPrincipal.Image = global::EICE_WARGAME.Properties.Resources.ReturnLogo35px;
             this.buttonRetourMenuPrincipal.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.buttonRetourMenuPrincipal.Location = new System.Drawing.Point(624, 522);
+            this.buttonRetourMenuPrincipal.Location = new System.Drawing.Point(624, 580);
             this.buttonRetourMenuPrincipal.Name = "buttonRetourMenuPrincipal";
             this.buttonRetourMenuPrincipal.Size = new System.Drawing.Size(300, 55);
             this.buttonRetourMenuPrincipal.TabIndex = 4;
@@ -82,9 +82,8 @@
             this.buttonEquipement.FlatAppearance.BorderColor = System.Drawing.SystemColors.ControlDarkDark;
             this.buttonEquipement.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonEquipement.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
-            this.buttonEquipement.Image = global::EICE_WARGAME.Properties.Resources.Equipement40px;
             this.buttonEquipement.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.buttonEquipement.Location = new System.Drawing.Point(624, 339);
+            this.buttonEquipement.Location = new System.Drawing.Point(624, 397);
             this.buttonEquipement.Name = "buttonEquipement";
             this.buttonEquipement.Size = new System.Drawing.Size(300, 55);
             this.buttonEquipement.TabIndex = 3;
@@ -109,7 +108,7 @@
             this.buttonSousFaction.BackColor = System.Drawing.SystemColors.Window;
             this.buttonSousFaction.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonSousFaction.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
-            this.buttonSousFaction.Location = new System.Drawing.Point(624, 278);
+            this.buttonSousFaction.Location = new System.Drawing.Point(624, 336);
             this.buttonSousFaction.Name = "buttonSousFaction";
             this.buttonSousFaction.Size = new System.Drawing.Size(300, 55);
             this.buttonSousFaction.TabIndex = 5;
@@ -122,7 +121,7 @@
             this.buttonFaction.BackColor = System.Drawing.SystemColors.Window;
             this.buttonFaction.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonFaction.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
-            this.buttonFaction.Location = new System.Drawing.Point(624, 217);
+            this.buttonFaction.Location = new System.Drawing.Point(624, 275);
             this.buttonFaction.Name = "buttonFaction";
             this.buttonFaction.Size = new System.Drawing.Size(300, 55);
             this.buttonFaction.TabIndex = 6;
@@ -135,7 +134,7 @@
             this.buttonGestionUser.BackColor = System.Drawing.SystemColors.Window;
             this.buttonGestionUser.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonGestionUser.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
-            this.buttonGestionUser.Location = new System.Drawing.Point(624, 461);
+            this.buttonGestionUser.Location = new System.Drawing.Point(624, 519);
             this.buttonGestionUser.Name = "buttonGestionUser";
             this.buttonGestionUser.Size = new System.Drawing.Size(300, 55);
             this.buttonGestionUser.TabIndex = 7;
@@ -148,7 +147,7 @@
             this.buttonPersonnage.BackColor = System.Drawing.SystemColors.Window;
             this.buttonPersonnage.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonPersonnage.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
-            this.buttonPersonnage.Location = new System.Drawing.Point(624, 400);
+            this.buttonPersonnage.Location = new System.Drawing.Point(624, 458);
             this.buttonPersonnage.Name = "buttonPersonnage";
             this.buttonPersonnage.Size = new System.Drawing.Size(300, 55);
             this.buttonPersonnage.TabIndex = 8;
@@ -156,10 +155,23 @@
             this.buttonPersonnage.UseVisualStyleBackColor = false;
             this.buttonPersonnage.Click += new System.EventHandler(this.buttonCaractère_Click);
             // 
+            // buttonScenario
+            // 
+            this.buttonScenario.BackColor = System.Drawing.SystemColors.Window;
+            this.buttonScenario.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonScenario.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
+            this.buttonScenario.Location = new System.Drawing.Point(624, 214);
+            this.buttonScenario.Name = "buttonScenario";
+            this.buttonScenario.Size = new System.Drawing.Size(300, 55);
+            this.buttonScenario.TabIndex = 9;
+            this.buttonScenario.Text = "Scénarios";
+            this.buttonScenario.UseVisualStyleBackColor = false;
+            // 
             // PageMenuDashboard
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.buttonScenario);
             this.Controls.Add(this.buttonPersonnage);
             this.Controls.Add(this.buttonGestionUser);
             this.Controls.Add(this.buttonFaction);
@@ -189,5 +201,6 @@
         private System.Windows.Forms.Button buttonFaction;
         private System.Windows.Forms.Button buttonGestionUser;
         private System.Windows.Forms.Button buttonPersonnage;
+        private System.Windows.Forms.Button buttonScenario;
     }
 }

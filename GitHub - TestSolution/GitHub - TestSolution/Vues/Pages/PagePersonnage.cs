@@ -280,15 +280,43 @@ namespace EICE_WARGAME
                                         NouveauCaractere.SousFaction = listeDeroulanteSousFaction1.SousFactionSelectionnee;
                                         NouveauCaractere.Name = textBoxCaractere.Text;
 
-                                        if ((NouveauCaractere.EstValide) && (Program.GMBD.AjouterCaractere(NouveauCaractere)))
+                                        Charact CaractereExistant = Program.GMBD.EnumererCaractere(null, null, new MyDB.CodeSql("WHERE ch_name = {0}",textBoxCaractere.Text), null).FirstOrDefault();
+                                        if (CaractereExistant == null)
                                         {
+                                            if ((NouveauCaractere.EstValide) && (Program.GMBD.AjouterCaractere(NouveauCaractere)))
+                                            {
 
+                                                CharactRank NouveauPersonnage = new CharactRank();
+                                                NouveauPersonnage.Caractere = NouveauCaractere;
+                                                NouveauPersonnage.Cost = Convert.ToInt32(numericUpDown1.Value);
+                                                NouveauPersonnage.SubUnity = listeDeroulanteSubUnity1.SubUnitySelectionnee;
+                                                NouveauPersonnage.Rank = listeDeroulanteRank1.RankSelectionnee;
+                                                if ((NouveauPersonnage.EstValide) && Program.GMBD.AjouterPersonnage(NouveauPersonnage))
+                                                {
+                                                    Program.GMBD.MettreAJourFicheCaractere(ficheCaractere1, listeDeroulanteFaction1.FactionSelectionnee.Id, listeDeroulanteSousFaction1.SousFactionSelectionnee.Id, listeDeroulanteUnity1.UnitySelectionnee.Id, listeDeroulanteSubUnity1.SubUnitySelectionnee.Id);
+                                                    errorProviderErreurCaractere.Clear();
+                                                    ValidationProvider.SetError(textBoxCaractere, "Personnage correctement ajouté");
+                                                    textBoxCaractere.Text = NouveauCaractere.Name;
+
+                                                    ficheCaractere1.TexteDuFiltre = "";
+                                                    listeDeroulanteRank1.RankSelectionnee = null;
+                                                    numericUpDown1.Value = 0;
+                                                    ficheCaractere1.CaractereSelectionne = null;
+                                                }
+                                                else
+                                                {
+                                                    Program.GMBD.SupprimerCaractere(NouveauCaractere);
+                                                }
+                                            }
+                                        }
+                                        else
+                                        {
                                             CharactRank NouveauPersonnage = new CharactRank();
-                                            NouveauPersonnage.Caractere = NouveauCaractere;
+                                            NouveauPersonnage.Caractere = CaractereExistant;
                                             NouveauPersonnage.Cost = Convert.ToInt32(numericUpDown1.Value);
                                             NouveauPersonnage.SubUnity = listeDeroulanteSubUnity1.SubUnitySelectionnee;
-                                            NouveauPersonnage.Rank = listeDeroulanteRank1.RankSelectionnee;
-                                            if((NouveauPersonnage.EstValide) && Program.GMBD.AjouterPersonnage(NouveauPersonnage))
+                                            NouveauPersonnage.Rank = listeDeroulanteRank1.RankSelectionnee;                                            
+                                            if ((NouveauPersonnage.EstValide) && Program.GMBD.AjouterPersonnage(NouveauPersonnage))
                                             {
                                                 Program.GMBD.MettreAJourFicheCaractere(ficheCaractere1, listeDeroulanteFaction1.FactionSelectionnee.Id, listeDeroulanteSousFaction1.SousFactionSelectionnee.Id, listeDeroulanteUnity1.UnitySelectionnee.Id, listeDeroulanteSubUnity1.SubUnitySelectionnee.Id);
                                                 errorProviderErreurCaractere.Clear();
@@ -299,10 +327,6 @@ namespace EICE_WARGAME
                                                 listeDeroulanteRank1.RankSelectionnee = null;
                                                 numericUpDown1.Value = 0;
                                                 ficheCaractere1.CaractereSelectionne = null;
-                                            }
-                                            else
-                                            {
-                                                Program.GMBD.SupprimerCaractere(NouveauCaractere);
                                             }
                                         }
                                         
