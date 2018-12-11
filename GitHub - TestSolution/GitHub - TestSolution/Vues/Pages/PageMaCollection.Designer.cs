@@ -43,6 +43,7 @@
             this.buttonEnleverEquipementSurPersonnage = new System.Windows.Forms.Button();
             this.buttonReturn = new System.Windows.Forms.Button();
             this.buttonValiderFigurineStuff = new System.Windows.Forms.Button();
+            this.ficheEquipementSansRecherche1 = new EICE_WARGAME.FicheEquipementSansRecherche();
             this.ficheEquipementSurFigurine1 = new EICE_WARGAME.FicheEquipementSurFigurine();
             this.listeDeroulanteChar1 = new EICE_WARGAME.ListeDeroulanteChar();
             this.listeDeroulanteSubUnity1 = new EICE_WARGAME.ListeDeroulanteSubUnity();
@@ -50,7 +51,7 @@
             this.listeDeroulanteSousFaction1 = new EICE_WARGAME.ListeDeroulanteSousFaction();
             this.listeDeroulanteFaction1 = new EICE_WARGAME.ListeDeroulanteFaction();
             this.buttonOptionsUser1 = new EICE_WARGAME.ButtonOptionsUser();
-            this.ficheEquipementSansRecherche1 = new EICE_WARGAME.FicheEquipementSansRecherche();
+            this.ficheFigurineStuff1 = new EICE_WARGAME.FicheFigurineStuff();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -177,7 +178,7 @@
             // 
             // buttonAjoutEquipementSurPersonnage
             // 
-            this.buttonAjoutEquipementSurPersonnage.Location = new System.Drawing.Point(274, 357);
+            this.buttonAjoutEquipementSurPersonnage.Location = new System.Drawing.Point(274, 365);
             this.buttonAjoutEquipementSurPersonnage.Name = "buttonAjoutEquipementSurPersonnage";
             this.buttonAjoutEquipementSurPersonnage.Size = new System.Drawing.Size(29, 23);
             this.buttonAjoutEquipementSurPersonnage.TabIndex = 27;
@@ -187,7 +188,7 @@
             // 
             // buttonEnleverEquipementSurPersonnage
             // 
-            this.buttonEnleverEquipementSurPersonnage.Location = new System.Drawing.Point(274, 386);
+            this.buttonEnleverEquipementSurPersonnage.Location = new System.Drawing.Point(274, 394);
             this.buttonEnleverEquipementSurPersonnage.Name = "buttonEnleverEquipementSurPersonnage";
             this.buttonEnleverEquipementSurPersonnage.Size = new System.Drawing.Size(29, 23);
             this.buttonEnleverEquipementSurPersonnage.TabIndex = 28;
@@ -217,10 +218,19 @@
             this.buttonValiderFigurineStuff.Text = "Valider";
             this.buttonValiderFigurineStuff.UseVisualStyleBackColor = true;
             // 
+            // ficheEquipementSansRecherche1
+            // 
+            this.ficheEquipementSansRecherche1.EquipementSelectionne = null;
+            this.ficheEquipementSansRecherche1.Location = new System.Drawing.Point(48, 332);
+            this.ficheEquipementSansRecherche1.Margin = new System.Windows.Forms.Padding(2);
+            this.ficheEquipementSansRecherche1.Name = "ficheEquipementSansRecherche1";
+            this.ficheEquipementSansRecherche1.Size = new System.Drawing.Size(220, 240);
+            this.ficheEquipementSansRecherche1.TabIndex = 32;
+            // 
             // ficheEquipementSurFigurine1
             // 
             this.ficheEquipementSurFigurine1.EquipementSelectionne = null;
-            this.ficheEquipementSurFigurine1.Location = new System.Drawing.Point(308, 324);
+            this.ficheEquipementSurFigurine1.Location = new System.Drawing.Point(308, 332);
             this.ficheEquipementSurFigurine1.Margin = new System.Windows.Forms.Padding(2);
             this.ficheEquipementSurFigurine1.Name = "ficheEquipementSurFigurine1";
             this.ficheEquipementSurFigurine1.Size = new System.Drawing.Size(220, 240);
@@ -286,19 +296,21 @@
             this.buttonOptionsUser1.Utilisateur = null;
             this.buttonOptionsUser1.Load += new System.EventHandler(this.buttonOptionsUser1_Load);
             // 
-            // ficheEquipementSansRecherche1
+            // ficheFigurineStuff1
             // 
-            this.ficheEquipementSansRecherche1.EquipementSelectionne = null;
-            this.ficheEquipementSansRecherche1.Location = new System.Drawing.Point(48, 324);
-            this.ficheEquipementSansRecherche1.Margin = new System.Windows.Forms.Padding(2);
-            this.ficheEquipementSansRecherche1.Name = "ficheEquipementSansRecherche1";
-            this.ficheEquipementSansRecherche1.Size = new System.Drawing.Size(220, 240);
-            this.ficheEquipementSansRecherche1.TabIndex = 32;
+            this.ficheFigurineStuff1.FactionSelectionne = null;
+            this.ficheFigurineStuff1.Location = new System.Drawing.Point(615, 110);
+            this.ficheFigurineStuff1.Margin = new System.Windows.Forms.Padding(2);
+            this.ficheFigurineStuff1.Name = "ficheFigurineStuff1";
+            this.ficheFigurineStuff1.Size = new System.Drawing.Size(457, 462);
+            this.ficheFigurineStuff1.TabIndex = 33;
+            this.ficheFigurineStuff1.TexteFiltreFaction = "";
             // 
             // PageMaCollection
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.ficheFigurineStuff1);
             this.Controls.Add(this.ficheEquipementSansRecherche1);
             this.Controls.Add(this.buttonValiderFigurineStuff);
             this.Controls.Add(this.ficheEquipementSurFigurine1);
@@ -356,5 +368,6 @@
         private FicheEquipementSurFigurine ficheEquipementSurFigurine1;
         private System.Windows.Forms.Button buttonValiderFigurineStuff;
         private FicheEquipementSansRecherche ficheEquipementSansRecherche1;
+        private FicheFigurineStuff ficheFigurineStuff1;
     }
 }

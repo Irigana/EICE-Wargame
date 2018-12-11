@@ -34,29 +34,32 @@
             // 
             // textBoxRecherche
             // 
-            this.textBoxRecherche.Location = new System.Drawing.Point(3, 3);
+            this.textBoxRecherche.Location = new System.Drawing.Point(2, 2);
+            this.textBoxRecherche.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.textBoxRecherche.Name = "textBoxRecherche";
-            this.textBoxRecherche.Size = new System.Drawing.Size(286, 22);
+            this.textBoxRecherche.Size = new System.Drawing.Size(453, 20);
             this.textBoxRecherche.TabIndex = 0;
             this.textBoxRecherche.TextChanged += new System.EventHandler(this.textFiltre_TextChanged);
             // 
             // listViewFigurineStuff
             // 
             this.listViewFigurineStuff.HeaderStyle = System.Windows.Forms.ColumnHeaderStyle.Nonclickable;
-            this.listViewFigurineStuff.Location = new System.Drawing.Point(3, 31);
+            this.listViewFigurineStuff.Location = new System.Drawing.Point(2, 25);
+            this.listViewFigurineStuff.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.listViewFigurineStuff.Name = "listViewFigurineStuff";
-            this.listViewFigurineStuff.Size = new System.Drawing.Size(286, 257);
+            this.listViewFigurineStuff.Size = new System.Drawing.Size(453, 435);
             this.listViewFigurineStuff.TabIndex = 1;
             this.listViewFigurineStuff.UseCompatibleStateImageBehavior = false;
             // 
             // FicheFigurineStuff
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.Controls.Add(this.listViewFigurineStuff);
             this.Controls.Add(this.textBoxRecherche);
+            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.Name = "FicheFigurineStuff";
-            this.Size = new System.Drawing.Size(293, 295);
+            this.Size = new System.Drawing.Size(457, 462);
             this.ResumeLayout(false);
             this.PerformLayout();
 
