@@ -65,7 +65,6 @@ namespace EICE_WARGAME
 
             };
         }
-            // Program.GMBD.MettreAJourListeSousFaction(listeDeroulanteSousFaction1);
 
         private void ListeDeroulanteFaction_SurChangementSelection(object sender, EventArgs e)
         {
@@ -91,6 +90,7 @@ namespace EICE_WARGAME
 
         private void ListeDeroulanteSubUnity_SurChangementSelection(object sender, EventArgs e)
         {
+            //TODO FILTRER SUR LA FACTION - SOUS FACTION
             listeDeroulanteSubUnity1.SubUnitySelectionnee.Unity = listeDeroulanteUnity1.UnitySelectionnee;
             listeDeroulanteChar1.Charact = Program.GMBD.EnumererCaractere(null, new MyDB.CodeSql(@"JOIN char_rank ON char_rank.cr_fk_ch_id = charact.ch_id 
                                                                                                    JOIN rank ON char_rank.cr_fk_ra_id = rank.ra_id 
