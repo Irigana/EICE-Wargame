@@ -80,6 +80,7 @@ namespace EICE_WARGAME
                                                                                                              listeDeroulanteFaction1.FactionSelectionnee.Id, listeDeroulanteSousFaction1.SousFactionSelectionnee.Id,
                                                                                                              listeDeroulanteUnity1.UnitySelectionnee.Id, listeDeroulanteSubUnity1.SubUnitySelectionnee.Id),
                                                                                                         MyDB.CreerCodeSql("ORDER BY ch_name"));
+           // listeDeroulanteChar1.Charact = Program.GMBD.EnumererPersonnage(null, new MyDB.CodeSql(@""))
         }
 
 

@@ -48,6 +48,7 @@
             this.listeDeroulanteFaction1 = new EICE_WARGAME.ListeDeroulanteFaction();
             this.buttonOptionsUser1 = new EICE_WARGAME.ButtonOptionsUser();
             this.listeDeroulanteStuff1 = new EICE_WARGAME.ListeDeroulanteStuff();
+            this.listeDeroulanteChar1 = new EICE_WARGAME.ListeDeroulanteChar();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -200,7 +201,7 @@
             // 
             this.listeDeroulanteCharRank1.CharactSelectionnee = null;
             this.listeDeroulanteCharRank1.Location = new System.Drawing.Point(158, 260);
-            this.listeDeroulanteCharRank1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.listeDeroulanteCharRank1.Margin = new System.Windows.Forms.Padding(2);
             this.listeDeroulanteCharRank1.Name = "listeDeroulanteCharRank1";
             this.listeDeroulanteCharRank1.Size = new System.Drawing.Size(218, 21);
             this.listeDeroulanteCharRank1.TabIndex = 20;
@@ -266,10 +267,20 @@
             this.listeDeroulanteStuff1.StuffSelectionnee = null;
             this.listeDeroulanteStuff1.TabIndex = 23;
             // 
+            // listeDeroulanteChar1
+            // 
+            this.listeDeroulanteChar1.CharactSelectionnee = null;
+            this.listeDeroulanteChar1.Location = new System.Drawing.Point(391, 260);
+            this.listeDeroulanteChar1.Margin = new System.Windows.Forms.Padding(2);
+            this.listeDeroulanteChar1.Name = "listeDeroulanteChar1";
+            this.listeDeroulanteChar1.Size = new System.Drawing.Size(195, 24);
+            this.listeDeroulanteChar1.TabIndex = 24;
+            // 
             // PageMaCollection
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.listeDeroulanteChar1);
             this.Controls.Add(this.listeDeroulanteStuff1);
             this.Controls.Add(this.labelSubunity);
             this.Controls.Add(this.ficheEquipement1);
@@ -321,5 +332,6 @@
         private FicheEquipement ficheEquipement1;
         private System.Windows.Forms.Label labelSubunity;
         private ListeDeroulanteStuff listeDeroulanteStuff1;
+        private ListeDeroulanteChar listeDeroulanteChar1;
     }
 }
