@@ -93,15 +93,16 @@ namespace EICE_WARGAME
         }
 
         private void ListeDeroulanteChar_SurChangementSelection(object sender, EventArgs e)
-        { 
-                    ficheEquipement1.Equipement = Program.GMBD.EnumererStuff(
+       {
+
+            ficheEquipementSansRecherche1.Equipement = Program.GMBD.EnumererStuff(
                         null,
                         new MyDB.CodeSql(@"JOIN stuff_char_rank ON scr_fk_stuff_id = st_id
                                            JOIN char_rank ON scr_fk_char_rank_id = cr_id
                                            JOIN charact ON cr_fk_ch_id = ch_id"),
-                        new MyDB.CodeSql("WHERE ch_id = {0}",listeDeroulanteChar1.CharactSelectionnee.Id),
+                       new MyDB.CodeSql("WHERE ch_id = {0}",listeDeroulanteChar1.CharactSelectionnee.Id),
                         new MyDB.CodeSql("ORDER BY st_name"));
-        }
+       } 
 
         private void CreationFigurine()
         {
