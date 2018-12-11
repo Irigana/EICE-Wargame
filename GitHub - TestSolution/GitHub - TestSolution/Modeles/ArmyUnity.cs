@@ -51,7 +51,7 @@ namespace EICE_WARGAME
                 }
                 else
                 {
-                    if ((m_Army == null) || int.Equals(value.Id, m_Army.Id))
+                    if ((m_Army == null) || !int.Equals(value.Id, m_Army.Id))
                     {
                         ModifierChamp(Champ.Army, ref m_Army, value);
                     }

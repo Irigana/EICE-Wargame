@@ -91,7 +91,7 @@ namespace EICE_WARGAME
                 }
                 else
                 {
-                    if ((m_SousFaction == null) || int.Equals(value.Id, m_SousFaction.Id))
+                    if ((m_SousFaction == null) || !int.Equals(value.Id, m_SousFaction.Id))
                     {
                         ModifierChamp(Champ.SousFaction, ref m_SousFaction, value);
                     }

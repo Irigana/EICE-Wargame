@@ -64,7 +64,7 @@ namespace EICE_WARGAME
                 }
                 else
                 {
-                    if ((m_Scenario == null) || int.Equals(value.Id, m_Scenario.Id))
+                    if ((m_Scenario == null) || !int.Equals(value.Id, m_Scenario.Id))
                     {
                         ModifierChamp(Champ.Scenario, ref m_Scenario, value);
                     }
@@ -89,7 +89,7 @@ namespace EICE_WARGAME
                 }
                 else
                 {
-                    if ((m_Camp == null) || int.Equals(value.Id, m_Camp.Id))
+                    if ((m_Camp == null) || !int.Equals(value.Id, m_Camp.Id))
                     {
                         ModifierChamp(Champ.Camp, ref m_Camp, value);
                     }
