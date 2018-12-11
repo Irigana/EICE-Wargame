@@ -37,20 +37,33 @@ namespace EICE_WARGAME
 
         private Scenario_Camp m_ScenarioEnEdition;
 
+        
+
         public PageScenario()
         {
             InitializeComponent();
             menuAdmin1.MaPageActive = 1;
             buttonAjouter.Enabled = true;
             buttonSupprimer.Enabled = false;
-            buttonNouveauCamp.Enabled = false;
-            buttonRetirerCamp.Enabled = false;
+            buttonUnCamp.Enabled = false;
+            buttonDeuxCamp.Enabled = false;
 
             listeDeroulanteScenario1.Scenario = Program.GMBD.EnumererScenario(null, null, null, null);
 
             listeDeroulanteScenario1.SurChangementSelection += ListeDeroulanteScenario_SurChangementSelection;
 
+            ficheScenarioCamp1.SurClickAjout += FicheScenarioCamp1_SurClickAjout;
+
+            Bitmap ImageRessource = new Bitmap(Properties.Resources.Validation25px);
+            errorProviderValidation.Icon = Icon.FromHandle(ImageRessource.GetHicon());
         }
+
+        private void FicheScenarioCamp1_SurClickAjout(object sender, EventArgs e)
+        {
+            buttonUnCamp.Enabled = false;
+            buttonDeuxCamp.Enabled = false;
+        }
+        
 
         private void ListeDeroulanteScenario_SurChangementSelection(object sender, EventArgs e)
         {
@@ -59,7 +72,6 @@ namespace EICE_WARGAME
                 ficheScenarioCamp1.Enabled = true;
                 ficheScenarioCamp1.DesactiverButtonSurSelection();
                 ficheScenarioCamp2.DesactiverButtonSurSelection();
-                buttonNouveauCamp.Enabled = false;
                 buttonAjouter.Enabled = false;
                 buttonSupprimer.Enabled = true;
                 Scenario ScenarioEnEdition = listeDeroulanteScenario1.ScenarioSelectionnee;
@@ -144,18 +156,15 @@ namespace EICE_WARGAME
 
         private void buttonNouveauCamp_Click(object sender, EventArgs e)
         {
-            labelCampNeutreOuAttaque.Text = "Attaque";
-            labelCampDefense.Text = "Défense";
-            ficheScenarioCamp2.Enabled = true;
-            ficheScenarioCamp2.ChargerFiches();
-            ficheScenarioCamp2.Scenario = m_ScenarioEnEdition; 
+            
         }
 
         private void buttonAjouter_Click(object sender, EventArgs e)
         {
             if(ficheScenarioCamp2.Enabled == false)
-            { 
-                ficheScenarioCamp1.Enabled = true;
+            {
+                buttonUnCamp.Enabled = true;
+                buttonDeuxCamp.Enabled = true;
                 m_ScenarioEnEdition = new Scenario_Camp();
                 m_ScenarioEnEdition.Scenario = new Scenario();
                 m_ScenarioEnEdition.Scenario.SurErreur += Scenario_SurErreur;
@@ -164,10 +173,7 @@ namespace EICE_WARGAME
                 m_ScenarioEnEdition.Camp = Program.GMBD.EnumererCamp(null, null, new MyDB.CodeSql("WHERE ca_id = 3"), null).FirstOrDefault();
                 if (m_ScenarioEnEdition.Scenario.EstValide && Program.GMBD.AjouterScenario(m_ScenarioEnEdition.Scenario))
                 {
-                    ficheScenarioCamp1.Enabled = true;
-                    m_ScenarioEnEdition = new Scenario_Camp();
                     ficheScenarioCamp1.Scenario = m_ScenarioEnEdition;
-                    ficheScenarioCamp1.NumeroDeCamp = 3;
                     ficheScenarioCamp1.ChargerFiches();
                     listeDeroulanteScenario1.ScenarioSelectionnee = m_ScenarioEnEdition.Scenario;
                     buttonAjouter.Enabled = false;
@@ -175,15 +181,15 @@ namespace EICE_WARGAME
                     buttonAnnuler.Enabled = true;
 
                     errorProviderValidation.SetError(textBox1, "Votre scénario a été correctement rajouté, veuillez rajouter ses spécificitées");
-
-                    /*
-                    if ((NouveauScenario.EstValide) && (Program.GMBD.AjouterScenarioCamp(NouveauScenario)))
+                    
+                    if ((m_ScenarioEnEdition.EstValide) && (Program.GMBD.AjouterScenarioCamp(m_ScenarioEnEdition)))
                     {
-                        ficheScenarioCamp1.Scenario = NouveauScenario.Scenario;
-                        ficheScenarioCamp2.Scenario = NouveauScenario.Scenario;
+
+                        ficheScenarioCamp1.Scenario = m_ScenarioEnEdition;
+                        ficheScenarioCamp2.Scenario = m_ScenarioEnEdition;
                         if (ficheScenarioCamp2.Enabled == false)
                         {
-                            ficheScenarioCamp1.NumeroDeCamp = 3;
+                            ficheScenarioCamp2.NumeroDeCamp = 3;
                         }
                         else
                         {
@@ -194,7 +200,7 @@ namespace EICE_WARGAME
                         {
 
                         }
-                    }*/
+                    }
                 }
             }
             else
@@ -250,18 +256,41 @@ namespace EICE_WARGAME
         private void buttonAnnuler_Click(object sender, EventArgs e)
         {
             listeDeroulanteScenario1.ScenarioSelectionnee = null;
+            ficheScenarioCamp1.ClearFiche();
+            ficheScenarioCamp2.ClearFiche();
+            errorProvider.Clear();
+            errorProviderValidation.Clear();      
             textBox1.Text = "";
             buttonAjouter.Enabled = true;
             buttonSupprimer.Enabled = false;
             buttonAnnuler.Enabled = false;
-        }
+        }        
 
-        private void buttonRetirerCamp_Click(object sender, EventArgs e)
+        private void buttonUnCamp_Click(object sender, EventArgs e)
         {
             labelCampNeutreOuAttaque.Text = "Camp neutre";
             labelCampDefense.Text = "";
             ficheScenarioCamp2.Enabled = false;
-            ficheScenarioCamp2.ClearFiche();
+            ficheScenarioCamp1.Enabled = true;
+            ficheScenarioCamp1.NumeroDeCamp = 3;
+            ficheScenarioCamp1.ChargerFiches();
+            ficheScenarioCamp1.Scenario = m_ScenarioEnEdition;
         }
+
+        private void buttonDeuxCamp_Click(object sender, EventArgs e)
+        {
+            labelCampNeutreOuAttaque.Text = "Camp attaquant";
+            labelCampDefense.Text = "Camp défenseur";
+            ficheScenarioCamp1.Enabled = true;
+            ficheScenarioCamp2.Enabled = true;
+            buttonUnCamp.Enabled = true;
+            ficheScenarioCamp1.NumeroDeCamp = 1;
+            ficheScenarioCamp1.ChargerFiches();
+            ficheScenarioCamp1.Scenario = m_ScenarioEnEdition;
+            ficheScenarioCamp2.NumeroDeCamp = 2;
+            ficheScenarioCamp2.ChargerFiches();
+            ficheScenarioCamp2.Scenario = m_ScenarioEnEdition;
+        }
+        
     }
 }
