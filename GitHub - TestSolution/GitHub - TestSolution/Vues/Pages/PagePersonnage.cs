@@ -110,8 +110,8 @@ namespace EICE_WARGAME
         {
             listeDeroulanteSubUnity1.Enabled = true;
             listeDeroulanteSubUnity1.SubUnity = Program.GMBD.EnumererSubUnity(new MyDB.CodeSql("su_id,su_name"),
-                new MyDB.CodeSql(@"JOIN unity ON subunity.su_fk_unity_id = unity.un_id"),
-                new MyDB.CodeSql("WHERE un_id = {0}",
+                null,
+                new MyDB.CodeSql("WHERE su_fk_unity_id = {0}",
                 listeDeroulanteUnity1.UnitySelectionnee.Id),
                 new MyDB.CodeSql("ORDER BY su_name"));
             listeDeroulanteSubUnity1.SurChangementSelection += ListeDeroulanteSubUnity_SurChangementSelection;
@@ -127,11 +127,9 @@ namespace EICE_WARGAME
             ficheCaractere1.Caractere = Program.GMBD.EnumererPersonnage(null,
                 new MyDB.CodeSql(@"JOIN charact ON charact.ch_id = char_rank.cr_fk_ch_id
                                     JOIN rank ON rank.ra_id = char_rank.cr_fk_ra_id
-                                    JOIN subunity ON char_rank.cr_sub_id = subunity.su_id    
-                                    JOIN unity ON subunity.su_fk_unity_id = unity.un_id                                                                   
-                                    JOIN subfaction ON charact.ch_fk_subfaction_id = subfaction.sf_id
-                                    JOIN faction ON subfaction.sf_fk_faction_id = faction.fa_id "),
-                new MyDB.CodeSql("WHERE fa_id = {0} AND sf_id = {1} AND un_id = {2} AND su_id = {3}",
+                                    JOIN subunity ON char_rank.cr_sub_id = subunity.su_id                                                                     
+                                    JOIN subfaction ON charact.ch_fk_subfaction_id = subfaction.sf_id"),
+                new MyDB.CodeSql("WHERE sf_fk_faction_id = {0} AND sf_id = {1} AND su_fk_unity_id = {2} AND su_id = {3}",
                 listeDeroulanteFaction1.FactionSelectionnee.Id, listeDeroulanteSousFaction1.SousFactionSelectionnee.Id,
                 listeDeroulanteUnity1.UnitySelectionnee.Id, listeDeroulanteSubUnity1.SubUnitySelectionnee.Id),
                 new MyDB.CodeSql("ORDER BY su_name"));
@@ -288,6 +286,7 @@ namespace EICE_WARGAME
                                                 NouveauPersonnage.Caractere = NouveauCaractere;
                                                 NouveauPersonnage.Cost = Convert.ToInt32(numericUpDown1.Value);
                                                 NouveauPersonnage.SubUnity = listeDeroulanteSubUnity1.SubUnitySelectionnee;
+                                                NouveauPersonnage.AvantChangement += PersonnageEnEdition_AvantChangement;
                                                 NouveauPersonnage.Rank = listeDeroulanteRank1.RankSelectionnee;
                                                 if ((NouveauPersonnage.EstValide) && Program.GMBD.AjouterPersonnage(NouveauPersonnage))
                                                 {
@@ -311,9 +310,10 @@ namespace EICE_WARGAME
                                         {
                                             CharactRank NouveauPersonnage = new CharactRank();
                                             NouveauPersonnage.Caractere = CaractereExistant;
+                                            NouveauPersonnage.AvantChangement += PersonnageEnEdition_AvantChangement;
+                                            NouveauPersonnage.Rank = listeDeroulanteRank1.RankSelectionnee;
                                             NouveauPersonnage.Cost = Convert.ToInt32(numericUpDown1.Value);
-                                            NouveauPersonnage.SubUnity = listeDeroulanteSubUnity1.SubUnitySelectionnee;
-                                            NouveauPersonnage.Rank = listeDeroulanteRank1.RankSelectionnee;                                            
+                                            NouveauPersonnage.SubUnity = listeDeroulanteSubUnity1.SubUnitySelectionnee;                             
                                             if ((NouveauPersonnage.EstValide) && Program.GMBD.AjouterPersonnage(NouveauPersonnage))
                                             {
                                                 Program.GMBD.MettreAJourFicheCaractere(ficheCaractere1, listeDeroulanteFaction1.FactionSelectionnee.Id, listeDeroulanteSousFaction1.SousFactionSelectionnee.Id, listeDeroulanteUnity1.UnitySelectionnee.Id, listeDeroulanteSubUnity1.SubUnitySelectionnee.Id);
@@ -447,8 +447,8 @@ namespace EICE_WARGAME
                     break;
             }
             buttonAjouterPersonnage.Enabled = false;
-        }
-        
+        }        
+
         /// <summary>
         /// Methode permettant de vérifier si la sous faction existe avant le changement de celle ci dans la base de données
         /// </summary>
@@ -539,6 +539,9 @@ namespace EICE_WARGAME
                 case CharactRank.Champ.Cost:
                     errorProviderErreurCaractere.SetError(numericUpDown1, MessageErreur);
                     break;
+                case CharactRank.Champ.Rank:
+                    errorProviderErreurCaractere.SetError(listeDeroulanteFaction1, MessageErreur);
+                    break;
             }
             buttonAjouterPersonnage.Enabled = false;
         }
@@ -561,8 +564,18 @@ namespace EICE_WARGAME
                         {
                             AccumulateurErreur.NotifierErreur("Ce coût n'est pas correct, veuillez en choisir une autre !");
                         }
+                        CharactRank PersonnageAvecCeRankExiste = Program.GMBD.EnumererPersonnage(null, null, new MyDB.CodeSql("WHERE cr_fk_ra_id = {0} AND cr_fk_ch_id = {1}", Entite.Rank.Id, Entite.Caractere.Id), null).FirstOrDefault();
+                        if (PersonnageAvecCeRankExiste != null)
+                        {
+                            AccumulateurErreur.NotifierErreur("Un personnage avec ce rank existe déjà");
+                        }
                         break;
-                    }                   
+                    }/*
+                case CharactRank.Champ.Rank:
+                    {
+                        
+                    }
+                    break;     */            
             }
         }
 
@@ -580,7 +593,9 @@ namespace EICE_WARGAME
             }
             buttonAjouterPersonnage.Enabled = m_PersonnageEnEdition.EstValide;
         }
-        #endregion        
+        #endregion
+
+        
 
         private void textBoxCaractere_Enter(object sender, EventArgs e)
         {
