@@ -306,7 +306,7 @@ namespace EICE_WARGAME
                                                 }
                                             }
                                         }
-                                        else
+                                        else//
                                         {
                                             errorProviderErreurCaractere.Clear();
                                             ValidationProvider.Clear();
