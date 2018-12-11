@@ -384,10 +384,14 @@ namespace EICE_WARGAME
 
         private void ListeDeroulanteFaction_SurChangementSelection(object sender, EventArgs e)
         {
-            z_listeDeroulanteSousFaction.Enabled = true;
-            z_listeDeroulanteSousFaction.ResetTextSousFaction();
-            Program.GMBD.MettreAJourListeSousFaction(z_listeDeroulanteSousFaction, z_listeDeroulanteFaction.FactionSelectionnee.Id);
-            z_listeDeroulanteSousFaction.SurChangementSelection += ListeDeroulanteSousFaction_SurChangementSelection;
+            if (z_listeDeroulanteFaction.FactionSelectionnee != null)
+            {
+                z_listeDeroulanteSousFaction.Enabled = true;
+                z_listeDeroulanteSousFaction.SousFactionSelectionnee = null;
+                z_listeDeroulanteSousFaction.ResetTextSousFaction();
+                Program.GMBD.MettreAJourListeSousFaction(z_listeDeroulanteSousFaction, z_listeDeroulanteFaction.FactionSelectionnee.Id);
+                z_listeDeroulanteSousFaction.SurChangementSelection += ListeDeroulanteSousFaction_SurChangementSelection;
+            }
         }
 
         /// <summary>
@@ -397,50 +401,61 @@ namespace EICE_WARGAME
         /// <param name="e"></param>
         private void ListeDeroulanteSousFaction_SurChangementSelection(object sender, EventArgs e)
         {
-            z_listeDeroulanteUnity.Enabled = true;
-            // J'ai la sous-faction
-            // Je vais dans table charact je trouve tous les ch_id dont le ch_fk_subfaction_id = sousfactionselectionnee.id
-            // Je vais dans char_rank je trouve tous les cr_sub_id dont le cr_fk_ch_id = ch_id
-            // Je vais dans subunity je trouve tous les su_fr_unity_id dont le su_id = cr_sub_id
-            // Je vais dans unity je sélectionne toutes les unity dont le su_fk_unity_id = un_id
+            if (z_listeDeroulanteSousFaction.SousFactionSelectionnee != null)
+            {
+                z_listeDeroulanteUnity.Enabled = true;
+                z_listeDeroulanteUnity.UnitySelectionnee = null;
+                // J'ai la sous-faction
+                // Je vais dans table charact je trouve tous les ch_id dont le ch_fk_subfaction_id = sousfactionselectionnee.id
+                // Je vais dans char_rank je trouve tous les cr_sub_id dont le cr_fk_ch_id = ch_id
+                // Je vais dans subunity je trouve tous les su_fr_unity_id dont le su_id = cr_sub_id
+                // Je vais dans unity je sélectionne toutes les unity dont le su_fk_unity_id = un_id
 
-            // Remplir la liste des unity avec possédants des personnages de la sous-faction sélectionnée
-            z_listeDeroulanteUnity.Unity = Program.GMBD.EnumererUnity(new MyDB.CodeSql("DISTINCT unity.un_id,unity.un_name"),
-                new MyDB.CodeSql(@"JOIN subunity ON unity.un_id = subunity.su_fk_unity_id
+                // Remplir la liste des unity avec possédants des personnages de la sous-faction sélectionnée
+                z_listeDeroulanteUnity.Unity = Program.GMBD.EnumererUnity(new MyDB.CodeSql("DISTINCT unity.un_id,unity.un_name"),
+                    new MyDB.CodeSql(@"JOIN subunity ON unity.un_id = subunity.su_fk_unity_id
                                     JOIN char_rank ON subunity.su_id = char_rank.cr_sub_id
                                     JOIN charact ON char_rank.cr_fk_ch_id = charact.ch_id                                    
                                     JOIN subfaction ON charact.ch_fk_subfaction_id = subfaction.sf_id
-                                    JOIN faction ON subfaction.sf_fk_faction_id = faction.fa_id "), 
-                new MyDB.CodeSql("WHERE subfaction.sf_id = {0}",
-                z_listeDeroulanteSousFaction.SousFactionSelectionnee.Id),
-                new MyDB.CodeSql("ORDER BY un_name"));
-            z_listeDeroulanteUnity.SurChangementSelection += ListeDeroulanteUnity_SurChangementSelection;
+                                    JOIN faction ON subfaction.sf_fk_faction_id = faction.fa_id "),
+                    new MyDB.CodeSql("WHERE subfaction.sf_id = {0}",
+                    z_listeDeroulanteSousFaction.SousFactionSelectionnee.Id),
+                    new MyDB.CodeSql("ORDER BY un_name"));
+                z_listeDeroulanteUnity.SurChangementSelection += ListeDeroulanteUnity_SurChangementSelection;
+            }
         }
 
         private void ListeDeroulanteUnity_SurChangementSelection(object sender, EventArgs e)
         {
-            z_listeDeroulanteSubUnity.Enabled = true;
-
-            z_listeDeroulanteSubUnity.SubUnity = Program.GMBD.EnumererSubUnity(null, null, new MyDB.CodeSql("WHERE su_fk_unity_id = {0}", z_listeDeroulanteUnity.UnitySelectionnee.Id),
-                                                                        new MyDB.CodeSql("ORDER BY su_name"));
-            z_listeDeroulanteSubUnity.SurChangementSelection += ListeDeroulanteSubUnity_SurChangementSelection;
+            if (z_listeDeroulanteUnity.UnitySelectionnee != null)
+            {
+                z_listeDeroulanteSubUnity.Enabled = true;
+                z_listeDeroulanteSubUnity.SubUnitySelectionnee = null;
+                z_listeDeroulanteSubUnity.SubUnity = Program.GMBD.EnumererSubUnity(null, null, new MyDB.CodeSql("WHERE su_fk_unity_id = {0}", z_listeDeroulanteUnity.UnitySelectionnee.Id),
+                                                                            new MyDB.CodeSql("ORDER BY su_name"));
+                z_listeDeroulanteSubUnity.SurChangementSelection += ListeDeroulanteSubUnity_SurChangementSelection;
+            }
         }
 
         private void ListeDeroulanteSubUnity_SurChangementSelection(object sender, EventArgs e)
         {
-            z_listeDeroulanteCharRank.Enabled = true;
-            z_listeDeroulanteSubUnity.SubUnitySelectionnee.Unity = z_listeDeroulanteUnity.UnitySelectionnee;
-            z_listeDeroulanteCharRank.Charact = Program.GMBD.EnumererPersonnage(null, new MyDB.CodeSql(@"JOIN charact ON char_rank.cr_fk_ch_id = charact.ch_id 
+            if (z_listeDeroulanteSubUnity.SubUnitySelectionnee != null)
+            {
+                z_listeDeroulanteCharRank.Enabled = true;
+                z_listeDeroulanteCharRank.CharactSelectionnee = null;
+                z_listeDeroulanteSubUnity.SubUnitySelectionnee.Unity = z_listeDeroulanteUnity.UnitySelectionnee;
+                z_listeDeroulanteCharRank.Charact = Program.GMBD.EnumererPersonnage(null, new MyDB.CodeSql(@"JOIN charact ON char_rank.cr_fk_ch_id = charact.ch_id 
                                                                                                         JOIN rank ON char_rank.cr_fk_ra_id = rank.ra_id
                                                                                                         JOIN subunity ON char_rank.cr_sub_id = subunity.su_id    
                                                                                                         JOIN unity ON subunity.su_fk_unity_id = unity.un_id                                                                   
                                                                                                         JOIN subfaction ON charact.ch_fk_subfaction_id = subfaction.sf_id
                                                                                                         JOIN faction ON subfaction.sf_fk_faction_id = faction.fa_id"),
-                                                                                                    new MyDB.CodeSql(@"WHERE fa_id = {0} AND sf_id = {1}
+                                                                                                        new MyDB.CodeSql(@"WHERE fa_id = {0} AND sf_id = {1}
                                                                                                                         AND un_id = {2} AND su_id = {3}",
-                                                                                                             z_listeDeroulanteFaction.FactionSelectionnee.Id, z_listeDeroulanteSousFaction.SousFactionSelectionnee.Id,
-                                                                                                             z_listeDeroulanteUnity.UnitySelectionnee.Id, z_listeDeroulanteSubUnity.SubUnitySelectionnee.Id),
-                                                                                                    PDSGBD.MyDB.CreerCodeSql("ORDER BY ch_name"));
+                                                                                                                 z_listeDeroulanteFaction.FactionSelectionnee.Id, z_listeDeroulanteSousFaction.SousFactionSelectionnee.Id,
+                                                                                                                 z_listeDeroulanteUnity.UnitySelectionnee.Id, z_listeDeroulanteSubUnity.SubUnitySelectionnee.Id),
+                                                                                                        PDSGBD.MyDB.CreerCodeSql("ORDER BY ch_name"));
+            }
         }
 
        

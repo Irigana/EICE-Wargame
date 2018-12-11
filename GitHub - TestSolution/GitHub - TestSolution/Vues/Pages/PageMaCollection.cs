@@ -12,6 +12,7 @@ using PDSGBD;
 
 namespace EICE_WARGAME
 {
+
     public partial class PageMaCollection : UserControl
     {
 
@@ -36,13 +37,35 @@ namespace EICE_WARGAME
         #endregion
 
 
+        private const string c_CritereQuiContient = "%{0}%";
+        int Figurine_Id;
+
         public PageMaCollection()
         {
+
             InitializeComponent();
             Program.GMBD.MettreAJourListeFaction(listeDeroulanteFaction1);
             listeDeroulanteFaction1.SurChangementSelection += ListeDeroulanteFaction_SurChangementSelection;
+
+            ficheEquipement1.SurChangementFiltre += (s, ev) =>
+            {
+                if (ficheEquipement1.TexteFiltreEquipement != "")
+                {
+                    ficheEquipement1.Equipement = Program.GMBD.EnumererStuff(
+                        null,
+                        null,
+                        new MyDB.CodeSql("WHERE stuff.st_name LIKE {0}",
+                                         string.Format(c_CritereQuiContient, ficheEquipement1.TexteFiltreEquipement)),
+                        new MyDB.CodeSql("ORDER BY st_name"));
+                }
+                else
+                {
+                    Program.GMBD.EnumererStuff(null, null, null, PDSGBD.MyDB.CreerCodeSql("st_name"));
+                }
+
+
+            };
         }
-            // Program.GMBD.MettreAJourListeSousFaction(listeDeroulanteSousFaction1);
 
         private void ListeDeroulanteFaction_SurChangementSelection(object sender, EventArgs e)
         {
@@ -68,6 +91,7 @@ namespace EICE_WARGAME
 
         private void ListeDeroulanteSubUnity_SurChangementSelection(object sender, EventArgs e)
         {
+            //TODO FILTRER SUR LA FACTION - SOUS FACTION
             listeDeroulanteSubUnity1.SubUnitySelectionnee.Unity = listeDeroulanteUnity1.UnitySelectionnee;
             listeDeroulanteChar1.Charact = Program.GMBD.EnumererCaractere(null, new MyDB.CodeSql(@"JOIN char_rank ON char_rank.cr_fk_ch_id = charact.ch_id 
                                                                                                    JOIN rank ON char_rank.cr_fk_ra_id = rank.ra_id 
@@ -79,7 +103,14 @@ namespace EICE_WARGAME
                                                                                                                         AND un_id = {2} AND su_id = {3}",
                                                                                                              listeDeroulanteFaction1.FactionSelectionnee.Id, listeDeroulanteSousFaction1.SousFactionSelectionnee.Id,
                                                                                                              listeDeroulanteUnity1.UnitySelectionnee.Id, listeDeroulanteSubUnity1.SubUnitySelectionnee.Id),
-                                                                                                        MyDB.CreerCodeSql("ORDER BY ch_name"));
+                                                                                                    new MyDB.CodeSql(@"GROUP BY ch_id ORDER BY ch_name"));
+        }
+
+        private void CreationFigurine()
+        {
+            //TODO : le INSERT INTO figurine (fi_fk_character_id) VALUES (listeDeroulanteChar1.CharactSelectionnee.Id)
+            //
+            // Figurine_Id = ID de la figurine
         }
 
 
@@ -140,5 +171,10 @@ namespace EICE_WARGAME
 
         }
 
+        private void AjoutEquipementSurFigurine(object sender, EventArgs e)
+        {
+            //INSERT INTO figurine_stuff (fs_fk_figurine_id, fs_fk_stuff_id, fs_fk_user_id) VALUES (???, ficheEquipement1.EquipementSelectionne.Id,  m_Utilisateur.Id)
+
+        }
     }
 }
