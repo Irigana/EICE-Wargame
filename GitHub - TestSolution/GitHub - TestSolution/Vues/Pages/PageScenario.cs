@@ -181,10 +181,10 @@ namespace EICE_WARGAME
                     buttonAnnuler.Enabled = true;
 
                     errorProviderValidation.SetError(textBox1, "Votre scénario a été correctement rajouté, veuillez rajouter ses spécificitées");
-                    
+                    //TODO : réagir sur le choix de l'utilisateur sur le camp un ou 2 ou l'ajouter au moment du click sur ajouter ( 2ieme option meilleur option)
                     if ((m_ScenarioEnEdition.EstValide) && (Program.GMBD.AjouterScenarioCamp(m_ScenarioEnEdition)))
                     {
-
+                        listeDeroulanteScenario1.Scenario = Program.GMBD.EnumererScenario(null, null, null, null);
                         ficheScenarioCamp1.Scenario = m_ScenarioEnEdition;
                         ficheScenarioCamp2.Scenario = m_ScenarioEnEdition;
                         if (ficheScenarioCamp2.Enabled == false)
@@ -258,6 +258,8 @@ namespace EICE_WARGAME
             listeDeroulanteScenario1.ScenarioSelectionnee = null;
             ficheScenarioCamp1.ClearFiche();
             ficheScenarioCamp2.ClearFiche();
+            ficheScenarioCamp1.Enabled = false;
+            ficheScenarioCamp2.Enabled = false;
             errorProvider.Clear();
             errorProviderValidation.Clear();      
             textBox1.Text = "";
