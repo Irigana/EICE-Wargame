@@ -173,8 +173,13 @@ namespace EICE_WARGAME
 
         private void AjoutEquipementSurFigurine(object sender, EventArgs e)
         {
-            //INSERT INTO figurine_stuff (fs_fk_figurine_id, fs_fk_stuff_id, fs_fk_user_id) VALUES (???, ficheEquipement1.EquipementSelectionne.Id,  m_Utilisateur.Id)
+            //INSERT INTO figurine_stuff (fs_fk_figurine_id, fs_fk_stuff_id, fs_fk_user_id) VALUES (Figurine_Id, ficheEquipement1.EquipementSelectionne.Id,  m_Utilisateur.Id)
 
+        }
+
+        private void EnleverEquipementSurFigurine(object sender, EventArgs e)
+        {
+            //DELETE * FROM figurine_stuff
         }
     }
 }

@@ -192,6 +192,7 @@
             this.buttonEnleverEquipementSurPersonnage.TabIndex = 28;
             this.buttonEnleverEquipementSurPersonnage.Text = "<";
             this.buttonEnleverEquipementSurPersonnage.UseVisualStyleBackColor = true;
+            this.buttonEnleverEquipementSurPersonnage.Click += new System.EventHandler(this.EnleverEquipementSurFigurine);
             // 
             // buttonReturn
             // 
