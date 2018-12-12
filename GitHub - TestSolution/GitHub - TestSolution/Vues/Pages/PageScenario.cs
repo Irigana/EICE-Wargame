@@ -175,6 +175,9 @@ namespace EICE_WARGAME
                     errorProviderValidation.SetError(textBox1, "Votre scénario a été correctement rajouté, veuillez rajouter ses spécificitées");
                     
                     listeDeroulanteScenario1.Scenario = Program.GMBD.EnumererScenario(null, null, null, null);
+                    listeDeroulanteScenario1.SurChangementSelection -= ListeDeroulanteScenario_SurChangementSelection;
+                    listeDeroulanteScenario1.ScenarioSelectionnee = m_ScenarioEnEdition.Scenario;
+                    listeDeroulanteScenario1.SurChangementSelection += ListeDeroulanteScenario_SurChangementSelection;
                     ficheScenarioCamp1.Scenario = m_ScenarioEnEdition;
                     ficheScenarioCamp2.Scenario = m_ScenarioEnEdition;
                     

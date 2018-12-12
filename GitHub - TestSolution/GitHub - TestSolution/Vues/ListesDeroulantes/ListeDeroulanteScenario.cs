@@ -29,6 +29,15 @@ namespace EICE_WARGAME
                 return Scenario.Name;
             }
 
+            public override bool Equals(object obj)
+            {
+                return (obj is Element) ? Scenario.Equals((obj as Element).Scenario) : base.Equals(obj);
+            }
+
+            public override int GetHashCode()
+            {
+                return Scenario.GetHashCode();
+            }
         }
 
         public ListeDeroulanteScenario()
