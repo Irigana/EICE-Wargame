@@ -112,7 +112,7 @@ namespace EICE_WARGAME
 			if (Enregistrement != null)
 			{
 				DefinirId(Enregistrement.ValeurChampComplet<int>(NomDeLaTablePrincipale, "un_id"));
-				this.Name = Enregistrement.ValeurChampComplet<string>(NomDeLaTablePrincipale, "un_name");
+				this.Name = Enregistrement.ValeurChampComplet<string>(NomDeLaTablePrincipale, "un_name");                
 			}
 		}
 

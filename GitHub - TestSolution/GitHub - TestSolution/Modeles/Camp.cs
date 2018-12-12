@@ -138,16 +138,7 @@ namespace EICE_WARGAME
                 return new PDSGBD.MyDB.CodeSql("ca_name = {0}", m_Name);
             }
         }
-
-        /* private IEnumerable<Scenario_Camp> EnumererScenario_Camp()
-         {
-             if (base.Connexion == null) return new Scenario_Camp[0];
-             return Scenario_Camp.Enumerer(Connexion, Connexion.Enumerer(
-                 @"SELECT sca_id,
-                     FROM scenario_camp
-                     WHERE (ca_id = {0})",
-                 Id)); 
-         } */
+        
         #endregion
     }
 }

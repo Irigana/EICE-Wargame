@@ -37,17 +37,7 @@ namespace EICE_WARGAME
         /// <summary>
         /// Stock les unités 
         /// </summary>
-        private Unity m_Unity;
-
-        /// <summary>
-        /// unité master
-        /// </summary>
-        private SubSub m_SubSub_Master;
-
-        /// <summary>
-        /// unité slave
-        /// </summary>
-        private SubSub m_SubSub_Slave;
+        private Unity m_Unity;        
         #endregion
 
         #region Membres publics
@@ -126,8 +116,6 @@ namespace EICE_WARGAME
             : base()
         {
             m_Name = string.Empty;
-            m_SubSub_Master = new SubSub();
-            m_SubSub_Slave = new SubSub();
         }
 
         /// <summary>
@@ -237,7 +225,7 @@ namespace EICE_WARGAME
                     FROM sub_sub
                     JOIN subunity ON subsub.ss_fk_slave_id = subunity.su_id
                     WHERE ss_fk_slave_id = {0}",
-                m_SubSub_Slave.Id));
+                Id));
         }
 
         /// <summary>
@@ -252,7 +240,7 @@ namespace EICE_WARGAME
                     FROM sub_sub
                     JOIN subunity ON subsub.ss_fk_master_id = subunity.su_id
                     WHERE ss_fk_master_id = {0}",
-                m_SubSub_Master.Id));
+                Id));
         }
 
 

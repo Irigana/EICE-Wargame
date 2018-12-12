@@ -275,7 +275,7 @@ namespace EICE_WARGAME
         /// <param name="Connexion">Connexion au serveur MySQL</param>
         public override void SupprimerEnCascade(PDSGBD.MyDB Connexion)
         {
-            Connexion.Executer("DELETE FROM Army WHERE fe_id = {0}", Id);
+            Connexion.Executer("DELETE FROM Army WHERE ar_id = {0}", Id);
         }
         #endregion
 
