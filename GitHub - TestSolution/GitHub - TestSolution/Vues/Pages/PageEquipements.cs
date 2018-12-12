@@ -42,6 +42,8 @@ namespace EICE_WARGAME
         private Stuff m_Stuff;
         private Stuff m_StuffEnEdition;
 
+        private StuffFeature m_StuffFeatureEnEdition;
+
         private bool m_StuffFeatureValide = false;
 
         private CharactRank m_CharRank;
@@ -129,12 +131,7 @@ namespace EICE_WARGAME
             // Attacher la méthode qui doit se produire lorsqu'il y a un changement de sélection
             z_listeDeroulanteType.SurChangementSelection += ListeTypeChangementSelection;
             
-            // J'affiche toutes les features liées au stuff dans la listview
-            // La liste déroulante est remplie de toutes les features
-            // Si l'utilisateur clique sur une, elle se met dans la liste déroulante et la valeur dans le textbox
-            // S'il clique sur Modifier alors on modifie la valeur
-            // Dans la liste déroulante de Feature à ajouter => Sur Ajout = Enumérer les Features qui ne sont pas encore liées à ce stuff
-                                                           //=> Sur Modifier 
+            
           
             // TODO: Modifier la page de la manière suivante:
             // Ajouter la modification de l'équipement 
@@ -201,6 +198,7 @@ namespace EICE_WARGAME
             z_ficheEquipement.Equipement = Program.GMBD.EnumererStuff(null, null, new MyDB.CodeSql("WHERE st_fk_type_id = {0}", z_listeDeroulanteType.TypeSelectionne.Id),
                                                                         new MyDB.CodeSql("ORDER BY st_name"));
             z_ficheEquipement.SurChangementSelection += FicheEquipement_SurChangementSelection;
+            
         }
 
         
@@ -330,6 +328,13 @@ namespace EICE_WARGAME
 
         #region Méthodes relatives à l'ajout des caractéristiques d'un équipement
 
+        // J'affiche toutes les features liées au stuff dans la listview
+        // La liste déroulante est remplie de toutes les features
+        // Si l'utilisateur clique sur une, elle se met dans la liste déroulante et la valeur dans le textbox
+        // S'il clique sur Modifier alors on modifie la valeur
+        // Dans la liste déroulante de Feature à ajouter => Sur Ajout = Enumérer les Features qui ne sont pas encore liées à ce stuff
+        //=> Sur Modifier 
+
         private void rafraichirListViewCaracteristiques()
         {
             StuffFeature EssaiCar = new StuffFeature();
@@ -351,12 +356,24 @@ namespace EICE_WARGAME
 
         private void ListeFeatureChangementSelection(object sender, EventArgs e)
         {
+            
             q_buttonAjouterCaract.Enabled = true;
         }
 
         private void textBox1_TextChanged(object sender, EventArgs e)
         {
             // Ajouter qqch
+        }
+
+        private void StuffFeatureEnEdition_SurErreur(StuffFeature SF, StuffFeature.Champ Champ,string MessageErreur)
+        {
+            switch (Champ)
+            {
+                case StuffFeature.Champ.Feature:
+                    errorProvider1.SetError(z_listeDeroulanteFeature, MessageErreur);
+                    break;
+            }
+            q_buttonAjouterCaract.Enabled = false;
         }
 
         private void StuffFeatureEnEdition_AvantChangement(StuffFeature Entite, StuffFeature.Champ Champ, object ValeurActuelle, object NouvelleValeur, AccumulateurErreur AccumulateurErreur)
@@ -420,13 +437,20 @@ namespace EICE_WARGAME
         private void buttonAjouterCaract_Click(object sender, EventArgs e)
         {
             StuffFeature m_SFEnEdition = new StuffFeature();
+            m_SFEnEdition.SurErreur += StuffFeatureEnEdition_SurErreur;
             m_SFEnEdition.AvantChangement += StuffFeatureEnEdition_AvantChangement;
             m_SFEnEdition.ApresChangement += StuffFeatureEnEdition_ApresChangement;
             m_SFEnEdition.Stuff = z_ficheEquipement.EquipementSelectionne;
             m_SFEnEdition.Feature = z_listeDeroulanteFeature.FeatureSelectionnee;
             m_SFEnEdition.Value = z_textBoxValeur.Text;
-            m_SFEnEdition.Enregistrer(Program.GMBD.BD, m_SFEnEdition);
-            rafraichirListViewCaracteristiques();
+            if (!m_SFEnEdition.Enregistrer(Program.GMBD.BD, m_SFEnEdition, null, false))
+            {
+                errorProvider1.SetError(z_listeDeroulanteFeature, "Cette caractérstique existe déjà!");
+            }
+            else
+            {
+                rafraichirListViewCaracteristiques();
+            }
         }
 
         #endregion
