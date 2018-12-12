@@ -249,7 +249,7 @@ namespace EICE_WARGAME
                 // S'il accepte
                 if (FormConfirmation.Confirmation)
                 {
-                    if ((ficheSpecifiteScenario1.SpecificiteSelectionne != null) && (Program.GMBD.SupprimerSpecificite(ficheSpecifiteScenario1.SpecificiteSelectionne))
+                    if ((ficheSpecifiteScenario1.SpecificiteSelectionne != null) && (Program.GMBD.SupprimerSpecificite(ficheSpecifiteScenario1.SpecificiteSelectionne)))
                     {
                         ChargerSpecificite(Scenario.Camp.Id);
                         buttonAjouter.Enabled = true;
@@ -266,7 +266,7 @@ namespace EICE_WARGAME
             }
             else
             {
-                errorProvider.SetError(textBox1, "Ce scénario est utilisée par armée, veuillez la supprimer avant de supprimer ce scénario");
+                errorProvider1.SetError(ficheSpecifiteScenario1, "Ce scénario est utilisée par armée, veuillez la supprimer avant de supprimer une spécifitée");
             }
         }
 
