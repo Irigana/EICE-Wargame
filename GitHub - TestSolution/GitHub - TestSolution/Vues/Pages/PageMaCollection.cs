@@ -274,5 +274,15 @@ namespace EICE_WARGAME
         {
             Program.GMBD.MettreAJourFicheFigurine(ficheFigurineStuff1, Utilisateur.Id);
         }
+
+        private void ficheFigurineStuff1_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void labelMesFigurines_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
