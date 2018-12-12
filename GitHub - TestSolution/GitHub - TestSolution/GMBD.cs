@@ -314,9 +314,61 @@ namespace EICE_WARGAME
         #endregion
 
         #region Requetes Figurine
+        //+====================+
+        //| Requetes figurine  |
+        //+====================+
+        public bool AjouterFigurine(Figurine NouvelleFigurine)
+        {
+            return NouvelleFigurine.Enregistrer(m_BD, NouvelleFigurine, null, false);
+        }
+
+        public void MettreAJourFicheFigurine(FicheFigurineStuff Fiche, int IdFigurineSelectionee, int IdUser)
+        {
+            Fiche.FigurineStuff = Program.GMBD.EnumererFigurineStuff(null,
+                new MyDB.CodeSql("JOIN user ON figurine_stuff.fs_fk_user_id = user.u_id"),
+                new MyDB.CodeSql("WHERE u_id = {0} AND fs_id", IdUser, IdFigurineSelectionee),
+                new MyDB.CodeSql("ORDER BY fs_id"));
+        }
+
+        public bool SupprimerFigurine(Figurine NouvelleFigurine)
+        {
+            if (!m_BD.EstConnecte) Initialiser();
+            NouvelleFigurine.SupprimerEnCascade(m_BD);
+            return true;
+
+        }
         #endregion
 
         #region Requetes FigurineStuff
+        //+=========================+
+        //| Requetes Figurine Stuff |
+        //+=========================+
+
+        public bool AjouterFigurineStuff(FigurineStuff NouvelleFigurineStuff)
+        {
+            return NouvelleFigurineStuff.Enregistrer(m_BD, NouvelleFigurineStuff, null, false);
+        }
+
+        public bool ModifierFigurineStuff(FigurineStuff NouvelleFigurineStuff)
+        {
+            if (NouvelleFigurineStuff.Enregistrer(m_BD, NouvelleFigurineStuff, null, false) &&
+                (NouvelleFigurineStuff.Figurine.Enregistrer(m_BD, NouvelleFigurineStuff.Figurine, null, false)))
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+
+        public bool SupprimerFigurineStuff(FigurineStuff NouvelleFigurineStuff)
+        {
+            if (!m_BD.EstConnecte) Initialiser();
+            NouvelleFigurineStuff.SupprimerEnCascade(m_BD);
+            return true;
+
+        }
         #endregion
 
 
