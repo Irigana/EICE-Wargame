@@ -106,13 +106,18 @@ namespace EICE_WARGAME
                         new MyDB.CodeSql("ORDER BY st_name"));
         }
 
-        private void CreationFigurine()
+        private void FicheFigurineStuff_SurChangementSelection(object sender, EventArgs e)
         {
-            //TODO : le INSERT INTO figurine (fi_fk_character_id) VALUES (listeDeroulanteChar1.CharactSelectionnee.Id)
-            //
-            // Figurine_Id = ID de la figurine
-        }
+            ficheEquipementSurFigurine1.Enabled = true;
+            if (ficheFigurineStuff1.FigurineSelectionne != null)
+            {
+                ficheEquipementSurFigurine1.Equipement = Program.GMBD.EnumerEquipementSurFigurine(null,
+                                                                                                  new MyDB.CodeSql("JOIN figurine_stuff on fs_fk_stuff_id = st_id"),
+                                                                                                  new MyDB.CodeSql("WHERE fs_fk_figurine_id = {0}", ficheFigurineStuff1.FigurineSelectionne.Id),
+                                                                                                  new MyDB.CodeSql("ORDER BY st_name"));
+            }
 
+        }
 
         private void buttonReturn_Click(object sender, EventArgs e)
         {
@@ -233,7 +238,7 @@ namespace EICE_WARGAME
                                                 NouvelleFigurine.Utilisateur = Utilisateur;
                                                 if((NouvelleFigurine.EstValide) && Program.GMBD.AjouterFigurine(NouvelleFigurine))
                                                 {
-                                                      Program.GMBD.MettreAJourFicheFigurine(ficheFigurineStuff1, m_Utilisateur.Id);
+                                                      Program.GMBD.MettreAJourFicheFigurine(ficheFigurineStuff1, Utilisateur.Id);
                                                 }
                                             }
                                         }

@@ -301,6 +301,7 @@
             this.ficheFigurineStuff1.Size = new System.Drawing.Size(457, 481);
             this.ficheFigurineStuff1.TabIndex = 33;
             this.ficheFigurineStuff1.TexteFiltreFaction = "";
+            this.ficheFigurineStuff1.SurChangementSelection += new System.EventHandler(this.FicheFigurineStuff_SurChangementSelection);
             // 
             // PageMaCollection
             // 

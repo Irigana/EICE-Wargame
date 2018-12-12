@@ -335,7 +335,7 @@ namespace EICE_WARGAME
         public void MettreAJourFicheFigurine(FicheFigurineStuff Fiche, int IdUser)
         {
             Fiche.FigurineStuff = Program.GMBD.EnumererFigurine(null,
-                                                                     null,
+                                                                     new MyDB.CodeSql("JOIN charact On figurine.fi_fk_character_id = charact.ch_id"),
                                                                      new MyDB.CodeSql("WHERE fi_fk_user_id = {0}", IdUser),
                                                                      new MyDB.CodeSql("ORDER BY fi_id"));
         }
@@ -546,6 +546,15 @@ namespace EICE_WARGAME
             if (ClauseJoin == null) ClauseJoin = MyDB.CodeSql.Vide;
             if (ValeurSouhaitee == null) ValeurSouhaitee = new MyDB.CodeSql("*");
             return StuffFeature.Enumerer(m_BD, m_BD.Enumerer("SELECT {0} FROM {1} {2} {3} {4}", ValeurSouhaitee, c_NomTable_StuffFeature, ClauseJoin, ClauseWhere, ClauseOrderBy));
+        }
+
+        public IEnumerable<Stuff> EnumerEquipementSurFigurine(MyDB.CodeSql ValeurSouhaitee, MyDB.CodeSql ClauseJoin, MyDB.CodeSql ClauseWhere, MyDB.CodeSql ClauseOrderBy)
+        {
+            if (ClauseWhere == null) ClauseWhere = MyDB.CodeSql.Vide;
+            if (ClauseOrderBy == null) ClauseOrderBy = MyDB.CodeSql.Vide;
+            if (ClauseJoin == null) ClauseJoin = MyDB.CodeSql.Vide;
+            if (ValeurSouhaitee == null) ValeurSouhaitee = new MyDB.CodeSql("*");
+            return Stuff.Enumerer(m_BD, m_BD.Enumerer("SELECT {0} FROM {1} {2} {3} {4}", ValeurSouhaitee, c_NomTable_FigurineStuff, ClauseJoin, ClauseWhere, ClauseOrderBy));
         }
 
         public IEnumerable<Feature> EnumererFeature(MyDB.CodeSql ValeurSouhaitee, MyDB.CodeSql ClauseJoin, MyDB.CodeSql ClauseWhere, MyDB.CodeSql ClauseOrderBy)

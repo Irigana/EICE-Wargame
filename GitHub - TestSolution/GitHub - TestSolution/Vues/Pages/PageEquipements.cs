@@ -42,6 +42,8 @@ namespace EICE_WARGAME
         private Stuff m_Stuff;
         private Stuff m_StuffEnEdition;
 
+        private bool m_StuffFeatureValide = false;
+
         private CharactRank m_CharRank;
         /// <summary>
         /// Membre privé contenant la liste ses StuffCharRank Equipables
@@ -126,8 +128,13 @@ namespace EICE_WARGAME
             z_listeDeroulanteType.Type = Program.GMBD.EnumererType(null, null, null, PDSGBD.MyDB.CreerCodeSql("ty_name"));
             // Attacher la méthode qui doit se produire lorsqu'il y a un changement de sélection
             z_listeDeroulanteType.SurChangementSelection += ListeTypeChangementSelection;
-        
-             
+            
+            // J'affiche toutes les features liées au stuff dans la listview
+            // La liste déroulante est remplie de toutes les features
+            // Si l'utilisateur clique sur une, elle se met dans la liste déroulante et la valeur dans le textbox
+            // S'il clique sur Modifier alors on modifie la valeur
+            // Dans la liste déroulante de Feature à ajouter => Sur Ajout = Enumérer les Features qui ne sont pas encore liées à ce stuff
+                                                           //=> Sur Modifier 
           
             // TODO: Modifier la page de la manière suivante:
             // Ajouter la modification de l'équipement 
@@ -352,6 +359,59 @@ namespace EICE_WARGAME
             // Ajouter qqch
         }
 
+        private void StuffFeatureEnEdition_AvantChangement(StuffFeature Entite, StuffFeature.Champ Champ, object ValeurActuelle, object NouvelleValeur, AccumulateurErreur AccumulateurErreur)
+        {
+            
+
+            switch (Champ)
+            {
+                case StuffFeature.Champ.Feature:
+                    m_StuffFeatureValide = false;
+                    /*
+                    // Modification
+                    if (z_listeDeroulanteFeature.FeatureSelectionnee == null)
+                    {
+                        Feature FeatureExiste = Program.GMBD.EnumererFeature(null, null,
+                                                                         new MyDB.CodeSql("WHERE stuff_feature.stf_fk_stuff_id = {0} AND stuff_feature.stf_fk_feature_id = {1}",
+                                                                         z_ficheEquipement.EquipementSelectionne.Id, z_listeDeroulanteFeature.FeatureSelectionnee), null).FirstOrDefault();
+                        if (FeatureExiste != null)
+                        {
+                            m_StuffFeatureValide = false;
+                            AccumulateurErreur.NotifierErreur("Cet équipement dispose déjà de cette caractèristique, veuillez en choisir une autre !");
+                        }
+                    }*/
+
+                    // Ajout
+                    if (z_listeDeroulanteFeature.FeatureSelectionnee != null)
+                    {
+                        StuffFeature StuffFeatureExiste = Program.GMBD.EnumererStuffFeature(null, null,
+                                                                         new MyDB.CodeSql("WHERE stuff_feature.stf_fk_stuff_id = {0} AND stuff_feature.stf_fk_feature_id = {1}",
+                                                                         z_ficheEquipement.EquipementSelectionne.Id, z_listeDeroulanteFeature.FeatureSelectionnee.Id), null).FirstOrDefault();
+                        if (StuffFeatureExiste != null)
+                        {
+                            m_StuffFeatureValide = false;
+                            q_buttonAjouterCaract.Enabled = false;
+                            AccumulateurErreur.NotifierErreur("Cet équipement dispose déjà de cette caractèristique, veuillez en choisir une autre !");
+                            //errorProviderErreurCaractere.SetError(listeDeroulanteFeature1, "Ce personnage dispose déjà de cette caractèristique, veuillez en choisir une autre !");
+                        }
+                    }
+                    break;
+            }
+        }
+
+        private void StuffFeatureEnEdition_ApresChangement(StuffFeature Entite, StuffFeature.Champ Champ, object ValeurPrecedente, object ValeurActuelle)
+        {
+            switch (Champ)
+            {
+                case StuffFeature.Champ.Feature:
+                    errorProvider1.SetError(z_textBoxNomEquipement, null);
+                    z_textBoxNomEquipement.Text = m_StuffEnEdition.Name;
+                    break;
+
+            }
+            q_buttonAjouter.Enabled = m_StuffEnEdition.EstValide;
+        }
+
         /// <summary>
         /// Méthode permettant d'ajouter un StuffFeature
         /// </summary>
@@ -359,13 +419,16 @@ namespace EICE_WARGAME
         /// <param name="e"></param>
         private void buttonAjouterCaract_Click(object sender, EventArgs e)
         {
-            StuffFeature Essai = new StuffFeature();
-            Essai.Stuff = z_ficheEquipement.EquipementSelectionne;
-            Essai.Feature = z_listeDeroulanteFeature.FeatureSelectionnee;
-            Essai.Value = z_textBoxValeur.Text;
-            Essai.Enregistrer(Program.GMBD.BD, Essai);
+            StuffFeature m_SFEnEdition = new StuffFeature();
+            m_SFEnEdition.AvantChangement += StuffFeatureEnEdition_AvantChangement;
+            m_SFEnEdition.ApresChangement += StuffFeatureEnEdition_ApresChangement;
+            m_SFEnEdition.Stuff = z_ficheEquipement.EquipementSelectionne;
+            m_SFEnEdition.Feature = z_listeDeroulanteFeature.FeatureSelectionnee;
+            m_SFEnEdition.Value = z_textBoxValeur.Text;
+            m_SFEnEdition.Enregistrer(Program.GMBD.BD, m_SFEnEdition);
             rafraichirListViewCaracteristiques();
         }
+
         #endregion
 
         #region Gestion du panneau
@@ -381,6 +444,8 @@ namespace EICE_WARGAME
         }
 
         #endregion
+
+        #region Méthodes relatives à Equipable par
 
         private void ListeDeroulanteFaction_SurChangementSelection(object sender, EventArgs e)
         {
@@ -458,16 +523,6 @@ namespace EICE_WARGAME
             }
         }
 
-       
-        private void PageAjouterEquipements_Load(object sender, EventArgs e)
-        {
-            // Permet de passer l'utilisateur par le controler MenuAdmin
-            menuAdmin1.Utilisateur = Utilisateur;
-            buttonRetourDashBoard1.Utilisateur = Utilisateur;
-            // Permet d'obtenir l'option du menu admin utilisateur une fois l'admin identifié
-            if (Utilisateur != null) if (Utilisateur.Role.Id == 2) menuAdmin1.EstAdmin = true;
-        }
-
         private void FicheEquipement_SurChangementSelection(object sender, EventArgs e)
         {
             if ((z_listeDeroulanteType.TypeSelectionne != null) && (z_ficheEquipement.EquipementSelectionne != null))
@@ -513,8 +568,6 @@ namespace EICE_WARGAME
             q_buttonAjouterEquipable.Enabled = m_CharRank.EstValide;
         }
 
-        
-
         private void buttonAjouterEquipable_Click(object sender, EventArgs e)
         {
             if( (m_Stuff != null) && (z_listeDeroulanteCharRank.CharactSelectionnee != null))
@@ -530,6 +583,17 @@ namespace EICE_WARGAME
                 m_StuffCharactRankEquipables.Add(StChRa);
                 z_fichePersonnageEquipement1.Caractere = m_StuffCharactRankEquipables;
             }
+        }
+
+        #endregion
+
+        private void PageAjouterEquipements_Load(object sender, EventArgs e)
+        {
+            // Permet de passer l'utilisateur par le controler MenuAdmin
+            menuAdmin1.Utilisateur = Utilisateur;
+            buttonRetourDashBoard1.Utilisateur = Utilisateur;
+            // Permet d'obtenir l'option du menu admin utilisateur une fois l'admin identifié
+            if (Utilisateur != null) if (Utilisateur.Role.Id == 2) menuAdmin1.EstAdmin = true;
         }
     }
 }
