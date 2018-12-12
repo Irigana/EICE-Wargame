@@ -335,7 +335,7 @@ namespace EICE_WARGAME
         public void MettreAJourFicheFigurine(FicheFigurineStuff Fiche, int IdUser)
         {
             Fiche.FigurineStuff = Program.GMBD.EnumererFigurine(null,
-                                                                     null,
+                                                                     new MyDB.CodeSql("JOIN charact On figurine.fi_fk_character_id = charact.ch_id"),
                                                                      new MyDB.CodeSql("WHERE fi_fk_user_id = {0}", IdUser),
                                                                      new MyDB.CodeSql("ORDER BY fi_id"));
         }
