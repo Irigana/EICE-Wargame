@@ -254,7 +254,6 @@
             this.listeDeroulanteSubUnity1.Size = new System.Drawing.Size(218, 21);
             this.listeDeroulanteSubUnity1.SubUnitySelectionnee = null;
             this.listeDeroulanteSubUnity1.TabIndex = 18;
-            this.listeDeroulanteSubUnity1.Load += new System.EventHandler(this.listeDeroulanteSubUnity1_Load);
             // 
             // listeDeroulanteUnity1
             // 
@@ -264,7 +263,6 @@
             this.listeDeroulanteUnity1.Size = new System.Drawing.Size(218, 21);
             this.listeDeroulanteUnity1.TabIndex = 14;
             this.listeDeroulanteUnity1.UnitySelectionnee = null;
-            this.listeDeroulanteUnity1.Load += new System.EventHandler(this.listeDeroulanteUnity1_Load);
             // 
             // listeDeroulanteSousFaction1
             // 
@@ -274,7 +272,6 @@
             this.listeDeroulanteSousFaction1.Size = new System.Drawing.Size(218, 21);
             this.listeDeroulanteSousFaction1.SousFactionSelectionnee = null;
             this.listeDeroulanteSousFaction1.TabIndex = 13;
-            this.listeDeroulanteSousFaction1.Load += new System.EventHandler(this.listeDeroulanteSousFaction1_Load);
             // 
             // listeDeroulanteFaction1
             // 
@@ -284,7 +281,6 @@
             this.listeDeroulanteFaction1.Name = "listeDeroulanteFaction1";
             this.listeDeroulanteFaction1.Size = new System.Drawing.Size(218, 21);
             this.listeDeroulanteFaction1.TabIndex = 12;
-            this.listeDeroulanteFaction1.Load += new System.EventHandler(this.listeDeroulanteFaction1_Load);
             // 
             // buttonOptionsUser1
             // 
@@ -295,7 +291,6 @@
             this.buttonOptionsUser1.Size = new System.Drawing.Size(164, 37);
             this.buttonOptionsUser1.TabIndex = 11;
             this.buttonOptionsUser1.Utilisateur = null;
-            this.buttonOptionsUser1.Load += new System.EventHandler(this.buttonOptionsUser1_Load);
             // 
             // ficheFigurineStuff1
             // 
