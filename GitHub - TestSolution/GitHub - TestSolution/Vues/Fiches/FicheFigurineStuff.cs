@@ -73,7 +73,7 @@ namespace EICE_WARGAME
         /// <summary>
         /// Type de FigurineStuff sélectionné
         /// </summary>
-        public Figurine FactionSelectionne
+        public Figurine FigurineSelectionne
         {
             get
             {

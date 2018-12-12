@@ -299,7 +299,7 @@
             // 
             // ficheFigurineStuff1
             // 
-            this.ficheFigurineStuff1.FactionSelectionne = null;
+            this.ficheFigurineStuff1.FigurineSelectionne = null;
             this.ficheFigurineStuff1.Location = new System.Drawing.Point(615, 110);
             this.ficheFigurineStuff1.Margin = new System.Windows.Forms.Padding(2);
             this.ficheFigurineStuff1.Name = "ficheFigurineStuff1";

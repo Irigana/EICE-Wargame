@@ -179,7 +179,15 @@ namespace EICE_WARGAME
 
         private void AjoutEquipementSurFigurine(object sender, EventArgs e)
         {
-            //INSERT INTO figurine_stuff (fs_fk_figurine_id, fs_fk_stuff_id, fs_fk_user_id) VALUES (Figurine_Id, ficheEquipement1.EquipementSelectionne.Id,  m_Utilisateur.Id)
+            if ((ficheEquipementSansRecherche1.EquipementSelectionne != null) && (ficheFigurineStuff1.FigurineSelectionne != null))
+            {
+                FigurineStuff FigurineStuff = new FigurineStuff();
+                FigurineStuff.Stuff = ficheEquipementSansRecherche1.EquipementSelectionne;
+                FigurineStuff.Figurine = ficheFigurineStuff1.FigurineSelectionne;
+                FigurineStuff.Enregistrer(Program.GMBD.BD, FigurineStuff);
+                //INSERT INTO figurine_stuff (fs_fk_figurine_id, fs_fk_stuff_id, fs_fk_user_id)
+                //VALUES (Figurine_Id, ficheEquipement1.EquipementSelectionne.Id,  m_Utilisateur.Id)
+            }
 
         }
 
