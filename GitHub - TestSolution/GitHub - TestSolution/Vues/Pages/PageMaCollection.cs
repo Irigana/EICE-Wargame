@@ -90,7 +90,6 @@ namespace EICE_WARGAME
                                                                                                              listeDeroulanteFaction1.FactionSelectionnee.Id, listeDeroulanteSousFaction1.SousFactionSelectionnee.Id,
                                                                                                              listeDeroulanteUnity1.UnitySelectionnee.Id, listeDeroulanteSubUnity1.SubUnitySelectionnee.Id),
                                                                                                     new MyDB.CodeSql(@"GROUP BY ch_id ORDER BY ch_name"));
-            // ici tu réagis au moment de ta selection comme tu as fais au dessus pour aller dans ta méthode
             listeDeroulanteChar1.SurChangementSelection += ListeDeroulanteChar_SurChangementSelection;
         }
 
@@ -145,8 +144,8 @@ namespace EICE_WARGAME
 
         private void AjoutEquipementSurFigurine(object sender, EventArgs e)
         {
-          //  if ((ficheEquipementSansRecherche1.EquipementSelectionne != null) && (ficheFigurineStuff1.FigurineSelectionne != null))
-           // {
+            if ((ficheEquipementSansRecherche1.EquipementSelectionne != null) && (ficheFigurineStuff1.FigurineSelectionne != null))
+            {
             FigurineStuff NouvelleFigurineStuff = new FigurineStuff();
             // NouvelleFigurine.SurErreur += FigurineEnEdition_SurErreur;
             // NouvelleFigurine.AvantChangement += FigurineEnEdition_AvantChangement;
@@ -160,19 +159,26 @@ namespace EICE_WARGAME
                                                                                     new MyDB.CodeSql("WHERE fs_fk_figurine_id = {0}", ficheFigurineStuff1.FigurineSelectionne.Id),
                                                                                     new MyDB.CodeSql("ORDER BY st_name"));
             }
-            //}
+            }
         }
 
         private void EnleverEquipementSurFigurine(object sender, EventArgs e)
         {
             if ((ficheEquipementSurFigurine1.EquipementSelectionne != null) && (ficheFigurineStuff1.FigurineSelectionne != null))
             {
-                FigurineStuff FigurineStuff = new FigurineStuff();
-                FigurineStuff.Stuff = ficheEquipementSansRecherche1.EquipementSelectionne;
-                FigurineStuff.Figurine = ficheFigurineStuff1.FigurineSelectionne;
-                FigurineStuff.Supprimer(Program.GMBD.BD, FigurineStuff);
+                FigurineStuff NouvelleFigurineStuff = new FigurineStuff();
+                NouvelleFigurineStuff.Stuff = ficheEquipementSansRecherche1.EquipementSelectionne;
+                NouvelleFigurineStuff.Figurine = ficheFigurineStuff1.FigurineSelectionne;
+                if (Program.GMBD.SupprimerFigurineStuff(NouvelleFigurineStuff))
+                {
+                    ficheEquipementSurFigurine1.Equipement = Program.GMBD.EnumererStuff(null,
+                                                                                        new MyDB.CodeSql("JOIN figurine_stuff on fs_fk_stuff_id = st_id"),
+                                                                                        new MyDB.CodeSql("WHERE fs_fk_figurine_id = {0}", ficheFigurineStuff1.FigurineSelectionne.Id),
+                                                                                        new MyDB.CodeSql("ORDER BY st_name"));
+                }
             }
         }
+        
 
         //Reste du boulot ICI en dessous ! 
         #region Caractère en édition
