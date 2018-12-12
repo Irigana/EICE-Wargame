@@ -36,6 +36,7 @@ namespace EICE_WARGAME
         }
         #endregion
 
+        
 
         private const string c_CritereQuiContient = "%{0}%";
         int Figurine_Id;
@@ -46,7 +47,12 @@ namespace EICE_WARGAME
             InitializeComponent();
             Program.GMBD.MettreAJourListeFaction(listeDeroulanteFaction1);
             listeDeroulanteFaction1.SurChangementSelection += ListeDeroulanteFaction_SurChangementSelection;
-
+            listeDeroulanteSousFaction1.Enabled = false;
+            listeDeroulanteUnity1.Enabled = false;
+            listeDeroulanteSubUnity1.Enabled = false;
+            listeDeroulanteChar1.Enabled = false;
+            ficheEquipementSansRecherche1.Enabled = false;
+            ficheEquipementSurFigurine1.Enabled = false;
 
 
         }
@@ -61,6 +67,7 @@ namespace EICE_WARGAME
 
         private void ListeDeroulanteSousFaction_SurChangementSelection(object sender, EventArgs e)
         {
+            listeDeroulanteUnity1.Enabled = true;
             listeDeroulanteUnity1.Unity = Program.GMBD.EnumererUnity(null, null, null, MyDB.CreerCodeSql("un_name"));
             listeDeroulanteUnity1.SurChangementSelection += ListeDeroulanteUnity_SurChangementSelection;
         }
@@ -76,6 +83,7 @@ namespace EICE_WARGAME
         private void ListeDeroulanteSubUnity_SurChangementSelection(object sender, EventArgs e)
         {
             //TODO FILTRER SUR LA FACTION - SOUS FACTION
+            listeDeroulanteChar1.Enabled = true;
             listeDeroulanteSubUnity1.SubUnitySelectionnee.Unity = listeDeroulanteUnity1.UnitySelectionnee;
             listeDeroulanteChar1.Charact = Program.GMBD.EnumererCaractere(null, new MyDB.CodeSql(@"JOIN char_rank ON char_rank.cr_fk_ch_id = charact.ch_id 
                                                                                                    JOIN rank ON char_rank.cr_fk_ra_id = rank.ra_id 
@@ -94,7 +102,7 @@ namespace EICE_WARGAME
 
         private void ListeDeroulanteChar_SurChangementSelection(object sender, EventArgs e)
         {
-
+            ficheEquipementSansRecherche1.Enabled = true;
             ficheEquipementSansRecherche1.Equipement = Program.GMBD.EnumererStuff(
                         null,
                         new MyDB.CodeSql(@"JOIN stuff_char_rank ON scr_fk_stuff_id = st_id
@@ -256,9 +264,10 @@ namespace EICE_WARGAME
                                                 //   NouvelleFigurine.AvantChangement += FigurineEnEdition_AvantChangement;
                                                 // NouvelleFigurine.ApresChangement += FigurineEnEdition_ApresChangement;
                                                 NouvelleFigurine.Charact = listeDeroulanteChar1.CharactSelectionnee;
+                                                NouvelleFigurine.Utilisateur = Utilisateur;
                                                 if((NouvelleFigurine.EstValide) && Program.GMBD.AjouterFigurine(NouvelleFigurine))
                                                 {
-                                                    //  Program.GMBD.MettreAJourFicheFigurine(ficheFigurineStuff1,???? , m_Utilisateur.Id);
+                                                      //Program.GMBD.MettreAJourFicheFigurine(ficheFigurineStuff1,???? , m_Utilisateur.Id);
 
 
                                                 }

@@ -79,7 +79,7 @@
             // 
             this.labelFaction.AutoSize = true;
             this.labelFaction.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
-            this.labelFaction.Location = new System.Drawing.Point(46, 124);
+            this.labelFaction.Location = new System.Drawing.Point(46, 91);
             this.labelFaction.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.labelFaction.Name = "labelFaction";
             this.labelFaction.Size = new System.Drawing.Size(62, 17);
@@ -90,7 +90,7 @@
             // 
             this.labelSousFaction.AutoSize = true;
             this.labelSousFaction.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
-            this.labelSousFaction.Location = new System.Drawing.Point(46, 158);
+            this.labelSousFaction.Location = new System.Drawing.Point(45, 127);
             this.labelSousFaction.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.labelSousFaction.Name = "labelSousFaction";
             this.labelSousFaction.Size = new System.Drawing.Size(94, 17);
@@ -101,7 +101,7 @@
             // 
             this.labelUnity.AutoSize = true;
             this.labelUnity.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
-            this.labelUnity.Location = new System.Drawing.Point(45, 192);
+            this.labelUnity.Location = new System.Drawing.Point(46, 161);
             this.labelUnity.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.labelUnity.Name = "labelUnity";
             this.labelUnity.Size = new System.Drawing.Size(49, 17);
@@ -112,7 +112,7 @@
             // 
             this.labelFigurine.AutoSize = true;
             this.labelFigurine.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
-            this.labelFigurine.Location = new System.Drawing.Point(45, 260);
+            this.labelFigurine.Location = new System.Drawing.Point(46, 229);
             this.labelFigurine.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.labelFigurine.Name = "labelFigurine";
             this.labelFigurine.Size = new System.Drawing.Size(93, 17);
@@ -123,18 +123,18 @@
             // 
             this.labelEquipement.AutoSize = true;
             this.labelEquipement.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
-            this.labelEquipement.Location = new System.Drawing.Point(46, 294);
+            this.labelEquipement.Location = new System.Drawing.Point(45, 321);
             this.labelEquipement.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.labelEquipement.Name = "labelEquipement";
-            this.labelEquipement.Size = new System.Drawing.Size(83, 17);
+            this.labelEquipement.Size = new System.Drawing.Size(91, 17);
             this.labelEquipement.TabIndex = 8;
-            this.labelEquipement.Text = "Equipement";
+            this.labelEquipement.Text = "Equipement :";
             // 
             // labelQuantite
             // 
             this.labelQuantite.AutoSize = true;
             this.labelQuantite.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
-            this.labelQuantite.Location = new System.Drawing.Point(46, 94);
+            this.labelQuantite.Location = new System.Drawing.Point(46, 260);
             this.labelQuantite.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.labelQuantite.Name = "labelQuantite";
             this.labelQuantite.Size = new System.Drawing.Size(70, 17);
@@ -154,7 +154,7 @@
             // 
             // numericUpDown1
             // 
-            this.numericUpDown1.Location = new System.Drawing.Point(158, 91);
+            this.numericUpDown1.Location = new System.Drawing.Point(158, 263);
             this.numericUpDown1.Name = "numericUpDown1";
             this.numericUpDown1.Size = new System.Drawing.Size(218, 20);
             this.numericUpDown1.TabIndex = 19;
@@ -169,7 +169,7 @@
             // 
             this.labelSubunity.AutoSize = true;
             this.labelSubunity.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
-            this.labelSubunity.Location = new System.Drawing.Point(45, 226);
+            this.labelSubunity.Location = new System.Drawing.Point(45, 195);
             this.labelSubunity.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.labelSubunity.Name = "labelSubunity";
             this.labelSubunity.Size = new System.Drawing.Size(85, 17);
@@ -178,7 +178,7 @@
             // 
             // buttonAjoutEquipementSurPersonnage
             // 
-            this.buttonAjoutEquipementSurPersonnage.Location = new System.Drawing.Point(274, 365);
+            this.buttonAjoutEquipementSurPersonnage.Location = new System.Drawing.Point(274, 384);
             this.buttonAjoutEquipementSurPersonnage.Name = "buttonAjoutEquipementSurPersonnage";
             this.buttonAjoutEquipementSurPersonnage.Size = new System.Drawing.Size(29, 23);
             this.buttonAjoutEquipementSurPersonnage.TabIndex = 27;
@@ -188,7 +188,7 @@
             // 
             // buttonEnleverEquipementSurPersonnage
             // 
-            this.buttonEnleverEquipementSurPersonnage.Location = new System.Drawing.Point(274, 394);
+            this.buttonEnleverEquipementSurPersonnage.Location = new System.Drawing.Point(274, 413);
             this.buttonEnleverEquipementSurPersonnage.Name = "buttonEnleverEquipementSurPersonnage";
             this.buttonEnleverEquipementSurPersonnage.Size = new System.Drawing.Size(29, 23);
             this.buttonEnleverEquipementSurPersonnage.TabIndex = 28;
@@ -211,18 +211,18 @@
             // 
             // buttonValiderFigurineStuff
             // 
-            this.buttonValiderFigurineStuff.Location = new System.Drawing.Point(430, 260);
+            this.buttonValiderFigurineStuff.Location = new System.Drawing.Point(158, 289);
             this.buttonValiderFigurineStuff.Name = "buttonValiderFigurineStuff";
-            this.buttonValiderFigurineStuff.Size = new System.Drawing.Size(75, 23);
+            this.buttonValiderFigurineStuff.Size = new System.Drawing.Size(218, 23);
             this.buttonValiderFigurineStuff.TabIndex = 31;
-            this.buttonValiderFigurineStuff.Text = "Valider";
+            this.buttonValiderFigurineStuff.Text = "Créer figurine";
             this.buttonValiderFigurineStuff.UseVisualStyleBackColor = true;
             this.buttonValiderFigurineStuff.Click += new System.EventHandler(this.buttonCréerFigurine_Click);
             // 
             // ficheEquipementSansRecherche1
             // 
             this.ficheEquipementSansRecherche1.EquipementSelectionne = null;
-            this.ficheEquipementSansRecherche1.Location = new System.Drawing.Point(48, 332);
+            this.ficheEquipementSansRecherche1.Location = new System.Drawing.Point(48, 351);
             this.ficheEquipementSansRecherche1.Margin = new System.Windows.Forms.Padding(2);
             this.ficheEquipementSansRecherche1.Name = "ficheEquipementSansRecherche1";
             this.ficheEquipementSansRecherche1.Size = new System.Drawing.Size(220, 240);
@@ -231,7 +231,7 @@
             // ficheEquipementSurFigurine1
             // 
             this.ficheEquipementSurFigurine1.EquipementSelectionne = null;
-            this.ficheEquipementSurFigurine1.Location = new System.Drawing.Point(308, 332);
+            this.ficheEquipementSurFigurine1.Location = new System.Drawing.Point(308, 351);
             this.ficheEquipementSurFigurine1.Margin = new System.Windows.Forms.Padding(2);
             this.ficheEquipementSurFigurine1.Name = "ficheEquipementSurFigurine1";
             this.ficheEquipementSurFigurine1.Size = new System.Drawing.Size(220, 240);
@@ -240,7 +240,7 @@
             // listeDeroulanteChar1
             // 
             this.listeDeroulanteChar1.CharactSelectionnee = null;
-            this.listeDeroulanteChar1.Location = new System.Drawing.Point(158, 260);
+            this.listeDeroulanteChar1.Location = new System.Drawing.Point(158, 229);
             this.listeDeroulanteChar1.Margin = new System.Windows.Forms.Padding(2);
             this.listeDeroulanteChar1.Name = "listeDeroulanteChar1";
             this.listeDeroulanteChar1.Size = new System.Drawing.Size(218, 21);
@@ -248,7 +248,7 @@
             // 
             // listeDeroulanteSubUnity1
             // 
-            this.listeDeroulanteSubUnity1.Location = new System.Drawing.Point(158, 226);
+            this.listeDeroulanteSubUnity1.Location = new System.Drawing.Point(158, 195);
             this.listeDeroulanteSubUnity1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.listeDeroulanteSubUnity1.Name = "listeDeroulanteSubUnity1";
             this.listeDeroulanteSubUnity1.Size = new System.Drawing.Size(218, 21);
@@ -258,7 +258,7 @@
             // 
             // listeDeroulanteUnity1
             // 
-            this.listeDeroulanteUnity1.Location = new System.Drawing.Point(158, 192);
+            this.listeDeroulanteUnity1.Location = new System.Drawing.Point(158, 161);
             this.listeDeroulanteUnity1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.listeDeroulanteUnity1.Name = "listeDeroulanteUnity1";
             this.listeDeroulanteUnity1.Size = new System.Drawing.Size(218, 21);
@@ -268,7 +268,7 @@
             // 
             // listeDeroulanteSousFaction1
             // 
-            this.listeDeroulanteSousFaction1.Location = new System.Drawing.Point(158, 158);
+            this.listeDeroulanteSousFaction1.Location = new System.Drawing.Point(158, 127);
             this.listeDeroulanteSousFaction1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.listeDeroulanteSousFaction1.Name = "listeDeroulanteSousFaction1";
             this.listeDeroulanteSousFaction1.Size = new System.Drawing.Size(218, 21);
@@ -279,7 +279,7 @@
             // listeDeroulanteFaction1
             // 
             this.listeDeroulanteFaction1.FactionSelectionnee = null;
-            this.listeDeroulanteFaction1.Location = new System.Drawing.Point(158, 124);
+            this.listeDeroulanteFaction1.Location = new System.Drawing.Point(158, 93);
             this.listeDeroulanteFaction1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.listeDeroulanteFaction1.Name = "listeDeroulanteFaction1";
             this.listeDeroulanteFaction1.Size = new System.Drawing.Size(218, 21);
@@ -303,7 +303,7 @@
             this.ficheFigurineStuff1.Location = new System.Drawing.Point(615, 110);
             this.ficheFigurineStuff1.Margin = new System.Windows.Forms.Padding(2);
             this.ficheFigurineStuff1.Name = "ficheFigurineStuff1";
-            this.ficheFigurineStuff1.Size = new System.Drawing.Size(457, 462);
+            this.ficheFigurineStuff1.Size = new System.Drawing.Size(457, 481);
             this.ficheFigurineStuff1.TabIndex = 33;
             this.ficheFigurineStuff1.TexteFiltreFaction = "";
             // 
