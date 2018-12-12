@@ -312,6 +312,13 @@ namespace EICE_WARGAME
 
         #endregion
 
+        #region Requetes Figurine
+        #endregion
+
+        #region Requetes FigurineStuff
+        #endregion
+
+
         #region Toutes les énumérations
         //+==================+
         //| Les énumérations |

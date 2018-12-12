@@ -252,9 +252,18 @@ namespace EICE_WARGAME
                                             if(CharactExiste != null)
                                             {
                                                 Figurine NouvelleFigurine = new Figurine();
-                                           //     NouvelleFigurine.SurErreur += FigurineEnEdition_SurErreur;
-                                             //   NouvelleFigurine.AvantChangement += FigurineEnEdition_AvantChangement;
-                                               // NouvelleFigurine.ApresChangement += FigurineEnEdition_ApresChangement;
+                                                //     NouvelleFigurine.SurErreur += FigurineEnEdition_SurErreur;
+                                                //   NouvelleFigurine.AvantChangement += FigurineEnEdition_AvantChangement;
+                                                // NouvelleFigurine.ApresChangement += FigurineEnEdition_ApresChangement;
+                                                NouvelleFigurine.Charact = listeDeroulanteChar1.CharactSelectionnee;
+                                               // if(NouvelleFigurine.EstValide) && Program.GMBD.AjoutFigurine(NouvelleFigurine)
+                                                {
+                                                    //Program.GMBD.MettreAJourFicheFigurine(ficheFigurineStuff1, listeDeroulanteFaction1.FactionSelectionnee.Id, listeDeroulanteSousFaction1.SousFactionSelectionnee.Id, listeDeroulanteUnity1.UnitySelectionnee.Id, listeDeroulanteSubUnity1.SubUnitySelectionnee.Id);
+
+
+                                                }
+
+
                                             }
 
                                         }
