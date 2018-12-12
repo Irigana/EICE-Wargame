@@ -401,35 +401,45 @@ namespace EICE_WARGAME
         private void buttonSupprimerCaract_Click(object sender, EventArgs e)
         {
             PopUpConfirmation FormConfirmation = new PopUpConfirmation();
-            // TODO : Vérifier si il a des enregistrement pour modifier le texte en dessous et dire à l'utilisateur le nombre d'element qu'a ce caractère
 
-            FormConfirmation.LabelDuTexte = "Êtes vous certain de vouloir supprimer ce caractère ?";
-            FormConfirmation.ShowDialog();
-            if (FormConfirmation.Confirmation)
+            CharactRank CharactUtiliser = Program.GMBD.EnumererPersonnage(null, new MyDB.CodeSql(@"JOIN army_unity_figurine_stuff ON cr_id = aufs_fk_rank_id 
+                                                                                                 JOIN stuff_char_rank ON cr_id = scr_fk_char_rank_id"),
+                                                                                                 new MyDB.CodeSql("WHERE aufs_fk_rank_id = {0} OR scr_fk_char_rank_id = {0}", ficheCaractere1.CaractereSelectionne.Id),null).FirstOrDefault();
+            if (CharactUtiliser == null)
             {
-                if ((ficheCaractere1.CaractereSelectionne != null) && (Program.GMBD.SupprimerPersonnage(ficheCaractere1.CaractereSelectionne)))
+                FormConfirmation.LabelDuTexte = "Êtes vous certain de vouloir supprimer ce caractère ?";
+                FormConfirmation.ShowDialog();
+                if (FormConfirmation.Confirmation)
                 {
-                    Program.GMBD.MettreAJourFicheCaractere(ficheCaractere1, listeDeroulanteFaction1.FactionSelectionnee.Id, listeDeroulanteSousFaction1.SousFactionSelectionnee.Id, listeDeroulanteUnity1.UnitySelectionnee.Id, listeDeroulanteSubUnity1.SubUnitySelectionnee.Id);
-                    buttonAjouterPersonnage.Enabled = true;
-                    buttonAnnulerPersonnage.Enabled = false;
-                    buttonModifierPersonnage.Enabled = false;
-                    buttonSupprimerPersonnage.Enabled = false;
-                    buttonAjouterCaracteristique.Enabled = false;
-                    listeDeroulanteFeature1.Enabled = false;
-                    numericUpDown2.Enabled = false;
-                    ficheCaracteristique1.NettoyerListView();
-                    textBoxPersonnageSelectionne.Clear();
-                    ValidationProvider.SetError(ficheCaractere1, "Suppression correctement effectuée");
-                    textBoxCaractere.Text = "";
-                }
-                else
-                {
+                    if ((ficheCaractere1.CaractereSelectionne != null) && (Program.GMBD.SupprimerPersonnage(ficheCaractere1.CaractereSelectionne)))
+                    {
+                        Program.GMBD.MettreAJourFicheCaractere(ficheCaractere1, listeDeroulanteFaction1.FactionSelectionnee.Id, listeDeroulanteSousFaction1.SousFactionSelectionnee.Id, listeDeroulanteUnity1.UnitySelectionnee.Id, listeDeroulanteSubUnity1.SubUnitySelectionnee.Id);
+                        buttonAjouterPersonnage.Enabled = true;
+                        buttonAnnulerPersonnage.Enabled = false;
+                        buttonModifierPersonnage.Enabled = false;
+                        buttonSupprimerPersonnage.Enabled = false;
+                        buttonAjouterCaracteristique.Enabled = false;
+                        listeDeroulanteFeature1.Enabled = false;
+                        numericUpDown2.Enabled = false;
+                        ficheCaracteristique1.NettoyerListView();
+                        textBoxPersonnageSelectionne.Clear();
+                        ValidationProvider.SetError(ficheCaractere1, "Suppression correctement effectuée");
+                        textBoxCaractere.Text = "";
+                    }
+                    else
+                    {
 
+                    }
                 }
+                else if (FormConfirmation.Annulation)
+                {
+                    // ne rien faire
+                }
+                
             }
-            else if (FormConfirmation.Annulation)
+            else
             {
-                // ne rien faire
+                errorProviderErreurCaractere.SetError(textBoxCaractere, "Ce personnage est déjà utilisé, veuillez supprimer les endroits où il est utiliser avant de le supprimer");
             }
         }
 

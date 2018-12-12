@@ -127,7 +127,7 @@ namespace EICE_WARGAME
 
             set
             {
-                if (value <= 0)
+                if (value < 0)
                 {
                     Declencher_SurErreur(this, Champ.Max, "La valeur \"Max\" doit être strictement supérieur à 0");
                 }

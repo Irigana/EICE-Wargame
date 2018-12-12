@@ -291,8 +291,8 @@ namespace EICE_WARGAME
         public override void SupprimerEnCascade(PDSGBD.MyDB Connexion)
         {
             Connexion.Executer(@"DELETE FROM char_rank_feature WHERE crf_fk_char_rank_id = {0};
-                                 DELETE FROM char_rank WHERE cr_id = {1};                         
-                                  ", Id,Id);
+                                 DELETE FROM char_rank WHERE cr_id = {0};                         
+                                  ", Id);
         }
 
         /// <summary>
