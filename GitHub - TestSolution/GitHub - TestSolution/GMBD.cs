@@ -264,6 +264,14 @@ namespace EICE_WARGAME
             return NouvelleSpecificite.Enregistrer(m_BD, NouvelleSpecificite, null, false);
         }
 
+        public bool SupprimerSpecificite(Condi_Camp SpecificiteCondiCamp)
+        {
+            if (!m_BD.EstConnecte) Initialiser();
+            SpecificiteCondiCamp.SupprimerEnCascade(m_BD);
+            return true;
+
+        }
+
         public bool SupprimerScenarioCamp(Scenario_Camp ScenarioCamp)
         {
             if (!m_BD.EstConnecte) Initialiser();
@@ -271,6 +279,7 @@ namespace EICE_WARGAME
             return true;
 
         }
+
         public bool SupprimerScenario(Scenario Scenario)
         {
             if (!m_BD.EstConnecte) Initialiser();

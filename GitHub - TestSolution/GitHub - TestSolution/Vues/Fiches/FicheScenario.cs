@@ -238,7 +238,36 @@ namespace EICE_WARGAME
 
         private void buttonSupprimer_Click(object sender, EventArgs e)
         {
+            PopUpConfirmation FormConfirmation = new PopUpConfirmation();
 
+            Army ScenarioLie = Program.GMBD.EnumererArmy(null, null, new MyDB.CodeSql("WHERE ar_fk_scenario_camp_id = {0}", Scenario.Id), null).FirstOrDefault();
+            if (ScenarioLie == null)
+            {
+                FormConfirmation.LabelDuTexte = "Êtes vous certain de vouloir supprimer cet enregistrement ?";
+
+                FormConfirmation.ShowDialog();
+                // S'il accepte
+                if (FormConfirmation.Confirmation)
+                {
+                    if ((ficheSpecifiteScenario1.SpecificiteSelectionne != null) && (Program.GMBD.SupprimerSpecificite(ficheSpecifiteScenario1.SpecificiteSelectionne))
+                    {
+                        ChargerSpecificite(Scenario.Camp.Id);
+                        buttonAjouter.Enabled = true;
+                        buttonModifier.Enabled = false;
+                        buttonSupprimer.Enabled = false;                        
+                        errorProvider1.SetError(ficheSpecifiteScenario1, "Suppresion correctement effectuée");                        
+                    }
+                }
+                // S'il refuse
+                else if (FormConfirmation.Annulation)
+                {
+                    // ne rien faire
+                }
+            }
+            else
+            {
+                errorProvider.SetError(textBox1, "Ce scénario est utilisée par armée, veuillez la supprimer avant de supprimer ce scénario");
+            }
         }
 
         private void buttonModifier_Click(object sender, EventArgs e)

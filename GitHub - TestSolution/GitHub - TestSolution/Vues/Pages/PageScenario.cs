@@ -275,7 +275,7 @@ namespace EICE_WARGAME
         {
             PopUpConfirmation FormConfirmation = new PopUpConfirmation();
             
-            Army ScenarioLie = Program.GMBD.EnumererArmy(null, null, new MyDB.CodeSql("WHERE ear_fk_scenario_camp_id = {0}", listeDeroulanteScenario1.ScenarioSelectionnee.Id), null).FirstOrDefault();
+            Army ScenarioLie = Program.GMBD.EnumererArmy(null, null, new MyDB.CodeSql("WHERE ar_fk_scenario_camp_id = {0}", listeDeroulanteScenario1.ScenarioSelectionnee.Id), null).FirstOrDefault();
             if (ScenarioLie == null)
             {
                 FormConfirmation.LabelDuTexte = "Êtes vous certain de vouloir supprimer cet enregistrement ?";
