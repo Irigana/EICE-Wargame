@@ -43,22 +43,50 @@ namespace EICE_WARGAME
         /// <summary>
         /// Membre public permettant d'accéder à l'id du Master
         /// </summary>
-        public IEnumerable<SubUnity> Master
+        public SubUnity Master
         {
             get
             {
-                return EnumererMaster();
+                return m_Master;
+            }
+            set
+            {
+                if (value == null)
+                {
+                    Declencher_SurErreur(this, Champ.Master, "Master non défini");
+                }
+                else
+                {
+                    if ((m_Master == null) || !int.Equals(value.Id, m_Master.Id))
+                    {
+                        ModifierChamp(Champ.Master, ref m_Master, value);
+                    }
+                }
             }
         }
 
         /// <summary>
         /// Membre public permettant d'accéder à l'id du Slave
         /// </summary>
-        public IEnumerable<SubUnity> Slave
+        public SubUnity Slave
         {
             get
             {
-                return EnumererSlave();
+                return m_Slave;
+            }
+            set
+            {
+                if (value == null)
+                {
+                    Declencher_SurErreur(this, Champ.Slave, "Slave non défini");
+                }
+                else
+                {
+                    if ((m_Slave == null) || !int.Equals(value.Id, m_Slave.Id))
+                    {
+                        ModifierChamp(Champ.Slave, ref m_Slave, value);
+                    }
+                }
             }
         }
 
@@ -112,11 +140,13 @@ namespace EICE_WARGAME
         /// </summary>
         /// <param name="Id">Identifiant du SubSub</param>
         /// <param name="Quantite">Quantite de ce SubSub</param>
-        public SubSub(int Id, int Quantite)
+        public SubSub(int Id, int Quantite,SubUnity Master,SubUnity Slave)
         : this()
         {
             DefinirId(Id);
             this.Quantite = Quantite;
+            this.Master = Master;
+            this.Slave = Slave;
         }
 
         /// <summary>
@@ -132,6 +162,8 @@ namespace EICE_WARGAME
             {
                 DefinirId(Enregistrement.ValeurChampComplet<int>(NomDeLaTablePrincipale, "ss_id"));
                 this.Quantite = Enregistrement.ValeurChampComplet<int>(NomDeLaTablePrincipale, "ss_count");
+                this.Slave = new SubUnity(Connexion,Enregistrement);
+                this.Master = new SubUnity(Connexion, Enregistrement);
             }
         }
 
@@ -199,7 +231,7 @@ namespace EICE_WARGAME
         {
             get
             {
-                return new PDSGBD.MyDB.CodeSql("ss_fk_master_id = {0}, ss_fk_slave_id = {1}, ss_count = {2}", m_Master.Id, m_Slave.Id, m_Quantite);
+                return new PDSGBD.MyDB.CodeSql("ss_fk_master_id = {0}, ss_fk_slave_id = {1}, ss_count = {2}", Master.Id, Slave.Id, Quantite);
             }
         }
 

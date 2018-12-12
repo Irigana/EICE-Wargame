@@ -107,13 +107,12 @@ namespace EICE_WARGAME
         /// <param name="Id">Identifiant du FigurineStuff</param>
         /// <param name="Figurine">Figurine de ce FigurineStuff</param>
         /// <param name="Stuff">Stuff de ce FigurineStuff</param>
-        /// <param name="Utilisateur">Value de ce FigurineStuff</param>
-        public FigurineStuff(int Id, Figurine Figurine, Stuff Stuff, Utilisateur Utilisateur)
+        public FigurineStuff(int Id, Figurine Figurine, Stuff Stuff)
         : this()
         {
             DefinirId(Id);
             this.Figurine = Figurine;
-            this.Stuff = Stuff;
+            this.Stuff = Stuff;                    
         }
 
         /// <summary>
@@ -167,7 +166,7 @@ namespace EICE_WARGAME
         {
             get
             {
-                return new PDSGBD.MyDB.CodeSql("fs_fk_figutine_id = {0}, fs_fk_stuff_id = {1},", Figurine.Id,Stuff.Id);
+                return new PDSGBD.MyDB.CodeSql("fs_fk_figurine_id = {0}, fs_fk_stuff_id = {1},", Figurine.Id,Stuff.Id);
             }
         }
 
