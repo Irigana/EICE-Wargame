@@ -210,7 +210,6 @@
             this.ficheScenarioCamp2.Enabled = false;
             this.ficheScenarioCamp2.Location = new System.Drawing.Point(906, 318);
             this.ficheScenarioCamp2.Name = "ficheScenarioCamp2";
-            this.ficheScenarioCamp2.NumeroDeCamp = 0;
             this.ficheScenarioCamp2.Scenario = null;
             this.ficheScenarioCamp2.Size = new System.Drawing.Size(509, 407);
             this.ficheScenarioCamp2.TabIndex = 53;
@@ -220,7 +219,6 @@
             this.ficheScenarioCamp1.Enabled = false;
             this.ficheScenarioCamp1.Location = new System.Drawing.Point(315, 318);
             this.ficheScenarioCamp1.Name = "ficheScenarioCamp1";
-            this.ficheScenarioCamp1.NumeroDeCamp = 0;
             this.ficheScenarioCamp1.Scenario = null;
             this.ficheScenarioCamp1.Size = new System.Drawing.Size(509, 407);
             this.ficheScenarioCamp1.TabIndex = 52;

@@ -261,6 +261,21 @@ namespace EICE_WARGAME
         {
             return NouvelleSpecificite.Enregistrer(m_BD, NouvelleSpecificite, null, false);
         }
+
+        public bool SupprimerScenarioCamp(Scenario_Camp ScenarioCamp)
+        {
+            if (!m_BD.EstConnecte) Initialiser();
+            ScenarioCamp.SupprimerEnCascade(m_BD);
+            return true;
+
+        }
+        public bool SupprimerScenario(Scenario Scenario)
+        {
+            if (!m_BD.EstConnecte) Initialiser();
+            Scenario.SupprimerEnCascade(m_BD);
+            return true;
+
+        }
         #endregion
 
         #region Requetes personnage
