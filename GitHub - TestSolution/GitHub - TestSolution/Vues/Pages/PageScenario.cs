@@ -36,8 +36,6 @@ namespace EICE_WARGAME
         private Scenario_Camp m_ScenarioCampUn;
 
         private Scenario_Camp m_ScenarioEnEdition;
-
-        int m_AuMoinsUnAjoutEffectuer = 0;
         
 
         public PageScenario()
