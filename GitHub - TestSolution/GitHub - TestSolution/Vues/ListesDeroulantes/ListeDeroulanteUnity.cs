@@ -27,6 +27,16 @@ namespace EICE_WARGAME
                 return Unity.Name;
             }
 
+            public override bool Equals(object obj)
+            {
+                return (obj is Element) ? Unity.Equals((obj as Element).Unity) : base.Equals(obj);
+            }
+
+            public override int GetHashCode()
+            {
+                return Unity.GetHashCode();
+            }
+
         }
 
 

@@ -166,7 +166,7 @@ namespace EICE_WARGAME
         {
             get
             {
-                return new PDSGBD.MyDB.CodeSql("fs_fk_figurine_id = {0}, fs_fk_stuff_id = {1},", Figurine.Id,Stuff.Id);
+                return new PDSGBD.MyDB.CodeSql("fs_fk_figurine_id = {0}, fs_fk_stuff_id = {1}", Figurine.Id,Stuff.Id);
             }
         }
 

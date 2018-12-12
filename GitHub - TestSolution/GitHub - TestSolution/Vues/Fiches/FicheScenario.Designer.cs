@@ -47,7 +47,6 @@
             this.buttonAjouter = new System.Windows.Forms.Button();
             this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
             this.ValidationProvider = new System.Windows.Forms.ErrorProvider(this.components);
-            this.buttonModifier = new System.Windows.Forms.Button();
             this.buttonAnnuler = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownObligatoire)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown2)).BeginInit();
@@ -179,7 +178,7 @@
             this.buttonSupprimer.BackColor = System.Drawing.SystemColors.Window;
             this.buttonSupprimer.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonSupprimer.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F);
-            this.buttonSupprimer.Location = new System.Drawing.Point(261, 366);
+            this.buttonSupprimer.Location = new System.Drawing.Point(316, 366);
             this.buttonSupprimer.Name = "buttonSupprimer";
             this.buttonSupprimer.Size = new System.Drawing.Size(92, 29);
             this.buttonSupprimer.TabIndex = 45;
@@ -192,7 +191,7 @@
             this.buttonAjouter.BackColor = System.Drawing.SystemColors.Window;
             this.buttonAjouter.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonAjouter.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F);
-            this.buttonAjouter.Location = new System.Drawing.Point(65, 366);
+            this.buttonAjouter.Location = new System.Drawing.Point(109, 366);
             this.buttonAjouter.Name = "buttonAjouter";
             this.buttonAjouter.Size = new System.Drawing.Size(92, 29);
             this.buttonAjouter.TabIndex = 46;
@@ -208,25 +207,12 @@
             // 
             this.ValidationProvider.ContainerControl = this;
             // 
-            // buttonModifier
-            // 
-            this.buttonModifier.BackColor = System.Drawing.SystemColors.Window;
-            this.buttonModifier.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.buttonModifier.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F);
-            this.buttonModifier.Location = new System.Drawing.Point(359, 366);
-            this.buttonModifier.Name = "buttonModifier";
-            this.buttonModifier.Size = new System.Drawing.Size(92, 29);
-            this.buttonModifier.TabIndex = 47;
-            this.buttonModifier.Text = "Modifier";
-            this.buttonModifier.UseVisualStyleBackColor = false;
-            this.buttonModifier.Click += new System.EventHandler(this.buttonModifier_Click);
-            // 
             // buttonAnnuler
             // 
             this.buttonAnnuler.BackColor = System.Drawing.SystemColors.Window;
             this.buttonAnnuler.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonAnnuler.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F);
-            this.buttonAnnuler.Location = new System.Drawing.Point(163, 366);
+            this.buttonAnnuler.Location = new System.Drawing.Point(212, 366);
             this.buttonAnnuler.Name = "buttonAnnuler";
             this.buttonAnnuler.Size = new System.Drawing.Size(92, 29);
             this.buttonAnnuler.TabIndex = 48;
@@ -239,7 +225,6 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.Controls.Add(this.buttonAnnuler);
-            this.Controls.Add(this.buttonModifier);
             this.Controls.Add(this.buttonAjouter);
             this.Controls.Add(this.buttonSupprimer);
             this.Controls.Add(this.labelsupp);
@@ -287,7 +272,6 @@
         private System.Windows.Forms.Button buttonAjouter;
         private System.Windows.Forms.ErrorProvider errorProvider1;
         private System.Windows.Forms.ErrorProvider ValidationProvider;
-        private System.Windows.Forms.Button buttonModifier;
         private System.Windows.Forms.Button buttonAnnuler;
     }
 }
