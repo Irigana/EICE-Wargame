@@ -358,6 +358,14 @@ namespace EICE_WARGAME
             return NouvelleFigurineStuff.Enregistrer(m_BD, NouvelleFigurineStuff, null, false);
         }
 
+        public void MettreAJourFicheEquipementSurFigurine(FicheEquipement Fiche, int FigurineSelectionne)
+        {
+            Fiche.Equipement = Program.GMBD.EnumererStuff(null,
+                                                             new MyDB.CodeSql("JOIN figurine_stuff on fs_fk_stuff_id = st_id"),
+                                                             new MyDB.CodeSql("WHERE fs_fk_figurine_id = {0}", FigurineSelectionne),
+                                                             new MyDB.CodeSql("ORDER BY st_name"));
+        }
+
         public bool ModifierFigurineStuff(FigurineStuff NouvelleFigurineStuff)
         {
             if (NouvelleFigurineStuff.Enregistrer(m_BD, NouvelleFigurineStuff, null, false) &&
@@ -546,15 +554,6 @@ namespace EICE_WARGAME
             if (ClauseJoin == null) ClauseJoin = MyDB.CodeSql.Vide;
             if (ValeurSouhaitee == null) ValeurSouhaitee = new MyDB.CodeSql("*");
             return StuffFeature.Enumerer(m_BD, m_BD.Enumerer("SELECT {0} FROM {1} {2} {3} {4}", ValeurSouhaitee, c_NomTable_StuffFeature, ClauseJoin, ClauseWhere, ClauseOrderBy));
-        }
-
-        public IEnumerable<Stuff> EnumerEquipementSurFigurine(MyDB.CodeSql ValeurSouhaitee, MyDB.CodeSql ClauseJoin, MyDB.CodeSql ClauseWhere, MyDB.CodeSql ClauseOrderBy)
-        {
-            if (ClauseWhere == null) ClauseWhere = MyDB.CodeSql.Vide;
-            if (ClauseOrderBy == null) ClauseOrderBy = MyDB.CodeSql.Vide;
-            if (ClauseJoin == null) ClauseJoin = MyDB.CodeSql.Vide;
-            if (ValeurSouhaitee == null) ValeurSouhaitee = new MyDB.CodeSql("*");
-            return Stuff.Enumerer(m_BD, m_BD.Enumerer("SELECT {0} FROM {1} {2} {3} {4}", ValeurSouhaitee, c_NomTable_FigurineStuff, ClauseJoin, ClauseWhere, ClauseOrderBy));
         }
 
         public IEnumerable<Feature> EnumererFeature(MyDB.CodeSql ValeurSouhaitee, MyDB.CodeSql ClauseJoin, MyDB.CodeSql ClauseWhere, MyDB.CodeSql ClauseOrderBy)
