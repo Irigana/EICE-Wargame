@@ -31,11 +31,7 @@ namespace EICE_WARGAME
         /// Membre stockant la référence de rank
         /// </summary>
         private Rank m_Rank;
-
-        /// <summary>
-        /// Membre stockant les features
-        /// </summary>
-        private List<CharactFeature> m_CharactFeature;
+        
 
         /// <summary>
         /// Membre stockant la référence de sa sous unité
@@ -169,7 +165,6 @@ namespace EICE_WARGAME
             m_Cost = -1;
             m_Charact = null;
             m_Rank = null;
-            m_CharactFeature = null;
             m_SubUnity = null;        
         }
 

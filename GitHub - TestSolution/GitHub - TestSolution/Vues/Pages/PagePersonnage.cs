@@ -402,8 +402,8 @@ namespace EICE_WARGAME
         {
             PopUpConfirmation FormConfirmation = new PopUpConfirmation();
 
-            CharactRank CharactUtiliser = Program.GMBD.EnumererPersonnage(null, new MyDB.CodeSql(@"JOIN army_unity_figurine_stuff ON cr_id = aufs_fk_rank_id 
-                                                                                                 JOIN stuff_char_rank ON cr_id = scr_fk_char_rank_id"),
+            CharactRank CharactUtiliser = Program.GMBD.EnumererPersonnage(null, new MyDB.CodeSql(@"LEFT JOIN army_unity_figurine_stuff ON cr_id = aufs_fk_rank_id 
+                                                                                                 LEFT JOIN stuff_char_rank ON cr_id = scr_fk_char_rank_id"),
                                                                                                  new MyDB.CodeSql("WHERE aufs_fk_rank_id = {0} OR scr_fk_char_rank_id = {0}", ficheCaractere1.CaractereSelectionne.Id),null).FirstOrDefault();
             if (CharactUtiliser == null)
             {
@@ -439,7 +439,7 @@ namespace EICE_WARGAME
             }
             else
             {
-                errorProviderErreurCaractere.SetError(textBoxCaractere, "Ce personnage est déjà utilisé, veuillez supprimer les endroits où il est utiliser avant de le supprimer");
+                errorProviderErreurCaractere.SetError(textBoxCaractere, "Ce personnage est déjà utilisé, veuillez supprimer les endroits où il est utilisé avant de le supprimer");
             }
         }
 
