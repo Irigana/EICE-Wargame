@@ -258,7 +258,7 @@ namespace EICE_WARGAME
                                                 NouvelleFigurine.Charact = listeDeroulanteChar1.CharactSelectionnee;
                                                 if((NouvelleFigurine.EstValide) && Program.GMBD.AjouterFigurine(NouvelleFigurine))
                                                 {
-                                                    Program.GMBD.MettreAJourFicheFigurine(ficheFigurineStuff1, listeDeroulanteFaction1.FactionSelectionnee.Id, listeDeroulanteSousFaction1.SousFactionSelectionnee.Id, listeDeroulanteUnity1.UnitySelectionnee.Id, listeDeroulanteSubUnity1.SubUnitySelectionnee.Id);
+                                                    //  Program.GMBD.MettreAJourFicheFigurine(ficheFigurineStuff1,???? , m_Utilisateur.Id);
 
 
                                                 }
