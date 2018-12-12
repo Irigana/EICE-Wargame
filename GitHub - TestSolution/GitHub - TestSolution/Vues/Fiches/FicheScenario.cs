@@ -61,14 +61,6 @@ namespace EICE_WARGAME
             }
         }
         
-
-        public List<Condi_Camp> ListeCondiCamp
-        {
-            get
-            {
-                return ficheSpecifiteScenario1.ListeCondiCamp;
-            }
-        }
         
 
         public FicheScenario()
@@ -79,8 +71,6 @@ namespace EICE_WARGAME
             buttonAnnuler.Enabled = false;
             buttonSupprimer.Enabled = false;
             listeDeroulanteUnity1.SurChangementSelection += ListeUnity_SurChangementSelection;
-
-            ficheSpecifiteScenario1.SurChangementSelection += Specificite_SurChangementSelection;
 
             Bitmap ImageRessource = new Bitmap(Properties.Resources.Validation25px);
             ValidationProvider.Icon = Icon.FromHandle(ImageRessource.GetHicon());            
@@ -101,6 +91,9 @@ namespace EICE_WARGAME
         {
             listeDeroulanteUnity1.Unity = Program.GMBD.EnumererUnity(null, null, null, new MyDB.CodeSql("ORDER BY un_name"));
             ficheSpecifiteScenario1.SpecifiteScenario = Program.GMBD.EnumererCondiCamp(null, new MyDB.CodeSql("JOIN scenario_camp ON cc_fk_scenario_camp_id = sca_id JOIN unity on cc_fk_unity_id = un_id"), new MyDB.CodeSql("WHERE scenario_camp.sca_fk_camp_id = {0} AND scenario_camp.sca_fk_scenario_id =  {1}", NumeroDuCamp, Scenario.Scenario.Id), null);
+
+            ficheSpecifiteScenario1.SurChangementSelection += Specificite_SurChangementSelection;
+
         }
 
         public void ChargerSpecificite(int NumeroDuCamp)
@@ -299,5 +292,6 @@ namespace EICE_WARGAME
             buttonModifier.Enabled = false;
             buttonSupprimer.Enabled = false;
         }
+        
     }
 }
