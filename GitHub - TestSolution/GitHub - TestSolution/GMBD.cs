@@ -331,12 +331,12 @@ namespace EICE_WARGAME
             return NouvelleFigurine.Enregistrer(m_BD, NouvelleFigurine, null, false);
         }
 
-        public void MettreAJourFicheFigurine(FicheFigurineStuff Fiche, int IdFigurineSelectionee, int IdUser)
+        public void MettreAJourFicheFigurine(FicheFigurineStuff Fiche, int IdUser)
         {
             Fiche.FigurineStuff = Program.GMBD.EnumererFigurineStuff(null,
-                new MyDB.CodeSql("JOIN user ON fi_fk_user_id = u_id"),
-                new MyDB.CodeSql("WHERE u_id = {0} AND fi_id", IdUser, IdFigurineSelectionee),
-                new MyDB.CodeSql("ORDER BY fi_id"));
+                                                                     null,
+                                                                     new MyDB.CodeSql("WHERE u_id = {0}", IdUser),
+                                                                     new MyDB.CodeSql("ORDER BY fi_id"));
         }
 
         public bool SupprimerFigurine(Figurine NouvelleFigurine)

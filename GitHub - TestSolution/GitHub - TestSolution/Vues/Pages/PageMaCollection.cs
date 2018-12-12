@@ -39,13 +39,13 @@ namespace EICE_WARGAME
         
 
         private const string c_CritereQuiContient = "%{0}%";
-        int Figurine_Id;
 
         public PageMaCollection()
         {
 
             InitializeComponent();
             Program.GMBD.MettreAJourListeFaction(listeDeroulanteFaction1);
+            Program.GMBD.MettreAJourFicheFigurine(ficheFigurineStuff1, Utilisateur.Id);
             listeDeroulanteFaction1.SurChangementSelection += ListeDeroulanteFaction_SurChangementSelection;
             listeDeroulanteSousFaction1.Enabled = false;
             listeDeroulanteUnity1.Enabled = false;
@@ -53,6 +53,7 @@ namespace EICE_WARGAME
             listeDeroulanteChar1.Enabled = false;
             ficheEquipementSansRecherche1.Enabled = false;
             ficheEquipementSurFigurine1.Enabled = false;
+
 
 
         }
@@ -267,8 +268,7 @@ namespace EICE_WARGAME
                                                 NouvelleFigurine.Utilisateur = Utilisateur;
                                                 if((NouvelleFigurine.EstValide) && Program.GMBD.AjouterFigurine(NouvelleFigurine))
                                                 {
-                                                      //Program.GMBD.MettreAJourFicheFigurine(ficheFigurineStuff1,???? , m_Utilisateur.Id);
-
+                                                      Program.GMBD.MettreAJourFicheFigurine(ficheFigurineStuff1, m_Utilisateur.Id);
 
                                                 }
 
