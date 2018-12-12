@@ -179,5 +179,56 @@ namespace EICE_WARGAME
         {
             //DELETE * FROM figurine_stuff
         }
+
+        private void buttonCréerFigurine_Click(object sender, EventArgs e)
+        {
+            Faction FactionExiste = null;
+            SousFaction SousFactionExiste = null;
+
+            if (listeDeroulanteFaction1.FactionSelectionnee != null)
+            {
+                FactionExiste = Program.GMBD.EnumererFaction(null,
+                                                             null,
+                                                             new MyDB.CodeSql("WHERE faction.fa_id = {0}", listeDeroulanteFaction1.FactionSelectionnee.Id),
+                                                             null).FirstOrDefault();
+                if (FactionExiste != null)
+                {
+
+                    if (listeDeroulanteSousFaction1.SousFactionSelectionnee != null)
+                    {
+                        SousFactionExiste = Program.GMBD.EnumererSousFaction(null,
+                                                                             null,
+                                                                             new MyDB.CodeSql("WHERE subfaction.sf_fk_faction_id = {0} AND subfaction.sf_id = {1}", listeDeroulanteFaction1.FactionSelectionnee.Id, listeDeroulanteSousFaction1.SousFactionSelectionnee.Id),
+                                                                             null).FirstOrDefault();
+                        if (SousFactionExiste != null)
+                        {
+
+                            if (listeDeroulanteUnity1.UnitySelectionnee != null)
+                            {
+                                Unity UnityExiste = Program.GMBD.EnumererUnity(null,
+                                                                                    null,
+                                                                    new MyDB.CodeSql("WHERE un_id = {0}",
+                                                                    listeDeroulanteUnity1.UnitySelectionnee.Id),
+                                                                    null).FirstOrDefault();
+                                if ((UnityExiste != null) && (listeDeroulanteSubUnity1.SubUnitySelectionnee != null))
+                                {
+
+                                    SubUnity SubUnityExiste = Program.GMBD.EnumererSubUnity(null,
+                                                                                            new MyDB.CodeSql(@"JOIN unity ON subunity.su_fk_unity_id = unity.un_id
+                                                                                                                "),
+                                                                                            new MyDB.CodeSql(" WHERE un_id = {0} AND su_id = {1}",
+                                                                                            listeDeroulanteUnity1.UnitySelectionnee.Id, listeDeroulanteSubUnity1.SubUnitySelectionnee.Id),
+                                                                                            null).FirstOrDefault();
+                                    if (SubUnityExiste != null)
+                                    {
+                                        if (listeDeroulanteChar1.CharactSelectionnee != null)
+                                        {
+                                           // Charact CharactExiste = ;
+
+                                        }
+                                        //TODO : le INSERT INTO figurine (fi_fk_character_id) VALUES (listeDeroulanteChar1.CharactSelectionnee.Id)
+                                        //
+                                        // Figurine_Id = ID de la figurine
+                                    }
     }
 }

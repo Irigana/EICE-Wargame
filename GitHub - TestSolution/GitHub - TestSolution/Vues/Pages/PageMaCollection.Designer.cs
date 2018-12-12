@@ -217,6 +217,7 @@
             this.buttonValiderFigurineStuff.TabIndex = 31;
             this.buttonValiderFigurineStuff.Text = "Valider";
             this.buttonValiderFigurineStuff.UseVisualStyleBackColor = true;
+            this.buttonValiderFigurineStuff.Click += new System.EventHandler(this.buttonCréerFigurine_Click);
             // 
             // ficheEquipementSansRecherche1
             // 
