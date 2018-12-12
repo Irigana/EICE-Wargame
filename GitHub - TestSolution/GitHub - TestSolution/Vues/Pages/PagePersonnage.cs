@@ -627,24 +627,27 @@ namespace EICE_WARGAME
             m_CFEnEdition.Feature = listeDeroulanteFeature1.FeatureSelectionnee;            
             m_CFEnEdition.Value = Convert.ToInt32(numericUpDown2.Value);
 
-            CharactFeature FeatureExiste = Program.GMBD.EnumererCharactFeature(null, new MyDB.CodeSql("JOIN feature ON crf_fk_feature_id = feature.fe_id"), new MyDB.CodeSql("WHERE crf_fk_char_rank_id = {0} AND crf_fk_feature_id = {1}", ficheCaractere1.CaractereSelectionne.Id,listeDeroulanteFeature1.FeatureSelectionnee.Id),null).FirstOrDefault();
-
-            if (FeatureExiste == null)
+            if (listeDeroulanteFeature1.FeatureSelectionnee != null)
             {
-                if (Program.GMBD.AjouterFeaturePersonnage(m_CFEnEdition))
+                CharactFeature FeatureExiste = Program.GMBD.EnumererCharactFeature(null, new MyDB.CodeSql("JOIN feature ON crf_fk_feature_id = feature.fe_id"), new MyDB.CodeSql("WHERE crf_fk_char_rank_id = {0} AND crf_fk_feature_id = {1}", ficheCaractere1.CaractereSelectionne.Id, listeDeroulanteFeature1.FeatureSelectionnee.Id), null).FirstOrDefault();
+
+                if (FeatureExiste == null)
                 {
-                    ValidationProvider.SetError(textBoxCaractere, "Caractèristique correctement rajoutée");
-                    RafraichirListViewCaracteristiques();
+                    if (Program.GMBD.AjouterFeaturePersonnage(m_CFEnEdition))
+                    {
+                        RafraichirListViewCaracteristiques();
+                        ValidationProvider.SetError(numericUpDown2, "Caractèristique correctement rajoutée");
+                    }                    
                 }
                 else
                 {
-                    ValidationProvider.Clear();
-                    errorProviderErreurCaractere.SetError(listeDeroulanteFeature1, "Veuillez sélectionner une caractèristique");
+                    errorProviderErreurCaractere.SetError(listeDeroulanteFeature1, "Cette caractèristique existe déjà pour ce personnage");
                 }
             }
             else
             {
-                errorProviderErreurCaractere.SetError(listeDeroulanteFeature1, "Cette caractèristique existe déjà pour ce personnage");
+                ValidationProvider.Clear();
+                errorProviderErreurCaractere.SetError(listeDeroulanteFeature1, "Veuillez sélectionner une caractèristique");
             }
         }
 
