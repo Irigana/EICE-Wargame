@@ -287,7 +287,9 @@ namespace EICE_WARGAME
                 // S'il accepte
                 if (FormConfirmation.Confirmation)
                 {
-                    if ((listeDeroulanteScenario1.ScenarioSelectionnee != null) && (Program.GMBD.SupprimerScenarioCamp(m_ScenarioCampUn) && Program.GMBD.SupprimerScenarioCamp(m_ScenarioCampUn)))
+
+                    //Condi_Camp Camp1 = m_ScenarioCampUn.CondiCamp;
+                    //TODOif ((listeDeroulanteScenario1.ScenarioSelectionnee != null) && (Program.GMBD.SupprimerSpecificite(m_ScenarioCampUn) && Program.GMBD.SupprimerScenarioCamp(m_ScenarioCampUn)))
                     {
 
                         listeDeroulanteScenario1.Scenario = Program.GMBD.EnumererScenario(null, null, null, null);

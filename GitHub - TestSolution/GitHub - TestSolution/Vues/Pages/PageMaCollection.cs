@@ -111,8 +111,8 @@ namespace EICE_WARGAME
             ficheEquipementSansRecherche1.Enabled = true;
             if (ficheFigurineStuff1.FigurineSelectionne != null)
             {
-                ficheEquipementSurFigurine1.Equipement = Program.GMBD.EnumererStuff(null,
-                                                                                    new MyDB.CodeSql("JOIN figurine_stuff on fs_fk_stuff_id = st_id"),
+                ficheEquipementSurFigurine1.Equipement = Program.GMBD.EnumererFigurineStuff(null,
+                                                                                    new MyDB.CodeSql("JOIN stuff on fs_fk_stuff_id = st_id"),
                                                                                     new MyDB.CodeSql("WHERE fs_fk_figurine_id = {0}", ficheFigurineStuff1.FigurineSelectionne.Id),
                                                                                     new MyDB.CodeSql("ORDER BY st_name"));
 
@@ -154,8 +154,8 @@ namespace EICE_WARGAME
             NouvelleFigurineStuff.Stuff = ficheEquipementSansRecherche1.EquipementSelectionne;
             if ((NouvelleFigurineStuff.EstValide) && Program.GMBD.AjouterFigurineStuff(NouvelleFigurineStuff))
             {
-                ficheEquipementSurFigurine1.Equipement = Program.GMBD.EnumererStuff(null,
-                                                                                    new MyDB.CodeSql("JOIN figurine_stuff on fs_fk_stuff_id = st_id"),
+                ficheEquipementSurFigurine1.Equipement = Program.GMBD.EnumererFigurineStuff(null,
+                                                                                    new MyDB.CodeSql("JOIN stuff on fs_fk_stuff_id = st_id"),
                                                                                     new MyDB.CodeSql("WHERE fs_fk_figurine_id = {0}", ficheFigurineStuff1.FigurineSelectionne.Id),
                                                                                     new MyDB.CodeSql("ORDER BY st_name"));
             }
@@ -166,13 +166,10 @@ namespace EICE_WARGAME
         {
             if ((ficheEquipementSurFigurine1.EquipementSelectionne != null) && (ficheFigurineStuff1.FigurineSelectionne != null))
             {
-                FigurineStuff NouvelleFigurineStuff = new FigurineStuff();
-                NouvelleFigurineStuff.Stuff = ficheEquipementSansRecherche1.EquipementSelectionne;
-                NouvelleFigurineStuff.Figurine = ficheFigurineStuff1.FigurineSelectionne;
-                if (Program.GMBD.SupprimerFigurineStuff(NouvelleFigurineStuff))
+                if (Program.GMBD.SupprimerFigurineStuff(ficheEquipementSurFigurine1.EquipementSelectionne))
                 {
-                    ficheEquipementSurFigurine1.Equipement = Program.GMBD.EnumererStuff(null,
-                                                                                        new MyDB.CodeSql("JOIN figurine_stuff on fs_fk_stuff_id = st_id"),
+                    ficheEquipementSurFigurine1.Equipement = Program.GMBD.EnumererFigurineStuff(null,
+                                                                                        new MyDB.CodeSql("JOIN stuff on fs_fk_stuff_id = st_id"),
                                                                                         new MyDB.CodeSql("WHERE fs_fk_figurine_id = {0}", ficheFigurineStuff1.FigurineSelectionne.Id),
                                                                                         new MyDB.CodeSql("ORDER BY st_name"));
                 }

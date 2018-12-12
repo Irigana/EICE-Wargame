@@ -36,14 +36,14 @@ namespace EICE_WARGAME
         /// </summary>
         public event EventHandler SurChangementFiltre = null;
 
-        public IEnumerable<Stuff> Equipement
+        public IEnumerable<FigurineStuff> Equipement
         {
             get
             {
                 return listViewEquipement.Items
                     .OfType<ListViewItem>()
-                    .Where(Element => Element.Tag is Stuff)
-                    .Select(Element => Element.Tag as Stuff);
+                    .Where(Element => Element.Tag is FigurineStuff)
+                    .Select(Element => Element.Tag as FigurineStuff);
             }
             set
             {
@@ -55,12 +55,12 @@ namespace EICE_WARGAME
         /// <summary>
         /// Type de Equipement sélectionné
         /// </summary>
-        public Stuff EquipementSelectionne
+        public FigurineStuff EquipementSelectionne
         {
             get
             {
-                return (listViewEquipement.SelectedItems.Count == 1) && (listViewEquipement.SelectedItems[0].Tag is Stuff)
-                    ? listViewEquipement.SelectedItems[0].Tag as Stuff
+                return (listViewEquipement.SelectedItems.Count == 1) && (listViewEquipement.SelectedItems[0].Tag is FigurineStuff)
+                    ? listViewEquipement.SelectedItems[0].Tag as FigurineStuff
                     : null;
             }
             set
@@ -69,7 +69,7 @@ namespace EICE_WARGAME
                 {
                     foreach (ListViewItem Element in listViewEquipement.Items)
                     {
-                        if ((Element.Tag is Stuff) && (Element.Tag as Stuff).Id.Equals(value.Id))
+                        if ((Element.Tag is FigurineStuff) && (Element.Tag as FigurineStuff).Id.Equals(value.Id))
                         {
                             Element.Selected = true;
                             return;
@@ -95,7 +95,7 @@ namespace EICE_WARGAME
         private bool MettreAJourListe<T>(IEnumerable<T> Entites)
             where T : class, IEntiteMySQL
         {
-            bool EstEquipement = typeof(T).Equals(typeof(Stuff));
+            bool EstEquipement = typeof(T).Equals(typeof(FigurineStuff));
             if (!EstEquipement) return false;
             listViewEquipement.Items.Clear();
             if (Entites == null) return false;
@@ -121,9 +121,9 @@ namespace EICE_WARGAME
                 NouvelElement.SubItems.Clear();
                 if (EstEquipement)
                 {
-                    Stuff Equipement = Entite as Stuff;
-                    NouvelElement.Text = Equipement.Name;
-                    NouvelElement.SubItems.Add(Equipement.Name);
+                    FigurineStuff Equipement = Entite as FigurineStuff;
+                    NouvelElement.Text = Equipement.Stuff.Name;
+                    NouvelElement.SubItems.Add(Equipement.Stuff.Name);
                 }
                 listViewEquipement.Items.Add(NouvelElement);
                 
