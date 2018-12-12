@@ -111,10 +111,10 @@ namespace EICE_WARGAME
             ficheEquipementSurFigurine1.Enabled = true;
             if (ficheFigurineStuff1.FigurineSelectionne != null)
             {
-                ficheEquipementSurFigurine1.Equipement = Program.GMBD.EnumerEquipementSurFigurine(null,
-                                                                                                  new MyDB.CodeSql("JOIN figurine_stuff on fs_fk_stuff_id = st_id"),
-                                                                                                  new MyDB.CodeSql("WHERE fs_fk_figurine_id = {0}", ficheFigurineStuff1.FigurineSelectionne.Id),
-                                                                                                  new MyDB.CodeSql("ORDER BY st_name"));
+                ficheEquipementSurFigurine1.Equipement = Program.GMBD.EnumererStuff(null,
+                                                                                    new MyDB.CodeSql("JOIN figurine_stuff on fs_fk_stuff_id = st_id"),
+                                                                                    new MyDB.CodeSql("WHERE fs_fk_figurine_id = {0}", ficheFigurineStuff1.FigurineSelectionne.Id),
+                                                                                    new MyDB.CodeSql("ORDER BY st_name"));
             }
 
         }

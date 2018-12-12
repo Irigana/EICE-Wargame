@@ -548,15 +548,6 @@ namespace EICE_WARGAME
             return StuffFeature.Enumerer(m_BD, m_BD.Enumerer("SELECT {0} FROM {1} {2} {3} {4}", ValeurSouhaitee, c_NomTable_StuffFeature, ClauseJoin, ClauseWhere, ClauseOrderBy));
         }
 
-        public IEnumerable<Stuff> EnumerEquipementSurFigurine(MyDB.CodeSql ValeurSouhaitee, MyDB.CodeSql ClauseJoin, MyDB.CodeSql ClauseWhere, MyDB.CodeSql ClauseOrderBy)
-        {
-            if (ClauseWhere == null) ClauseWhere = MyDB.CodeSql.Vide;
-            if (ClauseOrderBy == null) ClauseOrderBy = MyDB.CodeSql.Vide;
-            if (ClauseJoin == null) ClauseJoin = MyDB.CodeSql.Vide;
-            if (ValeurSouhaitee == null) ValeurSouhaitee = new MyDB.CodeSql("*");
-            return Stuff.Enumerer(m_BD, m_BD.Enumerer("SELECT {0} FROM {1} {2} {3} {4}", ValeurSouhaitee, c_NomTable_FigurineStuff, ClauseJoin, ClauseWhere, ClauseOrderBy));
-        }
-
         public IEnumerable<Feature> EnumererFeature(MyDB.CodeSql ValeurSouhaitee, MyDB.CodeSql ClauseJoin, MyDB.CodeSql ClauseWhere, MyDB.CodeSql ClauseOrderBy)
         {
             if (ClauseWhere == null) ClauseWhere = MyDB.CodeSql.Vide;
