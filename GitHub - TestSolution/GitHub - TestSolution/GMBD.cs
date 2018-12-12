@@ -358,6 +358,14 @@ namespace EICE_WARGAME
             return NouvelleFigurineStuff.Enregistrer(m_BD, NouvelleFigurineStuff, null, false);
         }
 
+        public void MettreAJourFicheEquipementSurFigurine(FicheEquipement Fiche, int FigurineSelectionne)
+        {
+            Fiche.Equipement = Program.GMBD.EnumererStuff(null,
+                                                             new MyDB.CodeSql("JOIN figurine_stuff on fs_fk_stuff_id = st_id"),
+                                                             new MyDB.CodeSql("WHERE fs_fk_figurine_id = {0}", FigurineSelectionne),
+                                                             new MyDB.CodeSql("ORDER BY st_name"));
+        }
+
         public bool ModifierFigurineStuff(FigurineStuff NouvelleFigurineStuff)
         {
             if (NouvelleFigurineStuff.Enregistrer(m_BD, NouvelleFigurineStuff, null, false) &&
