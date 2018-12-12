@@ -180,6 +180,26 @@ namespace EICE_WARGAME
             //DELETE * FROM figurine_stuff
         }
 
+        #region Caractère en édition
+        /// <summary>
+        /// Methode permettant de réagir sur l'erreur d'un ajout ou d'une édition de caractère
+        /// </summary>
+        /// <param name="Entite"></param>
+        /// <param name="Champ"></param>
+        /// <param name="MessageErreur"></param>
+        private void FigurineEnEdition_SurErreur(Charact Entite, Charact.Champ Champ, string MessageErreur)
+        {
+            switch (Champ)
+            {
+                case Charact.Champ.Name:
+              //      errorProviderErreurFigurine.SetError(textBoxFigurine, MessageErreur);
+                    break;
+            }
+          //  buttonAjouterPersonnage.Enabled = false;
+        }
+        #endregion
+
+
         private void buttonCréerFigurine_Click(object sender, EventArgs e)
         {
             Faction FactionExiste = null;
@@ -223,7 +243,19 @@ namespace EICE_WARGAME
                                     {
                                         if (listeDeroulanteChar1.CharactSelectionnee != null)
                                         {
-                                            // Charact CharactExiste = ;
+                                            Charact CharactExiste = Program.GMBD.EnumererCaractere(null,
+                                                                                                   new MyDB.CodeSql(@"JOIN char_rank on cr_fk_ch_id = ch_id
+                                                                                                                      JOIN subunity on cr_sub_id = su_id"),
+                                                                                                   new MyDB.CodeSql(" WHERE ch_id = {0} AND su_id {1}",
+                                                                                                   listeDeroulanteChar1.CharactSelectionnee.Id, listeDeroulanteSubUnity1.SubUnitySelectionnee.Id),
+                                                                                                   null).FirstOrDefault();
+                                            if(CharactExiste != null)
+                                            {
+                                                Figurine NouvelleFigurine = new Figurine();
+                                           //     NouvelleFigurine.SurErreur += FigurineEnEdition_SurErreur;
+                                             //   NouvelleFigurine.AvantChangement += FigurineEnEdition_AvantChangement;
+                                               // NouvelleFigurine.ApresChangement += FigurineEnEdition_ApresChangement;
+                                            }
 
                                         }
                                         //TODO : le INSERT INTO figurine (fi_fk_character_id) VALUES (listeDeroulanteChar1.CharactSelectionnee.Id)
