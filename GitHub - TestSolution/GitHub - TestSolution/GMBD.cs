@@ -314,9 +314,53 @@ namespace EICE_WARGAME
         #endregion
 
         #region Requetes Figurine
+        //+====================+
+        //| Requetes figurine  |
+        //+====================+
+        public bool AjouterFigurine(Figurine NouvelleFigurine)
+        {
+            return NouvelleFigurine.Enregistrer(m_BD, NouvelleFigurine, null, false);
+        }
+
+        public bool SupprimerFigurine(Figurine NouvelleFigurine)
+        {
+            if (!m_BD.EstConnecte) Initialiser();
+            NouvelleFigurine.SupprimerEnCascade(m_BD);
+            return true;
+
+        }
         #endregion
 
         #region Requetes FigurineStuff
+        //+=========================+
+        //| Requetes Figurine Stuff |
+        //+=========================+
+
+        public bool AjouterFigurineStuff(FigurineStuff NouvelleFigurineStuff)
+        {
+            return NouvelleFigurineStuff.Enregistrer(m_BD, NouvelleFigurineStuff, null, false);
+        }
+
+        public bool ModifierFigurineStuff(FigurineStuff NouvelleFigurineStuff)
+        {
+            if (NouvelleFigurineStuff.Enregistrer(m_BD, NouvelleFigurineStuff, null, false) &&
+                (NouvelleFigurineStuff.Figurine.Enregistrer(m_BD, NouvelleFigurineStuff.Figurine, null, false)))
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+
+        public bool SupprimerFigurineStuff(FigurineStuff NouvelleFigurineStuff)
+        {
+            if (!m_BD.EstConnecte) Initialiser();
+            NouvelleFigurineStuff.SupprimerEnCascade(m_BD);
+            return true;
+
+        }
         #endregion
 
 
