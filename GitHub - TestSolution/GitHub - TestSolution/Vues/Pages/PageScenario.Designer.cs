@@ -128,11 +128,11 @@
             // labelCampNeutreOuAttaque
             // 
             this.labelCampNeutreOuAttaque.AutoSize = true;
-            this.labelCampNeutreOuAttaque.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F);
+            this.labelCampNeutreOuAttaque.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F);
             this.labelCampNeutreOuAttaque.ForeColor = System.Drawing.Color.SlateGray;
             this.labelCampNeutreOuAttaque.Location = new System.Drawing.Point(310, 286);
             this.labelCampNeutreOuAttaque.Name = "labelCampNeutreOuAttaque";
-            this.labelCampNeutreOuAttaque.Size = new System.Drawing.Size(151, 29);
+            this.labelCampNeutreOuAttaque.Size = new System.Drawing.Size(170, 31);
             this.labelCampNeutreOuAttaque.TabIndex = 60;
             this.labelCampNeutreOuAttaque.Text = "Camp neutre";
             // 
