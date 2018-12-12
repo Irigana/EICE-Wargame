@@ -55,6 +55,7 @@
             this.listeDeroulanteSousFaction1 = new EICE_WARGAME.ListeDeroulanteSousFaction();
             this.listeDeroulanteFaction1 = new EICE_WARGAME.ListeDeroulanteFaction();
             this.buttonOptionsUser1 = new EICE_WARGAME.ButtonOptionsUser();
+            this.label1 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -129,9 +130,9 @@
             this.labelEquipement.Location = new System.Drawing.Point(118, 317);
             this.labelEquipement.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.labelEquipement.Name = "labelEquipement";
-            this.labelEquipement.Size = new System.Drawing.Size(91, 17);
+            this.labelEquipement.Size = new System.Drawing.Size(153, 17);
             this.labelEquipement.TabIndex = 8;
-            this.labelEquipement.Text = "Equipement :";
+            this.labelEquipement.Text = "Equipements portables";
             // 
             // labelQuantite
             // 
@@ -347,10 +348,22 @@
             this.buttonOptionsUser1.TabIndex = 11;
             this.buttonOptionsUser1.Utilisateur = null;
             // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
+            this.label1.Location = new System.Drawing.Point(396, 317);
+            this.label1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(134, 17);
+            this.label1.TabIndex = 49;
+            this.label1.Text = "Equipements portés";
+            // 
             // PageMaCollection
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.label1);
             this.Controls.Add(this.buttonAnnulerPersonnage);
             this.Controls.Add(this.buttonSupprimerPersonnage);
             this.Controls.Add(this.buttonModifierPersonnage);
@@ -417,5 +430,6 @@
         private System.Windows.Forms.Button buttonSupprimerPersonnage;
         private System.Windows.Forms.Button buttonModifierPersonnage;
         private System.Windows.Forms.Button buttonAjouterFigurine;
+        private System.Windows.Forms.Label label1;
     }
 }
