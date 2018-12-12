@@ -101,6 +101,7 @@
             this.buttonSupprimer.TabIndex = 56;
             this.buttonSupprimer.Text = "Supprimer";
             this.buttonSupprimer.UseVisualStyleBackColor = false;
+            this.buttonSupprimer.Click += new System.EventHandler(this.buttonSupprimer_Click);
             // 
             // buttonAjouter
             // 
@@ -213,6 +214,7 @@
             this.ficheScenarioCamp2.Scenario = null;
             this.ficheScenarioCamp2.Size = new System.Drawing.Size(509, 407);
             this.ficheScenarioCamp2.TabIndex = 53;
+            this.ficheScenarioCamp2.ValidationActive = false;
             // 
             // ficheScenarioCamp1
             // 
@@ -222,6 +224,7 @@
             this.ficheScenarioCamp1.Scenario = null;
             this.ficheScenarioCamp1.Size = new System.Drawing.Size(509, 407);
             this.ficheScenarioCamp1.TabIndex = 52;
+            this.ficheScenarioCamp1.ValidationActive = false;
             // 
             // buttonRetourDashBoard1
             // 

@@ -157,7 +157,7 @@ namespace EICE_WARGAME
         private void RajouterNouvelleSpecificite(int NumeroDuCamp)
         {
             Condi_Camp NouvelleSpecificite = new Condi_Camp();
-            NouvelleSpecificite.SurErreur += Scenario_SurErreur;
+            NouvelleSpecificite.SurErreur += Specificite_SurErreur;
             NouvelleSpecificite.Unity = listeDeroulanteUnity1.UnitySelectionnee;
             NouvelleSpecificite.Scenario_Camp = Program.GMBD.EnumererScenarioCamp(null, new MyDB.CodeSql(@"JOIN scenario ON scenario.sc_id = scenario_camp.sca_fk_scenario_id 
                                                                                                             JOIN camp ON camp.ca_id = scenario_camp.sca_fk_camp_id "),
@@ -182,7 +182,7 @@ namespace EICE_WARGAME
             buttonSupprimer.Enabled = false;
         }
 
-        private void Scenario_SurErreur(Condi_Camp Entite, Condi_Camp.Champ Champ, string MessageErreur)
+        private void Specificite_SurErreur(Condi_Camp Entite, Condi_Camp.Champ Champ, string MessageErreur)
         {
             switch (Champ)
             {
@@ -194,6 +194,23 @@ namespace EICE_WARGAME
                     break;
             }
             buttonAjouter.Enabled = false;
+        }
+
+        private void Specificite_AvantChangement(Condi_Camp Specificite, Condi_Camp.Champ Champ, object ValeurActuelle, object NouvelleValeur, AccumulateurErreur AccumulateurErreur)
+        {
+            switch (Champ)
+            {
+                case Condi_Camp.Champ.Id:
+                    {
+                        Condi_Camp SpecificiteExiste = Program.GMBD.EnumererCondiCamp(null, null,
+                                                                                      new MyDB.CodeSql("WHERE cc_fk_scenario_camp_id = {0} AND cc_fk_unity_id = {1}", Scenario.Scenario.Id, listeDeroulanteUnity1.UnitySelectionnee.Id), null).FirstOrDefault();
+                        if (SpecificiteExiste != null)
+                        {
+                            AccumulateurErreur.NotifierErreur("Cette spécificité existe déjà, veuillez en choisir une autre ou modifier l'existante !");
+                        }
+                        break;
+                    }
+            }
         }
 
         private void numericUpDownObligatoire_Enter(object sender, EventArgs e)
@@ -217,7 +234,16 @@ namespace EICE_WARGAME
             SurClickAjout(this, EventArgs.Empty);
             buttonAjouter.Click -= SurClickAjout_Click;
             buttonAjouter.Click += buttonAjouter_Click;
-        }        
-        
+        }
+
+        private void buttonSupprimer_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void buttonModifier_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

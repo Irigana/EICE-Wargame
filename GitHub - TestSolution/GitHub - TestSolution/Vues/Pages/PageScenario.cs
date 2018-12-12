@@ -152,12 +152,7 @@ namespace EICE_WARGAME
             // Permet d'obtenir l'option du menu admin utilisateur une fois l'admin identifié            
             if (Utilisateur.Role.Id == 2) menuAdmin1.EstAdmin = true;
         }
-
-        private void buttonNouveauCamp_Click(object sender, EventArgs e)
-        {
-            
-        }
-
+        
         private void buttonAjouter_Click(object sender, EventArgs e)
         {
             if (ficheScenarioCamp2.Enabled == false)
@@ -218,6 +213,7 @@ namespace EICE_WARGAME
                     }
             }
         }
+
         private void PersonnageEnEdition_AvantChangement(CharactRank Entite, CharactRank.Champ Champ, object ValeurActuelle, object NouvelleValeur, AccumulateurErreur AccumulateurErreur)
         {
             switch (Champ)
@@ -273,7 +269,11 @@ namespace EICE_WARGAME
             ficheScenarioCamp1.Scenario = m_ScenarioEnEdition;
             ficheScenarioCamp2.ChargerFiches(2);
             ficheScenarioCamp2.Scenario = m_ScenarioEnEdition;
-        }       
-        
+        }
+
+        private void buttonSupprimer_Click(object sender, EventArgs e)
+        {
+            //TODO
+        }
     }
 }

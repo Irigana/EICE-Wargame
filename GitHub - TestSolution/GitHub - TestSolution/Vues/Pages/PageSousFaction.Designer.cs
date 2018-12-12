@@ -65,7 +65,7 @@
             // 
             this.labelSousFaction.AutoSize = true;
             this.labelSousFaction.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F);
-            this.labelSousFaction.Location = new System.Drawing.Point(597, 232);
+            this.labelSousFaction.Location = new System.Drawing.Point(549, 232);
             this.labelSousFaction.Name = "labelSousFaction";
             this.labelSousFaction.Size = new System.Drawing.Size(91, 18);
             this.labelSousFaction.TabIndex = 2;
@@ -75,7 +75,7 @@
             // 
             this.labelChoisirFaction.AutoSize = true;
             this.labelChoisirFaction.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F);
-            this.labelChoisirFaction.Location = new System.Drawing.Point(597, 169);
+            this.labelChoisirFaction.Location = new System.Drawing.Point(549, 169);
             this.labelChoisirFaction.Name = "labelChoisirFaction";
             this.labelChoisirFaction.Size = new System.Drawing.Size(131, 18);
             this.labelChoisirFaction.TabIndex = 6;
@@ -148,7 +148,7 @@
             // 
             // textBoxSousFaction
             // 
-            this.textBoxSousFaction.Location = new System.Drawing.Point(600, 253);
+            this.textBoxSousFaction.Location = new System.Drawing.Point(552, 253);
             this.textBoxSousFaction.Name = "textBoxSousFaction";
             this.textBoxSousFaction.Size = new System.Drawing.Size(286, 22);
             this.textBoxSousFaction.TabIndex = 33;
@@ -187,7 +187,7 @@
             // listeDeroulanteFaction1
             // 
             this.listeDeroulanteFaction1.FactionSelectionnee = null;
-            this.listeDeroulanteFaction1.Location = new System.Drawing.Point(600, 190);
+            this.listeDeroulanteFaction1.Location = new System.Drawing.Point(552, 190);
             this.listeDeroulanteFaction1.Name = "listeDeroulanteFaction1";
             this.listeDeroulanteFaction1.Size = new System.Drawing.Size(286, 25);
             this.listeDeroulanteFaction1.TabIndex = 5;
