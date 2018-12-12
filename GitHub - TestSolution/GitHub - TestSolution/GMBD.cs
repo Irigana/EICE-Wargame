@@ -29,7 +29,7 @@ namespace EICE_WARGAME
         private static readonly MyDB.CodeSql c_NomTable_Scenario = new MyDB.CodeSql(new Scenario().NomDeLaTablePrincipale);
         private static readonly MyDB.CodeSql c_NomTable_CondiCamp = new MyDB.CodeSql(new Condi_Camp().NomDeLaTablePrincipale);
         private static readonly MyDB.CodeSql c_NomTable_Camp = new MyDB.CodeSql(new Camp().NomDeLaTablePrincipale);
-        private static readonly MyDB.CodeSql c_NomTable_ArmyUnityFigurineStuff = new MyDB.CodeSql(new ArmyUnityFigurineStuff().NomDeLaTablePrincipale);
+        private static readonly MyDB.CodeSql c_NomTable_ArmyUnityFigurineStuff = new MyDB.CodeSql(new ArmyUnityFigurine().NomDeLaTablePrincipale);
         private static readonly MyDB.CodeSql c_NomTable_Army = new MyDB.CodeSql(new Army().NomDeLaTablePrincipale);
 
         /// <summary>
@@ -334,9 +334,9 @@ namespace EICE_WARGAME
         public void MettreAJourFicheFigurine(FicheFigurineStuff Fiche, int IdFigurineSelectionee, int IdUser)
         {
             Fiche.FigurineStuff = Program.GMBD.EnumererFigurineStuff(null,
-                new MyDB.CodeSql("JOIN user ON figurine_stuff.fs_fk_user_id = user.u_id"),
-                new MyDB.CodeSql("WHERE u_id = {0} AND fs_id", IdUser, IdFigurineSelectionee),
-                new MyDB.CodeSql("ORDER BY fs_id"));
+                new MyDB.CodeSql("JOIN user ON fi_fk_user_id = u_id"),
+                new MyDB.CodeSql("WHERE u_id = {0} AND fi_id", IdUser, IdFigurineSelectionee),
+                new MyDB.CodeSql("ORDER BY fi_id"));
         }
 
         public bool SupprimerFigurine(Figurine NouvelleFigurine)
@@ -403,13 +403,13 @@ namespace EICE_WARGAME
             return Utilisateur.Enumerer(m_BD, m_BD.Enumerer("SELECT {0} FROM  {1} {2} {3} {4}", ValeurSouhaitee, c_NomTable_Utilisateur, ClauseJoin, ClauseWhere, ClauseOrderBy));
         }
 
-        public IEnumerable<ArmyUnityFigurineStuff> EnumererArmyUnityFigurineStuff(MyDB.CodeSql ValeurSouhaitee, MyDB.CodeSql ClauseJoin, MyDB.CodeSql ClauseWhere, MyDB.CodeSql ClauseOrderBy)
+        public IEnumerable<ArmyUnityFigurine> EnumererArmyUnityFigurineStuff(MyDB.CodeSql ValeurSouhaitee, MyDB.CodeSql ClauseJoin, MyDB.CodeSql ClauseWhere, MyDB.CodeSql ClauseOrderBy)
         {
             if (ClauseWhere == null) ClauseWhere = MyDB.CodeSql.Vide;
             if (ClauseOrderBy == null) ClauseOrderBy = MyDB.CodeSql.Vide;
             if (ClauseJoin == null) ClauseJoin = MyDB.CodeSql.Vide;
             if (ValeurSouhaitee == null) ValeurSouhaitee = new MyDB.CodeSql("*");
-            return ArmyUnityFigurineStuff.Enumerer(m_BD, m_BD.Enumerer("SELECT {0} FROM  {1} {2} {3} {4}", ValeurSouhaitee, c_NomTable_ArmyUnityFigurineStuff, ClauseJoin, ClauseWhere, ClauseOrderBy));
+            return ArmyUnityFigurine.Enumerer(m_BD, m_BD.Enumerer("SELECT {0} FROM  {1} {2} {3} {4}", ValeurSouhaitee, c_NomTable_ArmyUnityFigurineStuff, ClauseJoin, ClauseWhere, ClauseOrderBy));
         }
 
         public IEnumerable<Army> EnumererArmy(MyDB.CodeSql ValeurSouhaitee, MyDB.CodeSql ClauseJoin, MyDB.CodeSql ClauseWhere, MyDB.CodeSql ClauseOrderBy)
