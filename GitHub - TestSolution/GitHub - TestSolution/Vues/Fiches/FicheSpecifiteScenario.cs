@@ -126,7 +126,7 @@ namespace EICE_WARGAME
                 listViewSpecificite.Columns.Add(new ColumnHeader()
                 {
                     Name = "Max",
-                    Text = "Max",
+                    Text = "Max supplémentaires",
                     TextAlign = HorizontalAlignment.Center,
                 });
 

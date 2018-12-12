@@ -31,11 +31,7 @@ namespace EICE_WARGAME
         /// Membre stockant la référence de rank
         /// </summary>
         private Rank m_Rank;
-
-        /// <summary>
-        /// Membre stockant les features
-        /// </summary>
-        private List<CharactFeature> m_CharactFeature;
+        
 
         /// <summary>
         /// Membre stockant la référence de sa sous unité
@@ -68,7 +64,7 @@ namespace EICE_WARGAME
                 }
                 else
                 {
-                    if ((m_Charact == null) || int.Equals(value.Id, m_Charact.Id))
+                    if ((m_Charact == null) || !int.Equals(value.Id, m_Charact.Id))
                     {
                         ModifierChamp(Champ.Caractere, ref m_Charact, value);
                     }
@@ -93,7 +89,7 @@ namespace EICE_WARGAME
                 }
                 else
                 {
-                    if ((m_SubUnity == null) || int.Equals(value.Id, m_SubUnity.Id))
+                    if ((m_SubUnity == null) || !int.Equals(value.Id, m_SubUnity.Id))
                     {
                         ModifierChamp(Champ.SubUnity, ref m_SubUnity, value);
                     }
@@ -118,7 +114,7 @@ namespace EICE_WARGAME
                 }
                 else
                 {
-                    if (m_Rank == null || value.Id != m_Rank.Id)
+                    if ((m_Rank == null) || !int.Equals(value.Id, m_Rank.Id))
                     {
                         ModifierChamp(Champ.Rank, ref m_Rank, value);
                     }
@@ -169,7 +165,6 @@ namespace EICE_WARGAME
             m_Cost = -1;
             m_Charact = null;
             m_Rank = null;
-            m_CharactFeature = null;
             m_SubUnity = null;        
         }
 
@@ -291,8 +286,8 @@ namespace EICE_WARGAME
         public override void SupprimerEnCascade(PDSGBD.MyDB Connexion)
         {
             Connexion.Executer(@"DELETE FROM char_rank_feature WHERE crf_fk_char_rank_id = {0};
-                                 DELETE FROM char_rank WHERE cr_id = {1};                         
-                                  ", Id,Id);
+                                 DELETE FROM char_rank WHERE cr_id = {0};                         
+                                  ", Id);
         }
 
         /// <summary>

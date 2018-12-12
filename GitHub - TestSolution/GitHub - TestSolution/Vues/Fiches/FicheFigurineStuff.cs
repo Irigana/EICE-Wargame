@@ -10,40 +10,58 @@ using System.Windows.Forms;
 
 namespace EICE_WARGAME
 {
-    public partial class FicheEquipementSurFigurine : UserControl
+    public partial class FicheFigurineStuff : UserControl
     {
        
-        public FicheEquipementSurFigurine()
+        public FicheFigurineStuff()
         {
             InitializeComponent();
-            listViewEquipement.View = View.Details;
-            listViewEquipement.FullRowSelect = true;
-            listViewEquipement.LabelEdit = false;
-            listViewEquipement.Scrollable = true;
-            listViewEquipement.AllowColumnReorder = false;
-            listViewEquipement.MultiSelect = false;
-            listViewEquipement.GridLines = true;
-            listViewEquipement.HideSelection = false;
-            listViewEquipement.Items.Clear();
-            listViewEquipement.Columns.Clear();
-            listViewEquipement.SelectedIndexChanged += listViewEquipement_SelectedIndexChanged;
+            listViewFigurineStuff.View = View.Details;
+            listViewFigurineStuff.FullRowSelect = true;
+            listViewFigurineStuff.LabelEdit = false;
+            listViewFigurineStuff.Scrollable = true;
+            listViewFigurineStuff.AllowColumnReorder = false;
+            listViewFigurineStuff.MultiSelect = false;
+            listViewFigurineStuff.GridLines = true;
+            listViewFigurineStuff.HideSelection = false;
+            listViewFigurineStuff.Items.Clear();
+            listViewFigurineStuff.Columns.Clear();
+            listViewFigurineStuff.SelectedIndexChanged += listViewFigurineStuff_SelectedIndexChanged;
         }
 
 
+        /// <summary>
+        /// Texte du filtre
+        /// </summary>
+        public string TexteFiltreFaction
+        {
+            get
+            {
+                return textBoxRecherche.Text;
+            }
+            set
+            {
+                if (value == null) value = string.Empty;
+                if (value != textBoxRecherche.Text)
+                {
+                    textBoxRecherche.Text = value;
+                }
+            }
+        }
 
         /// <summary>
         /// Evénement déclenché lorsque le filtre change
         /// </summary>
         public event EventHandler SurChangementFiltre = null;
 
-        public IEnumerable<Stuff> Equipement
+        public IEnumerable<Figurine> FigurineStuff
         {
             get
             {
-                return listViewEquipement.Items
+                return listViewFigurineStuff.Items
                     .OfType<ListViewItem>()
-                    .Where(Element => Element.Tag is Stuff)
-                    .Select(Element => Element.Tag as Stuff);
+                    .Where(Element => Element.Tag is Figurine)
+                    .Select(Element => Element.Tag as Figurine);
             }
             set
             {
@@ -53,41 +71,41 @@ namespace EICE_WARGAME
 
 
         /// <summary>
-        /// Type de Equipement sélectionné
+        /// Type de FigurineStuff sélectionné
         /// </summary>
-        public Stuff EquipementSelectionne
+        public Figurine FigurineSelectionne
         {
             get
             {
-                return (listViewEquipement.SelectedItems.Count == 1) && (listViewEquipement.SelectedItems[0].Tag is Stuff)
-                    ? listViewEquipement.SelectedItems[0].Tag as Stuff
+                return (listViewFigurineStuff.SelectedItems.Count == 1) && (listViewFigurineStuff.SelectedItems[0].Tag is Figurine)
+                    ? listViewFigurineStuff.SelectedItems[0].Tag as Figurine
                     : null;
             }
             set
             {
                 if (value != null)
                 {
-                    foreach (ListViewItem Element in listViewEquipement.Items)
+                    foreach (ListViewItem Element in listViewFigurineStuff.Items)
                     {
-                        if ((Element.Tag is Stuff) && (Element.Tag as Stuff).Id.Equals(value.Id))
+                        if ((Element.Tag is Figurine) && (Element.Tag as Figurine).Id.Equals(value.Id))
                         {
                             Element.Selected = true;
                             return;
                         }
                     }
                 }
-                listViewEquipement.SelectedItems.Clear();
+                listViewFigurineStuff.SelectedItems.Clear();
             }
         }
 
 
         /// <summary>
-        /// Evénement déclenché quand il y a un changement de sélection de Equipement
+        /// Evénement déclenché quand il y a un changement de sélection de FigurineStuff
         /// </summary>
         public event EventHandler SurChangementSelection = null;
 
         /// <summary>
-        /// Met à jour la listview des Equipements et y insére les elements
+        /// Met à jour la listview des FigurineStuff et y insére les elements
         /// </summary>
         /// <typeparam name="T"></typeparam>
         /// <param name="Entites"></param>
@@ -95,18 +113,18 @@ namespace EICE_WARGAME
         private bool MettreAJourListe<T>(IEnumerable<T> Entites)
             where T : class, IEntiteMySQL
         {
-            bool EstEquipement = typeof(T).Equals(typeof(Stuff));
-            if (!EstEquipement) return false;
-            listViewEquipement.Items.Clear();
+            bool FigurineStuff = typeof(T).Equals(typeof(Figurine));
+            if (!FigurineStuff) return false;
+            listViewFigurineStuff.Items.Clear();
             if (Entites == null) return false;
-            if (EstEquipement && (listViewEquipement.Columns.Count != 2))
+            if (FigurineStuff && (listViewFigurineStuff.Columns.Count != 2))
             {
-                listViewEquipement.Columns.Clear();
+                listViewFigurineStuff.Columns.Clear();
 
-                listViewEquipement.Columns.Add(new ColumnHeader()
+                listViewFigurineStuff.Columns.Add(new ColumnHeader()
                 {
-                    Name = "Equipements",
-                    Text = "Equipements",
+                    Name = "Figurines",
+                    Text = "Figurines",
                     TextAlign = HorizontalAlignment.Center,                              
                 });
 
@@ -114,41 +132,42 @@ namespace EICE_WARGAME
 
             foreach (T Entite in Entites)
             {
-                ListViewItem NouvelElement = new ListViewItem()
-                {
-                    Tag = Entite
-                };
-                NouvelElement.SubItems.Clear();
-                if (EstEquipement)
-                {
-                    Stuff Equipement = Entite as Stuff;
-                    NouvelElement.Text = Equipement.Name;
-                    NouvelElement.SubItems.Add(Equipement.Name);
-                }
-                listViewEquipement.Items.Add(NouvelElement);
-                
 
+                Figurine Figurine = Entite as Figurine;
+
+                if (FigurineStuff)
+                {
+                    ListViewItem NouvelElement = new ListViewItem()
+                    {
+                        Tag = Entite,
+                        Text = Figurine.Charact.Name,
+                    };
+                    NouvelElement.SubItems.Add(Figurine.Charact.Name);
+
+                    listViewFigurineStuff.Items.Add(NouvelElement);
+
+                }
             }
 
-            listViewEquipement.Visible = false;
-            foreach (ColumnHeader Colonne in listViewEquipement.Columns)
+            listViewFigurineStuff.Visible = false;
+            foreach (ColumnHeader Colonne in listViewFigurineStuff.Columns)
             {
                 Colonne.AutoResize(ColumnHeaderAutoResizeStyle.HeaderSize);
             }
 
-            listViewEquipement.Visible = true;
-            listViewEquipement_SelectedIndexChanged(listViewEquipement, EventArgs.Empty);
+            listViewFigurineStuff.Visible = true;
+            listViewFigurineStuff_SelectedIndexChanged(listViewFigurineStuff, EventArgs.Empty);
             return true;
         }
 
 
 
         /// <summary>
-        /// Evénement déclenché en cas de changement de sélection de Equipement
+        /// Evénement déclenché en cas de changement de sélection de FigurineStuff
         /// </summary>
         /// <param name="sender">Emetteur ayant déclenché l'événement</param>
         /// <param name="e">Descriptif de l'événement</param>
-        private void listViewEquipement_SelectedIndexChanged(object sender, EventArgs e)
+        private void listViewFigurineStuff_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (SurChangementSelection != null)
             {
@@ -191,7 +210,7 @@ namespace EICE_WARGAME
         /// </summary>
         public void NettoyerListView()
         {
-            listViewEquipement.Clear();
+            listViewFigurineStuff.Clear();
         }
         
     }

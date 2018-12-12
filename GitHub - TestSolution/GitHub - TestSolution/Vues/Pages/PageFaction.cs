@@ -262,39 +262,36 @@ namespace EICE_WARGAME
         {
 
             PopUpConfirmation FormConfirmation = new PopUpConfirmation();
-            //Test de vérification du nombre de sous faction pour indiquer le nombre de sous faction lié à cette faction
-            //long NombreDeSousFactionLie = Program.GMBD.NombreDeSousFactionLiee(ficheFaction1.FactionSelectionne.Id);
-
-            //if(NombreDeSousFactionLie == 0)
-            {
-                FormConfirmation.LabelDuTexte = "Êtes vous certain de vouloir supprimer cet enregistrement ?";
-            }
             
-           // else if (NombreDeSousFactionLie > 0)
+            SousFaction FactionLie = Program.GMBD.EnumererSousFaction(null, null, new MyDB.CodeSql("WHERE sf_fk_faction_id = {0}", ficheFaction1.FactionSelectionne.Id), null).FirstOrDefault();            
+            if (FactionLie == null)
             {
-                //FormConfirmation.LabelDuTexte = "Êtes vous certain de vouloir supprimer en cascade cet enregistrement ? Il comporte "+NombreDeSousFactionLie.ToString()+" sous faction";
-            }
+                FormConfirmation.LabelDuTexte = "Êtes vous certain de vouloir supprimer cet enregistrement ?";                               
 
-
-            FormConfirmation.ShowDialog();
-            // S'il accepte
-            if (FormConfirmation.Confirmation)
-            {
-                if ((ficheFaction1.FactionSelectionne != null) && (Program.GMBD.SupprimerFaction(ficheFaction1.FactionSelectionne)))
+                FormConfirmation.ShowDialog();
+                // S'il accepte
+                if (FormConfirmation.Confirmation)
                 {
-                    ChargerFaction();
-                    buttonAjouter.Enabled = true;
-                    buttonAnnuler.Enabled = false;
-                    buttonModifier.Enabled = false;
-                    buttonSupprimer.Enabled = false;
-                    ValidationProvider.SetError(textBoxFaction, "Suppresion correctement effectuée");
-                    textBoxFaction.Text = "";
+                    if ((ficheFaction1.FactionSelectionne != null) && (Program.GMBD.SupprimerFaction(ficheFaction1.FactionSelectionne)))
+                    {
+                        ChargerFaction();
+                        buttonAjouter.Enabled = true;
+                        buttonAnnuler.Enabled = false;
+                        buttonModifier.Enabled = false;
+                        buttonSupprimer.Enabled = false;
+                        ValidationProvider.SetError(textBoxFaction, "Suppresion correctement effectuée");
+                        textBoxFaction.Text = "";
+                    }
+                }
+                // S'il refuse
+                else if (FormConfirmation.Annulation)
+                {
+                    // ne rien faire
                 }
             }
-            // S'il refuse
-            else if (FormConfirmation.Annulation)
+            else
             {
-                // ne rien faire
+                errorProviderErreurFaction.SetError(textBoxFaction, "Cette faction est utilisée par une sous faction, veuillez la supprimer avant de supprimer cette sous faction");
             }
         }
 

@@ -101,6 +101,7 @@
             this.buttonSupprimer.TabIndex = 56;
             this.buttonSupprimer.Text = "Supprimer";
             this.buttonSupprimer.UseVisualStyleBackColor = false;
+            this.buttonSupprimer.Click += new System.EventHandler(this.buttonSupprimer_Click);
             // 
             // buttonAjouter
             // 
@@ -127,11 +128,11 @@
             // labelCampNeutreOuAttaque
             // 
             this.labelCampNeutreOuAttaque.AutoSize = true;
-            this.labelCampNeutreOuAttaque.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F);
+            this.labelCampNeutreOuAttaque.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F);
             this.labelCampNeutreOuAttaque.ForeColor = System.Drawing.Color.SlateGray;
             this.labelCampNeutreOuAttaque.Location = new System.Drawing.Point(310, 286);
             this.labelCampNeutreOuAttaque.Name = "labelCampNeutreOuAttaque";
-            this.labelCampNeutreOuAttaque.Size = new System.Drawing.Size(151, 29);
+            this.labelCampNeutreOuAttaque.Size = new System.Drawing.Size(170, 31);
             this.labelCampNeutreOuAttaque.TabIndex = 60;
             this.labelCampNeutreOuAttaque.Text = "Camp neutre";
             // 
@@ -210,20 +211,20 @@
             this.ficheScenarioCamp2.Enabled = false;
             this.ficheScenarioCamp2.Location = new System.Drawing.Point(906, 318);
             this.ficheScenarioCamp2.Name = "ficheScenarioCamp2";
-            this.ficheScenarioCamp2.NumeroDeCamp = 0;
             this.ficheScenarioCamp2.Scenario = null;
             this.ficheScenarioCamp2.Size = new System.Drawing.Size(509, 407);
             this.ficheScenarioCamp2.TabIndex = 53;
+            this.ficheScenarioCamp2.ValidationActive = false;
             // 
             // ficheScenarioCamp1
             // 
             this.ficheScenarioCamp1.Enabled = false;
             this.ficheScenarioCamp1.Location = new System.Drawing.Point(315, 318);
             this.ficheScenarioCamp1.Name = "ficheScenarioCamp1";
-            this.ficheScenarioCamp1.NumeroDeCamp = 0;
             this.ficheScenarioCamp1.Scenario = null;
             this.ficheScenarioCamp1.Size = new System.Drawing.Size(509, 407);
             this.ficheScenarioCamp1.TabIndex = 52;
+            this.ficheScenarioCamp1.ValidationActive = false;
             // 
             // buttonRetourDashBoard1
             // 

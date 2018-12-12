@@ -16,7 +16,6 @@ namespace EICE_WARGAME
             Id,
             Figurine,
             Stuff,
-            User
         }
 
         #region Membres privés
@@ -30,10 +29,6 @@ namespace EICE_WARGAME
         /// </summary>
         private Stuff m_Stuff;
 
-        /// <summary>
-        /// Membre stockant la référence d'utilisateur
-        /// </summary>
-        private Utilisateur m_Utilisateur;
 
         #endregion
 
@@ -57,7 +52,7 @@ namespace EICE_WARGAME
                 }
                 else
                 {
-                    if ((m_Figurine == null) || int.Equals(value.Id, m_Figurine.Id))
+                    if ((m_Figurine == null) || !int.Equals(value.Id, m_Figurine.Id))
                     {
                         ModifierChamp(Champ.Figurine, ref m_Figurine, value);
                     }
@@ -82,7 +77,7 @@ namespace EICE_WARGAME
                 }
                 else
                 {
-                    if ((m_Stuff == null) || int.Equals(value.Id, m_Stuff.Id))
+                    if ((m_Stuff == null) || !int.Equals(value.Id, m_Stuff.Id))
                     {
                         ModifierChamp(Champ.Stuff, ref m_Stuff, value);
                     }
@@ -90,30 +85,7 @@ namespace EICE_WARGAME
             }
         }
 
-        /// <summary>
-        /// Membre public permettant d'accéder à l'id de l'utilisateur
-        /// </summary>
-        public Utilisateur Utilisateur
-        {
-            get
-            {
-                return m_Utilisateur;
-            }
-            set
-            {
-                if (value == null)
-                {
-                    Declencher_SurErreur(this, Champ.Stuff, "Utilisateur non défini");
-                }
-                else
-                {
-                    if ((m_Utilisateur == null) || int.Equals(value.Id, m_Utilisateur.Id))
-                    {
-                        ModifierChamp(Champ.User, ref m_Utilisateur, value);
-                    }
-                }
-            }
-        }
+        
 
         #endregion
 
@@ -127,7 +99,6 @@ namespace EICE_WARGAME
         {
             m_Figurine = null;
             m_Stuff = null;
-            m_Utilisateur = null;
         }
 
         /// <summary>
@@ -136,14 +107,12 @@ namespace EICE_WARGAME
         /// <param name="Id">Identifiant du FigurineStuff</param>
         /// <param name="Figurine">Figurine de ce FigurineStuff</param>
         /// <param name="Stuff">Stuff de ce FigurineStuff</param>
-        /// <param name="Utilisateur">Value de ce FigurineStuff</param>
-        public FigurineStuff(int Id, Figurine Figurine, Stuff Stuff, Utilisateur Utilisateur)
+        public FigurineStuff(int Id, Figurine Figurine, Stuff Stuff)
         : this()
         {
             DefinirId(Id);
             this.Figurine = Figurine;
-            this.Stuff = Stuff;
-            this.Utilisateur = Utilisateur;
+            this.Stuff = Stuff;                    
         }
 
         /// <summary>
@@ -160,7 +129,6 @@ namespace EICE_WARGAME
                 DefinirId(Enregistrement.ValeurChampComplet<int>(NomDeLaTablePrincipale, "fs_id"));
                 this.Figurine = new Figurine(Connexion, Enregistrement);
                 this.Stuff = new Stuff(Connexion, Enregistrement);
-                this.Utilisateur = new Utilisateur(Connexion, Enregistrement);
             }
         }
 
@@ -198,7 +166,7 @@ namespace EICE_WARGAME
         {
             get
             {
-                return new PDSGBD.MyDB.CodeSql("fs_fk_figutine_id = {0}, fs_fk_stuff_id = {1}, fs_fk_user_id = {2}", m_Figurine.Id,m_Stuff.Id, m_Utilisateur.Id);
+                return new PDSGBD.MyDB.CodeSql("fs_fk_figurine_id = {0}, fs_fk_stuff_id = {1},", Figurine.Id,Stuff.Id);
             }
         }
 

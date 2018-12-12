@@ -20,6 +20,7 @@ namespace EICE_WARGAME
         private static readonly MyDB.CodeSql c_NomTable_StuffFeature = new MyDB.CodeSql(new StuffFeature().NomDeLaTablePrincipale);
         private static readonly MyDB.CodeSql c_NomTable_Charact = new MyDB.CodeSql(new Charact().NomDeLaTablePrincipale);
         private static readonly MyDB.CodeSql c_NomTable_CharactRank = new MyDB.CodeSql(new CharactRank().NomDeLaTablePrincipale);
+        private static readonly MyDB.CodeSql c_NomTable_Figurine = new MyDB.CodeSql(new Figurine().NomDeLaTablePrincipale);
         private static readonly MyDB.CodeSql c_NomTable_FigurineStuff = new MyDB.CodeSql(new FigurineStuff().NomDeLaTablePrincipale);
         private static readonly MyDB.CodeSql c_NomTable_CharactFeature = new MyDB.CodeSql(new CharactFeature().NomDeLaTablePrincipale);
         private static readonly MyDB.CodeSql c_NomTable_Unity = new MyDB.CodeSql(new Unity().NomDeLaTablePrincipale);
@@ -29,6 +30,8 @@ namespace EICE_WARGAME
         private static readonly MyDB.CodeSql c_NomTable_Scenario = new MyDB.CodeSql(new Scenario().NomDeLaTablePrincipale);
         private static readonly MyDB.CodeSql c_NomTable_CondiCamp = new MyDB.CodeSql(new Condi_Camp().NomDeLaTablePrincipale);
         private static readonly MyDB.CodeSql c_NomTable_Camp = new MyDB.CodeSql(new Camp().NomDeLaTablePrincipale);
+        private static readonly MyDB.CodeSql c_NomTable_ArmyUnityFigurineStuff = new MyDB.CodeSql(new ArmyUnityFigurine().NomDeLaTablePrincipale);
+        private static readonly MyDB.CodeSql c_NomTable_Army = new MyDB.CodeSql(new Army().NomDeLaTablePrincipale);
 
         /// <summary>
         /// Référence l'objet de connexion au serveur de base de données MySql
@@ -261,6 +264,30 @@ namespace EICE_WARGAME
         {
             return NouvelleSpecificite.Enregistrer(m_BD, NouvelleSpecificite, null, false);
         }
+
+        public bool SupprimerSpecificite(Condi_Camp SpecificiteCondiCamp)
+        {
+            if (!m_BD.EstConnecte) Initialiser();
+            SpecificiteCondiCamp.SupprimerEnCascade(m_BD);
+            return true;
+
+        }
+
+        public bool SupprimerScenarioCamp(Scenario_Camp ScenarioCamp)
+        {
+            if (!m_BD.EstConnecte) Initialiser();
+            ScenarioCamp.SupprimerEnCascade(m_BD);
+            return true;
+
+        }
+
+        public bool SupprimerScenario(Scenario Scenario)
+        {
+            if (!m_BD.EstConnecte) Initialiser();
+            Scenario.SupprimerEnCascade(m_BD);
+            return true;
+
+        }
         #endregion
 
         #region Requetes personnage
@@ -296,6 +323,64 @@ namespace EICE_WARGAME
 
         #endregion
 
+        #region Requetes Figurine
+        //+====================+
+        //| Requetes figurine  |
+        //+====================+
+        public bool AjouterFigurine(Figurine NouvelleFigurine)
+        {
+            return NouvelleFigurine.Enregistrer(m_BD, NouvelleFigurine, null, false);
+        }
+
+        public void MettreAJourFicheFigurine(FicheFigurineStuff Fiche, int IdUser)
+        {
+            Fiche.FigurineStuff = Program.GMBD.EnumererFigurine(null,
+                                                                     null,
+                                                                     new MyDB.CodeSql("WHERE fi_fk_user_id = {0}", IdUser),
+                                                                     new MyDB.CodeSql("ORDER BY fi_id"));
+        }
+        public bool SupprimerFigurine(Figurine NouvelleFigurine)
+        {
+            if (!m_BD.EstConnecte) Initialiser();
+            NouvelleFigurine.SupprimerEnCascade(m_BD);
+            return true;
+
+        }
+        #endregion
+
+        #region Requetes FigurineStuff
+        //+=========================+
+        //| Requetes Figurine Stuff |
+        //+=========================+
+
+        public bool AjouterFigurineStuff(FigurineStuff NouvelleFigurineStuff)
+        {
+            return NouvelleFigurineStuff.Enregistrer(m_BD, NouvelleFigurineStuff, null, false);
+        }
+
+        public bool ModifierFigurineStuff(FigurineStuff NouvelleFigurineStuff)
+        {
+            if (NouvelleFigurineStuff.Enregistrer(m_BD, NouvelleFigurineStuff, null, false) &&
+                (NouvelleFigurineStuff.Figurine.Enregistrer(m_BD, NouvelleFigurineStuff.Figurine, null, false)))
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+
+        public bool SupprimerFigurineStuff(FigurineStuff NouvelleFigurineStuff)
+        {
+            if (!m_BD.EstConnecte) Initialiser();
+            NouvelleFigurineStuff.SupprimerEnCascade(m_BD);
+            return true;
+
+        }
+        #endregion
+
+
         #region Toutes les énumérations
         //+==================+
         //| Les énumérations |
@@ -316,6 +401,24 @@ namespace EICE_WARGAME
             if (ClauseJoin == null) ClauseJoin = MyDB.CodeSql.Vide;
             if (ValeurSouhaitee == null) ValeurSouhaitee = new MyDB.CodeSql("*");
             return Utilisateur.Enumerer(m_BD, m_BD.Enumerer("SELECT {0} FROM  {1} {2} {3} {4}", ValeurSouhaitee, c_NomTable_Utilisateur, ClauseJoin, ClauseWhere, ClauseOrderBy));
+        }
+
+        public IEnumerable<ArmyUnityFigurine> EnumererArmyUnityFigurineStuff(MyDB.CodeSql ValeurSouhaitee, MyDB.CodeSql ClauseJoin, MyDB.CodeSql ClauseWhere, MyDB.CodeSql ClauseOrderBy)
+        {
+            if (ClauseWhere == null) ClauseWhere = MyDB.CodeSql.Vide;
+            if (ClauseOrderBy == null) ClauseOrderBy = MyDB.CodeSql.Vide;
+            if (ClauseJoin == null) ClauseJoin = MyDB.CodeSql.Vide;
+            if (ValeurSouhaitee == null) ValeurSouhaitee = new MyDB.CodeSql("*");
+            return ArmyUnityFigurine.Enumerer(m_BD, m_BD.Enumerer("SELECT {0} FROM  {1} {2} {3} {4}", ValeurSouhaitee, c_NomTable_ArmyUnityFigurineStuff, ClauseJoin, ClauseWhere, ClauseOrderBy));
+        }
+
+        public IEnumerable<Army> EnumererArmy(MyDB.CodeSql ValeurSouhaitee, MyDB.CodeSql ClauseJoin, MyDB.CodeSql ClauseWhere, MyDB.CodeSql ClauseOrderBy)
+        {
+            if (ClauseWhere == null) ClauseWhere = MyDB.CodeSql.Vide;
+            if (ClauseOrderBy == null) ClauseOrderBy = MyDB.CodeSql.Vide;
+            if (ClauseJoin == null) ClauseJoin = MyDB.CodeSql.Vide;
+            if (ValeurSouhaitee == null) ValeurSouhaitee = new MyDB.CodeSql("*");
+            return Army.Enumerer(m_BD, m_BD.Enumerer("SELECT {0} FROM  {1} {2} {3} {4}", ValeurSouhaitee, c_NomTable_Army, ClauseJoin, ClauseWhere, ClauseOrderBy));
         }
 
         public IEnumerable<CharactFeature> EnumererCharactFeature(MyDB.CodeSql ValeurSouhaitee, MyDB.CodeSql ClauseJoin, MyDB.CodeSql ClauseWhere, MyDB.CodeSql ClauseOrderBy)
@@ -454,13 +557,13 @@ namespace EICE_WARGAME
             return Feature.Enumerer(m_BD, m_BD.Enumerer("SELECT {0} FROM {1} {2} {3} {4}", ValeurSouhaitee, c_NomTable_Feature, ClauseJoin, ClauseWhere, ClauseOrderBy));
         }        
 
-        public IEnumerable<FigurineStuff> EnumererFigurineStuff(MyDB.CodeSql ValeurSouhaitee, MyDB.CodeSql ClauseJoin, MyDB.CodeSql ClauseWhere, MyDB.CodeSql ClauseOrderBy)
+        public IEnumerable<Figurine> EnumererFigurine(MyDB.CodeSql ValeurSouhaitee, MyDB.CodeSql ClauseJoin, MyDB.CodeSql ClauseWhere, MyDB.CodeSql ClauseOrderBy)
         {
             if (ClauseWhere == null) ClauseWhere = MyDB.CodeSql.Vide;
             if (ClauseOrderBy == null) ClauseOrderBy = MyDB.CodeSql.Vide;
             if (ClauseJoin == null) ClauseJoin = MyDB.CodeSql.Vide;
             if (ValeurSouhaitee == null) ValeurSouhaitee = new MyDB.CodeSql("*");
-            return FigurineStuff.Enumerer(m_BD, m_BD.Enumerer("SELECT {0} FROM {1} {2} {3} {4}", ValeurSouhaitee, c_NomTable_FigurineStuff, ClauseJoin, ClauseWhere, ClauseOrderBy));
+            return Figurine.Enumerer(m_BD, m_BD.Enumerer("SELECT {0} FROM {1} {2} {3} {4}", ValeurSouhaitee, c_NomTable_Figurine, ClauseJoin, ClauseWhere, ClauseOrderBy));
         }
 
         public IEnumerable<Unity> EnumererUnity(MyDB.CodeSql ValeurSouhaitee, MyDB.CodeSql ClauseJoin, MyDB.CodeSql ClauseWhere, MyDB.CodeSql ClauseOrderBy)

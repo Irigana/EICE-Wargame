@@ -112,7 +112,7 @@ namespace EICE_WARGAME
 			if (Enregistrement != null)
 			{
 				DefinirId(Enregistrement.ValeurChampComplet<int>(NomDeLaTablePrincipale, "un_id"));
-				this.Name = Enregistrement.ValeurChampComplet<string>(NomDeLaTablePrincipale, "un_name");
+				this.Name = Enregistrement.ValeurChampComplet<string>(NomDeLaTablePrincipale, "un_name");                
 			}
 		}
 
@@ -177,8 +177,8 @@ namespace EICE_WARGAME
 
         public override void SupprimerEnCascade(MyDB Connexion)
         {
-            Connexion.Executer(@"DELETE FROM subunity WHERE su_fk_unity_id = {0};
-                                 DELETE FROM faction WHERE un_id = {0};"
+            Connexion.Executer(@"DELETE FROM unity WHERE un_id = {0};
+                                 "
                                 , Id);
         }
         

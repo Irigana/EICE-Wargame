@@ -10,10 +10,10 @@ using System.Windows.Forms;
 
 namespace EICE_WARGAME
 {
-    public partial class FicheEquipementSurFigurine : UserControl
+    public partial class FicheEquipementSansRecherche : UserControl
     {
        
-        public FicheEquipementSurFigurine()
+        public FicheEquipementSansRecherche()
         {
             InitializeComponent();
             listViewEquipement.View = View.Details;
@@ -30,7 +30,9 @@ namespace EICE_WARGAME
         }
 
 
-
+        /// <summary>
+        /// Texte du filtre
+        /// </summary>
         /// <summary>
         /// Evénement déclenché lorsque le filtre change
         /// </summary>

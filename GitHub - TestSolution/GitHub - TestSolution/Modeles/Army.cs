@@ -105,7 +105,7 @@ namespace EICE_WARGAME
                 }
                 else
                 {
-                    if ((m_ScenarioCamp == null) || int.Equals(value.Id, m_ScenarioCamp.Id))
+                    if ((m_ScenarioCamp == null) || !int.Equals(value.Id, m_ScenarioCamp.Id))
                     {
                         ModifierChamp(Champ.ScenarioCamp, ref m_ScenarioCamp, value);
                     }
@@ -131,7 +131,7 @@ namespace EICE_WARGAME
                 }
                 else
                 {
-                    if ((m_Utilisateur == null) || int.Equals(value.Id, m_Utilisateur.Id))
+                    if ((m_Utilisateur == null) || !int.Equals(value.Id, m_Utilisateur.Id))
                     {
                         ModifierChamp(Champ.Utilisateur, ref m_Utilisateur, value);
                     }
@@ -243,7 +243,7 @@ namespace EICE_WARGAME
         {
             get
             {
-                return "Army";
+                return "army";
             }
         }
 
@@ -275,7 +275,7 @@ namespace EICE_WARGAME
         /// <param name="Connexion">Connexion au serveur MySQL</param>
         public override void SupprimerEnCascade(PDSGBD.MyDB Connexion)
         {
-            Connexion.Executer("DELETE FROM Army WHERE fe_id = {0}", Id);
+            Connexion.Executer("DELETE FROM Army WHERE ar_id = {0}", Id);
         }
         #endregion
 

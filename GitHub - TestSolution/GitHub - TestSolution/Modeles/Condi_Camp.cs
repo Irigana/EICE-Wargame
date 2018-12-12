@@ -55,7 +55,7 @@ namespace EICE_WARGAME
                 }
                 else
                 {
-                    if ((m_Scenario_Camp == null) || int.Equals(value.Id, m_Scenario_Camp.Id))
+                    if ((m_Scenario_Camp == null) || !int.Equals(value.Id, m_Scenario_Camp.Id))
                     {
                         ModifierChamp(Champ.Scenario_Camp, ref m_Scenario_Camp, value);
                     }
@@ -80,7 +80,7 @@ namespace EICE_WARGAME
                 }
                 else
                 {
-                    if ((m_Unity == null) || int.Equals(value.Id, m_Unity.Id))
+                    if ((m_Unity == null) || !int.Equals(value.Id, m_Unity.Id))
                     {
                         ModifierChamp(Champ.Unity, ref m_Unity, value);
                     }
@@ -127,7 +127,7 @@ namespace EICE_WARGAME
 
             set
             {
-                if (value <= 0)
+                if (value < 0)
                 {
                     Declencher_SurErreur(this, Champ.Max, "La valeur \"Max\" doit être strictement supérieur à 0");
                 }

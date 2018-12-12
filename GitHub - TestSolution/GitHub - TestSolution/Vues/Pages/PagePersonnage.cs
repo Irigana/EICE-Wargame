@@ -110,8 +110,8 @@ namespace EICE_WARGAME
         {
             listeDeroulanteSubUnity1.Enabled = true;
             listeDeroulanteSubUnity1.SubUnity = Program.GMBD.EnumererSubUnity(new MyDB.CodeSql("su_id,su_name"),
-                new MyDB.CodeSql(@"JOIN unity ON subunity.su_fk_unity_id = unity.un_id"),
-                new MyDB.CodeSql("WHERE un_id = {0}",
+                null,
+                new MyDB.CodeSql("WHERE su_fk_unity_id = {0}",
                 listeDeroulanteUnity1.UnitySelectionnee.Id),
                 new MyDB.CodeSql("ORDER BY su_name"));
             listeDeroulanteSubUnity1.SurChangementSelection += ListeDeroulanteSubUnity_SurChangementSelection;
@@ -127,11 +127,9 @@ namespace EICE_WARGAME
             ficheCaractere1.Caractere = Program.GMBD.EnumererPersonnage(null,
                 new MyDB.CodeSql(@"JOIN charact ON charact.ch_id = char_rank.cr_fk_ch_id
                                     JOIN rank ON rank.ra_id = char_rank.cr_fk_ra_id
-                                    JOIN subunity ON char_rank.cr_sub_id = subunity.su_id    
-                                    JOIN unity ON subunity.su_fk_unity_id = unity.un_id                                                                   
-                                    JOIN subfaction ON charact.ch_fk_subfaction_id = subfaction.sf_id
-                                    JOIN faction ON subfaction.sf_fk_faction_id = faction.fa_id "),
-                new MyDB.CodeSql("WHERE fa_id = {0} AND sf_id = {1} AND un_id = {2} AND su_id = {3}",
+                                    JOIN subunity ON char_rank.cr_sub_id = subunity.su_id                                                                     
+                                    JOIN subfaction ON charact.ch_fk_subfaction_id = subfaction.sf_id"),
+                new MyDB.CodeSql("WHERE sf_fk_faction_id = {0} AND sf_id = {1} AND su_fk_unity_id = {2} AND su_id = {3}",
                 listeDeroulanteFaction1.FactionSelectionnee.Id, listeDeroulanteSousFaction1.SousFactionSelectionnee.Id,
                 listeDeroulanteUnity1.UnitySelectionnee.Id, listeDeroulanteSubUnity1.SubUnitySelectionnee.Id),
                 new MyDB.CodeSql("ORDER BY su_name"));
@@ -167,12 +165,10 @@ namespace EICE_WARGAME
                 new MyDB.CodeSql(@"JOIN char_rank ON char_rank_feature.crf_fk_char_rank_id = char_rank.cr_id
                 JOIN charact ON char_rank.cr_fk_ch_id = charact.ch_id
                 JOIN rank ON rank.ra_id = char_rank.cr_fk_ra_id
-                JOIN subunity ON char_rank.cr_sub_id = subunity.su_id
-                JOIN unity ON subunity.su_fk_unity_id = unity.un_id
-                JOIN subfaction ON charact.ch_fk_subfaction_id = subfaction.sf_id
-                JOIN faction ON subfaction.sf_fk_faction_id = faction.fa_id                 
+                JOIN subunity ON char_rank.cr_sub_id = subunity.su_id                
+                JOIN subfaction ON charact.ch_fk_subfaction_id = subfaction.sf_id                                 
                 JOIN feature ON feature.fe_id = crf_fk_feature_id"),
-                new MyDB.CodeSql("WHERE fa_id = {0} AND sf_id = {1} AND un_id = {2} AND su_id = {3} AND ch_id = {4} AND ra_id = {5}",
+                new MyDB.CodeSql("WHERE subfaction.sf_fk_faction_id = {0} AND sf_id = {1} AND subunity.su_fk_unity_id = {2} AND su_id = {3} AND ch_id = {4} AND ra_id = {5}",
                 listeDeroulanteFaction1.FactionSelectionnee.Id, listeDeroulanteSousFaction1.SousFactionSelectionnee.Id,
                 listeDeroulanteUnity1.UnitySelectionnee.Id, listeDeroulanteSubUnity1.SubUnitySelectionnee.Id,
                 ficheCaractere1.CaractereSelectionne.Id,listeDeroulanteRank1.RankSelectionnee.Id),
@@ -261,7 +257,7 @@ namespace EICE_WARGAME
                                                                     new MyDB.CodeSql("WHERE un_id = {0}",
                                                                     listeDeroulanteUnity1.UnitySelectionnee.Id),
                                                                     null).FirstOrDefault();
-                                if (UnityExiste != null)
+                                if ((UnityExiste != null)&&(listeDeroulanteSubUnity1.SubUnitySelectionnee != null))
                                 {
 
                                     SubUnity SubUnityExiste = Program.GMBD.EnumererSubUnity(null,
@@ -290,6 +286,7 @@ namespace EICE_WARGAME
                                                 NouveauPersonnage.Caractere = NouveauCaractere;
                                                 NouveauPersonnage.Cost = Convert.ToInt32(numericUpDown1.Value);
                                                 NouveauPersonnage.SubUnity = listeDeroulanteSubUnity1.SubUnitySelectionnee;
+                                                NouveauPersonnage.AvantChangement += PersonnageEnEdition_AvantChangement;
                                                 NouveauPersonnage.Rank = listeDeroulanteRank1.RankSelectionnee;
                                                 if ((NouveauPersonnage.EstValide) && Program.GMBD.AjouterPersonnage(NouveauPersonnage))
                                                 {
@@ -311,11 +308,14 @@ namespace EICE_WARGAME
                                         }
                                         else
                                         {
+                                            errorProviderErreurCaractere.Clear();
+                                            ValidationProvider.Clear();
                                             CharactRank NouveauPersonnage = new CharactRank();
                                             NouveauPersonnage.Caractere = CaractereExistant;
+                                            NouveauPersonnage.AvantChangement += PersonnageEnEdition_AvantChangement;
+                                            NouveauPersonnage.Rank = listeDeroulanteRank1.RankSelectionnee;
                                             NouveauPersonnage.Cost = Convert.ToInt32(numericUpDown1.Value);
-                                            NouveauPersonnage.SubUnity = listeDeroulanteSubUnity1.SubUnitySelectionnee;
-                                            NouveauPersonnage.Rank = listeDeroulanteRank1.RankSelectionnee;                                            
+                                            NouveauPersonnage.SubUnity = listeDeroulanteSubUnity1.SubUnitySelectionnee;                             
                                             if ((NouveauPersonnage.EstValide) && Program.GMBD.AjouterPersonnage(NouveauPersonnage))
                                             {
                                                 Program.GMBD.MettreAJourFicheCaractere(ficheCaractere1, listeDeroulanteFaction1.FactionSelectionnee.Id, listeDeroulanteSousFaction1.SousFactionSelectionnee.Id, listeDeroulanteUnity1.UnitySelectionnee.Id, listeDeroulanteSubUnity1.SubUnitySelectionnee.Id);
@@ -401,35 +401,45 @@ namespace EICE_WARGAME
         private void buttonSupprimerCaract_Click(object sender, EventArgs e)
         {
             PopUpConfirmation FormConfirmation = new PopUpConfirmation();
-            // TODO : Vérifier si il a des enregistrement pour modifier le texte en dessous et dire à l'utilisateur le nombre d'element qu'a ce caractère
 
-            FormConfirmation.LabelDuTexte = "Êtes vous certain de vouloir supprimer ce caractère ?";
-            FormConfirmation.ShowDialog();
-            if (FormConfirmation.Confirmation)
+            CharactRank CharactUtiliser = Program.GMBD.EnumererPersonnage(null, new MyDB.CodeSql(@"LEFT JOIN army_unity_figurine_stuff ON cr_id = aufs_fk_rank_id 
+                                                                                                 LEFT JOIN stuff_char_rank ON cr_id = scr_fk_char_rank_id"),
+                                                                                                 new MyDB.CodeSql("WHERE aufs_fk_rank_id = {0} OR scr_fk_char_rank_id = {0}", ficheCaractere1.CaractereSelectionne.Id),null).FirstOrDefault();
+            if (CharactUtiliser == null)
             {
-                if ((ficheCaractere1.CaractereSelectionne != null) && (Program.GMBD.SupprimerPersonnage(ficheCaractere1.CaractereSelectionne)))
+                FormConfirmation.LabelDuTexte = "Êtes vous certain de vouloir supprimer ce caractère ?";
+                FormConfirmation.ShowDialog();
+                if (FormConfirmation.Confirmation)
                 {
-                    Program.GMBD.MettreAJourFicheCaractere(ficheCaractere1, listeDeroulanteFaction1.FactionSelectionnee.Id, listeDeroulanteSousFaction1.SousFactionSelectionnee.Id, listeDeroulanteUnity1.UnitySelectionnee.Id, listeDeroulanteSubUnity1.SubUnitySelectionnee.Id);
-                    buttonAjouterPersonnage.Enabled = true;
-                    buttonAnnulerPersonnage.Enabled = false;
-                    buttonModifierPersonnage.Enabled = false;
-                    buttonSupprimerPersonnage.Enabled = false;
-                    buttonAjouterCaracteristique.Enabled = false;
-                    listeDeroulanteFeature1.Enabled = false;
-                    numericUpDown2.Enabled = false;
-                    ficheCaracteristique1.NettoyerListView();
-                    textBoxPersonnageSelectionne.Clear();
-                    ValidationProvider.SetError(ficheCaractere1, "Suppression correctement effectuée");
-                    textBoxCaractere.Text = "";
-                }
-                else
-                {
+                    if ((ficheCaractere1.CaractereSelectionne != null) && (Program.GMBD.SupprimerPersonnage(ficheCaractere1.CaractereSelectionne)))
+                    {
+                        Program.GMBD.MettreAJourFicheCaractere(ficheCaractere1, listeDeroulanteFaction1.FactionSelectionnee.Id, listeDeroulanteSousFaction1.SousFactionSelectionnee.Id, listeDeroulanteUnity1.UnitySelectionnee.Id, listeDeroulanteSubUnity1.SubUnitySelectionnee.Id);
+                        buttonAjouterPersonnage.Enabled = true;
+                        buttonAnnulerPersonnage.Enabled = false;
+                        buttonModifierPersonnage.Enabled = false;
+                        buttonSupprimerPersonnage.Enabled = false;
+                        buttonAjouterCaracteristique.Enabled = false;
+                        listeDeroulanteFeature1.Enabled = false;
+                        numericUpDown2.Enabled = false;
+                        ficheCaracteristique1.NettoyerListView();
+                        textBoxPersonnageSelectionne.Clear();
+                        ValidationProvider.SetError(ficheCaractere1, "Suppression correctement effectuée");
+                        textBoxCaractere.Text = "";
+                    }
+                    else
+                    {
 
+                    }
                 }
+                else if (FormConfirmation.Annulation)
+                {
+                    // ne rien faire
+                }
+                
             }
-            else if (FormConfirmation.Annulation)
+            else
             {
-                // ne rien faire
+                errorProviderErreurCaractere.SetError(textBoxCaractere, "Ce personnage est déjà utilisé, veuillez supprimer les endroits où il est utilisé avant de le supprimer");
             }
         }
 
@@ -449,8 +459,8 @@ namespace EICE_WARGAME
                     break;
             }
             buttonAjouterPersonnage.Enabled = false;
-        }
-        
+        }        
+
         /// <summary>
         /// Methode permettant de vérifier si la sous faction existe avant le changement de celle ci dans la base de données
         /// </summary>
@@ -470,10 +480,9 @@ namespace EICE_WARGAME
                         Charact CaractereExiste = Program.GMBD.EnumererCaractere(null, 
                             new MyDB.CodeSql(@"JOIN char_rank ON charact.ch_id = char_rank.cr_fk_ch_id
                                                 JOIN subfaction ON charact.ch_fk_subfaction_id = subfaction.sf_id                                                
-                                                JOIN faction ON subfaction.sf_fk_faction_id = faction.fa_id
                                                 JOIN subunity ON char_rank.cr_sub_id = subunity.su_id"),
-                            new MyDB.CodeSql(@"WHERE faction.fa_id = {0} AND subfaction.sf_id = {1}
-                                                AND charact.ch_name = {2} AND AND char_rank.cr_fk_ra_id = {3}
+                            new MyDB.CodeSql(@"WHERE subfaction.sf_fk_faction_id = {0} AND subfaction.sf_id = {1}
+                                                AND charact.ch_name = {2} AND char_rank.cr_fk_ra_id = {3}
                                                 AND subunity.su_id = {4} AND subunity.su_fk_unity_id = {5}", 
                             listeDeroulanteFaction1.FactionSelectionnee.Id, listeDeroulanteSousFaction1.SousFactionSelectionnee.Id,
                             textBoxCaractere.Text, listeDeroulanteRank1.RankSelectionnee.Id,
@@ -490,9 +499,8 @@ namespace EICE_WARGAME
                         Charact CaractereExiste = Program.GMBD.EnumererCaractere(null,
                             new MyDB.CodeSql(@"JOIN char_rank ON charact.ch_id = char_rank.cr_fk_ch_id
                                                 JOIN subfaction ON charact.ch_fk_subfaction_id = subfaction.sf_id                                                
-                                                JOIN faction ON subfaction.sf_fk_faction_id = faction.fa_id
                                                 JOIN subunity ON char_rank.cr_sub_id = subunity.su_id"),
-                             new MyDB.CodeSql(@"WHERE faction.fa_id = {0} AND subfaction.sf_id = {1}
+                             new MyDB.CodeSql(@"WHERE subfaction.sf_fk_faction_id = {0} AND subfaction.sf_id = {1}
                                                 AND charact.ch_name = {2} AND char_rank.cr_fk_ra_id = {5}
                                                 AND subunity.su_id = {3} AND subunity.su_fk_unity_id = {4}",
                             listeDeroulanteFaction1.FactionSelectionnee.Id, listeDeroulanteSousFaction1.SousFactionSelectionnee.Id,
@@ -502,7 +510,7 @@ namespace EICE_WARGAME
                             AccumulateurErreur.NotifierErreur("Ce caractère existe déjà, veuillez en choisir une autre !");
                         }
                     }
-                    break;
+                    break;                
             }
         }
 
@@ -543,6 +551,9 @@ namespace EICE_WARGAME
                 case CharactRank.Champ.Cost:
                     errorProviderErreurCaractere.SetError(numericUpDown1, MessageErreur);
                     break;
+                case CharactRank.Champ.Rank:
+                    errorProviderErreurCaractere.SetError(listeDeroulanteFaction1, MessageErreur);
+                    break;
             }
             buttonAjouterPersonnage.Enabled = false;
         }
@@ -561,12 +572,19 @@ namespace EICE_WARGAME
             {
                 case CharactRank.Champ.Cost:
                     {
-                        if ((Entite.Cost > int.MaxValue) || (Entite.Cost < 0))
+                        if ((numericUpDown1.Value > int.MaxValue) || (numericUpDown1.Value < 0))
                         {
+                            errorProviderErreurCaractere.SetError(numericUpDown1,"Votre coût doit être supérieur ou égal à 1");
                             AccumulateurErreur.NotifierErreur("Ce coût n'est pas correct, veuillez en choisir une autre !");
                         }
+                        CharactRank PersonnageAvecCeRankExiste = Program.GMBD.EnumererPersonnage(null, null, new MyDB.CodeSql("WHERE cr_fk_ra_id = {0} AND cr_fk_ch_id = {1}", Entite.Rank.Id, Entite.Caractere.Id), null).FirstOrDefault();
+                        if (PersonnageAvecCeRankExiste != null)
+                        {
+                            errorProviderErreurCaractere.SetError(listeDeroulanteRank1, "Un personnage avec ce rank existe déjà");
+                            AccumulateurErreur.NotifierErreur("Un personnage avec ce rank existe déjà");
+                        }
                         break;
-                    }                   
+                    }        
             }
         }
 
@@ -584,7 +602,9 @@ namespace EICE_WARGAME
             }
             buttonAjouterPersonnage.Enabled = m_PersonnageEnEdition.EstValide;
         }
-        #endregion        
+        #endregion
+
+        
 
         private void textBoxCaractere_Enter(object sender, EventArgs e)
         {
@@ -671,10 +691,8 @@ namespace EICE_WARGAME
                                                                                                         JOIN char_rank ON char_rank_feature.crf_fk_char_rank_id = char_rank.cr_id                                                                                                      
                                                                                                         JOIN charact ON char_rank.cr_fk_ch_id = charact.ch_id 
                                                                                                         JOIN subunity ON char_rank.cr_sub_id = subunity.su_id
-                                                                                                        JOIN unity ON subunity.su_fk_unity_id = unity.un_id
-                                                                                                        JOIN subfaction ON charact.ch_fk_subfaction_id = subfaction.sf_id                                                
-                                                                                                        JOIN faction ON subfaction.sf_fk_faction_id = faction.fa_id"),
-                                                                             new MyDB.CodeSql("WHERE char_rank_feature.crf_fk_char_rank_id = {0} AND subfaction.sf_id = {1} AND faction.fa_id = {2}  AND subunity.su_id = {3} AND unity.un_id = {4} AND char_rank.cr_fk_ra_id = {5} AND feature.fe_id = {6} ",
+                                                                                                        JOIN subfaction ON charact.ch_fk_subfaction_id = subfaction.sf_id"),
+                                                                             new MyDB.CodeSql("WHERE char_rank_feature.crf_fk_char_rank_id = {0} AND subfaction.sf_id = {1} AND subfaction.sf_fk_faction_id = {2}  AND subunity.su_id = {3} AND subunity.su_fk_unity_id = {4} AND char_rank.cr_fk_ra_id = {5} AND feature.fe_id = {6} ",
                                                                              ficheCaractere1.CaractereSelectionne.Id, listeDeroulanteSousFaction1.SousFactionSelectionnee.Id, listeDeroulanteFaction1.FactionSelectionnee.Id,
                                                                              listeDeroulanteSubUnity1.SubUnitySelectionnee.Id, listeDeroulanteUnity1.UnitySelectionnee.Id, listeDeroulanteRank1.RankSelectionnee.Id, listeDeroulanteFeature1.FeatureSelectionnee.Id), null).FirstOrDefault();
                             if (FeatureExiste != null)
@@ -690,10 +708,8 @@ namespace EICE_WARGAME
                                                                                                         JOIN char_rank ON char_rank_feature.crf_fk_char_rank_id = char_rank.cr_id                                                                                                      
                                                                                                         JOIN charact ON char_rank.cr_fk_ch_id = charact.ch_id 
                                                                                                         JOIN subunity ON char_rank.cr_sub_id = subunity.su_id
-                                                                                                        JOIN unity ON subunity.su_fk_unity_id = unity.un_id
-                                                                                                        JOIN subfaction ON charact.ch_fk_subfaction_id = subfaction.sf_id                                                
-                                                                                                        JOIN faction ON subfaction.sf_fk_faction_id = faction.fa_id"),
-                                                                             new MyDB.CodeSql("WHERE charact.ch_id <> {0} AND subfaction.sf_id = {1} AND faction.fa_id = {2}  AND subunity.su_id = {3} AND unity.un_id = {4} AND char_rank.cr_fk_ra_id = {5} AND feature.fe_id = {6} AND char_rank_feature.crf_fk_char_rank_id = {7}",
+                                                                                                        JOIN subfaction ON charact.ch_fk_subfaction_id = subfaction.sf_id"),
+                                                                             new MyDB.CodeSql("WHERE charact.ch_id <> {0} AND subfaction.sf_id = {1} AND subfaction.sf_fk_faction_id = {2}  AND subunity.su_id = {3} AND subunity.su_fk_unity_id = {4} AND char_rank.cr_fk_ra_id = {5} AND feature.fe_id = {6} AND char_rank_feature.crf_fk_char_rank_id = {7}",
                                                                              ficheCaractere1.CaractereSelectionne.Id, listeDeroulanteSousFaction1.SousFactionSelectionnee.Id, listeDeroulanteFaction1.FactionSelectionnee.Id,
                                                                              listeDeroulanteSubUnity1.SubUnitySelectionnee.Id, listeDeroulanteUnity1.UnitySelectionnee.Id, listeDeroulanteRank1.RankSelectionnee.Id, listeDeroulanteFeature1.FeatureSelectionnee.Id, ficheCaractere1.CaractereSelectionne.Id), null).FirstOrDefault();
                             if (FeatureExiste != null)

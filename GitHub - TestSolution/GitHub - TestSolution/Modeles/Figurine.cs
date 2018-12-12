@@ -21,6 +21,10 @@ namespace EICE_WARGAME
             /// Character de cette figurine
             /// </summary>
             Character,
+            /// <summary>
+            /// Utilisateur à qui appartient cette figurine
+            /// </summary>
+            User
         }
 
         #region Membres privés
@@ -30,11 +34,15 @@ namespace EICE_WARGAME
         /// </summary>
         private Charact m_Charact;
 
-       
+
+        /// <summary>
+        /// Membre stockant la référence d'utilisateur
+        /// </summary>
+        private Utilisateur m_Utilisateur;
         #endregion
 
         #region Membres publics
-        
+
         /// <summary>
         /// Id du character de cette figurine
         /// </summary>
@@ -52,6 +60,30 @@ namespace EICE_WARGAME
                 }
             }
         }
+        /// <summary>
+        /// Membre public permettant d'accéder à l'id de l'utilisateur
+        /// </summary>
+        public Utilisateur Utilisateur
+        {
+            get
+            {
+                return m_Utilisateur;
+            }
+            set
+            {
+                if (value == null)
+                {
+                    Declencher_SurErreur(this, Champ.User, "Utilisateur non défini");
+                }
+                else
+                {
+                    if ((m_Utilisateur == null) || !int.Equals(value.Id, m_Utilisateur.Id))
+                    {
+                        ModifierChamp(Champ.User, ref m_Utilisateur, value);
+                    }
+                }
+            }
+        }
 
         #endregion
 
@@ -62,17 +94,20 @@ namespace EICE_WARGAME
         public Figurine()
             : base()
         {
-            
+            m_Charact = null;
+            m_Utilisateur = null;
         }
 
         /// <summary>
         /// Constructeur spécifique
         /// </summary>
         /// <param name="Id">Identifiant de ce Figurine</param>
-        public Figurine(int Id)
+        public Figurine(int Id,Charact Character,Utilisateur Utilisateur)
             : this()
         {
             DefinirId(Id);
+            m_Charact = Character;
+            m_Utilisateur = Utilisateur;
         }
 
         /// <summary>
@@ -87,6 +122,8 @@ namespace EICE_WARGAME
             if (Enregistrement != null)
             {
                 DefinirId(Enregistrement.ValeurChampComplet<int>(NomDeLaTablePrincipale, "fi_id"));
+                this.Charact = new Charact(Connexion, Enregistrement);
+                this.Utilisateur = new Utilisateur(Connexion, Enregistrement);
             }
         }
 
@@ -135,23 +172,9 @@ namespace EICE_WARGAME
         {
             get
             {
-                return new PDSGBD.MyDB.CodeSql("fi_fk_character_id = {1}", m_Charact.Id);
+                return new PDSGBD.MyDB.CodeSql("fi_fk_character_id = {0}, fi_fk_user_id = {1}", Charact.Id,Utilisateur.Id);
             }
-        }
-
-        /// <summary>
-        /// Permet de récupérer les characters liés à une sous-faction
-        /// </summary>
-        /// <returns></returns>
-        private IEnumerable<Charact> EnumererCharacts()
-        {
-            if (base.Connexion == null) return new Charact[0];
-            return Charact.Enumerer(Connexion, Connexion.Enumerer(
-                @"SELECT ch_id, ch_name
-                    FROM subfaction
-                    WHERE (ch_fk_subfaction_id = {0})",
-                Id));
-        }
+        }        
 
         #endregion
 

@@ -51,7 +51,7 @@ namespace EICE_WARGAME
                 }
                 else
                 {
-                    if ((m_Army == null) || int.Equals(value.Id, m_Army.Id))
+                    if ((m_Army == null) || !int.Equals(value.Id, m_Army.Id))
                     {
                         ModifierChamp(Champ.Army, ref m_Army, value);
                     }
@@ -96,7 +96,7 @@ namespace EICE_WARGAME
             base.Connexion = Connexion;
             if (Enregistrement != null)
             {
-                DefinirId(Enregistrement.ValeurChampComplet<int>(NomDeLaTablePrincipale, "fa_id"));
+                DefinirId(Enregistrement.ValeurChampComplet<int>(NomDeLaTablePrincipale, "aru_id"));
                 this.Army = new Army(Connexion, Enregistrement);
             }
         }
@@ -152,7 +152,7 @@ namespace EICE_WARGAME
 
         public override void SupprimerEnCascade(MyDB Connexion)
         {// TODO : suppresion en cascade
-            Connexion.Executer(@""
+            Connexion.Executer(@"DELETE FROM army_unity WHERE aru_id = {0}"
                                 , Id);
         }
 

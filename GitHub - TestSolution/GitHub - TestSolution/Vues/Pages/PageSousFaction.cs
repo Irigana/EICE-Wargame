@@ -348,28 +348,35 @@ namespace EICE_WARGAME
         private void buttonSupprimerSF_Click(object sender, EventArgs e)
         {            
 
-            PopUpConfirmation FormConfirmation = new PopUpConfirmation();            
-            // TODO ( OPTI ): Vérifier si il a des enregistrement pour modifier le texte en dessous et dire à l'utilisateur le nombre de charact qu'a cet sous faction
 
-            FormConfirmation.LabelDuTexte = "Êtes vous certain de vouloir supprimer cette sous faction ?";
-            FormConfirmation.ShowDialog();
-            if(FormConfirmation.Confirmation)
+            Charact SousFactionLiee = Program.GMBD.EnumererCaractere(null, null, new MyDB.CodeSql("WHERE ch_fk_subfaction_id = {0}", ficheSousFaction1.SousFactionSelectionne.Id), null).FirstOrDefault();
+            if (SousFactionLiee == null)
             {
-                if((ficheSousFaction1.SousFactionSelectionne != null ) && (Program.GMBD.SupprimerSousFaction(ficheSousFaction1.SousFactionSelectionne)))
+                PopUpConfirmation FormConfirmation = new PopUpConfirmation();
+                FormConfirmation.LabelDuTexte = "Êtes vous certain de vouloir supprimer cette sous faction ?";
+                FormConfirmation.ShowDialog();
+                if (FormConfirmation.Confirmation)
                 {
-                    Program.GMBD.MettreAJourFicheSousFaction(ficheSousFaction1, listeDeroulanteFaction1.FactionSelectionnee.Id);
-                    buttonAjouterSF.Enabled = true;
-                    buttonAnnulerSF.Enabled = false;
-                    buttonModifierSF.Enabled = false;
-                    buttonSupprimerSF.Enabled = false;
-                    errorProviderValider.SetError(textBoxSousFaction,"Suppression correctement effectuée");
-                    textBoxSousFaction.Text = "";
+                    if ((ficheSousFaction1.SousFactionSelectionne != null) && (Program.GMBD.SupprimerSousFaction(ficheSousFaction1.SousFactionSelectionne)))
+                    {
+                        Program.GMBD.MettreAJourFicheSousFaction(ficheSousFaction1, listeDeroulanteFaction1.FactionSelectionnee.Id);
+                        buttonAjouterSF.Enabled = true;
+                        buttonAnnulerSF.Enabled = false;
+                        buttonModifierSF.Enabled = false;
+                        buttonSupprimerSF.Enabled = false;
+                        errorProviderValider.SetError(textBoxSousFaction, "Suppression correctement effectuée");
+                        textBoxSousFaction.Text = "";
+                    }
+                }
+                else if (FormConfirmation.Annulation)
+                {
+                    // ne rien faire
                 }
             }
-            else if(FormConfirmation.Annulation)
-            {                
-                // ne rien faire
-            }            
+            else
+            {
+                errorProviderSousFaction.SetError(textBoxSousFaction, "Cette sous faction est utilisée dans la page personnage, veuillez la supprimer avant de supprimer cette sous faction");
+            }      
         }
 
         private void textBoxSousFaction_Enter(object sender, EventArgs e)
