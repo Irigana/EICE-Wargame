@@ -35,6 +35,8 @@ namespace EICE_WARGAME
 
         private Scenario_Camp m_ScenarioCampUn;
 
+        private Scenario_Camp m_ScenarioSecondCamp = null;
+
         private Scenario_Camp m_ScenarioEnEdition;
         
 
@@ -71,6 +73,7 @@ namespace EICE_WARGAME
         {
             if (listeDeroulanteScenario1.ScenarioSelectionnee != null)
             {
+                
                 ficheScenarioCamp1.Enabled = true;
                 ficheScenarioCamp1.DesactiverButtonSurSelection();
                 ficheScenarioCamp2.DesactiverButtonSurSelection();
@@ -83,9 +86,8 @@ namespace EICE_WARGAME
                                                                                                         JOIN camp ON camp.ca_id = scenario_camp.sca_fk_camp_id "),
                                                                                       new MyDB.CodeSql("WHERE scenario.sc_id = {0} ", listeDeroulanteScenario1.ScenarioSelectionnee.Id), null).FirstOrDefault();
 
-
-
-                Scenario_Camp ScenarioSecondCamp = null;
+               
+                
                 // Si il existe 2 camp
                 if ((m_ScenarioCampUn.Camp.Id != 3))
                 {
@@ -103,7 +105,7 @@ namespace EICE_WARGAME
                         ficheScenarioCamp1.Scenario = m_ScenarioCampUn;
                         ficheScenarioCamp1.ChargerFiches(1);
 
-                        ScenarioSecondCamp = Program.GMBD.EnumererScenarioCamp(null, new MyDB.CodeSql(@"JOIN scenario ON scenario.sc_id = scenario_camp.sca_fk_scenario_id 
+                        m_ScenarioSecondCamp = Program.GMBD.EnumererScenarioCamp(null, new MyDB.CodeSql(@"JOIN scenario ON scenario.sc_id = scenario_camp.sca_fk_scenario_id 
                                                                                                         JOIN camp ON camp.ca_id = scenario_camp.sca_fk_camp_id 
                                                                                                         JOIN condi_camp ON scenario_camp.sca_id = condi_camp.cc_fk_scenario_camp_id"),
                                                                                           new MyDB.CodeSql("WHERE scenario.sc_id = {0} AND camp.ca_id = {1}", listeDeroulanteScenario1.ScenarioSelectionnee.Id, 2), null).FirstOrDefault();
@@ -118,12 +120,12 @@ namespace EICE_WARGAME
                          ficheScenarioCamp1.Scenario = m_ScenarioCampUn;
                         ficheScenarioCamp1.ChargerFiches(2);
                         ficheScenarioCamp2.Enabled = true;
-                        ScenarioSecondCamp = Program.GMBD.EnumererScenarioCamp(null, new MyDB.CodeSql(@"JOIN scenario ON scenario.sc_id = scenario_camp.sca_fk_scenario_id 
+                        m_ScenarioSecondCamp = Program.GMBD.EnumererScenarioCamp(null, new MyDB.CodeSql(@"JOIN scenario ON scenario.sc_id = scenario_camp.sca_fk_scenario_id 
                                                                                                         JOIN camp ON camp.ca_id = scenario_camp.sca_fk_camp_id 
                                                                                                         JOIN condi_camp ON scenario_camp.sca_id = condi_camp.cc_fk_scenario_camp_id"),
                                                                                           new MyDB.CodeSql("WHERE scenario.sc_id = {0} AND camp.ca_id = {1}", listeDeroulanteScenario1.ScenarioSelectionnee.Id, 1), null).FirstOrDefault();
 
-                        ficheScenarioCamp2.Scenario = ScenarioSecondCamp;
+                        ficheScenarioCamp2.Scenario = m_ScenarioSecondCamp;
                         ficheScenarioCamp2.ChargerFiches(1);
                     }
                 }
@@ -272,9 +274,9 @@ namespace EICE_WARGAME
         private void buttonSupprimer_Click(object sender, EventArgs e)
         {
             PopUpConfirmation FormConfirmation = new PopUpConfirmation();
-            /*
-            Army ScenarioLie = Program.GMBD.EnumererArmy(null, null, new MyDB.CodeSql("WHERE sf_fk_faction_id = {0}", ficheFaction1.FactionSelectionne.Id), null).FirstOrDefault();
-            if (FactionLie == null)
+            
+            Army ScenarioLie = Program.GMBD.EnumererArmy(null, null, new MyDB.CodeSql("WHERE ear_fk_scenario_camp_id = {0}", listeDeroulanteScenario1.ScenarioSelectionnee.Id), null).FirstOrDefault();
+            if (ScenarioLie == null)
             {
                 FormConfirmation.LabelDuTexte = "Êtes vous certain de vouloir supprimer cet enregistrement ?";
 
@@ -282,15 +284,19 @@ namespace EICE_WARGAME
                 // S'il accepte
                 if (FormConfirmation.Confirmation)
                 {
-                    if ((ficheFaction1.FactionSelectionne != null) && (Program.GMBD.SupprimerFaction(ficheFaction1.FactionSelectionne)))
+                    if ((listeDeroulanteScenario1.ScenarioSelectionnee != null) && (Program.GMBD.SupprimerScenarioCamp(m_ScenarioCampUn) && Program.GMBD.SupprimerScenarioCamp(m_ScenarioCampUn)))
                     {
-                        ChargerFaction();
+
+                        listeDeroulanteScenario1.Scenario = Program.GMBD.EnumererScenario(null, null, null, null);
                         buttonAjouter.Enabled = true;
-                        buttonAnnuler.Enabled = false;
-                        buttonModifier.Enabled = false;
+                        buttonAnnuler.Enabled = false;                        
                         buttonSupprimer.Enabled = false;
-                        ValidationProvider.SetError(textBoxFaction, "Suppresion correctement effectuée");
-                        textBoxFaction.Text = "";
+                        ficheScenarioCamp1.Enabled = false;
+                        ficheScenarioCamp2.Enabled = false;
+                        errorProviderValidation.SetError(textBox1, "Suppresion correctement effectuée");
+                        textBox1.Text = "";
+                        ficheScenarioCamp1.ClearFiche();
+                        ficheScenarioCamp2.ClearFiche();
                     }
                 }
                 // S'il refuse
@@ -301,8 +307,8 @@ namespace EICE_WARGAME
             }
             else
             {
-                errorProviderErreurFaction.SetError(textBoxFaction, "Cette faction est utilisée par une sous faction, veuillez la supprimer avant de supprimer cette sous faction");
-            }*/
+                errorProvider.SetError(textBox1, "Ce scénario est utilisée par armée, veuillez la supprimer avant de supprimer ce scénario");
+            }
         }
     }
 }

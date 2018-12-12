@@ -243,7 +243,7 @@ namespace EICE_WARGAME
         {
             get
             {
-                return "Army";
+                return "army";
             }
         }
 
