@@ -126,7 +126,7 @@
             // 
             this.labelEquipement.AutoSize = true;
             this.labelEquipement.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
-            this.labelEquipement.Location = new System.Drawing.Point(118, 328);
+            this.labelEquipement.Location = new System.Drawing.Point(118, 317);
             this.labelEquipement.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.labelEquipement.Name = "labelEquipement";
             this.labelEquipement.Size = new System.Drawing.Size(91, 17);
@@ -148,7 +148,7 @@
             // 
             this.labelMesFigurines.AutoSize = true;
             this.labelMesFigurines.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
-            this.labelMesFigurines.Location = new System.Drawing.Point(720, 103);
+            this.labelMesFigurines.Location = new System.Drawing.Point(715, 87);
             this.labelMesFigurines.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.labelMesFigurines.Name = "labelMesFigurines";
             this.labelMesFigurines.Size = new System.Drawing.Size(100, 17);
@@ -182,7 +182,7 @@
             // 
             // buttonAjoutEquipementSurPersonnage
             // 
-            this.buttonAjoutEquipementSurPersonnage.Location = new System.Drawing.Point(354, 380);
+            this.buttonAjoutEquipementSurPersonnage.Location = new System.Drawing.Point(354, 369);
             this.buttonAjoutEquipementSurPersonnage.Name = "buttonAjoutEquipementSurPersonnage";
             this.buttonAjoutEquipementSurPersonnage.Size = new System.Drawing.Size(29, 23);
             this.buttonAjoutEquipementSurPersonnage.TabIndex = 27;
@@ -192,7 +192,7 @@
             // 
             // buttonEnleverEquipementSurPersonnage
             // 
-            this.buttonEnleverEquipementSurPersonnage.Location = new System.Drawing.Point(354, 409);
+            this.buttonEnleverEquipementSurPersonnage.Location = new System.Drawing.Point(354, 398);
             this.buttonEnleverEquipementSurPersonnage.Name = "buttonEnleverEquipementSurPersonnage";
             this.buttonEnleverEquipementSurPersonnage.Size = new System.Drawing.Size(29, 23);
             this.buttonEnleverEquipementSurPersonnage.TabIndex = 28;
@@ -265,7 +265,7 @@
             // ficheFigurineStuff1
             // 
             this.ficheFigurineStuff1.FigurineSelectionne = null;
-            this.ficheFigurineStuff1.Location = new System.Drawing.Point(723, 122);
+            this.ficheFigurineStuff1.Location = new System.Drawing.Point(718, 106);
             this.ficheFigurineStuff1.Margin = new System.Windows.Forms.Padding(2);
             this.ficheFigurineStuff1.Name = "ficheFigurineStuff1";
             this.ficheFigurineStuff1.Size = new System.Drawing.Size(284, 478);
@@ -277,7 +277,7 @@
             // ficheEquipementSansRecherche1
             // 
             this.ficheEquipementSansRecherche1.EquipementSelectionne = null;
-            this.ficheEquipementSansRecherche1.Location = new System.Drawing.Point(121, 347);
+            this.ficheEquipementSansRecherche1.Location = new System.Drawing.Point(121, 336);
             this.ficheEquipementSansRecherche1.Margin = new System.Windows.Forms.Padding(2);
             this.ficheEquipementSansRecherche1.Name = "ficheEquipementSansRecherche1";
             this.ficheEquipementSansRecherche1.Size = new System.Drawing.Size(220, 240);
@@ -286,7 +286,7 @@
             // ficheEquipementSurFigurine1
             // 
             this.ficheEquipementSurFigurine1.EquipementSelectionne = null;
-            this.ficheEquipementSurFigurine1.Location = new System.Drawing.Point(395, 351);
+            this.ficheEquipementSurFigurine1.Location = new System.Drawing.Point(395, 336);
             this.ficheEquipementSurFigurine1.Margin = new System.Windows.Forms.Padding(2);
             this.ficheEquipementSurFigurine1.Name = "ficheEquipementSurFigurine1";
             this.ficheEquipementSurFigurine1.Size = new System.Drawing.Size(220, 240);
