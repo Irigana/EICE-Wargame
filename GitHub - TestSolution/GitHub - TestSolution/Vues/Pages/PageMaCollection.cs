@@ -246,7 +246,7 @@ namespace EICE_WARGAME
                                             Charact CharactExiste = Program.GMBD.EnumererCaractere(null,
                                                                                                    new MyDB.CodeSql(@"JOIN char_rank on cr_fk_ch_id = ch_id
                                                                                                                       JOIN subunity on cr_sub_id = su_id"),
-                                                                                                   new MyDB.CodeSql(" WHERE ch_id = {0} AND su_id {1}",
+                                                                                                   new MyDB.CodeSql(" WHERE ch_id = {0} AND su_id = {1}",
                                                                                                    listeDeroulanteChar1.CharactSelectionnee.Id, listeDeroulanteSubUnity1.SubUnitySelectionnee.Id),
                                                                                                    null).FirstOrDefault();
                                             if(CharactExiste != null)
