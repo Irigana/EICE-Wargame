@@ -45,7 +45,6 @@ namespace EICE_WARGAME
 
             InitializeComponent();
             Program.GMBD.MettreAJourListeFaction(listeDeroulanteFaction1);
-            Program.GMBD.MettreAJourFicheFigurine(ficheFigurineStuff1, Utilisateur.Id);
             listeDeroulanteFaction1.SurChangementSelection += ListeDeroulanteFaction_SurChangementSelection;
             listeDeroulanteSousFaction1.Enabled = false;
             listeDeroulanteUnity1.Enabled = false;
@@ -286,6 +285,11 @@ namespace EICE_WARGAME
                     }
                 }
             }
+        }
+
+        private void MaCollectionONLoad(object sender, EventArgs e)
+        {
+            Program.GMBD.MettreAJourFicheFigurine(ficheFigurineStuff1, Utilisateur.Id);
         }
     }
 }

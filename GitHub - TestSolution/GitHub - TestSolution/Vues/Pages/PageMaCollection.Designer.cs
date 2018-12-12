@@ -338,6 +338,7 @@
             this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "PageMaCollection";
             this.Size = new System.Drawing.Size(1125, 609);
+            this.Load += new System.EventHandler(this.MaCollectionONLoad);
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
