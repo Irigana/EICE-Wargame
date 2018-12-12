@@ -9,7 +9,7 @@ namespace EICE_WARGAME
 	public class Scenario : Entite<Scenario, Scenario.Champ>
 	{
 		/// <summary>
-		/// Champ décrivant cette faction
+		/// Champ décrivant ce scénario
 		/// </summary>
 		public enum Champ
 		{
@@ -18,7 +18,7 @@ namespace EICE_WARGAME
 			/// </summary>
 			Id,
 			/// <summary>
-			/// nom de la faction
+			/// nom du scénario
 			/// </summary>
 			Name
 		}

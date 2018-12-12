@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace EICE_WARGAME
 {
-    public class ArmyUnityFigurineStuff : Entite<ArmyUnityFigurineStuff, ArmyUnityFigurineStuff.Champ>
+    public class ArmyUnityFigurine : Entite<ArmyUnityFigurine, ArmyUnityFigurine.Champ>
     {
         /// <summary>
         /// Champs décrivant cette ArmyUnityFigurineStuff
@@ -122,7 +122,7 @@ namespace EICE_WARGAME
         /// <summary>
         /// Constructeur par défaut
         /// </summary>
-        public ArmyUnityFigurineStuff()
+        public ArmyUnityFigurine()
         : base()
         {
             m_FigurineStuff = null;
@@ -137,7 +137,7 @@ namespace EICE_WARGAME
         /// <param name="Army">Army de ce ArmyUnityFigurineStuff</param>
         /// <param name="FigurineStuff">FigurineStuff de ce ArmyUnityFigurineStuff</param>
         /// <param name="Rank">Rank de ce ArmyUnityFigurineStuff</param>
-        public ArmyUnityFigurineStuff(int Id, ArmyUnity ArmyUnity, FigurineStuff FigurineStuff, Rank Rank)
+        public ArmyUnityFigurine(int Id, ArmyUnity ArmyUnity, FigurineStuff FigurineStuff, Rank Rank)
         : this()
         {
             DefinirId(Id);
@@ -151,13 +151,13 @@ namespace EICE_WARGAME
         /// </summary>
         /// <param name="Connexion">Connexion au serveur MySQL</param>
         /// <param name="Enregistrement">Enregistrement d'où extraire les valeurs de champs</param>
-        public ArmyUnityFigurineStuff(PDSGBD.MyDB Connexion, PDSGBD.MyDB.IEnregistrement Enregistrement)
+        public ArmyUnityFigurine(PDSGBD.MyDB Connexion, PDSGBD.MyDB.IEnregistrement Enregistrement)
             : this()
         {
             base.Connexion = Connexion;
             if (Enregistrement != null)
             {
-                DefinirId(Enregistrement.ValeurChampComplet<int>(NomDeLaTablePrincipale, "aufs_id"));
+                DefinirId(Enregistrement.ValeurChampComplet<int>(NomDeLaTablePrincipale, "auf_id"));
                 this.ArmyUnity = new ArmyUnity(Connexion, Enregistrement);
                 this.FigurineStuff = new FigurineStuff(Connexion, Enregistrement);
                 this.Rank = new Rank(Connexion, Enregistrement);
@@ -176,7 +176,7 @@ namespace EICE_WARGAME
         {
             get
             {
-                return "army_unity_figurine_stuff";
+                return "army_unity_figurine";
             }
         }
 
@@ -187,7 +187,7 @@ namespace EICE_WARGAME
         {
             get
             {
-                return "aufs_id";
+                return "auf_id";
             }
         }
 
@@ -198,7 +198,7 @@ namespace EICE_WARGAME
         {
             get
             {
-                return new PDSGBD.MyDB.CodeSql("fs_fk_figurine_stuff_id = {0}, fs_fk_rank_id = {1}, fs_fk_army_unity_id = {2}", m_FigurineStuff.Id, m_Rank.Id, m_ArmyUnity.Id);
+                return new PDSGBD.MyDB.CodeSql("auf_fk_figurine_id = {0}, auf_fk_rank_id = {1}, auf_fk_army_unity_id = {2}", m_FigurineStuff.Id, m_Rank.Id, m_ArmyUnity.Id);
             }
         }
 
@@ -208,7 +208,7 @@ namespace EICE_WARGAME
         /// <param name="Connexion">Connexion au serveur MySQL</param>
         public override void SupprimerEnCascade(PDSGBD.MyDB Connexion)
         {
-            Connexion.Executer("DELETE FROM ArmyUnityFigurineStuff WHERE aufs_id = {0}", Id);
+            Connexion.Executer("DELETE FROM ArmyUnityFigurine WHERE auf_id = {0}", Id);
         }
 
         /// <summary>
@@ -217,9 +217,9 @@ namespace EICE_WARGAME
         /// <param name="Connexion">Connexion au serveur MySQL</param>
         /// <param name="Enregistrements">Enregistrements énumérés, sources des entités à créer</param>
         /// <returns>Enumération des entités issues des enregistrements énumérés</returns>
-        public static IEnumerable<ArmyUnityFigurineStuff> Enumerer(PDSGBD.MyDB Connexion, IEnumerable<PDSGBD.MyDB.IEnregistrement> Enregistrements)
+        public static IEnumerable<ArmyUnityFigurine> Enumerer(PDSGBD.MyDB Connexion, IEnumerable<PDSGBD.MyDB.IEnregistrement> Enregistrements)
         {
-            return Enumerer(Enregistrements, Enregistrement => new ArmyUnityFigurineStuff(Connexion, Enregistrement));
+            return Enumerer(Enregistrements, Enregistrement => new ArmyUnityFigurine(Connexion, Enregistrement));
         }
 
         #endregion

@@ -74,11 +74,27 @@ namespace EICE_WARGAME
         public FicheScenario()
         {
             InitializeComponent();
+            buttonAjouter.Enabled = true;
+            buttonModifier.Enabled = false;
+            buttonAnnuler.Enabled = false;
+            buttonSupprimer.Enabled = false;
+            listeDeroulanteUnity1.SurChangementSelection += ListeUnity_SurChangementSelection;
 
-            listeDeroulanteUnity1.SurChangementSelection += ListeUnity_SurChangementSelection;            
+            ficheSpecifiteScenario1.SurChangementSelection += Specificite_SurChangementSelection;
 
             Bitmap ImageRessource = new Bitmap(Properties.Resources.Validation25px);
             ValidationProvider.Icon = Icon.FromHandle(ImageRessource.GetHicon());            
+        }
+
+        public void Specificite_SurChangementSelection(object sender,EventArgs e)
+        {
+            buttonAjouter.Enabled = false;
+            buttonModifier.Enabled = true;
+            buttonSupprimer.Enabled = true;
+            buttonAnnuler.Enabled = true;
+            listeDeroulanteUnity1.UnitySelectionnee = ficheSpecifiteScenario1.SpecificiteSelectionne.Unity;
+            numericUpDownObligatoire.Value = ficheSpecifiteScenario1.SpecificiteSelectionne.Min;
+            numericUpDown2.Value = ficheSpecifiteScenario1.SpecificiteSelectionne.Max;
         }
 
         public void ChargerFiches(int NumeroDuCamp)
@@ -273,6 +289,15 @@ namespace EICE_WARGAME
         private void buttonModifier_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void buttonAnnuler_Click(object sender, EventArgs e)
+        {
+            ficheSpecifiteScenario1.SpecificiteSelectionne = null;
+            buttonAnnuler.Enabled = false;
+            buttonAjouter.Enabled = true;
+            buttonModifier.Enabled = false;
+            buttonSupprimer.Enabled = false;
         }
     }
 }

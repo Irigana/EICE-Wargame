@@ -23,7 +23,7 @@ namespace EICE_WARGAME
             /// </summary>
             Name,
             /// <summary>
-            /// Faction de cette SubUnity
+            /// unité de cette SubUnity
             /// </summary>
             Unity,
         }
