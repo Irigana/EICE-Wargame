@@ -87,7 +87,7 @@ namespace EICE_WARGAME
                 {
                     foreach (ListViewItem Element in listViewFigurineStuff.Items)
                     {
-                        if ((Element.Tag is FigurineStuff) && (Element.Tag as FigurineStuff).Id.Equals(value.Id))
+                        if ((Element.Tag is Figurine) && (Element.Tag as Figurine).Id.Equals(value.Id))
                         {
                             Element.Selected = true;
                             return;
@@ -113,11 +113,11 @@ namespace EICE_WARGAME
         private bool MettreAJourListe<T>(IEnumerable<T> Entites)
             where T : class, IEntiteMySQL
         {
-            bool EstFigurineStuff = typeof(T).Equals(typeof(FigurineStuff));
-            if (!EstFigurineStuff) return false;
+            bool FigurineStuff = typeof(T).Equals(typeof(Figurine));
+            if (!FigurineStuff) return false;
             listViewFigurineStuff.Items.Clear();
             if (Entites == null) return false;
-            if (EstFigurineStuff && (listViewFigurineStuff.Columns.Count != 2))
+            if (FigurineStuff && (listViewFigurineStuff.Columns.Count != 2))
             {
                 listViewFigurineStuff.Columns.Clear();
 
@@ -133,16 +133,16 @@ namespace EICE_WARGAME
             foreach (T Entite in Entites)
             {
 
-                FigurineStuff FigurineStuff = Entite as FigurineStuff;
+                Figurine Figurine = Entite as Figurine;
 
-                if (EstFigurineStuff)
+                if (FigurineStuff)
                 {
                     ListViewItem NouvelElement = new ListViewItem()
                     {
                         Tag = Entite,
-                        Text = FigurineStuff.Figurine.Charact.Name,
+                        Text = Figurine.Charact.Name,
                     };
-                    NouvelElement.SubItems.Add(FigurineStuff.Figurine.Charact.Name);
+                    NouvelElement.SubItems.Add(Figurine.Charact.Name);
 
                     listViewFigurineStuff.Items.Add(NouvelElement);
 
