@@ -36,16 +36,12 @@ namespace EICE_WARGAME
         }
         #endregion
 
-        
-
         private const string c_CritereQuiContient = "%{0}%";
 
         public PageMaCollection()
         {
-
             InitializeComponent();
             Program.GMBD.MettreAJourListeFaction(listeDeroulanteFaction1);
-            Program.GMBD.MettreAJourFicheFigurine(ficheFigurineStuff1, Utilisateur.Id);
             listeDeroulanteFaction1.SurChangementSelection += ListeDeroulanteFaction_SurChangementSelection;
             listeDeroulanteSousFaction1.Enabled = false;
             listeDeroulanteUnity1.Enabled = false;
@@ -53,9 +49,6 @@ namespace EICE_WARGAME
             listeDeroulanteChar1.Enabled = false;
             ficheEquipementSansRecherche1.Enabled = false;
             ficheEquipementSurFigurine1.Enabled = false;
-
-
-
         }
 
         private void ListeDeroulanteFaction_SurChangementSelection(object sender, EventArgs e)
@@ -132,63 +125,35 @@ namespace EICE_WARGAME
         }
 
 
-
-        private void ficheEquipement1_Load(object sender, EventArgs e)
-        {
-
-        }
-
-        private void listeDeroulanteCharRank1_Load(object sender, EventArgs e)
-        {
-
-        }
-
         private void numericUpDown1_ValueChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void listeDeroulanteSubUnity1_Load(object sender, EventArgs e)
-        {
-
-        }
-
-        private void listeDeroulanteRank1_Load(object sender, EventArgs e)
-        {
-
-        }
-
-        private void listeDeroulanteUnity1_Load(object sender, EventArgs e)
-        {
-
-        }
-
-        private void listeDeroulanteSousFaction1_Load(object sender, EventArgs e)
-        {
-
-        }
-
-        private void listeDeroulanteFaction1_Load(object sender, EventArgs e)
-        {
-
-        }
-
-        private void buttonOptionsUser1_Load(object sender, EventArgs e)
         {
 
         }
 
         private void AjoutEquipementSurFigurine(object sender, EventArgs e)
         {
-            //INSERT INTO figurine_stuff (fs_fk_figurine_id, fs_fk_stuff_id, fs_fk_user_id) VALUES (Figurine_Id, ficheEquipement1.EquipementSelectionne.Id,  m_Utilisateur.Id)
+            if ((ficheEquipementSansRecherche1.EquipementSelectionne != null) && (ficheFigurineStuff1.FigurineSelectionne != null))
+            {
+                FigurineStuff FigurineStuff = new FigurineStuff();
+                FigurineStuff.Stuff = ficheEquipementSansRecherche1.EquipementSelectionne;
+                FigurineStuff.Figurine = ficheFigurineStuff1.FigurineSelectionne;
+                FigurineStuff.Enregistrer(Program.GMBD.BD, FigurineStuff);
+            }
 
         }
 
         private void EnleverEquipementSurFigurine(object sender, EventArgs e)
         {
-            //DELETE * FROM figurine_stuff
+            if ((ficheEquipementSurFigurine1.EquipementSelectionne != null) && (ficheFigurineStuff1.FigurineSelectionne != null))
+            {
+                FigurineStuff FigurineStuff = new FigurineStuff();
+                FigurineStuff.Stuff = ficheEquipementSansRecherche1.EquipementSelectionne;
+                FigurineStuff.Figurine = ficheFigurineStuff1.FigurineSelectionne;
+                FigurineStuff.Supprimer(Program.GMBD.BD, FigurineStuff);
+            }
         }
 
+        //Reste du boulot ICI en dessous ! 
         #region Caractère en édition
         /// <summary>
         /// Methode permettant de réagir sur l'erreur d'un ajout ou d'une édition de caractère
@@ -196,16 +161,16 @@ namespace EICE_WARGAME
         /// <param name="Entite"></param>
         /// <param name="Champ"></param>
         /// <param name="MessageErreur"></param>
-        private void FigurineEnEdition_SurErreur(Charact Entite, Charact.Champ Champ, string MessageErreur)
-        {
-            switch (Champ)
-            {
-                case Charact.Champ.Name:
-              //      errorProviderErreurFigurine.SetError(textBoxFigurine, MessageErreur);
-                    break;
-            }
-          //  buttonAjouterPersonnage.Enabled = false;
-        }
+//        private void FigurineEnEdition_SurErreur(Charact Entite, Charact.Champ Champ, string MessageErreur)
+//        {
+//            switch (Champ)
+//            {
+//                case Charact.Champ.Name:
+//              //      errorProviderErreurFigurine.SetError(textBoxFigurine, MessageErreur);
+//                    break;
+//            }
+//            buttonAjouterPersonnage.Enabled = false;
+//        }
         #endregion
 
 
@@ -261,24 +226,17 @@ namespace EICE_WARGAME
                                             if(CharactExiste != null)
                                             {
                                                 Figurine NouvelleFigurine = new Figurine();
-                                                //     NouvelleFigurine.SurErreur += FigurineEnEdition_SurErreur;
-                                                //   NouvelleFigurine.AvantChangement += FigurineEnEdition_AvantChangement;
+                                                // NouvelleFigurine.SurErreur += FigurineEnEdition_SurErreur;
+                                                // NouvelleFigurine.AvantChangement += FigurineEnEdition_AvantChangement;
                                                 // NouvelleFigurine.ApresChangement += FigurineEnEdition_ApresChangement;
                                                 NouvelleFigurine.Charact = listeDeroulanteChar1.CharactSelectionnee;
                                                 NouvelleFigurine.Utilisateur = Utilisateur;
                                                 if((NouvelleFigurine.EstValide) && Program.GMBD.AjouterFigurine(NouvelleFigurine))
                                                 {
                                                       Program.GMBD.MettreAJourFicheFigurine(ficheFigurineStuff1, m_Utilisateur.Id);
-
                                                 }
-
-
                                             }
-
                                         }
-                                        //TODO : le INSERT INTO figurine (fi_fk_character_id) VALUES (listeDeroulanteChar1.CharactSelectionnee.Id)
-                                        //
-                                        // Figurine_Id = ID de la figurine
                                     }
                                 }
                             }
@@ -286,6 +244,11 @@ namespace EICE_WARGAME
                     }
                 }
             }
+        }
+
+        private void MaCollectionONLoad(object sender, EventArgs e)
+        {
+            Program.GMBD.MettreAJourFicheFigurine(ficheFigurineStuff1, Utilisateur.Id);
         }
     }
 }

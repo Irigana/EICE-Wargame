@@ -54,14 +54,14 @@ namespace EICE_WARGAME
         /// </summary>
         public event EventHandler SurChangementFiltre = null;
 
-        public IEnumerable<FigurineStuff> FigurineStuff
+        public IEnumerable<Figurine> FigurineStuff
         {
             get
             {
                 return listViewFigurineStuff.Items
                     .OfType<ListViewItem>()
-                    .Where(Element => Element.Tag is FigurineStuff)
-                    .Select(Element => Element.Tag as FigurineStuff);
+                    .Where(Element => Element.Tag is Figurine)
+                    .Select(Element => Element.Tag as Figurine);
             }
             set
             {
@@ -73,12 +73,12 @@ namespace EICE_WARGAME
         /// <summary>
         /// Type de FigurineStuff sélectionné
         /// </summary>
-        public FigurineStuff FactionSelectionne
+        public Figurine FigurineSelectionne
         {
             get
             {
-                return (listViewFigurineStuff.SelectedItems.Count == 1) && (listViewFigurineStuff.SelectedItems[0].Tag is FigurineStuff)
-                    ? listViewFigurineStuff.SelectedItems[0].Tag as FigurineStuff
+                return (listViewFigurineStuff.SelectedItems.Count == 1) && (listViewFigurineStuff.SelectedItems[0].Tag is Figurine)
+                    ? listViewFigurineStuff.SelectedItems[0].Tag as Figurine
                     : null;
             }
             set
