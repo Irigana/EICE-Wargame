@@ -48,21 +48,11 @@
             this.label4 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.listViewCaracteristiques = new System.Windows.Forms.ListView();
-            this.z_ficheEquipement = new EICE_WARGAME.FicheEquipement();
-            this.buttonRetourDashBoard1 = new EICE_WARGAME.ButtonRetourDashBoard();
-            this.menuAdmin1 = new EICE_WARGAME.MenuAdmin();
-            this.z_listeDeroulanteFeature = new EICE_WARGAME.ListeDeroulanteFeature();
-            this.z_listeDeroulanteType = new EICE_WARGAME.ListeDeroulanteType();
-            this.buttonOptionsUser1 = new EICE_WARGAME.ButtonOptionsUser();
             this.q_buttonAjouterEquipable = new System.Windows.Forms.Button();
-            this.z_listeDeroulanteFaction = new EICE_WARGAME.ListeDeroulanteFaction();
-            this.z_listeDeroulanteSousFaction = new EICE_WARGAME.ListeDeroulanteSousFaction();
             this.label6 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
-            this.z_fichePersonnageEquipement1 = new EICE_WARGAME.FichePersonnageEquipement();
             this.label9 = new System.Windows.Forms.Label();
-            this.z_listeDeroulanteCharRank = new EICE_WARGAME.ListeDeroulanteCharRank();
             this.label10 = new System.Windows.Forms.Label();
             this.label11 = new System.Windows.Forms.Label();
             this.z_numericUpDownCout = new System.Windows.Forms.NumericUpDown();
@@ -70,12 +60,22 @@
             this.z_numericUpDownMaximum = new System.Windows.Forms.NumericUpDown();
             this.label12 = new System.Windows.Forms.Label();
             this.label13 = new System.Windows.Forms.Label();
-            this.z_listeDeroulanteUnity = new EICE_WARGAME.ListeDeroulanteUnity();
-            this.z_listeDeroulanteSubUnity = new EICE_WARGAME.ListeDeroulanteSubUnity();
             this.label14 = new System.Windows.Forms.Label();
             this.label15 = new System.Windows.Forms.Label();
             this.z_textBoxSelection = new System.Windows.Forms.TextBox();
             this.label16 = new System.Windows.Forms.Label();
+            this.z_listeDeroulanteSubUnity = new EICE_WARGAME.ListeDeroulanteSubUnity();
+            this.z_listeDeroulanteUnity = new EICE_WARGAME.ListeDeroulanteUnity();
+            this.z_listeDeroulanteCharRank = new EICE_WARGAME.ListeDeroulanteCharRank();
+            this.z_fichePersonnageEquipement1 = new EICE_WARGAME.FichePersonnageEquipement();
+            this.z_listeDeroulanteSousFaction = new EICE_WARGAME.ListeDeroulanteSousFaction();
+            this.z_listeDeroulanteFaction = new EICE_WARGAME.ListeDeroulanteFaction();
+            this.z_ficheEquipement = new EICE_WARGAME.FicheEquipement();
+            this.buttonRetourDashBoard1 = new EICE_WARGAME.ButtonRetourDashBoard();
+            this.menuAdmin1 = new EICE_WARGAME.MenuAdmin();
+            this.z_listeDeroulanteFeature = new EICE_WARGAME.ListeDeroulanteFeature();
+            this.z_listeDeroulanteType = new EICE_WARGAME.ListeDeroulanteType();
+            this.buttonOptionsUser1 = new EICE_WARGAME.ButtonOptionsUser();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.z_numericUpDownCout)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.z_numericUpDownMinimum)).BeginInit();
@@ -278,59 +278,6 @@
             this.listViewCaracteristiques.TabIndex = 36;
             this.listViewCaracteristiques.UseCompatibleStateImageBehavior = false;
             // 
-            // z_ficheEquipement
-            // 
-            this.z_ficheEquipement.EquipementSelectionne = null;
-            this.z_ficheEquipement.Location = new System.Drawing.Point(645, 125);
-            this.z_ficheEquipement.Name = "z_ficheEquipement";
-            this.z_ficheEquipement.Size = new System.Drawing.Size(290, 295);
-            this.z_ficheEquipement.TabIndex = 39;
-            this.z_ficheEquipement.TexteFiltreEquipement = "";
-            // 
-            // buttonRetourDashBoard1
-            // 
-            this.buttonRetourDashBoard1.Location = new System.Drawing.Point(196, 3);
-            this.buttonRetourDashBoard1.Name = "buttonRetourDashBoard1";
-            this.buttonRetourDashBoard1.Size = new System.Drawing.Size(44, 34);
-            this.buttonRetourDashBoard1.TabIndex = 38;
-            this.buttonRetourDashBoard1.Utilisateur = null;
-            // 
-            // menuAdmin1
-            // 
-            this.menuAdmin1.BackColor = System.Drawing.Color.SteelBlue;
-            this.menuAdmin1.EstAdmin = false;
-            this.menuAdmin1.Location = new System.Drawing.Point(0, 0);
-            this.menuAdmin1.MaPageActive = 0;
-            this.menuAdmin1.Name = "menuAdmin1";
-            this.menuAdmin1.Size = new System.Drawing.Size(190, 750);
-            this.menuAdmin1.TabIndex = 37;
-            this.menuAdmin1.Utilisateur = null;
-            // 
-            // z_listeDeroulanteFeature
-            // 
-            this.z_listeDeroulanteFeature.FeatureSelectionnee = null;
-            this.z_listeDeroulanteFeature.Location = new System.Drawing.Point(1076, 206);
-            this.z_listeDeroulanteFeature.Name = "z_listeDeroulanteFeature";
-            this.z_listeDeroulanteFeature.Size = new System.Drawing.Size(206, 25);
-            this.z_listeDeroulanteFeature.TabIndex = 28;
-            // 
-            // z_listeDeroulanteType
-            // 
-            this.z_listeDeroulanteType.Location = new System.Drawing.Point(400, 125);
-            this.z_listeDeroulanteType.Name = "z_listeDeroulanteType";
-            this.z_listeDeroulanteType.Size = new System.Drawing.Size(197, 25);
-            this.z_listeDeroulanteType.TabIndex = 17;
-            this.z_listeDeroulanteType.TypeSelectionne = null;
-            // 
-            // buttonOptionsUser1
-            // 
-            this.buttonOptionsUser1.BackColor = System.Drawing.Color.Transparent;
-            this.buttonOptionsUser1.Location = new System.Drawing.Point(1278, 3);
-            this.buttonOptionsUser1.Name = "buttonOptionsUser1";
-            this.buttonOptionsUser1.Size = new System.Drawing.Size(219, 45);
-            this.buttonOptionsUser1.TabIndex = 16;
-            this.buttonOptionsUser1.Utilisateur = null;
-            // 
             // q_buttonAjouterEquipable
             // 
             this.q_buttonAjouterEquipable.Location = new System.Drawing.Point(815, 651);
@@ -340,22 +287,6 @@
             this.q_buttonAjouterEquipable.Text = "Lier";
             this.q_buttonAjouterEquipable.UseVisualStyleBackColor = true;
             this.q_buttonAjouterEquipable.Click += new System.EventHandler(this.buttonAjouterEquipable_Click);
-            // 
-            // z_listeDeroulanteFaction
-            // 
-            this.z_listeDeroulanteFaction.FactionSelectionnee = null;
-            this.z_listeDeroulanteFaction.Location = new System.Drawing.Point(399, 476);
-            this.z_listeDeroulanteFaction.Name = "z_listeDeroulanteFaction";
-            this.z_listeDeroulanteFaction.Size = new System.Drawing.Size(198, 22);
-            this.z_listeDeroulanteFaction.TabIndex = 43;
-            // 
-            // z_listeDeroulanteSousFaction
-            // 
-            this.z_listeDeroulanteSousFaction.Location = new System.Drawing.Point(399, 513);
-            this.z_listeDeroulanteSousFaction.Name = "z_listeDeroulanteSousFaction";
-            this.z_listeDeroulanteSousFaction.Size = new System.Drawing.Size(198, 25);
-            this.z_listeDeroulanteSousFaction.SousFactionSelectionnee = null;
-            this.z_listeDeroulanteSousFaction.TabIndex = 44;
             // 
             // label6
             // 
@@ -386,14 +317,6 @@
             this.label8.TabIndex = 47;
             this.label8.Text = "Sous-Faction";
             // 
-            // z_fichePersonnageEquipement1
-            // 
-            this.z_fichePersonnageEquipement1.CaractereSelectionne = null;
-            this.z_fichePersonnageEquipement1.Location = new System.Drawing.Point(1056, 447);
-            this.z_fichePersonnageEquipement1.Name = "z_fichePersonnageEquipement1";
-            this.z_fichePersonnageEquipement1.Size = new System.Drawing.Size(400, 260);
-            this.z_fichePersonnageEquipement1.TabIndex = 48;
-            // 
             // label9
             // 
             this.label9.AutoSize = true;
@@ -404,14 +327,6 @@
             this.label9.Size = new System.Drawing.Size(122, 25);
             this.label9.TabIndex = 49;
             this.label9.Text = "Rechercher";
-            // 
-            // z_listeDeroulanteCharRank
-            // 
-            this.z_listeDeroulanteCharRank.CharactSelectionnee = null;
-            this.z_listeDeroulanteCharRank.Location = new System.Drawing.Point(399, 638);
-            this.z_listeDeroulanteCharRank.Name = "z_listeDeroulanteCharRank";
-            this.z_listeDeroulanteCharRank.Size = new System.Drawing.Size(260, 30);
-            this.z_listeDeroulanteCharRank.TabIndex = 50;
             // 
             // label10
             // 
@@ -475,22 +390,6 @@
             this.label13.TabIndex = 57;
             this.label13.Text = "Maximum";
             // 
-            // z_listeDeroulanteUnity
-            // 
-            this.z_listeDeroulanteUnity.Location = new System.Drawing.Point(400, 550);
-            this.z_listeDeroulanteUnity.Name = "z_listeDeroulanteUnity";
-            this.z_listeDeroulanteUnity.Size = new System.Drawing.Size(213, 27);
-            this.z_listeDeroulanteUnity.TabIndex = 58;
-            this.z_listeDeroulanteUnity.UnitySelectionnee = null;
-            // 
-            // z_listeDeroulanteSubUnity
-            // 
-            this.z_listeDeroulanteSubUnity.Location = new System.Drawing.Point(400, 590);
-            this.z_listeDeroulanteSubUnity.Name = "z_listeDeroulanteSubUnity";
-            this.z_listeDeroulanteSubUnity.Size = new System.Drawing.Size(220, 26);
-            this.z_listeDeroulanteSubUnity.SubUnitySelectionnee = null;
-            this.z_listeDeroulanteSubUnity.TabIndex = 59;
-            // 
             // label14
             // 
             this.label14.AutoSize = true;
@@ -513,6 +412,7 @@
             // 
             this.z_textBoxSelection.Location = new System.Drawing.Point(1076, 125);
             this.z_textBoxSelection.Name = "z_textBoxSelection";
+            this.z_textBoxSelection.ReadOnly = true;
             this.z_textBoxSelection.Size = new System.Drawing.Size(206, 22);
             this.z_textBoxSelection.TabIndex = 62;
             // 
@@ -526,6 +426,107 @@
             this.label16.Size = new System.Drawing.Size(242, 25);
             this.label16.TabIndex = 64;
             this.label16.Text = "Equipement sélectionné";
+            // 
+            // z_listeDeroulanteSubUnity
+            // 
+            this.z_listeDeroulanteSubUnity.Location = new System.Drawing.Point(400, 590);
+            this.z_listeDeroulanteSubUnity.Name = "z_listeDeroulanteSubUnity";
+            this.z_listeDeroulanteSubUnity.Size = new System.Drawing.Size(220, 26);
+            this.z_listeDeroulanteSubUnity.SubUnitySelectionnee = null;
+            this.z_listeDeroulanteSubUnity.TabIndex = 59;
+            // 
+            // z_listeDeroulanteUnity
+            // 
+            this.z_listeDeroulanteUnity.Location = new System.Drawing.Point(400, 550);
+            this.z_listeDeroulanteUnity.Name = "z_listeDeroulanteUnity";
+            this.z_listeDeroulanteUnity.Size = new System.Drawing.Size(213, 27);
+            this.z_listeDeroulanteUnity.TabIndex = 58;
+            this.z_listeDeroulanteUnity.UnitySelectionnee = null;
+            // 
+            // z_listeDeroulanteCharRank
+            // 
+            this.z_listeDeroulanteCharRank.CharactSelectionnee = null;
+            this.z_listeDeroulanteCharRank.Location = new System.Drawing.Point(399, 638);
+            this.z_listeDeroulanteCharRank.Name = "z_listeDeroulanteCharRank";
+            this.z_listeDeroulanteCharRank.Size = new System.Drawing.Size(260, 30);
+            this.z_listeDeroulanteCharRank.TabIndex = 50;
+            // 
+            // z_fichePersonnageEquipement1
+            // 
+            this.z_fichePersonnageEquipement1.CaractereSelectionne = null;
+            this.z_fichePersonnageEquipement1.Location = new System.Drawing.Point(1056, 447);
+            this.z_fichePersonnageEquipement1.Name = "z_fichePersonnageEquipement1";
+            this.z_fichePersonnageEquipement1.Size = new System.Drawing.Size(400, 260);
+            this.z_fichePersonnageEquipement1.TabIndex = 48;
+            // 
+            // z_listeDeroulanteSousFaction
+            // 
+            this.z_listeDeroulanteSousFaction.Location = new System.Drawing.Point(399, 513);
+            this.z_listeDeroulanteSousFaction.Name = "z_listeDeroulanteSousFaction";
+            this.z_listeDeroulanteSousFaction.Size = new System.Drawing.Size(198, 25);
+            this.z_listeDeroulanteSousFaction.SousFactionSelectionnee = null;
+            this.z_listeDeroulanteSousFaction.TabIndex = 44;
+            // 
+            // z_listeDeroulanteFaction
+            // 
+            this.z_listeDeroulanteFaction.FactionSelectionnee = null;
+            this.z_listeDeroulanteFaction.Location = new System.Drawing.Point(399, 476);
+            this.z_listeDeroulanteFaction.Name = "z_listeDeroulanteFaction";
+            this.z_listeDeroulanteFaction.Size = new System.Drawing.Size(198, 22);
+            this.z_listeDeroulanteFaction.TabIndex = 43;
+            // 
+            // z_ficheEquipement
+            // 
+            this.z_ficheEquipement.EquipementSelectionne = null;
+            this.z_ficheEquipement.Location = new System.Drawing.Point(645, 125);
+            this.z_ficheEquipement.Name = "z_ficheEquipement";
+            this.z_ficheEquipement.Size = new System.Drawing.Size(290, 295);
+            this.z_ficheEquipement.TabIndex = 39;
+            this.z_ficheEquipement.TexteFiltreEquipement = "";
+            // 
+            // buttonRetourDashBoard1
+            // 
+            this.buttonRetourDashBoard1.Location = new System.Drawing.Point(196, 3);
+            this.buttonRetourDashBoard1.Name = "buttonRetourDashBoard1";
+            this.buttonRetourDashBoard1.Size = new System.Drawing.Size(44, 34);
+            this.buttonRetourDashBoard1.TabIndex = 38;
+            this.buttonRetourDashBoard1.Utilisateur = null;
+            // 
+            // menuAdmin1
+            // 
+            this.menuAdmin1.BackColor = System.Drawing.Color.SteelBlue;
+            this.menuAdmin1.EstAdmin = false;
+            this.menuAdmin1.Location = new System.Drawing.Point(0, 0);
+            this.menuAdmin1.MaPageActive = 0;
+            this.menuAdmin1.Name = "menuAdmin1";
+            this.menuAdmin1.Size = new System.Drawing.Size(190, 750);
+            this.menuAdmin1.TabIndex = 37;
+            this.menuAdmin1.Utilisateur = null;
+            // 
+            // z_listeDeroulanteFeature
+            // 
+            this.z_listeDeroulanteFeature.FeatureSelectionnee = null;
+            this.z_listeDeroulanteFeature.Location = new System.Drawing.Point(1076, 206);
+            this.z_listeDeroulanteFeature.Name = "z_listeDeroulanteFeature";
+            this.z_listeDeroulanteFeature.Size = new System.Drawing.Size(206, 25);
+            this.z_listeDeroulanteFeature.TabIndex = 28;
+            // 
+            // z_listeDeroulanteType
+            // 
+            this.z_listeDeroulanteType.Location = new System.Drawing.Point(400, 125);
+            this.z_listeDeroulanteType.Name = "z_listeDeroulanteType";
+            this.z_listeDeroulanteType.Size = new System.Drawing.Size(197, 25);
+            this.z_listeDeroulanteType.TabIndex = 17;
+            this.z_listeDeroulanteType.TypeSelectionne = null;
+            // 
+            // buttonOptionsUser1
+            // 
+            this.buttonOptionsUser1.BackColor = System.Drawing.Color.Transparent;
+            this.buttonOptionsUser1.Location = new System.Drawing.Point(1278, 3);
+            this.buttonOptionsUser1.Name = "buttonOptionsUser1";
+            this.buttonOptionsUser1.Size = new System.Drawing.Size(219, 45);
+            this.buttonOptionsUser1.TabIndex = 16;
+            this.buttonOptionsUser1.Utilisateur = null;
             // 
             // PageEquipements
             // 
