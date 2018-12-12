@@ -108,7 +108,7 @@ namespace EICE_WARGAME
 
         private void FicheFigurineStuff_SurChangementSelection(object sender, EventArgs e)
         {
-            ficheFigurineStuff1.FigurineSelectionne.Id;
+            //ficheFigurineStuff1.FigurineSelectionne.Id;
         }
 
         private void buttonReturn_Click(object sender, EventArgs e)
