@@ -33,7 +33,7 @@ namespace EICE_WARGAME
         /// <summary>
         /// Texte du filtre
         /// </summary>
-        public string TexteFiltreFaction
+        public string TexteFiltreFigurineStuff
         {
             get
             {
@@ -127,7 +127,6 @@ namespace EICE_WARGAME
                     Text = "Figurines",
                     TextAlign = HorizontalAlignment.Center,                              
                 });
-
             }
 
             foreach (T Entite in Entites)
