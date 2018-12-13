@@ -8,6 +8,8 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using PDSGBD;
+using System.Drawing;
+using System.Drawing.Printing;
 
 
 namespace EICE_WARGAME
@@ -15,7 +17,7 @@ namespace EICE_WARGAME
 
     public partial class PageMaCollection : UserControl
     {
-
+        
         #region Utilisateur
         private Utilisateur m_Utilisateur = null;
 
@@ -36,6 +38,8 @@ namespace EICE_WARGAME
         }
         #endregion
 
+        private PrintDocument printDocument1 = new PrintDocument();
+
         private const string c_CritereQuiContient = "%{0}%";
 
         public PageMaCollection()
@@ -49,8 +53,35 @@ namespace EICE_WARGAME
             listeDeroulanteChar1.Enabled = false;
             ficheEquipementSansRecherche1.Enabled = false;
             ficheEquipementSurFigurine1.Enabled = false;
+            printDocument1.PrintPage += new PrintPageEventHandler(printDocument1_PrintPage);
 
         }
+
+        void printButton_Click(object sender, EventArgs e)
+        {
+            CaptureScreen();
+            printDocument1.Print();
+        }
+
+
+        Bitmap memoryImage;
+
+        private void CaptureScreen()
+        {
+            Graphics myGraphics = this.CreateGraphics();
+            Size s = this.Size;
+            memoryImage = new Bitmap(this.Width, this.Height, myGraphics);
+            Graphics memoryGraphics = Graphics.FromImage(memoryImage);
+            memoryGraphics.CopyFromScreen(this.Location.X, this.Location.Y, 0, 0, s);
+        }
+
+        private void printDocument1_PrintPage(System.Object sender,
+               System.Drawing.Printing.PrintPageEventArgs e)
+        {
+            e.Graphics.DrawImage(memoryImage, 0, 0);
+        }
+
+
 
         private void ListeDeroulanteFaction_SurChangementSelection(object sender, EventArgs e)
         {
