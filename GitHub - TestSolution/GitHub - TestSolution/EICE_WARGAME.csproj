@@ -46,6 +46,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Vues\Fiches\FicheFaction - Copier.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Vues\Fiches\FicheFaction - Copier.Designer.cs">
+      <DependentUpon>FicheFaction - Copier.cs</DependentUpon>
+    </Compile>
     <Compile Include="Vues\Pages\PageImpressionListeUnite.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -353,6 +359,9 @@
     </Compile>
     <EmbeddedResource Include="Vues\Fiches\FicheEquipementSansRecherche.resx">
       <DependentUpon>FicheEquipementSansRecherche.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Vues\Fiches\FicheFaction - Copier.resx">
+      <DependentUpon>FicheFaction - Copier.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Vues\Fiches\FicheFigurineStuff.resx">
       <DependentUpon>FicheFigurineStuff.cs</DependentUpon>
