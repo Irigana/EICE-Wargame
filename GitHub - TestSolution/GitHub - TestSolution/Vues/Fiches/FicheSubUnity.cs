@@ -10,30 +10,30 @@ using System.Windows.Forms;
 
 namespace EICE_WARGAME
 {
-    public partial class FicheFaction : UserControl
+    public partial class FicheSubUnity : UserControl
     {
        
-        public FicheFaction()
+        public FicheSubUnity()
         {
             InitializeComponent();
-            listViewFaction.View = View.Details;
-            listViewFaction.FullRowSelect = true;
-            listViewFaction.LabelEdit = false;
-            listViewFaction.Scrollable = true;
-            listViewFaction.AllowColumnReorder = false;
-            listViewFaction.MultiSelect = false;
-            listViewFaction.GridLines = true;
-            listViewFaction.HideSelection = false;
-            listViewFaction.Items.Clear();
-            listViewFaction.Columns.Clear();
-            listViewFaction.SelectedIndexChanged += listViewFaction_SelectedIndexChanged;
+            listViewSubUnity.View = View.Details;
+            listViewSubUnity.FullRowSelect = true;
+            listViewSubUnity.LabelEdit = false;
+            listViewSubUnity.Scrollable = true;
+            listViewSubUnity.AllowColumnReorder = false;
+            listViewSubUnity.MultiSelect = false;
+            listViewSubUnity.GridLines = true;
+            listViewSubUnity.HideSelection = false;
+            listViewSubUnity.Items.Clear();
+            listViewSubUnity.Columns.Clear();
+            listViewSubUnity.SelectedIndexChanged += listViewSubUnity_SelectedIndexChanged;
         }
 
 
         /// <summary>
         /// Texte du filtre
         /// </summary>
-        public string TexteFiltreFaction
+        public string TexteFiltreSubUnity
         {
             get
             {
@@ -54,14 +54,14 @@ namespace EICE_WARGAME
         /// </summary>
         public event EventHandler SurChangementFiltre = null;
 
-        public IEnumerable<Faction> Faction
+        public IEnumerable<SubUnity> SubUnity
         {
             get
             {
-                return listViewFaction.Items
+                return listViewSubUnity.Items
                     .OfType<ListViewItem>()
-                    .Where(Element => Element.Tag is Faction)
-                    .Select(Element => Element.Tag as Faction);
+                    .Where(Element => Element.Tag is SubUnity)
+                    .Select(Element => Element.Tag as SubUnity);
             }
             set
             {
@@ -71,41 +71,41 @@ namespace EICE_WARGAME
 
 
         /// <summary>
-        /// Type de faction sélectionné
+        /// Type de SubUnity sélectionné
         /// </summary>
-        public Faction FactionSelectionne
+        public SubUnity SubUnitySelectionne
         {
             get
             {
-                return (listViewFaction.SelectedItems.Count == 1) && (listViewFaction.SelectedItems[0].Tag is Faction)
-                    ? listViewFaction.SelectedItems[0].Tag as Faction
+                return (listViewSubUnity.SelectedItems.Count == 1) && (listViewSubUnity.SelectedItems[0].Tag is SubUnity)
+                    ? listViewSubUnity.SelectedItems[0].Tag as SubUnity
                     : null;
             }
             set
             {
                 if (value != null)
                 {
-                    foreach (ListViewItem Element in listViewFaction.Items)
+                    foreach (ListViewItem Element in listViewSubUnity.Items)
                     {
-                        if ((Element.Tag is Faction) && (Element.Tag as Faction).Id.Equals(value.Id))
+                        if ((Element.Tag is SubUnity) && (Element.Tag as SubUnity).Id.Equals(value.Id))
                         {
                             Element.Selected = true;
                             return;
                         }
                     }
                 }
-                listViewFaction.SelectedItems.Clear();
+                listViewSubUnity.SelectedItems.Clear();
             }
         }
 
 
         /// <summary>
-        /// Evénement déclenché quand il y a un changement de sélection de faction
+        /// Evénement déclenché quand il y a un changement de sélection de SubUnity
         /// </summary>
         public event EventHandler SurChangementSelection = null;
 
         /// <summary>
-        /// Met à jour la listview des factions et y insére les elements
+        /// Met à jour la listview des SubUnitys et y insére les elements
         /// </summary>
         /// <typeparam name="T"></typeparam>
         /// <param name="Entites"></param>
@@ -113,18 +113,18 @@ namespace EICE_WARGAME
         private bool MettreAJourListe<T>(IEnumerable<T> Entites)
             where T : class, IEntiteMySQL
         {
-            bool EstFaction = typeof(T).Equals(typeof(Faction));
-            if (!EstFaction) return false;
-            listViewFaction.Items.Clear();
+            bool EstSubUnity = typeof(T).Equals(typeof(SubUnity));
+            if (!EstSubUnity) return false;
+            listViewSubUnity.Items.Clear();
             if (Entites == null) return false;
-            if (EstFaction && (listViewFaction.Columns.Count != 2))
+            if (EstSubUnity && (listViewSubUnity.Columns.Count != 2))
             {
-                listViewFaction.Columns.Clear();
+                listViewSubUnity.Columns.Clear();
 
-                listViewFaction.Columns.Add(new ColumnHeader()
+                listViewSubUnity.Columns.Add(new ColumnHeader()
                 {
-                    Name = "Factions",
-                    Text = "Factions",
+                    Name = "SubUnitys",
+                    Text = "SubUnitys",
                     TextAlign = HorizontalAlignment.Center,                              
                 });
 
@@ -137,36 +137,36 @@ namespace EICE_WARGAME
                     Tag = Entite
                 };
                 NouvelElement.SubItems.Clear();
-                if (EstFaction)
+                if (EstSubUnity)
                 {
-                    Faction Faction = Entite as Faction;
-                    NouvelElement.Text = Faction.Name;
-                    NouvelElement.SubItems.Add(Faction.Name);
+                    SubUnity SubUnity = Entite as SubUnity;
+                    NouvelElement.Text = SubUnity.Name;
+                    NouvelElement.SubItems.Add(SubUnity.Name);
                 }
-                listViewFaction.Items.Add(NouvelElement);
+                listViewSubUnity.Items.Add(NouvelElement);
                 
 
             }
 
-            listViewFaction.Visible = false;
-            foreach (ColumnHeader Colonne in listViewFaction.Columns)
+            listViewSubUnity.Visible = false;
+            foreach (ColumnHeader Colonne in listViewSubUnity.Columns)
             {
                 Colonne.AutoResize(ColumnHeaderAutoResizeStyle.HeaderSize);
             }
 
-            listViewFaction.Visible = true;
-            listViewFaction_SelectedIndexChanged(listViewFaction, EventArgs.Empty);
+            listViewSubUnity.Visible = true;
+            listViewSubUnity_SelectedIndexChanged(listViewSubUnity, EventArgs.Empty);
             return true;
         }
 
 
 
         /// <summary>
-        /// Evénement déclenché en cas de changement de sélection de faction
+        /// Evénement déclenché en cas de changement de sélection de SubUnity
         /// </summary>
         /// <param name="sender">Emetteur ayant déclenché l'événement</param>
         /// <param name="e">Descriptif de l'événement</param>
-        private void listViewFaction_SelectedIndexChanged(object sender, EventArgs e)
+        private void listViewSubUnity_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (SurChangementSelection != null)
             {
@@ -209,7 +209,7 @@ namespace EICE_WARGAME
         /// </summary>
         public void NettoyerListView()
         {
-            listViewFaction.Clear();
+            listViewSubUnity.Clear();
         }
         
     }

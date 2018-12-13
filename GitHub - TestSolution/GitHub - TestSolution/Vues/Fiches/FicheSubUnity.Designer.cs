@@ -1,6 +1,6 @@
 ﻿namespace EICE_WARGAME
 {
-    partial class FicheFaction
+    partial class FicheSubUnity
     {
         /// <summary> 
         /// Variable nécessaire au concepteur.
@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             this.textBoxRecherche = new System.Windows.Forms.TextBox();
-            this.listViewFaction = new System.Windows.Forms.ListView();
+            this.listViewSubUnity = new System.Windows.Forms.ListView();
             this.SuspendLayout();
             // 
             // textBoxRecherche
@@ -40,22 +40,22 @@
             this.textBoxRecherche.TabIndex = 0;
             this.textBoxRecherche.TextChanged += new System.EventHandler(this.textFiltre_TextChanged);
             // 
-            // listViewFaction
+            // listViewSubUnity
             // 
-            this.listViewFaction.HeaderStyle = System.Windows.Forms.ColumnHeaderStyle.Nonclickable;
-            this.listViewFaction.Location = new System.Drawing.Point(3, 31);
-            this.listViewFaction.Name = "listViewFaction";
-            this.listViewFaction.Size = new System.Drawing.Size(286, 257);
-            this.listViewFaction.TabIndex = 1;
-            this.listViewFaction.UseCompatibleStateImageBehavior = false;
+            this.listViewSubUnity.HeaderStyle = System.Windows.Forms.ColumnHeaderStyle.Nonclickable;
+            this.listViewSubUnity.Location = new System.Drawing.Point(3, 31);
+            this.listViewSubUnity.Name = "listViewSubUnity";
+            this.listViewSubUnity.Size = new System.Drawing.Size(286, 257);
+            this.listViewSubUnity.TabIndex = 1;
+            this.listViewSubUnity.UseCompatibleStateImageBehavior = false;
             // 
-            // FicheFaction
+            // FicheSubUnity
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.Controls.Add(this.listViewFaction);
+            this.Controls.Add(this.listViewSubUnity);
             this.Controls.Add(this.textBoxRecherche);
-            this.Name = "FicheFaction";
+            this.Name = "FicheSubUnity";
             this.Size = new System.Drawing.Size(293, 295);
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -65,6 +65,6 @@
         #endregion
 
         private System.Windows.Forms.TextBox textBoxRecherche;
-        private System.Windows.Forms.ListView listViewFaction;
+        private System.Windows.Forms.ListView listViewSubUnity;
     }
 }

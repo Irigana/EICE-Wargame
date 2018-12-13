@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using PDSGBD;
 
 namespace EICE_WARGAME
 {
@@ -37,6 +38,12 @@ namespace EICE_WARGAME
         public PageSubUnity()
         {
             InitializeComponent();
+            buttonAjouterSubUnity.Enabled = false;
+            buttonAnnulerSubUnity.Enabled = false;
+            buttonSupprimerSubUnity.Enabled = false;
+            listeDeroulanteFaction1.Faction = Program.GMBD.EnumererFaction(null, null, null, null);
+            listeDeroulanteFaction1.SurChangementSelection += ListeFaction_SurChangementSelection;
+            listeDeroulanteSousFaction1.Enabled = true;
         }
 
         private void PageSubUnity_Load(object sender, EventArgs e)
@@ -47,6 +54,25 @@ namespace EICE_WARGAME
             buttonRetourDashBoard1.Utilisateur = Utilisateur;
             // Permet d'obtenir l'option du menu admin utilisateur une fois l'admin identifié            
             if (Utilisateur.Role.Id == 2) menuAdmin1.EstAdmin = true;
+
+        }
+
+        private void ListeFaction_SurChangementSelection(object sender,EventArgs e)
+        {
+            listeDeroulanteSousFaction1.Enabled = true;
+            listeDeroulanteSousFaction1.SousFaction = Program.GMBD.EnumererSousFaction(null, null, new MyDB.CodeSql("WHERE sf_fk_faction_id ={0}", listeDeroulanteFaction1.FactionSelectionnee.Id),null);
+            listeDeroulanteSousFaction1.SurChangementSelection += ListeSousFaction_SurChangementSelection;
+        }
+
+        private void ListeSousFaction_SurChangementSelection(object sender, EventArgs e)
+        {
+            ficheSubUnity1.Enabled = true;
+
+        }
+
+        private void FicheSousUnity_SurChangementSelection(object sender,EventArgs e)
+        {
+
         }
     }
     
