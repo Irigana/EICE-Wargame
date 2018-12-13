@@ -26,6 +26,10 @@ namespace EICE_WARGAME
             /// unité de cette SubUnity
             /// </summary>
             Unity,
+            /// <summary>
+            /// Sous faction de cette sous unité
+            /// </summary>
+            SousFaction,
         }
 
         #region Membres privés
@@ -37,7 +41,12 @@ namespace EICE_WARGAME
         /// <summary>
         /// Stock les unités 
         /// </summary>
-        private Unity m_Unity;        
+        private Unity m_Unity;
+
+        /// <summary>
+        /// Faction de cette sous unité
+        /// </summary>
+        private SousFaction m_SousFaction;  
         #endregion
 
         #region Membres publics
@@ -106,6 +115,22 @@ namespace EICE_WARGAME
             }
         }
 
+
+        public SousFaction SousFaction
+        {
+            get
+            {
+                return m_SousFaction;
+            }
+            set
+            {
+                if ((value != null) && ((m_SousFaction == null) || !int.Equals(value.Id, SousFaction.Id)))
+                {
+                    ModifierChamp(Champ.SousFaction, ref m_SousFaction, value);
+                }
+            }
+        }
+
         #endregion
 
         #region Constructeur
@@ -123,11 +148,13 @@ namespace EICE_WARGAME
         /// </summary>
         /// <param name="Id">Identifiant de ce SubUnity</param>
         /// <param name="Name">Nom de la sous unité</param>
-        public SubUnity(int Id, string Name) 
+        public SubUnity(int Id, string Name,Unity Unity,SousFaction SousFaction) 
             : this()
         {
             DefinirId(Id);
             this.Name = Name;
+            this.Unity = Unity;
+            this.SousFaction = SousFaction;
         }
 
         /// <summary>
@@ -142,6 +169,8 @@ namespace EICE_WARGAME
             {
                 DefinirId(Enregistrement.ValeurChampComplet<int>(NomDeLaTablePrincipale, "su_id"));
                 this.Name = Enregistrement.ValeurChampComplet<string>(NomDeLaTablePrincipale, "su_name");
+                this.SousFaction = new SousFaction();
+                this.Unity = new Unity();
             }
         }
 
@@ -190,7 +219,7 @@ namespace EICE_WARGAME
         {
             get
             {
-                return new PDSGBD.MyDB.CodeSql("su_name = {0}, su_fk_unity_id = {1}", Name, Unity.Id);
+                return new PDSGBD.MyDB.CodeSql("su_name = {0}, su_fk_unity_id = {1}, su_fk_subfaction_id = {2}", Name, Unity.Id,SousFaction.Id);
             }
         }
 
