@@ -35,6 +35,8 @@ namespace EICE_WARGAME
         #endregion
 
 
+        private const string c_CritereQuiContient = "%{0}%";
+
         public PageSubUnity()
         {
             InitializeComponent();
@@ -43,6 +45,8 @@ namespace EICE_WARGAME
             buttonSupprimerSubUnity.Enabled = false;
             listeDeroulanteFaction1.Faction = Program.GMBD.EnumererFaction(null, null, null, null);
             listeDeroulanteFaction1.SurChangementSelection += ListeFaction_SurChangementSelection;
+            listeDeroulanteSousFaction1.SurChangementSelection += ListeSousFaction_SurChangementSelection;
+
             listeDeroulanteSousFaction1.Enabled = true;
         }
 
@@ -61,13 +65,40 @@ namespace EICE_WARGAME
         {
             listeDeroulanteSousFaction1.Enabled = true;
             listeDeroulanteSousFaction1.SousFaction = Program.GMBD.EnumererSousFaction(null, null, new MyDB.CodeSql("WHERE sf_fk_faction_id ={0}", listeDeroulanteFaction1.FactionSelectionnee.Id),null);
-            listeDeroulanteSousFaction1.SurChangementSelection += ListeSousFaction_SurChangementSelection;
         }
 
         private void ListeSousFaction_SurChangementSelection(object sender, EventArgs e)
         {
             ficheSubUnity1.Enabled = true;
+            ChargerFicheSansFiltre(listeDeroulanteFaction1.FactionSelectionnee.Id, listeDeroulanteSousFaction1.SousFactionSelectionnee.Id);
 
+            ficheSubUnity1.SurChangementFiltre += (s, ev) =>
+            {
+                if (ficheSubUnity1.TexteFiltreSubUnity != "")
+                {
+                    // TODO : corriger cette requete et vérifier que surchangementselection n'est pas le problème sur ma page personnage
+                    ficheSubUnity1.SubUnity = Program.GMBD.EnumererSubUnity(null,
+                    new MyDB.CodeSql(@"JOIN subfaction ON subfaction.sf_id = subunity.su_fk_subfaction_id
+                                        JOIN charact ON subfaction.sf_id = charact.ch_fk_subfaction_id"),
+                    new MyDB.CodeSql("WHERE sf_fk_faction_id = {0} AND sf_id = {1} AND ch_name LIKE {2}",
+                    listeDeroulanteFaction1.FactionSelectionnee.Id, listeDeroulanteSousFaction1.SousFactionSelectionnee.Id,
+                    string.Format(c_CritereQuiContient, ficheSubUnity1.TexteFiltreSubUnity)),
+                    new MyDB.CodeSql("ORDER BY su_name"));
+                }
+                else
+                {
+                    ChargerFicheSansFiltre(listeDeroulanteFaction1.FactionSelectionnee.Id, listeDeroulanteSousFaction1.SousFactionSelectionnee.Id);     
+                }
+            };
+        }
+
+        private void ChargerFicheSansFiltre(int IdSousFaction, int IdFaction)
+        {
+            ficheSubUnity1.SubUnity = Program.GMBD.EnumererSubUnity(null,
+                   new MyDB.CodeSql(@"JOIN subfaction ON subfaction.sf_id = subunity.su_fk_subfaction_id"),
+                   new MyDB.CodeSql("WHERE sf_fk_faction_id = {0} AND sf_id = {1}",
+                   IdSousFaction, IdFaction),
+                   new MyDB.CodeSql("ORDER BY su_name"));
         }
 
         private void FicheSousUnity_SurChangementSelection(object sender,EventArgs e)

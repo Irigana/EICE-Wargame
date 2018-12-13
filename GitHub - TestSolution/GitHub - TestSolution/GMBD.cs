@@ -33,7 +33,7 @@ namespace EICE_WARGAME
         private static readonly MyDB.CodeSql c_NomTable_ArmyUnityFigurineStuff = new MyDB.CodeSql(new ArmyUnityFigurine().NomDeLaTablePrincipale);
         private static readonly MyDB.CodeSql c_NomTable_Army = new MyDB.CodeSql(new Army().NomDeLaTablePrincipale);
         private static readonly MyDB.CodeSql c_NomTable_StuffCharactRank = new MyDB.CodeSql(new StuffCharactRank().NomDeLaTablePrincipale);
-
+        
         /// <summary>
         /// Référence l'objet de connexion au serveur de base de données MySql
         /// </summary>
