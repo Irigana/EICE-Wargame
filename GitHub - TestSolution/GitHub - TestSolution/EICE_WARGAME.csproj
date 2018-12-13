@@ -339,6 +339,12 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Vues\Pages\PageSubUnity.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Vues\Pages\PageSubUnity.Designer.cs">
+      <DependentUpon>PageSubUnity.cs</DependentUpon>
+    </Compile>
     <Compile Include="Vues\TextBoxAvecTextInvisible.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -475,6 +481,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Vues\Pages\PageConnexion.resx">
       <DependentUpon>PageConnexion.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Vues\Pages\PageSubUnity.resx">
+      <DependentUpon>PageSubUnity.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Vues\TextBoxAvecTextInvisible.resx">
       <DependentUpon>TextBoxAvecTextInvisible.cs</DependentUpon>
