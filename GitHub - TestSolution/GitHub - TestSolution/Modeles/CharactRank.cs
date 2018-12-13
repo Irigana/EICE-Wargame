@@ -143,7 +143,7 @@ namespace EICE_WARGAME
                 if (value < 0)
                 {
                     Declencher_SurErreur(this, Champ.Cost, "Votre coût doit être supérieur à 0");
-                }//TODO
+                }
                 else if (value > 1000)
                 {
                     Declencher_SurErreur(this, Champ.Cost, "Votre coût doit être inférieur à 1 000");
@@ -169,17 +169,44 @@ namespace EICE_WARGAME
             {
                 if (value < 0)
                 {
-                    Declencher_SurErreur(this, Champ.Cost, "Votre coût doit être supérieur à 0");
+                    Declencher_SurErreur(this, Champ.Min, "Le minimum doit être supérieur ou égal à 0");
                 }
                 else if (value > 100)
                 {
-                    Declencher_SurErreur(this, Champ.Cost, "Cout supérieur au maximum autoriser");
+                    Declencher_SurErreur(this, Champ.Cost, "Le minimum ne peut dépasser 100");
                 }
                 else
                 {
-                    if (!int.Equals(value, m_Cost))
+                    if (!int.Equals(value, m_Min))
                     {
-                        ModifierChamp(Champ.Cost, ref m_Cost, value);
+                        ModifierChamp(Champ.Min, ref m_Min, value);
+                    }
+                }
+            }
+        }
+
+        public int Max
+        {
+            get
+            {
+                return m_Max;
+            }
+
+            set
+            {
+                if (value <= 0)
+                {
+                    Declencher_SurErreur(this, Champ.Max, "Le maximum doit être supérieur à 0");
+                }
+                else if (value > 100)
+                {
+                    Declencher_SurErreur(this, Champ.Max, "Le maximum ne peut dépasser 100");
+                }
+                else
+                {
+                    if (!int.Equals(value, m_Max))
+                    {
+                        ModifierChamp(Champ.Max, ref m_Max, value);
                     }
                 }
             }
@@ -195,6 +222,8 @@ namespace EICE_WARGAME
         public CharactRank()
         : base()
         {
+            m_Min = -1;
+            m_Max = -1;
             m_Cost = -1;
             m_Charact = null;
             m_Rank = null;
@@ -206,7 +235,7 @@ namespace EICE_WARGAME
         /// </summary>
         /// <param name="Id">Identifiant du Charact_Rank</param>
         /// <param name="Cost">cout de ce Charact_Rank</param>
-        public CharactRank(int Id, int Cost,Charact Caractere, Rank Rank, SubUnity SubUnity)
+        public CharactRank(int Id, int Cost,Charact Caractere, Rank Rank, SubUnity SubUnity,int Min,int Max)
         : this()
         {
             DefinirId(Id);
@@ -214,6 +243,8 @@ namespace EICE_WARGAME
             this.SubUnity = SubUnity;
             this.Caractere = Caractere;
             this.Rank = Rank;
+            this.Max = Max;
+            this.Min = Min;
         }
 
         /// <summary>
@@ -231,7 +262,9 @@ namespace EICE_WARGAME
                 this.Cost = Enregistrement.ValeurChampComplet<int>(NomDeLaTablePrincipale, "cr_cost");
                 this.Rank = new Rank(Connexion,Enregistrement);
                 this.SubUnity = new SubUnity(Connexion, Enregistrement);
-                this.Caractere = new Charact(Connexion, Enregistrement);                
+                this.Caractere = new Charact(Connexion, Enregistrement);
+                this.Min = Enregistrement.ValeurChampComplet<int>(NomDeLaTablePrincipale, "cr_min");
+                this.Max = Enregistrement.ValeurChampComplet<int>(NomDeLaTablePrincipale, "cr_max");        
             }
         }
 
@@ -308,7 +341,7 @@ namespace EICE_WARGAME
         {
             get
             {
-                return new PDSGBD.MyDB.CodeSql("cr_fk_ch_id = {0}, cr_fk_ra_id = {1}, cr_cost = {2}, cr_sub_id = {3}", Caractere.Id, Rank.Id, Cost,SubUnity.Id);
+                return new PDSGBD.MyDB.CodeSql("cr_fk_ch_id = {0}, cr_fk_ra_id = {1}, cr_cost = {2}, cr_sub_id = {3}, cr_min = {4}, cr_max = {5}", Caractere.Id, Rank.Id, Cost,SubUnity.Id,Min,Max);
             }
         }
 

@@ -157,6 +157,18 @@ namespace EICE_WARGAME
                     Text = "Coût",
                     TextAlign = HorizontalAlignment.Center,
                 });
+                listViewCaractere.Columns.Add(new ColumnHeader()
+                {
+                    Name = "Min",
+                    Text = "Min",
+                    TextAlign = HorizontalAlignment.Center,
+                });
+                listViewCaractere.Columns.Add(new ColumnHeader()
+                {
+                    Name = "Max",
+                    Text = "Max",
+                    TextAlign = HorizontalAlignment.Center,
+                });
 
             }
 
@@ -174,6 +186,8 @@ namespace EICE_WARGAME
                     };
                     NouvelElement.SubItems.Add(Caractere.Rank.Name);
                     NouvelElement.SubItems.Add(Caractere.Cost.ToString());
+                    NouvelElement.SubItems.Add(Caractere.Min.ToString());
+                    NouvelElement.SubItems.Add(Caractere.Max.ToString());
                     
                     listViewCaractere.Items.Add(NouvelElement);
                     

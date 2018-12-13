@@ -53,6 +53,8 @@ namespace EICE_WARGAME
             buttonSupprimerCaracteristique.Enabled = false;
             buttonModifCaracteristique.Enabled = false;            
             textBoxCaractere.Enabled = false;
+            numericUpDownMax.Enabled = false;
+            numericUpDownMin.Enabled = false;
             menuAdmin1.MaPageActive = 2;
 
 
@@ -67,8 +69,7 @@ namespace EICE_WARGAME
 
             ficheCaractere1.SurChangementSelection += ficheCaractere_SurChangementSelection;
 
-            listeDeroulanteFaction1.SurChangementSelection += ListeDeroulanteFaction_SurChangementSelection;
-            //ficheCaractere1.SurChangementSelection += ficheFaction_SurChangementSelection;
+            listeDeroulanteFaction1.SurChangementSelection += ListeDeroulanteFaction_SurChangementSelection;        
             Bitmap ImageRessource = new Bitmap(Properties.Resources.Validation25px);
             ValidationProvider.Icon = Icon.FromHandle(ImageRessource.GetHicon());
         }
@@ -119,10 +120,13 @@ namespace EICE_WARGAME
 
         private void ListeDeroulanteSubUnity_SurChangementSelection(object sender, EventArgs e)
         {
+            
             // Problème : il boucle plusieurs fois dessus
             numericUpDown1.Enabled = true;
             listeDeroulanteRank1.Enabled = true;
             textBoxCaractere.Enabled = true;
+            numericUpDownMax.Enabled = true;
+            numericUpDownMin.Enabled = true;
             buttonAjouterPersonnage.Enabled = true;
             ficheCaractere1.ActiverTextBox = true;
             ficheCaractere1.Caractere = Program.GMBD.EnumererPersonnage(null,
@@ -136,7 +140,7 @@ namespace EICE_WARGAME
                 new MyDB.CodeSql("ORDER BY su_name"));
             listeDeroulanteRank1.Rank = Program.GMBD.EnumererRank(null, null, null, new MyDB.CodeSql("ORDER BY ra_name"));
 
-
+            
         }
 
         private void ficheCaractere_SurChangementSelection(object sender, EventArgs e)
@@ -161,6 +165,8 @@ namespace EICE_WARGAME
                 listeDeroulanteRank1.RankSelectionnee = ficheCaractere1.CaractereSelectionne.Rank;
                 numericUpDown1.Value = ficheCaractere1.CaractereSelectionne.Cost;
                 textBoxCaractere.Text = ficheCaractere1.CaractereSelectionne.Caractere.Name;
+                numericUpDownMin.Value = ficheCaractere1.CaractereSelectionne.Min;
+                numericUpDownMax.Value = ficheCaractere1.CaractereSelectionne.Max;
                 textBoxPersonnageSelectionne.Text = ficheCaractere1.CaractereSelectionne.Caractere.Name.ToString();
                 ficheCaracteristique1.Caracteristique = Program.GMBD.EnumererCharactFeature(null,
                 new MyDB.CodeSql(@"JOIN char_rank ON char_rank_feature.crf_fk_char_rank_id = char_rank.cr_id
@@ -211,7 +217,9 @@ namespace EICE_WARGAME
             errorProviderErreurCaractere.Clear();
             ValidationProvider.Clear();
             numericUpDown2.Enabled = true;
-            buttonAjouterCaracteristique.Enabled = true;            
+            buttonAjouterCaracteristique.Enabled = true;
+            numericUpDownMax.Enabled = true;
+            numericUpDownMin.Enabled = true; 
         }
 
         #endregion
@@ -289,6 +297,8 @@ namespace EICE_WARGAME
                                                 NouveauPersonnage.SubUnity = listeDeroulanteSubUnity1.SubUnitySelectionnee;
                                                 NouveauPersonnage.AvantChangement += PersonnageEnEdition_AvantChangement;
                                                 NouveauPersonnage.Rank = listeDeroulanteRank1.RankSelectionnee;
+                                                NouveauPersonnage.Min = Convert.ToInt32(numericUpDownMin.Value);
+                                                NouveauPersonnage.Max = Convert.ToInt32(numericUpDownMin.Value);
                                                 if ((NouveauPersonnage.EstValide) && Program.GMBD.AjouterPersonnage(NouveauPersonnage))
                                                 {
                                                     Program.GMBD.MettreAJourFicheCaractere(ficheCaractere1, listeDeroulanteFaction1.FactionSelectionnee.Id, listeDeroulanteSousFaction1.SousFactionSelectionnee.Id, listeDeroulanteUnity1.UnitySelectionnee.Id, listeDeroulanteSubUnity1.SubUnitySelectionnee.Id);
@@ -300,6 +310,8 @@ namespace EICE_WARGAME
                                                     listeDeroulanteRank1.RankSelectionnee = null;
                                                     numericUpDown1.Value = 0;
                                                     ficheCaractere1.CaractereSelectionne = null;
+                                                    numericUpDownMax.Value = 0;
+                                                    numericUpDownMin.Value = 0;
                                                 }
                                                 else
                                                 {
@@ -316,7 +328,9 @@ namespace EICE_WARGAME
                                             NouveauPersonnage.AvantChangement += PersonnageEnEdition_AvantChangement;
                                             NouveauPersonnage.SubUnity = listeDeroulanteSubUnity1.SubUnitySelectionnee;
                                             NouveauPersonnage.Rank = listeDeroulanteRank1.RankSelectionnee;                                            
-                                            NouveauPersonnage.Cost = Convert.ToInt32(numericUpDown1.Value);                           
+                                            NouveauPersonnage.Cost = Convert.ToInt32(numericUpDown1.Value);
+                                            NouveauPersonnage.Min = Convert.ToInt32(numericUpDownMin.Value);
+                                            NouveauPersonnage.Max = Convert.ToInt32(numericUpDownMax.Value);                       
                                             if ((NouveauPersonnage.EstValide) && Program.GMBD.AjouterPersonnage(NouveauPersonnage))
                                             {
                                                 Program.GMBD.MettreAJourFicheCaractere(ficheCaractere1, listeDeroulanteFaction1.FactionSelectionnee.Id, listeDeroulanteSousFaction1.SousFactionSelectionnee.Id, listeDeroulanteUnity1.UnitySelectionnee.Id, listeDeroulanteSubUnity1.SubUnitySelectionnee.Id);
@@ -327,6 +341,8 @@ namespace EICE_WARGAME
                                                 ficheCaractere1.TexteDuFiltre = "";
                                                 listeDeroulanteRank1.RankSelectionnee = null;
                                                 numericUpDown1.Value = 0;
+                                                numericUpDownMax.Value = 0;
+                                                numericUpDownMin.Value = 0;
                                                 ficheCaractere1.CaractereSelectionne = null;
                                             }
                                         }
@@ -364,6 +380,8 @@ namespace EICE_WARGAME
                 m_PersonnageEnEdition.Caractere.ApresChangement += CaractereEnEdition_ApresChangement;
                 
                 m_PersonnageEnEdition.Cost = Convert.ToInt32(numericUpDown1.Value);
+                m_PersonnageEnEdition.Max = Convert.ToInt32(numericUpDownMax.Value);
+                m_PersonnageEnEdition.Min = Convert.ToInt32(numericUpDownMin.Value);
                 Charact CaractereExistant = Program.GMBD.EnumererCaractere(null, null, new MyDB.CodeSql("WHERE ch_name = {0}", textBoxCaractere.Text), null).FirstOrDefault();
                 if (CaractereExistant == null)
                 {
@@ -385,6 +403,8 @@ namespace EICE_WARGAME
                         ficheCaractere1.TexteDuFiltre = "";
                         textBoxCaractere.Text = "";
                         numericUpDown1.Value = 0;
+                        numericUpDownMin.Value = 0;
+                        numericUpDownMax.Value = 0;
                         listeDeroulanteRank1.RankSelectionnee = null;
                         ficheCaractere1.CaractereSelectionne = null;
                     }
@@ -402,6 +422,9 @@ namespace EICE_WARGAME
             ficheCaractere1.TexteDuFiltre = "";            
             textBoxCaractere.Text = "";
             ficheCaractere1.CaractereSelectionne = null;
+            numericUpDown1.Value = 0;
+            numericUpDownMin.Value = 0;
+            numericUpDownMax.Value = 0;
         }
 
         private void buttonSupprimerCaract_Click(object sender, EventArgs e)
@@ -431,6 +454,9 @@ namespace EICE_WARGAME
                         textBoxPersonnageSelectionne.Clear();
                         ValidationProvider.SetError(ficheCaractere1, "Suppression correctement effectuée");
                         textBoxCaractere.Text = "";
+                        numericUpDown1.Value = 0;
+                        numericUpDownMin.Value = 0;
+                        numericUpDownMax.Value = 0;
                     }
                     else
                     {
@@ -560,6 +586,12 @@ namespace EICE_WARGAME
                 case CharactRank.Champ.Rank:
                     errorProviderErreurCaractere.SetError(listeDeroulanteFaction1, MessageErreur);
                     break;
+                case CharactRank.Champ.Min:
+                    errorProviderErreurCaractere.SetError(numericUpDownMin, MessageErreur);
+                    break;
+                case CharactRank.Champ.Max:
+                    errorProviderErreurCaractere.SetError(numericUpDownMax, MessageErreur);
+                    break;                    
             }
             buttonAjouterPersonnage.Enabled = false;
         }
