@@ -18,6 +18,8 @@ namespace EICE_WARGAME
             Rank,           
             Cost,
             SubUnity,
+            Min,
+            Max,
         }
 
         #region Membres privés
@@ -42,6 +44,10 @@ namespace EICE_WARGAME
         /// Membre stockant le cout 
         /// </summary>
         private int m_Cost;
+
+        private int m_Min;
+
+        private int m_Max;
 
         #endregion
 
@@ -137,13 +143,40 @@ namespace EICE_WARGAME
                 if (value < 0)
                 {
                     Declencher_SurErreur(this, Champ.Cost, "Votre coût doit être supérieur à 0");
+                }//TODO
+                else if (value > 1000)
+                {
+                    Declencher_SurErreur(this, Champ.Cost, "Votre coût doit être inférieur à 1 000");
                 }
-                else if (value > int.MaxValue)
+                else
+                {                    
+                    if (!int.Equals(value, m_Cost))
+                    {
+                        ModifierChamp(Champ.Cost, ref m_Cost, value);
+                    }
+                }
+            }
+        }
+
+        public int Min
+        {
+            get
+            {
+                return m_Min;
+            }
+
+            set
+            {
+                if (value < 0)
+                {
+                    Declencher_SurErreur(this, Champ.Cost, "Votre coût doit être supérieur à 0");
+                }
+                else if (value > 100)
                 {
                     Declencher_SurErreur(this, Champ.Cost, "Cout supérieur au maximum autoriser");
                 }
                 else
-                {                    
+                {
                     if (!int.Equals(value, m_Cost))
                     {
                         ModifierChamp(Champ.Cost, ref m_Cost, value);

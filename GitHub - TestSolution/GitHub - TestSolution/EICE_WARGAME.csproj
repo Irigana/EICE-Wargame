@@ -52,12 +52,6 @@
     <Compile Include="Vues\Fiches\FicheEquipementSansRecherche.Designer.cs">
       <DependentUpon>FicheEquipementSansRecherche.cs</DependentUpon>
     </Compile>
-    <Compile Include="Vues\Fiches\FicheUnity.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="Vues\Fiches\FicheUnity.Designer.cs">
-      <DependentUpon>FicheUnity.cs</DependentUpon>
-    </Compile>
     <Compile Include="Vues\Fiches\FicheFigurineStuff.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -341,9 +335,6 @@
     </Compile>
     <EmbeddedResource Include="Vues\Fiches\FicheEquipementSansRecherche.resx">
       <DependentUpon>FicheEquipementSansRecherche.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Vues\Fiches\FicheUnity.resx">
-      <DependentUpon>FicheUnity.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Vues\Fiches\FicheFigurineStuff.resx">
       <DependentUpon>FicheFigurineStuff.cs</DependentUpon>
