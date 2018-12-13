@@ -48,28 +48,28 @@ namespace EICE_WARGAME
                 }
                 else
                 {
-                    buttonScenario.Location = new Point(350, 185);
+                    buttonScenario.Location = new Point(350, 205);
                     buttonScenario.Size = new Size(225, 45);
 
-                    buttonFaction.Location = new Point(625, 185);
+                    buttonFaction.Location = new Point(625, 205);
                     buttonFaction.Size = new Size(225, 45);
 
-                    buttonSousFaction.Location = new Point(350, 240);
+                    buttonSousFaction.Location = new Point(350, 260);
                     buttonSousFaction.Size = new Size(225, 45);
 
-                    buttonPersonnage.Location = new Point(625, 240);
+                    buttonPersonnage.Location = new Point(625, 260);
                     buttonPersonnage.Size = new Size(225, 45);
 
-                    buttonEquipement.Location = new Point(625, 295);
+                    buttonEquipement.Location = new Point(625, 315);
                     buttonEquipement.Size = new Size(225, 45);
 
 
 
-                    buttonSubUnity.Location = new Point(350, 295);
+                    buttonSubUnity.Location = new Point(350, 315);
                     buttonSubUnity.Size = new Size(225, 45);
 
 
-                    buttonRetourMenuPrincipal.Location = new Point(350, 350);
+                    buttonRetourMenuPrincipal.Location = new Point(350, 370);
                     buttonRetourMenuPrincipal.Size = new Size(500, 45);
 
 
