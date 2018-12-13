@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using PDSGBD;
 
 namespace EICE_WARGAME
 {
@@ -151,7 +152,12 @@ namespace EICE_WARGAME
 			}
 		}
 
-		/*private IEnumerable<Scenario_Camp> EnumererScenario_Camp()
+        public override void SupprimerEnCascade(MyDB Connexion)
+        {
+            Connexion.Executer("DELETE FROM scenario WHERE sc_id = {0}", Id);
+        }
+
+        /*private IEnumerable<Scenario_Camp> EnumererScenario_Camp()
 		{
 			if (base.Connexion == null) return new Scenario_Camp[0];
 			return Scenario_Camp.Enumerer(Connexion, Connexion.Enumerer(
@@ -160,6 +166,6 @@ namespace EICE_WARGAME
 					WHERE (sc_id = {0})",
 				Id));
 		}*/
-		#endregion
-	}
+        #endregion
+    }
 }

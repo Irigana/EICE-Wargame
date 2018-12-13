@@ -71,18 +71,23 @@ namespace EICE_WARGAME
             buttonSupprimer.Enabled = false;
             listeDeroulanteUnity1.SurChangementSelection += ListeUnity_SurChangementSelection;
 
+            ficheSpecifiteScenario1.SurChangementSelection += Specificite_SurChangementSelection;
+
             Bitmap ImageRessource = new Bitmap(Properties.Resources.Validation25px);
             ValidationProvider.Icon = Icon.FromHandle(ImageRessource.GetHicon());            
         }
 
-        public void Specificite_SurChangementSelection(object sender,EventArgs e)
+        public void Specificite_SurChangementSelection(object sender, EventArgs e)
         {
             buttonAjouter.Enabled = false;
             buttonSupprimer.Enabled = true;
             buttonAnnuler.Enabled = true;
-            //listeDeroulanteUnity1.UnitySelectionnee = ficheSpecifiteScenario1.SpecificiteSelectionne.Unity;
-            //numericUpDownObligatoire.Value = ficheSpecifiteScenario1.SpecificiteSelectionne.Min;
-            //numericUpDown2.Value = ficheSpecifiteScenario1.SpecificiteSelectionne.Max;
+            if (ficheSpecifiteScenario1.SpecificiteSelectionne != null)
+            {
+                listeDeroulanteUnity1.UnitySelectionnee = ficheSpecifiteScenario1.SpecificiteSelectionne.Unity;
+                numericUpDownObligatoire.Value = ficheSpecifiteScenario1.SpecificiteSelectionne.Min;
+                numericUpDown2.Value = ficheSpecifiteScenario1.SpecificiteSelectionne.Max;
+            }
         }
 
         public void ChargerFiches(int NumeroDuCamp)
@@ -96,87 +101,147 @@ namespace EICE_WARGAME
         {
             ficheSpecifiteScenario1.SpecifiteScenario = Program.GMBD.EnumererCondiCamp(null, new MyDB.CodeSql("JOIN scenario_camp ON cc_fk_scenario_camp_id = sca_id JOIN unity on cc_fk_unity_id = un_id"), new MyDB.CodeSql("WHERE scenario_camp.sca_fk_camp_id = {0} AND scenario_camp.sca_fk_scenario_id = {1}", NumeroDuCamp, Scenario.Scenario.Id), null);
 
-            ficheSpecifiteScenario1.SurChangementSelection += Specificite_SurChangementSelection;
-
         }
 
         public void ClearFiche()
         {
             ficheSpecifiteScenario1.NettoyerListView();
+            numericUpDownObligatoire.Value = 0;
+            numericUpDown2.Value = 0;
+            listeDeroulanteUnity1.UnitySelectionnee = null;
+            errorProvider1.Clear();
+            ValidationProvider.Clear();
         }
 
         private void buttonAjouter_Click(object sender, EventArgs e)
         {
-            if (UnCampOuDeux == false)
+            // Vérifie qu'une armée n'est pas lié au scénario pour empêcher des erreurs dans une armée
+            Army ScenarioLie = Program.GMBD.EnumererArmy(null, null, new MyDB.CodeSql("WHERE ar_fk_scenario_camp_id = {0}", Scenario.Id), null).FirstOrDefault();
+            if (ScenarioLie == null)
             {
-                Scenario.Camp = Program.GMBD.EnumererCamp(null, null, new MyDB.CodeSql("WHERE ca_id = 3"), null).FirstOrDefault();
-                if ((Scenario.EstValide) && (Program.GMBD.AjouterScenarioCamp(Scenario)))
+                Scenario_Camp ScenarioCompletExiste = null;
+                if (UnCampOuDeux == false)
                 {
-                    RajouterNouvelleSpecificite(3);
-                }
-                else
-                {
+                    ScenarioCompletExiste = Program.GMBD.EnumererScenarioCamp(null, null, new MyDB.CodeSql("WHERE sca_fk_scenario_id = {0} AND sca_fk_camp_id = {1}", Scenario.Scenario.Id, 3), null).FirstOrDefault();
 
-                    // Supprime le scénario initialement crée, étant donné qu'un scénario ne peut être construit sans scénario camp
-                    Program.GMBD.SupprimerScenario(Scenario.Scenario);
-                }
-            }
-            else if (UnCampOuDeux == true)
-            {
-                Scenario.Camp = Program.GMBD.EnumererCamp(null, null, new MyDB.CodeSql("WHERE ca_id = 1"), null).FirstOrDefault();
-                if ((Scenario.EstValide) && (Program.GMBD.AjouterScenarioCamp(Scenario)))
-                {
-                    Scenario_Camp ScenarioCampDefense = new Scenario_Camp();
-                    ScenarioCampDefense.Scenario = Scenario.Scenario;                    
-                    ScenarioCampDefense.Camp = Program.GMBD.EnumererCamp(null, null, new MyDB.CodeSql("WHERE ca_id = 2"), null).FirstOrDefault();
-                    if ((Scenario.EstValide) && (Program.GMBD.AjouterScenarioCamp(ScenarioCampDefense)))
+                    if (ScenarioCompletExiste == null)
                     {
-                        if (this.Name.ToString() == "ficheScenarioCamp1")
+                        Scenario.Camp = Program.GMBD.EnumererCamp(null, null, new MyDB.CodeSql("WHERE ca_id = 3"), null).FirstOrDefault();
+                        if ((Scenario.EstValide) && (Program.GMBD.AjouterScenarioCamp(Scenario)))
                         {
-                            RajouterNouvelleSpecificite(1);
+                            if (!m_ValidationActive)
+                            {
+                                buttonAjouter.Click -= buttonAjouter_Click;
+                                SurClickAjout_Click(this, null);
+                            }
+                            RajouterNouvelleSpecificite(3);
                         }
-                        else if (this.Name.ToString() == "ficheScenarioCamp2")
+                        else
                         {
-                            RajouterNouvelleSpecificite(2);
+
+                            // Supprime le scénario initialement crée, étant donné qu'un scénario ne peut être construit sans scénario camp
+                            Program.GMBD.SupprimerScenario(Scenario.Scenario);
                         }
                     }
-                    else
+                    else if (this.Name.ToString() == "ficheScenarioCamp1")
                     {
-                        // Supprime le scénario camp d'avant si celui ci ne fonctionne pas et que l'autre a été ajouté
-                        Program.GMBD.SupprimerScenarioCamp(Scenario);
+                        RajouterNouvelleSpecificite(3);
+                    }
+
+                    ScenarioCompletExiste = null;
+                }
+                else if (UnCampOuDeux == true)
+                {
+                    ScenarioCompletExiste = Program.GMBD.EnumererScenarioCamp(null, null, new MyDB.CodeSql("WHERE sca_fk_scenario_id = {0} AND sca_fk_camp_id = {1}", Scenario.Scenario.Id, 1), null).FirstOrDefault();
+
+                    if (ScenarioCompletExiste == null)
+                    {
+                        //Rajoute le premier camp
+                        Scenario.Camp = Program.GMBD.EnumererCamp(null, null, new MyDB.CodeSql("WHERE ca_id = 1"), null).FirstOrDefault();
+                        if ((Scenario.EstValide) && (Program.GMBD.AjouterScenarioCamp(Scenario)))
+                        {
+                            ScenarioCompletExiste = Program.GMBD.EnumererScenarioCamp(null, null, new MyDB.CodeSql("WHERE sca_fk_scenario_id = {0} AND sca_fk_camp_id = {1}", Scenario.Scenario.Id, 2), null).FirstOrDefault();
+                            if (ScenarioCompletExiste == null)
+                            {
+                                Scenario_Camp ScenarioCampDefense = new Scenario_Camp();
+                                ScenarioCampDefense.Scenario = Scenario.Scenario;
+                                ScenarioCampDefense.Camp = Program.GMBD.EnumererCamp(null, null, new MyDB.CodeSql("WHERE ca_id = 2"), null).FirstOrDefault();
+                                // Rajoute le deuxième camp
+                                if ((ScenarioCampDefense.EstValide) && (Program.GMBD.AjouterScenarioCamp(ScenarioCampDefense)))
+                                {
+                                    if (this.Name.ToString() == "ficheScenarioCamp1")
+                                    {
+                                        RajouterNouvelleSpecificite(2);
+                                    }
+                                    else if (this.Name.ToString() == "ficheScenarioCamp2")
+                                    {
+                                        RajouterNouvelleSpecificite(1);
+                                    }
+
+                                    if (!m_ValidationActive)
+                                    {
+                                        buttonAjouter.Click -= buttonAjouter_Click;
+                                        SurClickAjout_Click(this, null);
+                                    }
+
+                                }
+                                else
+                                {
+                                    // Supprime le scénario camp d'avant si celui ci ne fonctionne pas et que l'autre a été ajouté
+                                    Program.GMBD.SupprimerScenarioCamp(Scenario);
+                                }
+                            }
+                            else
+                            {
+                                Program.GMBD.SupprimerScenarioCamp(Scenario);
+                            }
+                        }
+                        else
+                        {
+                            // Supprime le scénario initialement crée, étant donné qu'un scénario ne peut être construit sans scénario camp
+                            Program.GMBD.SupprimerScenario(Scenario.Scenario);
+                        }
+                    }
+                    else if (this.Name.ToString() == "ficheScenarioCamp1")
+                    {
+                        RajouterNouvelleSpecificite(2);
+                    }
+                    else if (this.Name.ToString() == "ficheScenarioCamp2")
+                    {
+                        RajouterNouvelleSpecificite(1);
                     }
                 }
-                else
-                {
-                    // Supprime le scénario initialement crée, étant donné qu'un scénario ne peut être construit sans scénario camp
-                    Program.GMBD.SupprimerScenario(Scenario.Scenario);
-                }
-            }
 
 
-                
-            if (!m_ValidationActive)
-            {
-                buttonAjouter.Click -= buttonAjouter_Click;
-                SurClickAjout_Click(this, null);
-            }            
+
+               
+            }     
         }
 
         private void RajouterNouvelleSpecificite(int NumeroDuCamp)
         {
             Condi_Camp NouvelleSpecificite = new Condi_Camp();
             NouvelleSpecificite.SurErreur += Specificite_SurErreur;
-            NouvelleSpecificite.Unity = listeDeroulanteUnity1.UnitySelectionnee;
+            NouvelleSpecificite.AvantChangement += Specificite_AvantChangement;
+            NouvelleSpecificite.Unity = listeDeroulanteUnity1.UnitySelectionnee;            
             NouvelleSpecificite.Scenario_Camp = Program.GMBD.EnumererScenarioCamp(null, new MyDB.CodeSql(@"JOIN scenario ON scenario.sc_id = scenario_camp.sca_fk_scenario_id 
                                                                                                             JOIN camp ON camp.ca_id = scenario_camp.sca_fk_camp_id "),
                                                                                       new MyDB.CodeSql("WHERE scenario.sc_id = {0} AND camp.ca_id = {1}", Scenario.Scenario.Id, NumeroDuCamp), null).FirstOrDefault();
             NouvelleSpecificite.Min = Convert.ToInt32(numericUpDownObligatoire.Value);
             NouvelleSpecificite.Max = Convert.ToInt32(numericUpDown2.Value);
-            if (NouvelleSpecificite.EstValide && Program.GMBD.AjouterSpecificite(NouvelleSpecificite))
+            //Condi_Camp SpecificiteExiste = Program.GMBD.EnumererCondiCamp(null, null, new MyDB.CodeSql("WHERE cc_fk_scenario_camp_id = {0} AND cc_fk_unity_id = {1}", NouvelleSpecificite.Scenario_Camp.Id, NouvelleSpecificite.Unity.Id),null).FirstOrDefault();
+            //if (SpecificiteExiste == null)
             {
-                ChargerSpecificite(NumeroDuCamp);
-                ValidationProvider.SetError(ficheSpecifiteScenario1, "Spécificité correctement rajoutée");
-            }
+                if (NouvelleSpecificite.EstValide && Program.GMBD.AjouterSpecificite(NouvelleSpecificite))
+                {
+                    ChargerSpecificite(NumeroDuCamp);
+                    ValidationProvider.SetError(ficheSpecifiteScenario1, "Spécificité correctement rajoutée");
+                }
+            }/*
+            else
+            {
+                errorProvider1
+            }*/
         }
 
         private void ListeUnity_SurChangementSelection(object sender, EventArgs e)
@@ -200,6 +265,9 @@ namespace EICE_WARGAME
                 case Condi_Camp.Champ.Max:
                     errorProvider1.SetError(numericUpDown2, MessageErreur);
                     break;
+                case Condi_Camp.Champ.Unity:
+                    errorProvider1.SetError(listeDeroulanteUnity1, MessageErreur);
+                    break;
             }
             buttonAjouter.Enabled = false;
         }
@@ -208,12 +276,13 @@ namespace EICE_WARGAME
         {
             switch (Champ)
             {
-                case Condi_Camp.Champ.Id:
+                case Condi_Camp.Champ.Unity:
                     {
                         Condi_Camp SpecificiteExiste = Program.GMBD.EnumererCondiCamp(null, null,
-                                                                                      new MyDB.CodeSql("WHERE cc_fk_scenario_camp_id = {0} AND cc_fk_unity_id = {1}", Scenario.Scenario.Id, listeDeroulanteUnity1.UnitySelectionnee.Id), null).FirstOrDefault();
+                                                                                      new MyDB.CodeSql("WHERE cc_fk_scenario_camp_id = {0} AND cc_fk_unity_id = {1}", Scenario.Id, listeDeroulanteUnity1.UnitySelectionnee.Id), null).FirstOrDefault();
                         if (SpecificiteExiste != null)
                         {
+                            ValidationProvider.Clear();
                             AccumulateurErreur.NotifierErreur("Cette spécificité existe déjà, veuillez en choisir une autre ou modifier l'existante !");
                         }
                         break;
@@ -262,7 +331,7 @@ namespace EICE_WARGAME
                         ChargerSpecificite(Scenario.Camp.Id);
                         buttonAjouter.Enabled = true;
                         buttonSupprimer.Enabled = false;                        
-                        errorProvider1.SetError(ficheSpecifiteScenario1, "Suppresion correctement effectuée");                        
+                        ValidationProvider.SetError(ficheSpecifiteScenario1, "Suppresion correctement effectuée");                        
                     }
                 }
                 // S'il refuse

@@ -206,10 +206,9 @@ namespace EICE_WARGAME
 
         private IEnumerable<Condi_Camp> EnumererCondiCamp()
         {
-            return Condi_Camp.Enumerer(Connexion, Connexion.Enumerer(@"SELECT * FROM  condi_camp 
-                                                                        JOIN scenario_camp ON condi_camp.cc_fk_scenario_camp_id = scenario_camp.sca_id
-                                                                        JOIN scenario ON scenario.sc_id = scenario_camp.sca_fk_scenario_id
-                                                                    WHERE scenario.sc_id = {0} AND scenario_camp.sca_fk_camp_id = {1}", Scenario.Id, Camp.Id));
+            return Condi_Camp.Enumerer(Connexion, Connexion.Enumerer(@"SELECT * FROM  condi_camp
+                                                                       JOIN scenario_camp ON condi_camp.cc_fk_scenario_camp_id = scenario_camp.sca_id                                                                                                                                                 
+                                                                    WHERE cc_fk_scenario_camp_id = {0} AND scenario_camp.sca_fk_camp_id = {1}", Scenario.Id, Camp.Id));
         }
         #endregion
     }

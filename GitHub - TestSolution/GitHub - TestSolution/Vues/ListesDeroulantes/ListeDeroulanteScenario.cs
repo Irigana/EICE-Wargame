@@ -79,6 +79,11 @@ namespace EICE_WARGAME
             return comboBoxScenario.SelectedIndex = ScenarioTrouve;
         }
 
+        public void ClearText()
+        {
+            comboBoxScenario.Text = "";
+        }
+
         public Scenario ScenarioSelectionnee
         {
             get

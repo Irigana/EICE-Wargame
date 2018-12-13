@@ -143,7 +143,7 @@
             this.labelRechercheScenario.Name = "labelRechercheScenario";
             this.labelRechercheScenario.Size = new System.Drawing.Size(168, 17);
             this.labelRechercheScenario.TabIndex = 61;
-            this.labelRechercheScenario.Text = "Rechercher un scenario :";
+            this.labelRechercheScenario.Text = "Rechercher un scénario :";
             // 
             // errorProvider
             // 
