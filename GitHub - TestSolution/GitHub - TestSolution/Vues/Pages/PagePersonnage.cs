@@ -111,14 +111,15 @@ namespace EICE_WARGAME
             listeDeroulanteSubUnity1.Enabled = true;
             listeDeroulanteSubUnity1.SubUnity = Program.GMBD.EnumererSubUnity(new MyDB.CodeSql("su_id,su_name"),
                 null,
-                new MyDB.CodeSql("WHERE su_fk_unity_id = {0}",
-                listeDeroulanteUnity1.UnitySelectionnee.Id),
+                new MyDB.CodeSql("WHERE su_fk_unity_id = {0} AND su_fk_subfaction_id = {1}",
+                listeDeroulanteUnity1.UnitySelectionnee.Id,listeDeroulanteSousFaction1.SousFactionSelectionnee.Id),
                 new MyDB.CodeSql("ORDER BY su_name"));
             listeDeroulanteSubUnity1.SurChangementSelection += ListeDeroulanteSubUnity_SurChangementSelection;
         }
 
         private void ListeDeroulanteSubUnity_SurChangementSelection(object sender, EventArgs e)
         {
+            // Problème : il boucle plusieurs fois dessus
             numericUpDown1.Enabled = true;
             listeDeroulanteRank1.Enabled = true;
             textBoxCaractere.Enabled = true;
@@ -263,8 +264,8 @@ namespace EICE_WARGAME
                                     SubUnity SubUnityExiste = Program.GMBD.EnumererSubUnity(null,
                                                                                             new MyDB.CodeSql(@"JOIN unity ON subunity.su_fk_unity_id = unity.un_id
                                                                                                                 "),
-                                                                                            new MyDB.CodeSql(" WHERE un_id = {0} AND su_id = {1}",
-                                                                                            listeDeroulanteUnity1.UnitySelectionnee.Id, listeDeroulanteSubUnity1.SubUnitySelectionnee.Id),
+                                                                                            new MyDB.CodeSql(" WHERE un_id = {0} AND su_id = {1} AND su_fk_subfaction_id = {2}",
+                                                                                            listeDeroulanteUnity1.UnitySelectionnee.Id, listeDeroulanteSubUnity1.SubUnitySelectionnee.Id, listeDeroulanteSousFaction1.SousFactionSelectionnee.Id),
                                                                                             null).FirstOrDefault();
                                     if (SubUnityExiste != null)
                                     {
@@ -313,9 +314,9 @@ namespace EICE_WARGAME
                                             CharactRank NouveauPersonnage = new CharactRank();
                                             NouveauPersonnage.Caractere = CaractereExistant;
                                             NouveauPersonnage.AvantChangement += PersonnageEnEdition_AvantChangement;
-                                            NouveauPersonnage.Rank = listeDeroulanteRank1.RankSelectionnee;
-                                            NouveauPersonnage.Cost = Convert.ToInt32(numericUpDown1.Value);
-                                            NouveauPersonnage.SubUnity = listeDeroulanteSubUnity1.SubUnitySelectionnee;                             
+                                            NouveauPersonnage.SubUnity = listeDeroulanteSubUnity1.SubUnitySelectionnee;
+                                            NouveauPersonnage.Rank = listeDeroulanteRank1.RankSelectionnee;                                            
+                                            NouveauPersonnage.Cost = Convert.ToInt32(numericUpDown1.Value);                           
                                             if ((NouveauPersonnage.EstValide) && Program.GMBD.AjouterPersonnage(NouveauPersonnage))
                                             {
                                                 Program.GMBD.MettreAJourFicheCaractere(ficheCaractere1, listeDeroulanteFaction1.FactionSelectionnee.Id, listeDeroulanteSousFaction1.SousFactionSelectionnee.Id, listeDeroulanteUnity1.UnitySelectionnee.Id, listeDeroulanteSubUnity1.SubUnitySelectionnee.Id);
@@ -373,20 +374,25 @@ namespace EICE_WARGAME
                     m_PersonnageEnEdition.Caractere = CaractereExistant;
                 }
 
-                // TODO : StuffCharactRank LienExistant = Program.GMBD.EnumererStuff
-
-                if(listeDeroulanteRank1.RankSelectionnee != null) m_PersonnageEnEdition.Rank = listeDeroulanteRank1.RankSelectionnee;
-                m_PersonnageEnEdition.Caractere.SousFaction = listeDeroulanteSousFaction1.SousFactionSelectionnee;
-                if ((m_PersonnageEnEdition.EstValide) && (Program.GMBD.ModifierPersonnage(m_PersonnageEnEdition)))
+                StuffCharactRank LienExistant = Program.GMBD.EnumererStuffCharactRank(null, null, new MyDB.CodeSql("WHERE scr_id = {0}", m_PersonnageEnEdition.Id),null).FirstOrDefault();
+                if (LienExistant == null)
                 {
-                    Program.GMBD.MettreAJourFicheCaractere(ficheCaractere1,listeDeroulanteFaction1.FactionSelectionnee.Id, listeDeroulanteSousFaction1.SousFactionSelectionnee.Id, listeDeroulanteUnity1.UnitySelectionnee.Id, listeDeroulanteSubUnity1.SubUnitySelectionnee.Id);
-                    ficheCaractere1.TexteDuFiltre = "";
-                    textBoxCaractere.Text = "";
-                    numericUpDown1.Value = 0;
-                    listeDeroulanteRank1.RankSelectionnee = null;
-                    ficheCaractere1.CaractereSelectionne = null;
+                    if (listeDeroulanteRank1.RankSelectionnee != null) m_PersonnageEnEdition.Rank = listeDeroulanteRank1.RankSelectionnee;
+                    m_PersonnageEnEdition.Caractere.SousFaction = listeDeroulanteSousFaction1.SousFactionSelectionnee;
+                    if ((m_PersonnageEnEdition.EstValide) && (Program.GMBD.ModifierPersonnage(m_PersonnageEnEdition)))
+                    {
+                        Program.GMBD.MettreAJourFicheCaractere(ficheCaractere1, listeDeroulanteFaction1.FactionSelectionnee.Id, listeDeroulanteSousFaction1.SousFactionSelectionnee.Id, listeDeroulanteUnity1.UnitySelectionnee.Id, listeDeroulanteSubUnity1.SubUnitySelectionnee.Id);
+                        ficheCaractere1.TexteDuFiltre = "";
+                        textBoxCaractere.Text = "";
+                        numericUpDown1.Value = 0;
+                        listeDeroulanteRank1.RankSelectionnee = null;
+                        ficheCaractere1.CaractereSelectionne = null;
+                    }
                 }
-
+                else
+                {
+                    errorProviderErreurCaractere.SetError(textBoxCaractere, "Impossible de supprimer ce personnage, il est utilisé dans une autre page");
+                }
 
             }
         }
@@ -577,14 +583,18 @@ namespace EICE_WARGAME
                             errorProviderErreurCaractere.SetError(numericUpDown1,"Votre coût doit être supérieur ou égal à 1");
                             AccumulateurErreur.NotifierErreur("Ce coût n'est pas correct, veuillez en choisir une autre !");
                         }
-                        CharactRank PersonnageAvecCeRankExiste = Program.GMBD.EnumererPersonnage(null, null, new MyDB.CodeSql("WHERE cr_fk_ra_id = {0} AND cr_fk_ch_id = {1}", Entite.Rank.Id, Entite.Caractere.Id), null).FirstOrDefault();
+                        break;
+                    }
+                case CharactRank.Champ.Rank:
+                    {
+                        CharactRank PersonnageAvecCeRankExiste = Program.GMBD.EnumererPersonnage(null, new MyDB.CodeSql("JOIN subunity ON char_rank.cr_sub_id = su_id"), new MyDB.CodeSql("WHERE cr_fk_ra_id = {0} AND cr_fk_ch_id = {1} AND cr_sub_id = {2}", listeDeroulanteRank1.RankSelectionnee.Id, Entite.Caractere.Id, Entite.SubUnity.Id), null).FirstOrDefault();
                         if (PersonnageAvecCeRankExiste != null)
                         {
                             errorProviderErreurCaractere.SetError(listeDeroulanteRank1, "Un personnage avec ce rank existe déjà");
                             AccumulateurErreur.NotifierErreur("Un personnage avec ce rank existe déjà");
                         }
                         break;
-                    }        
+                    }
             }
         }
 
