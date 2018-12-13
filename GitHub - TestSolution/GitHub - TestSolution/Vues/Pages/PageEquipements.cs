@@ -105,7 +105,7 @@ namespace EICE_WARGAME
             q_buttonAjouterCaract.Enabled = false;
             q_buttonModifier.Enabled = false;
             q_buttonSupprimer.Enabled = false;
-            q_buttonAjouterEquipable.Enabled = false;
+            q_buttonEquiper.Enabled = false;
             #endregion
 
             #region Initialisation de la ListView des caractéristiques
@@ -409,6 +409,7 @@ namespace EICE_WARGAME
                             m_StuffFeatureValide = false;
                             q_buttonAjouterCaract.Enabled = false;
                             AccumulateurErreur.NotifierErreur("Cet équipement dispose déjà de cette caractèristique, veuillez en choisir une autre !");
+                            errorProvider1.SetError(z_listeDeroulanteFeature,"Cet équipement dispose déjà de cette caractèristique, veuillez en choisir une autre !");
                             //errorProviderErreurCaractere.SetError(listeDeroulanteFeature1, "Ce personnage dispose déjà de cette caractèristique, veuillez en choisir une autre !");
                         }
                     }
@@ -555,7 +556,7 @@ namespace EICE_WARGAME
                 q_buttonModifier.Enabled = true;
                 q_buttonSupprimer.Enabled = true;
                 
-                z_listeDeroulanteFeature.Feature = Program.GMBD.EnumererFeature(null, null, null, PDSGBD.MyDB.CreerCodeSql("fe_name"));
+                z_listeDeroulanteFeature.Feature = Program.GMBD.EnumererFeature(null, null, new MyDB.CodeSql("WHERE fe_filtre = {0}","E"), PDSGBD.MyDB.CreerCodeSql("ORDER BY fe_name"));
                 z_listeDeroulanteFeature.SurChangementSelection += ListeFeatureChangementSelection;
                 z_listeDeroulanteFeature.Enabled = true;
                 z_textBoxValeur.Enabled = true;
@@ -589,7 +590,7 @@ namespace EICE_WARGAME
             m_CharRank.Caractere.SousFaction = z_listeDeroulanteSousFaction.SousFactionSelectionnee;
             m_CharRank.SubUnity = z_listeDeroulanteSubUnity.SubUnitySelectionnee;
 
-            q_buttonAjouterEquipable.Enabled = m_CharRank.EstValide;
+            q_buttonEquiper.Enabled = m_CharRank.EstValide;
         }
 
         private void buttonAjouterEquipable_Click(object sender, EventArgs e)
@@ -618,6 +619,26 @@ namespace EICE_WARGAME
             buttonRetourDashBoard1.Utilisateur = Utilisateur;
             // Permet d'obtenir l'option du menu admin utilisateur une fois l'admin identifié
             if (Utilisateur != null) if (Utilisateur.Role.Id == 2) menuAdmin1.EstAdmin = true;
+        }
+
+        private void q_buttonModifierCaracteristique_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void q_buttonAnnulerCaracteristique_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void q_buttonSupprimerCaracteristique_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void q_buttonDelier_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

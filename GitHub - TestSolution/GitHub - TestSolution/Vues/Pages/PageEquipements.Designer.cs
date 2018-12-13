@@ -48,7 +48,7 @@
             this.label4 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.listViewCaracteristiques = new System.Windows.Forms.ListView();
-            this.q_buttonAjouterEquipable = new System.Windows.Forms.Button();
+            this.q_buttonEquiper = new System.Windows.Forms.Button();
             this.label6 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
@@ -76,6 +76,10 @@
             this.z_listeDeroulanteFeature = new EICE_WARGAME.ListeDeroulanteFeature();
             this.z_listeDeroulanteType = new EICE_WARGAME.ListeDeroulanteType();
             this.buttonOptionsUser1 = new EICE_WARGAME.ButtonOptionsUser();
+            this.q_buttonModifierCaracteristique = new System.Windows.Forms.Button();
+            this.q_buttonAnnulerCaracteristique = new System.Windows.Forms.Button();
+            this.q_buttonSupprimerCaracteristique = new System.Windows.Forms.Button();
+            this.q_buttonDelier = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.z_numericUpDownCout)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.z_numericUpDownMinimum)).BeginInit();
@@ -240,11 +244,11 @@
             this.q_buttonAjouterCaract.FlatAppearance.BorderColor = System.Drawing.SystemColors.WindowFrame;
             this.q_buttonAjouterCaract.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.q_buttonAjouterCaract.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F);
-            this.q_buttonAjouterCaract.Location = new System.Drawing.Point(1308, 195);
+            this.q_buttonAjouterCaract.Location = new System.Drawing.Point(1307, 205);
             this.q_buttonAjouterCaract.Name = "q_buttonAjouterCaract";
-            this.q_buttonAjouterCaract.Size = new System.Drawing.Size(148, 49);
+            this.q_buttonAjouterCaract.Size = new System.Drawing.Size(90, 26);
             this.q_buttonAjouterCaract.TabIndex = 33;
-            this.q_buttonAjouterCaract.Text = "Ajouter Caracteristique";
+            this.q_buttonAjouterCaract.Text = "Ajouter";
             this.q_buttonAjouterCaract.UseVisualStyleBackColor = false;
             this.q_buttonAjouterCaract.Click += new System.EventHandler(this.buttonAjouterCaract_Click);
             // 
@@ -278,15 +282,15 @@
             this.listViewCaracteristiques.TabIndex = 36;
             this.listViewCaracteristiques.UseCompatibleStateImageBehavior = false;
             // 
-            // q_buttonAjouterEquipable
+            // q_buttonEquiper
             // 
-            this.q_buttonAjouterEquipable.Location = new System.Drawing.Point(815, 651);
-            this.q_buttonAjouterEquipable.Name = "q_buttonAjouterEquipable";
-            this.q_buttonAjouterEquipable.Size = new System.Drawing.Size(75, 23);
-            this.q_buttonAjouterEquipable.TabIndex = 42;
-            this.q_buttonAjouterEquipable.Text = "Lier";
-            this.q_buttonAjouterEquipable.UseVisualStyleBackColor = true;
-            this.q_buttonAjouterEquipable.Click += new System.EventHandler(this.buttonAjouterEquipable_Click);
+            this.q_buttonEquiper.Location = new System.Drawing.Point(970, 525);
+            this.q_buttonEquiper.Name = "q_buttonEquiper";
+            this.q_buttonEquiper.Size = new System.Drawing.Size(75, 23);
+            this.q_buttonEquiper.TabIndex = 42;
+            this.q_buttonEquiper.Text = ">";
+            this.q_buttonEquiper.UseVisualStyleBackColor = true;
+            this.q_buttonEquiper.Click += new System.EventHandler(this.buttonAjouterEquipable_Click);
             // 
             // label6
             // 
@@ -528,10 +532,66 @@
             this.buttonOptionsUser1.TabIndex = 16;
             this.buttonOptionsUser1.Utilisateur = null;
             // 
+            // q_buttonModifierCaracteristique
+            // 
+            this.q_buttonModifierCaracteristique.BackColor = System.Drawing.SystemColors.Window;
+            this.q_buttonModifierCaracteristique.FlatAppearance.BorderColor = System.Drawing.SystemColors.WindowFrame;
+            this.q_buttonModifierCaracteristique.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.q_buttonModifierCaracteristique.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F);
+            this.q_buttonModifierCaracteristique.Location = new System.Drawing.Point(1403, 205);
+            this.q_buttonModifierCaracteristique.Name = "q_buttonModifierCaracteristique";
+            this.q_buttonModifierCaracteristique.Size = new System.Drawing.Size(90, 26);
+            this.q_buttonModifierCaracteristique.TabIndex = 65;
+            this.q_buttonModifierCaracteristique.Text = "Modifier";
+            this.q_buttonModifierCaracteristique.UseVisualStyleBackColor = false;
+            this.q_buttonModifierCaracteristique.Click += new System.EventHandler(this.q_buttonModifierCaracteristique_Click);
+            // 
+            // q_buttonAnnulerCaracteristique
+            // 
+            this.q_buttonAnnulerCaracteristique.BackColor = System.Drawing.SystemColors.Window;
+            this.q_buttonAnnulerCaracteristique.FlatAppearance.BorderColor = System.Drawing.SystemColors.WindowFrame;
+            this.q_buttonAnnulerCaracteristique.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.q_buttonAnnulerCaracteristique.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F);
+            this.q_buttonAnnulerCaracteristique.Location = new System.Drawing.Point(1307, 239);
+            this.q_buttonAnnulerCaracteristique.Name = "q_buttonAnnulerCaracteristique";
+            this.q_buttonAnnulerCaracteristique.Size = new System.Drawing.Size(90, 26);
+            this.q_buttonAnnulerCaracteristique.TabIndex = 66;
+            this.q_buttonAnnulerCaracteristique.Text = "Annuler";
+            this.q_buttonAnnulerCaracteristique.UseVisualStyleBackColor = false;
+            this.q_buttonAnnulerCaracteristique.Click += new System.EventHandler(this.q_buttonAnnulerCaracteristique_Click);
+            // 
+            // q_buttonSupprimerCaracteristique
+            // 
+            this.q_buttonSupprimerCaracteristique.BackColor = System.Drawing.SystemColors.Window;
+            this.q_buttonSupprimerCaracteristique.FlatAppearance.BorderColor = System.Drawing.SystemColors.WindowFrame;
+            this.q_buttonSupprimerCaracteristique.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.q_buttonSupprimerCaracteristique.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F);
+            this.q_buttonSupprimerCaracteristique.Location = new System.Drawing.Point(1403, 239);
+            this.q_buttonSupprimerCaracteristique.Name = "q_buttonSupprimerCaracteristique";
+            this.q_buttonSupprimerCaracteristique.Size = new System.Drawing.Size(90, 26);
+            this.q_buttonSupprimerCaracteristique.TabIndex = 67;
+            this.q_buttonSupprimerCaracteristique.Text = "Supprimer";
+            this.q_buttonSupprimerCaracteristique.UseVisualStyleBackColor = false;
+            this.q_buttonSupprimerCaracteristique.Click += new System.EventHandler(this.q_buttonSupprimerCaracteristique_Click);
+            // 
+            // q_buttonDelier
+            // 
+            this.q_buttonDelier.Location = new System.Drawing.Point(970, 560);
+            this.q_buttonDelier.Name = "q_buttonDelier";
+            this.q_buttonDelier.Size = new System.Drawing.Size(75, 23);
+            this.q_buttonDelier.TabIndex = 68;
+            this.q_buttonDelier.Text = "<";
+            this.q_buttonDelier.UseVisualStyleBackColor = true;
+            this.q_buttonDelier.Click += new System.EventHandler(this.q_buttonDelier_Click);
+            // 
             // PageEquipements
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.q_buttonDelier);
+            this.Controls.Add(this.q_buttonSupprimerCaracteristique);
+            this.Controls.Add(this.q_buttonAnnulerCaracteristique);
+            this.Controls.Add(this.q_buttonModifierCaracteristique);
             this.Controls.Add(this.label16);
             this.Controls.Add(this.z_textBoxSelection);
             this.Controls.Add(this.label15);
@@ -553,7 +613,7 @@
             this.Controls.Add(this.label6);
             this.Controls.Add(this.z_listeDeroulanteSousFaction);
             this.Controls.Add(this.z_listeDeroulanteFaction);
-            this.Controls.Add(this.q_buttonAjouterEquipable);
+            this.Controls.Add(this.q_buttonEquiper);
             this.Controls.Add(this.z_ficheEquipement);
             this.Controls.Add(this.buttonRetourDashBoard1);
             this.Controls.Add(this.menuAdmin1);
@@ -616,7 +676,7 @@
         private MenuAdmin menuAdmin1;
         private ButtonRetourDashBoard buttonRetourDashBoard1;
         private FicheEquipement z_ficheEquipement;
-        private System.Windows.Forms.Button q_buttonAjouterEquipable;
+        private System.Windows.Forms.Button q_buttonEquiper;
         private ListeDeroulanteSousFaction z_listeDeroulanteSousFaction;
         private ListeDeroulanteFaction z_listeDeroulanteFaction;
         private System.Windows.Forms.Label label6;
@@ -638,5 +698,9 @@
         private ListeDeroulanteUnity z_listeDeroulanteUnity;
         private System.Windows.Forms.Label label16;
         private System.Windows.Forms.TextBox z_textBoxSelection;
+        private System.Windows.Forms.Button q_buttonSupprimerCaracteristique;
+        private System.Windows.Forms.Button q_buttonAnnulerCaracteristique;
+        private System.Windows.Forms.Button q_buttonModifierCaracteristique;
+        private System.Windows.Forms.Button q_buttonDelier;
     }
 }
