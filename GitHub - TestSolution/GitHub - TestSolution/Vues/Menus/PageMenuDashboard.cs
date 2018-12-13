@@ -63,7 +63,10 @@ namespace EICE_WARGAME
                     buttonEquipement.Location = new Point(475, 385);
                     buttonEquipement.Size = new Size(225, 45);
 
-                    buttonRetourMenuPrincipal.Location = new Point(475, 435);
+                    buttonSubUnity.Location = new Point(475, 435);
+                    buttonSubUnity.Size = new Size(225, 45);
+
+                    buttonRetourMenuPrincipal.Location = new Point(475, 485);
                     buttonRetourMenuPrincipal.Size = new Size(225, 45);
 
                     buttonGestionUser.Hide();
@@ -140,6 +143,16 @@ namespace EICE_WARGAME
         private void buttonScenario_Click(object sender, EventArgs e)
         {
             Form_Principal.Instance.CreerPageCourante<PageScenario>(
+                            (page) =>
+                            {
+                                page.Utilisateur = Utilisateur;
+                                return true;
+                            });
+        }
+
+        private void buttonSubUnity_Click(object sender, EventArgs e)
+        {
+            Form_Principal.Instance.CreerPageCourante<PageSubUnity>(
                             (page) =>
                             {
                                 page.Utilisateur = Utilisateur;
