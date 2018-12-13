@@ -49,6 +49,7 @@ namespace EICE_WARGAME
             listeDeroulanteChar1.Enabled = false;
             ficheEquipementSansRecherche1.Enabled = false;
             ficheEquipementSurFigurine1.Enabled = false;
+            numericUpDown1.Enabled = false;
         }
 
         private void ListeDeroulanteFaction_SurChangementSelection(object sender, EventArgs e)
@@ -56,7 +57,6 @@ namespace EICE_WARGAME
             listeDeroulanteSousFaction1.Enabled = true;
             listeDeroulanteSousFaction1.ResetTextSousFaction();
             Program.GMBD.MettreAJourListeSousFaction(listeDeroulanteSousFaction1, listeDeroulanteFaction1.FactionSelectionnee.Id);
-            listeDeroulanteSousFaction1.SurChangementSelection += ListeDeroulanteSousFaction_SurChangementSelection;
         }
 
         private void ListeDeroulanteSousFaction_SurChangementSelection(object sender, EventArgs e)
@@ -95,6 +95,7 @@ namespace EICE_WARGAME
 
         private void ListeDeroulanteChar_SurChangementSelection(object sender, EventArgs e)
         {
+            numericUpDown1.Enabled = true;
             ficheEquipementSansRecherche1.Enabled = true;
             ficheEquipementSansRecherche1.Equipement = Program.GMBD.EnumererStuff(
                         null,
