@@ -49,7 +49,7 @@ namespace EICE_WARGAME
             listeDeroulanteChar1.Enabled = false;
             ficheEquipementSansRecherche1.Enabled = false;
             ficheEquipementSurFigurine1.Enabled = false;
-            numericUpDown1.Enabled = false;
+
         }
 
         private void ListeDeroulanteFaction_SurChangementSelection(object sender, EventArgs e)
@@ -57,6 +57,7 @@ namespace EICE_WARGAME
             listeDeroulanteSousFaction1.Enabled = true;
             listeDeroulanteSousFaction1.ResetTextSousFaction();
             Program.GMBD.MettreAJourListeSousFaction(listeDeroulanteSousFaction1, listeDeroulanteFaction1.FactionSelectionnee.Id);
+            listeDeroulanteSousFaction1.SurChangementSelection += ListeDeroulanteSousFaction_SurChangementSelection;
         }
 
         private void ListeDeroulanteSousFaction_SurChangementSelection(object sender, EventArgs e)
@@ -69,8 +70,11 @@ namespace EICE_WARGAME
         private void ListeDeroulanteUnity_SurChangementSelection(object sender, EventArgs e)
         {
             listeDeroulanteSubUnity1.Enabled = true;
-            listeDeroulanteSubUnity1.SubUnity = Program.GMBD.EnumererSubUnity(null, null, new MyDB.CodeSql("WHERE su_fk_unity_id = {0}", listeDeroulanteUnity1.UnitySelectionnee.Id),
-                                                                                          new MyDB.CodeSql("ORDER BY su_name"));
+            listeDeroulanteSubUnity1.SubUnity = Program.GMBD.EnumererSubUnity(null,null,
+                                                                             // new MyDB.CodeSql(@"JOIN char_rank ON cr_sub_id = su_fk_unity_id 
+                                                                             //                    JOIN charact ON cr_fk_ch_id = ch_id"),
+                                                                              new MyDB.CodeSql("WHERE su_fk_unity_id = {0}", listeDeroulanteUnity1.UnitySelectionnee.Id),
+                                                                              new MyDB.CodeSql("ORDER BY su_name"));
             listeDeroulanteSubUnity1.SurChangementSelection += ListeDeroulanteSubUnity_SurChangementSelection;
         }
 
@@ -95,7 +99,6 @@ namespace EICE_WARGAME
 
         private void ListeDeroulanteChar_SurChangementSelection(object sender, EventArgs e)
         {
-            numericUpDown1.Enabled = true;
             ficheEquipementSansRecherche1.Enabled = true;
             ficheEquipementSansRecherche1.Equipement = Program.GMBD.EnumererStuff(
                         null,
@@ -259,6 +262,7 @@ namespace EICE_WARGAME
                                                 if((NouvelleFigurine.EstValide) && Program.GMBD.AjouterFigurine(NouvelleFigurine))
                                                 {
                                                       Program.GMBD.MettreAJourFicheFigurine(ficheFigurineStuff1, Utilisateur.Id);
+                                                    listeDeroulanteFaction1.ResetText();
                                                 }
                                             }
                                         }
