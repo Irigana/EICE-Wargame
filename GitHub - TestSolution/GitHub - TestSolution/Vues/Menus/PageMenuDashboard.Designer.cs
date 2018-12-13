@@ -65,11 +65,10 @@
             // buttonRetourMenuPrincipal
             // 
             this.buttonRetourMenuPrincipal.BackColor = System.Drawing.SystemColors.Window;
-            this.buttonRetourMenuPrincipal.FlatAppearance.BorderColor = System.Drawing.SystemColors.ControlDarkDark;
             this.buttonRetourMenuPrincipal.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonRetourMenuPrincipal.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
             this.buttonRetourMenuPrincipal.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.buttonRetourMenuPrincipal.Location = new System.Drawing.Point(624, 641);
+            this.buttonRetourMenuPrincipal.Location = new System.Drawing.Point(817, 488);
             this.buttonRetourMenuPrincipal.Name = "buttonRetourMenuPrincipal";
             this.buttonRetourMenuPrincipal.Size = new System.Drawing.Size(300, 55);
             this.buttonRetourMenuPrincipal.TabIndex = 4;
@@ -80,11 +79,10 @@
             // buttonEquipement
             // 
             this.buttonEquipement.BackColor = System.Drawing.SystemColors.Window;
-            this.buttonEquipement.FlatAppearance.BorderColor = System.Drawing.SystemColors.ControlDarkDark;
             this.buttonEquipement.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonEquipement.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
             this.buttonEquipement.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.buttonEquipement.Location = new System.Drawing.Point(624, 397);
+            this.buttonEquipement.Location = new System.Drawing.Point(443, 413);
             this.buttonEquipement.Name = "buttonEquipement";
             this.buttonEquipement.Size = new System.Drawing.Size(300, 55);
             this.buttonEquipement.TabIndex = 3;
@@ -109,7 +107,7 @@
             this.buttonSousFaction.BackColor = System.Drawing.SystemColors.Window;
             this.buttonSousFaction.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonSousFaction.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
-            this.buttonSousFaction.Location = new System.Drawing.Point(624, 336);
+            this.buttonSousFaction.Location = new System.Drawing.Point(817, 336);
             this.buttonSousFaction.Name = "buttonSousFaction";
             this.buttonSousFaction.Size = new System.Drawing.Size(300, 55);
             this.buttonSousFaction.TabIndex = 5;
@@ -122,7 +120,7 @@
             this.buttonFaction.BackColor = System.Drawing.SystemColors.Window;
             this.buttonFaction.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonFaction.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
-            this.buttonFaction.Location = new System.Drawing.Point(624, 275);
+            this.buttonFaction.Location = new System.Drawing.Point(817, 262);
             this.buttonFaction.Name = "buttonFaction";
             this.buttonFaction.Size = new System.Drawing.Size(300, 55);
             this.buttonFaction.TabIndex = 6;
@@ -135,7 +133,7 @@
             this.buttonGestionUser.BackColor = System.Drawing.SystemColors.Window;
             this.buttonGestionUser.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonGestionUser.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
-            this.buttonGestionUser.Location = new System.Drawing.Point(624, 580);
+            this.buttonGestionUser.Location = new System.Drawing.Point(443, 488);
             this.buttonGestionUser.Name = "buttonGestionUser";
             this.buttonGestionUser.Size = new System.Drawing.Size(300, 55);
             this.buttonGestionUser.TabIndex = 7;
@@ -148,7 +146,7 @@
             this.buttonPersonnage.BackColor = System.Drawing.SystemColors.Window;
             this.buttonPersonnage.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonPersonnage.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
-            this.buttonPersonnage.Location = new System.Drawing.Point(624, 458);
+            this.buttonPersonnage.Location = new System.Drawing.Point(443, 336);
             this.buttonPersonnage.Name = "buttonPersonnage";
             this.buttonPersonnage.Size = new System.Drawing.Size(300, 55);
             this.buttonPersonnage.TabIndex = 8;
@@ -161,7 +159,7 @@
             this.buttonScenario.BackColor = System.Drawing.SystemColors.Window;
             this.buttonScenario.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonScenario.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
-            this.buttonScenario.Location = new System.Drawing.Point(624, 214);
+            this.buttonScenario.Location = new System.Drawing.Point(443, 262);
             this.buttonScenario.Name = "buttonScenario";
             this.buttonScenario.Size = new System.Drawing.Size(300, 55);
             this.buttonScenario.TabIndex = 9;
@@ -172,11 +170,10 @@
             // buttonSubUnity
             // 
             this.buttonSubUnity.BackColor = System.Drawing.SystemColors.Window;
-            this.buttonSubUnity.FlatAppearance.BorderColor = System.Drawing.SystemColors.ControlDarkDark;
             this.buttonSubUnity.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonSubUnity.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
             this.buttonSubUnity.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.buttonSubUnity.Location = new System.Drawing.Point(624, 519);
+            this.buttonSubUnity.Location = new System.Drawing.Point(817, 413);
             this.buttonSubUnity.Name = "buttonSubUnity";
             this.buttonSubUnity.Size = new System.Drawing.Size(300, 55);
             this.buttonSubUnity.TabIndex = 10;
