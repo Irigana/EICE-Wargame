@@ -46,15 +46,25 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Vues\Pages\PageImpressionListeUnite.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Vues\Pages\PageImpressionListeUnite.Designer.cs">
+      <DependentUpon>PageImpressionListeUnite.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Vues\Pages\PageImpressionCarteUnite.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Vues\Pages\PageImpressionCarteUnite.Designer.cs">
+      <DependentUpon>PageImpressionCarteUnite.cs</DependentUpon>
+    </Compile>
     <Compile Include="Vues\Fiches\FicheEquipementSansRecherche.cs">
       <SubType>UserControl</SubType>
     </Compile>
     <Compile Include="Vues\Fiches\FicheEquipementSansRecherche.Designer.cs">
       <DependentUpon>FicheEquipementSansRecherche.cs</DependentUpon>
     </Compile>
-    <Compile Include="Vues\Fiches\FicheUnity.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
+    <Compile Include="Vues\Fiches\FicheUnity.cs" />
     <Compile Include="Vues\Fiches\FicheUnity.Designer.cs">
       <DependentUpon>FicheUnity.cs</DependentUpon>
     </Compile>
@@ -389,6 +399,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Vues\Fiches\FicheCaracteristique.resx">
       <DependentUpon>FicheCaracteristique.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Vues\Pages\PageImpressionCarteUnite.resx">
+      <DependentUpon>PageImpressionCarteUnite.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Vues\Pages\PageImpressionListeUnite.resx">
+      <DependentUpon>PageImpressionListeUnite.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Vues\Pages\PagePersonnage.resx">
       <DependentUpon>PagePersonnage.cs</DependentUpon>
