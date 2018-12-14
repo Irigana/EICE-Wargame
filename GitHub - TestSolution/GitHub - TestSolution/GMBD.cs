@@ -212,8 +212,19 @@ namespace EICE_WARGAME
             if (!m_BD.EstConnecte) Initialiser();
             SubUnity.SupprimerEnCascade(m_BD);
             return true;
-        }        
-        
+        }
+
+        public bool AjouterSubSub(SubSub NouvelleSubSub)
+        {
+            return NouvelleSubSub.Enregistrer(m_BD, NouvelleSubSub, NouvelleSubSub.IdDeLaTablePrincipale, false);
+        }
+
+        public bool SupprimerSubSub(SubSub SubSub)
+        {
+            if (!m_BD.EstConnecte) Initialiser();
+            SubSub.SupprimerEnCascade(m_BD);
+            return true;
+        }
         #endregion
 
         #region Requetes caractère

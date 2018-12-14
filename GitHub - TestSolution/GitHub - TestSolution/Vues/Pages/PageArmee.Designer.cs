@@ -48,6 +48,7 @@
             this.z_listeDeroulanteFigurine = new EICE_WARGAME.ListeDeroulanteFigurine();
             this.label8 = new System.Windows.Forms.Label();
             this.buttonOptionsUser1 = new EICE_WARGAME.ButtonOptionsUser();
+            this.z_listeDeroulanteChar = new EICE_WARGAME.ListeDeroulanteChar();
             this.SuspendLayout();
             // 
             // labelMaCollection
@@ -224,10 +225,20 @@
             this.buttonOptionsUser1.TabIndex = 21;
             this.buttonOptionsUser1.Utilisateur = null;
             // 
+            // z_listeDeroulanteChar
+            // 
+            this.z_listeDeroulanteChar.CharactSelectionnee = null;
+            this.z_listeDeroulanteChar.Location = new System.Drawing.Point(492, 265);
+            this.z_listeDeroulanteChar.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.z_listeDeroulanteChar.Name = "z_listeDeroulanteChar";
+            this.z_listeDeroulanteChar.Size = new System.Drawing.Size(260, 30);
+            this.z_listeDeroulanteChar.TabIndex = 22;
+            // 
             // PageArmee
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.z_listeDeroulanteChar);
             this.Controls.Add(this.buttonOptionsUser1);
             this.Controls.Add(this.label8);
             this.Controls.Add(this.z_listeDeroulanteFigurine);
@@ -277,5 +288,6 @@
         private ListeDeroulanteFigurine z_listeDeroulanteFigurine;
         private System.Windows.Forms.Label label8;
         private ButtonOptionsUser buttonOptionsUser1;
+        private ListeDeroulanteChar z_listeDeroulanteChar;
     }
 }
