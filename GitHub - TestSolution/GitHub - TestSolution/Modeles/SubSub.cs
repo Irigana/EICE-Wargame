@@ -196,7 +196,7 @@ namespace EICE_WARGAME
         {
             get
             {
-                return new PDSGBD.MyDB.CodeSql("ss_fk_master_id = {0}, ss_fk_slave_id = {1}", Master.Id, Slave.Id);
+                return new PDSGBD.MyDB.CodeSql("sub_sub.ss_fk_su_id_master = {0}, sub_sub.ss_fk_su_id_slave = {1}", Master.Id, Slave.Id);
             }
         }
 

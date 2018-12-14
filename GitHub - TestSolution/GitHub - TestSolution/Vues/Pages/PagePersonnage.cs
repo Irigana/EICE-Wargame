@@ -651,7 +651,7 @@ namespace EICE_WARGAME
             {
                 case CharactRank.Champ.Cost:
                     {
-                        if ((numericUpDown1.Value > int.MaxValue) || (numericUpDown1.Value < 0))
+                        if ((numericUpDown1.Value > 10000) || (numericUpDown1.Value < 0))
                         {
                             errorProviderErreurCaractere.SetError(numericUpDown1,"Votre coût doit être supérieur ou égal à 1");
                             AccumulateurErreur.NotifierErreur("Ce coût n'est pas correct, veuillez en choisir une autre !");

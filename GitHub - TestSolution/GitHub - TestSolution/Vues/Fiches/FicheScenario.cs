@@ -229,19 +229,19 @@ namespace EICE_WARGAME
                                                                                       new MyDB.CodeSql("WHERE scenario.sc_id = {0} AND camp.ca_id = {1}", Scenario.Scenario.Id, NumeroDuCamp), null).FirstOrDefault();
             NouvelleSpecificite.Min = Convert.ToInt32(numericUpDownObligatoire.Value);
             NouvelleSpecificite.Max = Convert.ToInt32(numericUpDown2.Value);
-            //Condi_Camp SpecificiteExiste = Program.GMBD.EnumererCondiCamp(null, null, new MyDB.CodeSql("WHERE cc_fk_scenario_camp_id = {0} AND cc_fk_unity_id = {1}", NouvelleSpecificite.Scenario_Camp.Id, NouvelleSpecificite.Unity.Id),null).FirstOrDefault();
-            //if (SpecificiteExiste == null)
+            Condi_Camp SpecificiteExiste = Program.GMBD.EnumererCondiCamp(null, null, new MyDB.CodeSql("WHERE cc_fk_scenario_camp_id = {0} AND cc_fk_unity_id = {1}", NouvelleSpecificite.Scenario_Camp.Id, NouvelleSpecificite.Unity.Id),null).FirstOrDefault();
+            if (SpecificiteExiste == null)
             {
                 if (NouvelleSpecificite.EstValide && Program.GMBD.AjouterSpecificite(NouvelleSpecificite))
                 {
                     ChargerSpecificite(NumeroDuCamp);
                     ValidationProvider.SetError(ficheSpecifiteScenario1, "Spécificité correctement rajoutée");
                 }
-            }/*
+            }
             else
             {
-                errorProvider1
-            }*/
+                errorProvider1.SetError(listeDeroulanteUnity1, "Cette spécificté existe déjà pour ce camp");
+            }
         }
 
         private void ListeUnity_SurChangementSelection(object sender, EventArgs e)
