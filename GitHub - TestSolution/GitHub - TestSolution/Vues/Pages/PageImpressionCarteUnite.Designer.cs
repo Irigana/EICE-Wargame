@@ -99,7 +99,6 @@
             this.printableListView1.TabIndex = 18;
             this.printableListView1.Title = "";
             this.printableListView1.UseCompatibleStateImageBehavior = false;
-            this.printableListView1.SelectedIndexChanged += new System.EventHandler(this.printableListView1_SelectedIndexChanged);
             // 
             // PageImpressionCarteUnite
             // 
