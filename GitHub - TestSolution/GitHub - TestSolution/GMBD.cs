@@ -343,7 +343,7 @@ namespace EICE_WARGAME
         public bool SupprimerFigurine(Figurine NouvelleFigurine)
         {
             if (!m_BD.EstConnecte) Initialiser();
-            NouvelleFigurine.SupprimerEnCascade(m_BD);
+            NouvelleFigurine.Supprimer(m_BD, NouvelleFigurine, true);
             return true;
 
         }
