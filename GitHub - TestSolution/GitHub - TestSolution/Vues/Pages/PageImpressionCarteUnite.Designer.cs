@@ -29,10 +29,17 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(PageImpressionCarteUnite));
+            System.Windows.Forms.ListViewItem listViewItem1 = new System.Windows.Forms.ListViewItem("Figurine");
+            System.Windows.Forms.ListViewItem listViewItem2 = new System.Windows.Forms.ListViewItem("Unité");
+            System.Windows.Forms.ListViewItem listViewItem3 = new System.Windows.Forms.ListViewItem("Arme");
+            System.Windows.Forms.ListViewItem listViewItem4 = new System.Windows.Forms.ListViewItem("Michel");
             this.buttonExportPDF = new System.Windows.Forms.Button();
             this.printDialog1 = new System.Windows.Forms.PrintDialog();
             this.printPreviewDialog1 = new System.Windows.Forms.PrintPreviewDialog();
-            this.ficheFigurineStuff1 = new EICE_WARGAME.FicheFigurineStuff();
+            this.button1 = new System.Windows.Forms.Button();
+            this.button2 = new System.Windows.Forms.Button();
+            this.button3 = new System.Windows.Forms.Button();
+            this.printableListView1 = new PrintableListView.PrintableListView();
             this.SuspendLayout();
             // 
             // buttonExportPDF
@@ -59,21 +66,59 @@
             this.printPreviewDialog1.Name = "printPreviewDialog1";
             this.printPreviewDialog1.Visible = false;
             // 
-            // ficheFigurineStuff1
+            // button1
             // 
-            this.ficheFigurineStuff1.FigurineSelectionne = null;
-            this.ficheFigurineStuff1.Location = new System.Drawing.Point(361, 13);
-            this.ficheFigurineStuff1.Margin = new System.Windows.Forms.Padding(2);
-            this.ficheFigurineStuff1.Name = "ficheFigurineStuff1";
-            this.ficheFigurineStuff1.Size = new System.Drawing.Size(274, 467);
-            this.ficheFigurineStuff1.TabIndex = 14;
-            this.ficheFigurineStuff1.TexteFiltreFigurineStuff = "";
+            this.button1.Location = new System.Drawing.Point(37, 46);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(75, 23);
+            this.button1.TabIndex = 15;
+            this.button1.Text = "PageSetup";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.ButtonPageSetup_OnClick);
+            // 
+            // button2
+            // 
+            this.button2.Location = new System.Drawing.Point(37, 101);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(75, 23);
+            this.button2.TabIndex = 16;
+            this.button2.Text = "PrintPreview";
+            this.button2.UseVisualStyleBackColor = true;
+            this.button2.Click += new System.EventHandler(this.ButtonPrintPreview_OnClick);
+            // 
+            // button3
+            // 
+            this.button3.Location = new System.Drawing.Point(37, 163);
+            this.button3.Name = "button3";
+            this.button3.Size = new System.Drawing.Size(75, 23);
+            this.button3.TabIndex = 17;
+            this.button3.Text = "Print";
+            this.button3.UseVisualStyleBackColor = true;
+            this.button3.Click += new System.EventHandler(this.ButtonPrint_OnClick);
+            // 
+            // printableListView1
+            // 
+            this.printableListView1.FitToPage = false;
+            this.printableListView1.Items.AddRange(new System.Windows.Forms.ListViewItem[] {
+            listViewItem1,
+            listViewItem2,
+            listViewItem3,
+            listViewItem4});
+            this.printableListView1.Location = new System.Drawing.Point(244, 27);
+            this.printableListView1.Name = "printableListView1";
+            this.printableListView1.Size = new System.Drawing.Size(678, 430);
+            this.printableListView1.TabIndex = 18;
+            this.printableListView1.Title = "";
+            this.printableListView1.UseCompatibleStateImageBehavior = false;
             // 
             // PageImpressionCarteUnite
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.Controls.Add(this.ficheFigurineStuff1);
+            this.Controls.Add(this.printableListView1);
+            this.Controls.Add(this.button3);
+            this.Controls.Add(this.button2);
+            this.Controls.Add(this.button1);
             this.Controls.Add(this.buttonExportPDF);
             this.Name = "PageImpressionCarteUnite";
             this.Size = new System.Drawing.Size(1010, 519);
@@ -88,6 +133,9 @@
         private System.Windows.Forms.Button buttonExportPDF;
         private System.Windows.Forms.PrintDialog printDialog1;
         private System.Windows.Forms.PrintPreviewDialog printPreviewDialog1;
-        private FicheFigurineStuff ficheFigurineStuff1;
+        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Button button3;
+        private PrintableListView.PrintableListView printableListView1;
     }
 }
