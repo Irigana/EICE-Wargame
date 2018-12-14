@@ -65,9 +65,13 @@ namespace EICE_WARGAME
             m_PersonnageEnEdition.SurErreur += PersonnageEnEdition_SurErreur;
             m_PersonnageEnEdition.AvantChangement += PersonnageEnEdition_AvantChangement;
             m_PersonnageEnEdition.ApresChangement += PersonnageEnEdition_ApresChangement;
+            listeDeroulanteSubUnity1.SurChangementSelection += ListeDeroulanteSubUnity_SurChangementSelection;
+            listeDeroulanteFeature1.SurChangementSelection += ListeDeroulanteFeature_SurChangementSelection;
 
 
             ficheCaractere1.SurChangementSelection += ficheCaractere_SurChangementSelection;
+            listeDeroulanteSousFaction1.SurChangementSelection += ListeDeroulanteSousFaction_SurChangementSelection;
+            listeDeroulanteUnity1.SurChangementSelection += ListeDeroulanteUnity_SurChangementSelection;
 
             listeDeroulanteFaction1.SurChangementSelection += ListeDeroulanteFaction_SurChangementSelection;        
             Bitmap ImageRessource = new Bitmap(Properties.Resources.Validation25px);
@@ -94,7 +98,6 @@ namespace EICE_WARGAME
             listeDeroulanteSousFaction1.ResetTextSousFaction();
             ficheCaractere1.NettoyerListView();
             Program.GMBD.MettreAJourListeSousFaction(listeDeroulanteSousFaction1, listeDeroulanteFaction1.FactionSelectionnee.Id);
-            listeDeroulanteSousFaction1.SurChangementSelection += ListeDeroulanteSousFaction_SurChangementSelection;
         }
 
         private void ListeDeroulanteSousFaction_SurChangementSelection(object sender, EventArgs e)
@@ -103,8 +106,7 @@ namespace EICE_WARGAME
             listeDeroulanteUnity1.Unity = Program.GMBD.EnumererUnity(new MyDB.CodeSql("unity.un_id,unity.un_name"),
                 null,null,
                 new MyDB.CodeSql("ORDER BY un_name"));
-            listeDeroulanteUnity1.SurChangementSelection += ListeDeroulanteUnity_SurChangementSelection;
-
+            
         }
 
         private void ListeDeroulanteUnity_SurChangementSelection(object sender, EventArgs e)
@@ -115,13 +117,11 @@ namespace EICE_WARGAME
                 new MyDB.CodeSql("WHERE su_fk_unity_id = {0} AND su_fk_subfaction_id = {1}",
                 listeDeroulanteUnity1.UnitySelectionnee.Id,listeDeroulanteSousFaction1.SousFactionSelectionnee.Id),
                 new MyDB.CodeSql("ORDER BY su_name"));
-            listeDeroulanteSubUnity1.SurChangementSelection += ListeDeroulanteSubUnity_SurChangementSelection;
         }
 
         private void ListeDeroulanteSubUnity_SurChangementSelection(object sender, EventArgs e)
         {
             
-            // Problème : il boucle plusieurs fois dessus
             numericUpDown1.Enabled = true;
             listeDeroulanteRank1.Enabled = true;
             textBoxCaractere.Enabled = true;
@@ -219,7 +219,6 @@ namespace EICE_WARGAME
                 errorProviderErreurCaractere.Clear();
                 ValidationProvider.Clear();
 
-                listeDeroulanteFeature1.SurChangementSelection += ListeDeroulanteFeature_SurChangementSelection;
                 RafraichirListViewCaracteristiques();
             }
             else if ((listeDeroulanteFaction1.FactionSelectionnee != null) &&
