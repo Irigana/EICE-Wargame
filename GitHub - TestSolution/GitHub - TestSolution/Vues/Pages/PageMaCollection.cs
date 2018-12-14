@@ -58,8 +58,11 @@ namespace EICE_WARGAME
 
         void printButton_Click(object sender, EventArgs e)
         {
-            CaptureScreen();
-            printDocument1.Print();
+            Form_Principal.Instance.CreerPageCourante<PageImpressionCarteUnite>((Page) =>
+            {
+                Page.Utilisateur = Utilisateur;
+                return true;
+            });
         }
 
 
