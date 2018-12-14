@@ -68,7 +68,7 @@ namespace EICE_WARGAME
         {
             InitializeComponent();
             m_Utilisateur = null;
-            menuAdmin1.MaPageActive = 5;
+            menuAdmin1.MaPageActive = 6;
 
             // Création d'une instance de type stuff, y attacher les méthodes permettant de gérer les erreurs d'édition
             m_StuffEnEdition = new Stuff();
