@@ -584,13 +584,15 @@ namespace EICE_WARGAME
             z_numericUpDownCout.Enabled = true;
             z_numericUpDownMinimum.Enabled = true;
             z_numericUpDownMaximum.Enabled = true;
+            if (z_listeDeroulanteCharRank.CharactSelectionnee != null)
+            {
+                m_CharRank = new CharactRank();
+                m_CharRank = z_listeDeroulanteCharRank.CharactSelectionnee;
+                m_CharRank.Caractere.SousFaction = z_listeDeroulanteSousFaction.SousFactionSelectionnee;
+                m_CharRank.SubUnity = z_listeDeroulanteSubUnity.SubUnitySelectionnee;
 
-            m_CharRank = new CharactRank();
-            m_CharRank = z_listeDeroulanteCharRank.CharactSelectionnee;
-            m_CharRank.Caractere.SousFaction = z_listeDeroulanteSousFaction.SousFactionSelectionnee;
-            m_CharRank.SubUnity = z_listeDeroulanteSubUnity.SubUnitySelectionnee;
-
-            q_buttonEquiper.Enabled = m_CharRank.EstValide;
+                q_buttonEquiper.Enabled = m_CharRank.EstValide;
+            }
         }
 
         private void buttonAjouterEquipable_Click(object sender, EventArgs e)
