@@ -9,7 +9,8 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Drawing.Printing;
 using System.Drawing.Imaging;
-
+using MySql.Data.MySqlClient;
+using PDSGBD;
 
 namespace EICE_WARGAME
 {
@@ -17,7 +18,7 @@ namespace EICE_WARGAME
     {
 
         private PrintDocument printDocument1 = new PrintDocument();
-       
+        private GMBD a_db = new GMBD();
 
         #region Utilisateur
         private Utilisateur m_Utilisateur = null;
@@ -33,7 +34,7 @@ namespace EICE_WARGAME
                 if ((m_Utilisateur == null) && (value != null))
                 {
                     m_Utilisateur = value;
-  //                  buttonOptionsUser1.Utilisateur = m_Utilisateur;
+                    //                  buttonOptionsUser1.Utilisateur = m_Utilisateur;
                 }
             }
         }
@@ -142,13 +143,31 @@ namespace EICE_WARGAME
 
 
 
- 
+
 
         private void PageImpressionCarteUnite_Load(object sender, EventArgs e)
         {
-//            ListView Unité = new ListView();
-//            Unité = printableListView1.Name.Contains("Unité");
-//            FillList(printableListView1.Name.Contains("Unité"));
+            //            ListView Unité = new ListView();
+            //            Unité = printableListView1.Name.Contains("Unité");
+            //            FillList(printableListView1.Name.Contains("Unité"));
+
+            //MySqlConnection Connexion = new MySqlConnection(a_db.Param());
+            string Query = string.Format("SELECT un_name FROM unity");
+            MySqlCommand Command = new MySqlCommand(Query);
+            DataTable DTC = new DataTable();
+            a_db = new GMBD();
+            MySqlConnection Connexion = new MySqlConnection(a_db.Param());
+            Command.Connection = Connexion;
+            Connexion.Open();
+            DTC.Load(Command.ExecuteReader());
+            Connexion.Close();
+            FillList(printableListView1, DTC);
+
+        }
+
+        private void printableListView1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }

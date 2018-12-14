@@ -97,6 +97,13 @@ namespace EICE_WARGAME
                                        null).FirstOrDefault();
         }
 
+        public string Param()
+        {
+            string param;
+            param = "Database=iziel_warhammer;Data Source=mysql-iziel.alwaysdata.net;User Id=iziel_connector;Password=wJ9VFDrH";
+            return param;
+        }
+
         #endregion
 
         #region Requetes utilisateurs
