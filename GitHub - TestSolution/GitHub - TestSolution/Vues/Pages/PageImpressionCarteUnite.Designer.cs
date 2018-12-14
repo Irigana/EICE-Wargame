@@ -32,7 +32,7 @@
             this.buttonExportPDF = new System.Windows.Forms.Button();
             this.printDialog1 = new System.Windows.Forms.PrintDialog();
             this.printPreviewDialog1 = new System.Windows.Forms.PrintPreviewDialog();
-            this.printDialog2 = new System.Windows.Forms.PrintDialog();
+            this.ficheFigurineStuff1 = new EICE_WARGAME.FicheFigurineStuff();
             this.SuspendLayout();
             // 
             // buttonExportPDF
@@ -59,14 +59,21 @@
             this.printPreviewDialog1.Name = "printPreviewDialog1";
             this.printPreviewDialog1.Visible = false;
             // 
-            // printDialog2
+            // ficheFigurineStuff1
             // 
-            this.printDialog2.UseEXDialog = true;
+            this.ficheFigurineStuff1.FigurineSelectionne = null;
+            this.ficheFigurineStuff1.Location = new System.Drawing.Point(361, 13);
+            this.ficheFigurineStuff1.Margin = new System.Windows.Forms.Padding(2);
+            this.ficheFigurineStuff1.Name = "ficheFigurineStuff1";
+            this.ficheFigurineStuff1.Size = new System.Drawing.Size(274, 467);
+            this.ficheFigurineStuff1.TabIndex = 14;
+            this.ficheFigurineStuff1.TexteFiltreFigurineStuff = "";
             // 
             // PageImpressionCarteUnite
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.ficheFigurineStuff1);
             this.Controls.Add(this.buttonExportPDF);
             this.Name = "PageImpressionCarteUnite";
             this.Size = new System.Drawing.Size(1010, 519);
@@ -81,6 +88,6 @@
         private System.Windows.Forms.Button buttonExportPDF;
         private System.Windows.Forms.PrintDialog printDialog1;
         private System.Windows.Forms.PrintPreviewDialog printPreviewDialog1;
-        private System.Windows.Forms.PrintDialog printDialog2;
+        private FicheFigurineStuff ficheFigurineStuff1;
     }
 }
