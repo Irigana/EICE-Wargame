@@ -168,7 +168,7 @@
             // textBoxAvecTextInvisibleMdp
             // 
             this.textBoxAvecTextInvisibleMdp.ForeColor = System.Drawing.SystemColors.ButtonShadow;
-            this.textBoxAvecTextInvisibleMdp.Location = new System.Drawing.Point(1008, 366);
+            this.textBoxAvecTextInvisibleMdp.Location = new System.Drawing.Point(1008, 318);
             this.textBoxAvecTextInvisibleMdp.Margin = new System.Windows.Forms.Padding(0);
             this.textBoxAvecTextInvisibleMdp.MotDePasseCache = true;
             this.textBoxAvecTextInvisibleMdp.Name = "textBoxAvecTextInvisibleMdp";
@@ -180,7 +180,7 @@
             // textBoxAvecTextInvisibleConfMdp
             // 
             this.textBoxAvecTextInvisibleConfMdp.ForeColor = System.Drawing.SystemColors.ButtonShadow;
-            this.textBoxAvecTextInvisibleConfMdp.Location = new System.Drawing.Point(1008, 314);
+            this.textBoxAvecTextInvisibleConfMdp.Location = new System.Drawing.Point(1008, 369);
             this.textBoxAvecTextInvisibleConfMdp.Margin = new System.Windows.Forms.Padding(0);
             this.textBoxAvecTextInvisibleConfMdp.MotDePasseCache = true;
             this.textBoxAvecTextInvisibleConfMdp.Name = "textBoxAvecTextInvisibleConfMdp";
