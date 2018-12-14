@@ -308,7 +308,9 @@ namespace EICE_WARGAME
 
         private void buttonSupprimerFigurine_Click(object sender, EventArgs e)
         {
-
+            Program.GMBD.SupprimerFigurine(ficheFigurineStuff1.FigurineSelectionne);
+            Program.GMBD.MettreAJourFicheFigurine(ficheFigurineStuff1, Utilisateur.Id);
+            
         }
 
         private void button_annuler_click(object sender, EventArgs e)
@@ -320,7 +322,6 @@ namespace EICE_WARGAME
             listeDeroulanteSubUnity1.ResetTextSubUnity();
             ficheEquipementSansRecherche1.ResetText();
             listeDeroulanteChar1.ResetTextChar();
-            listeDeroulanteSousFaction1.Enabled = false;
             listeDeroulanteUnity1.Enabled = false;
             listeDeroulanteSubUnity1.Enabled = false;
             listeDeroulanteChar1.Enabled = false;
