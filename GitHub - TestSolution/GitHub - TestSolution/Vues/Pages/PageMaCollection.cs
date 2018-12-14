@@ -100,6 +100,8 @@ namespace EICE_WARGAME
                 listeDeroulanteChar1.Enabled = false;
                 ficheEquipementSansRecherche1.Enabled = false;
                 ficheEquipementSurFigurine1.Enabled = false;
+                ficheEquipementSurFigurine1.Equipement = null;
+                ficheEquipementSansRecherche1.Equipement = null;
             }
         }
 
@@ -118,6 +120,8 @@ namespace EICE_WARGAME
                 listeDeroulanteChar1.Enabled = false;
                 ficheEquipementSansRecherche1.Enabled = false;
                 ficheEquipementSurFigurine1.Enabled = false;
+                ficheEquipementSurFigurine1.Equipement = null;
+                ficheEquipementSansRecherche1.Equipement = null;
             }
         }
 
@@ -138,6 +142,8 @@ namespace EICE_WARGAME
                 listeDeroulanteChar1.Enabled = false;
                 ficheEquipementSansRecherche1.Enabled = false;
                 ficheEquipementSurFigurine1.Enabled = false;
+                ficheEquipementSurFigurine1.Equipement = null;
+                ficheEquipementSansRecherche1.Equipement = null;
             }
         }
 
@@ -164,6 +170,8 @@ namespace EICE_WARGAME
                 listeDeroulanteChar1.ResetTextChar();
                 ficheEquipementSansRecherche1.Enabled = false;
                 ficheEquipementSurFigurine1.Enabled = false;
+                ficheEquipementSurFigurine1.Equipement = null;
+                ficheEquipementSansRecherche1.Equipement = null;
             }
         }
 
@@ -347,7 +355,7 @@ namespace EICE_WARGAME
 
         private void buttonSupprimerFigurine_Click(object sender, EventArgs e)
         {
-          //  Program.GMBD.SupprimerFigurineStuff(ficheFigurineStuff1.FigurineSelectionne);
+            Program.GMBD.SupprimerFigurine(ficheFigurineStuff1.FigurineSelectionne);
             Program.GMBD.MettreAJourFicheFigurine(ficheFigurineStuff1, Utilisateur.Id);
             
         }
@@ -366,6 +374,8 @@ namespace EICE_WARGAME
             listeDeroulanteChar1.Enabled = false;
             ficheEquipementSansRecherche1.Enabled = false;
             ficheEquipementSurFigurine1.Enabled = false;
+            ficheEquipementSurFigurine1.Equipement = null;
+            ficheEquipementSansRecherche1.Equipement = null;
         }
     }
 }
