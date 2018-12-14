@@ -41,15 +41,15 @@
             this.buttonAnnulerSubUnity = new System.Windows.Forms.Button();
             this.buttonSupprimerSubUnity = new System.Windows.Forms.Button();
             this.buttonAjouterSubUnity = new System.Windows.Forms.Button();
+            this.errorProviderUnity = new System.Windows.Forms.ErrorProvider(this.components);
+            this.ValidationProvider = new System.Windows.Forms.ErrorProvider(this.components);
+            this.buttonModifier = new System.Windows.Forms.Button();
             this.ficheSubUnity1 = new EICE_WARGAME.FicheSubUnity();
             this.listeDeroulanteSousFaction1 = new EICE_WARGAME.ListeDeroulanteSousFaction();
             this.listeDeroulanteFaction1 = new EICE_WARGAME.ListeDeroulanteFaction();
             this.buttonRetourDashBoard1 = new EICE_WARGAME.ButtonRetourDashBoard();
             this.menuAdmin1 = new EICE_WARGAME.MenuAdmin();
             this.buttonOptionsUser1 = new EICE_WARGAME.ButtonOptionsUser();
-            this.errorProviderUnity = new System.Windows.Forms.ErrorProvider(this.components);
-            this.ValidationProvider = new System.Windows.Forms.ErrorProvider(this.components);
-            this.buttonModifier = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.errorProviderUnity)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ValidationProvider)).BeginInit();
             this.SuspendLayout();
@@ -176,6 +176,26 @@
             this.buttonAjouterSubUnity.UseVisualStyleBackColor = false;
             this.buttonAjouterSubUnity.Click += new System.EventHandler(this.buttonAjouterSubUnity_Click);
             // 
+            // errorProviderUnity
+            // 
+            this.errorProviderUnity.ContainerControl = this;
+            // 
+            // ValidationProvider
+            // 
+            this.ValidationProvider.ContainerControl = this;
+            // 
+            // buttonModifier
+            // 
+            this.buttonModifier.BackColor = System.Drawing.SystemColors.Window;
+            this.buttonModifier.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonModifier.Location = new System.Drawing.Point(424, 354);
+            this.buttonModifier.Name = "buttonModifier";
+            this.buttonModifier.Size = new System.Drawing.Size(121, 39);
+            this.buttonModifier.TabIndex = 63;
+            this.buttonModifier.Text = "Modifier";
+            this.buttonModifier.UseVisualStyleBackColor = false;
+            this.buttonModifier.Click += new System.EventHandler(this.buttonModifier_Click);
+            // 
             // ficheSubUnity1
             // 
             this.ficheSubUnity1.Enabled = false;
@@ -231,25 +251,6 @@
             this.buttonOptionsUser1.Size = new System.Drawing.Size(219, 45);
             this.buttonOptionsUser1.TabIndex = 0;
             this.buttonOptionsUser1.Utilisateur = null;
-            // 
-            // errorProviderUnity
-            // 
-            this.errorProviderUnity.ContainerControl = this;
-            // 
-            // ValidationProvider
-            // 
-            this.ValidationProvider.ContainerControl = this;
-            // 
-            // buttonModifier
-            // 
-            this.buttonModifier.BackColor = System.Drawing.SystemColors.Window;
-            this.buttonModifier.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.buttonModifier.Location = new System.Drawing.Point(424, 354);
-            this.buttonModifier.Name = "buttonModifier";
-            this.buttonModifier.Size = new System.Drawing.Size(121, 39);
-            this.buttonModifier.TabIndex = 63;
-            this.buttonModifier.Text = "Modifier";
-            this.buttonModifier.UseVisualStyleBackColor = false;
             // 
             // PageSubUnity
             // 

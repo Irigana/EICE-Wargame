@@ -195,7 +195,6 @@ namespace EICE_WARGAME
         }
         #endregion
 
-
         #region Requetes Sous Unité
         public bool AjouterSubUnity(SubUnity NouvelleSubUnity)
         {

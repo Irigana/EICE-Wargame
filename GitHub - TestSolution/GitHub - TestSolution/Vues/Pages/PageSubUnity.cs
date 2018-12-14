@@ -37,6 +37,8 @@ namespace EICE_WARGAME
 
         private const string c_CritereQuiContient = "%{0}%";
 
+        private SubUnity m_SubUnityEnEdition;
+
         public PageSubUnity()
         {
             InitializeComponent();
@@ -117,14 +119,17 @@ namespace EICE_WARGAME
 
         private void buttonAjouterSubUnity_Click(object sender, EventArgs e)
         {
-            SubUnity NouvelleSubUnity = new SubUnity();
-            NouvelleSubUnity.SurErreur += SubUnityEnEdition_SurErreur;
-            NouvelleSubUnity.AvantChangement += SubUnityEnEdition_AvantChangement;
-            NouvelleSubUnity.ApresChangement += SubUnityEnEdition_ApresChangement;
+            m_SubUnityEnEdition = new SubUnity();
+            m_SubUnityEnEdition.SurErreur += SubUnityEnEdition_SurErreur;
+            m_SubUnityEnEdition.AvantChangement += SubUnityEnEdition_AvantChangement;
+            m_SubUnityEnEdition.ApresChangement += SubUnityEnEdition_ApresChangement;
 
-            NouvelleSubUnity.Name = textBoxSousUnity.Text;
-            NouvelleSubUnity.SousFaction = listeDeroulanteSousFaction1.SousFactionSelectionnee;
-            if(NouvelleSubUnity.EstValide && Program.GMBD.ajoutersub)
+            m_SubUnityEnEdition.Name = textBoxSousUnity.Text;
+            m_SubUnityEnEdition.SousFaction = listeDeroulanteSousFaction1.SousFactionSelectionnee;
+            if(m_SubUnityEnEdition.EstValide && Program.GMBD.AjouterSubUnity(m_SubUnityEnEdition))
+            {
+                ChargerFicheSansFiltre(listeDeroulanteSousFaction1.SousFactionSelectionnee.Id, listeDeroulanteFaction1.FactionSelectionnee.Id);
+            }
         }
 
 
@@ -216,10 +221,14 @@ namespace EICE_WARGAME
                     break;
 
             }
-            buttonAjouterPersonnage.Enabled = m_PersonnageEnEdition.EstValide;
+            buttonAjouterSubUnity.Enabled = m_SubUnityEnEdition.EstValide;
         }
         #endregion
 
+        private void buttonModifier_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 
 }
