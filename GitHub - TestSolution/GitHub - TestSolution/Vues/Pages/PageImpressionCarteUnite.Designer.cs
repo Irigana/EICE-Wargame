@@ -29,10 +29,8 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(PageImpressionCarteUnite));
-            System.Windows.Forms.ListViewItem listViewItem1 = new System.Windows.Forms.ListViewItem("Unité");
-            System.Windows.Forms.ListViewItem listViewItem2 = new System.Windows.Forms.ListViewItem("Figurine");
-            System.Windows.Forms.ListViewItem listViewItem3 = new System.Windows.Forms.ListViewItem("Equipement");
-            System.Windows.Forms.ListViewItem listViewItem4 = new System.Windows.Forms.ListViewItem("Cout");
+            System.Windows.Forms.ListViewGroup listViewGroup1 = new System.Windows.Forms.ListViewGroup("Unité", System.Windows.Forms.HorizontalAlignment.Left);
+            System.Windows.Forms.ListViewGroup listViewGroup2 = new System.Windows.Forms.ListViewGroup("Figurine", System.Windows.Forms.HorizontalAlignment.Left);
             this.printDialog1 = new System.Windows.Forms.PrintDialog();
             this.printPreviewDialog1 = new System.Windows.Forms.PrintPreviewDialog();
             this.button1 = new System.Windows.Forms.Button();
@@ -88,17 +86,20 @@
             // printableListView1
             // 
             this.printableListView1.FitToPage = false;
-            this.printableListView1.Items.AddRange(new System.Windows.Forms.ListViewItem[] {
-            listViewItem1,
-            listViewItem2,
-            listViewItem3,
-            listViewItem4});
+            listViewGroup1.Header = "Unité";
+            listViewGroup1.Name = "listViewGroupUnité";
+            listViewGroup2.Header = "Figurine";
+            listViewGroup2.Name = "listViewGroupFigurine";
+            this.printableListView1.Groups.AddRange(new System.Windows.Forms.ListViewGroup[] {
+            listViewGroup1,
+            listViewGroup2});
             this.printableListView1.Location = new System.Drawing.Point(244, 27);
             this.printableListView1.Name = "printableListView1";
             this.printableListView1.Size = new System.Drawing.Size(678, 430);
             this.printableListView1.TabIndex = 18;
             this.printableListView1.Title = "";
             this.printableListView1.UseCompatibleStateImageBehavior = false;
+            this.printableListView1.SelectedIndexChanged += new System.EventHandler(this.printableListView1_SelectedIndexChanged);
             // 
             // PageImpressionCarteUnite
             // 
