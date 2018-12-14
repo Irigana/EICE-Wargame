@@ -229,7 +229,7 @@ namespace EICE_WARGAME
             {
                 case CharactRank.Champ.Cost:
                     {
-                        if ((Entite.Cost > int.MaxValue) || (Entite.Cost < 0))
+                        if ((Entite.Cost > 10000) || (Entite.Cost < 0))
                         {
                             AccumulateurErreur.NotifierErreur("Ce coût n'est pas correct, veuillez en choisir une autre !");
                         }

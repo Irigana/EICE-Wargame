@@ -62,10 +62,7 @@ namespace EICE_WARGAME
             
             ficheSubUnity1.SurChangementSelection += FicheSousUnity_SurChangementSelection;
 
-            ficheSubSub1.SubSub = Program.GMBD.EnumererSubSub(null,
-                    new MyDB.CodeSql(@"JOIN subunity ON sub_sub.ss_fk_su_id_master  = subunity.su_id"),
-                    null,
-                    new MyDB.CodeSql("ORDER BY su_name"));
+            ChargerSubSub();
 
             ficheSubSub1.SurChangementFiltre += (s, ev) =>
             {
@@ -78,16 +75,21 @@ namespace EICE_WARGAME
                 }
                 else
                 {
-                    ficheSubSub1.SubSub = Program.GMBD.EnumererSubSub(null,
-                    new MyDB.CodeSql(@"JOIN subunity ON sub_sub.ss_fk_su_id_master = subunity.su_id"),
-                    null,
-                    new MyDB.CodeSql("ORDER BY su_name"));
+                    ChargerSubSub();
                 }
             };
 
             Bitmap ImageRessource = new Bitmap(Properties.Resources.Validation25px);
             ValidationProvider.Icon = Icon.FromHandle(ImageRessource.GetHicon());
 
+        }
+
+        private void ChargerSubSub()
+        {
+            ficheSubSub1.SubSub = Program.GMBD.EnumererSubSub(null,
+                    new MyDB.CodeSql(@"JOIN subunity ON sub_sub.ss_fk_su_id_master = subunity.su_id"),
+                    null,
+                    new MyDB.CodeSql("ORDER BY su_name"));
         }
 
         private void PageSubUnity_Load(object sender, EventArgs e)
@@ -200,6 +202,8 @@ namespace EICE_WARGAME
             {
                 textBoxSousUnity.Text = "";
                 ChargerFicheSansFiltre(ficheSubUnity1, listeDeroulanteFaction1.FactionSelectionnee.Id, listeDeroulanteSousFaction1.SousFactionSelectionnee.Id, listeDeroulanteUnity1.UnitySelectionnee.Id);
+                ChargerFicheSansFiltre(ficheSubUnitySlave, listeDeroulanteFaction1.FactionSelectionnee.Id, listeDeroulanteSousFaction1.SousFactionSelectionnee.Id, listeDeroulanteUnity1.UnitySelectionnee.Id);
+
             }
         }
 
@@ -372,7 +376,44 @@ namespace EICE_WARGAME
         {
             if((ficheSubUnity1.SubUnitySelectionne != null)&&(ficheSubUnitySlave.SubUnitySelectionne != null))
             {
+                SubSub NouveauLien = new SubSub();
+                NouveauLien.Master = ficheSubUnity1.SubUnitySelectionne;
+                NouveauLien.Slave = ficheSubUnitySlave.SubUnitySelectionne;
 
+                if (NouveauLien.EstValide && Program.GMBD.AjouterSubSub(NouveauLien))
+                {
+                    ChargerSubSub();
+                }
+            }
+        }
+
+        private void buttonDelier_Click(object sender, EventArgs e)
+        {
+            if(ficheSubSub1.SubSubSelectionne != null)
+            {
+                SubUnity SubUnityLie = Program.GMBD.EnumererSubUnity(null, null, new MyDB.CodeSql("WHERE ((subunity.su_id IN(SELECT char_rank.cr_sub_id FROM char_rank) OR subunity.su_id IN(SELECT sub_sub.ss_fk_su_id_master FROM sub_sub) OR subunity.su_id IN (SELECT stuff_subunity.cfs_fk_subunity_id FROM stuff_subunity))) AND subunity.su_id = {0}", ficheSubSub1.SubSubSelectionne.Master.Id), null).FirstOrDefault();
+                if (SubUnityLie == null)
+                {
+                    PopUpConfirmation FormConfirmation = new PopUpConfirmation();
+                    FormConfirmation.LabelDuTexte = "Êtes vous certain de vouloir supprimer ce lien entre ces 2 sous unités ?";
+                    FormConfirmation.ShowDialog();
+                    if (FormConfirmation.Confirmation)
+                    {
+                        if (Program.GMBD.SupprimerSubSub(ficheSubSub1.SubSubSelectionne))
+                        {
+                            ValidationProvider.SetError(textBoxSousUnity, "Votre sous unité a bien été supprimée");
+                            ChargerFicheSansFiltre(ficheSubUnity1, listeDeroulanteFaction1.FactionSelectionnee.Id, listeDeroulanteSousFaction1.SousFactionSelectionnee.Id, listeDeroulanteUnity1.UnitySelectionnee.Id);
+                        }
+                    }
+                    else if (FormConfirmation.Annulation)
+                    {
+                        // Ne rien faire
+                    }
+                }
+                else
+                {
+                    errorProviderUnity.SetError(textBoxSousUnity, "Ces sous unité sont déjà utilisées, impossible de la supprimer avant de supprimer les élements attacher");
+                }
             }
         }
     }

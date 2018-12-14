@@ -93,9 +93,9 @@ namespace EICE_WARGAME
                 {
                     Declencher_SurErreur(this, Champ.Value, "Valeur inférieur au minimum autorisé");
                 }
-                else if (value > int.MaxValue)
+                else if (value > 10000)
                 {
-                    Declencher_SurErreur(this, Champ.Value, "Valeur supérieur au maximum autorisé");
+                    Declencher_SurErreur(this, Champ.Value, "Valeur supérieur au maximum autorisé (10 000)");
                 }
                 else
                 {

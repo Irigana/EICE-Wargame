@@ -118,9 +118,9 @@
             this.labelSubUnityAttacher.ForeColor = System.Drawing.Color.SlateGray;
             this.labelSubUnityAttacher.Location = new System.Drawing.Point(236, 405);
             this.labelSubUnityAttacher.Name = "labelSubUnityAttacher";
-            this.labelSubUnityAttacher.Size = new System.Drawing.Size(350, 29);
+            this.labelSubUnityAttacher.Size = new System.Drawing.Size(273, 29);
             this.labelSubUnityAttacher.TabIndex = 49;
-            this.labelSubUnityAttacher.Text = "Sous unité attachée (Optionnel)";
+            this.labelSubUnityAttacher.Text = "Listes d\'unités attachées";
             // 
             // labelNewSubUnity
             // 
@@ -239,6 +239,7 @@
             this.buttonDelier.TabIndex = 67;
             this.buttonDelier.Text = "Délier";
             this.buttonDelier.UseVisualStyleBackColor = false;
+            this.buttonDelier.Click += new System.EventHandler(this.buttonDelier_Click);
             // 
             // labelListeSubSub
             // 
