@@ -43,7 +43,7 @@ namespace EICE_WARGAME
             buttonSupprimer.Enabled = false;
             buttonDestitution.Enabled = false;
             buttonPromouvoir.Enabled = false;
-            menuAdmin1.MaPageActive = 6;
+            menuAdmin1.MaPageActive = 7;
 
             ChargerUsers();
 
@@ -212,23 +212,36 @@ namespace EICE_WARGAME
 
                             if ((UtilisateurEnEdition.EstValide) && (Program.GMBD.ModifierUtilisateur(UtilisateurEnEdition)))
                             {
+                                textBoxAvecTextInvisibleMdp.Text = "";
+                                textBoxAvecTextInvisibleConfMdp.Text = "";
+                                textBoxAvecTextInvisibleMdp.RefreshMdpApresAcceptation();
                                 errorProviderValidation.SetError(buttonValider, "Modification du mot de passe correctement effectuée");
+                                textBoxAvecTextInvisibleMdp.MotDePasseCache = true;
+                                textBoxAvecTextInvisibleConfMdp.MotDePasseCache = true;
                             }
                             else
                             {
-                                errorProvider.SetError(textBoxAvecTextInvisibleConfMdp, "Mot de passe incorrect ou ne correspondant pas");
+                                errorProvider.SetError(textBoxAvecTextInvisibleConfMdp, "Erreur interne");
                             }
+                        }
+                        else
+                        {
+                            errorProvider.SetError(textBoxAvecTextInvisibleConfMdp, "Mot de passe incorrect ou ne correspondant pas");
                         }
                     }
                     else
                     {
-                        errorProviderValidation.SetError(textBoxAvecTextInvisibleConfMdp, "Tous les champs doivent être remplis");
+                        errorProvider.SetError(textBoxAvecTextInvisibleConfMdp, "Tous les champs doivent être remplis");
                     }
                 }
                 else
                 {
                     errorProvider.SetError(textBoxAvecTextInvisibleConfMdp, "Même mot de passe que l'initial");
                 }
+            }
+            else
+            {
+                errorProvider.SetError(textBoxAvecTextInvisibleConfMdp, "Veuillez sélectionner un utilisateur");
             }
         }
 

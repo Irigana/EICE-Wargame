@@ -36,17 +36,19 @@
             this.comboBoxListeFaction.Dock = System.Windows.Forms.DockStyle.Fill;
             this.comboBoxListeFaction.FormattingEnabled = true;
             this.comboBoxListeFaction.Location = new System.Drawing.Point(0, 0);
+            this.comboBoxListeFaction.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.comboBoxListeFaction.Name = "comboBoxListeFaction";
-            this.comboBoxListeFaction.Size = new System.Drawing.Size(198, 24);
+            this.comboBoxListeFaction.Size = new System.Drawing.Size(148, 21);
             this.comboBoxListeFaction.TabIndex = 0;
             // 
             // ListeDeroulanteFaction
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.Controls.Add(this.comboBoxListeFaction);
+            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.Name = "ListeDeroulanteFaction";
-            this.Size = new System.Drawing.Size(198, 22);
+            this.Size = new System.Drawing.Size(148, 18);
             this.ResumeLayout(false);
 
         }

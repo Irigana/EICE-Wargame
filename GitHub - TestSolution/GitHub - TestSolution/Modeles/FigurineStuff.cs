@@ -176,7 +176,8 @@ namespace EICE_WARGAME
         /// <param name="Connexion">Connexion au serveur MySQL</param>
         public override void SupprimerEnCascade(PDSGBD.MyDB Connexion)
         {
-            Connexion.Executer("DELETE FROM figurine_stuff WHERE fs_id = {0}", Id);
+            Connexion.Executer(@"DELETE FROM figurine_stuff WHERE fs_id = {0};
+                                DELETE FROM figurine WHERE fs_id = {1}", Id,Figurine.Id);
         }
 
         /// <summary>

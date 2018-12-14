@@ -33,7 +33,8 @@ namespace EICE_WARGAME
         private static readonly MyDB.CodeSql c_NomTable_ArmyUnityFigurineStuff = new MyDB.CodeSql(new ArmyUnityFigurine().NomDeLaTablePrincipale);
         private static readonly MyDB.CodeSql c_NomTable_Army = new MyDB.CodeSql(new Army().NomDeLaTablePrincipale);
         private static readonly MyDB.CodeSql c_NomTable_StuffCharactRank = new MyDB.CodeSql(new StuffCharactRank().NomDeLaTablePrincipale);
-        
+        private static readonly MyDB.CodeSql c_NomTable_SubSub = new MyDB.CodeSql(new SubSub().NomDeLaTablePrincipale);
+
         /// <summary>
         /// Référence l'objet de connexion au serveur de base de données MySql
         /// </summary>
@@ -195,6 +196,26 @@ namespace EICE_WARGAME
         }
         #endregion
 
+        #region Requetes Sous Unité
+        public bool AjouterSubUnity(SubUnity NouvelleSubUnity)
+        {
+            return NouvelleSubUnity.Enregistrer(m_BD, NouvelleSubUnity, NouvelleSubUnity.IdDeLaTablePrincipale, false);
+        }
+
+        public bool ModifierSubUnity(SubUnity SubUnity)
+        {
+            return SubUnity.Enregistrer(m_BD, SubUnity, null, true);
+        }
+
+        public bool SupprimerSubUnity(SubUnity SubUnity)
+        {
+            if (!m_BD.EstConnecte) Initialiser();
+            SubUnity.SupprimerEnCascade(m_BD);
+            return true;
+        }        
+        
+        #endregion
+
         #region Requetes caractère
         //+====================+
         //| Requetes caractère |
@@ -340,10 +361,10 @@ namespace EICE_WARGAME
                                                                      new MyDB.CodeSql("WHERE fi_fk_user_id = {0}", IdUser),
                                                                      new MyDB.CodeSql("ORDER BY fi_id"));
         }
-        public bool SupprimerFigurine(Figurine NouvelleFigurine)
+        public bool SupprimerFigurine(Figurine FigurineASupprimer)
         {
             if (!m_BD.EstConnecte) Initialiser();
-            NouvelleFigurine.SupprimerEnCascade(m_BD);
+            FigurineASupprimer.Supprimer(m_BD, FigurineASupprimer, true);
             return true;
 
         }
@@ -609,6 +630,15 @@ namespace EICE_WARGAME
             if (ClauseJoin == null) ClauseJoin = MyDB.CodeSql.Vide;
             if (ValeurSouhaitee == null) ValeurSouhaitee = new MyDB.CodeSql("*");
             return SubUnity.Enumerer(m_BD, m_BD.Enumerer("SELECT {0} FROM {1} {2} {3} {4}", ValeurSouhaitee, c_NomTable_SubUnity, ClauseJoin, ClauseWhere, ClauseOrderBy));
+        }
+
+        public IEnumerable<SubSub> EnumererSubSub(MyDB.CodeSql ValeurSouhaitee, MyDB.CodeSql ClauseJoin, MyDB.CodeSql ClauseWhere, MyDB.CodeSql ClauseOrderBy)
+        {
+            if (ClauseWhere == null) ClauseWhere = MyDB.CodeSql.Vide;
+            if (ClauseOrderBy == null) ClauseOrderBy = MyDB.CodeSql.Vide;
+            if (ClauseJoin == null) ClauseJoin = MyDB.CodeSql.Vide;
+            if (ValeurSouhaitee == null) ValeurSouhaitee = new MyDB.CodeSql("*");
+            return SubSub.Enumerer(m_BD, m_BD.Enumerer("SELECT {0} FROM {1} {2} {3} {4}", ValeurSouhaitee, c_NomTable_SubSub, ClauseJoin, ClauseWhere, ClauseOrderBy));
         }
 
         #endregion

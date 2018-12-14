@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using PDSGBD;
 
 namespace EICE_WARGAME
 {
@@ -208,6 +209,13 @@ namespace EICE_WARGAME
                 INNER JOIN stuff on st_id = fs_fk_stuff_id
                 WHERE fi_id = {0}",
                 Id));
+        }
+
+        public override void SupprimerEnCascade(MyDB Connexion)
+        {
+            Connexion.Executer(@"DELETE FROM figurine_stuff WHERE fs_fk_figurine_id = {0};
+                                DELETE FROM figurine WHERE fi_id = {1}", Id, Id);
+
         }
 
         #endregion

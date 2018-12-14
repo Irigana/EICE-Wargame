@@ -126,6 +126,15 @@ namespace EICE_WARGAME
             });
         }
 
+        private void buttonSubUnity_Click(object sender, EventArgs e)
+        {
+            Form_Principal.Instance.CreerPageCourante<PageSubUnity>((Page) =>
+            {
+                Page.Utilisateur = Utilisateur;
+                return true;
+            });
+        }
+
         private void MenuAdmin_Load(object sender, EventArgs e)
         {
             switch(m_PageActive)
@@ -158,11 +167,18 @@ namespace EICE_WARGAME
                 case 5:
                     {
 
+                        buttonSubUnity.ForeColor = Color.SteelBlue;
+                        buttonSubUnity.BackColor = System.Drawing.SystemColors.Window;
+                        break;
+                    }
+                case 6:
+                    {
+
                         buttonEquipement.ForeColor = Color.SteelBlue;
                         buttonEquipement.BackColor = System.Drawing.SystemColors.Window;
                         break;
                     }
-                case 6:
+                case 7:
                     {
                         buttonGestionUser.ForeColor = Color.SteelBlue;
                         buttonGestionUser.BackColor = System.Drawing.SystemColors.Window;
@@ -174,5 +190,6 @@ namespace EICE_WARGAME
             }
         }
 
+        
     }
 }

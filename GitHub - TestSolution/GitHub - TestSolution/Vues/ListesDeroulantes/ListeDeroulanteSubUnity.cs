@@ -30,6 +30,12 @@ namespace EICE_WARGAME
         }
 
 
+        public void ResetTextSubUnity()
+        {
+            comboBoxSubUnity.Text = "";
+        }
+
+
         public ListeDeroulanteSubUnity()
         {
             InitializeComponent();

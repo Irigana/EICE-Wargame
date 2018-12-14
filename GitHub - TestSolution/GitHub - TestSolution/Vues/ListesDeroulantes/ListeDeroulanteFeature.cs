@@ -84,6 +84,11 @@ namespace EICE_WARGAME
         {
             this.Size = new Size(this.Size.Width, comboBoxFeature.Height);
         }
+
+        public void ResetTextFeature()
+        {
+            comboBoxFeature.SelectedItem = null;
+        }
     }
 }
 

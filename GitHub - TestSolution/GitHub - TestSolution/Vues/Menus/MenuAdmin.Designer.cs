@@ -34,6 +34,7 @@
             this.buttonSousFaction = new System.Windows.Forms.Button();
             this.buttonFaction = new System.Windows.Forms.Button();
             this.buttonPersonnage = new System.Windows.Forms.Button();
+            this.buttonSubUnity = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // buttonEquipement
@@ -42,7 +43,7 @@
             this.buttonEquipement.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonEquipement.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F);
             this.buttonEquipement.ForeColor = System.Drawing.SystemColors.Window;
-            this.buttonEquipement.Location = new System.Drawing.Point(0, 224);
+            this.buttonEquipement.Location = new System.Drawing.Point(3, 280);
             this.buttonEquipement.Name = "buttonEquipement";
             this.buttonEquipement.Size = new System.Drawing.Size(190, 50);
             this.buttonEquipement.TabIndex = 2;
@@ -60,7 +61,7 @@
             this.buttonScenario.Name = "buttonScenario";
             this.buttonScenario.Size = new System.Drawing.Size(190, 50);
             this.buttonScenario.TabIndex = 0;
-            this.buttonScenario.Text = "Scenario";
+            this.buttonScenario.Text = "Scenarios";
             this.buttonScenario.UseVisualStyleBackColor = true;
             this.buttonScenario.Click += new System.EventHandler(this.buttonScenario_Click);
             // 
@@ -70,7 +71,7 @@
             this.buttonGestionUser.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonGestionUser.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F);
             this.buttonGestionUser.ForeColor = System.Drawing.SystemColors.Window;
-            this.buttonGestionUser.Location = new System.Drawing.Point(0, 280);
+            this.buttonGestionUser.Location = new System.Drawing.Point(3, 336);
             this.buttonGestionUser.Name = "buttonGestionUser";
             this.buttonGestionUser.Size = new System.Drawing.Size(190, 50);
             this.buttonGestionUser.TabIndex = 3;
@@ -89,7 +90,7 @@
             this.buttonSousFaction.Name = "buttonSousFaction";
             this.buttonSousFaction.Size = new System.Drawing.Size(190, 50);
             this.buttonSousFaction.TabIndex = 4;
-            this.buttonSousFaction.Text = "Sous faction";
+            this.buttonSousFaction.Text = "Sous factions";
             this.buttonSousFaction.UseVisualStyleBackColor = true;
             this.buttonSousFaction.Click += new System.EventHandler(this.buttonSousFaction_Click);
             // 
@@ -104,7 +105,7 @@
             this.buttonFaction.Name = "buttonFaction";
             this.buttonFaction.Size = new System.Drawing.Size(190, 50);
             this.buttonFaction.TabIndex = 5;
-            this.buttonFaction.Text = "Faction";
+            this.buttonFaction.Text = "Factions";
             this.buttonFaction.UseVisualStyleBackColor = true;
             this.buttonFaction.Click += new System.EventHandler(this.buttonFaction_Click);
             // 
@@ -118,15 +119,31 @@
             this.buttonPersonnage.Name = "buttonPersonnage";
             this.buttonPersonnage.Size = new System.Drawing.Size(190, 50);
             this.buttonPersonnage.TabIndex = 6;
-            this.buttonPersonnage.Text = "Personnage";
+            this.buttonPersonnage.Text = "Personnages";
             this.buttonPersonnage.UseVisualStyleBackColor = true;
             this.buttonPersonnage.Click += new System.EventHandler(this.buttonCaractere_Click);
+            // 
+            // buttonSubUnity
+            // 
+            this.buttonSubUnity.FlatAppearance.BorderSize = 0;
+            this.buttonSubUnity.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonSubUnity.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F);
+            this.buttonSubUnity.ForeColor = System.Drawing.SystemColors.Window;
+            this.buttonSubUnity.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.buttonSubUnity.Location = new System.Drawing.Point(0, 224);
+            this.buttonSubUnity.Name = "buttonSubUnity";
+            this.buttonSubUnity.Size = new System.Drawing.Size(190, 50);
+            this.buttonSubUnity.TabIndex = 7;
+            this.buttonSubUnity.Text = "Sous unités";
+            this.buttonSubUnity.UseVisualStyleBackColor = true;
+            this.buttonSubUnity.Click += new System.EventHandler(this.buttonSubUnity_Click);
             // 
             // MenuAdmin
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.SteelBlue;
+            this.Controls.Add(this.buttonSubUnity);
             this.Controls.Add(this.buttonPersonnage);
             this.Controls.Add(this.buttonFaction);
             this.Controls.Add(this.buttonSousFaction);
@@ -148,5 +165,6 @@
         private System.Windows.Forms.Button buttonSousFaction;
         private System.Windows.Forms.Button buttonFaction;
         private System.Windows.Forms.Button buttonPersonnage;
+        private System.Windows.Forms.Button buttonSubUnity;
     }
 }

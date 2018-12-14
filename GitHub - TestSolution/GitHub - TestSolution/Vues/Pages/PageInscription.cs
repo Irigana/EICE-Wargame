@@ -15,7 +15,9 @@ namespace EICE_WARGAME
     {
         public PageInscription()
         {
-            InitializeComponent();                              
+            InitializeComponent();
+            Bitmap ImageRessource = new Bitmap(Properties.Resources.Validation25px);
+            errorProviderValidation.Icon = Icon.FromHandle(ImageRessource.GetHicon());
         }
 
         private void linkLabelDejaInscrit_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
@@ -48,14 +50,26 @@ namespace EICE_WARGAME
             if ((UtilisateurExistant == null) && (NouvelUtilisateur.EstValide))
             {
                 Program.GMBD.AjouterUtilisateur(NouvelUtilisateur);
-                errorProviderInscription.Clear();
+                errorProviderInscription.Clear();                
 
-                textBoxAvecTextInvisibleLogin.Text = "";
-                textBoxAvecTextInvisibleMdp.RefreshMdpApresAcceptation();
-                textBoxAvecTextInvisibleMdp.Text = "";
-                textBoxAvecTextInvisibleMdpConf.RefreshMdpApresAcceptation();
-                textBoxAvecTextInvisibleMdpConf.Text = "";
-                Form_Principal.Instance.CreerPageCourante<PageConnexion>();         
+                PopUpConfirmation FormConfirmation = new PopUpConfirmation();
+                FormConfirmation.LabelDuTexte = "Inscription terminée.\nVoulez-vous aller sur la page de connexion ?";
+                FormConfirmation.ShowDialog();
+                if (FormConfirmation.Confirmation)
+                {
+                    Form_Principal.Instance.CreerPageCourante<PageConnexion>();
+                }
+                else if (FormConfirmation.Annulation)
+                {
+                    textBoxAvecTextInvisibleLogin.Text = "";
+                    textBoxAvecTextInvisibleMdp.Text = "";
+                    textBoxAvecTextInvisibleMdpConf.Text = "";
+                    textBoxAvecTextInvisibleMdp.RefreshMdpApresAcceptation();
+                    textBoxAvecTextInvisibleMdp.MotDePasseCache = true;
+                    textBoxAvecTextInvisibleMdpConf.RefreshMdpApresAcceptation();
+                    textBoxAvecTextInvisibleMdpConf.MotDePasseCache = true;
+                    errorProviderValidation.SetError(buttonSInscrire, "Votre inscription a été enregistrée");
+                }
             }
         }
 
@@ -67,6 +81,21 @@ namespace EICE_WARGAME
                 buttonSInscrire_Click(null, null);
             }
 
+        }
+
+        private void textBoxAvecTextInvisibleLogin_Enter(object sender, EventArgs e)
+        {
+            errorProviderValidation.Clear();
+        }
+
+        private void textBoxAvecTextInvisibleMdp_Enter(object sender, EventArgs e)
+        {
+            errorProviderValidation.Clear();
+        }
+
+        private void textBoxAvecTextInvisibleMdpConf_Enter(object sender, EventArgs e)
+        {
+            errorProviderValidation.Clear();
         }
     }
 }
