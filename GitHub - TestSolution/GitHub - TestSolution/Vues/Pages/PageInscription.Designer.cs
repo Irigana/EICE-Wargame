@@ -34,10 +34,12 @@ namespace EICE_WARGAME
             this.labelInscription = new System.Windows.Forms.Label();
             this.errorProviderInscription = new System.Windows.Forms.ErrorProvider(this.components);
             this.buttonSInscrire = new System.Windows.Forms.Button();
+            this.errorProviderValidation = new System.Windows.Forms.ErrorProvider(this.components);
             this.textBoxAvecTextInvisibleMdpConf = new EICE_WARGAME.TextBoxAvecTextInvisible();
             this.textBoxAvecTextInvisibleMdp = new EICE_WARGAME.TextBoxAvecTextInvisible();
             this.textBoxAvecTextInvisibleLogin = new EICE_WARGAME.TextBoxAvecTextInvisible();
             ((System.ComponentModel.ISupportInitialize)(this.errorProviderInscription)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProviderValidation)).BeginInit();
             this.SuspendLayout();
             // 
             // linkLabelDejaInscrit
@@ -83,6 +85,10 @@ namespace EICE_WARGAME
             this.buttonSInscrire.UseVisualStyleBackColor = false;
             this.buttonSInscrire.Click += new System.EventHandler(this.buttonSInscrire_Click);
             // 
+            // errorProviderValidation
+            // 
+            this.errorProviderValidation.ContainerControl = this;
+            // 
             // textBoxAvecTextInvisibleMdpConf
             // 
             this.textBoxAvecTextInvisibleMdpConf.ForeColor = System.Drawing.SystemColors.ButtonShadow;
@@ -93,6 +99,7 @@ namespace EICE_WARGAME
             this.textBoxAvecTextInvisibleMdpConf.PlaceHolder = "Confirmation mot de passe";
             this.textBoxAvecTextInvisibleMdpConf.Size = new System.Drawing.Size(239, 22);
             this.textBoxAvecTextInvisibleMdpConf.TabIndex = 3;
+            this.textBoxAvecTextInvisibleMdpConf.Enter += new System.EventHandler(this.textBoxAvecTextInvisibleMdpConf_Enter);
             this.textBoxAvecTextInvisibleMdpConf.KeyDown += new System.Windows.Forms.KeyEventHandler(this.textBoxAvecTextInvisibleMdpConf_KeyDown);
             // 
             // textBoxAvecTextInvisibleMdp
@@ -105,6 +112,7 @@ namespace EICE_WARGAME
             this.textBoxAvecTextInvisibleMdp.PlaceHolder = "Mot de passe";
             this.textBoxAvecTextInvisibleMdp.Size = new System.Drawing.Size(239, 22);
             this.textBoxAvecTextInvisibleMdp.TabIndex = 2;
+            this.textBoxAvecTextInvisibleMdp.Enter += new System.EventHandler(this.textBoxAvecTextInvisibleMdp_Enter);
             // 
             // textBoxAvecTextInvisibleLogin
             // 
@@ -116,6 +124,7 @@ namespace EICE_WARGAME
             this.textBoxAvecTextInvisibleLogin.PlaceHolder = "Login";
             this.textBoxAvecTextInvisibleLogin.Size = new System.Drawing.Size(239, 22);
             this.textBoxAvecTextInvisibleLogin.TabIndex = 1;
+            this.textBoxAvecTextInvisibleLogin.Enter += new System.EventHandler(this.textBoxAvecTextInvisibleLogin_Enter);
             // 
             // PageInscription
             // 
@@ -131,6 +140,7 @@ namespace EICE_WARGAME
             this.Name = "PageInscription";
             this.Size = new System.Drawing.Size(1500, 750);
             ((System.ComponentModel.ISupportInitialize)(this.errorProviderInscription)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProviderValidation)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -144,5 +154,6 @@ namespace EICE_WARGAME
         private System.Windows.Forms.Label labelInscription;
         private System.Windows.Forms.ErrorProvider errorProviderInscription;
         private System.Windows.Forms.Button buttonSInscrire;
+        private System.Windows.Forms.ErrorProvider errorProviderValidation;
     }
 }
