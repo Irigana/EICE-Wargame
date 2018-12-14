@@ -201,7 +201,7 @@ namespace EICE_WARGAME
             return NouvelleSubUnity.Enregistrer(m_BD, NouvelleSubUnity, NouvelleSubUnity.IdDeLaTablePrincipale, false);
         }
 
-        public bool ModifierSubUnityn(SubUnity SubUnity)
+        public bool ModifierSubUnity(SubUnity SubUnity)
         {
             return SubUnity.Enregistrer(m_BD, SubUnity, null, true);
         }

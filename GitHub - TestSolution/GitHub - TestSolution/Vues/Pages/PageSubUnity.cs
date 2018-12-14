@@ -133,6 +133,24 @@ namespace EICE_WARGAME
         }
 
 
+        private void buttonModifier_Click(object sender, EventArgs e)
+        {
+            if (ficheSubUnity1.SubUnitySelectionne != null)
+            {
+                m_SubUnityEnEdition = ficheSubUnity1.SubUnitySelectionne;
+                m_SubUnityEnEdition.SurErreur += SubUnityEnEdition_SurErreur;
+                m_SubUnityEnEdition.AvantChangement += SubUnityEnEdition_AvantChangement;
+                m_SubUnityEnEdition.ApresChangement += SubUnityEnEdition_ApresChangement;
+
+                m_SubUnityEnEdition.Name = textBoxSousUnity.Text;
+                m_SubUnityEnEdition.SousFaction = listeDeroulanteSousFaction1.SousFactionSelectionnee;
+                if(m_SubUnityEnEdition.EstValide && Program.GMBD.ModifierSubUnity(m_SubUnityEnEdition))
+                {
+
+                }
+            }
+        }
+
 
         #region Unity en édition SurErreur / AvantChangement / ApresChangement
         /// <summary>
@@ -225,10 +243,7 @@ namespace EICE_WARGAME
         }
         #endregion
 
-        private void buttonModifier_Click(object sender, EventArgs e)
-        {
-
-        }
+        
     }
 
 }
