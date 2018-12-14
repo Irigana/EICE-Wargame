@@ -38,6 +38,9 @@ namespace EICE_WARGAME
             
             textBoxAvecTextInvisibleNouveauMdp.EnterPress += new KeyEventHandler(textBoxAvecTextInvisible_KeyDown);
             textBoxAvecTextInvisibleConfNewMdp.EnterPress += new KeyEventHandler(textBoxAvecTextInvisible_KeyDown);
+
+            Bitmap ImageRessource = new Bitmap(Properties.Resources.Validation25px);
+            errorProviderValidation.Icon = Icon.FromHandle(ImageRessource.GetHicon());
         }
 
         private void PageEditionUser_Load(object sender, EventArgs e)
@@ -48,42 +51,37 @@ namespace EICE_WARGAME
         private void buttonValiderModif_Click(object sender, EventArgs e)
         {
             errorProviderEdition.Clear();
-            bool ModificationEffectuee = false;
-            
+
             Utilisateur UtilisateurEnEdition = Utilisateur;
 
             // Si le mot de passe de l'utilisateur est différent et que les textbox du nouveau mot de passe sont pas vide et égale
-            if ((string.Compare(UtilisateurEnEdition.MotDePasse.ToString(),Outils.hash(textBoxAvecTextInvisibleNouveauMdp.Text.ToString())) != 0)
+            if ((string.Compare(UtilisateurEnEdition.MotDePasse.ToString(), Outils.hash(textBoxAvecTextInvisibleNouveauMdp.Text.ToString())) != 0)
                 && ((textBoxAvecTextInvisibleConfNewMdp.Text != "") && (textBoxAvecTextInvisibleNouveauMdp.Text != ""))
-                && (string.Compare(textBoxAvecTextInvisibleNouveauMdp.Text.ToString(),textBoxAvecTextInvisibleConfNewMdp.Text.ToString()) == 0))
+                && (string.Compare(textBoxAvecTextInvisibleNouveauMdp.Text.ToString(), textBoxAvecTextInvisibleConfNewMdp.Text.ToString()) == 0))
             {
 
                 if (string.Compare(Outils.hash(textBoxAvecTextInvisibleAncienMdp.Text.ToString()), UtilisateurEnEdition.MotDePasse) == 0)
                 {
                     UtilisateurEnEdition.MotDePasse = Outils.hash(textBoxAvecTextInvisibleNouveauMdp.Text);
-                    ModificationEffectuee = true;
+                    if ((UtilisateurEnEdition.EstValide) && Program.GMBD.ModifierUtilisateur(UtilisateurEnEdition))
+                    {
+                        textBoxAvecTextInvisibleAncienMdp.Text = "";
+                        textBoxAvecTextInvisibleConfNewMdp.Text = "";
+                        textBoxAvecTextInvisibleNouveauMdp.Text = "";                        
+                        errorProviderValidation.SetError(buttonValiderModif, "Modification effectuée");
+                    }
                 }
                 else
                 {
                     errorProviderEdition.SetError(textBoxAvecTextInvisibleAncienMdp, "Mot de passe incorrect");
                 }
             }
-            else if((string.Compare(textBoxAvecTextInvisibleNouveauMdp.Text.ToString(), textBoxAvecTextInvisibleConfNewMdp.Text.ToString()) != 0))
+            else if ((string.Compare(textBoxAvecTextInvisibleNouveauMdp.Text.ToString(), textBoxAvecTextInvisibleConfNewMdp.Text.ToString()) != 0))
             {
                 errorProviderEdition.SetError(textBoxAvecTextInvisibleConfNewMdp, "Le mot de pas ne correspond pas au nouveau mot de passe que vous souhaitez mettre");
             }
-            if ((UtilisateurEnEdition.EstValide) && (ModificationEffectuee == true))
-            {
-                Program.GMBD.ModifierUtilisateur(UtilisateurEnEdition);                    
-                Form_Principal.Instance.CreerPageCourante<PageEditionUser>(
-                    (Page) =>
-                    {
-                        Page.Utilisateur = Utilisateur;
-                        return true;
-                    });
-            }
-            
         }
+               
 
         private void buttonRetourMenu_Click(object sender, EventArgs e)
         {
@@ -101,6 +99,24 @@ namespace EICE_WARGAME
             {
                 buttonValiderModif_Click(null, null);
             }
+        }
+
+        private void textBoxAvecTextInvisibleAncienMdp_Enter(object sender, EventArgs e)
+        {
+            errorProviderEdition.Clear();
+            errorProviderValidation.Clear();
+        }
+
+        private void textBoxAvecTextInvisibleNouveauMdp_Enter(object sender, EventArgs e)
+        {
+            errorProviderEdition.Clear();
+            errorProviderValidation.Clear();
+        }
+
+        private void textBoxAvecTextInvisibleConfNewMdp_Enter(object sender, EventArgs e)
+        {
+            errorProviderEdition.Clear();
+            errorProviderValidation.Clear();
         }
     }
 }

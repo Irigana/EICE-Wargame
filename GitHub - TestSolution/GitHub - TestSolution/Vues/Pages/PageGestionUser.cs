@@ -215,9 +215,7 @@ namespace EICE_WARGAME
                                 textBoxAvecTextInvisibleMdp.Text = "";
                                 textBoxAvecTextInvisibleConfMdp.Text = "";
                                 textBoxAvecTextInvisibleMdp.RefreshMdpApresAcceptation();
-                                errorProviderValidation.SetError(buttonValider, "Modification du mot de passe correctement effectuée");
-                                textBoxAvecTextInvisibleMdp.MotDePasseCache = true;
-                                textBoxAvecTextInvisibleConfMdp.MotDePasseCache = true;
+                                errorProviderValidation.SetError(buttonValider, "Modification du mot de passe correctement effectuée");                                
                             }
                             else
                             {
