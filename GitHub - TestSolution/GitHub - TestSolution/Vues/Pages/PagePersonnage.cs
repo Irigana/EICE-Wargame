@@ -90,18 +90,24 @@ namespace EICE_WARGAME
         {
             listeDeroulanteSousFaction1.Enabled = true;
             buttonAjouterPersonnage.Enabled = false;
-
+            AnnulationControlApresChangementSelection();
             buttonAnnulerPersonnage.Enabled = false;
             buttonModifierPersonnage.Enabled = false;
             buttonSupprimerPersonnage.Enabled = false;
 
             listeDeroulanteSousFaction1.ResetTextSousFaction();
+            listeDeroulanteUnity1.ResetTextUnity();
+            listeDeroulanteSubUnity1.ResetTextSubUnity();
             ficheCaractere1.NettoyerListView();
             Program.GMBD.MettreAJourListeSousFaction(listeDeroulanteSousFaction1, listeDeroulanteFaction1.FactionSelectionnee.Id);
         }
 
         private void ListeDeroulanteSousFaction_SurChangementSelection(object sender, EventArgs e)
         {
+            listeDeroulanteUnity1.ResetTextUnity();
+            listeDeroulanteSubUnity1.ResetTextSubUnity();
+            ficheCaractere1.NettoyerListView();
+            AnnulationControlApresChangementSelection();
             listeDeroulanteUnity1.Enabled = true;
             listeDeroulanteUnity1.Unity = Program.GMBD.EnumererUnity(new MyDB.CodeSql("unity.un_id,unity.un_name"),
                 null,null,
@@ -111,6 +117,10 @@ namespace EICE_WARGAME
 
         private void ListeDeroulanteUnity_SurChangementSelection(object sender, EventArgs e)
         {
+
+            listeDeroulanteSubUnity1.ResetTextSubUnity();            
+            ficheCaractere1.NettoyerListView();
+            AnnulationControlApresChangementSelection();
             listeDeroulanteSubUnity1.Enabled = true;
             listeDeroulanteSubUnity1.SubUnity = Program.GMBD.EnumererSubUnity(new MyDB.CodeSql("su_id,su_name"),
                 null,
@@ -119,9 +129,21 @@ namespace EICE_WARGAME
                 new MyDB.CodeSql("ORDER BY su_name"));
         }
 
+        private void AnnulationControlApresChangementSelection()
+        {
+            numericUpDown1.Enabled = false;
+            listeDeroulanteRank1.Enabled = false;
+            textBoxCaractere.Enabled = false;
+            numericUpDownMax.Enabled = false;
+            numericUpDownMin.Enabled = false;
+            buttonAjouterPersonnage.Enabled = false;
+            ficheCaractere1.ActiverTextBox = false;
+        }
+
         private void ListeDeroulanteSubUnity_SurChangementSelection(object sender, EventArgs e)
         {
-            
+
+            ficheCaractere1.NettoyerListView();
             numericUpDown1.Enabled = true;
             listeDeroulanteRank1.Enabled = true;
             textBoxCaractere.Enabled = true;
