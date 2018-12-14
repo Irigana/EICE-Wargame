@@ -45,10 +45,13 @@
             this.panel1 = new System.Windows.Forms.Panel();
             this.z_listeDeroulanteStuff = new EICE_WARGAME.ListeDeroulanteStuff();
             this.label7 = new System.Windows.Forms.Label();
-            this.z_listeDeroulanteFigurine = new EICE_WARGAME.ListeDeroulanteFigurine();
             this.label8 = new System.Windows.Forms.Label();
             this.buttonOptionsUser1 = new EICE_WARGAME.ButtonOptionsUser();
             this.z_listeDeroulanteChar = new EICE_WARGAME.ListeDeroulanteChar();
+            this.z_listeDeroulanteRank = new EICE_WARGAME.ListeDeroulanteRank();
+            this.label9 = new System.Windows.Forms.Label();
+            this.z_textBox = new System.Windows.Forms.TextBox();
+            this.label10 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // labelMaCollection
@@ -168,6 +171,7 @@
             // 
             this.z_listeDeroulanteFaction.FactionSelectionnee = null;
             this.z_listeDeroulanteFaction.Location = new System.Drawing.Point(492, 160);
+            this.z_listeDeroulanteFaction.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.z_listeDeroulanteFaction.Name = "z_listeDeroulanteFaction";
             this.z_listeDeroulanteFaction.Size = new System.Drawing.Size(235, 25);
             this.z_listeDeroulanteFaction.TabIndex = 15;
@@ -199,14 +203,6 @@
             this.label7.TabIndex = 18;
             this.label7.Text = "Equipement";
             // 
-            // z_listeDeroulanteFigurine
-            // 
-            this.z_listeDeroulanteFigurine.FigurineSelectionnee = null;
-            this.z_listeDeroulanteFigurine.Location = new System.Drawing.Point(108, 265);
-            this.z_listeDeroulanteFigurine.Name = "z_listeDeroulanteFigurine";
-            this.z_listeDeroulanteFigurine.Size = new System.Drawing.Size(235, 26);
-            this.z_listeDeroulanteFigurine.TabIndex = 19;
-            // 
             // label8
             // 
             this.label8.AutoSize = true;
@@ -228,20 +224,56 @@
             // z_listeDeroulanteChar
             // 
             this.z_listeDeroulanteChar.CharactSelectionnee = null;
-            this.z_listeDeroulanteChar.Location = new System.Drawing.Point(492, 265);
+            this.z_listeDeroulanteChar.Location = new System.Drawing.Point(108, 265);
             this.z_listeDeroulanteChar.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.z_listeDeroulanteChar.Name = "z_listeDeroulanteChar";
-            this.z_listeDeroulanteChar.Size = new System.Drawing.Size(260, 30);
+            this.z_listeDeroulanteChar.Size = new System.Drawing.Size(235, 24);
             this.z_listeDeroulanteChar.TabIndex = 22;
+            // 
+            // z_listeDeroulanteRank
+            // 
+            this.z_listeDeroulanteRank.Location = new System.Drawing.Point(108, 351);
+            this.z_listeDeroulanteRank.Name = "z_listeDeroulanteRank";
+            this.z_listeDeroulanteRank.RankSelectionnee = null;
+            this.z_listeDeroulanteRank.Size = new System.Drawing.Size(235, 24);
+            this.z_listeDeroulanteRank.TabIndex = 23;
+            // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.Location = new System.Drawing.Point(55, 351);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(42, 17);
+            this.label9.TabIndex = 24;
+            this.label9.Text = "Rang";
+            // 
+            // z_textBox
+            // 
+            this.z_textBox.Location = new System.Drawing.Point(108, 395);
+            this.z_textBox.Name = "z_textBox";
+            this.z_textBox.Size = new System.Drawing.Size(100, 22);
+            this.z_textBox.TabIndex = 25;
+            // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.Location = new System.Drawing.Point(55, 395);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(37, 17);
+            this.label10.TabIndex = 26;
+            this.label10.Text = "Cout";
             // 
             // PageArmee
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.label10);
+            this.Controls.Add(this.z_textBox);
+            this.Controls.Add(this.label9);
+            this.Controls.Add(this.z_listeDeroulanteRank);
             this.Controls.Add(this.z_listeDeroulanteChar);
             this.Controls.Add(this.buttonOptionsUser1);
             this.Controls.Add(this.label8);
-            this.Controls.Add(this.z_listeDeroulanteFigurine);
             this.Controls.Add(this.label7);
             this.Controls.Add(this.z_listeDeroulanteStuff);
             this.Controls.Add(this.panel1);
@@ -285,9 +317,12 @@
         private System.Windows.Forms.Panel panel1;
         private ListeDeroulanteStuff z_listeDeroulanteStuff;
         private System.Windows.Forms.Label label7;
-        private ListeDeroulanteFigurine z_listeDeroulanteFigurine;
         private System.Windows.Forms.Label label8;
         private ButtonOptionsUser buttonOptionsUser1;
         private ListeDeroulanteChar z_listeDeroulanteChar;
+        private ListeDeroulanteRank z_listeDeroulanteRank;
+        private System.Windows.Forms.Label label9;
+        private System.Windows.Forms.TextBox z_textBox;
+        private System.Windows.Forms.Label label10;
     }
 }

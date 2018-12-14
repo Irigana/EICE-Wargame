@@ -33,12 +33,14 @@
             this.buttonValiderModif = new System.Windows.Forms.Button();
             this.buttonRetourMenu = new System.Windows.Forms.Button();
             this.errorProviderEdition = new System.Windows.Forms.ErrorProvider(this.components);
+            this.labelNouveauMdp = new System.Windows.Forms.Label();
+            this.errorProviderValidation = new System.Windows.Forms.ErrorProvider(this.components);
+            this.textBoxAvecTextInvisibleAncienMdp = new EICE_WARGAME.TextBoxAvecTextInvisible();
             this.buttonOptionsUser1 = new EICE_WARGAME.ButtonOptionsUser();
             this.textBoxAvecTextInvisibleConfNewMdp = new EICE_WARGAME.TextBoxAvecTextInvisible();
             this.textBoxAvecTextInvisibleNouveauMdp = new EICE_WARGAME.TextBoxAvecTextInvisible();
-            this.labelNouveauMdp = new System.Windows.Forms.Label();
-            this.textBoxAvecTextInvisibleAncienMdp = new EICE_WARGAME.TextBoxAvecTextInvisible();
             ((System.ComponentModel.ISupportInitialize)(this.errorProviderEdition)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProviderValidation)).BeginInit();
             this.SuspendLayout();
             // 
             // labelEditionUser
@@ -49,7 +51,7 @@
             this.labelEditionUser.Location = new System.Drawing.Point(582, 84);
             this.labelEditionUser.Name = "labelEditionUser";
             this.labelEditionUser.Size = new System.Drawing.Size(365, 52);
-            this.labelEditionUser.TabIndex = 0;
+            this.labelEditionUser.TabIndex = 1;
             this.labelEditionUser.Text = "Edition du profil";
             // 
             // buttonValiderModif
@@ -86,6 +88,33 @@
             // 
             this.errorProviderEdition.ContainerControl = this;
             // 
+            // labelNouveauMdp
+            // 
+            this.labelNouveauMdp.AutoSize = true;
+            this.labelNouveauMdp.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F);
+            this.labelNouveauMdp.ForeColor = System.Drawing.Color.SlateGray;
+            this.labelNouveauMdp.Location = new System.Drawing.Point(603, 236);
+            this.labelNouveauMdp.Name = "labelNouveauMdp";
+            this.labelNouveauMdp.Size = new System.Drawing.Size(260, 29);
+            this.labelNouveauMdp.TabIndex = 9;
+            this.labelNouveauMdp.Text = "Nouveau mot de passe";
+            // 
+            // errorProviderValidation
+            // 
+            this.errorProviderValidation.ContainerControl = this;
+            // 
+            // textBoxAvecTextInvisibleAncienMdp
+            // 
+            this.textBoxAvecTextInvisibleAncienMdp.ForeColor = System.Drawing.SystemColors.ButtonShadow;
+            this.textBoxAvecTextInvisibleAncienMdp.Location = new System.Drawing.Point(608, 297);
+            this.textBoxAvecTextInvisibleAncienMdp.Margin = new System.Windows.Forms.Padding(0);
+            this.textBoxAvecTextInvisibleAncienMdp.MotDePasseCache = true;
+            this.textBoxAvecTextInvisibleAncienMdp.Name = "textBoxAvecTextInvisibleAncienMdp";
+            this.textBoxAvecTextInvisibleAncienMdp.PlaceHolder = "Ancien mot de passe";
+            this.textBoxAvecTextInvisibleAncienMdp.Size = new System.Drawing.Size(314, 22);
+            this.textBoxAvecTextInvisibleAncienMdp.TabIndex = 2;
+            this.textBoxAvecTextInvisibleAncienMdp.Enter += new System.EventHandler(this.textBoxAvecTextInvisibleAncienMdp_Enter);
+            // 
             // buttonOptionsUser1
             // 
             this.buttonOptionsUser1.BackColor = System.Drawing.Color.Transparent;
@@ -105,6 +134,7 @@
             this.textBoxAvecTextInvisibleConfNewMdp.PlaceHolder = "Confirmation nouveau mot de passe";
             this.textBoxAvecTextInvisibleConfNewMdp.Size = new System.Drawing.Size(314, 22);
             this.textBoxAvecTextInvisibleConfNewMdp.TabIndex = 4;
+            this.textBoxAvecTextInvisibleConfNewMdp.Enter += new System.EventHandler(this.textBoxAvecTextInvisibleConfNewMdp_Enter);
             // 
             // textBoxAvecTextInvisibleNouveauMdp
             // 
@@ -116,28 +146,7 @@
             this.textBoxAvecTextInvisibleNouveauMdp.PlaceHolder = "Nouveau mot de passe";
             this.textBoxAvecTextInvisibleNouveauMdp.Size = new System.Drawing.Size(314, 22);
             this.textBoxAvecTextInvisibleNouveauMdp.TabIndex = 3;
-            // 
-            // labelNouveauMdp
-            // 
-            this.labelNouveauMdp.AutoSize = true;
-            this.labelNouveauMdp.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F);
-            this.labelNouveauMdp.ForeColor = System.Drawing.Color.SlateGray;
-            this.labelNouveauMdp.Location = new System.Drawing.Point(603, 236);
-            this.labelNouveauMdp.Name = "labelNouveauMdp";
-            this.labelNouveauMdp.Size = new System.Drawing.Size(260, 29);
-            this.labelNouveauMdp.TabIndex = 9;
-            this.labelNouveauMdp.Text = "Nouveau mot de passe";
-            // 
-            // textBoxAvecTextInvisibleAncienMdp
-            // 
-            this.textBoxAvecTextInvisibleAncienMdp.ForeColor = System.Drawing.SystemColors.ButtonShadow;
-            this.textBoxAvecTextInvisibleAncienMdp.Location = new System.Drawing.Point(608, 297);
-            this.textBoxAvecTextInvisibleAncienMdp.Margin = new System.Windows.Forms.Padding(0);
-            this.textBoxAvecTextInvisibleAncienMdp.MotDePasseCache = true;
-            this.textBoxAvecTextInvisibleAncienMdp.Name = "textBoxAvecTextInvisibleAncienMdp";
-            this.textBoxAvecTextInvisibleAncienMdp.PlaceHolder = "Ancien mot de passe";
-            this.textBoxAvecTextInvisibleAncienMdp.Size = new System.Drawing.Size(314, 22);
-            this.textBoxAvecTextInvisibleAncienMdp.TabIndex = 10;
+            this.textBoxAvecTextInvisibleNouveauMdp.Enter += new System.EventHandler(this.textBoxAvecTextInvisibleNouveauMdp_Enter);
             // 
             // PageEditionUser
             // 
@@ -155,6 +164,7 @@
             this.Size = new System.Drawing.Size(1500, 750);
             this.Load += new System.EventHandler(this.PageEditionUser_Load);
             ((System.ComponentModel.ISupportInitialize)(this.errorProviderEdition)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProviderValidation)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -171,5 +181,6 @@
         private System.Windows.Forms.ErrorProvider errorProviderEdition;
         private System.Windows.Forms.Label labelNouveauMdp;
         private TextBoxAvecTextInvisible textBoxAvecTextInvisibleAncienMdp;
+        private System.Windows.Forms.ErrorProvider errorProviderValidation;
     }
 }
