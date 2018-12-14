@@ -8,7 +8,6 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using PDSGBD;
-using System.Drawing;
 using System.Drawing.Printing;
 
 
@@ -75,8 +74,8 @@ namespace EICE_WARGAME
             memoryGraphics.CopyFromScreen(this.Location.X, this.Location.Y, 0, 0, s);
         }
 
-        private void printDocument1_PrintPage(System.Object sender,
-               System.Drawing.Printing.PrintPageEventArgs e)
+        private void printDocument1_PrintPage(Object sender,
+               PrintPageEventArgs e)
         {
             e.Graphics.DrawImage(memoryImage, 0, 0);
         }
@@ -348,7 +347,7 @@ namespace EICE_WARGAME
 
         private void buttonSupprimerFigurine_Click(object sender, EventArgs e)
         {
-            Program.GMBD.SupprimerFigurine(ficheFigurineStuff1.FigurineSelectionne);
+          //  Program.GMBD.SupprimerFigurineStuff(ficheFigurineStuff1.FigurineSelectionne);
             Program.GMBD.MettreAJourFicheFigurine(ficheFigurineStuff1, Utilisateur.Id);
             
         }
