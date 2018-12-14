@@ -28,26 +28,49 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.buttonOptionsUser1 = new EICE_WARGAME.ButtonOptionsUser();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(PageImpressionCarteUnite));
+            this.buttonExportPDF = new System.Windows.Forms.Button();
+            this.printDialog1 = new System.Windows.Forms.PrintDialog();
+            this.printPreviewDialog1 = new System.Windows.Forms.PrintPreviewDialog();
+            this.printDialog2 = new System.Windows.Forms.PrintDialog();
             this.SuspendLayout();
             // 
-            // buttonOptionsUser1
+            // buttonExportPDF
             // 
-            this.buttonOptionsUser1.BackColor = System.Drawing.Color.Transparent;
-            this.buttonOptionsUser1.Location = new System.Drawing.Point(844, 2);
-            this.buttonOptionsUser1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
-            this.buttonOptionsUser1.Name = "buttonOptionsUser1";
-            this.buttonOptionsUser1.Size = new System.Drawing.Size(164, 37);
-            this.buttonOptionsUser1.TabIndex = 12;
-            this.buttonOptionsUser1.Utilisateur = null;
+            this.buttonExportPDF.Location = new System.Drawing.Point(0, 496);
+            this.buttonExportPDF.Name = "buttonExportPDF";
+            this.buttonExportPDF.Size = new System.Drawing.Size(1010, 23);
+            this.buttonExportPDF.TabIndex = 13;
+            this.buttonExportPDF.Text = "EXPORT PDF";
+            this.buttonExportPDF.UseVisualStyleBackColor = true;
+            this.buttonExportPDF.Click += new System.EventHandler(this.button_Export_PDF_Click);
+            // 
+            // printDialog1
+            // 
+            this.printDialog1.UseEXDialog = true;
+            // 
+            // printPreviewDialog1
+            // 
+            this.printPreviewDialog1.AutoScrollMargin = new System.Drawing.Size(0, 0);
+            this.printPreviewDialog1.AutoScrollMinSize = new System.Drawing.Size(0, 0);
+            this.printPreviewDialog1.ClientSize = new System.Drawing.Size(400, 300);
+            this.printPreviewDialog1.Enabled = true;
+            this.printPreviewDialog1.Icon = ((System.Drawing.Icon)(resources.GetObject("printPreviewDialog1.Icon")));
+            this.printPreviewDialog1.Name = "printPreviewDialog1";
+            this.printPreviewDialog1.Visible = false;
+            // 
+            // printDialog2
+            // 
+            this.printDialog2.UseEXDialog = true;
             // 
             // PageImpressionCarteUnite
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.Controls.Add(this.buttonOptionsUser1);
+            this.Controls.Add(this.buttonExportPDF);
             this.Name = "PageImpressionCarteUnite";
             this.Size = new System.Drawing.Size(1010, 519);
+            this.Load += new System.EventHandler(this.PageImpressionCarteUnite_Load);
             this.ResumeLayout(false);
 
         }
@@ -55,5 +78,9 @@
         #endregion
 
         private ButtonOptionsUser buttonOptionsUser1;
+        private System.Windows.Forms.Button buttonExportPDF;
+        private System.Windows.Forms.PrintDialog printDialog1;
+        private System.Windows.Forms.PrintPreviewDialog printPreviewDialog1;
+        private System.Windows.Forms.PrintDialog printDialog2;
     }
 }
