@@ -9,11 +9,11 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using PDSGBD;
 
-
 namespace EICE_WARGAME
 {
     public partial class PageSubUnity : UserControl
     {
+        
 
         #region Utilisateur
         private Utilisateur m_Utilisateur = null;
@@ -52,12 +52,14 @@ namespace EICE_WARGAME
             buttonAttacher.Enabled = false;
             buttonDelier.Enabled = false;
             ficheSubUnitySlave.Enabled = false;
-
+            listeDeroulanteUnity1.Enabled = false;
 
 
             listeDeroulanteFaction1.Faction = Program.GMBD.EnumererFaction(null, null, null, null);
             listeDeroulanteFaction1.SurChangementSelection += ListeFaction_SurChangementSelection;
             listeDeroulanteSousFaction1.SurChangementSelection += ListeSousFaction_SurChangementSelection;
+            listeDeroulanteUnity1.SurChangementSelection += ListeDeroulanteUnity_SurChangementSelection;
+            
             ficheSubUnity1.SurChangementSelection += FicheSousUnity_SurChangementSelection;
 
             ficheSubSub1.SubSub = Program.GMBD.EnumererSubSub(null,
@@ -104,12 +106,19 @@ namespace EICE_WARGAME
 
         private void ListeSousFaction_SurChangementSelection(object sender, EventArgs e)
         {
+            listeDeroulanteUnity1.Enabled = true;
+            listeDeroulanteUnity1.Unity = Program.GMBD.EnumererUnity(null, null,null, null);
+        }
+
+
+        private void ListeDeroulanteUnity_SurChangementSelection(object sender,EventArgs e)
+        {
             textBoxSousUnity.Enabled = true;
             ficheSubUnity1.Enabled = true;
             buttonAjouterSubUnity.Enabled = true;
             buttonModifier.Enabled = false;
             buttonSupprimerSubUnity.Enabled = false;
-            ChargerFicheSansFiltre(listeDeroulanteFaction1.FactionSelectionnee.Id, listeDeroulanteSousFaction1.SousFactionSelectionnee.Id);
+            ChargerFicheSansFiltre(listeDeroulanteFaction1.FactionSelectionnee.Id, listeDeroulanteSousFaction1.SousFactionSelectionnee.Id,listeDeroulanteUnity1.UnitySelectionnee.Id);
 
             ficheSubUnity1.SurChangementFiltre += (s, ev) =>
             {
@@ -124,19 +133,17 @@ namespace EICE_WARGAME
                 }
                 else
                 {
-                    ChargerFicheSansFiltre(listeDeroulanteFaction1.FactionSelectionnee.Id, listeDeroulanteSousFaction1.SousFactionSelectionnee.Id);     
+                    ChargerFicheSansFiltre(listeDeroulanteFaction1.FactionSelectionnee.Id, listeDeroulanteSousFaction1.SousFactionSelectionnee.Id,listeDeroulanteUnity1.UnitySelectionnee.Id);
                 }
             };
-
-
         }
 
-        private void ChargerFicheSansFiltre(int IdSousFaction, int IdFaction)
+        private void ChargerFicheSansFiltre(int IdSousFaction, int IdFaction, int IdUnity)
         {
             ficheSubUnity1.SubUnity = Program.GMBD.EnumererSubUnity(null,
                    new MyDB.CodeSql(@"JOIN subfaction ON subfaction.sf_id = subunity.su_fk_subfaction_id"),
-                   new MyDB.CodeSql("WHERE sf_fk_faction_id = {0} AND sf_id = {1}",
-                   IdSousFaction, IdFaction),
+                   new MyDB.CodeSql("WHERE sf_fk_faction_id = {0} AND sf_id = {1} AND subunity.su_fk_unity_id = {2}",
+                   IdSousFaction, IdFaction, IdUnity),
                    new MyDB.CodeSql("ORDER BY su_name"));
         }
 
@@ -165,7 +172,7 @@ namespace EICE_WARGAME
                 }
                 else
                 {
-                    ChargerFicheSansFiltre(listeDeroulanteFaction1.FactionSelectionnee.Id, listeDeroulanteSousFaction1.SousFactionSelectionnee.Id);
+                    ChargerFicheSansFiltre(listeDeroulanteFaction1.FactionSelectionnee.Id, listeDeroulanteSousFaction1.SousFactionSelectionnee.Id,listeDeroulanteUnity1.UnitySelectionnee.Id);
                 }
             };
         }
@@ -178,11 +185,12 @@ namespace EICE_WARGAME
             m_SubUnityEnEdition.AvantChangement += SubUnityEnEdition_AvantChangement;
             m_SubUnityEnEdition.ApresChangement += SubUnityEnEdition_ApresChangement;
 
+            m_SubUnityEnEdition.Unity = listeDeroulanteUnity1.UnitySelectionnee;
             m_SubUnityEnEdition.Name = textBoxSousUnity.Text;
             m_SubUnityEnEdition.SousFaction = listeDeroulanteSousFaction1.SousFactionSelectionnee;
             if(m_SubUnityEnEdition.EstValide && Program.GMBD.AjouterSubUnity(m_SubUnityEnEdition))
             {
-                ChargerFicheSansFiltre(listeDeroulanteSousFaction1.SousFactionSelectionnee.Id, listeDeroulanteFaction1.FactionSelectionnee.Id);
+                ChargerFicheSansFiltre(listeDeroulanteSousFaction1.SousFactionSelectionnee.Id, listeDeroulanteFaction1.FactionSelectionnee.Id,listeDeroulanteUnity1.UnitySelectionnee.Id);
             }
         }
 
@@ -199,7 +207,7 @@ namespace EICE_WARGAME
                 m_SubUnityEnEdition.SousFaction = listeDeroulanteSousFaction1.SousFactionSelectionnee;
                 if(m_SubUnityEnEdition.EstValide && Program.GMBD.ModifierSubUnity(m_SubUnityEnEdition))
                 {
-                    ChargerFicheSansFiltre(listeDeroulanteSousFaction1.SousFactionSelectionnee.Id, listeDeroulanteFaction1.FactionSelectionnee.Id);
+                    ChargerFicheSansFiltre(listeDeroulanteSousFaction1.SousFactionSelectionnee.Id, listeDeroulanteFaction1.FactionSelectionnee.Id,listeDeroulanteUnity1.UnitySelectionnee.Id);
                 }
             }
         }
@@ -219,7 +227,7 @@ namespace EICE_WARGAME
                         if (Program.GMBD.SupprimerSubUnity(SubUnityLie))
                         {
                             ValidationProvider.SetError(textBoxSousUnity, "Votre sous unité a bien été supprimée");
-                            ChargerFicheSansFiltre(listeDeroulanteSousFaction1.SousFactionSelectionnee.Id, listeDeroulanteFaction1.FactionSelectionnee.Id);
+                            ChargerFicheSansFiltre(listeDeroulanteSousFaction1.SousFactionSelectionnee.Id, listeDeroulanteFaction1.FactionSelectionnee.Id,listeDeroulanteUnity1.UnitySelectionnee.Id);
                         }
                     }
                     else if (FormConfirmation.Annulation)
@@ -282,9 +290,9 @@ namespace EICE_WARGAME
                     {
                         SubUnity SubUnityExiste = Program.GMBD.EnumererSubUnity(null,
                             new MyDB.CodeSql(@" JOIN subfaction ON subunity.su_fk_subfaction_id = subfaction.sf_id"),
-                            new MyDB.CodeSql(@"WHERE subfaction.sf_fk_faction_id = {0} AND subfaction.sf_id = {1} AND su_name = {2} AND su_id <> {3}",
+                            new MyDB.CodeSql(@"WHERE subfaction.sf_fk_faction_id = {0} AND subfaction.sf_id = {1} AND su_name = {2} AND su_id <> {3} AND subunity.su_fk_unity_id = {4}",
                             listeDeroulanteFaction1.FactionSelectionnee.Id, listeDeroulanteSousFaction1.SousFactionSelectionnee.Id,
-                            textBoxSousUnity.Text,ficheSubUnity1.SubUnitySelectionne.Id), null).FirstOrDefault();
+                            textBoxSousUnity.Text, ficheSubUnity1.SubUnitySelectionne.Id, listeDeroulanteUnity1.UnitySelectionnee.Id), null).FirstOrDefault();
 
                         if (SubUnityExiste != null)
                         {
@@ -294,15 +302,15 @@ namespace EICE_WARGAME
                     // Si il est en ajout
                     else if (ficheSubUnity1.SubUnitySelectionne == null)
                     {
-                        Charact CaractereExiste = Program.GMBD.EnumererCaractere(null,
-                            new MyDB.CodeSql(@"JOIN subfaction ON subunity.su_fk_subfaction_id = subfaction.sf_id"),
-                             new MyDB.CodeSql(@"WHERE subfaction.sf_fk_faction_id = {0} AND subfaction.sf_id = {1}
-                                                AND subunity.su_name = {2} ",
-                            listeDeroulanteFaction1.FactionSelectionnee.Id, listeDeroulanteSousFaction1.SousFactionSelectionnee.Id,
-                            textBoxSousUnity.Text), null).FirstOrDefault();
-                        if (CaractereExiste != null)
+                        SubUnity SubUnityExiste = Program.GMBD.EnumererSubUnity(null,
+                           new MyDB.CodeSql(@" JOIN subfaction ON subunity.su_fk_subfaction_id = subfaction.sf_id"),
+                           new MyDB.CodeSql(@"WHERE subfaction.sf_fk_faction_id = {0} AND subfaction.sf_id = {1} AND su_name = {2} AND subunity.su_fk_unity_id = {3} ",
+                           listeDeroulanteFaction1.FactionSelectionnee.Id, listeDeroulanteSousFaction1.SousFactionSelectionnee.Id,
+                           textBoxSousUnity.Text, listeDeroulanteUnity1.UnitySelectionnee.Id), null).FirstOrDefault();
+
+                        if (SubUnityExiste != null)
                         {
-                            AccumulateurErreur.NotifierErreur("Cette sous faction existe déjà pour cette faction et sous faction, veuillez en choisir une autre !");
+                            AccumulateurErreur.NotifierErreur("Cette sous unité existe déjà, veuillez en choisir une autre !");
                         }
                     }
                     break;

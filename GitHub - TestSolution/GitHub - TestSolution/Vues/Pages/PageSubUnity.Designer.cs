@@ -56,6 +56,8 @@
             this.buttonRetourDashBoard1 = new EICE_WARGAME.ButtonRetourDashBoard();
             this.menuAdmin1 = new EICE_WARGAME.MenuAdmin();
             this.buttonOptionsUser1 = new EICE_WARGAME.ButtonOptionsUser();
+            this.labelUnity = new System.Windows.Forms.Label();
+            this.listeDeroulanteUnity1 = new EICE_WARGAME.ListeDeroulanteUnity();
             ((System.ComponentModel.ISupportInitialize)(this.errorProviderUnity)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ValidationProvider)).BeginInit();
             this.SuspendLayout();
@@ -84,7 +86,7 @@
             // 
             this.labelFaction.AutoSize = true;
             this.labelFaction.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F);
-            this.labelFaction.Location = new System.Drawing.Point(390, 123);
+            this.labelFaction.Location = new System.Drawing.Point(390, 108);
             this.labelFaction.Name = "labelFaction";
             this.labelFaction.Size = new System.Drawing.Size(65, 18);
             this.labelFaction.TabIndex = 52;
@@ -94,7 +96,7 @@
             // 
             this.labelSousFaction.AutoSize = true;
             this.labelSousFaction.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F);
-            this.labelSousFaction.Location = new System.Drawing.Point(390, 192);
+            this.labelSousFaction.Location = new System.Drawing.Point(390, 161);
             this.labelSousFaction.Name = "labelSousFaction";
             this.labelSousFaction.Size = new System.Drawing.Size(99, 18);
             this.labelSousFaction.TabIndex = 53;
@@ -124,7 +126,7 @@
             // 
             this.labelNewSubUnity.AutoSize = true;
             this.labelNewSubUnity.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F);
-            this.labelNewSubUnity.Location = new System.Drawing.Point(393, 263);
+            this.labelNewSubUnity.Location = new System.Drawing.Point(393, 265);
             this.labelNewSubUnity.Name = "labelNewSubUnity";
             this.labelNewSubUnity.Size = new System.Drawing.Size(86, 18);
             this.labelNewSubUnity.TabIndex = 55;
@@ -133,7 +135,7 @@
             // textBoxSousUnity
             // 
             this.textBoxSousUnity.Enabled = false;
-            this.textBoxSousUnity.Location = new System.Drawing.Point(393, 284);
+            this.textBoxSousUnity.Location = new System.Drawing.Point(393, 286);
             this.textBoxSousUnity.Name = "textBoxSousUnity";
             this.textBoxSousUnity.Size = new System.Drawing.Size(208, 22);
             this.textBoxSousUnity.TabIndex = 56;
@@ -278,7 +280,7 @@
             // listeDeroulanteSousFaction1
             // 
             this.listeDeroulanteSousFaction1.Enabled = false;
-            this.listeDeroulanteSousFaction1.Location = new System.Drawing.Point(393, 212);
+            this.listeDeroulanteSousFaction1.Location = new System.Drawing.Point(393, 181);
             this.listeDeroulanteSousFaction1.Name = "listeDeroulanteSousFaction1";
             this.listeDeroulanteSousFaction1.Size = new System.Drawing.Size(208, 24);
             this.listeDeroulanteSousFaction1.SousFactionSelectionnee = null;
@@ -287,7 +289,7 @@
             // listeDeroulanteFaction1
             // 
             this.listeDeroulanteFaction1.FactionSelectionnee = null;
-            this.listeDeroulanteFaction1.Location = new System.Drawing.Point(393, 143);
+            this.listeDeroulanteFaction1.Location = new System.Drawing.Point(393, 128);
             this.listeDeroulanteFaction1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.listeDeroulanteFaction1.Name = "listeDeroulanteFaction1";
             this.listeDeroulanteFaction1.Size = new System.Drawing.Size(208, 25);
@@ -321,10 +323,31 @@
             this.buttonOptionsUser1.TabIndex = 0;
             this.buttonOptionsUser1.Utilisateur = null;
             // 
+            // labelUnity
+            // 
+            this.labelUnity.AutoSize = true;
+            this.labelUnity.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F);
+            this.labelUnity.Location = new System.Drawing.Point(393, 212);
+            this.labelUnity.Name = "labelUnity";
+            this.labelUnity.Size = new System.Drawing.Size(49, 18);
+            this.labelUnity.TabIndex = 70;
+            this.labelUnity.Text = "Unity :";
+            // 
+            // listeDeroulanteUnity1
+            // 
+            this.listeDeroulanteUnity1.Location = new System.Drawing.Point(393, 232);
+            this.listeDeroulanteUnity1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.listeDeroulanteUnity1.Name = "listeDeroulanteUnity1";
+            this.listeDeroulanteUnity1.Size = new System.Drawing.Size(208, 24);
+            this.listeDeroulanteUnity1.TabIndex = 71;
+            this.listeDeroulanteUnity1.UnitySelectionnee = null;
+            // 
             // PageSubUnity
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.listeDeroulanteUnity1);
+            this.Controls.Add(this.labelUnity);
             this.Controls.Add(this.labelListeSubSub);
             this.Controls.Add(this.ficheSubSub1);
             this.Controls.Add(this.buttonDelier);
@@ -389,5 +412,7 @@
         private FicheSubUnity ficheSubUnitySlave;
         private System.Windows.Forms.Label labelListeSubSub;
         private FicheSubSub ficheSubSub1;
+        private ListeDeroulanteUnity listeDeroulanteUnity1;
+        private System.Windows.Forms.Label labelUnity;
     }
 }
