@@ -340,10 +340,10 @@ namespace EICE_WARGAME
                                                                      new MyDB.CodeSql("WHERE fi_fk_user_id = {0}", IdUser),
                                                                      new MyDB.CodeSql("ORDER BY fi_id"));
         }
-        public bool SupprimerFigurine(Figurine NouvelleFigurine)
+        public bool SupprimerFigurine(Figurine FigurineASupprimer)
         {
             if (!m_BD.EstConnecte) Initialiser();
-            NouvelleFigurine.Supprimer(m_BD, NouvelleFigurine, true);
+            FigurineASupprimer.Supprimer(m_BD, FigurineASupprimer, true);
             return true;
 
         }
