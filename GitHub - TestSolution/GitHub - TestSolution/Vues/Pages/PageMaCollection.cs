@@ -8,7 +8,6 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using PDSGBD;
-using System.Drawing;
 using System.Drawing.Printing;
 
 
@@ -75,8 +74,8 @@ namespace EICE_WARGAME
             memoryGraphics.CopyFromScreen(this.Location.X, this.Location.Y, 0, 0, s);
         }
 
-        private void printDocument1_PrintPage(System.Object sender,
-               System.Drawing.Printing.PrintPageEventArgs e)
+        private void printDocument1_PrintPage(Object sender,
+               PrintPageEventArgs e)
         {
             e.Graphics.DrawImage(memoryImage, 0, 0);
         }
@@ -89,6 +88,19 @@ namespace EICE_WARGAME
             listeDeroulanteSousFaction1.ResetTextSousFaction();
             Program.GMBD.MettreAJourListeSousFaction(listeDeroulanteSousFaction1, listeDeroulanteFaction1.FactionSelectionnee.Id);
             listeDeroulanteSousFaction1.SurChangementSelection += ListeDeroulanteSousFaction_SurChangementSelection;
+            if(listeDeroulanteSousFaction1 != null)
+            {
+                listeDeroulanteSousFaction1.ResetTextSousFaction();
+                listeDeroulanteUnity1.ResetTextUnity();
+                listeDeroulanteSubUnity1.ResetTextSubUnity();
+                ficheEquipementSansRecherche1.ResetText();
+                listeDeroulanteChar1.ResetTextChar();
+                listeDeroulanteUnity1.Enabled = false;
+                listeDeroulanteSubUnity1.Enabled = false;
+                listeDeroulanteChar1.Enabled = false;
+                ficheEquipementSansRecherche1.Enabled = false;
+                ficheEquipementSurFigurine1.Enabled = false;
+            }
         }
 
         private void ListeDeroulanteSousFaction_SurChangementSelection(object sender, EventArgs e)
@@ -96,6 +108,17 @@ namespace EICE_WARGAME
             listeDeroulanteUnity1.Enabled = true;
             listeDeroulanteUnity1.Unity = Program.GMBD.EnumererUnity(null, null, null, MyDB.CreerCodeSql("un_name"));
             listeDeroulanteUnity1.SurChangementSelection += ListeDeroulanteUnity_SurChangementSelection;
+            if (listeDeroulanteUnity1 != null)
+            {
+                listeDeroulanteUnity1.ResetTextUnity();
+                listeDeroulanteSubUnity1.ResetTextSubUnity();
+                ficheEquipementSansRecherche1.ResetText();
+                listeDeroulanteChar1.ResetTextChar();
+                listeDeroulanteSubUnity1.Enabled = false;
+                listeDeroulanteChar1.Enabled = false;
+                ficheEquipementSansRecherche1.Enabled = false;
+                ficheEquipementSurFigurine1.Enabled = false;
+            }
         }
 
         private void ListeDeroulanteUnity_SurChangementSelection(object sender, EventArgs e)
@@ -107,6 +130,15 @@ namespace EICE_WARGAME
                                                                               new MyDB.CodeSql("WHERE su_fk_unity_id = {0}", listeDeroulanteUnity1.UnitySelectionnee.Id),
                                                                               new MyDB.CodeSql("ORDER BY su_name"));
             listeDeroulanteSubUnity1.SurChangementSelection += ListeDeroulanteSubUnity_SurChangementSelection;
+            if (listeDeroulanteSubUnity1 != null)
+            {
+                listeDeroulanteSubUnity1.ResetTextSubUnity();
+                ficheEquipementSansRecherche1.ResetText();
+                listeDeroulanteChar1.ResetTextChar();
+                listeDeroulanteChar1.Enabled = false;
+                ficheEquipementSansRecherche1.Enabled = false;
+                ficheEquipementSurFigurine1.Enabled = false;
+            }
         }
 
         private void ListeDeroulanteSubUnity_SurChangementSelection(object sender, EventArgs e)
@@ -126,6 +158,13 @@ namespace EICE_WARGAME
                                                                                                              listeDeroulanteUnity1.UnitySelectionnee.Id, listeDeroulanteSubUnity1.SubUnitySelectionnee.Id),
                                                                                                     new MyDB.CodeSql(@"GROUP BY ch_id ORDER BY ch_name"));
             listeDeroulanteChar1.SurChangementSelection += ListeDeroulanteChar_SurChangementSelection;
+            if (listeDeroulanteChar1 != null)
+            {
+                ficheEquipementSansRecherche1.ResetText();
+                listeDeroulanteChar1.ResetTextChar();
+                ficheEquipementSansRecherche1.Enabled = false;
+                ficheEquipementSurFigurine1.Enabled = false;
+            }
         }
 
         private void ListeDeroulanteChar_SurChangementSelection(object sender, EventArgs e)
@@ -308,7 +347,7 @@ namespace EICE_WARGAME
 
         private void buttonSupprimerFigurine_Click(object sender, EventArgs e)
         {
-            Program.GMBD.SupprimerFigurine(ficheFigurineStuff1.FigurineSelectionne);
+          //  Program.GMBD.SupprimerFigurineStuff(ficheFigurineStuff1.FigurineSelectionne);
             Program.GMBD.MettreAJourFicheFigurine(ficheFigurineStuff1, Utilisateur.Id);
             
         }
