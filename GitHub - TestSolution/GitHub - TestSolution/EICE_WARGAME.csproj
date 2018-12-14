@@ -46,6 +46,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Vues\Fiches\FicheSubSub.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Vues\Fiches\FicheSubSub.Designer.cs">
+      <DependentUpon>FicheSubSub.cs</DependentUpon>
+    </Compile>
     <Compile Include="Vues\Fiches\FicheSubUnity.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -377,6 +383,9 @@
     </Compile>
     <EmbeddedResource Include="Vues\Fiches\FicheEquipementSansRecherche.resx">
       <DependentUpon>FicheEquipementSansRecherche.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Vues\Fiches\FicheSubSub.resx">
+      <DependentUpon>FicheSubSub.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Vues\Fiches\FicheSubUnity.resx">
       <DependentUpon>FicheSubUnity.cs</DependentUpon>
