@@ -97,6 +97,10 @@ namespace EICE_WARGAME
             this.Size = new Size(this.Size.Width, comboBoxRank.Height);
         }
 
+        public void ResetTextRank()
+        {
+            comboBoxRank.Text = "";
+        }
     }
 
 }

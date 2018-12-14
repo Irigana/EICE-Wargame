@@ -138,6 +138,15 @@ namespace EICE_WARGAME
             numericUpDownMin.Enabled = false;
             buttonAjouterPersonnage.Enabled = false;
             ficheCaractere1.ActiverTextBox = false;
+            ficheCaracteristique1.NettoyerListView();
+            numericUpDown2.Value = 0;
+            listeDeroulanteFeature1.ResetTextFeature();
+            textBoxCaractere.Text = "";
+            textBoxPersonnageSelectionne.Text = "";
+            numericUpDownMax.Value = 0;
+            numericUpDownMin.Value = 0;
+            listeDeroulanteRank1.ResetTextRank();
+            numericUpDown1.Value = 0;
         }
 
         private void ListeDeroulanteSubUnity_SurChangementSelection(object sender, EventArgs e)
