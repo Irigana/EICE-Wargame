@@ -195,6 +195,27 @@ namespace EICE_WARGAME
         }
         #endregion
 
+
+        #region Requetes Sous Unité
+        public bool AjouterSubUnity(SubUnity NouvelleSubUnity)
+        {
+            return NouvelleSubUnity.Enregistrer(m_BD, NouvelleSubUnity, NouvelleSubUnity.IdDeLaTablePrincipale, false);
+        }
+
+        public bool ModifierSubUnityn(SubUnity SubUnity)
+        {
+            return SubUnity.Enregistrer(m_BD, SubUnity, null, true);
+        }
+
+        public bool SupprimerSubUnity(SubUnity SubUnity)
+        {
+            if (!m_BD.EstConnecte) Initialiser();
+            SubUnity.SupprimerEnCascade(m_BD);
+            return true;
+        }        
+        
+        #endregion
+
         #region Requetes caractère
         //+====================+
         //| Requetes caractère |

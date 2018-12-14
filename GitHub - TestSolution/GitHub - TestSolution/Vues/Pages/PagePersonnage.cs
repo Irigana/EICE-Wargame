@@ -566,28 +566,8 @@ namespace EICE_WARGAME
         {
             switch (Champ)
             {
-                case Charact.Champ.Name:
-                    // Si il est en modification
-                    if (ficheCaractere1.CaractereSelectionne != null)
-                    {
-                        Charact CaractereExiste = Program.GMBD.EnumererCaractere(null, 
-                            new MyDB.CodeSql(@"JOIN char_rank ON charact.ch_id = char_rank.cr_fk_ch_id
-                                                JOIN subfaction ON charact.ch_fk_subfaction_id = subfaction.sf_id                                                
-                                                JOIN subunity ON char_rank.cr_sub_id = subunity.su_id"),
-                            new MyDB.CodeSql(@"WHERE subfaction.sf_fk_faction_id = {0} AND subfaction.sf_id = {1}
-                                                AND charact.ch_name = {2} AND char_rank.cr_fk_ra_id = {3}
-                                                AND subunity.su_id = {4} AND subunity.su_fk_unity_id = {5}", 
-                            listeDeroulanteFaction1.FactionSelectionnee.Id, listeDeroulanteSousFaction1.SousFactionSelectionnee.Id,
-                            textBoxCaractere.Text, listeDeroulanteRank1.RankSelectionnee.Id,
-                            listeDeroulanteSubUnity1.SubUnitySelectionnee.Id,listeDeroulanteUnity1.UnitySelectionnee.Id), null).FirstOrDefault();
-
-                        if (CaractereExiste != null)
-                        {
-                            AccumulateurErreur.NotifierErreur("Ce caractère existe déjà, veuillez en choisir une autre !");
-                        }
-                    }
-                    // Si il est en ajout
-                    else if (ficheCaractere1.CaractereSelectionne == null)
+                case Charact.Champ.Name:                    
+                    if (ficheCaractere1.CaractereSelectionne == null)
                     {
                         Charact CaractereExiste = Program.GMBD.EnumererCaractere(null,
                             new MyDB.CodeSql(@"JOIN char_rank ON charact.ch_id = char_rank.cr_fk_ch_id
@@ -619,7 +599,7 @@ namespace EICE_WARGAME
                     else if(ficheCaractere1.CaractereSelectionne == null)
                     {
                         ValidationProvider.SetError(textBoxCaractere, "Votre caractère a bien été ajouté");
-                    }
+                    }                    
 
                     break;
 
@@ -630,7 +610,7 @@ namespace EICE_WARGAME
 
 
 
-        #region Caractère en édition
+        #region Personnage en édition
         /// <summary>
         /// Methode permettant de réagir sur l'erreur d'un ajout ou d'une édition de caractère
         /// </summary>
@@ -645,7 +625,7 @@ namespace EICE_WARGAME
                     errorProviderErreurCaractere.SetError(numericUpDown1, MessageErreur);
                     break;
                 case CharactRank.Champ.Rank:
-                    errorProviderErreurCaractere.SetError(listeDeroulanteFaction1, MessageErreur);
+                    errorProviderErreurCaractere.SetError(listeDeroulanteRank1, MessageErreur);
                     break;
                 case CharactRank.Champ.Min:
                     errorProviderErreurCaractere.SetError(numericUpDownMin, MessageErreur);
@@ -701,6 +681,22 @@ namespace EICE_WARGAME
                         ValidationProvider.SetError(numericUpDown1, "Votre cout a bien été modifié");
                         numericUpDown1.Value = Entite.Cost;
                     }                    
+                    break;
+                case CharactRank.Champ.Rank:  
+                    if(ficheCaractere1.CaractereSelectionne != null)                  
+                    {
+                        ValidationProvider.SetError(listeDeroulanteRank1, "Votre rank a bien été modifié");
+                    }
+                    break;
+                case CharactRank.Champ.Max:
+                    {
+                        ValidationProvider.SetError(numericUpDownMax, "Votre maximum a bien été modifié");
+                    }
+                    break;
+                case CharactRank.Champ.Min:
+                    {
+                        ValidationProvider.SetError(numericUpDownMin, "Votre minimum a bien été modifié");
+                    }
                     break;
             }
             buttonAjouterPersonnage.Enabled = m_PersonnageEnEdition.EstValide;
