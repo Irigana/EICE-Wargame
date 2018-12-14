@@ -34,7 +34,7 @@ namespace EICE_WARGAME
         }
         #endregion
 
-
+        
         private bool m_FeatureValidee = false;
         private const string c_CritereQuiContient = "%{0}%";
 
@@ -129,15 +129,46 @@ namespace EICE_WARGAME
             numericUpDownMin.Enabled = true;
             buttonAjouterPersonnage.Enabled = true;
             ficheCaractere1.ActiverTextBox = true;
+
             ficheCaractere1.Caractere = Program.GMBD.EnumererPersonnage(null,
-                new MyDB.CodeSql(@"JOIN charact ON charact.ch_id = char_rank.cr_fk_ch_id
-                                    JOIN rank ON rank.ra_id = char_rank.cr_fk_ra_id
-                                    JOIN subunity ON char_rank.cr_sub_id = subunity.su_id                                                                     
-                                    JOIN subfaction ON charact.ch_fk_subfaction_id = subfaction.sf_id"),
-                new MyDB.CodeSql("WHERE sf_fk_faction_id = {0} AND sf_id = {1} AND su_fk_unity_id = {2} AND su_id = {3}",
-                listeDeroulanteFaction1.FactionSelectionnee.Id, listeDeroulanteSousFaction1.SousFactionSelectionnee.Id,
-                listeDeroulanteUnity1.UnitySelectionnee.Id, listeDeroulanteSubUnity1.SubUnitySelectionnee.Id),
-                new MyDB.CodeSql("ORDER BY su_name"));
+                    new MyDB.CodeSql(@"JOIN charact ON charact.ch_id = char_rank.cr_fk_ch_id
+                                        JOIN rank ON rank.ra_id = char_rank.cr_fk_ra_id
+                                        JOIN subunity ON char_rank.cr_sub_id = subunity.su_id                                                                     
+                                        JOIN subfaction ON charact.ch_fk_subfaction_id = subfaction.sf_id"),
+                    new MyDB.CodeSql("WHERE sf_fk_faction_id = {0} AND sf_id = {1} AND su_fk_unity_id = {2} AND su_id = {3}",
+                    listeDeroulanteFaction1.FactionSelectionnee.Id, listeDeroulanteSousFaction1.SousFactionSelectionnee.Id,
+                    listeDeroulanteUnity1.UnitySelectionnee.Id, listeDeroulanteSubUnity1.SubUnitySelectionnee.Id),
+                    new MyDB.CodeSql("ORDER BY su_name"));
+
+            ficheCaractere1.SurChangementFiltre += (s, ev) =>
+            {
+                if (ficheCaractere1.TexteDuFiltre != "")
+                {
+                    ficheCaractere1.Caractere = Program.GMBD.EnumererPersonnage(null,
+                    new MyDB.CodeSql(@"JOIN charact ON charact.ch_id = char_rank.cr_fk_ch_id
+                                        JOIN rank ON rank.ra_id = char_rank.cr_fk_ra_id
+                                        JOIN subunity ON char_rank.cr_sub_id = subunity.su_id                                                                     
+                                        JOIN subfaction ON charact.ch_fk_subfaction_id = subfaction.sf_id"),
+                    new MyDB.CodeSql("WHERE sf_fk_faction_id = {0} AND sf_id = {1} AND su_fk_unity_id = {2} AND su_id = {3} AND ch_name LIKE {4}",
+                    listeDeroulanteFaction1.FactionSelectionnee.Id, listeDeroulanteSousFaction1.SousFactionSelectionnee.Id,
+                    listeDeroulanteUnity1.UnitySelectionnee.Id, listeDeroulanteSubUnity1.SubUnitySelectionnee.Id, string.Format(c_CritereQuiContient, ficheCaractere1.TexteDuFiltre)),
+                    new MyDB.CodeSql("ORDER BY su_name"));
+                }
+                else
+                {
+                    ficheCaractere1.Caractere = Program.GMBD.EnumererPersonnage(null,
+                    new MyDB.CodeSql(@"JOIN charact ON charact.ch_id = char_rank.cr_fk_ch_id
+                                        JOIN rank ON rank.ra_id = char_rank.cr_fk_ra_id
+                                        JOIN subunity ON char_rank.cr_sub_id = subunity.su_id                                                                     
+                                        JOIN subfaction ON charact.ch_fk_subfaction_id = subfaction.sf_id"),
+                    new MyDB.CodeSql("WHERE sf_fk_faction_id = {0} AND sf_id = {1} AND su_fk_unity_id = {2} AND su_id = {3}",
+                    listeDeroulanteFaction1.FactionSelectionnee.Id, listeDeroulanteSousFaction1.SousFactionSelectionnee.Id,
+                    listeDeroulanteUnity1.UnitySelectionnee.Id, listeDeroulanteSubUnity1.SubUnitySelectionnee.Id),
+                    new MyDB.CodeSql("ORDER BY su_name"));
+                }
+
+            };
+
             listeDeroulanteRank1.Rank = Program.GMBD.EnumererRank(null, null, null, new MyDB.CodeSql("ORDER BY ra_name"));
 
             
