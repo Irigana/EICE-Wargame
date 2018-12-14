@@ -52,6 +52,18 @@
     <Compile Include="Vues\Fiches\FicheSubUnity.Designer.cs">
       <DependentUpon>FicheSubUnity.cs</DependentUpon>
     </Compile>
+    <Compile Include="Vues\ListesDeroulantes\ListeDeroulanteFigurine.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Vues\ListesDeroulantes\ListeDeroulanteFigurine.Designer.cs">
+      <DependentUpon>ListeDeroulanteFigurine.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Vues\ListesDeroulantes\ListeDeroulanteCamp.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Vues\ListesDeroulantes\ListeDeroulanteCamp.Designer.cs">
+      <DependentUpon>ListeDeroulanteCamp.cs</DependentUpon>
+    </Compile>
     <Compile Include="Vues\Pages\PageImpressionListeUnite.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -111,6 +123,12 @@
     </Compile>
     <Compile Include="Vues\ListesDeroulantes\ListeDeroulanteScenario.Designer.cs">
       <DependentUpon>ListeDeroulanteScenario.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Vues\Pages\PageArmee.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Vues\Pages\PageArmee.Designer.cs">
+      <DependentUpon>PageArmee.cs</DependentUpon>
     </Compile>
     <Compile Include="Vues\Pages\PageScenario.cs">
       <SubType>UserControl</SubType>
@@ -378,8 +396,14 @@
     <EmbeddedResource Include="Vues\Fiches\FicheSpecifiteScenario.resx">
       <DependentUpon>FicheSpecifiteScenario.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Vues\ListesDeroulantes\ListeDeroulanteFigurine.resx">
+      <DependentUpon>ListeDeroulanteFigurine.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Vues\ListesDeroulantes\ListeDeroulanteCharact.resx">
       <DependentUpon>ListeDeroulanteCharact.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Vues\ListesDeroulantes\ListeDeroulanteCamp.resx">
+      <DependentUpon>ListeDeroulanteCamp.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Vues\ListesDeroulantes\ListeDeroulanteScenario.resx">
       <DependentUpon>ListeDeroulanteScenario.cs</DependentUpon>
@@ -413,6 +437,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Vues\Pages\PageImpressionListeUnite.resx">
       <DependentUpon>PageImpressionListeUnite.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Vues\Pages\PageArmee.resx">
+      <DependentUpon>PageArmee.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Vues\Pages\PagePersonnage.resx">
       <DependentUpon>PagePersonnage.cs</DependentUpon>

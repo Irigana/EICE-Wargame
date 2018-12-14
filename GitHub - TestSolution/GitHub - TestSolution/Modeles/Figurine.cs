@@ -39,6 +39,11 @@ namespace EICE_WARGAME
         /// Membre stockant la référence d'utilisateur
         /// </summary>
         private Utilisateur m_Utilisateur;
+
+        /// <summary>
+        /// Stocke les Stuffs de cette figurine
+        /// </summary>
+        private List<FigurineStuff> m_Stuffs;
         #endregion
 
         #region Membres publics
@@ -82,6 +87,17 @@ namespace EICE_WARGAME
                         ModifierChamp(Champ.User, ref m_Utilisateur, value);
                     }
                 }
+            }
+        }
+
+        /// <summary>
+        /// Liste des Types de Stuff
+        /// </summary>
+        public IEnumerable<FigurineStuff> Stuffs
+        {
+            get
+            {
+                return EnumererFigurineStuff();
             }
         }
 
@@ -174,7 +190,25 @@ namespace EICE_WARGAME
             {
                 return new PDSGBD.MyDB.CodeSql("fi_fk_character_id = {0}, fi_fk_user_id = {1}", Charact.Id,Utilisateur.Id);
             }
-        }        
+        }
+
+        /// <summary>
+        /// Permet d'énumrer les figurines_stuff liés à cette figurine
+        /// </summary>
+        /// <returns></returns>
+        public IEnumerable<FigurineStuff> EnumererFigurineStuff()
+        {
+            if (base.Connexion == null) return new FigurineStuff[0];
+            return FigurineStuff.Enumerer(Connexion, Connexion.Enumerer(
+                @"SELECT fi_id, fi_name,
+                         fs_id,
+                         st_id, st_name
+                FROM figurine
+                INNER JOIN figurine_stuff on fi_id = fs_fk_figurine_id
+                INNER JOIN stuff on st_id = fs_fk_stuff_id
+                WHERE fi_id = {0}",
+                Id));
+        }
 
         #endregion
 
