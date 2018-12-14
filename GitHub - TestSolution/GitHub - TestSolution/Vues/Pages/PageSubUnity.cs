@@ -132,7 +132,6 @@ namespace EICE_WARGAME
             }
         }
 
-
         private void buttonModifier_Click(object sender, EventArgs e)
         {
             if (ficheSubUnity1.SubUnitySelectionne != null)
@@ -146,10 +145,47 @@ namespace EICE_WARGAME
                 m_SubUnityEnEdition.SousFaction = listeDeroulanteSousFaction1.SousFactionSelectionnee;
                 if(m_SubUnityEnEdition.EstValide && Program.GMBD.ModifierSubUnity(m_SubUnityEnEdition))
                 {
-
+                    ChargerFicheSansFiltre(listeDeroulanteSousFaction1.SousFactionSelectionnee.Id, listeDeroulanteFaction1.FactionSelectionnee.Id);
                 }
             }
         }
+
+        private void buttonSupprimerSubUnity_Click(object sender, EventArgs e)
+        {
+            if (ficheSubUnity1.SubUnitySelectionne != null)
+            {
+                SubUnity SubUnityLie = Program.GMBD.EnumererSubUnity(null,null,null, null).FirstOrDefault();
+                if (SubUnityLie == null)
+                {
+                    PopUpConfirmation FormConfirmation = new PopUpConfirmation();
+                    FormConfirmation.LabelDuTexte = "Êtes vous certain de vouloir supprimer cette sous unité ?";
+                    FormConfirmation.ShowDialog();
+                    if (FormConfirmation.Confirmation)
+                    {
+                        if (Program.GMBD.SupprimerSubUnity(SubUnityLie))
+                        {
+                            ValidationProvider.SetError(textBoxSousUnity, "Votre sous unité a bien été supprimée");
+                            ChargerFicheSansFiltre(listeDeroulanteSousFaction1.SousFactionSelectionnee.Id, listeDeroulanteFaction1.FactionSelectionnee.Id);
+                        }
+                    }
+                    else if (FormConfirmation.Annulation)
+                    {
+                        // Ne rien faire
+                    }
+                }
+            }
+        }
+
+        private void buttonAnnulerSubUnity_Click(object sender, EventArgs e)
+        {
+            listeDeroulanteSousFaction1.ResetTextSousFaction();
+            ficheSubUnity1.NettoyerListView();
+            buttonAnnulerSubUnity.Enabled = false;
+            buttonModifier.Enabled = false;
+            buttonSupprimerSubUnity.Enabled = false;
+            buttonAjouterSubUnity.Enabled = false;
+        }
+
 
 
         #region Unity en édition SurErreur / AvantChangement / ApresChangement
@@ -241,9 +277,10 @@ namespace EICE_WARGAME
             }
             buttonAjouterSubUnity.Enabled = m_SubUnityEnEdition.EstValide;
         }
+
         #endregion
 
-        
+       
     }
 
 }

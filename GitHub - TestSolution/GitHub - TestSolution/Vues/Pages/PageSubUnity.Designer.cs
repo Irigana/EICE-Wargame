@@ -152,6 +152,7 @@
             this.buttonAnnulerSubUnity.TabIndex = 61;
             this.buttonAnnulerSubUnity.Text = "Annuler";
             this.buttonAnnulerSubUnity.UseVisualStyleBackColor = false;
+            this.buttonAnnulerSubUnity.Click += new System.EventHandler(this.buttonAnnulerSubUnity_Click);
             // 
             // buttonSupprimerSubUnity
             // 
@@ -163,6 +164,7 @@
             this.buttonSupprimerSubUnity.TabIndex = 62;
             this.buttonSupprimerSubUnity.Text = "Supprimer";
             this.buttonSupprimerSubUnity.UseVisualStyleBackColor = false;
+            this.buttonSupprimerSubUnity.Click += new System.EventHandler(this.buttonSupprimerSubUnity_Click);
             // 
             // buttonAjouterSubUnity
             // 
