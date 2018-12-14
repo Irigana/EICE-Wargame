@@ -44,6 +44,10 @@
             this.errorProviderUnity = new System.Windows.Forms.ErrorProvider(this.components);
             this.ValidationProvider = new System.Windows.Forms.ErrorProvider(this.components);
             this.buttonModifier = new System.Windows.Forms.Button();
+            this.label1 = new System.Windows.Forms.Label();
+            this.buttonAttacher = new System.Windows.Forms.Button();
+            this.buttonDelier = new System.Windows.Forms.Button();
+            this.ficheSubUnitySlave = new EICE_WARGAME.FicheSubUnity();
             this.ficheSubUnity1 = new EICE_WARGAME.FicheSubUnity();
             this.listeDeroulanteSousFaction1 = new EICE_WARGAME.ListeDeroulanteSousFaction();
             this.listeDeroulanteFaction1 = new EICE_WARGAME.ListeDeroulanteFaction();
@@ -98,7 +102,7 @@
             // 
             this.panel1.BackColor = System.Drawing.Color.SteelBlue;
             this.panel1.ForeColor = System.Drawing.Color.SteelBlue;
-            this.panel1.Location = new System.Drawing.Point(241, 408);
+            this.panel1.Location = new System.Drawing.Point(241, 399);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(1200, 3);
             this.panel1.TabIndex = 50;
@@ -108,7 +112,7 @@
             this.labelSubUnityAttacher.AutoSize = true;
             this.labelSubUnityAttacher.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F);
             this.labelSubUnityAttacher.ForeColor = System.Drawing.Color.SlateGray;
-            this.labelSubUnityAttacher.Location = new System.Drawing.Point(236, 414);
+            this.labelSubUnityAttacher.Location = new System.Drawing.Point(236, 405);
             this.labelSubUnityAttacher.Name = "labelSubUnityAttacher";
             this.labelSubUnityAttacher.Size = new System.Drawing.Size(350, 29);
             this.labelSubUnityAttacher.TabIndex = 49;
@@ -198,6 +202,48 @@
             this.buttonModifier.UseVisualStyleBackColor = false;
             this.buttonModifier.Click += new System.EventHandler(this.buttonModifier_Click);
             // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F);
+            this.label1.Location = new System.Drawing.Point(643, 405);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(193, 18);
+            this.label1.TabIndex = 65;
+            this.label1.Text = "Rechercher une sous unité :";
+            // 
+            // buttonAttacher
+            // 
+            this.buttonAttacher.BackColor = System.Drawing.SystemColors.Window;
+            this.buttonAttacher.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonAttacher.Location = new System.Drawing.Point(945, 517);
+            this.buttonAttacher.Name = "buttonAttacher";
+            this.buttonAttacher.Size = new System.Drawing.Size(121, 39);
+            this.buttonAttacher.TabIndex = 66;
+            this.buttonAttacher.Text = "Attacher";
+            this.buttonAttacher.UseVisualStyleBackColor = false;
+            // 
+            // buttonDelier
+            // 
+            this.buttonDelier.BackColor = System.Drawing.SystemColors.Window;
+            this.buttonDelier.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonDelier.Location = new System.Drawing.Point(945, 562);
+            this.buttonDelier.Name = "buttonDelier";
+            this.buttonDelier.Size = new System.Drawing.Size(121, 39);
+            this.buttonDelier.TabIndex = 67;
+            this.buttonDelier.Text = "Délier";
+            this.buttonDelier.UseVisualStyleBackColor = false;
+            // 
+            // ficheSubUnitySlave
+            // 
+            this.ficheSubUnitySlave.Enabled = false;
+            this.ficheSubUnitySlave.Location = new System.Drawing.Point(646, 426);
+            this.ficheSubUnitySlave.Name = "ficheSubUnitySlave";
+            this.ficheSubUnitySlave.Size = new System.Drawing.Size(293, 295);
+            this.ficheSubUnitySlave.SubUnitySelectionne = null;
+            this.ficheSubUnitySlave.TabIndex = 64;
+            this.ficheSubUnitySlave.TexteFiltreSubUnity = "";
+            // 
             // ficheSubUnity1
             // 
             this.ficheSubUnity1.Enabled = false;
@@ -258,6 +304,10 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.buttonDelier);
+            this.Controls.Add(this.buttonAttacher);
+            this.Controls.Add(this.label1);
+            this.Controls.Add(this.ficheSubUnitySlave);
             this.Controls.Add(this.buttonModifier);
             this.Controls.Add(this.buttonAnnulerSubUnity);
             this.Controls.Add(this.buttonSupprimerSubUnity);
@@ -310,5 +360,9 @@
         private System.Windows.Forms.ErrorProvider errorProviderUnity;
         private System.Windows.Forms.ErrorProvider ValidationProvider;
         private System.Windows.Forms.Button buttonModifier;
+        private System.Windows.Forms.Button buttonDelier;
+        private System.Windows.Forms.Button buttonAttacher;
+        private System.Windows.Forms.Label label1;
+        private FicheSubUnity ficheSubUnitySlave;
     }
 }

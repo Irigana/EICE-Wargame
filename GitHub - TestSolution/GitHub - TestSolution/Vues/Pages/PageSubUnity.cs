@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using PDSGBD;
 
+
 namespace EICE_WARGAME
 {
     public partial class PageSubUnity : UserControl
@@ -48,6 +49,9 @@ namespace EICE_WARGAME
             buttonModifier.Enabled = false;
             listeDeroulanteSousFaction1.Enabled = false;
             textBoxSousUnity.Enabled = false;
+            buttonAttacher.Enabled = false;
+            buttonDelier.Enabled = false;
+            ficheSubUnitySlave.Enabled = false;
 
             listeDeroulanteFaction1.Faction = Program.GMBD.EnumererFaction(null, null, null, null);
             listeDeroulanteFaction1.SurChangementSelection += ListeFaction_SurChangementSelection;
@@ -85,7 +89,6 @@ namespace EICE_WARGAME
             {
                 if (ficheSubUnity1.TexteFiltreSubUnity != "")
                 {
-                    // TODO : corriger cette requete et vérifier que surchangementselection n'est pas le problème sur ma page personnage
                     ficheSubUnity1.SubUnity = Program.GMBD.EnumererSubUnity(null,
                     new MyDB.CodeSql(@"JOIN subfaction ON subfaction.sf_id = subunity.su_fk_subfaction_id"),
                     new MyDB.CodeSql("WHERE sf_fk_faction_id = {0} AND sf_id = {1} AND su_name LIKE {2}",
@@ -98,6 +101,11 @@ namespace EICE_WARGAME
                     ChargerFicheSansFiltre(listeDeroulanteFaction1.FactionSelectionnee.Id, listeDeroulanteSousFaction1.SousFactionSelectionnee.Id);     
                 }
             };
+
+
+            ficheSubUnity1.SurChangementSelection += FicheSousUnity_SurChangementSelection;
+
+
         }
 
         private void ChargerFicheSansFiltre(int IdSousFaction, int IdFaction)
@@ -115,7 +123,27 @@ namespace EICE_WARGAME
             buttonAnnulerSubUnity.Enabled = true;
             buttonSupprimerSubUnity.Enabled = true;
             buttonModifier.Enabled = true;
+            ficheSubUnitySlave.Enabled = true;
+            buttonAttacher.Enabled = true;
+            buttonDelier.Enabled = true;
+            ficheSubUnity1.SurChangementFiltre += (s, ev) =>
+            {
+                if (ficheSubUnity1.TexteFiltreSubUnity != "")
+                {
+                    ficheSubUnity1.SubUnity = Program.GMBD.EnumererSubUnity(null,
+                    new MyDB.CodeSql(@"JOIN subfaction ON subfaction.sf_id = subunity.su_fk_subfaction_id"),
+                    new MyDB.CodeSql("WHERE sf_fk_faction_id = {0} AND sf_id = {1} AND su_name LIKE {2}",
+                    listeDeroulanteFaction1.FactionSelectionnee.Id, listeDeroulanteSousFaction1.SousFactionSelectionnee.Id,
+                    string.Format(c_CritereQuiContient, ficheSubUnity1.TexteFiltreSubUnity)),
+                    new MyDB.CodeSql("ORDER BY su_name"));
+                }
+                else
+                {
+                    ChargerFicheSansFiltre(listeDeroulanteFaction1.FactionSelectionnee.Id, listeDeroulanteSousFaction1.SousFactionSelectionnee.Id);
+                }
+            };
         }
+        
 
         private void buttonAjouterSubUnity_Click(object sender, EventArgs e)
         {
@@ -153,8 +181,8 @@ namespace EICE_WARGAME
         private void buttonSupprimerSubUnity_Click(object sender, EventArgs e)
         {
             if (ficheSubUnity1.SubUnitySelectionne != null)
-            {
-                SubUnity SubUnityLie = Program.GMBD.EnumererSubUnity(null,null,null, null).FirstOrDefault();
+            {                
+                SubUnity SubUnityLie = Program.GMBD.EnumererSubUnity(null,null,new MyDB.CodeSql("WHERE ((subunity.su_id IN(SELECT char_rank.cr_sub_id FROM char_rank) OR subunity.su_id IN(SELECT sub_sub.ss_fk_su_id_master FROM sub_sub) OR subunity.su_id IN (SELECT stuff_subunity.cfs_fk_subunity_id FROM stuff_subunity))) AND subunity.su_id = {0}", ficheSubUnity1.SubUnitySelectionne.Id), null).FirstOrDefault();
                 if (SubUnityLie == null)
                 {
                     PopUpConfirmation FormConfirmation = new PopUpConfirmation();
@@ -172,6 +200,10 @@ namespace EICE_WARGAME
                     {
                         // Ne rien faire
                     }
+                }
+                else
+                {
+                    errorProviderUnity.SetError(textBoxSousUnity, "Cette sous unité est déjà utilisé, impossible de la supprimer avant de supprimer les élements attacher");
                 }
             }
         }
@@ -278,9 +310,10 @@ namespace EICE_WARGAME
             buttonAjouterSubUnity.Enabled = m_SubUnityEnEdition.EstValide;
         }
 
+
         #endregion
 
-       
+        
     }
 
 }
