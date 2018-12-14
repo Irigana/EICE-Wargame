@@ -57,6 +57,24 @@ namespace EICE_WARGAME
             listeDeroulanteFaction1.SurChangementSelection += ListeFaction_SurChangementSelection;
             listeDeroulanteSousFaction1.SurChangementSelection += ListeSousFaction_SurChangementSelection;
 
+
+            ficheSubSub1.SurChangementFiltre += (s, ev) =>
+            {
+                if (ficheSubSub1.TexteFiltreSubSub != "")
+                {
+                    ficheSubSub1.SubSub = Program.GMBD.EnumererSubSub(null,
+                    new MyDB.CodeSql(@"JOIN subunity ON subsub.ss_fk_master_id = subunity.su_fk_subfaction_id"),
+                    new MyDB.CodeSql("WHERE sf_fk_faction_id = {0} AND sf_id = {1} AND su_name LIKE {2}",
+                    listeDeroulanteFaction1.FactionSelectionnee.Id, listeDeroulanteSousFaction1.SousFactionSelectionnee.Id,
+                    string.Format(c_CritereQuiContient, ficheSubSub1)),
+                    new MyDB.CodeSql("ORDER BY su_name"));
+                }
+                else
+                {
+                    ChargerFicheSansFiltre(listeDeroulanteFaction1.FactionSelectionnee.Id, listeDeroulanteSousFaction1.SousFactionSelectionnee.Id);
+                }
+            };
+
         }
 
         private void PageSubUnity_Load(object sender, EventArgs e)

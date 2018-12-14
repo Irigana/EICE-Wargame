@@ -45,7 +45,7 @@
             this.listViewSubSub.HeaderStyle = System.Windows.Forms.ColumnHeaderStyle.Nonclickable;
             this.listViewSubSub.Location = new System.Drawing.Point(3, 31);
             this.listViewSubSub.Name = "listViewSubSub";
-            this.listViewSubSub.Size = new System.Drawing.Size(286, 257);
+            this.listViewSubSub.Size = new System.Drawing.Size(286, 216);
             this.listViewSubSub.TabIndex = 1;
             this.listViewSubSub.UseCompatibleStateImageBehavior = false;
             // 
@@ -56,7 +56,7 @@
             this.Controls.Add(this.listViewSubSub);
             this.Controls.Add(this.textBoxRecherche);
             this.Name = "FicheSubSub";
-            this.Size = new System.Drawing.Size(293, 295);
+            this.Size = new System.Drawing.Size(293, 252);
             this.ResumeLayout(false);
             this.PerformLayout();
 
