@@ -146,7 +146,7 @@ namespace EICE_WARGAME
                 }
                 else if (value > 1000)
                 {
-                    Declencher_SurErreur(this, Champ.Cost, "Votre coût doit être inférieur à 1 000");
+                    Declencher_SurErreur(this, Champ.Cost, "Votre coût doit être inférieur à 1000");
                 }
                 else
                 {                    

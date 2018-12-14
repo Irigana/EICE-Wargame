@@ -124,7 +124,7 @@ namespace EICE_WARGAME
                 listViewSubUnity.Columns.Add(new ColumnHeader()
                 {
                     Name = "SubUnitys",
-                    Text = "SubUnitys",
+                    Text = "Sous unités",
                     TextAlign = HorizontalAlignment.Center,                              
                 });
 

@@ -29,11 +29,8 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(PageImpressionCarteUnite));
-            System.Windows.Forms.ListViewItem listViewItem1 = new System.Windows.Forms.ListViewItem("Figurine");
-            System.Windows.Forms.ListViewItem listViewItem2 = new System.Windows.Forms.ListViewItem("Unité");
-            System.Windows.Forms.ListViewItem listViewItem3 = new System.Windows.Forms.ListViewItem("Arme");
-            System.Windows.Forms.ListViewItem listViewItem4 = new System.Windows.Forms.ListViewItem("Michel");
-            this.buttonExportPDF = new System.Windows.Forms.Button();
+            System.Windows.Forms.ListViewGroup listViewGroup1 = new System.Windows.Forms.ListViewGroup("Unité", System.Windows.Forms.HorizontalAlignment.Left);
+            System.Windows.Forms.ListViewGroup listViewGroup2 = new System.Windows.Forms.ListViewGroup("Figurine", System.Windows.Forms.HorizontalAlignment.Left);
             this.printDialog1 = new System.Windows.Forms.PrintDialog();
             this.printPreviewDialog1 = new System.Windows.Forms.PrintPreviewDialog();
             this.button1 = new System.Windows.Forms.Button();
@@ -41,16 +38,6 @@
             this.button3 = new System.Windows.Forms.Button();
             this.printableListView1 = new PrintableListView.PrintableListView();
             this.SuspendLayout();
-            // 
-            // buttonExportPDF
-            // 
-            this.buttonExportPDF.Location = new System.Drawing.Point(0, 496);
-            this.buttonExportPDF.Name = "buttonExportPDF";
-            this.buttonExportPDF.Size = new System.Drawing.Size(1010, 23);
-            this.buttonExportPDF.TabIndex = 13;
-            this.buttonExportPDF.Text = "EXPORT PDF";
-            this.buttonExportPDF.UseVisualStyleBackColor = true;
-            this.buttonExportPDF.Click += new System.EventHandler(this.button_Export_PDF_Click);
             // 
             // printDialog1
             // 
@@ -99,17 +86,20 @@
             // printableListView1
             // 
             this.printableListView1.FitToPage = false;
-            this.printableListView1.Items.AddRange(new System.Windows.Forms.ListViewItem[] {
-            listViewItem1,
-            listViewItem2,
-            listViewItem3,
-            listViewItem4});
+            listViewGroup1.Header = "Unité";
+            listViewGroup1.Name = "listViewGroupUnité";
+            listViewGroup2.Header = "Figurine";
+            listViewGroup2.Name = "listViewGroupFigurine";
+            this.printableListView1.Groups.AddRange(new System.Windows.Forms.ListViewGroup[] {
+            listViewGroup1,
+            listViewGroup2});
             this.printableListView1.Location = new System.Drawing.Point(244, 27);
             this.printableListView1.Name = "printableListView1";
             this.printableListView1.Size = new System.Drawing.Size(678, 430);
             this.printableListView1.TabIndex = 18;
             this.printableListView1.Title = "";
             this.printableListView1.UseCompatibleStateImageBehavior = false;
+            this.printableListView1.SelectedIndexChanged += new System.EventHandler(this.printableListView1_SelectedIndexChanged);
             // 
             // PageImpressionCarteUnite
             // 
@@ -119,7 +109,6 @@
             this.Controls.Add(this.button3);
             this.Controls.Add(this.button2);
             this.Controls.Add(this.button1);
-            this.Controls.Add(this.buttonExportPDF);
             this.Name = "PageImpressionCarteUnite";
             this.Size = new System.Drawing.Size(1010, 519);
             this.Load += new System.EventHandler(this.PageImpressionCarteUnite_Load);
@@ -130,7 +119,6 @@
         #endregion
 
         private ButtonOptionsUser buttonOptionsUser1;
-        private System.Windows.Forms.Button buttonExportPDF;
         private System.Windows.Forms.PrintDialog printDialog1;
         private System.Windows.Forms.PrintPreviewDialog printPreviewDialog1;
         private System.Windows.Forms.Button button1;

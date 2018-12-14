@@ -113,9 +113,9 @@ namespace EICE_WARGAME
                 {
                     Declencher_SurErreur(this, Champ.Cout, "Cout inférieur au minimum autorisé");
                 }
-                else if (value > int.MaxValue)
+                else if (value > 10000)
                 {
-                    Declencher_SurErreur(this, Champ.Cout, "Cout supérieur au maximum autorisé");
+                    Declencher_SurErreur(this, Champ.Cout, "Cout supérieur au maximum autorisé (10 000)");
                 }
                 else
                 {
@@ -143,9 +143,9 @@ namespace EICE_WARGAME
                 {
                     Declencher_SurErreur(this, Champ.Min, "Min inférieur au minimum autorisé");
                 }
-                else if (value > int.MaxValue)
+                else if (value > 10000)
                 {
-                    Declencher_SurErreur(this, Champ.Min, "Min supérieur au maximum autorisé");
+                    Declencher_SurErreur(this, Champ.Min, "Min supérieur au maximum autorisé (10 000)");
                 }
                 else
                 {
@@ -173,9 +173,9 @@ namespace EICE_WARGAME
                 {
                     Declencher_SurErreur(this, Champ.Max, "Max inférieur au minimum autorisé");
                 }
-                else if (value > int.MaxValue)
+                else if (value > 10000)
                 {
-                    Declencher_SurErreur(this, Champ.Max, "Max supérieur au maximum autorisé");
+                    Declencher_SurErreur(this, Champ.Max, "Max supérieur au maximum autorisé (10000)");
                 }
                 else
                 {

@@ -38,6 +38,7 @@ namespace EICE_WARGAME
         {
             if (m_AfficherPlaceHolder)
             {
+                textBoxText.PasswordChar = '\0';
                 textBoxText.Font = new Font(textBoxText.Font, FontStyle.Italic);
                 textBoxText.ForeColor = SystemColors.GrayText;
                 if (textBoxText.Focused) textBoxText.TextChanged -= TextBoxText_TextChanged;

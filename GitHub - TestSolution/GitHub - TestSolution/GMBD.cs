@@ -97,6 +97,13 @@ namespace EICE_WARGAME
                                        null).FirstOrDefault();
         }
 
+        public string Param()
+        {
+            string param;
+            param = "Database=iziel_warhammer;Data Source=mysql-iziel.alwaysdata.net;User Id=iziel_connector;Password=wJ9VFDrH";
+            return param;
+        }
+
         #endregion
 
         #region Requetes utilisateurs
@@ -212,8 +219,19 @@ namespace EICE_WARGAME
             if (!m_BD.EstConnecte) Initialiser();
             SubUnity.SupprimerEnCascade(m_BD);
             return true;
-        }        
-        
+        }
+
+        public bool AjouterSubSub(SubSub NouvelleSubSub)
+        {
+            return NouvelleSubSub.Enregistrer(m_BD, NouvelleSubSub, NouvelleSubSub.IdDeLaTablePrincipale, false);
+        }
+
+        public bool SupprimerSubSub(SubSub SubSub)
+        {
+            if (!m_BD.EstConnecte) Initialiser();
+            SubSub.SupprimerEnCascade(m_BD);
+            return true;
+        }
         #endregion
 
         #region Requetes caractère

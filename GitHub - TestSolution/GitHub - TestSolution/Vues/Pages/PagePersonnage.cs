@@ -55,6 +55,10 @@ namespace EICE_WARGAME
             textBoxCaractere.Enabled = false;
             numericUpDownMax.Enabled = false;
             numericUpDownMin.Enabled = false;
+            numericUpDownMin.Maximum = 1000;
+            numericUpDownMax.Maximum = 1000;
+            numericUpDown1.Maximum = 1000;
+            numericUpDown2.Maximum = 100;
             menuAdmin1.MaPageActive = 2;
 
 
@@ -651,9 +655,9 @@ namespace EICE_WARGAME
             {
                 case CharactRank.Champ.Cost:
                     {
-                        if ((numericUpDown1.Value > int.MaxValue) || (numericUpDown1.Value < 0))
+                        if ((numericUpDown1.Value > 999) || (numericUpDown1.Value < 0))
                         {
-                            errorProviderErreurCaractere.SetError(numericUpDown1,"Votre coût doit être supérieur ou égal à 1");
+                            errorProviderErreurCaractere.SetError(numericUpDown1,"Votre coût doit être supérieur ou égal à 1 et inférieur à 1000");
                             AccumulateurErreur.NotifierErreur("Ce coût n'est pas correct, veuillez en choisir une autre !");
                         }
                         break;
@@ -668,6 +672,20 @@ namespace EICE_WARGAME
                         }
                         break;
                     }
+                case CharactRank.Champ.Min:
+                    if ((numericUpDownMin.Value > 999) || (numericUpDownMin.Value < 0))
+                    {
+                        errorProviderErreurCaractere.SetError(numericUpDownMin, "Votre mnimum doit être supérieur ou égal à 1 et inférieur à 1000");
+                        AccumulateurErreur.NotifierErreur("Ce coût n'est pas correct, veuillez en choisir une autre !");
+                    }
+                    break;
+                case CharactRank.Champ.Max:
+                    if ((numericUpDownMax.Value > 999) || (numericUpDownMax.Value < 0))
+                    {
+                        errorProviderErreurCaractere.SetError(numericUpDownMax, "Votre coût doit être supérieur ou égal à 1 et inférieur à 1000");
+                        AccumulateurErreur.NotifierErreur("Ce coût n'est pas correct, veuillez en choisir une autre !");
+                    }
+                    break;
             }
         }
 

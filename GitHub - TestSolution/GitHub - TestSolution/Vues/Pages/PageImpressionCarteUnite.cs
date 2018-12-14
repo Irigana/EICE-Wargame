@@ -9,7 +9,8 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Drawing.Printing;
 using System.Drawing.Imaging;
-
+using MySql.Data.MySqlClient;
+using PDSGBD;
 
 namespace EICE_WARGAME
 {
@@ -17,11 +18,7 @@ namespace EICE_WARGAME
     {
 
         private PrintDocument printDocument1 = new PrintDocument();
-        private System.Windows.Forms.CheckBox m_cbFitToPage;
-        /// <summary>
-        /// Required designer variable.
-        /// </summary>
-
+        private GMBD a_db = new GMBD();
 
         #region Utilisateur
         private Utilisateur m_Utilisateur = null;
@@ -37,7 +34,7 @@ namespace EICE_WARGAME
                 if ((m_Utilisateur == null) && (value != null))
                 {
                     m_Utilisateur = value;
-  //                  buttonOptionsUser1.Utilisateur = m_Utilisateur;
+                    //                  buttonOptionsUser1.Utilisateur = m_Utilisateur;
                 }
             }
         }
@@ -49,45 +46,7 @@ namespace EICE_WARGAME
             InitializeComponent();
         }
 
-
-        void button_Export_PDF_Click(object sender, EventArgs e)
-        {
-            PrintPreviewDialog PrintPreviewDialog1 = new PrintPreviewDialog();
-            PrintDialog printDiablog1 = new PrintDialog();
-
-
-            CaptureScreen();
-            printPreviewDialog1.Document = printDocument1;
-            printPreviewDialog1.ShowDialog();
-           // printDocument1.Print();
-        }
-
-
-        Bitmap memoryImage;
-
-        private void CaptureScreen()
-        {
-            Graphics myGraphics = this.CreateGraphics();
-            Size s = this.Size;
-            memoryImage = new Bitmap(this.Width, this.Height, myGraphics);
-            Graphics memoryGraphics = Graphics.FromImage(memoryImage);
-            memoryGraphics.CopyFromScreen(this.Location.X, this.Location.Y, 0, 0, s);
-        }
-
-        private void printDocument1_PrintPage(Object sender,
-               PrintPageEventArgs e)
-        {
-            e.Graphics.DrawImage(memoryImage, 0, 0);
-        }
-
-
-        private void PageImpressionCarteUnite_Load(object sender, EventArgs e)
-        {
-
-        }
-
-
-        #region Test
+        #region Methode d'impression
 
         private void FillList()
         {
@@ -161,6 +120,9 @@ namespace EICE_WARGAME
             }
         }
 
+
+        #endregion
+
         private void ButtonPageSetup_OnClick(object sender, System.EventArgs e)
         {
             printableListView1.PageSetup();
@@ -169,20 +131,43 @@ namespace EICE_WARGAME
         private void ButtonPrintPreview_OnClick(object sender, System.EventArgs e)
         {
             printableListView1.Title = "Test Printable List View";
-           // printableListView1.FitToPage = m_cbFitToPage.Checked;
             printableListView1.PrintPreview();
         }
 
         private void ButtonPrint_OnClick(object sender, System.EventArgs e)
         {
             printableListView1.Title = "Test Printable List View";
-          //  printableListView1.FitToPage = m_cbFitToPage.Checked;
             printableListView1.Print();
         }
 
 
 
-        #endregion
 
+
+
+        private void PageImpressionCarteUnite_Load(object sender, EventArgs e)
+        {
+            //            ListView Unité = new ListView();
+            //            Unité = printableListView1.Name.Contains("Unité");
+            //            FillList(printableListView1.Name.Contains("Unité"));
+
+            //MySqlConnection Connexion = new MySqlConnection(a_db.Param());
+            string Query = string.Format("SELECT un_name FROM unity");
+            MySqlCommand Command = new MySqlCommand(Query);
+            DataTable DTC = new DataTable();
+            a_db = new GMBD();
+            MySqlConnection Connexion = new MySqlConnection(a_db.Param());
+            Command.Connection = Connexion;
+            Connexion.Open();
+            DTC.Load(Command.ExecuteReader());
+            Connexion.Close();
+            FillList(printableListView1, DTC);
+
+        }
+
+        private void printableListView1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }
