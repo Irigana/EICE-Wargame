@@ -39,7 +39,6 @@
             this.labelSubunity = new System.Windows.Forms.Label();
             this.buttonAjoutEquipementSurPersonnage = new System.Windows.Forms.Button();
             this.buttonEnleverEquipementSurPersonnage = new System.Windows.Forms.Button();
-            this.buttonReturn = new System.Windows.Forms.Button();
             this.buttonAnnulerPersonnage = new System.Windows.Forms.Button();
             this.buttonSupprimerPersonnage = new System.Windows.Forms.Button();
             this.buttonAjouterFigurine = new System.Windows.Forms.Button();
@@ -54,6 +53,7 @@
             this.listeDeroulanteFaction1 = new EICE_WARGAME.ListeDeroulanteFaction();
             this.buttonOptionsUser1 = new EICE_WARGAME.ButtonOptionsUser();
             this.button1 = new System.Windows.Forms.Button();
+            this.buttonReturn = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // labelMaCollection
@@ -73,7 +73,7 @@
             this.panelLigneSeparatrice.BackColor = System.Drawing.Color.SteelBlue;
             this.panelLigneSeparatrice.ForeColor = System.Drawing.Color.SteelBlue;
             this.panelLigneSeparatrice.Location = new System.Drawing.Point(22, 78);
-            this.panelLigneSeparatrice.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.panelLigneSeparatrice.Margin = new System.Windows.Forms.Padding(2);
             this.panelLigneSeparatrice.Name = "panelLigneSeparatrice";
             this.panelLigneSeparatrice.Size = new System.Drawing.Size(1050, 2);
             this.panelLigneSeparatrice.TabIndex = 2;
@@ -175,25 +175,12 @@
             this.buttonEnleverEquipementSurPersonnage.UseVisualStyleBackColor = true;
             this.buttonEnleverEquipementSurPersonnage.Click += new System.EventHandler(this.EnleverEquipementSurFigurine);
             // 
-            // buttonReturn
-            // 
-            this.buttonReturn.FlatAppearance.BorderSize = 0;
-            this.buttonReturn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.buttonReturn.Image = global::EICE_WARGAME.Properties.Resources.ReturnLogo35px;
-            this.buttonReturn.Location = new System.Drawing.Point(2, 2);
-            this.buttonReturn.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
-            this.buttonReturn.Name = "buttonReturn";
-            this.buttonReturn.Size = new System.Drawing.Size(33, 32);
-            this.buttonReturn.TabIndex = 1;
-            this.buttonReturn.UseVisualStyleBackColor = true;
-            this.buttonReturn.Click += new System.EventHandler(this.buttonReturn_Click);
-            // 
             // buttonAnnulerPersonnage
             // 
             this.buttonAnnulerPersonnage.BackColor = System.Drawing.SystemColors.Window;
             this.buttonAnnulerPersonnage.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonAnnulerPersonnage.Location = new System.Drawing.Point(418, 248);
-            this.buttonAnnulerPersonnage.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.buttonAnnulerPersonnage.Margin = new System.Windows.Forms.Padding(2);
             this.buttonAnnulerPersonnage.Name = "buttonAnnulerPersonnage";
             this.buttonAnnulerPersonnage.Size = new System.Drawing.Size(91, 32);
             this.buttonAnnulerPersonnage.TabIndex = 47;
@@ -206,7 +193,7 @@
             this.buttonSupprimerPersonnage.BackColor = System.Drawing.SystemColors.Window;
             this.buttonSupprimerPersonnage.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonSupprimerPersonnage.Location = new System.Drawing.Point(323, 248);
-            this.buttonSupprimerPersonnage.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.buttonSupprimerPersonnage.Margin = new System.Windows.Forms.Padding(2);
             this.buttonSupprimerPersonnage.Name = "buttonSupprimerPersonnage";
             this.buttonSupprimerPersonnage.Size = new System.Drawing.Size(91, 32);
             this.buttonSupprimerPersonnage.TabIndex = 48;
@@ -219,7 +206,7 @@
             this.buttonAjouterFigurine.BackColor = System.Drawing.SystemColors.Window;
             this.buttonAjouterFigurine.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonAjouterFigurine.Location = new System.Drawing.Point(228, 248);
-            this.buttonAjouterFigurine.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.buttonAjouterFigurine.Margin = new System.Windows.Forms.Padding(2);
             this.buttonAjouterFigurine.Name = "buttonAjouterFigurine";
             this.buttonAjouterFigurine.Size = new System.Drawing.Size(91, 32);
             this.buttonAjouterFigurine.TabIndex = 45;
@@ -242,7 +229,7 @@
             // 
             this.ficheFigurineStuff1.FigurineSelectionne = null;
             this.ficheFigurineStuff1.Location = new System.Drawing.Point(718, 106);
-            this.ficheFigurineStuff1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.ficheFigurineStuff1.Margin = new System.Windows.Forms.Padding(2);
             this.ficheFigurineStuff1.Name = "ficheFigurineStuff1";
             this.ficheFigurineStuff1.Size = new System.Drawing.Size(284, 478);
             this.ficheFigurineStuff1.TabIndex = 33;
@@ -253,7 +240,7 @@
             // 
             this.ficheEquipementSansRecherche1.EquipementSelectionne = null;
             this.ficheEquipementSansRecherche1.Location = new System.Drawing.Point(121, 336);
-            this.ficheEquipementSansRecherche1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.ficheEquipementSansRecherche1.Margin = new System.Windows.Forms.Padding(2);
             this.ficheEquipementSansRecherche1.Name = "ficheEquipementSansRecherche1";
             this.ficheEquipementSansRecherche1.Size = new System.Drawing.Size(220, 240);
             this.ficheEquipementSansRecherche1.TabIndex = 32;
@@ -262,7 +249,7 @@
             // 
             this.ficheEquipementSurFigurine1.EquipementSelectionne = null;
             this.ficheEquipementSurFigurine1.Location = new System.Drawing.Point(395, 336);
-            this.ficheEquipementSurFigurine1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.ficheEquipementSurFigurine1.Margin = new System.Windows.Forms.Padding(2);
             this.ficheEquipementSurFigurine1.Name = "ficheEquipementSurFigurine1";
             this.ficheEquipementSurFigurine1.Size = new System.Drawing.Size(220, 240);
             this.ficheEquipementSurFigurine1.TabIndex = 30;
@@ -271,7 +258,7 @@
             // 
             this.listeDeroulanteChar1.CharactSelectionnee = null;
             this.listeDeroulanteChar1.Location = new System.Drawing.Point(259, 210);
-            this.listeDeroulanteChar1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.listeDeroulanteChar1.Margin = new System.Windows.Forms.Padding(2);
             this.listeDeroulanteChar1.Name = "listeDeroulanteChar1";
             this.listeDeroulanteChar1.Size = new System.Drawing.Size(218, 21);
             this.listeDeroulanteChar1.TabIndex = 24;
@@ -288,7 +275,7 @@
             // listeDeroulanteUnity1
             // 
             this.listeDeroulanteUnity1.Location = new System.Drawing.Point(121, 156);
-            this.listeDeroulanteUnity1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.listeDeroulanteUnity1.Margin = new System.Windows.Forms.Padding(2);
             this.listeDeroulanteUnity1.Name = "listeDeroulanteUnity1";
             this.listeDeroulanteUnity1.Size = new System.Drawing.Size(218, 21);
             this.listeDeroulanteUnity1.TabIndex = 14;
@@ -307,7 +294,7 @@
             // 
             this.listeDeroulanteFaction1.FactionSelectionnee = null;
             this.listeDeroulanteFaction1.Location = new System.Drawing.Point(121, 107);
-            this.listeDeroulanteFaction1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.listeDeroulanteFaction1.Margin = new System.Windows.Forms.Padding(2);
             this.listeDeroulanteFaction1.Name = "listeDeroulanteFaction1";
             this.listeDeroulanteFaction1.Size = new System.Drawing.Size(218, 21);
             this.listeDeroulanteFaction1.TabIndex = 12;
@@ -331,6 +318,19 @@
             this.button1.Text = "button1";
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.printButton_Click);
+            // 
+            // buttonReturn
+            // 
+            this.buttonReturn.FlatAppearance.BorderSize = 0;
+            this.buttonReturn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonReturn.Image = global::EICE_WARGAME.Properties.Resources.ReturnLogo35px;
+            this.buttonReturn.Location = new System.Drawing.Point(2, 2);
+            this.buttonReturn.Margin = new System.Windows.Forms.Padding(2);
+            this.buttonReturn.Name = "buttonReturn";
+            this.buttonReturn.Size = new System.Drawing.Size(33, 32);
+            this.buttonReturn.TabIndex = 1;
+            this.buttonReturn.UseVisualStyleBackColor = true;
+            this.buttonReturn.Click += new System.EventHandler(this.buttonReturn_Click);
             // 
             // PageMaCollection
             // 
@@ -362,7 +362,7 @@
             this.Controls.Add(this.panelLigneSeparatrice);
             this.Controls.Add(this.buttonReturn);
             this.Controls.Add(this.labelMaCollection);
-            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "PageMaCollection";
             this.Size = new System.Drawing.Size(1125, 586);
             this.Load += new System.EventHandler(this.MaCollectionONLoad);

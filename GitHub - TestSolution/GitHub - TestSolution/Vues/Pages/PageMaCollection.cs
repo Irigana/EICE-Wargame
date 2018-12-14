@@ -377,5 +377,6 @@ namespace EICE_WARGAME
             ficheEquipementSurFigurine1.Equipement = null;
             ficheEquipementSansRecherche1.Equipement = null;
         }
+
     }
 }

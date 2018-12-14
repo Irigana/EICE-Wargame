@@ -46,18 +46,6 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="FormulaireImpressionCarteDunite.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="FormulaireImpressionCarteDunite.Designer.cs">
-      <DependentUpon>FormulaireImpressionCarteDunite.cs</DependentUpon>
-    </Compile>
-    <Compile Include="FormulaireImpressionListeArmee.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="FormulaireImpressionListeArmee.Designer.cs">
-      <DependentUpon>FormulaireImpressionListeArmee.cs</DependentUpon>
-    </Compile>
     <Compile Include="Vues\Fiches\FicheSubUnity.cs">
       <SubType>UserControl</SubType>
     </Compile>
