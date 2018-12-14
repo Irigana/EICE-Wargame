@@ -35,7 +35,12 @@ namespace EICE_WARGAME
             }
 
         }
-        
+
+        public void ResetTextChar()
+        {
+            comboBoxChar.Text = "";
+        }
+
 
         public IEnumerable<Charact> Charact
         {

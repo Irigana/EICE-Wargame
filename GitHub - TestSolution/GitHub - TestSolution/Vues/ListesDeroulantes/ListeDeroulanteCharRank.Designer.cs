@@ -36,17 +36,19 @@
             this.comboBoxCharRank.Dock = System.Windows.Forms.DockStyle.Fill;
             this.comboBoxCharRank.FormattingEnabled = true;
             this.comboBoxCharRank.Location = new System.Drawing.Point(0, 0);
+            this.comboBoxCharRank.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.comboBoxCharRank.Name = "comboBoxCharRank";
-            this.comboBoxCharRank.Size = new System.Drawing.Size(260, 24);
+            this.comboBoxCharRank.Size = new System.Drawing.Size(195, 21);
             this.comboBoxCharRank.TabIndex = 0;
             // 
             // ListeDeroulanteCharRank
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.Controls.Add(this.comboBoxCharRank);
+            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.Name = "ListeDeroulanteCharRank";
-            this.Size = new System.Drawing.Size(260, 30);
+            this.Size = new System.Drawing.Size(195, 24);
             this.ResumeLayout(false);
 
         }

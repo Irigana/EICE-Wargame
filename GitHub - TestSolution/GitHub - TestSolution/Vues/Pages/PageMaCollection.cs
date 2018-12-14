@@ -172,11 +172,6 @@ namespace EICE_WARGAME
         }
 
 
-        private void numericUpDown1_ValueChanged(object sender, EventArgs e)
-        {
-
-        }
-
         private void AjoutEquipementSurFigurine(object sender, EventArgs e)
         {
             if ((ficheEquipementSansRecherche1.EquipementSelectionne != null) && (ficheFigurineStuff1.FigurineSelectionne != null))
@@ -311,14 +306,26 @@ namespace EICE_WARGAME
             Program.GMBD.MettreAJourFicheFigurine(ficheFigurineStuff1, Utilisateur.Id);
         }
 
-        private void ficheFigurineStuff1_Load(object sender, EventArgs e)
+        private void buttonSupprimerFigurine_Click(object sender, EventArgs e)
         {
 
         }
 
-        private void labelMesFigurines_Click(object sender, EventArgs e)
+        private void button_annuler_click(object sender, EventArgs e)
         {
-
+            ficheFigurineStuff1.TexteFiltreFigurineStuff = "";
+            listeDeroulanteFaction1.ResetTextFaction();
+            listeDeroulanteSousFaction1.ResetTextSousFaction();
+            listeDeroulanteUnity1.ResetTextUnity();
+            listeDeroulanteSubUnity1.ResetTextSubUnity();
+            ficheEquipementSansRecherche1.ResetText();
+            listeDeroulanteChar1.ResetTextChar();
+            listeDeroulanteSousFaction1.Enabled = false;
+            listeDeroulanteUnity1.Enabled = false;
+            listeDeroulanteSubUnity1.Enabled = false;
+            listeDeroulanteChar1.Enabled = false;
+            ficheEquipementSansRecherche1.Enabled = false;
+            ficheEquipementSurFigurine1.Enabled = false;
         }
     }
 }

@@ -31,6 +31,11 @@ namespace EICE_WARGAME
 
         }
 
+        public void ResetTextFaction()
+        {
+            comboBoxListeFaction.Text = "";
+        }
+
         public ListeDeroulanteFaction()
         {
             InitializeComponent();

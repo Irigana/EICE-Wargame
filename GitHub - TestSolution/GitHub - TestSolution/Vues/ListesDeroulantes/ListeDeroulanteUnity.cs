@@ -96,6 +96,11 @@ namespace EICE_WARGAME
             this.Size = new Size(this.Size.Width, comboBoxUnity.Height);
         }
 
+        public void ResetTextUnity()
+        {
+            comboBoxUnity.Text = "";
+        }
+
     }
 
 }
