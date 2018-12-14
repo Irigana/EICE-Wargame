@@ -53,25 +53,33 @@ namespace EICE_WARGAME
             buttonDelier.Enabled = false;
             ficheSubUnitySlave.Enabled = false;
 
+
+
             listeDeroulanteFaction1.Faction = Program.GMBD.EnumererFaction(null, null, null, null);
             listeDeroulanteFaction1.SurChangementSelection += ListeFaction_SurChangementSelection;
             listeDeroulanteSousFaction1.SurChangementSelection += ListeSousFaction_SurChangementSelection;
+            ficheSubUnity1.SurChangementSelection += FicheSousUnity_SurChangementSelection;
 
+            ficheSubSub1.SubSub = Program.GMBD.EnumererSubSub(null,
+                    new MyDB.CodeSql(@"JOIN subunity ON sub_sub.ss_fk_su_id_master  = subunity.su_id"),
+                    null,
+                    new MyDB.CodeSql("ORDER BY su_name"));
 
             ficheSubSub1.SurChangementFiltre += (s, ev) =>
             {
                 if (ficheSubSub1.TexteFiltreSubSub != "")
                 {
                     ficheSubSub1.SubSub = Program.GMBD.EnumererSubSub(null,
-                    new MyDB.CodeSql(@"JOIN subunity ON subsub.ss_fk_master_id = subunity.su_fk_subfaction_id"),
-                    new MyDB.CodeSql("WHERE sf_fk_faction_id = {0} AND sf_id = {1} AND su_name LIKE {2}",
-                    listeDeroulanteFaction1.FactionSelectionnee.Id, listeDeroulanteSousFaction1.SousFactionSelectionnee.Id,
-                    string.Format(c_CritereQuiContient, ficheSubSub1)),
+                    new MyDB.CodeSql(@"JOIN subunity ON sub_sub.ss_fk_su_id_master  = subunity.su_id"),
+                    new MyDB.CodeSql(@"WHERE su_name LIKE {0}", string.Format(c_CritereQuiContient, ficheSubSub1)),                    
                     new MyDB.CodeSql("ORDER BY su_name"));
                 }
                 else
                 {
-                    ChargerFicheSansFiltre(listeDeroulanteFaction1.FactionSelectionnee.Id, listeDeroulanteSousFaction1.SousFactionSelectionnee.Id);
+                    ficheSubSub1.SubSub = Program.GMBD.EnumererSubSub(null,
+                    new MyDB.CodeSql(@"JOIN subunity ON sub_sub.ss_fk_su_id_master = subunity.su_id"),
+                    null,
+                    new MyDB.CodeSql("ORDER BY su_name"));
                 }
             };
 
@@ -121,9 +129,6 @@ namespace EICE_WARGAME
             };
 
 
-            ficheSubUnity1.SurChangementSelection += FicheSousUnity_SurChangementSelection;
-
-
         }
 
         private void ChargerFicheSansFiltre(int IdSousFaction, int IdFaction)
@@ -137,13 +142,16 @@ namespace EICE_WARGAME
 
         private void FicheSousUnity_SurChangementSelection(object sender,EventArgs e)
         {
-            buttonAjouterSubUnity.Enabled = false;
-            buttonAnnulerSubUnity.Enabled = true;
-            buttonSupprimerSubUnity.Enabled = true;
-            buttonModifier.Enabled = true;
-            ficheSubUnitySlave.Enabled = true;
-            buttonAttacher.Enabled = true;
-            buttonDelier.Enabled = true;
+            if (ficheSubUnity1.SubUnitySelectionne != null)
+            {
+                buttonAjouterSubUnity.Enabled = false;
+                buttonAnnulerSubUnity.Enabled = true;
+                buttonSupprimerSubUnity.Enabled = true;
+                buttonModifier.Enabled = true;
+                ficheSubUnitySlave.Enabled = true;
+                buttonAttacher.Enabled = true;
+                buttonDelier.Enabled = true;
+            }
             ficheSubUnity1.SurChangementFiltre += (s, ev) =>
             {
                 if (ficheSubUnity1.TexteFiltreSubUnity != "")
