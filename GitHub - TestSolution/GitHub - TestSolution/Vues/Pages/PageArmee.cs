@@ -34,6 +34,9 @@ namespace EICE_WARGAME
         }
 
         private Army m_Army;
+        private ArmyUnity m_ArmyUnity;
+        private ArmyUnityFigurine m_ArmyUnityFigurine;
+        private Figurine m_Figurine;
 
         
         #endregion
@@ -102,6 +105,10 @@ namespace EICE_WARGAME
                 new MyDB.CodeSql(@"JOIN figurine_stuff ON stuff.st_id = figurine_stuff.fs_fk_stuff_id
                                     JOIN figurine ON figurine_stuff.fs_fk_figurine_id = figurine.fi_id AND figurine.fi_fk_user_id = {0}
                                     JOIN charact ON charact.ch_id = figurine.fi_fk_character_id AND ch_id = {1}", Utilisateur.Id, z_listeDeroulanteChar.CharactSelectionnee.Id),null,null);
+            m_Figurine = Program.GMBD.EnumererFigurine(null, null,
+                new MyDB.CodeSql("WHERE fi_fk_character_id = {0} AND fi_fk_user_id = {1}", z_listeDeroulanteChar.CharactSelectionnee.Id, Utilisateur.Id,
+                z_listeDeroulanteCamp.CampSelectionnee.Id), null).FirstOrDefault();
+            
             z_listeDeroulanteStuff.SurChangementSelection += Stuff_SurChangementSelection;
             
         }
@@ -152,7 +159,11 @@ namespace EICE_WARGAME
                                                             null).FirstOrDefault();
                 if (ArmyExiste == null)
                 {
-                    m_Army.Enregistrer(Program.GMBD.BD, m_Army);
+                    if(m_Army.Enregistrer(Program.GMBD.BD, m_Army))
+                    {
+                        m_ArmyUnity = new ArmyUnity();
+                        m_ArmyUnity.Army = m_Army;
+                    }
                     // Validation OK
                 }
                 else
@@ -166,7 +177,10 @@ namespace EICE_WARGAME
 
         private void q_buttonAjouter_Click(object sender, EventArgs e)
         {
-
+            m_ArmyUnityFigurine = new ArmyUnityFigurine();
+            m_ArmyUnityFigurine.ArmyUnity = m_ArmyUnity;
+            m_ArmyUnityFigurine.Figurine = m_Figurine;
+            m_ArmyUnityFigurine.Enregistrer(Program.GMBD.BD, m_ArmyUnityFigurine);
         }
     }
 }

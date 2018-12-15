@@ -218,6 +218,7 @@ namespace EICE_WARGAME
             m_Stuff.Name = m_StuffEnEdition.Name;
             m_Stuff.Type = m_StuffEnEdition.Type;
             m_Stuff.Visibility = m_StuffEnEdition.Visibility;
+            // Vérification de l'unicité dans AvantChangement
 
             if (SurValidation != null)
             {
@@ -640,7 +641,9 @@ namespace EICE_WARGAME
 
         private void q_buttonDelier_Click(object sender, EventArgs e)
         {
-
+            // TODO : Vérifier qu'il n'y a pas de figurine déjà équipée de cette stuff
+            // Si c'est le cas alors je supprime le stuffcharrank
+            // Pour ça je dois mettre le suffcharrank comme membre de ma classe et pas uniquement dans l'ajout
         }
     }
 }
