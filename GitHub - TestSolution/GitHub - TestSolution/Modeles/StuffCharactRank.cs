@@ -113,7 +113,7 @@ namespace EICE_WARGAME
                 {
                     Declencher_SurErreur(this, Champ.Cout, "Cout inférieur au minimum autorisé");
                 }
-                else if (value > 10000)
+                else if (value > int.MaxValue)
                 {
                     Declencher_SurErreur(this, Champ.Cout, "Cout supérieur au maximum autorisé (10 000)");
                 }
