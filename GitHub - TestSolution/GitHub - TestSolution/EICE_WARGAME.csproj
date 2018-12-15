@@ -555,10 +555,6 @@
       <Project>{9b3289f9-8d92-41e3-abe9-bfcfcab37266}</Project>
       <Name>PDSGBD</Name>
     </ProjectReference>
-    <ProjectReference Include="..\..\PrintableListView\PrintableListView.csproj">
-      <Project>{00acc77d-1901-4c7a-bb8f-8d0f364a58f3}</Project>
-      <Name>PrintableListView</Name>
-    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <Content Include="Informations\SchemaDB.PNG" />

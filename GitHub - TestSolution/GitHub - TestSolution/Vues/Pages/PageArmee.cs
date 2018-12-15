@@ -182,5 +182,14 @@ namespace EICE_WARGAME
             m_ArmyUnityFigurine.Figurine = m_Figurine;
             m_ArmyUnityFigurine.Enregistrer(Program.GMBD.BD, m_ArmyUnityFigurine);
         }
+
+        private void print_button_click(object sender, EventArgs e)
+        {
+            Form_Principal.Instance.CreerPageCourante<PageImpressionCarteUnite>((Page) =>
+            {
+                Page.Utilisateur = Utilisateur;
+                return true;
+            });
+        }
     }
 }
