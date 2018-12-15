@@ -35,7 +35,8 @@
             this.columnHeader1 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader2 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
-            this.buttonReturn = new System.Windows.Forms.Button();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // printDialog1
@@ -98,30 +99,28 @@
             this.tableLayoutPanel1.TabIndex = 19;
             this.tableLayoutPanel1.Paint += new System.Windows.Forms.PaintEventHandler(this.tableLayoutPanel1_Paint);
             // 
-            // buttonReturn
+            // pictureBox1
             // 
-            this.buttonReturn.FlatAppearance.BorderSize = 0;
-            this.buttonReturn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.buttonReturn.Image = global::EICE_WARGAME.Properties.Resources.ReturnLogo35px;
-            this.buttonReturn.Location = new System.Drawing.Point(3, 4);
-            this.buttonReturn.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.buttonReturn.Name = "buttonReturn";
-            this.buttonReturn.Size = new System.Drawing.Size(44, 39);
-            this.buttonReturn.TabIndex = 20;
-            this.buttonReturn.UseVisualStyleBackColor = true;
-            this.buttonReturn.Click += new System.EventHandler(this.buttonReturn_Click);
+            this.pictureBox1.Image = global::EICE_WARGAME.Properties.Resources.ReturnLogoBlue25px;
+            this.pictureBox1.Location = new System.Drawing.Point(3, 3);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(34, 30);
+            this.pictureBox1.TabIndex = 20;
+            this.pictureBox1.TabStop = false;
+            this.pictureBox1.Click += new System.EventHandler(this.pictureBox1_Click);
             // 
             // PageImpressionCarteUnite
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.Controls.Add(this.buttonReturn);
+            this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.tableLayoutPanel1);
             this.Controls.Add(this.button_Imprimer);
             this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.Name = "PageImpressionCarteUnite";
             this.Size = new System.Drawing.Size(1347, 639);
             this.Load += new System.EventHandler(this.PageImpressionCarteUnite_Load);
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -136,6 +135,6 @@
         private System.Windows.Forms.ColumnHeader columnHeader1;
         private System.Windows.Forms.ColumnHeader columnHeader2;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
-        private System.Windows.Forms.Button buttonReturn;
+        private System.Windows.Forms.PictureBox pictureBox1;
     }
 }

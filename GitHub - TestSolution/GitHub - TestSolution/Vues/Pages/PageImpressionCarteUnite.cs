@@ -162,9 +162,9 @@ namespace EICE_WARGAME
         private void tableLayoutPanel1_Paint(object sender, PaintEventArgs e)
         {
 
-        }
+        }       
 
-        private void buttonReturn_Click(object sender, EventArgs e)
+        private void pictureBox1_Click(object sender, EventArgs e)
         {
             Form_Principal.Instance.CreerPageCourante<PageArmee>((Page) =>
             {

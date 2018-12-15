@@ -188,17 +188,7 @@ namespace EICE_WARGAME
             }
 
         }
-
-        private void buttonReturn_Click(object sender, EventArgs e)
-        {
-            Form_Principal.Instance.CreerPageCourante<PageMenuPrincipal>(
-                        (Page) =>
-                        {
-                            Page.Utilisateur = Utilisateur;
-                            return true;
-                        });
-        }
-
+        
 
         private void AjoutEquipementSurFigurine(object sender, EventArgs e)
         {
@@ -359,5 +349,14 @@ namespace EICE_WARGAME
             ficheEquipementSansRecherche1.Equipement = null;
         }
 
+        private void pictureBox1_Click(object sender, EventArgs e)
+        {
+            Form_Principal.Instance.CreerPageCourante<PageMenuPrincipal>(
+                        (Page) =>
+                        {
+                            Page.Utilisateur = Utilisateur;
+                            return true;
+                        });
+        }
     }
 }
