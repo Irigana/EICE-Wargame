@@ -36,7 +36,6 @@
             this.columnHeader2 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.buttonReturn = new System.Windows.Forms.Button();
-            this.buttonOptionsUser2 = new EICE_WARGAME.ButtonOptionsUser();
             this.SuspendLayout();
             // 
             // printDialog1
@@ -81,18 +80,19 @@
             // tableLayoutPanel1
             // 
             this.tableLayoutPanel1.AutoSize = true;
-            this.tableLayoutPanel1.CellBorderStyle = System.Windows.Forms.TableLayoutPanelCellBorderStyle.Inset;
-            this.tableLayoutPanel1.ColumnCount = 4;
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
+            this.tableLayoutPanel1.CellBorderStyle = System.Windows.Forms.TableLayoutPanelCellBorderStyle.Single;
+            this.tableLayoutPanel1.ColumnCount = 5;
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 200F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
             this.tableLayoutPanel1.Location = new System.Drawing.Point(230, 58);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
             this.tableLayoutPanel1.RowCount = 2;
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(563, 36);
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle());
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle());
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(563, 53);
             this.tableLayoutPanel1.TabIndex = 19;
             this.tableLayoutPanel1.Paint += new System.Windows.Forms.PaintEventHandler(this.tableLayoutPanel1_Paint);
             // 
@@ -108,21 +108,10 @@
             this.buttonReturn.TabIndex = 20;
             this.buttonReturn.UseVisualStyleBackColor = true;
             // 
-            // buttonOptionsUser2
-            // 
-            this.buttonOptionsUser2.BackColor = System.Drawing.Color.Transparent;
-            this.buttonOptionsUser2.Location = new System.Drawing.Point(846, 2);
-            this.buttonOptionsUser2.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
-            this.buttonOptionsUser2.Name = "buttonOptionsUser2";
-            this.buttonOptionsUser2.Size = new System.Drawing.Size(164, 37);
-            this.buttonOptionsUser2.TabIndex = 21;
-            this.buttonOptionsUser2.Utilisateur = null;
-            // 
             // PageImpressionCarteUnite
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.Controls.Add(this.buttonOptionsUser2);
             this.Controls.Add(this.buttonReturn);
             this.Controls.Add(this.tableLayoutPanel1);
             this.Controls.Add(this.button_Imprimer);
@@ -144,6 +133,5 @@
         private System.Windows.Forms.ColumnHeader columnHeader2;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
         private System.Windows.Forms.Button buttonReturn;
-        private ButtonOptionsUser buttonOptionsUser2;
     }
 }

@@ -105,7 +105,7 @@ namespace EICE_WARGAME
                                             JOIN rank ON rank.ra_id = char_rank.cr_fk_ra_id
                                             JOIN charact ON figurine.fi_fk_character_id = charact.ch_id 
                                             JOIN subunity ON char_rank.cr_sub_id = subunity.su_id
-                                            JOIN user ON user.u_id = army.ar_fk_user_id");
+                                            JOIN user ON user.u_id = army.ar_fk_user_id GROUP BY fs_id");
                                           //  WHERE user.u_id = {0} AND ar_id = {0}", Utilisateur, Army.Id);
             MySqlCommand Command = new MySqlCommand(Query);
             DataTable DTC = new DataTable();
@@ -129,28 +129,28 @@ namespace EICE_WARGAME
                 if (test == lastEntry)
                 {
                     tableLayoutPanel1.Controls.Add(new Label() { Text = "", Dock = DockStyle.Fill }, 0, i+1);
-                    tableLayoutPanel1.Controls.Add(new Label() { Text = NomRank, Dock = DockStyle.Fill }, 1, i+1);
-                    tableLayoutPanel1.Controls.Add(new Label() { Text = NomEquipement, Dock = DockStyle.Fill }, 2, i+1);
-                    tableLayoutPanel1.Controls.Add(new Label() { Text = Cost, Dock = DockStyle.Fill }, 3, i+1);
+                    tableLayoutPanel1.Controls.Add(new Label() { Text = NomRank, Dock = DockStyle.Fill }, 2, i+1);
+                    tableLayoutPanel1.Controls.Add(new Label() { Text = NomEquipement, Dock = DockStyle.Fill }, 3, i+1);
+                    tableLayoutPanel1.Controls.Add(new Label() { Text = Cost, Dock = DockStyle.Fill }, 4, i+1);
                     lastEntry = test;
                     lastEntrySub = testsub;
                 }
                 else if (testsub == lastEntrySub)
                 {
                     tableLayoutPanel1.Controls.Add(new Label() { Text = NomFIgurine, Dock = DockStyle.Fill }, 0, i+1);
-                    tableLayoutPanel1.Controls.Add(new Label() { Text = NomRank, Dock = DockStyle.Fill }, 1, i+1);
-                    tableLayoutPanel1.Controls.Add(new Label() { Text = NomEquipement, Dock = DockStyle.Fill }, 2, i+1);
-                    tableLayoutPanel1.Controls.Add(new Label() { Text = Cost, Dock = DockStyle.Fill }, 3, i+1);
+                    tableLayoutPanel1.Controls.Add(new Label() { Text = NomRank, Dock = DockStyle.Fill }, 2, i+1);
+                    tableLayoutPanel1.Controls.Add(new Label() { Text = NomEquipement, Dock = DockStyle.Fill }, 3, i+1);
+                    tableLayoutPanel1.Controls.Add(new Label() { Text = Cost, Dock = DockStyle.Fill }, 4, i+1);
                     lastEntry = test;
                     lastEntrySub = testsub;
                 }
                 else
                 {
                     tableLayoutPanel1.Controls.Add(new Label() { Text = NomSousUnite, Dock = DockStyle.Fill }, 0, i);
-                    tableLayoutPanel1.Controls.Add(new Label() { Text = NomFIgurine, Dock = DockStyle.Fill }, 0, i+1);
-                    tableLayoutPanel1.Controls.Add(new Label() { Text = NomRank, Dock = DockStyle.Fill }, 1, i+1);
-                    tableLayoutPanel1.Controls.Add(new Label() { Text = NomEquipement, Dock = DockStyle.Fill }, 2, i+1);
-                    tableLayoutPanel1.Controls.Add(new Label() { Text = Cost, Dock = DockStyle.Fill }, 3, i+1);
+                    tableLayoutPanel1.Controls.Add(new Label() { Text = NomFIgurine, Dock = DockStyle.Fill }, 1, i+1);
+                    tableLayoutPanel1.Controls.Add(new Label() { Text = NomRank, Dock = DockStyle.Fill }, 2, i+1);
+                    tableLayoutPanel1.Controls.Add(new Label() { Text = NomEquipement, Dock = DockStyle.Fill }, 3, i+1);
+                    tableLayoutPanel1.Controls.Add(new Label() { Text = Cost, Dock = DockStyle.Fill }, 4, i+1);
                     lastEntry = test;
                     lastEntrySub = testsub;
                 }
