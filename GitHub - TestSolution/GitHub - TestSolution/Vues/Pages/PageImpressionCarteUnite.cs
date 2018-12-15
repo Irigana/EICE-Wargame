@@ -32,8 +32,7 @@ namespace EICE_WARGAME
             {
                 if ((m_Utilisateur == null) && (value != null))
                 {
-                    m_Utilisateur = value;
-                    //                  buttonOptionsUser1.Utilisateur = m_Utilisateur;
+                    m_Utilisateur = value;                   
                 }
             }
         }
@@ -163,6 +162,15 @@ namespace EICE_WARGAME
         private void tableLayoutPanel1_Paint(object sender, PaintEventArgs e)
         {
 
+        }
+
+        private void buttonReturn_Click(object sender, EventArgs e)
+        {
+            Form_Principal.Instance.CreerPageCourante<PageArmee>((Page) =>
+            {
+                Page.Utilisateur = Utilisateur;
+                return true;
+            });
         }
     }
 }
