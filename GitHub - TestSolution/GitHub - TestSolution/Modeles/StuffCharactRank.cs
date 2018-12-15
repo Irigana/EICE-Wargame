@@ -236,7 +236,7 @@ namespace EICE_WARGAME
                 this.Stuff = new Stuff(Connexion, Enregistrement);
                 this.Max = Enregistrement.ValeurChampComplet<int>(NomDeLaTablePrincipale, "scr_max");
                 this.Min = Enregistrement.ValeurChampComplet<int>(NomDeLaTablePrincipale, "scr_min");
-                this.Cout = Enregistrement.ValeurChampComplet<int>(NomDeLaTablePrincipale, "scr_cout");
+                this.Cout = Enregistrement.ValeurChampComplet<int>(NomDeLaTablePrincipale, "scr_cost");
             }
         }
         #endregion
