@@ -37,6 +37,7 @@ namespace EICE_WARGAME
         private ArmyUnity m_ArmyUnity;
         private ArmyUnityFigurine m_ArmyUnityFigurine;
         private Figurine m_Figurine;
+        private FigurineStuff m_FigurineStuff;
 
         
         #endregion
@@ -64,6 +65,7 @@ namespace EICE_WARGAME
 
         private void Camp_surChangementSelection(object sender, EventArgs e)
         {
+            // J'ai un condi_camp donc je vois quelles unity j'ai besoin
             z_listeDeroulanteFaction.Faction = Program.GMBD.EnumererFaction(null, null, null, new MyDB.CodeSql("ORDER BY fa_name"));
             z_listeDeroulanteFaction.SurChangementSelection += Faction_surChangementSelection;
         }
@@ -78,20 +80,23 @@ namespace EICE_WARGAME
 
         private void SousFaction_surChangementSelection(object sender, EventArgs e)
         {
+            // Je dois afficher les unités qui sont dans condi_camp
             z_listeDeroulanteUnity.Unity = Program.GMBD.EnumererUnity(null, null, null, null);
             z_listeDeroulanteUnity.SurChangementSelection += Unity_surChangementSelection;
         }
 
         private void Unity_surChangementSelection(object sender, EventArgs e)
         {
+            // J'affiche les subunity liées à cette unity
             z_listeDeroulanteSubUnity1.SubUnity = Program.GMBD.EnumererSubUnity(null, null,
-                new MyDB.CodeSql("WHERE su_fk_subfaction_id = {0} AND s_fk_unity_id = {1}", 
-                z_listeDeroulanteSousFaction.SousFactionSelectionnee.Id, z_listeDeroulanteUnity.UnitySelectionnee), null);
+                new MyDB.CodeSql("WHERE su_fk_subfaction_id = {0} AND su_fk_unity_id = {1}", 
+                z_listeDeroulanteSousFaction.SousFactionSelectionnee.Id, z_listeDeroulanteUnity.UnitySelectionnee.Id), null);
             z_listeDeroulanteSubUnity1.SurChangementSelection += Subunity_surChangementSelection;
         }
 
         private void Subunity_surChangementSelection(object sender, EventArgs e)
         {
+            // J'affiche les characters qui vont dans cette subunity et dont l'user a une figurine
             z_listeDeroulanteChar.Charact = Program.GMBD.EnumererCaractere(new MyDB.CodeSql("DISTINCT ch_id, ch_name, ch_fk_subfaction_id"),
                 new MyDB.CodeSql("JOIN figurine ON fi_fk_character_id = charact.ch_id"), new MyDB.CodeSql("WHERE fi_fk_user_id = {0}", Utilisateur.Id),
                 new MyDB.CodeSql("ORDER BY ch_name"));
@@ -101,10 +106,13 @@ namespace EICE_WARGAME
 
         private void Charact_surChangementSelection(object sender, EventArgs e)
         {
+            // J'affiche les équipements que cette figurine a
             z_listeDeroulanteStuff.Stuff = Program.GMBD.EnumererStuff(new MyDB.CodeSql("DISTINCT st_id, st_name, st_fk_type_id, st_visibility"),
                 new MyDB.CodeSql(@"JOIN figurine_stuff ON stuff.st_id = figurine_stuff.fs_fk_stuff_id
                                     JOIN figurine ON figurine_stuff.fs_fk_figurine_id = figurine.fi_id AND figurine.fi_fk_user_id = {0}
                                     JOIN charact ON charact.ch_id = figurine.fi_fk_character_id AND ch_id = {1}", Utilisateur.Id, z_listeDeroulanteChar.CharactSelectionnee.Id),null,null);
+
+            // J'obtiens la figurine
             m_Figurine = Program.GMBD.EnumererFigurine(null, null,
                 new MyDB.CodeSql("WHERE fi_fk_character_id = {0} AND fi_fk_user_id = {1}", z_listeDeroulanteChar.CharactSelectionnee.Id, Utilisateur.Id,
                 z_listeDeroulanteCamp.CampSelectionnee.Id), null).FirstOrDefault();
@@ -115,6 +123,12 @@ namespace EICE_WARGAME
 
         private void Stuff_SurChangementSelection(object sender, EventArgs e)
         {
+            // J'ai le stuff de la figurine
+            // Je dois faire un figurinestuff?
+            m_FigurineStuff = new FigurineStuff();
+            m_FigurineStuff = Program.GMBD.EnumererFigurineStuff(null, null,
+                new MyDB.CodeSql("WHERE fs_fk_figurine_id = {0} AND fs_fk_stuff_id",m_Figurine.Id, z_listeDeroulanteStuff.StuffSelectionnee.Id), null).FirstOrDefault();
+
             z_listeDeroulanteRank.Rank = Program.GMBD.EnumererRank(new MyDB.CodeSql("DISTINCT rank.ra_id, rank.ra_name"), 
                 new MyDB.CodeSql(@"JOIN char_rank ON char_rank.cr_fk_ra_id = rank.ra_id  AND char_rank.cr_fk_ch_id = {0} 
                                     JOIN stuff_char_rank ON stuff_char_rank.scr_fk_char_rank_id = char_rank.cr_id 
