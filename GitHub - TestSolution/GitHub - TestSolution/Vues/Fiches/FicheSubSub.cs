@@ -146,9 +146,12 @@ namespace EICE_WARGAME
                 {
                     SubSub SubSub = Entite as SubSub;
                     NouvelElement.Text = SubSub.Master.Name;
+
                     NouvelElement.SubItems.Add(SubSub.Slave.Name);
+
+
+                    listViewSubSub.Items.Add(NouvelElement);
                 }
-                listViewSubSub.Items.Add(NouvelElement);
                 
 
             }
