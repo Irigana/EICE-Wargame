@@ -52,7 +52,6 @@
             this.listeDeroulanteSousFaction1 = new EICE_WARGAME.ListeDeroulanteSousFaction();
             this.listeDeroulanteFaction1 = new EICE_WARGAME.ListeDeroulanteFaction();
             this.buttonOptionsUser1 = new EICE_WARGAME.ButtonOptionsUser();
-            this.button1 = new System.Windows.Forms.Button();
             this.buttonReturn = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
@@ -309,16 +308,6 @@
             this.buttonOptionsUser1.TabIndex = 11;
             this.buttonOptionsUser1.Utilisateur = null;
             // 
-            // button1
-            // 
-            this.button1.Location = new System.Drawing.Point(22, 210);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 23);
-            this.button1.TabIndex = 50;
-            this.button1.Text = "button1";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.printButton_Click);
-            // 
             // buttonReturn
             // 
             this.buttonReturn.FlatAppearance.BorderSize = 0;
@@ -336,7 +325,6 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.Controls.Add(this.button1);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.buttonAnnulerPersonnage);
             this.Controls.Add(this.buttonSupprimerPersonnage);
@@ -398,6 +386,5 @@
         private System.Windows.Forms.Button buttonSupprimerPersonnage;
         private System.Windows.Forms.Button buttonAjouterFigurine;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Button button1;
     }
 }
