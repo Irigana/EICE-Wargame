@@ -49,22 +49,9 @@ namespace EICE_WARGAME
 
 
 
-        private void ButtonPageSetup_OnClick(object sender, System.EventArgs e)
-        {
-            printableListView1.PageSetup();
-        }
-
-        private void ButtonPrintPreview_OnClick(object sender, System.EventArgs e)
-        {
-            printPreviewDialog1.Document = printDocument1;
-            printPreviewDialog1.ShowDialog();
-        }
-
         private void ButtonPrint_OnClick(object sender, System.EventArgs e)
         {
             CaptureScreen();
-
-
         }
 
         Bitmap printImage;
@@ -88,10 +75,15 @@ namespace EICE_WARGAME
 
         private void PageImpressionCarteUnite_Load(object sender, EventArgs e)
         {
-            string Query = string.Format(@"SELECT * FROM figurine 
-                                           JOIN figurine_stuff On fs_fk_figurine_id = fi_id 
-                                           JOIN charact on figurine.fi_fk_character_id = charact.ch_id 
-                                           JOIN stuff on stuff.st_id = figurine_stuff.fs_fk_stuff_id");
+            string Query = string.Format(@"SELECT * FROM army
+                                            JOIN army_unity ON army_unity.aru_army_id = army.ar_id
+                                            JOIN army_unity_figurine ON army_unity_figurine.auf_fk_army_unity_id = army_unity.aru_id
+                                            JOIN figurine ON army_unity_figurine.auf_fk_figurine_id = figurine.fi_id
+                                            JOIN figurine_stuff ON fs_fk_figurine_id = fi_id 
+                                            JOIN charact ON figurine.fi_fk_character_id = charact.ch_id 
+                                            JOIN stuff on stuff.st_id = figurine_stuff.fs_fk_stuff_id
+                                            JOIN user ON user.u_id = army.ar_fk_user_id
+                                            WHERE user.u_id = {0}", Utilisateur);
             MySqlCommand Command = new MySqlCommand(Query);
             DataTable DTC = new DataTable();
             a_db = new GMBD();
@@ -103,9 +95,9 @@ namespace EICE_WARGAME
             int lastEntry = -1;
             for (int i = 0; i < DTC.Rows.Count; i++)
             {
-                int test = int.Parse(DTC.Rows[i][0].ToString());
-                string NomFIgurine = DTC.Rows[i][7].ToString();
-                string NomEquipement = DTC.Rows[i][10].ToString();
+                int test = int.Parse(DTC.Rows[i][12].ToString());
+                string NomFIgurine = DTC.Rows[i][18].ToString();
+                string NomEquipement = DTC.Rows[i][21].ToString();
                 if (test == lastEntry)
                 {
                     tableLayoutPanel1.Controls.Add(new Label() { Text = "", Dock = DockStyle.Fill }, 0, i);
