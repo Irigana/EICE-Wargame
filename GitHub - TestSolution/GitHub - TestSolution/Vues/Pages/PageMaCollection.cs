@@ -37,7 +37,6 @@ namespace EICE_WARGAME
         }
         #endregion
 
-        private PrintDocument printDocument1 = new PrintDocument();
 
         private const string c_CritereQuiContient = "%{0}%";
 
@@ -52,7 +51,6 @@ namespace EICE_WARGAME
             listeDeroulanteChar1.Enabled = false;
             ficheEquipementSansRecherche1.Enabled = false;
             ficheEquipementSurFigurine1.Enabled = false;
-            printDocument1.PrintPage += new PrintPageEventHandler(printDocument1_PrintPage);
 
         }
 
@@ -64,26 +62,6 @@ namespace EICE_WARGAME
                 return true;
             });
         }
-
-
-        Bitmap memoryImage;
-
-        private void CaptureScreen()
-        {
-            Graphics myGraphics = this.CreateGraphics();
-            Size s = this.Size;
-            memoryImage = new Bitmap(this.Width, this.Height, myGraphics);
-            Graphics memoryGraphics = Graphics.FromImage(memoryImage);
-            memoryGraphics.CopyFromScreen(this.Location.X, this.Location.Y, 0, 0, s);
-        }
-
-        private void printDocument1_PrintPage(Object sender,
-               PrintPageEventArgs e)
-        {
-            e.Graphics.DrawImage(memoryImage, 0, 0);
-        }
-
-
 
         private void ListeDeroulanteFaction_SurChangementSelection(object sender, EventArgs e)
         {

@@ -16,7 +16,6 @@ namespace EICE_WARGAME
 {
     public partial class PageImpressionCarteUnite : UserControl
     {
-
         private PrintDocument printDocument1 = new PrintDocument();
         private GMBD a_db = new GMBD();
 
@@ -45,146 +44,46 @@ namespace EICE_WARGAME
 
             InitializeComponent();
             printDocument1.PrintPage += new PrintPageEventHandler(printDocument1_PrintPage);
-        }
 
-        #region Methode d'impression
-
-        private void FillList()
-        {
-            // Read data from xml file
-            DataSet ds = new DataSet();
-            try
-            {
-                ds.ReadXml("Orders.xml", XmlReadMode.ReadSchema);
-                FillList(this.printableListView1, ds.Tables["ORDERS"]);
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message);
-                return;
-            }
-        }
-
-        private void FillList(ListView list, DataTable table)
-        {
-            list.SuspendLayout();
-
-            // Clear list
-            list.Items.Clear();
-            list.Columns.Clear();
-            // Columns
-            printableListView1.Columns.Add(new ColumnHeader()
-            {
-                Name = "Figurine",
-                Text = "Figurine",
-                TextAlign = HorizontalAlignment.Center,
-            });
-            printableListView1.Columns.Add(new ColumnHeader()
-            {
-                Name = "Equipement",
-                Text = "Equipement",
-                TextAlign = HorizontalAlignment.Center,
-            });
-
-            // Rows
-
-            foreach (DataRow row in table.Rows)
-            {
-                ListViewItem item = new ListViewItem();
-                for (int i = 1; i < table.Columns.Count; i++)
-                {
-                   
-                    item.Text = row[i].ToString();
-                    item.SubItems.Add(item.Name);
-                }           
-            printableListView1.Items.Add(item);
-        }
-            list.ResumeLayout();
-        }
-
-        private bool IsNumeric(System.Type dataType)
-        {
-            switch (System.Type.GetTypeCode(dataType))
-            {
-                case TypeCode.Byte:
-                case TypeCode.SByte:
-                case TypeCode.Decimal:
-                case TypeCode.Double:
-                case TypeCode.Int16:
-                case TypeCode.Int32:
-                case TypeCode.Int64:
-                case TypeCode.Single:
-                case TypeCode.UInt16:
-                case TypeCode.UInt32:
-                case TypeCode.UInt64:
-                    return true;
-                default:
-                    return false;
-            }
         }
 
 
-        #endregion
-
-        private void ButtonPageSetup_OnClick(object sender, System.EventArgs e)
-        {
-            printableListView1.PageSetup();
-        }
-
-        private void ButtonPrintPreview_OnClick(object sender, System.EventArgs e)
-        {
-            printPreviewDialog1.Document = printDocument1;
-            printPreviewDialog1.ShowDialog();
-        }
 
         private void ButtonPrint_OnClick(object sender, System.EventArgs e)
         {
             CaptureScreen();
-            printDocument1.Print();
-
-
         }
 
-
-        Bitmap memoryImage;
+        Bitmap printImage;
 
         private void CaptureScreen()
         {
-            Graphics myGraphics = this.CreateGraphics();
-            Size s = this.Size;
-            memoryImage = new Bitmap(s.Width, s.Height, myGraphics);
-            Graphics memoryGraphics = Graphics.FromImage(memoryImage);
-            memoryGraphics.CopyFromScreen(this.Location.X, this.Location.Y, 0, 0, s);
-            tableLayoutPanel1.DrawToBitmap(memoryImage, new Rectangle(new Point(0, 0), this.Size));
+            printImage = new Bitmap(tableLayoutPanel1.Width, tableLayoutPanel1.Height);
+            tableLayoutPanel1.DrawToBitmap(printImage, new Rectangle(0, 0, printImage.Width, printImage.Height));
+            printPreviewDialog1.Document = printDocument1;
+            printDocument1.PrintPage += printDocument1_PrintPage;
+            printPreviewDialog1.ShowDialog();
         }
 
-
-        private void printDocument1_PrintPage(System.Object sender,
-        System.Drawing.Printing.PrintPageEventArgs e)
+        private void printDocument1_PrintPage(object sender, PrintPageEventArgs e)
         {
-
-            // Insert code to render the page here.
-            // This code will be called when the PrintPreviewDialog.Show 
-            // method is called.
-
-            // The following code will render a simple
-            // message on the document in the dialog.
-            string text = "In document_PrintPage method.";
-            System.Drawing.Font printFont =
-                new System.Drawing.Font("Arial", 35,
-                System.Drawing.FontStyle.Regular);
-
-            e.Graphics.DrawString(text, printFont,
-                System.Drawing.Brushes.Black, 0, 0);
+            string text = "Liste des Unités de l'armée";
+            Font printFont = new Font("Arial", 35, FontStyle.Regular);
+            e.Graphics.DrawString(text, printFont, Brushes.Black, 0, 0);
+            e.Graphics.DrawImage(printImage, 0, 0);
         }
-
 
         private void PageImpressionCarteUnite_Load(object sender, EventArgs e)
         {
-            string Query = string.Format(@"SELECT * FROM figurine 
-                                           JOIN figurine_stuff On fs_fk_figurine_id = fi_id 
-                                           JOIN charact on figurine.fi_fk_character_id = charact.ch_id 
-                                           JOIN stuff on stuff.st_id = figurine_stuff.fs_fk_stuff_id");
+            string Query = string.Format(@"SELECT * FROM army
+                                            JOIN army_unity ON army_unity.aru_army_id = army.ar_id
+                                            JOIN army_unity_figurine ON army_unity_figurine.auf_fk_army_unity_id = army_unity.aru_id
+                                            JOIN figurine ON army_unity_figurine.auf_fk_figurine_id = figurine.fi_id
+                                            JOIN figurine_stuff ON fs_fk_figurine_id = fi_id 
+                                            JOIN charact ON figurine.fi_fk_character_id = charact.ch_id 
+                                            JOIN stuff on stuff.st_id = figurine_stuff.fs_fk_stuff_id
+                                            JOIN user ON user.u_id = army.ar_fk_user_id
+                                            WHERE user.u_id = {0}", Utilisateur);
             MySqlCommand Command = new MySqlCommand(Query);
             DataTable DTC = new DataTable();
             a_db = new GMBD();
@@ -196,9 +95,9 @@ namespace EICE_WARGAME
             int lastEntry = -1;
             for (int i = 0; i < DTC.Rows.Count; i++)
             {
-                int test = int.Parse(DTC.Rows[i][0].ToString());
-                string NomFIgurine = DTC.Rows[i][7].ToString();
-                string NomEquipement = DTC.Rows[i][10].ToString();
+                int test = int.Parse(DTC.Rows[i][12].ToString());
+                string NomFIgurine = DTC.Rows[i][18].ToString();
+                string NomEquipement = DTC.Rows[i][21].ToString();
                 if (test == lastEntry)
                 {
                     tableLayoutPanel1.Controls.Add(new Label() { Text = "", Dock = DockStyle.Fill }, 0, i);
@@ -216,9 +115,5 @@ namespace EICE_WARGAME
 
         }
 
-        private void tableLayoutPanel1_Paint(object sender, PaintEventArgs e)
-        {
-
-        }
     }
 }

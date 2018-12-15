@@ -31,16 +31,12 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(PageImpressionCarteUnite));
             this.printDialog1 = new System.Windows.Forms.PrintDialog();
             this.printPreviewDialog1 = new System.Windows.Forms.PrintPreviewDialog();
-            this.button1 = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
-            this.button3 = new System.Windows.Forms.Button();
-            this.printableListView1 = new PrintableListView.PrintableListView();
-            this.Colonne_Figurine = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.button_Imprimer = new System.Windows.Forms.Button();
             this.columnHeader1 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader2 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.Colonne_Equipement = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.Colonne_Cout = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
+            this.buttonReturn = new System.Windows.Forms.Button();
+            this.buttonOptionsUser2 = new EICE_WARGAME.ButtonOptionsUser();
             this.SuspendLayout();
             // 
             // printDialog1
@@ -57,54 +53,18 @@
             this.printPreviewDialog1.Name = "printPreviewDialog1";
             this.printPreviewDialog1.Visible = false;
             // 
-            // button1
+            // button_Imprimer
             // 
-            this.button1.Location = new System.Drawing.Point(37, 46);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 23);
-            this.button1.TabIndex = 15;
-            this.button1.Text = "PageSetup";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.ButtonPageSetup_OnClick);
-            // 
-            // button2
-            // 
-            this.button2.Location = new System.Drawing.Point(37, 101);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(75, 23);
-            this.button2.TabIndex = 16;
-            this.button2.Text = "PrintPreview";
-            this.button2.UseVisualStyleBackColor = true;
-            this.button2.Click += new System.EventHandler(this.ButtonPrintPreview_OnClick);
-            // 
-            // button3
-            // 
-            this.button3.Location = new System.Drawing.Point(37, 163);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(75, 23);
-            this.button3.TabIndex = 17;
-            this.button3.Text = "Print";
-            this.button3.UseVisualStyleBackColor = true;
-            this.button3.Click += new System.EventHandler(this.ButtonPrint_OnClick);
-            // 
-            // printableListView1
-            // 
-            this.printableListView1.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
-            this.Colonne_Figurine,
-            this.Colonne_Equipement,
-            this.Colonne_Cout});
-            this.printableListView1.FitToPage = false;
-            this.printableListView1.HeaderStyle = System.Windows.Forms.ColumnHeaderStyle.Nonclickable;
-            this.printableListView1.Location = new System.Drawing.Point(221, 46);
-            this.printableListView1.Name = "printableListView1";
-            this.printableListView1.Size = new System.Drawing.Size(747, 430);
-            this.printableListView1.TabIndex = 18;
-            this.printableListView1.Title = "";
-            this.printableListView1.UseCompatibleStateImageBehavior = false;
-            // 
-            // Colonne_Figurine
-            // 
-            this.Colonne_Figurine.Text = "Figurine";
+            this.button_Imprimer.BackColor = System.Drawing.Color.SteelBlue;
+            this.button_Imprimer.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.button_Imprimer.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button_Imprimer.Location = new System.Drawing.Point(0, 471);
+            this.button_Imprimer.Name = "button_Imprimer";
+            this.button_Imprimer.Size = new System.Drawing.Size(1010, 48);
+            this.button_Imprimer.TabIndex = 17;
+            this.button_Imprimer.Text = "Imprimer";
+            this.button_Imprimer.UseVisualStyleBackColor = false;
+            this.button_Imprimer.Click += new System.EventHandler(this.ButtonPrint_OnClick);
             // 
             // columnHeader1
             // 
@@ -118,14 +78,6 @@
             this.columnHeader2.Text = "Test";
             this.columnHeader2.Width = 100;
             // 
-            // Colonne_Equipement
-            // 
-            this.Colonne_Equipement.Text = "Equipement";
-            // 
-            // Colonne_Cout
-            // 
-            this.Colonne_Cout.Text = "Cout";
-            // 
             // tableLayoutPanel1
             // 
             this.tableLayoutPanel1.AutoSize = true;
@@ -134,24 +86,44 @@
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
-            this.tableLayoutPanel1.Location = new System.Drawing.Point(229, 54);
+            this.tableLayoutPanel1.Location = new System.Drawing.Point(229, 3);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
             this.tableLayoutPanel1.RowCount = 2;
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(658, 80);
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(563, 217);
             this.tableLayoutPanel1.TabIndex = 19;
-            this.tableLayoutPanel1.Paint += new System.Windows.Forms.PaintEventHandler(this.tableLayoutPanel1_Paint);
+            // 
+            // buttonReturn
+            // 
+            this.buttonReturn.FlatAppearance.BorderSize = 0;
+            this.buttonReturn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonReturn.Image = global::EICE_WARGAME.Properties.Resources.ReturnLogo35px;
+            this.buttonReturn.Location = new System.Drawing.Point(2, 3);
+            this.buttonReturn.Margin = new System.Windows.Forms.Padding(2);
+            this.buttonReturn.Name = "buttonReturn";
+            this.buttonReturn.Size = new System.Drawing.Size(33, 32);
+            this.buttonReturn.TabIndex = 20;
+            this.buttonReturn.UseVisualStyleBackColor = true;
+            // 
+            // buttonOptionsUser2
+            // 
+            this.buttonOptionsUser2.BackColor = System.Drawing.Color.Transparent;
+            this.buttonOptionsUser2.Location = new System.Drawing.Point(846, 2);
+            this.buttonOptionsUser2.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.buttonOptionsUser2.Name = "buttonOptionsUser2";
+            this.buttonOptionsUser2.Size = new System.Drawing.Size(164, 37);
+            this.buttonOptionsUser2.TabIndex = 21;
+            this.buttonOptionsUser2.Utilisateur = null;
             // 
             // PageImpressionCarteUnite
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.buttonOptionsUser2);
+            this.Controls.Add(this.buttonReturn);
             this.Controls.Add(this.tableLayoutPanel1);
-            this.Controls.Add(this.printableListView1);
-            this.Controls.Add(this.button3);
-            this.Controls.Add(this.button2);
-            this.Controls.Add(this.button1);
+            this.Controls.Add(this.button_Imprimer);
             this.Name = "PageImpressionCarteUnite";
             this.Size = new System.Drawing.Size(1010, 519);
             this.Load += new System.EventHandler(this.PageImpressionCarteUnite_Load);
@@ -165,15 +137,11 @@
         private ButtonOptionsUser buttonOptionsUser1;
         private System.Windows.Forms.PrintDialog printDialog1;
         private System.Windows.Forms.PrintPreviewDialog printPreviewDialog1;
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.Button button3;
-        private PrintableListView.PrintableListView printableListView1;
+        private System.Windows.Forms.Button button_Imprimer;
         private System.Windows.Forms.ColumnHeader columnHeader1;
         private System.Windows.Forms.ColumnHeader columnHeader2;
-        private System.Windows.Forms.ColumnHeader Colonne_Figurine;
-        private System.Windows.Forms.ColumnHeader Colonne_Equipement;
-        private System.Windows.Forms.ColumnHeader Colonne_Cout;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
+        private System.Windows.Forms.Button buttonReturn;
+        private ButtonOptionsUser buttonOptionsUser2;
     }
 }
