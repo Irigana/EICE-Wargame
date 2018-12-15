@@ -38,6 +38,7 @@ namespace EICE_WARGAME
         private ArmyUnityFigurine m_ArmyUnityFigurine;
         private Figurine m_Figurine;
         private FigurineStuff m_FigurineStuff;
+        private CharactRank m_CharRank;
 
         
         #endregion
@@ -177,6 +178,11 @@ namespace EICE_WARGAME
                     {
                         m_ArmyUnity = new ArmyUnity();
                         m_ArmyUnity.Army = m_Army;
+                        m_ArmyUnity.Enregistrer(Program.GMBD.BD, m_ArmyUnity);
+                        /*m_ArmyUnity = Program.GMBD.EnumererArmyUnity(null,
+                                                            null,
+                                                            new MyDB.CodeSql("WHERE aru_army_id = {0}", m_Army.Id),
+                                                            null).FirstOrDefault();*/
                     }
                     // Validation OK
                 }
@@ -191,9 +197,15 @@ namespace EICE_WARGAME
 
         private void q_buttonAjouter_Click(object sender, EventArgs e)
         {
+            m_CharRank = new CharactRank();
+            m_CharRank = Program.GMBD.EnumererPersonnage(null,
+                                                            null,
+                                                            new MyDB.CodeSql("WHERE cr_fk_ch_id = {0} AND cr_fk_ra_id = {1}", z_listeDeroulanteChar.CharactSelectionnee.Id, z_listeDeroulanteRank.RankSelectionnee.Id),
+                                                            null).FirstOrDefault();
             m_ArmyUnityFigurine = new ArmyUnityFigurine();
             m_ArmyUnityFigurine.ArmyUnity = m_ArmyUnity;
             m_ArmyUnityFigurine.Figurine = m_Figurine;
+            m_ArmyUnityFigurine.Rank = m_CharRank;
             m_ArmyUnityFigurine.Enregistrer(Program.GMBD.BD, m_ArmyUnityFigurine);
         }
 

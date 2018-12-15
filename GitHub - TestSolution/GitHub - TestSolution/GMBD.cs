@@ -34,6 +34,7 @@ namespace EICE_WARGAME
         private static readonly MyDB.CodeSql c_NomTable_Army = new MyDB.CodeSql(new Army().NomDeLaTablePrincipale);
         private static readonly MyDB.CodeSql c_NomTable_StuffCharactRank = new MyDB.CodeSql(new StuffCharactRank().NomDeLaTablePrincipale);
         private static readonly MyDB.CodeSql c_NomTable_SubSub = new MyDB.CodeSql(new SubSub().NomDeLaTablePrincipale);
+        private static readonly MyDB.CodeSql c_NomTable_ArmyUnity = new MyDB.CodeSql(new ArmyUnity().NomDeLaTablePrincipale);
 
         /// <summary>
         /// Référence l'objet de connexion au serveur de base de données MySql
@@ -458,6 +459,15 @@ namespace EICE_WARGAME
             if (ClauseJoin == null) ClauseJoin = MyDB.CodeSql.Vide;
             if (ValeurSouhaitee == null) ValeurSouhaitee = new MyDB.CodeSql("*");
             return ArmyUnityFigurine.Enumerer(m_BD, m_BD.Enumerer("SELECT {0} FROM  {1} {2} {3} {4}", ValeurSouhaitee, c_NomTable_ArmyUnityFigurineStuff, ClauseJoin, ClauseWhere, ClauseOrderBy));
+        }
+
+        public IEnumerable<ArmyUnity> EnumererArmyUnity(MyDB.CodeSql ValeurSouhaitee, MyDB.CodeSql ClauseJoin, MyDB.CodeSql ClauseWhere, MyDB.CodeSql ClauseOrderBy)
+        {
+            if (ClauseWhere == null) ClauseWhere = MyDB.CodeSql.Vide;
+            if (ClauseOrderBy == null) ClauseOrderBy = MyDB.CodeSql.Vide;
+            if (ClauseJoin == null) ClauseJoin = MyDB.CodeSql.Vide;
+            if (ValeurSouhaitee == null) ValeurSouhaitee = new MyDB.CodeSql("*");
+            return ArmyUnity.Enumerer(m_BD, m_BD.Enumerer("SELECT {0} FROM  {1} {2} {3} {4}", ValeurSouhaitee, c_NomTable_ArmyUnity, ClauseJoin, ClauseWhere, ClauseOrderBy));
         }
 
         public IEnumerable<StuffCharactRank> EnumererStuffCharactRank(MyDB.CodeSql ValeurSouhaitee, MyDB.CodeSql ClauseJoin, MyDB.CodeSql ClauseWhere, MyDB.CodeSql ClauseOrderBy)

@@ -33,7 +33,7 @@ namespace EICE_WARGAME
         /// <summary>
         /// Membre stockant la référence Rank
         /// </summary>
-        private Rank m_Rank;
+        private CharactRank m_Rank;
 
         #endregion
 
@@ -93,7 +93,7 @@ namespace EICE_WARGAME
         /// <summary>
         /// Membre public permettant d'accéder à l'id du rank
         /// </summary>
-        public Rank Rank
+        public CharactRank Rank
         {
             get
             {
@@ -137,7 +137,7 @@ namespace EICE_WARGAME
         /// <param name="Army">Army de ce ArmyUnityFigurine</param>
         /// <param name="Figurine">Figurine de ce ArmyUnityFigurine</param>
         /// <param name="Rank">Rank de ce ArmyUnityFigurine</param>
-        public ArmyUnityFigurine(int Id, ArmyUnity ArmyUnity, Figurine Figurine, Rank Rank)
+        public ArmyUnityFigurine(int Id, ArmyUnity ArmyUnity, Figurine Figurine, CharactRank Rank)
         : this()
         {
             DefinirId(Id);
@@ -160,7 +160,7 @@ namespace EICE_WARGAME
                 DefinirId(Enregistrement.ValeurChampComplet<int>(NomDeLaTablePrincipale, "auf_id"));
                 this.ArmyUnity = new ArmyUnity(Connexion, Enregistrement);
                 this.Figurine = new Figurine(Connexion, Enregistrement);
-                this.Rank = new Rank(Connexion, Enregistrement);
+                this.Rank = new CharactRank(Connexion, Enregistrement);
             }
         }
 

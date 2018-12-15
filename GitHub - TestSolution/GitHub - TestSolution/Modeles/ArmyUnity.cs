@@ -146,7 +146,7 @@ namespace EICE_WARGAME
         {
             get
             {
-                return new PDSGBD.MyDB.CodeSql("aru_fk_army_id = {0}", m_Army.Id);
+                return new PDSGBD.MyDB.CodeSql("aru_army_id = {0}", m_Army.Id);
             }
         }        
 
