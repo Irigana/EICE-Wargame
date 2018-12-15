@@ -33,26 +33,94 @@ namespace EICE_WARGAME
             }
         }
 
-        public const int MonUser = 27;
+        private Army m_Army;
+
+        
         #endregion
 
         public PageArmee()
         {
             InitializeComponent();
+
+            z_listeDeroulanteScenario.Scenario = Program.GMBD.EnumererScenario(null, null, null,
+                                                    new MyDB.CodeSql("ORDER BY sc_name"));
+            z_listeDeroulanteScenario.SurChangementSelection += Scenario_SurChangementSelection;
             
-            z_listeDeroulanteChar.Charact = Program.GMBD.EnumererCaractere(new MyDB.CodeSql("DISTINCT ch_id, ch_name, ch_fk_subfaction_id"),
-                new MyDB.CodeSql("JOIN figurine ON fi_fk_character_id = charact.ch_id"), new MyDB.CodeSql("WHERE fi_fk_user_id = {0}", MonUser),
-                new MyDB.CodeSql("ORDER BY ch_name"));
-            z_listeDeroulanteChar.SurChangementSelection += Charact_surChangementSelection;
             //z_listeDeroulanteFigurine.SurChangementSelection += Figurine_SurChangementSelection;
         }
+
+        private void Scenario_SurChangementSelection(object sender, EventArgs e)
+        {
+            z_listeDeroulanteCamp.Camp = Program.GMBD.EnumererCamp(null, new MyDB.CodeSql(@"
+                                    JOIN scenario_camp ON scenario_camp.sca_fk_camp_id = camp.ca_id
+                                    JOIN scenario ON scenario.sc_id = scenario_camp.sca_fk_scenario_id AND scenario.sc_id = {0}",
+                                    z_listeDeroulanteScenario.ScenarioSelectionnee.Id), null, null);
+            z_listeDeroulanteCamp.SurChangementSelection += Camp_surChangementSelection;
+        }
+
+        private void Faction_surChangementSelection(object sender, EventArgs e)
+        {
+            z_listeDeroulanteFaction.Faction = Program.GMBD.EnumererFaction(null, null, null, new MyDB.CodeSql("ORDER BY fa_name"));
+        }
+
+        private void SousFaction_surChangementSelection(object sender, EventArgs e)
+        {
+            z_listeDeroulanteSousFaction.SousFaction = Program.GMBD.EnumererSousFaction(null, null, 
+                new MyDB.CodeSql("WHERE sf_fk_faction_id = {0}", z_listeDeroulanteFaction.FactionSelectionnee.Id),
+                new MyDB.CodeSql("ORDER BY sf_name"));
+        }
+
+        private void Camp_surChangementSelection(object sender, EventArgs e)
+        {
+            z_listeDeroulanteChar.Charact = Program.GMBD.EnumererCaractere(new MyDB.CodeSql("DISTINCT ch_id, ch_name, ch_fk_subfaction_id"),
+                new MyDB.CodeSql("JOIN figurine ON fi_fk_character_id = charact.ch_id"), new MyDB.CodeSql("WHERE fi_fk_user_id = {0}", Utilisateur.Id),
+                new MyDB.CodeSql("ORDER BY ch_name"));
+
+            z_listeDeroulanteFaction.SurChangementSelection += Faction_surChangementSelection;
+        }
+
+        private void z_buttonAjoutArmee_Click(object sender, EventArgs e)
+        {
+            Scenario_Camp SC = new Scenario_Camp();
+            SC = Program.GMBD.EnumererScenarioCamp(null, null,
+                new MyDB.CodeSql("WHERE sca_fk_scenario_id = {0} AND sca_fk_camp_id = {1}", z_listeDeroulanteScenario.ScenarioSelectionnee.Id,
+                z_listeDeroulanteCamp.CampSelectionnee.Id),null).FirstOrDefault();
+            if (SC != null)
+            {
+                m_Army = new Army();
+                m_Army.Name = z_textBoxName.Text;
+                m_Army.ScenarioCamp = SC;
+                m_Army.Utilisateur = Utilisateur;
+                m_Army.PointsMaximum = Convert.ToInt32(z_textBoxPointsMax.Text);
+                
+                Army ArmyExiste = null;
+                ArmyExiste = Program.GMBD.EnumererArmy(null,
+                                                            null,
+                                                            new MyDB.CodeSql("WHERE ar_name = {0}", m_Army.Name),
+                                                            null).FirstOrDefault();
+                if(ArmyExiste == null)
+                {
+                    m_Army.Enregistrer(Program.GMBD.BD, m_Army);
+                    // Validation OK
+                }
+                else
+                {
+                    // faire qqch
+                }
+
+            
+            }
+        }
+
+
+
 
         private void Charact_surChangementSelection(object sender, EventArgs e)
         {
             z_listeDeroulanteStuff.Stuff = Program.GMBD.EnumererStuff(new MyDB.CodeSql("DISTINCT st_id, st_name, st_fk_type_id, st_visibility"),
                 new MyDB.CodeSql(@"JOIN figurine_stuff ON stuff.st_id = figurine_stuff.fs_fk_stuff_id
                                     JOIN figurine ON figurine_stuff.fs_fk_figurine_id = figurine.fi_id AND figurine.fi_fk_user_id = {0}
-                                    JOIN charact ON charact.ch_id = figurine.fi_fk_character_id AND ch_id = {1}", MonUser, z_listeDeroulanteChar.CharactSelectionnee.Id),null,null);
+                                    JOIN charact ON charact.ch_id = figurine.fi_fk_character_id AND ch_id = {1}", Utilisateur.Id, z_listeDeroulanteChar.CharactSelectionnee.Id),null,null);
             z_listeDeroulanteStuff.SurChangementSelection += Stuff_SurChangementSelection;
             
         }
@@ -63,7 +131,7 @@ namespace EICE_WARGAME
                 new MyDB.CodeSql(@"JOIN char_rank ON char_rank.cr_fk_ra_id = rank.ra_id  AND char_rank.cr_fk_ch_id = {0} 
                                     JOIN stuff_char_rank ON stuff_char_rank.scr_fk_char_rank_id = char_rank.cr_id 
                                     JOIN figurine ON figurine.fi_fk_character_id = 60 AND figurine.fi_fk_user_id = {1} ", 
-                                    z_listeDeroulanteChar.CharactSelectionnee.Id, MonUser),
+                                    z_listeDeroulanteChar.CharactSelectionnee.Id, Utilisateur.Id),
                 new MyDB.CodeSql("WHERE stuff_char_rank.scr_fk_stuff_id = {0}", z_listeDeroulanteStuff.StuffSelectionnee.Id), null);
             z_listeDeroulanteRank.SurChangementSelection += Rank_SurChangementSelection;
         }
@@ -75,11 +143,16 @@ namespace EICE_WARGAME
                 new MyDB.CodeSql(@"JOIN char_rank ON char_rank.cr_id = stuff_char_rank.scr_fk_char_rank_id
                                     JOIN rank ON char_rank.cr_fk_ra_id = rank.ra_id And rank.ra_id = {0}
                                     JOIN figurine ON figurine.fi_fk_character_id = {1} AND figurine.fi_fk_user_id = {2}",
-                                    z_listeDeroulanteRank.RankSelectionnee.Id, z_listeDeroulanteChar.CharactSelectionnee.Id, MonUser),
+                                    z_listeDeroulanteRank.RankSelectionnee.Id, z_listeDeroulanteChar.CharactSelectionnee.Id, Utilisateur.Id),
                 new MyDB.CodeSql("WHERE stuff_char_rank.scr_fk_stuff_id = {0} AND char_rank.cr_fk_ch_id = {1}", 
                         z_listeDeroulanteStuff.StuffSelectionnee.Id, z_listeDeroulanteChar.CharactSelectionnee.Id), null).FirstOrDefault();
 
             z_textBox.Text = SCR.Cout.ToString();
+        }
+
+        private void q_buttonAjouter_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

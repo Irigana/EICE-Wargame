@@ -265,7 +265,7 @@ namespace EICE_WARGAME
         {
             get
             {
-                return new PDSGBD.MyDB.CodeSql("ar_name = {0}, ar_fk_scenario_camp_id = {1}, ar_fk_user_id = {3}, ar_max_point = {4}", Name,ScenarioCamp.Id, Utilisateur.Id,PointsMaximum);
+                return new PDSGBD.MyDB.CodeSql("ar_name = {0}, ar_fk_scenario_camp_id = {1}, ar_fk_user_id = {2}, ar_max_point = {3}", Name,ScenarioCamp.Id, Utilisateur.Id,PointsMaximum);
             }
         }
 
