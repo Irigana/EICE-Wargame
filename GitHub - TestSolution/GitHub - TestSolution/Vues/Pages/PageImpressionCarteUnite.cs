@@ -104,8 +104,9 @@ namespace EICE_WARGAME
                                             JOIN rank ON rank.ra_id = char_rank.cr_fk_ra_id
                                             JOIN charact ON figurine.fi_fk_character_id = charact.ch_id 
                                             JOIN subunity ON char_rank.cr_sub_id = subunity.su_id
-                                            JOIN user ON user.u_id = army.ar_fk_user_id GROUP BY fs_id
-                                            WHERE user.u_id = {0} AND ar_id = {0}", Utilisateur, Army.Id);
+                                            JOIN user ON user.u_id = army.ar_fk_user_id GROUP BY fs_id");
+
+                                     //Ici est la bonne clause, mais, comme Army ne va pas jusque là . . .       WHERE user.u_id = {0} AND ar_id = {0}", Utilisateur.Id, Army.Id);
             MySqlCommand Command = new MySqlCommand(Query);
             DataTable DTC = new DataTable();
             a_db = new GMBD();
@@ -145,7 +146,7 @@ namespace EICE_WARGAME
                 }
                 else
                 {
-                    tableLayoutPanel1.Controls.Add(new Label() { Text = NomSousUnite, Dock = DockStyle.Fill }, 0, i);
+                    tableLayoutPanel1.Controls.Add(new Label() { Text = NomSousUnite, Dock = DockStyle.Fill }, 0, i+1);
                     tableLayoutPanel1.Controls.Add(new Label() { Text = NomFIgurine, Dock = DockStyle.Fill }, 1, i+1);
                     tableLayoutPanel1.Controls.Add(new Label() { Text = NomRank, Dock = DockStyle.Fill }, 2, i+1);
                     tableLayoutPanel1.Controls.Add(new Label() { Text = NomEquipement, Dock = DockStyle.Fill }, 3, i+1);

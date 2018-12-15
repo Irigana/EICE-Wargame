@@ -79,7 +79,7 @@
             this.panelLigneSeparatrice.BackColor = System.Drawing.Color.SteelBlue;
             this.panelLigneSeparatrice.ForeColor = System.Drawing.Color.SteelBlue;
             this.panelLigneSeparatrice.Location = new System.Drawing.Point(17, 80);
-            this.panelLigneSeparatrice.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.panelLigneSeparatrice.Margin = new System.Windows.Forms.Padding(2);
             this.panelLigneSeparatrice.Name = "panelLigneSeparatrice";
             this.panelLigneSeparatrice.Size = new System.Drawing.Size(1050, 2);
             this.panelLigneSeparatrice.TabIndex = 3;
@@ -87,7 +87,7 @@
             // z_textBoxName
             // 
             this.z_textBoxName.Location = new System.Drawing.Point(81, 103);
-            this.z_textBoxName.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.z_textBoxName.Margin = new System.Windows.Forms.Padding(2);
             this.z_textBoxName.Name = "z_textBoxName";
             this.z_textBoxName.Size = new System.Drawing.Size(177, 20);
             this.z_textBoxName.TabIndex = 4;
@@ -125,7 +125,7 @@
             // z_textBoxPointsMax
             // 
             this.z_textBoxPointsMax.Location = new System.Drawing.Point(369, 103);
-            this.z_textBoxPointsMax.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.z_textBoxPointsMax.Margin = new System.Windows.Forms.Padding(2);
             this.z_textBoxPointsMax.Name = "z_textBoxPointsMax";
             this.z_textBoxPointsMax.Size = new System.Drawing.Size(177, 20);
             this.z_textBoxPointsMax.TabIndex = 10;
@@ -165,7 +165,7 @@
             this.panel1.BackColor = System.Drawing.Color.SteelBlue;
             this.panel1.ForeColor = System.Drawing.Color.SteelBlue;
             this.panel1.Location = new System.Drawing.Point(17, 198);
-            this.panel1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.panel1.Margin = new System.Windows.Forms.Padding(2);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(1050, 2);
             this.panel1.TabIndex = 16;
@@ -203,7 +203,7 @@
             // z_textBox
             // 
             this.z_textBox.Location = new System.Drawing.Point(82, 404);
-            this.z_textBox.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.z_textBox.Margin = new System.Windows.Forms.Padding(2);
             this.z_textBox.Name = "z_textBox";
             this.z_textBox.Size = new System.Drawing.Size(76, 20);
             this.z_textBox.TabIndex = 25;
@@ -221,7 +221,7 @@
             // q_buttonAjouter
             // 
             this.q_buttonAjouter.Location = new System.Drawing.Point(284, 285);
-            this.q_buttonAjouter.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.q_buttonAjouter.Margin = new System.Windows.Forms.Padding(2);
             this.q_buttonAjouter.Name = "q_buttonAjouter";
             this.q_buttonAjouter.Size = new System.Drawing.Size(56, 19);
             this.q_buttonAjouter.TabIndex = 27;
@@ -232,7 +232,7 @@
             // q_buttonEnlever
             // 
             this.q_buttonEnlever.Location = new System.Drawing.Point(284, 321);
-            this.q_buttonEnlever.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.q_buttonEnlever.Margin = new System.Windows.Forms.Padding(2);
             this.q_buttonEnlever.Name = "q_buttonEnlever";
             this.q_buttonEnlever.Size = new System.Drawing.Size(56, 19);
             this.q_buttonEnlever.TabIndex = 28;
@@ -252,7 +252,7 @@
             // 
             this.z_listeDeroulanteChar.CharactSelectionnee = null;
             this.z_listeDeroulanteChar.Location = new System.Drawing.Point(81, 319);
-            this.z_listeDeroulanteChar.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.z_listeDeroulanteChar.Margin = new System.Windows.Forms.Padding(2);
             this.z_listeDeroulanteChar.Name = "z_listeDeroulanteChar";
             this.z_listeDeroulanteChar.Size = new System.Drawing.Size(176, 21);
             this.z_listeDeroulanteChar.TabIndex = 22;
@@ -280,7 +280,7 @@
             // 
             this.z_listeDeroulanteFaction.FactionSelectionnee = null;
             this.z_listeDeroulanteFaction.Location = new System.Drawing.Point(82, 213);
-            this.z_listeDeroulanteFaction.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.z_listeDeroulanteFaction.Margin = new System.Windows.Forms.Padding(2);
             this.z_listeDeroulanteFaction.Name = "z_listeDeroulanteFaction";
             this.z_listeDeroulanteFaction.Size = new System.Drawing.Size(176, 21);
             this.z_listeDeroulanteFaction.TabIndex = 15;
@@ -315,7 +315,7 @@
             // z_listeDeroulanteUnity
             // 
             this.z_listeDeroulanteUnity.Location = new System.Drawing.Point(82, 264);
-            this.z_listeDeroulanteUnity.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.z_listeDeroulanteUnity.Margin = new System.Windows.Forms.Padding(2);
             this.z_listeDeroulanteUnity.Name = "z_listeDeroulanteUnity";
             this.z_listeDeroulanteUnity.Size = new System.Drawing.Size(176, 21);
             this.z_listeDeroulanteUnity.TabIndex = 29;
@@ -353,7 +353,7 @@
             // z_buttonAjoutArmee
             // 
             this.z_buttonAjoutArmee.Location = new System.Drawing.Point(294, 159);
-            this.z_buttonAjoutArmee.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.z_buttonAjoutArmee.Margin = new System.Windows.Forms.Padding(2);
             this.z_buttonAjoutArmee.Name = "z_buttonAjoutArmee";
             this.z_buttonAjoutArmee.Size = new System.Drawing.Size(56, 19);
             this.z_buttonAjoutArmee.TabIndex = 33;
@@ -363,11 +363,13 @@
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(520, 480);
+            this.button1.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button1.Location = new System.Drawing.Point(0, 539);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 23);
+            this.button1.Size = new System.Drawing.Size(1125, 70);
             this.button1.TabIndex = 34;
-            this.button1.Text = "button1";
+            this.button1.Text = "Vers Impression";
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.print_button_click);
             // 
@@ -407,7 +409,7 @@
             this.Controls.Add(this.z_textBoxName);
             this.Controls.Add(this.panelLigneSeparatrice);
             this.Controls.Add(this.labelMaCollection);
-            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "PageArmee";
             this.Size = new System.Drawing.Size(1125, 609);
             this.ResumeLayout(false);
