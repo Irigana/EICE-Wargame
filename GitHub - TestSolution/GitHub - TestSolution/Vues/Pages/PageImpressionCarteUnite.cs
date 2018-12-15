@@ -16,7 +16,6 @@ namespace EICE_WARGAME
 {
     public partial class PageImpressionCarteUnite : UserControl
     {
-        Bitmap printImage;
         private PrintDocument printDocument1 = new PrintDocument();
         private GMBD a_db = new GMBD();
 
@@ -45,6 +44,7 @@ namespace EICE_WARGAME
 
             InitializeComponent();
             printDocument1.PrintPage += new PrintPageEventHandler(printDocument1_PrintPage);
+
         }
 
 
@@ -67,20 +67,18 @@ namespace EICE_WARGAME
 
         }
 
+        Bitmap printImage;
 
         private void CaptureScreen()
         {
-            using (Bitmap printImage = new Bitmap(tableLayoutPanel1.Width, tableLayoutPanel1.Height))
-            {
-                //Draw the TableLayoutPanel control to the temporary bitmap image
-                tableLayoutPanel1.DrawToBitmap(printImage, new Rectangle(0, 0, printImage.Width, printImage.Height));
-                printPreviewDialog1.Document = printDocument1;
-                printDocument1.PrintPage += printDocument1_PrintPage;
-                printPreviewDialog1.ShowDialog();
-            }
+            printImage = new Bitmap(tableLayoutPanel1.Width, tableLayoutPanel1.Height);
+            tableLayoutPanel1.DrawToBitmap(printImage, new Rectangle(0, 0, printImage.Width, printImage.Height));
+            printPreviewDialog1.Document = printDocument1;
+            printDocument1.PrintPage += printDocument1_PrintPage;
+            printPreviewDialog1.ShowDialog();
         }
 
-        private void printDocument1_PrintPage(Object sender, PrintPageEventArgs e)
+        private void printDocument1_PrintPage(object sender, PrintPageEventArgs e)
         {
             string text = "Liste des Unités de l'armée";
             Font printFont = new Font("Arial", 35, FontStyle.Regular);
