@@ -9,21 +9,21 @@ namespace EICE_WARGAME
     public class ArmyUnityFigurine : Entite<ArmyUnityFigurine, ArmyUnityFigurine.Champ>
     {
         /// <summary>
-        /// Champs décrivant cette ArmyUnityFigurineStuff
+        /// Champs décrivant cette ArmyUnityFigurine
         /// </summary>
         public enum Champ
         {
             Id,
-            FigurineStuff,
+            Figurine,
             ArmyUnity,
             Rank,
         }
 
         #region Membres privés
         /// <summary>
-        /// Membre stockant la référence de FigurineStuff
+        /// Membre stockant la référence de Figurine
         /// </summary>
-        private FigurineStuff m_FigurineStuff;
+        private Figurine m_Figurine;
 
         /// <summary>
         /// Membre stockant la référence de Army
@@ -42,24 +42,24 @@ namespace EICE_WARGAME
         /// <summary>
         /// Membre public permettant d'accéder à l'id de la Figurine
         /// </summary>
-        public FigurineStuff FigurineStuff
+        public Figurine Figurine
         {
             get
             {
-                return m_FigurineStuff;
+                return m_Figurine;
             }
 
             set
             {
                 if (value == null)
                 {
-                    Declencher_SurErreur(this, Champ.FigurineStuff, "Figurine non définie");
+                    Declencher_SurErreur(this, Champ.Figurine, "Figurine non définie");
                 }
                 else
                 {
-                    if ((m_FigurineStuff == null) || !int.Equals(value.Id, m_FigurineStuff.Id))
+                    if ((m_Figurine == null) || !int.Equals(value.Id, m_Figurine.Id))
                     {
-                        ModifierChamp(Champ.FigurineStuff, ref m_FigurineStuff, value);
+                        ModifierChamp(Champ.Figurine, ref m_Figurine, value);
                     }
                 }
             }
@@ -125,7 +125,7 @@ namespace EICE_WARGAME
         public ArmyUnityFigurine()
         : base()
         {
-            m_FigurineStuff = null;
+            m_Figurine = null;
             m_ArmyUnity = null;
             m_Rank= null;
         }
@@ -133,15 +133,15 @@ namespace EICE_WARGAME
         /// <summary>
         /// Constructeur spécifique
         /// </summary>
-        /// <param name="Id">Identifiant du ArmyUnityFigurineStuff</param>
-        /// <param name="Army">Army de ce ArmyUnityFigurineStuff</param>
-        /// <param name="FigurineStuff">FigurineStuff de ce ArmyUnityFigurineStuff</param>
-        /// <param name="Rank">Rank de ce ArmyUnityFigurineStuff</param>
-        public ArmyUnityFigurine(int Id, ArmyUnity ArmyUnity, FigurineStuff FigurineStuff, Rank Rank)
+        /// <param name="Id">Identifiant du ArmyUnityFigurine</param>
+        /// <param name="Army">Army de ce ArmyUnityFigurine</param>
+        /// <param name="Figurine">Figurine de ce ArmyUnityFigurine</param>
+        /// <param name="Rank">Rank de ce ArmyUnityFigurine</param>
+        public ArmyUnityFigurine(int Id, ArmyUnity ArmyUnity, Figurine Figurine, Rank Rank)
         : this()
         {
             DefinirId(Id);
-            this.FigurineStuff = FigurineStuff;
+            this.Figurine = Figurine;
             this.ArmyUnity = ArmyUnity;
             this.Rank = Rank;
         }
@@ -159,7 +159,7 @@ namespace EICE_WARGAME
             {
                 DefinirId(Enregistrement.ValeurChampComplet<int>(NomDeLaTablePrincipale, "auf_id"));
                 this.ArmyUnity = new ArmyUnity(Connexion, Enregistrement);
-                this.FigurineStuff = new FigurineStuff(Connexion, Enregistrement);
+                this.Figurine = new Figurine(Connexion, Enregistrement);
                 this.Rank = new Rank(Connexion, Enregistrement);
             }
         }
@@ -169,7 +169,7 @@ namespace EICE_WARGAME
         #region Membres relatifs à la base de données
 
         /// <summary>
-        /// Méthode retournant le nom de la table principale de ArmyUnityFigurineStuff
+        /// Méthode retournant le nom de la table principale de ArmyUnityFigurine
         /// </summary>
         /// <returns>Nom de la table principale de ce type d'entités</returns>
         public override string NomDeLaTablePrincipale
@@ -181,7 +181,7 @@ namespace EICE_WARGAME
         }
 
         /// <summary>
-        /// Méthode retournant l'id de cette table ArmyUnityFigurineStuff
+        /// Méthode retournant l'id de cette table ArmyUnityFigurine
         /// </summary>
         public override string IdDeLaTablePrincipale
         {
@@ -198,7 +198,7 @@ namespace EICE_WARGAME
         {
             get
             {
-                return new PDSGBD.MyDB.CodeSql("auf_fk_figurine_id = {0}, auf_fk_rank_id = {1}, auf_fk_army_unity_id = {2}", m_FigurineStuff.Id, m_Rank.Id, m_ArmyUnity.Id);
+                return new PDSGBD.MyDB.CodeSql("auf_fk_figurine_id = {0}, auf_fk_rank_id = {1}, auf_fk_army_unity_id = {2}", m_Figurine.Id, m_Rank.Id, m_ArmyUnity.Id);
             }
         }
 
